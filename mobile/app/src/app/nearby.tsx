@@ -4,10 +4,20 @@ import {
   nearestCollectionPoints,
   type NearbyCollectionPoint,
 } from "@kierratysappi/contracts/collection-points";
+import type { Coordinates } from "@kierratysappi/domain";
 import type { MessageKey } from "@kierratysappi/localization";
 import { useFocusEffect, useRouter } from "expo-router";
 import { useCallback, useRef, useState } from "react";
-import { ActivityIndicator, AppState, Linking, Platform, StyleSheet, View } from "react-native";
+import {
+  ActivityIndicator,
+  AppState,
+  Keyboard,
+  Linking,
+  Platform,
+  StyleSheet,
+  TextInput,
+  View,
+} from "react-native";
 import snapshot from "@/assets/data/finland-recycling.json";
 import { NearbyPointCard } from "@/components/nearby-point-card";
 import {
@@ -21,16 +31,26 @@ import {
 } from "@/components/ui";
 import { announceAccessibility } from "@/features/accessibility/announcements";
 import { readDeviceLocation } from "@/features/nearby/device-location";
+import {
+  geocodeNearbyInput,
+  NEARBY_GEOCODE_INPUT_MAX_LENGTH,
+  NearbyGeocodeIssue,
+} from "@/features/nearby/geocode-query";
 import { LocationIssue } from "@/features/nearby/location-session";
+import {
+  isApproximateDeviceEstimate,
+  nearbyEstimateMessageKey,
+  type NearbyEstimate,
+} from "@/features/nearby/nearby-estimate";
 import { useNearbySearch } from "@/features/nearby/search-context";
 import { useLanguage } from "@/i18n/language-context";
-import { spacing, useAppTheme } from "@/theme/tokens";
+import { controls, radius, spacing, useAppTheme } from "@/theme/tokens";
 
 const directory = CollectionDirectorySchema.safeParse(snapshot);
 type State =
   | { status: "idle" | "loading" }
   | { status: "error"; message: MessageKey }
-  | { status: "ready"; points: readonly NearbyCollectionPoint[]; accuracy: number };
+  | { status: "ready"; points: readonly NearbyCollectionPoint[]; estimate: NearbyEstimate };
 const errors = {
   permission: "nearbyPermission",
   services: "nearbyServices",
@@ -47,6 +67,8 @@ export default function NearbyScreen() {
   const [state, setState] = useState<State>({ status: "idle" });
   const [privacyOpen, setPrivacyOpen] = useState(false);
   const [linkError, setLinkError] = useState(false);
+  const [queryInput, setQueryInput] = useState("");
+  const [queryFocused, setQueryFocused] = useState(false);
   const active = useRef<AbortController | null>(null);
   const clear = useCallback(() => {
     active.current?.abort();
@@ -55,37 +77,70 @@ export default function NearbyScreen() {
     setPrivacyOpen(false);
     setLinkError(false);
   }, []);
-  const find = useCallback(async () => {
-    if (active.current) return;
-    setLinkError(false);
-    if (!directory.success) {
-      setState({ status: "error", message: "nearbyDataError" });
-      return;
-    }
-    const controller = new AbortController();
-    active.current = controller;
-    setState({ status: "loading" });
-    announceAccessibility(t("nearbyLoading"));
-    try {
-      const fix = await readDeviceLocation(controller.signal);
-      if (controller.signal.aborted) return;
-      const points = nearestCollectionPoints(directory.data.points, fix.coords);
-      if (!points.length) {
-        setState({ status: "error", message: "nearbyNoResult" });
-        announceAccessibility(t("nearbyNoResult"), "high");
-      } else {
-        setState({ status: "ready", points, accuracy: fix.coords.accuracy ?? 0 });
-        announceAccessibility(t("nearbyResult"), "high");
+  const runSearch = useCallback(
+    async (mode: "device" | "geocoded") => {
+      if (active.current) return;
+      Keyboard.dismiss();
+      setLinkError(false);
+      if (!directory.success) {
+        setState({ status: "error", message: "nearbyDataError" });
+        return;
       }
-    } catch (error) {
-      if (controller.signal.aborted) return;
-      const message = error instanceof LocationIssue ? errors[error.reason] : "nearbyUnavailable";
-      setState({ status: "error", message });
-      announceAccessibility(t(message), "high");
-    } finally {
-      if (active.current === controller) active.current = null;
-    }
-  }, [t]);
+      const controller = new AbortController();
+      active.current = controller;
+      setState({ status: "loading" });
+      announceAccessibility(t("nearbyLoading"));
+      try {
+        let coordinates: Coordinates;
+        let estimate: NearbyEstimate;
+        if (mode === "device") {
+          const fix = await readDeviceLocation(controller.signal);
+          coordinates = fix.coords;
+          estimate = { source: "device", accuracyMeters: fix.coords.accuracy ?? null };
+        } else {
+          const geocoded = await geocodeNearbyInput(queryInput, { signal: controller.signal });
+          coordinates = geocoded.coordinates;
+          estimate = { source: "geocoded", inputKind: geocoded.kind };
+        }
+        if (controller.signal.aborted) return;
+        const points = nearestCollectionPoints(directory.data.points, coordinates);
+        if (!points.length) {
+          const message = mode === "device" ? "nearbyNoResult" : "nearbySearchNoResult";
+          setState({ status: "error", message });
+          announceAccessibility(t(message), "high");
+        } else {
+          setState({ status: "ready", points, estimate });
+          announceAccessibility(t("nearbyResult"), "high");
+        }
+      } catch (error) {
+        if (controller.signal.aborted) return;
+        if (error instanceof NearbyGeocodeIssue && error.reason === "cancelled") return;
+        const message =
+          mode === "device"
+            ? error instanceof LocationIssue
+              ? errors[error.reason]
+              : "nearbyUnavailable"
+            : error instanceof NearbyGeocodeIssue
+              ? error.reason === "invalid-input"
+                ? "nearbySearchInputInvalid"
+                : error.reason === "no-result"
+                  ? "nearbySearchNoResult"
+                  : "nearbySearchService"
+              : "nearbySearchService";
+        setState({ status: "error", message });
+        announceAccessibility(t(message), "high");
+      } finally {
+        if (active.current === controller) active.current = null;
+      }
+    },
+    [queryInput, t],
+  );
+  const find = useCallback(async () => {
+    await runSearch("device");
+  }, [runSearch]);
+  const findByTypedInput = useCallback(async () => {
+    await runSearch("geocoded");
+  }, [runSearch]);
   useFocusEffect(
     useCallback(() => {
       // Only a recent in-memory Home press auto-starts; URL/deep-link opening alone never does.
@@ -130,7 +185,54 @@ export default function NearbyScreen() {
         </View>
       ) : (
         state.status !== "ready" && (
-          <Button label={t("nearbyFind")} onPress={() => void find()} testID="nearby-find" />
+          <View style={styles.searchControls}>
+            <Button label={t("nearbyFind")} onPress={() => void find()} testID="nearby-find" />
+            <View style={styles.typedSearchSection}>
+              <AppText variant="label" nativeID="nearby-search-input-label">
+                {t("nearbySearchInputLabel")}
+              </AppText>
+              <TextInput
+                accessibilityLabel={t("nearbySearchInputLabel")}
+                accessibilityLabelledBy="nearby-search-input-label"
+                accessibilityHint={t("nearbySearchInputHint")}
+                autoCapitalize="words"
+                autoCorrect={false}
+                autoComplete="street-address"
+                inputMode="search"
+                maxLength={NEARBY_GEOCODE_INPUT_MAX_LENGTH}
+                onChangeText={setQueryInput}
+                onSubmitEditing={() => void findByTypedInput()}
+                onFocus={() => setQueryFocused(true)}
+                onBlur={() => setQueryFocused(false)}
+                placeholder={t("nearbySearchInputPlaceholder")}
+                placeholderTextColor={palette.faint}
+                returnKeyType="search"
+                style={[
+                  styles.input,
+                  {
+                    backgroundColor: palette.surfaceRaised,
+                    borderColor: queryFocused ? palette.actionPrimary : palette.borderStrong,
+                    color: palette.ink,
+                  },
+                ]}
+                value={queryInput}
+                testID="nearby-search-input"
+              />
+              <AppText variant="small" muted>
+                {t("nearbySearchInputHint")}
+              </AppText>
+              <AppText variant="small" muted>
+                {t("nearbyTypedSearchDisclosure")}
+              </AppText>
+              <Button
+                label={t("nearbySearchByInputAction")}
+                variant="secondary"
+                onPress={() => void findByTypedInput()}
+                disabled={queryInput.trim().length === 0}
+                testID="nearby-search-input-action"
+              />
+            </View>
+          </View>
         )
       )}
       {state.status === "error" && (
@@ -159,6 +261,9 @@ export default function NearbyScreen() {
             <AppText variant="small" muted>
               {t("nearbyUnverified")}
             </AppText>
+            <AppText variant="small" muted>
+              {t(nearbyEstimateMessageKey(state.estimate))}
+            </AppText>
             {directory.success && (
               <AppText variant="small" muted>
                 {t("nearbyRetrieved")}:{" "}
@@ -172,7 +277,9 @@ export default function NearbyScreen() {
               <AppText>{t("nearbyStale")}</AppText>
             )}
             <AppText variant="small">{t("nearbyQuickCaution")}</AppText>
-            {state.accuracy > 100 && <AppText>{t("nearbyApproximate")}</AppText>}
+            {isApproximateDeviceEstimate(state.estimate) && (
+              <AppText>{t("nearbyApproximate")}</AppText>
+            )}
           </View>
           <View style={sharedStyles.stack} testID="nearby-result">
             {state.points.map((result, index) => (
@@ -180,7 +287,10 @@ export default function NearbyScreen() {
                 key={result.point.id}
                 result={result}
                 index={index}
-                accuracy={state.accuracy}
+                accuracyMeters={
+                  state.estimate.source === "device" ? state.estimate.accuracyMeters : null
+                }
+                estimateSource={state.estimate.source}
               />
             ))}
           </View>
@@ -233,6 +343,9 @@ export default function NearbyScreen() {
             <AppText variant="small" muted>
               {t("nearbyAddressDisclosure")}
             </AppText>
+            <AppText variant="small" muted>
+              {t("nearbyTypedSearchDisclosure")}
+            </AppText>
           </View>
         )}
       </View>
@@ -242,4 +355,14 @@ export default function NearbyScreen() {
 const styles = StyleSheet.create({
   screen: { gap: spacing.md },
   provenance: { gap: spacing.sm, paddingTop: spacing.sm },
+  searchControls: { gap: spacing.md },
+  typedSearchSection: { gap: spacing.xs },
+  input: {
+    minHeight: controls.inputMinHeight,
+    borderWidth: 2,
+    borderRadius: radius.md,
+    paddingHorizontal: spacing.md,
+    paddingVertical: spacing.md,
+    fontSize: 17,
+  },
 });

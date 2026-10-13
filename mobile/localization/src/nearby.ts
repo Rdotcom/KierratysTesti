@@ -20,6 +20,8 @@ export const nearbyFi = {
   nearbyAddressFailed: "Osoitearviota ei saatu. Näet pisteen kartalta.",
   nearbyAddressDisclosure:
     "Vapaaehtoinen osoitehaku välittää julkisen pisteen koordinaatit laitteen karttapalvelulle, ei omaa sijaintiasi. Arvio voi tarkoittaa viereistä katua tai rakennusta, ei pisteen virallista osoitetta.",
+  nearbyTypedSearchDisclosure:
+    "Kirjoitettu osoite tai postinumero lähetetään OpenStreetMap Nominatim -geokoodauspalveluun. Laitteen sijaintihaku pysyy paikallisena.",
   nearbyAddressUnknown: "Katuosoitetta ei ole aineistossa. Näet pisteen sijainnin kartalta.",
   nearbyShowMap: "Näytä piste kartalla",
   nearbyMapHint:
@@ -68,9 +70,21 @@ export const nearbyFi = {
   nearbyPurpose:
     "Käytämme sijaintia kerran lähimpien aineistossa olevien pisteiden löytämiseen. Etäisyydet lasketaan puhelimessa. Sijaintia ei tallenneta, lähetetä tai seurata taustalla.",
   nearbyFind: "Etsi sijainnillani",
+  nearbySearchInputLabel: "Osoite tai postinumero",
+  nearbySearchInputHint:
+    "Kirjoita suomalainen postinumero (esim. 00100) tai katuosoite (esim. Esimerkkikatu 22).",
+  nearbySearchInputPlaceholder: "00100 tai Esimerkkikatu 22",
+  nearbySearchByInputAction: "Etsi kirjoitetulla osoitteella",
+  nearbySearchInputInvalid: "Syötä suomalainen postinumero tai osoite.",
+  nearbySearchNoResult:
+    "Kirjoitetulle osoitteelle tai postinumerolle ei löytynyt sijaintia Suomessa.",
+  nearbySearchService: "Osoitehakupalvelu ei vastaa nyt. Yritä hetken kuluttua uudelleen.",
   nearbyRefresh: "Päivitä sijainti",
   nearbyLoading: "Määritetään sijaintia…",
   nearbyScope: "Suomi · yhteisön ylläpitämä aineisto",
+  nearbyDeviceEstimate: "Hakutulos perustuu laitteen sijaintiarvioon.",
+  nearbyGeocodedEstimate:
+    "Hakutulos perustuu geokoodattuun osoite- tai postinumeroarvioon, ei tarkkaan GPS-sijaintiin.",
   nearbyEstimate: "Arvio linnuntietä",
   nearbyResult: "Lähimmät pisteet tällä sijaintiarviolla",
   nearbyGeneric: "Kierrätyspiste",
@@ -127,6 +141,8 @@ export const nearbyEn: Record<keyof typeof nearbyFi, string> = {
   nearbyAddressFailed: "Address estimate unavailable. View the point on the map.",
   nearbyAddressDisclosure:
     "Optional address lookup sends the public point coordinates to the device map service, not your location. The estimate may describe a nearby street or building, not the point's official address.",
+  nearbyTypedSearchDisclosure:
+    "Your typed address or postal code is sent to OpenStreetMap Nominatim geocoding. Device location search stays local-only.",
   nearbyAddressUnknown: "Street address is not available. View the point's location on the map.",
   nearbyShowMap: "Show point on map",
   nearbyMapHint:
@@ -175,9 +191,20 @@ export const nearbyEn: Record<keyof typeof nearbyFi, string> = {
   nearbyPurpose:
     "Use your location once to find nearby points in the directory. Distances are calculated on your phone. Your location is not stored, uploaded or tracked in the background.",
   nearbyFind: "Find using my location",
+  nearbySearchInputLabel: "Address or postal code",
+  nearbySearchInputHint:
+    "Enter a Finnish postal code (for example 00100) or a street address (for example Esimerkkikatu 22).",
+  nearbySearchInputPlaceholder: "00100 or Esimerkkikatu 22",
+  nearbySearchByInputAction: "Search using typed address",
+  nearbySearchInputInvalid: "Enter a Finnish postal code or street address.",
+  nearbySearchNoResult: "No Finnish location was found for the typed address or postal code.",
+  nearbySearchService: "The address lookup service is unavailable right now. Try again shortly.",
   nearbyRefresh: "Update location",
   nearbyLoading: "Finding your location…",
   nearbyScope: "Finland · community-maintained directory",
+  nearbyDeviceEstimate: "Result is based on a device location estimate.",
+  nearbyGeocodedEstimate:
+    "Result is based on an approximate geocoded address or postal code, not precise GPS.",
   nearbyEstimate: "Estimated straight-line distance",
   nearbyResult: "Nearest points for this location estimate",
   nearbyGeneric: "Recycling point",
