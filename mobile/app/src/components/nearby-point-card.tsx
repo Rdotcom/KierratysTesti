@@ -15,11 +15,13 @@ import { AppText, Button, InlineLink, Paper, Rule, sharedStyles } from "./ui";
 
 export function NearbyPointCard({
   result,
-  accuracy,
+  accuracyMeters,
+  estimateSource,
   index,
 }: {
   readonly result: NearbyCollectionPoint;
-  readonly accuracy: number;
+  readonly accuracyMeters: number | null;
+  readonly estimateSource: "device" | "geocoded";
   readonly index: number;
 }) {
   const { point, distanceMeters } = result;
@@ -144,9 +146,16 @@ export function NearbyPointCard({
           <AppText variant="small" muted>
             {t("nearbyPointId")}: {point.id}
           </AppText>
-          <AppText variant="small" muted>
-            {t("nearbyAccuracy")}: ±{Math.max(1, Math.ceil(accuracy / 10) * 10)} m
-          </AppText>
+          {estimateSource === "device" && accuracyMeters !== null && (
+            <AppText variant="small" muted>
+              {t("nearbyAccuracy")}: ±{Math.max(1, Math.ceil(accuracyMeters / 10) * 10)} m
+            </AppText>
+          )}
+          {estimateSource === "geocoded" && (
+            <AppText variant="small" muted>
+              {t("nearbyGeocodedEstimate")}
+            </AppText>
+          )}
           <AppText variant="small" muted>
             {t("nearbyCaution")}
           </AppText>
