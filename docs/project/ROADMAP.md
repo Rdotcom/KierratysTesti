@@ -1,5 +1,12 @@
 # Roadmap
 
+## Own pixel recognition — November10
+
+- [x] Implement own RGB/corner/binary-descriptor/mutual-match/affine-consensus arithmetic with bounded inputs, conservative unknown/ambiguity and inferred evidence in an experimental shared export; no pretrained features/model or default app consumer.
+- [x] Pass79 new tests, shared326/full1238/all builds/18routes; freeze before one32-original+20synthetic query experiment. Preserve5self/18synthetic/27outside abstentions/two misses; independent receipt/source recount passes, no product-accuracy/integration claim.
+- [ ] Implement strict reviewed-identity/rights/hash/capture-group multi-view catalogue importer and tests: current single NEXT_ACTION.
+- [ ] Obtain real independently reviewed catalogue/captures/near-identical products, representative mobile RGB adapter/performance/privacy/accessibility/platform acceptance before app integration. Prior client10 physical acceptance and existing release gates remain pending.
+
 ## Conditional team source sharing — November10
 
 - [x] Re-fetch actual team main, independently verify all13 known contributor commits/callsites and inspect selected publication history/resources; retain existing native-address/material-filter qualifications.

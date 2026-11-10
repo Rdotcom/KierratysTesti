@@ -1,5 +1,17 @@
 # External blockers
 
+## November10 own pixel-recognition prototype
+
+No account/key/credit/paid compute is needed for the implemented own pixel
+algorithm or completed frozen engineering test. Catalogue schema/importer and
+synthetic validation remain locally executable. Existing public coarse-kind
+images are not verified product/SKU identities or independent multi-view camera
+captures. Owner/human identity+rights review, representative same-product and
+near-identical-different-product photos, and eventual physical-device acceptance
+are still required; we cannot fabricate those approvals or call transforms
+independent photos. New matcher is unwired; current phone/client10 unchanged.
+No new legal/publication/payment or camera action is requested in this unit.
+
 ## November10 conditional sharing authority
 
 Roope now explicitly authorizes this reviewed team/main source-sharing step if

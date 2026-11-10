@@ -1,5 +1,17 @@
 # Release decision
 
+## November10 — own pixel algorithms implemented, integration still NO-GO
+
+Separate original RGB/corner/binary-description/affine-matching code is complete
+and1238 software tests/all builds pass. One frozen engineering test returns
+5self/18of20synthetic correct,27outside abstentions and zero wrongs. This is
+seen-reference retrieval, not independent product/SKU recognition. Experimental
+subpath has no app consumer/default catalogue; current phone is unchanged.
+Integration is explicitly forbidden until reviewed identity/rights/multi-view
+reference data and independent capture/mobile performance/privacy acceptance.
+LV-001/PHOTO/public release NO-GO remain; no severity is reduced by this narrow
+pass. Evidence/owners: OWN_PIXEL_RECOGNITION_RESULTS and OWNER_ACTIONS.
+
 ## November10 — teammate features integrated, public release still NO-GO
 
 Overview and matching SDK patches from real team main0eae2cf are merged locally

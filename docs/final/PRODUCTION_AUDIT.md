@@ -1,5 +1,21 @@
 # Adversarial production-readiness audit
 
+## Own pixel prototype — November10 scoped follow-up
+
+Not a repeated30-lane audit. New opt-in shared core is unconsumed by mobile/
+backend; no default identity catalogue, UI or sorting-policy replacement.
+79 new tests/shared326/full1238/all builds pass, and the single frozen reference
+engineering gate passes. This does not close LV-001/PHOTO/public release gates.
+
+| ID / severity / state | Evidence / affected flow | Reproduction | Remediation / boundary |
+| --- | --- | --- | --- |
+| PIX-001 / medium / locally REPAIRED before images | Candidate selection could lose an eligible reference behind an ineligible higher-inlier view; ties depended on catalogue order; untrusted custom array iterators bypassed size caps. New `reference-image-matcher.ts`. | Synthetic multiview/tie fixtures and three finite throwing-iterator regressions initially fail. | Filter eligibility before ranking, stable reference-ID tie-break and bounded captured-length/indexed copies;57 matcher tests pass. No endpoint/default app consumer existed. |
+| PIX-002 / medium / locally REPAIRED before freeze | Prototype evaluator bound decoder versions only and accepted invented outside identities/result statuses in an otherwise complete-looking receipt. | No-image substituted-ID/unknown-status receipt plus runtime/source review. | Bind67 invoked source/loader and58 decoder artifacts; require exact52 planned keys/known-state/status/identity consistency. Seven evaluator tests and independent frozen-receipt recount pass. Trusted OS/Node/transitive runtime is not certified. |
+
+Keep two inset misses/one low-detail source and all32+20 denominators; no
+after-result tuning, retry, verified identity/material/bin claim or deployment.
+Procedure/hashes: OWN_PIXEL_RECOGNITION_PROTOCOL/RESULTS and TEST_EVIDENCE.
+
 ## Teammate integration — November10 scoped follow-up
 
 Not a fresh30-lane audit or production GO. Incoming3commits from actual

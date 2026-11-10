@@ -17,6 +17,13 @@ QA-työkaluissa, eivät sovelluksessa. Katso
 [`LOCAL_CLASSIFIER_UPGRADE.md`](docs/final/LOCAL_CLASSIFIER_UPGRADE.md) ja
 [`LOCAL_VISION_TWO_VIEW_RESULTS.md`](docs/final/LOCAL_VISION_TWO_VIEW_RESULTS.md).
 
+Lisäksi on toteutettu **oma pikseleistä toimiva vertailukuvatunnistin** ilman
+valmista koneoppimismallia. Se etsii paikallisia kuvapiirteitä ja tarkistaa niiden
+geometriset osumat. Tämä erillinen prototyyppi ei vielä ole puhelimen
+tunnistustoiminnossa: oikeiden tuotteiden nimet vaativat tarkistetun
+vertailukuvakatalogin ja riippumattomat kuvauskokeet. Toteutus ja rajattu koe:
+[`OWN_PIXEL_RECOGNITION_RESULTS.md`](docs/final/OWN_PIXEL_RECOGNITION_RESULTS.md).
+
 Kehityskäyttöön on lisäksi toteutettu **Tunnista kuvasta**: kamera → esikatselu →
 erillinen lupa lähettää kuva OpenAI:lle → tekoälyn arvio → pakkausosan vahvistus →
 lähteistetty lajitteluohje. Epävarmasta kuvasta ei päätellä keräystä. Avain kuuluu

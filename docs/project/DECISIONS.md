@@ -1,5 +1,12 @@
 # Decision log
 
+## D-072 — Build our own pixel matcher without inventing a universal product model
+
+- Date:2026-11-10. User explicitly requests own algorithms. Implement original code for classical corner/binary-description/geometric-consensus ideas, with primary-source attribution, no claim of inventing the mathematics. Choose reference-image candidate retrieval because the existing72 seen coarse-kind examples do not contain verified product/SKU/multi-view truth. No failed pretrained-feature head is promoted, no material/bin truth inferred.
+- Keep pure bounded code in an explicit experimental shared public subpath, not the app's ordinary import/default flow. Product IDs must come from a future identity/rights-reviewed catalogue; source hash is caller-bound, not cryptographic proof of identity. Unknown/ambiguity/uncalibrated provenance remain explicit; no catalogue/reference photos or fake product names shipped.
+- Freeze data/source/runtime/gates before one52-query engineering experiment. Retain5self/18of20synthetic/27outside abstentions and two inset misses; zero wrongs is only this seen set. No retuning/repeat/real-product accuracy claim. Even narrow PASS cannot authorize integration: independently captured same-product positives, near-identical different products, mixed scenes, reviewed identity/rights and native performance/privacy acceptance remain required.
+- 79 new tests/full1238/shared326 pass. No secret/service/dependency/phone/signature/cleanup/paid/GitHub action. Next build strict catalogue intake locally; owner/human reference capture/review is a real separate data requirement, not a credit blocker.
+
 ## D-071 — Share preserved team source, not a production-readiness claim
 
 - Date:2026-11-10. Roope explicitly authorizes GitHub publication conditional on retaining others' additions. Fresh main0eae2cf is an ancestor of reviewed050eb2c; all13 identified contributor commits and actual Overview/result/photo/manual/settings/location/SDK integrations remain. Independent139cases, fresh full1159 and tracked-source-only584 pass. Retain historical native-only address and unwired exact-material-helper qualifications; these are unchanged from published main, not claimed implemented UI.

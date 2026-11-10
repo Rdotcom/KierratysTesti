@@ -1,5 +1,26 @@
 # Owner actions
 
+## November10 — own pixel recognizer next data boundary
+
+- **Engineering/Codex, locally executable:** implement the single strict
+  multi-view identity/rights/hash/capture-group catalogue importer in NEXT_ACTION
+  with synthetic fixtures; keep default catalogue empty and recognition unwired.
+  Do not rerun/tune the completed seen-image pixel experiment or failed heads.
+- **Roope/reference-review organizer, before integration:** supply a small
+  deliberately reviewed set of exact products with confirmed labels/barcodes,
+  several genuinely separate photo captures each and similar-looking different
+  products. Record rights/source/capture-group and label-review evidence, not
+  AI guesses. Avoid people, delivery labels and private text; capture/upload/
+  retention choices require an explicit scoped workflow, not automatic use of
+  phone history/photos. No capture/upload action is requested or performed now.
+- **Engineering + Roope/device operator, later:** after catalogue review and a
+  separately requested native adapter/build, freeze independent camera/unknown/
+  ambiguity/performance/privacy/accessibility/platform tests before integration.
+  Existing signed client10 physical acceptance remains backlog, not the current
+  NEXT_ACTION; the earlier offline/persistence procedure below still applies.
+- **Release owner:** narrow5self/18synthetic/27outside engineering result is not
+  a product-accuracy or public-release pass. LV-001/PHOTO/release gates remain.
+
 ## November10 — installed client10 and retained acceptance gates
 
 - **Completed engineering/Roope:** actual teammate main is locally merged;

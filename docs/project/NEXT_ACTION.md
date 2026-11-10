@@ -1,3 +1,3 @@
 # Next action
 
-Run owner-assisted acceptance on installed client10: open Overview and the bundled guide in airplane mode, restore the original network state, then verify that one genuinely recycled owner-entered part survives force-quit/reopen, without capturing/uploading photos or clearing existing data.
+Implement and test a strict offline multi-view reference-catalogue importer that binds reviewed identity/rights metadata, image hashes and independent capture groups, leaving the catalogue empty and the new pixel matcher unwired until real reference acceptance exists.

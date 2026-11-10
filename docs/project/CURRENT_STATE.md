@@ -1,5 +1,12 @@
 # Current state
 
+## Own pixel reference-recognition engine — November10,2026
+
+- Roope requests algorithms written by us, not another pretrained-model wrapper. Continue from clean4ea1b25; implement own bounded RGB normalization/Harris/two-scale rotated binary descriptors and mutual Hamming/affine-consensus matcher. Explicit experimental `@kierratysappi/domain/reference-vision` export only; no app/backend consumer, pretrained weights, names/GTIN/material/bin guesses or automatic records. Known references are necessary; weak/conflicting matches abstain.
+- 79 new synthetic/security/accounting tests pass. Repair eligibility/tie/hostile-iterator bounds and pre-call incomplete decoder/summary identity binding. Freeze67source+58decoder artifacts and exact32 source images/five-reference gallery/four synthetic transforms before the sole run. Actual5/5self,18/20synthetic,27/27outside abstain, zero wrong/ambiguous/invalid/operationalfailure; two inset misses retained.32decodes/52extractions/51matches, zero learned-model calls/fits/paid requests. Narrow engineering PASS is not product accuracy; protocol forbids integration regardless.
+- Independent receipt/source/data/ledger recount passes without reprocessing. Full `pnpm validate` passes1238unique(591Node+647app)/all builds/18routes; shared326overlap passes. Actual results, limitations/hashes: `docs/final/OWN_PIXEL_RECOGNITION_RESULTS.md`. No new UI/browser/native/phone/offline-device/performance/Android/CI/production acceptance or push. Current client10/expiry stays unchanged; previous teammate source sharing is complete, not automatic new publication authority.
+- Existing human-labelled exact-product multi-view catalogue/near-identical-SKU controls are missing. Dataset/import engineering remains locally executable; actual identity/rights review and physical capture require owner/human action. Next single work unit is a strict provenance-bearing catalogue importer, not a second seen-image gate-tuning experiment. LV-001/PHOTO/public NO-GO remain.
+
 ## Conditional team source sharing — November10,2026
 
 - Roope explicitly requests GitHub publication if others' additions remain. Fresh origin/main is still0eae2cf;050eb2c preserves all13 identified ITbes-dev/Rdotcom commits and their current application callsites. Independent139-case preservation check passes. Native-only address lookup and the exported/tested material-filter helper without a UI caller are existing published-main limitations, not newly lost features.

@@ -1,5 +1,12 @@
 # Acceptance criteria
 
+## Own pixel reference-recognition prototype — November10
+
+1. Own bounded RGB/descriptor/matcher implementation, no pretrained model/API/runtime decoder inside domain. Invalid/tiny/low-detail images, descriptor ties, incoherent geometry and multiple eligible product IDs fail closed; candidates retain inferred/uncalibrated source-reference evidence, never material/sorting truth.
+2. Explicit experimental shared export only. No app consumer, default/fake catalogue, new photo capture/storage/upload/native/signature behavior. Reference identity/rights/hash validation is a separately required intake step before product naming or integration.
+3. Freeze algorithm/gates/catalogue/source/data/runtime and exact52-key plan before one run. Preserve5self/20synthetic/27outside denominators, two unknown inset queries, one low-detail outside input and actual51matches. No post-result gate tuning, repeat, failed-case dropping or product-accuracy claim. Engineering PASS does not authorize integration.
+4. 79 new tests/shared326/full1238/all builds pass; separate independent receipt recheck without image calls. Native/Android/real-camera/independent-product/privacy/accessibility/energy/production gates remain open. No new push authority inferred.
+
 ## Teammate main and matching phone delivery — November10
 
 1. Fetch actual verifiedteamorigin/main, inspect missing commits/author behavior and retain original ancestry via local merge. Preserve current local-recognition/UI/material-confirmation/privacy and both historical evidence streams; no private source/bot-branch import or push authority inferred.

@@ -1,5 +1,31 @@
 # Test evidence
 
+## November10 — original pixel-feature/reference-matching algorithms
+
+See `OWN_PIXEL_RECOGNITION_PROTOCOL.md` (frozen before pixels) and
+`OWN_PIXEL_RECOGNITION_RESULTS.md` (actual results/scopes/hashes).
+
+- Own Harris/two-scale rotated binary feature extractor and bounded mutual
+  Hamming/affine matcher in opt-in domain subpath, no app consumer/pretrained
+  model/runtime dependency or default catalogue.79 new synthetic tests:
+  15feature+57matcher+7runner pass. Pre-image iterator/aggregation/tie/freeze/
+  summary-grid gaps are repaired with regressions, not after-result gate changes.
+- One frozen experiment:32existing seen public originals/five references,
+  twenty fixed correlated transforms, all52planned keys retained.5/5self and
+ 18/20synthetic retrieved,27outside abstained(26unknown+1lowdetail),zero wrong/
+  ambiguous/invalid/operationalfailures. Two inset misses retained.32decodes/
+ 52featureextractions/**51**matcher calls; no learned-model/API/training call.
+  Narrow engineering gate PASS, `productAccuracyEstablished:false` and
+  `integrationAllowed:false`. This is not independent product/photo accuracy.
+- Independent no-reprocessing recount verifies53row+summary files, all32image
+  hashes/67source+58decoder bindings/solecanonicalmarker. Full `pnpm validate`
+  exit0/**1238unique(591Node+647app)**/all gates/builds/18routes; shared326overlap
+  exit0. Logs/hash list in RESULTS; private root
+  `work/own-pixel-2026-11-10.j6ExSM/`. Node26.4/pnpm11.16/sharp0.35.5/vips8.18.7;
+  no new dependency install, Linux/Node24/CI/live-advisory/visual/native/phone pass.
+- No signing/install/GitHub/paid/photo-capture/private-data cleanup. Existing
+  client10 and all unresolved human-reference/LV/PHOTO/release findings remain.
+
 ## November10 — fresh conditional pre-push verification
 
 - Actual fetched main0eae2cf is an ancestor of050eb2c (0behind/10ahead); all13
