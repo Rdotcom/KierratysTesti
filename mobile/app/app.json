@@ -10,7 +10,7 @@
     "ios": {
       "icon": "./assets/images/icon.png",
       "bundleIdentifier": "fi.roopeaaltonen.kierratysappi",
-      "buildNumber": "10",
+      "buildNumber": "11",
       "supportsTablet": true,
       "infoPlist": {
         "NSCameraUsageDescription": "Kameraa käytetään viivakoodin lukemiseen ja tuotteen kuvaamiseen. Kuva lähetetään tunnistukseen vain erillisellä hyväksynnälläsi.",
@@ -29,7 +29,7 @@
     },
     "android": {
       "package": "fi.roopeaaltonen.kierratysappi",
-      "versionCode": 2,
+      "versionCode": 3,
       "allowBackup": false,
       "adaptiveIcon": {
         "backgroundColor": "#F4F0E6",
@@ -77,6 +77,15 @@
           "cameraPermission": "Kameraa käytetään viivakoodin lukemiseen ja tuotteen kuvaamiseen. Kuva lähetetään tunnistukseen vain erillisellä hyväksynnälläsi.",
           "microphonePermission": false,
           "recordAudioAndroid": false
+        }
+      ],
+      [
+        "expo-audio",
+        {
+          "microphonePermission": false,
+          "recordAudioAndroid": false,
+          "enableBackgroundPlayback": false,
+          "enableBackgroundRecording": false
         }
       ],
       [

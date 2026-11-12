@@ -10,6 +10,7 @@ import { BottomNavigation } from "@/components/bottom-navigation";
 import { navigationAnimation } from "@/features/accessibility/motion";
 import { NearbySearchProvider } from "@/features/nearby/search-context";
 import { ScanSessionProvider } from "@/features/scan/session-context";
+import { SoundFeedbackProvider } from "@/features/sound-feedback/context";
 import { LanguageProvider } from "@/i18n/language-context";
 import { AppThemeProvider, useAppTheme } from "@/theme/tokens";
 
@@ -47,11 +48,13 @@ export default function RootLayout() {
   return (
     <AppThemeProvider>
       <LanguageProvider>
-        <ScanSessionProvider>
-          <NearbySearchProvider>
-            <Navigation />
-          </NearbySearchProvider>
-        </ScanSessionProvider>
+        <SoundFeedbackProvider>
+          <ScanSessionProvider>
+            <NearbySearchProvider>
+              <Navigation />
+            </NearbySearchProvider>
+          </ScanSessionProvider>
+        </SoundFeedbackProvider>
       </LanguageProvider>
     </AppThemeProvider>
   );

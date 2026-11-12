@@ -1,5 +1,20 @@
 # Adversarial production-readiness audit
 
+## November12 V2/audio scoped follow-up
+
+Not a fresh30-lane audit. Significant narrow synthetic comparison improvement
+and1470software tests do not close existing LV-001/PHOTO/release findings.
+
+| ID / severity / state | Evidence / reproduction | Required remediation / boundary |
+| --- | --- | --- |
+| V2-001 / medium / locally REPAIRED before freeze | Three corner sites with four shifted scale views could inflate to12inliers under fixed3pxdedup. | Scale-aware3×max(scale) tolerance; three-site rejection/eight-site retention regressions,87V2tests pass. Separated locations remain a proxy, not ground truth. |
+| SND-001 / medium / locally REPAIRED | Throwing player setters leaked allocations; wall-clock rollback extended load polling; late import could replay old cue. | Immediate partial-player release, bounded18polls/180ms,300mscontroller event expiry/generation cancellation;53driver/storage+22controller cases pass. No native/audio acceptance implied. |
+| SND-002 / medium / locally REPAIRED | Browser switch min-height misaligned thumb and switch-role Pressable ignored Space. | Centered44pt semantic control, guarded Space/Enter behavior/focus; actual FI/EN/off-reload/keyboard390px UI proof and regressions pass. |
+| SDK-MAINT-01 / medium / OPEN, locally executable | November12online Expo check flags12newpatch recommendations. InstalledSDKsource/graph checks pass but are not latest-recommendation acceptance. | Align patch set with unchanged supply-chain age policy, then frozen/full/config/native QA; single NEXT_ACTION. No ignore/exclusion to obtain green. |
+
+Exact result/source/failure scopes: VISION_V2_AND_SOUND_FEEDBACK and TEST_EVIDENCE.
+No fake catalogue/verified SKU/bin truth, native delivery, paid call or push.
+
 ## Own pixel prototype — November10 scoped follow-up
 
 Not a repeated30-lane audit. New opt-in shared core is unconsumed by mobile/

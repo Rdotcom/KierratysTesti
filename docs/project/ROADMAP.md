@@ -1,5 +1,12 @@
 # Roadmap
 
+## V2 recognition and sound — November12
+
+- [x] Own four-scale feature/matcher and strict multi-view catalogue metadata intake;131new shared tests, V1immutable. Single comparative224-key run/independent recount shows37→59synthetic correct without lost/wrong candidates; not independent identity acceptance.
+- [x] Add original short cues/optional safe lifecycle/local preference/quiet event integration/FI-ENcontrol;88new sound-related cases and full1470/shared457/mobile777 pass. Inspect browser persistence/keyboard390px and config permissions; preserve first failures.
+- [ ] Align12newly recommended SDK58patches with existing supply-chain policy: single NEXT_ACTION before native11/Android3 build.
+- [ ] Obtain actual native silent/music/background/reader/audio and reviewed product catalogue/independent real-camera/platform quality before integration/release; last verified phone10 remains unchanged.
+
 ## Own pixel recognition — November10
 
 - [x] Implement own RGB/corner/binary-descriptor/mutual-match/affine-consensus arithmetic with bounded inputs, conservative unknown/ambiguity and inferred evidence in an experimental shared export; no pretrained features/model or default app consumer.

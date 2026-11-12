@@ -1,5 +1,18 @@
 # Release decision
 
+## November12 — narrow V2 improvement and sounds, public release still NO-GO
+
+Own V2 improves the frozen seen/synthetic comparison37/60→59/60 with no
+V1-correct losses or wrong candidates on42outside images. Full1470tests/all
+builds, metadata importer and optional local audio/UI checks pass. These are not
+independent product accuracy or audible native/platform evidence. Matcher stays
+experimental/unwired; real reviewed multi-view identities/rights remain missing.
+Source11/Android3requires a new native audio build; installed10is not updated.
+Online Expo recommends12newSDKpatches and that check remains failed, unlike
+passing installed-SDK compatibility. Align patches under the unchanged age policy
+before native QA. Existing LV-001/PHOTO/operations/privacy/store release gates
+remain; no severity reduction or production/native publication occurred.
+
 ## November10 — own pixel algorithms implemented, integration still NO-GO
 
 Separate original RGB/corner/binary-description/affine-matching code is complete

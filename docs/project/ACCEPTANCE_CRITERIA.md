@@ -1,5 +1,11 @@
 # Acceptance criteria
 
+## V2 and sound — November12
+
+1. V2 keeps V1immutable and all fixed gates; scale representations do not inflate geometric supports. Freeze exact224observations/source/data/decoder before one run; retain all failures/low-detail/known miss and synthetic-vs-independent limits. Metadata importer never turns caller assertions into verified identity/material/bin.
+2. Sounds are short/local/optional, never automatically replayed, backgrounded or used as correctness evidence. Respect silence/music/reader state, existing announcements, focus/generation/cooldown/age; setting persistence/errors/global deletion and old-native missing module fail safely. Recording/background permissions disabled; source build bump does not claim installation.
+3. Full1470/shared457/mobile777, supply-chain/advisory gate/config and actual FI/EN/persistence/keyboard390px checks pass. Keep online12patch check failed until aligned; no package exclusion, threshold weakening, native/audio/camera/independent identity/public-release claim from source tests.
+
 ## Own pixel reference-recognition prototype — November10
 
 1. Own bounded RGB/descriptor/matcher implementation, no pretrained model/API/runtime decoder inside domain. Invalid/tiny/low-detail images, descriptor ties, incoherent geometry and multiple eligible product IDs fail closed; candidates retain inferred/uncalibrated source-reference evidence, never material/sorting truth.

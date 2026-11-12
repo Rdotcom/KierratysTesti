@@ -6,6 +6,7 @@ import { announceAccessibility } from "@/features/accessibility/announcements";
 import type { OverviewMaterial, RecyclingEntry } from "@/features/overview/model";
 import { recordableMaterial } from "@/features/overview/recording";
 import { readRecyclingSummary, recordRecycling } from "@/features/overview/storage";
+import { useSoundFeedback } from "@/features/sound-feedback/context";
 import { useLanguage } from "@/i18n/language-context";
 import { useAppTheme } from "@/theme/tokens";
 import { AppText, Button, InlineLink, Paper, sharedStyles } from "./ui";
@@ -58,6 +59,7 @@ function RecordAction({
   const { palette } = useAppTheme();
   const [state, setState] = useState<"loading" | "ready" | "saved" | "error">("loading");
   const [savedMaterial, setSavedMaterial] = useState<OverviewMaterial>();
+  const { play } = useSoundFeedback();
   const [confirming, setConfirming] = useState(false);
   const [saving, setSaving] = useState(false);
   const loadVersion = useRef(0);
@@ -116,12 +118,14 @@ function RecordAction({
         setSavedMaterial(summary.recent.find((entry) => entry.id === recordId)?.material);
         setState("saved");
         setConfirming(false);
+        play("confirm");
         announceAccessibility(t("recyclingSaved"));
       }
     } catch {
       if (active.current) {
         setState("error");
         setConfirming(false);
+        play("attention");
         announceAccessibility(t("recyclingSaveError"), "high");
       }
     } finally {

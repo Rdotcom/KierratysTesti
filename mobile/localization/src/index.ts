@@ -5,8 +5,10 @@ import { navigationEn, navigationFi } from "./navigation";
 import { nearbyEn, nearbyFi } from "./nearby";
 import { overviewEn, overviewFi } from "./overview";
 import { photoEn, photoFi } from "./photo";
+import { soundFeedbackEn, soundFeedbackFi } from "./sound-feedback";
 
 const fi = {
+  ...soundFeedbackFi,
   ...localVisionFi,
   ...guideSearchFi,
   ...navigationFi,
@@ -221,6 +223,7 @@ const fi = {
 } as const;
 
 const en: Record<keyof typeof fi, string> = {
+  ...soundFeedbackEn,
   ...localVisionEn,
   ...guideSearchEn,
   ...navigationEn,

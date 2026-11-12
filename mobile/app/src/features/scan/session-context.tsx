@@ -1,5 +1,5 @@
 import type { ProductLookupResult } from "@kierratysappi/contracts/lookup-schema";
-import { parseGtin, type Gtin } from "@kierratysappi/domain";
+import { type Gtin, parseGtin } from "@kierratysappi/domain";
 import * as Haptics from "expo-haptics";
 import {
   createContext,
@@ -10,15 +10,16 @@ import {
   useReducer,
   useRef,
 } from "react";
+import { addHistoryEntry, queuePendingLookup } from "@/features/history/storage";
+import { useSoundFeedback } from "@/features/sound-feedback/context";
 import { useLanguage } from "@/i18n/language-context";
 import { trackTechnicalEvent } from "@/telemetry/technical-events";
-import { addHistoryEntry, queuePendingLookup } from "@/features/history/storage";
 import { LookupNetworkError, requestProductLookup } from "./api";
 import {
   isDuplicateScan,
   type ScanSource,
-  sessionReducer,
   type SessionState,
+  sessionReducer,
 } from "./session-machine";
 
 type LookupAttempt =
@@ -35,6 +36,7 @@ const ScanSessionContext = createContext<ScanSessionContextValue | undefined>(un
 
 export function ScanSessionProvider({ children }: PropsWithChildren) {
   const { language } = useLanguage();
+  const { play } = useSoundFeedback();
   const [state, dispatch] = useReducer(sessionReducer, { status: "idle" });
   const busy = useRef(false);
   const previousScan = useRef<{ gtin: Gtin; at: number } | undefined>(undefined);
@@ -44,6 +46,7 @@ export function ScanSessionProvider({ children }: PropsWithChildren) {
       const parsed = parseGtin(raw);
       if (!parsed.ok) {
         dispatch({ type: "invalid", input: raw });
+        play("attention");
         void Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
         return { accepted: false, reason: "invalid" };
       }
@@ -56,6 +59,7 @@ export function ScanSessionProvider({ children }: PropsWithChildren) {
       busy.current = true;
       if (source === "camera") previousScan.current = { gtin: parsed.value, at: now };
       dispatch({ type: "started", gtin: parsed.value, source });
+      play("tap");
       trackTechnicalEvent("scan_decoded", { source });
       void Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
       void (async () => {
@@ -89,7 +93,7 @@ export function ScanSessionProvider({ children }: PropsWithChildren) {
       })();
       return { accepted: true };
     },
-    [language],
+    [language, play],
   );
 
   const reset = useCallback(() => dispatch({ type: "reset" }), []);

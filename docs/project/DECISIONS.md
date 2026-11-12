@@ -1,5 +1,15 @@
 # Decision log
 
+## D-073 — Improve scale robustness without promoting synthetic identity evidence
+
+- Date:2026-11-12. Resume own-algorithm improvement and sound request. V2retains four scale observations/gradient orientation; scale-aware3×max(scale) separation repairs pre-call three-site/12-inlier drift inflation while preserving eight spaced supports. Keep V1bytes/old evidence, absolute gates and inferred uncertainty. Source/decoder/entry/prior-transform bindings precede one new224-key seen engineering comparison; retain first pre-call test drift, no image retry.
+- Actual37→59of60synthetic,10selfeach/42outsideeach abstain/no wrong/loss. Narrow gate PASS is not exact product/SKU/native-camera acceptance. Catalogue importer only certifies asserted metadata/lineage consistency; real reviewed identities/captures/rights remain necessary. Do not ship a fake/default catalogue or replace app inference based on transforms.
+
+## D-074 — Sound is optional feedback, never truth or a background service
+
+- Use four original short/quiet PCM cues for actual current action callbacks, not renders/typing/every navigation. Neutral completion is distinct from persisted-confirmation; visible messages/announcements remain. Default enabled only after safe preference/reader/foreground resolution; disable/route/background/reader/unmount invalidate old cues,200msrate/300msage limits. Same storage queue/deletion namespace, exact acknowledgement reconciliation. Preserve older binaries through caught lazy native import.
+- Explicitly disable audio recording/background plugin/runtime defaults and respect silence/mix music; verify generated config removal markers rather than falsely treating them as granted permissions. Source11/Android3requires a matching native build, not installed10. Tests/browser proof are not audible/physical acceptance. Keep online12patch recommendation failure distinct from passing installed-SDK check; patch alignment is local next work, no age policy relaxation/exclusions. No push/install/paid/user-data action.
+
 ## D-072 — Build our own pixel matcher without inventing a universal product model
 
 - Date:2026-11-10. User explicitly requests own algorithms. Implement original code for classical corner/binary-description/geometric-consensus ideas, with primary-source attribution, no claim of inventing the mathematics. Choose reference-image candidate retrieval because the existing72 seen coarse-kind examples do not contain verified product/SKU/multi-view truth. No failed pretrained-feature head is promoted, no material/bin truth inferred.

@@ -1,5 +1,23 @@
 # Owner actions
 
+## November12 — remaining native and catalogue acceptance
+
+- **Engineering/Codex, local next action:** align the12online-recommended SDK58
+  patches without age-policy exclusions; frozen install/full validation/config
+  checks must pass again. This is maintenance, not an account/credit blocker.
+- **Engineering then Roope/device operator:** prepare a matching native11audio
+  build after SDK alignment; under a separate installation request preserve the
+  existing app/data and test sound on/off persistence, silent switch, other
+  music, background/foreground, VoiceOver suppression and missing-module recovery.
+  No new phone installation or physical/audible acceptance occurred in this run.
+- **Reference-review organizer:** strict importer is complete but ready metadata
+  is only reviewer-asserted. Supply reviewed exact identities/rights, genuinely
+  independent enrollment/query captures and near-identical different products
+  before integration.52seen public images and60transforms are not a real SKU
+  catalogue or independent human acceptance; do not upload user photos by default.
+- **Release owner:** existing LV/PHOTO/privacy/licensing/operations/Android/store
+  gates remain. No new GitHub-sharing, paid action, cleanup or production authority.
+
 ## November10 — own pixel recognizer next data boundary
 
 - **Engineering/Codex, locally executable:** implement the single strict

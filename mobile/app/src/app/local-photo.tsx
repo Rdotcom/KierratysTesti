@@ -1,9 +1,9 @@
-import { preparePhotoBase64 } from "@kierratysappi/contracts/photo-image";
 import type {
   LocalObjectKind,
   LocalVisionObservation,
 } from "@kierratysappi/contracts/local-vision";
 import type { LocalVisionReadiness } from "@kierratysappi/contracts/local-vision-readiness";
+import { preparePhotoBase64 } from "@kierratysappi/contracts/photo-image";
 import type { MessageKey } from "@kierratysappi/localization";
 import { CameraView, useCameraPermissions } from "expo-camera";
 import Constants from "expo-constants";
@@ -28,10 +28,11 @@ import {
   isLocalVisionAvailable,
   recognizeLocalPhoto,
 } from "@/features/local-vision/native";
+import { type LocalPhotoPhase, localPhotoPresentation } from "@/features/local-vision/presentation";
 import { localReadinessMessage } from "@/features/local-vision/readiness";
 import { isLocalCaptureUri } from "@/features/local-vision/recognizer";
-import { type LocalPhotoPhase, localPhotoPresentation } from "@/features/local-vision/presentation";
 import { canUsePhotoCapture, choosePhotoSize } from "@/features/photo/sorting";
+import { useSoundFeedback } from "@/features/sound-feedback/context";
 import { useLanguage } from "@/i18n/language-context";
 import { radius } from "@/theme/tokens";
 
@@ -50,6 +51,7 @@ function removeCapture(uri: string): void {
 }
 
 export default function LocalPhotoScreen() {
+  const { play } = useSoundFeedback();
   const router = useRouter();
   const { t, language } = useLanguage();
   const [permission, requestPermission] = useCameraPermissions();
@@ -201,6 +203,7 @@ export default function LocalPhotoScreen() {
     if (result.status === "observed") {
       setObservation(result.observation);
       setPhase("result");
+      play("ready");
       announceAccessibility(t("localVisionReady"));
     } else {
       setError(
@@ -213,6 +216,7 @@ export default function LocalPhotoScreen() {
               : "localVisionError",
       );
       setPhase("intro");
+      play("attention");
     }
   };
 

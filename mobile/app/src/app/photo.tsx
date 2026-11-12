@@ -17,11 +17,11 @@ import {
   Platform,
   Pressable,
   StyleSheet,
-  View,
   useWindowDimensions,
+  View,
 } from "react-native";
-import { SortingResultCard } from "@/components/sorting-result";
 import { RecycleAction } from "@/components/recycle-action";
+import { SortingResultCard } from "@/components/sorting-result";
 import {
   AppText,
   Button,
@@ -41,10 +41,11 @@ import {
   canUsePhotoCapture,
   choosePhotoSize,
   isSortingPhotoMaterial,
-  photoMaterialChoices,
   type PhotoMaterialChoice,
+  photoMaterialChoices,
   sortConfirmedPhotoPart,
 } from "@/features/photo/sorting";
+import { useSoundFeedback } from "@/features/sound-feedback/context";
 import { useLanguage } from "@/i18n/language-context";
 import { controls, interaction, radius, spacing, useAppTheme } from "@/theme/tokens";
 
@@ -71,6 +72,7 @@ export default function PhotoScreen() {
   const [pictureSize, setPictureSize] = useState<string>();
   const camera = useRef<CameraView>(null);
   const generation = useRef(0);
+  const { play } = useSoundFeedback();
   const locked = useRef(false);
   const pending = useRef<AbortController | undefined>(undefined);
   const permissionPrompt = useRef(false);
@@ -199,6 +201,7 @@ export default function PhotoScreen() {
       if (result.status === "estimated") {
         setEstimate(result);
         setPhase("result");
+        play("ready");
         announceAccessibility(t("photoReady"));
       } else {
         setError(
@@ -218,6 +221,7 @@ export default function PhotoScreen() {
       if (ticket === generation.current) {
         setError("photoNetwork");
         setPhase("intro");
+        play("attention");
       }
     } finally {
       clearTimeout(timer);

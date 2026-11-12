@@ -1,5 +1,33 @@
 # Test evidence
 
+## November12 — scale-aware own engine and optional sound feedback
+
+Full procedures/results/first failures/hashes: `VISION_V2_AND_SOUND_FEEDBACK.md`;
+pre-call `OWN_PIXEL_V2_PROTOCOL.md` remains unchanged after results.
+
+- 87V2+44catalogue+22controller+23driver+30storage+8asset+5policy+13comparison=
+ 232new tests. Full1470unique(617Node+853app)/all gates/builds/18routes exit0;
+ shared457/mobile777overlap exit0. Logs under private
+ `work/vision-sounds-2026-11-12.l0vuRb/`. Initialhooklint/eventtype/driverfailures
+ repaired without assertion relaxation; first pre-call freeze/test drift retained,
+ zero image calls until finalb51ef093lock.
+- One actual comparison:52decodes/224extractions/221matches;10selfeach,
+ V1synthetic37/60→V259/60,42outsideeach abstain, zero wrong/invalid/failed/
+ ambiguous/lost-correct. All501receipts/89source/58decoder/52image hashes and
+ oldV1evidence independently rechecked without reprocessing. No paid/ML/API/
+ training/download/user photo. Engineering PASS is not product accuracy; no
+ matcher integration/default catalogue.
+- Four own WAVs22,006bytes; generator/header/peak/DC/fade checks pass. Config
+ introspection no mic/background grant; Android RECORD_AUDIO removal marker
+ verified. Browser IAB8112 FI/EN/off-reload/enable/Space/Enter/390px inspect and
+ screenshot pass; native-switch alignment and missing Space support repaired.
+ No listening/native build/physical silent/music/reader/Android evidence.
+- Frozen install and live advisory policy pass0high-critical;17moderate+6low
+ records monitored. Offline installedSDKcheck passes; **online Expo check fails
+ 12patch recommendations**, retained as local next maintenance, not waived.
+ Source iOS11/Android3, last verified installed10 unchanged. No new phone/signing/
+ user-data reset/GitHub publication or production pass.
+
 ## November10 — original pixel-feature/reference-matching algorithms
 
 See `OWN_PIXEL_RECOGNITION_PROTOCOL.md` (frozen before pixels) and

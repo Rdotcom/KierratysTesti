@@ -24,6 +24,17 @@ tunnistustoiminnossa: oikeiden tuotteiden nimet vaativat tarkistetun
 vertailukuvakatalogin ja riippumattomat kuvauskokeet. Toteutus ja rajattu koe:
 [`OWN_PIXEL_RECOGNITION_RESULTS.md`](docs/final/OWN_PIXEL_RECOGNITION_RESULTS.md).
 
+Oman tunnistimen V2 käsittelee kuvaa neljässä mittakaavassa. Lukitussa,
+synteettisessä vertailussa löytyi59/60kuvamuunnelmaa aiemman37/60sijaan,
+ilman uusia vääriä osumia tässä kokeessa. Tämä ei ole yleinen tuotetunnistuksen
+tarkkuusluku. Tarkistettujen vertailukuvien tuonti on toteutettu erikseen;
+tunnistin pysyy vielä kokeellisena, ei puhelimen oletustoimintona.
+
+Sovellukseen on lisätty lyhyet äänipalautteet ja niiden FI/ENpäälle/pois-asetus.
+Äänet eivät korvaa virheilmoituksia tai tuotetiedon epävarmuutta. Uusi
+natiivikoonti tarvitaan puhelimessa; vanha asennus jatkaa ilman äänimoduulia.
+Tulokset ja hyväksymisrajat: [V2 ja äänet](docs/final/VISION_V2_AND_SOUND_FEEDBACK.md).
+
 Kehityskäyttöön on lisäksi toteutettu **Tunnista kuvasta**: kamera → esikatselu →
 erillinen lupa lähettää kuva OpenAI:lle → tekoälyn arvio → pakkausosan vahvistus →
 lähteistetty lajitteluohje. Epävarmasta kuvasta ei päätellä keräystä. Avain kuuluu

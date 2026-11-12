@@ -1,5 +1,15 @@
 # External blockers
 
+## November12 V2 and sound follow-up
+
+No new account/key/payment or externally blocked engineering step. PixelV2and
+metadata importer/code/audio/UI tests complete; actual identity/rights reviews,
+independent photo captures and matching native silent/music/VoiceOver/camera/
+Android acceptance still require human/device evidence. Source11/Android3is
+not installed client10. Online Expo now recommends12newSDKpatches: this is
+locally executable dependency maintenance, not a secret/account blocker or a
+passing latest-compatibility claim. No new paid/cleanup/push authority inferred.
+
 ## November10 own pixel-recognition prototype
 
 No account/key/credit/paid compute is needed for the implemented own pixel

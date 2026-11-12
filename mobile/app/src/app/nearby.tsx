@@ -33,6 +33,7 @@ import { readAddressLocation, readDeviceLocation } from "@/features/nearby/devic
 import { LocationIssue } from "@/features/nearby/location-session";
 import { AddressLookupIssue } from "@/features/nearby/manual-location";
 import { useNearbySearch } from "@/features/nearby/search-context";
+import { useSoundFeedback } from "@/features/sound-feedback/context";
 import { useLanguage } from "@/i18n/language-context";
 import { appFontFamily } from "@/theme/fonts";
 import { radius, spacing, useAppTheme } from "@/theme/tokens";
@@ -60,6 +61,7 @@ export default function NearbyScreen() {
   const { t, language } = useLanguage();
   const { palette } = useAppTheme();
   const { consumeSearchRequest } = useNearbySearch();
+  const { play } = useSoundFeedback();
   const [state, setState] = useState<State>({ status: "idle" });
   const [privacyOpen, setPrivacyOpen] = useState(false);
   const [linkError, setLinkError] = useState(false);
@@ -95,17 +97,19 @@ export default function NearbyScreen() {
         announceAccessibility(t("nearbyNoResult"), "high");
       } else {
         setState({ status: "ready", points, accuracy: fix.coords.accuracy ?? 0, origin: "device" });
+        play("ready");
         announceAccessibility(t("nearbyResult"), "high");
       }
     } catch (error) {
       if (controller.signal.aborted) return;
       const message = error instanceof LocationIssue ? errors[error.reason] : "nearbyUnavailable";
       setState({ status: "error", message });
+      play("attention");
       announceAccessibility(t(message), "high");
     } finally {
       if (active.current === controller) active.current = null;
     }
-  }, [t]);
+  }, [t, play]);
   const findByLocation = async () => {
     if (active.current || Platform.OS === "web") return;
     const input = locationInput;
@@ -128,6 +132,7 @@ export default function NearbyScreen() {
         announceAccessibility(t("nearbyNoResult"), "high");
       } else {
         setState({ status: "ready", points, accuracy: null, origin: "address" });
+        play("ready");
         announceAccessibility(`${t("nearbyResult")}. ${t("nearbyManualEstimate")}`, "high");
       }
     } catch (error) {
@@ -141,6 +146,7 @@ export default function NearbyScreen() {
               ? "nearbyLocationBusy"
               : "nearbyLocationError";
       setState({ status: "error", message });
+      play("attention");
       announceAccessibility(t(message), "high");
     } finally {
       if (active.current === controller) active.current = null;
