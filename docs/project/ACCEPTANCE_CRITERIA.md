@@ -1,5 +1,13 @@
 # Acceptance criteria
 
+## Registered calibration/control significance — November 13
+
+Threshold fit may use gallery/training controls only, never product query labels
+or evaluation controls. Retain40train/24evaluation/8unresolved/all72roles; do not
+call source/AI-only labels independent truth or retrieval controls end-to-end
+safety. Significant gate≥4/12agreements/0disagreements/0baseline losses/0control
+or unresolved candidates and complete work is fixed before fitting; v3fails.
+
 ## Cached monotone-v2 comparison — November 13
 
 1. Preserve v1source/results and validate exact cached views/input/model/vector/

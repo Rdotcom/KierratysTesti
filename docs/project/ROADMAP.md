@@ -1,5 +1,13 @@
 # Roadmap
 
+## Control inventory / calibration v3 — November 13
+
+- [x] Register72cached controls with40train/24evaluation/8unresolved roles and
+  family/overlap checks; do not assign unreviewed jar negatives.
+- [x] Implement gallery/negative statistics and frozen fit;88queries retain2/12
+  agreements/no wrong/control/losses, so significant-change gate still FAIL.
+- [x] Shared552/full1660/all builds pass. Continue midpoint/support hypothesis.
+
 ## Cached full-frame/monotone v2 — November 13
 
 - [x] Separate v2fallback repairs embedding-unknown losses while retaining strict

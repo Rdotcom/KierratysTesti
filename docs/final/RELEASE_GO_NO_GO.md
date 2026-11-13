@@ -1,5 +1,12 @@
 # Release decision
 
+## November 13 — v3controls pass narrowly, coverage still NO-GO
+
+Source-asserted24evaluation negatives and8unresolved audits produce0candidate
+accepts, but no full-pipeline/human safety claim. Query coverage remains2/12,
+significant-change gate fails. Engineering continues a new registered experiment;
+no publication or app integration. CALIBRATED_V3_RESULTS.md retains exact evidence.
+
 ## November 13 — v2repairs losses, useful coverage still FAIL: NO-GO
 
 Registered cached center/full-frame v2both restore2source agreements/0source

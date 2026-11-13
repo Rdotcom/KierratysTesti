@@ -1,3 +1,3 @@
 # Next action
 
-Implement and preregister a cached out-of-catalogue/mixed/hazard control comparison using the earlier72paired observations, excluding unresolved product-identity overlaps before assigning negative labels and retaining source/AI-only review limitations, with zero new model calls and no app integration.
+Implement and preregister a separate max-margin-midpoint/two-reference-support calibration experiment using the same frozen gallery/training-control partitions, retaining v3failure and zero new model calls, then test the unchanged≥4agreement/zero-error/loss/control-candidate significance gate.

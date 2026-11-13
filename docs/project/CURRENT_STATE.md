@@ -1,5 +1,20 @@
 # Current state
 
+## Control inventory and gallery calibration v3 — November 13
+
+- Owner requests persistence until significant change. Register≥4/12source
+  agreements/0disagreements/0baseline losses/0control candidates before fitting.
+  Authenticate72saved paired controls:40train-only/24evaluation negatives/
+  8unresolved jars, old family split, no forced negative jar identity.
+- Implement original gallery/negative-calibrated retrieval and one source-bound
+  fit using only8references/40training negatives.44queries per arm/88retrievals/
+  fusions,0newmodel/image/pixel/network/paid work. Fixed and fitted both2/0/4/6,
+  no control candidates/losses/failures. Significant gate FAIL; v3not deployed.
+-12shared+7Node tests/shared552/full1660/builds/18routes pass;13old warnings.
+  CALIBRATED_V3_RESULTS.md retains hashes, float-fixture/format failure and prefit
+  abandoned source freeze. Continue to separately registered midpoint/support
+  hypothesis in this same owner-requested run, not another user approval pause.
+
 ## Monotone fusion repairs losses, coverage still low — November 13, 2026
 
 - Add separate experimental v2fusion: a validated/unquarantined pixel candidate

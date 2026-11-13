@@ -665,3 +665,15 @@
   gate and no deployment/winner selection. Cached seen data is not independent.
 - Shared540/full1641/tests/builds and recount pass. Next register real negative/
   mixed/hazard cached controls with identity overlap checks; quality remains open.
+
+## D-083 — Separate calibration negatives from unresolved identities and query evaluation
+
+- Owner requests persistence to meaningful measured change. Register≥4source
+  agreements and zero disagreements/losses/control accepts before fitting.
+- Use40training negatives/24evaluation negatives/8unresolved jar audits from72
+  prior pairs, fixed family split. Source/AI-only metadata is not human truth;
+  controls cover retrieval only, not unmeasured own pixel/camera/hazard behavior.
+- Original gallery-minus0.02/negative-plus0.05/floor0.75fit, no query labels,
+  preserves2/12coverage and zero control candidates; retain failed significance.
+  Full1660/shared552pass, not quality approval. Continue new registered midpoint/
+  corroboration hypothesis without retuning or rerunning v3.

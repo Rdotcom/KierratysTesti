@@ -1,5 +1,11 @@
 # External blockers
 
+## November 13 — control/calibration work remains local
+
+72cached controls and one v3threshold fit need no new model/account/payment.
+Coverage remains2/12; engineering continues a separate registered hypothesis.
+Source/AI-only review and unresolved identities are explicit, not human approvals.
+
 ## November 13 — cached loss repair needs no new external authority
 
 V2restores both lost guarded-pixel agreements with0newmodel calls, but useful

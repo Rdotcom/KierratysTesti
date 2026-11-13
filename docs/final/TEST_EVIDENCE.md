@@ -1,5 +1,13 @@
 # Test evidence
 
+## November 13 — v3control/calibration failure retained
+
+CALIBRATED_V3_RESULTS.md/PROTOCOL.md record the once-only threshold fit and
+88retrievals/fusions,0newmodel/image calls,2/12source agreements/no new wrong/
+control accepts/losses. Significant≥4gate fails; no app change.12shared+7Node
+regressions/shared552/full1660unique tests/builds/18routes pass,13old warnings.
+First float-equality/format failures and prefit-only freeze remain documented.
+
 ## November 13 — cached full-frame/monotone-v2 repair
 
 Protocol/results: OFF_CACHED_V2_PROTOCOL.md, OFF_CACHED_V2_RESULTS.md. Freeze

@@ -1,6 +1,7 @@
 /** Experimental opt-in entry; not imported by the shipped recognition flow. */
 
 export * from "./reference-image-catalogue";
+export * from "./reference-image-calibrated";
 export * from "./reference-image-embedding";
 export * from "./reference-image-fusion";
 export * from "./reference-image-fusion-v2";
