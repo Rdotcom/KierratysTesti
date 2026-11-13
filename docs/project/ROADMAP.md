@@ -1,17 +1,25 @@
 # Roadmap
 
+## Byte binding and bounded product scope — November 13
+
+- [x] Select five source-traced grocery SKUs, including a near-identical size pair, without manufacturing identity/rights/independent-capture acceptance. Preserve 21 proposed upload lineages and ODbL/DbCL/CC BY-SA boundaries.
+- [x] Implement fail-closed actual-byte/own-feature receipt compiler, opaque inferred runtime and query exclusion. Add 28 shared + 9 Node regressions; repair type/platform-boundary failures without exceptions. Full 1507/shared 485/all builds/18 routes and frozen/advisory checks pass.
+- [x] Complete actual SHA256/PNG integration smoke on generated synthetic textures with 58 decoder/28 source pins; no real-product quality claim or app integration.
+- [ ] Build bounded selected-image acquisition and blind-review packet tooling: current single NEXT_ACTION. Never auto-accept labels/rights/capture independence or fabricate capture dates.
+- [ ] Obtain real identity/rights/independent-query review, freeze representative exact-SKU/unknown/mixed/near-identical tests, repair quality failures, then implement/accept native RGB/deadline/privacy/platform behavior. Existing SDK patch maintenance and public-release gates remain.
+
 ## V2 recognition and sound — November12
 
 - [x] Own four-scale feature/matcher and strict multi-view catalogue metadata intake;131new shared tests, V1immutable. Single comparative224-key run/independent recount shows37→59synthetic correct without lost/wrong candidates; not independent identity acceptance.
 - [x] Add original short cues/optional safe lifecycle/local preference/quiet event integration/FI-ENcontrol;88new sound-related cases and full1470/shared457/mobile777 pass. Inspect browser persistence/keyboard390px and config permissions; preserve first failures.
-- [ ] Align12newly recommended SDK58patches with existing supply-chain policy: single NEXT_ACTION before native11/Android3 build.
+- [ ] Align12newly recommended SDK58patches with existing supply-chain policy before native11/Android3 build; still open after the subsequent recognition work.
 - [ ] Obtain actual native silent/music/background/reader/audio and reviewed product catalogue/independent real-camera/platform quality before integration/release; last verified phone10 remains unchanged.
 
 ## Own pixel recognition — November10
 
 - [x] Implement own RGB/corner/binary-descriptor/mutual-match/affine-consensus arithmetic with bounded inputs, conservative unknown/ambiguity and inferred evidence in an experimental shared export; no pretrained features/model or default app consumer.
 - [x] Pass79 new tests, shared326/full1238/all builds/18routes; freeze before one32-original+20synthetic query experiment. Preserve5self/18synthetic/27outside abstentions/two misses; independent receipt/source recount passes, no product-accuracy/integration claim.
-- [ ] Implement strict reviewed-identity/rights/hash/capture-group multi-view catalogue importer and tests: current single NEXT_ACTION.
+- [x] Implement strict reviewed-identity/rights/hash/capture-group multi-view catalogue importer and tests on November12; ready metadata remains reviewer-asserted, not identity/release proof.
 - [ ] Obtain real independently reviewed catalogue/captures/near-identical products, representative mobile RGB adapter/performance/privacy/accessibility/platform acceptance before app integration. Prior client10 physical acceptance and existing release gates remain pending.
 
 ## Conditional team source sharing — November10

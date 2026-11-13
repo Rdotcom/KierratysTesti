@@ -1,3 +1,3 @@
 # Next action
 
-Align the twelve SDK58 patch dependencies reported by the November12 online Expo check under the unchanged one-day supply-chain policy and validate the resulting frozen dependency graph before a matching native audio build.
+Implement the bounded, licence-and-attribution-preserving acquisition and blind-review packet builder for the 21 proposed Open Food Facts uploads in `scripts/qa/reference-image/off-initial-selection.json`, leaving identity acceptance and enrollment/query assignment pending.

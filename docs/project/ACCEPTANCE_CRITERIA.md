@@ -1,5 +1,12 @@
 # Acceptance criteria
 
+## Encoded-byte runtime and product selection — November 13
+
+1. Compile only internally complete asserted V2 metadata; require the exact owned bounded byte set and actual image/feature hash joins. No caller ready flag/features can replace extraction. Fail the whole compile on partial binding, invalid/low-detail sources or port failure; never enroll independent-query references.
+2. Preserve inferred/uncalibrated identity, complete reference/rights/acceptance provenance and optional reviewer-asserted GTIN. No automatic bin/material/lookup/record. Ports are explicit trusted platform assumptions, not human/cryptographic authenticity or deadline guarantees; integration is always disallowed pending separate quality/native acceptance.
+3. Initial five products are source-reported, not verified Finnish variants. Deduplicate crop/language/resolution by original upload; never equate upload time/ID with capture date/independence. Keep reviews pending/splits unassigned. Preserve source hashes, ODbL/DbCL attribution and explicit CC BY-SA 3.0 notice/redistribution fields.
+4. Full 1507/shared 485, frozen install, advisory policy and actual pinned SHA256/PNG synthetic binding smoke pass. Shared fixtures use a documented non-cryptographic port double; no platform-boundary exception. Keep first failures and current SDK recommendation failure. No real-product/device/JPEG/accuracy/store acceptance from generated textures or green tests.
+
 ## V2 and sound — November12
 
 1. V2 keeps V1immutable and all fixed gates; scale representations do not inflate geometric supports. Freeze exact224observations/source/data/decoder before one run; retain all failures/low-detail/known miss and synthetic-vs-independent limits. Metadata importer never turns caller assertions into verified identity/material/bin.

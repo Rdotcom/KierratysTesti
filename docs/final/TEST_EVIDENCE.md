@@ -1,5 +1,36 @@
 # Test evidence
 
+## November 13 — encoded-byte compiler, real SHA256 adapter and selected products
+
+Details/hashes/limits: `REFERENCE_RUNTIME_AND_PRODUCT_SCOPE.md`. Private logs:
+`work/reference-release-2026-11-13.KaWEKa/`.
+
+- 28 new shared tests (22 runtime/6 catalogue) + 9 new Node tests (6 source-plan/
+  3 SHA256/decoder policy). Narrow 72/domain types pass; final full `pnpm validate`
+  passes **1507 unique tests** (626 Node + 881 workspace)/all checks/builds/18
+  routes. `validate:shared` passes **485 overlapping tests**. Frozen install
+  passes; no manifest/lockfile/policy change. Live advisory policy passes zero
+  high/critical with 17 moderate/6 low records retained.
+- Actual synthetic PNG integration smoke passes: 3 generated encodes, 8 real
+  decodes, 14 runtime SHA256 calls, 2 enrollment/1 bound query, expected inferred
+  candidate and query-only unknown. Recheck all58decoder/28source/compiled-engine
+  hashes before/after; summary SHA
+  `3c0dff6ad2b962c3305271b13311898ae5e54a7d54f0c150d63d0161398d0289`.
+  This is not real-product/JPEG/phone recognition evidence or independent capture.
+- Five final serial OFF API reads produce a traceable candidate plan after seven
+  exploratory reads. 21 selected-front parent uploads, zero images downloaded/
+  inferred on, zero human reviews accepted, no query split chosen. CC BY-SA 3.0
+  fields remain separate from ODbL/DbCL product data. Terms/wiki restrictions
+  retained, not bypassed.
+- Retain first typecheck failure and first full boundary failure for a shared
+  test's Node crypto import. Repair length-descriptor typing/pre-enumeration caps
+  and move actual Node cryptography outside shared; use an explicitly fake
+  deterministic fixture port inside shared. No boundary or assertion waiver.
+- Previously observed online Expo check still recommends 12 patch updates and
+  remains failed; no claim of latest compatibility. No new UI/visual inspection,
+  native/mobile/Android/camera/offline/VoiceOver/performance/energy/remote-CI/store
+  acceptance. Phone/client10/source11/Android3 and old experiments unchanged.
+
 ## November12 — scale-aware own engine and optional sound feedback
 
 Full procedures/results/first failures/hashes: `VISION_V2_AND_SOUND_FEEDBACK.md`;

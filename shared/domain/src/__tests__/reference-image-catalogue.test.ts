@@ -74,6 +74,81 @@ function item<T>(values: readonly T[], index = 0): T {
 }
 
 describe("strict reference catalogue intake", () => {
+  it("retains ShareAlike notices without claiming legal or integration approval", () => {
+    const source = fixture();
+    const result = importReferenceCatalogue(
+      {
+        ...source,
+        references: source.references.map((entry) => ({
+          ...entry,
+          rights: {
+            kind: "public_source",
+            sourceUrl:
+              "https://images.openfoodfacts.org/images/products/301/762/042/2003/1.400.jpg",
+            authorCredit: "Synthetic author / Open Food Facts",
+            license: "CC-BY-SA-3.0",
+            licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0/",
+            accessedOn: "2026-11-08",
+            review: review(),
+            reuse: {
+              modificationNotice: "Synthetic notice: RGB conversion and feature extraction.",
+              redistributionLicense: "CC-BY-SA-3.0",
+            },
+          },
+        })),
+      },
+      policy,
+    );
+    expect(result.status).toBe("ready");
+    expect(result.integrationAllowed).toBe(false);
+    if (result.status !== "ready") throw new Error("expected synthetic metadata");
+    expect(result.catalogue.references[0]?.rights).toHaveProperty(
+      "reuse.redistributionLicense",
+      "CC-BY-SA-3.0",
+    );
+  });
+
+  it.each([
+    { reuse: undefined },
+    { reuse: { modificationNotice: "", redistributionLicense: "CC-BY-SA-3.0" } },
+    { reuse: { modificationNotice: "Synthetic notice", redistributionLicense: "CC-BY-4.0" } },
+    { licenseUrl: "https://creativecommons.org/licenses/by/3.0/" },
+  ])("rejects absent or inconsistent ShareAlike obligations: %j", (change) => {
+    const source = fixture();
+    invalidInput({
+      ...source,
+      references: source.references.map((entry) => ({
+        ...entry,
+        rights: {
+          kind: "public_source",
+          sourceUrl: "https://example.org/synthetic-photo",
+          authorCredit: "Synthetic author",
+          license: "CC-BY-SA-3.0",
+          licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0/",
+          accessedOn: "2026-11-08",
+          review: review(),
+          reuse: { modificationNotice: "Synthetic notice", redistributionLicense: "CC-BY-SA-3.0" },
+          ...change,
+        },
+      })),
+    });
+  });
+
+  it("bounds huge sparse metadata arrays before enumerating item descriptors", () => {
+    const source = fixture();
+    const oversized: unknown[] = [];
+    oversized.length = 100_000_000;
+    let enumerated = 0;
+    const trapped = new Proxy(oversized, {
+      ownKeys() {
+        enumerated++;
+        throw new Error("must not enumerate");
+      },
+    });
+    invalidInput({ ...source, products: trapped });
+    expect(enumerated).toBe(0);
+  });
+
   it("accepts complete asserted metadata but never calls it verified identity or integration-ready", () => {
     const result = importReferenceCatalogue(fixture(), policy);
     expect(result.status).toBe("ready");

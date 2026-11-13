@@ -1,5 +1,25 @@
 # Release decision
 
+## November 13 — byte pipeline passes, recognition/public release still NO-GO
+
+The own V2 engine now has actual encoded-byte/feature receipt binding and an
+opaque inferred named-candidate runtime. Query references cannot enter its
+gallery. Actual SHA256/PNG synthetic smoke, full1507/shared485/all builds/18
+routes, frozen install and high/critical advisory policy pass. Five real OFF
+product records and 21 source-upload candidates are selected, not downloaded,
+independently reviewed or tested for product accuracy.
+
+**LV-001 remains high/open.** Integration is always disabled; real reference
+acceptance, near-identical SKU/unknown/mixed controls and representative native
+RGB/camera/platform/privacy/performance acceptance remain mandatory. Acquisition/
+review-packet/quality/native work is locally executable, not externalized as a
+funding problem; actual human review and physical operation cannot be fabricated.
+CC BY-SA/ODbL boundaries are explicit, not distribution approval. Twelve SDK
+patch recommendations and existing PHOTO/operations/privacy/Android/store gates
+remain. No matching native build/install/renewal, remote-CI or production GO is
+claimed; existing client10 is unchanged. See REFERENCE_RUNTIME_AND_PRODUCT_SCOPE
+and OWNER_ACTIONS for procedures, named owners and exact evidence.
+
 ## November12 — narrow V2 improvement and sounds, public release still NO-GO
 
 Own V2 improves the frozen seen/synthetic comparison37/60→59/60 with no

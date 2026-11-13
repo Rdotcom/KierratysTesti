@@ -576,3 +576,10 @@
 - OCR implementation and whether a cloud AI path is justified after the typed-code flow is evaluated.
 - Production hosting/database/telemetry providers after owner cost/privacy-region approval.
 - Whether a distributable web build is in launch scope; if yes, the current 2.55 MB entry requires optimization and deployed performance evidence.
+
+## D-075 — Bind reference bytes without manufacturing independent identity evidence
+
+- Date: 2026-11-13. Roope delegates the initial product selection. Choose five source-reported grocery SKUs, including Nutella 400/750 g as a deliberately difficult similar-SKU pair. Record actual OFF response hashes/credits/parent uploads, but keep all reviews pending and splits unassigned. No image download, guessed label, independent-capture assertion or human acceptance is generated.
+- Implement the own V2 encoded-byte compiler with trusted hash/decode ports, exact asset/receipt joins and canonical feature hashing. Bind every reference, enroll only the enrollment split, expose only an opaque inferred/uncalibrated runtime with provenance. Byte integrity is not identity authenticity, legal clearance or release authority. Always keep integration disallowed until separate quality/native acceptance; no bin/material/automatic record follows from a match.
+- Add explicit CC BY-SA 3.0 notice/same-licence fields rather than relabel ShareAlike as CC BY. Preserve separate ODbL/DbCL source-selection attribution. Do not bypass blocked terms/wiki pages or turn upload dates/language crops into independent captures. A source-reported identity can differ from a Finnish physical variant.
+- Full 1507/shared 485 and actual real-SHA256/PNG synthetic byte smoke pass. Repair array pre-enumeration caps, initial type and shared Node-import failures without boundary-policy exceptions. Preserve old V1/V2 evidence and failures; generated textures are not product accuracy. Source/phone/UI/dependencies unchanged; no push/install/paid/key/cleanup action. Next local unit is bounded acquisition/review-packet tooling; genuine human/device acceptance and existing SDK/release gates remain.

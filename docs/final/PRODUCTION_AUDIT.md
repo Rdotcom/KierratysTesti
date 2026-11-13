@@ -1,5 +1,21 @@
 # Adversarial production-readiness audit
 
+## November 13 — byte-bound reference runtime follow-up
+
+Scoped follow-up, not a repeated 30-lane audit. Full evidence and limitations:
+`REFERENCE_RUNTIME_AND_PRODUCT_SCOPE.md`. No severity is lowered for test counts.
+
+| ID / severity / state | Evidence and affected flow | Reproduction | Required remediation / boundary |
+| --- | --- | --- | --- |
+| REF-001 / medium / locally REPAIRED | Experimental matcher previously accepted claimed source hashes/features without an actual byte-bound compiler. | Supply swapped image bytes or a changed feature receipt to `compileReferenceImageRuntime`; the new 22-case runtime suite rejects them and refuses a partial runtime. | Actual encoded hashes, own extraction/canonical feature hashes through trusted ports, exact joins, owned copies, query exclusion and opaque inference closure. Actual SHA256/PNG synthetic smoke passes; port integrity is still a platform assumption. No app consumer existed/is added. |
+| REF-002 / medium / locally REPAIRED | Catalogue and new asset array intake could allocate descriptor maps before checking length. | Huge sparse-array/ownKeys-trap regressions in catalogue/runtime tests must reject without enumeration or port calls. | Read native array length descriptor before descriptor-map allocation; enforce per-file/aggregate byte bounds before copying. Malicious in-process Proxy traps and an unbounded upstream JSON parser are not made DoS-proof by this local boundary. |
+| LV-001 / high / OPEN | Real named-product precision/coverage and current app form-quality gap remain unestablished. The five OFF records/21 proposed uploads are a pending acquisition plan, not independent tests; earlier failed quality experiments remain unchanged. | Inspect pending selection/reviews and old frozen quality failures. No real selected-product match or independent camera acceptance occurred in this unit. | **Locally executable engineering:** acquisition/review packet, representative frozen quality evaluation, failure repair, native RGB/deadline/parity integration. **Human/device:** Roope organizes actual identity/rights/independent-capture review and physical acceptance. Green synthetic/byte tests cannot close this finding. |
+
+CC BY-SA 3.0 now retains explicit reuse notice/same-licence fields; licensing
+acceptance is not invented. SDK-MAINT-01 remains medium/open: 12 online patch
+recommendations are not fixed or ignored. Existing PHOTO/privacy/operations/
+Android/store gates remain. No app/UI/phone/dependency change or GitHub push.
+
 ## November12 V2/audio scoped follow-up
 
 Not a fresh30-lane audit. Significant narrow synthetic comparison improvement

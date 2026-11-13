@@ -1,5 +1,34 @@
 # Owner actions
 
+## November 13 — selected scope and real reference acceptance
+
+- **Engineering/Codex, next local unit:** implement the bounded acquisition and
+  blind-review packet builder for the committed 21 proposed OFF uploads. Use
+  the documented anonymous AWS dataset, retain exact bytes/hashes/credits/source
+  lineage and report missing/invalid objects; do not silently scrape/retry from
+  restricted pages. Keep reviews pending, upload dates distinct from capture
+  dates and all enrollment/query splits unassigned until reviewed. No new key or
+  paid service is needed for this preparation.
+- **Roope, reference-review organizer:** using that future packet and physical
+  samples, arrange actual identity/GTIN, rights/privacy and duplicate-lineage
+  review of the selected five products. Obtain separate real query captures,
+  including both Nutella sizes plus unlisted/near-identical/mixed/occluded
+  controls. Record who actually reviewed/captured what and when; do not sign as
+  reviewers, invent dates or use our predictions as independent ground truth.
+  Public image reuse and descriptor distribution still need explicit owner
+  acceptance of attribution/ShareAlike and other rights.
+- **Engineering/Codex, after reviewed data:** freeze the quality protocol before
+  any recognition run, retain every failure and repair based on development
+  data, not held-out retuning. Build the actual native RGB/deadline/parity adapter
+  separately; the Node reference adapter is not a phone implementation. Align
+  the 12 outstanding SDK patches under the unchanged age policy before a matching
+  audio/native build. Do not replace current app recognition with this experiment.
+- **Roope, device/release owner:** after a separately requested matching
+  installation, operate the real camera, offline/permission/VoiceOver and
+  performance/energy acceptance procedure. Current client10/profile is not
+  changed or renewed here. Existing privacy/operations/Android/store/publication
+  actions remain required. No current push or production authority is inferred.
+
 ## November12 — remaining native and catalogue acceptance
 
 - **Engineering/Codex, local next action:** align the12online-recommended SDK58

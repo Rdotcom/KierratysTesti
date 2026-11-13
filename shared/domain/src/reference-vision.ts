@@ -5,3 +5,4 @@ export * from "./reference-image-features";
 export * from "./reference-image-features-v2";
 export * from "./reference-image-matcher";
 export * from "./reference-image-matcher-v2";
+export * from "./reference-image-runtime";

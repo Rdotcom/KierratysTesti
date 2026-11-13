@@ -1,5 +1,22 @@
 # External blockers
 
+## November 13 — reference scope and byte pipeline
+
+No new account, key, payment or externally blocked engineering step. Roope
+delegates product selection; five real OFF records and source-image candidates
+are chosen without needing further preference input. Bounded acquisition/review
+packet, acceptance tooling, native adapter and SDK maintenance remain local work.
+
+Actual independent identity/GTIN, rights/privacy and capture review cannot be
+fabricated. Roope organizes human reviewers and representative physical samples;
+later real camera/permissions/offline/VoiceOver/energy/platform acceptance needs
+the operator/device after a matching installation is separately requested.
+21 upload IDs are not 21 independent accepted photos. Terms/wiki access denied
+by source controls is retained, not bypassed or described as reviewed; accessible
+primary developer/licence documentation supports preparation only. No images,
+phone action, key, paid call, cleanup or sharing occurred. Existing release gates
+and source11/Android3 versus installed10 distinction remain.
+
 ## November12 V2 and sound follow-up
 
 No new account/key/payment or externally blocked engineering step. PixelV2and

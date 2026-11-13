@@ -58,16 +58,30 @@ const publicLicences = {
   "CC-BY-2.0": "https://creativecommons.org/licenses/by/2.0/",
   "CC-BY-3.0": "https://creativecommons.org/licenses/by/3.0/",
   "CC-BY-4.0": "https://creativecommons.org/licenses/by/4.0/",
+  "CC-BY-SA-3.0": "https://creativecommons.org/licenses/by-sa/3.0/",
 } as const;
-const rights = z.discriminatedUnion("kind", [
+const publicSourceFields = {
+  kind: z.literal("public_source"),
+  sourceUrl,
+  authorCredit: text(160),
+  licenseUrl: sourceUrl,
+  accessedOn: date,
+  review,
+};
+const rights = z.union([
   z.strictObject({
-    kind: z.literal("public_source"),
-    sourceUrl,
-    authorCredit: text(160),
+    ...publicSourceFields,
     license: z.enum(["CC0-1.0", "CC-BY-2.0", "CC-BY-3.0", "CC-BY-4.0"]),
-    licenseUrl: sourceUrl,
-    accessedOn: date,
-    review,
+  }),
+  z.strictObject({
+    ...publicSourceFields,
+    license: z.literal("CC-BY-SA-3.0"),
+    // Preserve the reuse obligation, not just the permissive-looking name.
+    // Metadata acceptance is still an assertion, never legal clearance.
+    reuse: z.strictObject({
+      modificationNotice: text(512),
+      redistributionLicense: z.literal("CC-BY-SA-3.0"),
+    }),
   }),
   z.strictObject({
     kind: z.literal("owner_capture"),
@@ -156,21 +170,18 @@ function boundedData(input: unknown): unknown {
     if (typeof value === "number" && Number.isFinite(value)) return value;
     if (typeof value === "string" && value.length <= 2048) return value;
     if (typeof value !== "object" || value === null) throw new Error("data_type");
-    const descriptors = Object.getOwnPropertyDescriptors(value);
-    const keys = Reflect.ownKeys(descriptors);
     if (Array.isArray(value)) {
       if (Object.getPrototypeOf(value) !== Array.prototype) throw new Error("array_type");
-      const lengthDescriptor = descriptors.length;
+      // Bound a plain array before allocating a descriptor map for every item.
+      // Arbitrary in-process Proxy traps remain outside a total DoS guarantee.
+      const lengthDescriptor = Object.getOwnPropertyDescriptor(value, "length");
       const length: unknown =
         lengthDescriptor && "value" in lengthDescriptor ? lengthDescriptor.value : -1;
-      if (
-        typeof length !== "number" ||
-        !Number.isInteger(length) ||
-        length < 0 ||
-        length > 32 ||
-        keys.length !== length + 1
-      )
+      if (typeof length !== "number" || !Number.isInteger(length) || length < 0 || length > 32)
         throw new Error("array_bound");
+      const descriptors = Object.getOwnPropertyDescriptors(value);
+      const keys = Reflect.ownKeys(descriptors);
+      if (keys.length !== length + 1) throw new Error("array_bound");
       const copied: unknown[] = [];
       for (let index = 0; index < length; index++) {
         const item = descriptors[String(index)];
@@ -179,6 +190,8 @@ function boundedData(input: unknown): unknown {
       }
       return copied;
     }
+    const descriptors = Object.getOwnPropertyDescriptors(value);
+    const keys = Reflect.ownKeys(descriptors);
     if (![Object.prototype, null].includes(Object.getPrototypeOf(value)) || keys.length > 24)
       throw new Error("object_type");
     const copied: Record<string, unknown> = Object.create(null);
