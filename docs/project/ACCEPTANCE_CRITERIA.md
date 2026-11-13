@@ -1,5 +1,18 @@
 # Acceptance criteria
 
+## Cached monotone-v2 comparison — November 13
+
+1. Preserve v1source/results and validate exact cached views/input/model/vector/
+   progress/counter joins; authenticate changed prior-source bytes from the exact
+   committed snapshot, not normalized files. Freeze current sources/data before
+   new retrievals, reproduce all12old center decisions and claim once-only stage.
+2. Only true embedding unknown may preserve a validated unquarantined pixel
+   candidate. Required failure, invalid input, ambiguity or positive conflict
+   never falls back. Test full lane matrix, same-image/enrollment/quarantine gates.
+3. Report all12denominators and both prior losses.2/0/4/6restores losses but fails
+   unchanged≥3coverage gate.0newmodel calls/green software tests do not establish
+   independent recognition, negative-control safety or integration permission.
+
 ## Actual hybrid development — November 13
 
 1. Freeze sources/data/encoder/engine/gates before calls; preserve all21rows/

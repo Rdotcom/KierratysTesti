@@ -1,5 +1,26 @@
 # Current state
 
+## Monotone fusion repairs losses, coverage still low — November 13, 2026
+
+- Add separate experimental v2fusion: a validated/unquarantined pixel candidate
+  survives embedding unknown; all ambiguity/conflict/quarantine/invalid/failure
+  vetoes stay. V1source/test/result unchanged; no app consumer/default behavior.
+- Register then freeze108current sources/112cached+prior pins; validate20saved
+  pairs, exact historical prior-export bytes through committed acca46d and all
+  12center retrieval outputs.24retrievals/24v2fusions,0new image/model/pixel-match/
+  training/paid/network calls. Separate source/data/result recount and actual
+  canonical repeat refusal pass. Never call cached analysis fresh/held-out.
+- Center-v2and full-frame-v2 both2source agreements/0disagreements/4ambiguous/
+  6unknown on12queries; restore case010/016without baseline losses. Full-frame
+  embeddings support those same2cases, not new coverage. Unchanged≥3agreement
+  gate FAIL; quality/high risks/NO-GO remain. OFF_CACHED_V2_RESULTS.md has hashes.
+- Add8shared+7Node tests; shared540overlap/full1641unique(705Node+936workspace),
+  all checks/builds/18routes pass;13old warnings remain. No native/UI/physical/
+  Android/store acceptance, source/phone/dependency/model/key change or push.
+- Next local unit registers cached outside/mixed/hazard controls from prior72
+  paired observations, resolving identity overlap before negative-label claims.
+  Independent reference/rights and representative physical acceptance remain.
+
 ## Real-reference hybrid fails coverage — November 13, 2026
 
 - Implement experimental pure pixel-veto fusion and registered three-arm runner.

@@ -1,5 +1,15 @@
 # Owner actions
 
+## November 13 — loss repair complete, broader cached controls next
+
+- **Engineering/Codex:** NEXT_ACTION now registers cached outside/mixed/hazard
+  controls using earlier72pairs; resolve identity overlaps before declaring a
+  negative and retain unreviewed/source/AI status. No new model calls, paid
+  service or another hybrid authorization is needed. Do not deploy from seen data.
+- **Roope:** actual independent identity/variant/rights and later representative
+  native/device/platform acceptance remain as below. V2restores2source agreements
+  but does not establish reliable general recognition; installed app is unchanged.
+
 ## November 13 — hybrid v1rejected, engineering follow-up
 
 - **Engineering/Codex:** follow NEXT_ACTION's separately registered cached

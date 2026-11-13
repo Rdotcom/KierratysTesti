@@ -3,6 +3,7 @@
 export * from "./reference-image-catalogue";
 export * from "./reference-image-embedding";
 export * from "./reference-image-fusion";
+export * from "./reference-image-fusion-v2";
 export * from "./reference-image-features";
 export * from "./reference-image-features-v2";
 export * from "./reference-image-identity-guard";

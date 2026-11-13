@@ -1,5 +1,14 @@
 # Release decision
 
+## November 13 — v2repairs losses, useful coverage still FAIL: NO-GO
+
+Registered cached center/full-frame v2both restore2source agreements/0source
+disagreements/4ambiguous/6unknown, no guarded-pixel losses. Full-frame supports
+the same2cases, not additional coverage; unchanged≥3gate fails. No independent
+identity/unknown-control safety/physical/native acceptance or app integration.
+OFF_CACHED_V2_RESULTS.md records pins, source archive and zero-new-model recount.
+Shared540/full1641tests/builds pass, not production readiness. Other gates stay open.
+
 ## November 13 — actual hybrid quality gate FAIL: NO-GO
 
 Actual20encodings/40image predictions complete, but center embeddings and hybrid

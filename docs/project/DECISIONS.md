@@ -649,3 +649,19 @@
 - Full1626/shared532/builds/18routes and zero-new-call receipt recount pass;
   quality remains high/open. Next is a separate registered cached full-frame/
   monotone comparison, not a new-image retake or an external funding problem.
+
+## D-082 — Abstention alone must not erase validated non-conflicting evidence
+
+- Date: 2026-11-13. Add separate monotone-v2wrapper around immutable v1strict
+  evidence validator; preserve pixel candidate only when embeddings are unknown.
+  Invalid/failure/ambiguity/quarantine/positive conflict still veto. This does
+  not guarantee monotonic accuracy under genuine conflicting evidence.
+- Before comparisons freeze108sources/112data pins, registered center/full-frame
+  arms, fixed0.9/0.08gates and unchanged data. Use20cached pairs only, verify
+  12original center outputs exactly, authenticate changed prior-export bytes from
+  exact committed source instead of changing old locks.0newmodel/image/training.
+- Both v2hybrids restore case010/016but create no extra agreements:2/0/4/6,
+  0baseline losses; full-frame supports the same two. Retain failed≥3coverage
+  gate and no deployment/winner selection. Cached seen data is not independent.
+- Shared540/full1641/tests/builds and recount pass. Next register real negative/
+  mixed/hazard cached controls with identity overlap checks; quality remains open.

@@ -1,5 +1,27 @@
 # Test evidence
 
+## November 13 — cached full-frame/monotone-v2 repair
+
+Protocol/results: OFF_CACHED_V2_PROTOCOL.md, OFF_CACHED_V2_RESULTS.md. Freeze
+108current sources/112prior+cached byte pins; authenticate changed historical
+public entry through exact committed acca46dbytes.20cached pairs pass strict
+raw/model/preprocessing/vector/progress/counter/input joins;12old center decisions
+reproduce exactly.24retrievals/24v2fusions,0newimages/model/pixel-match/training/
+network/paid work. Canonical repeat is refused before outputs/analysis; separate
+source/data/query/candidate/loss recount passes with zero new classifications.
+
+Center-v2and full-frame-v2 both2source agreements/0disagreements/4ambiguous/
+6unknown, no baseline losses; case010/016restored, no extra coverage. Fixed≥3gate
+still FAIL and no winner/deployment/independent-accuracy claim is made.
+
+8newshared+7Node regressions pass, including full25lane Cartesian matrix,
+unknown-only preservation, quarantine/failure/bad-input veto and corrupted cached
+full-frame/pins/progress rejection. Shared540overlap/full1641unique(705Node+
+936workspace), all checks/builds/18routes pass;13old lint warnings remain. Logs:
+`/tmp/kig-cached-v2-shared.ug9Gmb`, `/tmp/kig-cached-v2-full.6SWlCV`.
+No dependency/model/advisory/Expo/remoteCI/Linux/Node24/fresh-install/native/phone/
+camera/Android/store acceptance or GitHub push is inferred.
+
 ## November 13 — actual three-arm hybrid comparison
 
 Full protocol/results/pins/limitations: OFF_HYBRID_DEVELOPMENT_PROTOCOL.md and

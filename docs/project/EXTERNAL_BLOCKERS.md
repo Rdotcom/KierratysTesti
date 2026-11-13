@@ -1,5 +1,13 @@
 # External blockers
 
+## November 13 — cached loss repair needs no new external authority
+
+V2restores both lost guarded-pixel agreements with0newmodel calls, but useful
+coverage remains2/12source agreements and the development gate fails. Cached
+negative/mixed/hazard controls and identity-overlap tooling remain executable
+engineering. Independent human identity/rights/physical/platform acceptance
+remains separate; no new key/account/payment or automatic publication authority.
+
 ## November 13 — actual hybrid fails, no new external blocker
 
 Engineering owns the failed coverage/lost-correct result: hybrid0/12source

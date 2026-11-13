@@ -1,5 +1,18 @@
 # Adversarial production-readiness audit
 
+## November 13 — experimental loss repair, quality remains open
+
+Scoped follow-up: OFF_CACHED_V2_RESULTS.md. REF-007's specific lossy rule is
+repaired in separate experimental v2: embedding unknown retains an already
+validated/unquarantined pixel candidate; positive conflict/ambiguity/failure
+still veto. Cached comparison restores case010/016with no baseline losses,
+but coverage remains2/12source agreements,4ambiguous/6unknown. No severity is
+lowered for overall usefulness, REF-006/LV/PHOTO or independent release evidence.
+
+8shared+7Node tests/shared540/full1641/builds/recount pass;0newmodel calls. Cached
+center parity12/12and full-frame evidence are development only. Next control
+comparison is locally executable; no app/phone update or production approval.
+
 ## November 13 — actual hybrid quality rejection
 
 Scoped follow-up, not a repeated30lane audit. See

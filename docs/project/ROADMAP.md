@@ -1,5 +1,16 @@
 # Roadmap
 
+## Cached full-frame/monotone v2 — November 13
+
+- [x] Separate v2fallback repairs embedding-unknown losses while retaining strict
+  v1conflict/ambiguity/quarantine/failure checks and experimental boundary.
+- [x] Freeze108sources/112data pins; reproduce12center decisions, compare24cached
+  retrievals/24v2fusions with0newmodel calls. Both hybrids restore2agreements,
+  0wrong-source/4ambiguous/6unknown, no baseline losses;≥3coverage gate still FAIL.
+- [x] Pass8shared+7Node tests/shared540/full1641/builds/18routes and receipt recount.
+- [ ] Register cached outside/mixed/hazard controls with source-identity overlap
+  checks; human/rights/native/physical/platform and useful-coverage gates remain.
+
 ## Actual three-arm development comparison — November 13
 
 - [x] Implement bounded fusion/fixed protocol; freeze105sources/70data files,
@@ -7,7 +18,7 @@
   shared532/full1626/all builds/18routes pass.
 - [x] Retain failed quality gate: pixel2/0/2/8 versus embeddings/hybrid0/0/4/8,
   case010/016agreement losses. No gate tuning or deployment.
-- [ ] Repair via a separately registered cached full-frame/monotone comparison;
+- [x] Repair via a separately registered cached full-frame/monotone comparison;
   engineering coverage/human/physical/rights/platform acceptance remain open.
 
 ## Local encoder byte binding — November 13
