@@ -1,12 +1,23 @@
 # Roadmap
 
+## Approved hybrid implementation — November 13
+
+- [x] Owner approves pretrained local features alongside our original algorithms;
+  write HYBRID_RECOGNITION_MASTER_PROMPT and implement its first bounded pure
+  retrieval unit with 25 synthetic regressions. No quality/deployment claim.
+- [ ] Bind actual image bytes and vectors to the pinned encoder/preprocessing,
+  then freeze and execute a separately registered development comparison.
+- [ ] Implement registered conflict/quarantine fusion, demonstrate useful coverage
+  without unsafe accepts, obtain independent reference/rights and matching native/
+  physical/platform acceptance before gated app integration. Release stays NO-GO.
+
 ## Actual OFF references and safe SKU abstention — November 13 evening
 
 - [x] Build bounded exact21 acquisition, repair decoder trust/blind-key exposure and preserve19ready/2MIMEfailures. Separate metadata-only2HEAD and explicitly frozen2GET recovery complete all21private source/review pairs without resetting evidence or accepting labels/rights.
 - [x] Freeze/run actual20decode/extract/match development diagnostic; retain8self/12cross/1insufficient and the3agreement/1disagreement/8abstention cross-upload failure. No independent quality or catalogue acceptance claim.
 - [x] Implement generic self-confusion graph/runtimev2 and10synthetic guard tests; source-only replay removes the disagreement at the cost of one cross-upload source agreement. Preserve both losses and low coverage, not a release pass.
 - [x] Align all12age-eligible SDK58patches including the final3after24h; frozen/onlineExpo/Doctor20/20/audit and full1563/mobile815/shared495 pass. Retain lower advisories/13old lint warnings; new native graph is not installed client10.
-- [ ] Roope chooses pixel-only versus permitted hybrid free on-device encoder plus own logic: single NEXT_ACTION before a materially different representation experiment.
+- [x] Roope chooses permitted hybrid free on-device encoder plus own logic; superseded by the approved implementation plan above.
 - [ ] Engineering improves useful coverage against reviewed variant/reference data and implements native parity/deadline tests; Roope organizes independent review/real-camera/platform/rights acceptance. Existing public-release/Android/privacy/operations/store gates remain.
 
 ## Byte binding and bounded product scope — November 13

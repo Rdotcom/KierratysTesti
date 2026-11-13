@@ -1,5 +1,14 @@
 # Release decision
 
+## November 13 — hybrid authorized, not empirically qualified: NO-GO
+
+Owner approval resolves the earlier scope choice. The first pure retrieval unit
+and its25synthetic regressions are implemented, but no actual new embeddings,
+byte-bound model adapter, hybrid fusion, independent identity/rights acceptance
+or matching native/device evidence exists. Caller hashes are assertions only.
+Do not infer accuracy from arithmetic tests or enable the experimental app path.
+Remaining quality/platform/privacy/licensing/operations/store gates are unchanged.
+
 ## November 13 evening — real data exposes low coverage: NO-GO
 
 All21free OFF source images are now privately acquired and traced, with original

@@ -1,5 +1,19 @@
 # Acceptance criteria
 
+## Approved hybrid experimental retrieval — November 13
+
+1. Use the staged HYBRID_RECOGNITION_MASTER_PROMPT. Pretrained encoder and own
+   algorithms remain explicitly distinguished; approval is not deployment proof.
+2. Bound serialized gallery/query inputs before parsing. Require exactly512finite
+   nonzero coordinates, at most32unique reference IDs/image hashes, stable cosine
+   normalization and exact asserted encoder/preprocessing/catalogue identity.
+   Compete per product, retain near ties even below the absolute gate, reject
+   enrollment-image queries and expose uncertainty, not calibrated probabilities.
+3. Gate values are explicit and must freeze before a real comparison. Synthetic
+   vector tests establish arithmetic only; asserted hashes are not actual byte
+   binding. integrationAllowed remains false pending binding/evaluation/native
+   and independent identity/rights evidence. No bins/materials/automatic records.
+
 ## Real-source development and self-confusion guard — November 13 evening
 
 1. Authenticate the trusted decoder lock before parsing/executing its entry; verify exact listed artifacts, versions and bounds. Fixed official acquisition URLs, no redirects/retries/auth, observed-byte stopping budgets, durable attempt receipts and new exclusive no-link outputs are mandatory. Original MIME failures and separate exact-two recovery stay auditable.

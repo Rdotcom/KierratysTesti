@@ -1,5 +1,13 @@
 # External blockers
 
+## November 13 — hybrid scope approved
+
+Roope's explicit approval resolves the architecture choice described below.
+Do not ask for it again. Local encoder binding, registered fusion/evaluation and
+native engineering are executable work, not account/payment blockers. Existing
+independent identity/rights review and actual device/platform acceptance remain
+uncompleted; this unit makes no new image/model/network call or phone change.
+
 ## November 13 evening — actual references expose a method limit
 
 No new secret/account/credit/paid compute blocker. All12SDKpatches now pass the

@@ -1,5 +1,29 @@
 # Current state
 
+## Approved hybrid, first implementation unit — November 13, 2026
+
+- Roope explicitly approves the free on-device encoder plus our own logic and
+  requests a master prompt followed by implementation. The architecture choice
+  is resolved; historical pending-choice entries below are superseded, not new
+  blockers. `HYBRID_RECOGNITION_MASTER_PROMPT.md` records the staged execution,
+  evidence gates and no-paid-call/no-push/no-phone-install boundary.
+- Implement original experimental 512-coordinate cosine retrieval with bounded
+  serialized inputs, stable normalization, exact asserted model/preprocessing/
+  catalogue identity, duplicate/self-query rejection, per-product competitors,
+  deterministic ties and explicit pre-registered similarity/margin gates. Every
+  result stays inferred/uncalibrated and integrationAllowed=false. No new default
+  catalogue, fusion, native encoder bridge, app consumer or sorting change.
+- 25 new synthetic arithmetic/security tests pass; shared validation passes 520
+  overlapping tests. First scoped run exposed a Vitest table type error; repair
+  it and remove nine new lint warnings without waiving checks. Full validation
+  passes1588unique tests/all builds/18web routes, with13pre-existing warnings;
+  actual logs and limits are in TEST_EVIDENCE. Actual image/model calls: 0.
+- Asserted vector hashes are NOT byte/model authenticity. The next local unit
+  binds actual image bytes/vectors to the pinned encoder before a frozen real
+  comparison. Human reference/rights and matching physical/platform acceptance
+  remain open. Recognition/public release stay NO-GO; installed client10 and
+  source iOS11/Android3 are unchanged. No dependency/key/paid/GitHub action.
+
 ## Real-reference release continuation — November 13, 2026, evening
 
 - Continue from f63051d; implement bounded OFF acquisition/recovery and private review preparation. Initial21GET gives19ready/2MIME failures; exactly2HEAD diagnose generic binary MIME, separately frozen2GET recovery gives21ready. Preserve both failures/old ledger; final433,083original/2,862,023review bytes. All rights/identity reviews pending, capture independence unverified, splits unassigned, no app catalogue or publication. Main AI privacy-screen/temporary browser inspection is not independent human review.

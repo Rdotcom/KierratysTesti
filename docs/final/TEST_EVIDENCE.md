@@ -1,5 +1,32 @@
 # Test evidence
 
+## November 13 — approved hybrid, pure retrieval first unit
+
+- Master prompt: `../project/HYBRID_RECOGNITION_MASTER_PROMPT.md`. Owner approval
+  resolves the historical pending architecture choice; it is not release approval.
+- New25synthetic-vector regressions pass. Test finite extreme/subnormal scale,
+  exact512coordinate shape, zero/invalid data, input budgets/getter isolation,
+  duplicate IDs/bytes, model/preprocessing/catalogue mismatch, enrollment-image
+  rejection, cosine ranking, weak/near-tied alternatives, per-product grouping,
+  source assertions and repeat/order/result-mutation independence. No actual
+  image decode, embedding/model prediction, acquisition or paid API call.
+- First scoped validation fails TypeScript on the Vitest array-of-arrays table
+  (TS2345), despite the initial25test pass. Wrap each vector in a named object,
+  rerun types/tests and remove nine new non-null lint assertions; no suppression
+  or policy exception. Existing13repository lint warnings remain.
+- Final `pnpm validate:shared`: PASS520overlapping tests, boundaries/format/lint/
+  strict types and shared builds. Local log `/tmp/kig-hybrid-shared.CDo2TR`.
+- Final `pnpm validate`: PASS1588unique tests(672Node+916workspace), boundaries,
+  formatting/lint/strict types, package/API builds and18web routes. Local log
+  `/tmp/kig-hybrid-full.RMLROE`. Pinned pnpm11.16.0/Node26 environment; not fresh
+  Linux/Node24/remote CI or a new live advisory/Expo check. Lockfile unchanged.
+- This is arithmetic/software evidence only. Caller hashes are assertions,
+  not actual byte/encoder binding or independent identity/rights review. Module
+  is exported only from experimental reference-vision; no app consumer, default
+  catalogue, fusion, UI/visual behavior, native build or phone update. Prior
+  failures and NO-GO stay intact; no new camera/offline/accuracy/performance/
+  accessibility/Android/store acceptance, source-image sharing or GitHub push.
+
 ## November 13 evening — actual references, SDK and generic identity quarantine
 
 Full result/source/failure hashes: `OFF_RELEASE_READINESS_RESULTS.md`. Private

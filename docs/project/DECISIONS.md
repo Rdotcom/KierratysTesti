@@ -599,3 +599,19 @@
 
 - Align12compatible SDK58patch targets preserving exact/~styles and strict1440minute policy. Initially install only the older coherent floor, retaining the three young online recommendations as failed. Recheck at18:41UTC: all three are now at least1559minutes old, then install58.0.25/dev-client58.0.20/location58.0.22 and verify onlineExpo plus Doctor1.21.5 20/20/frozen/high-critical gate. No exclusion/policy relaxation or new secret;16moderate/6low advisory records remain.
 - Full1563/mobile815/shared495 and all web/package builds pass;13pre-existing lint warnings remain. Transitive core/autolinking58.1.0 requires a matching native build, not a claim that installed10 is updated. Source11/Android3 stays uninstalled; no native build, signing, phone/service/push/publication or cleanup action. Preserve the44file pre-guard source archive and all old ledgers/results.
+
+## D-079 — Approved hybrid starts with bounded original retrieval, not a quality claim
+
+- Date: 2026-11-13. Roope approves the proposed free local visual encoder plus our
+  own matching/safety logic and requests a master prompt and execution. Record
+  staged binding/evaluation/fusion/native gates before implementation; no paid
+  inference, push, installation or production authority follows.
+- Implement experimental cosine reference retrieval, stable finite-vector
+  normalization, per-product competitors, explicit gates, model/preprocessing/
+  catalogue assertions and duplicate/self-query exclusion. No outcome-tuned
+  defaults or product-specific names/GTIN rules; synthetic fixtures test software
+  only. Caller hashes cannot certify encoding, ownership or identity. Require a
+  separate actual-byte/encoder adapter next; app integration remains disallowed.
+- Preserve own pixel/confusion code, all old failures, mobile/backend behavior,
+  source/phone versions and existing NO-GO. Independent reference/rights review
+  and representative physical acceptance remain required, not invented by tests.

@@ -1,5 +1,17 @@
 # Owner actions
 
+## November 13 — hybrid approval recorded
+
+- **Roope, scope choice: complete.** Free local pretrained encoder plus own logic
+  explicitly approved; do not request the same decision again.
+- **Engineering/Codex, next:** implement the byte-bound adapter described in
+  NEXT_ACTION and the master prompt, then register evaluation/fusion before new
+  image predictions. No new account/payment action is needed.
+- **Roope, reference/device owner:** independent identity/variant/rights review
+  and later matching physical acceptance procedures below remain, not fabricated
+  by the25synthetic retrieval tests. Historical pending scope-choice text below
+  is superseded. No new push/phone-install/production authority is inferred.
+
 ## November 13 evening — choose direction using actual failed quality evidence
 
 - **Roope, material product/architecture choice:** read the actual source-image
