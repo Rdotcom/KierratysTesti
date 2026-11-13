@@ -633,3 +633,19 @@
   two-generated-image smoke. Actual2decodes/4image predictions and zero-new-call
   receipt recount pass; synthetic comparison is not product recognition accuracy.
   Keep NO-GO, real data/fusion/human/native/platform acceptance and no app consumer.
+
+## D-081 — Measure actual hybrid utility; reject an always-abstaining candidate
+
+- Date: 2026-11-13. Owner requests actual product-image comparison/fusion. Implement
+  original bounded pixel-veto fusion and freeze105sources/70inputs/public engine/
+  encoder/gates/data before20encodings/40predictions; exact prior pixel reuse,
+  no new download/training/paid calls or independent identity claims.
+- Generic gallery-only quarantine and all lane conflicts remain ambiguous.
+  Fixed cosine0.9/margin0.08, embedding may recover pixel unknown but pixel-only
+  candidates cannot override weak embeddings. Actual cross12: guarded pixels
+  2/0/2/8, embedding/hybrid0/0/4/8. Lose case010/016guarded agreements. Reject
+  quality gate without tuning, hiding losses or deploying; code tests are not
+  recognition success. Old raw3/1/8 and all21rows remain.
+- Full1626/shared532/builds/18routes and zero-new-call receipt recount pass;
+  quality remains high/open. Next is a separate registered cached full-frame/
+  monotone comparison, not a new-image retake or an external funding problem.

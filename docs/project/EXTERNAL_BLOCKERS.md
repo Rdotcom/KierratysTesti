@@ -1,5 +1,13 @@
 # External blockers
 
+## November 13 — actual hybrid fails, no new external blocker
+
+Engineering owns the failed coverage/lost-correct result: hybrid0/12source
+agreements loses both guarded-pixel agreements. Cached full-frame/monotone
+comparison is executable locally with zero new model calls; do not blame accounts
+or require another architecture approval. Human identity/rights and representative
+physical/platform acceptance remain independent requirements. No app deployment.
+
 ## November 13 — actual byte bridge works locally
 
 No new external blocker. Existing cached encoder/resources support an actual

@@ -1,5 +1,15 @@
 # Owner actions
 
+## November 13 — hybrid v1rejected, engineering follow-up
+
+- **Engineering/Codex:** follow NEXT_ACTION's separately registered cached
+  full-frame/monotone comparison. Preserve v1failure/all20raw encodings and old
+  pixel evidence;0newmodel calls are needed for that development unit. No accounts,
+  payment or another hybrid approval is required. Do not deploy v1or weaken gates.
+- **Roope:** independent identity/variant/rights review and representative later
+  physical/platform acceptance remain as documented below. The current result is
+  not reliable recognition; no phone/app update or GitHub publication occurred.
+
 ## November 13 — local byte binding complete, comparison next
 
 - **Engineering/Codex:** actual-byte encoder/retrieval bridge and generated-image

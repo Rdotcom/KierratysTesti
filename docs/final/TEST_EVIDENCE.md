@@ -1,5 +1,25 @@
 # Test evidence
 
+## November 13 — actual three-arm hybrid comparison
+
+Full protocol/results/pins/limitations: OFF_HYBRID_DEVELOPMENT_PROTOCOL.md and
+OFF_HYBRID_DEVELOPMENT_RESULTS.md. Freeze105source/70old input files and actual
+public engine/encoder/data before20model loads/decodes/40predictions. Old pixel
+outputs reused with0newpixel work;12retrievals/12fusions,0text/training/paid/network.
+Zero-new-call source/input/vector/counter recount passes; all21rows/12query
+denominators and canonical once-only ledger remain.
+
+Quality gate FAIL: guarded pixels2/0/2/8 versus embedding/hybrid0/0/4/8; source
+agreement losses case010/016. Preserve old raw3/1/8 and no independent-label claim.
+No retune/retry/drop/deployment; zero useful candidates is not a quality pass.
+
+12newshared+7Node tests pass (same-image/schema/enrollment/quarantine/conflict/
+failure handling, coverage/lost-correct/missing-work accounting). Scoped shared
+532overlap and full1626unique(698Node+928workspace)/all checks/builds/18routes
+pass.13old lint warnings remain; logs `/tmp/kig-hybrid-comparison-shared.4S26RT`
+and `/tmp/kig-off-hybrid-full.sjo0Wc`. No new dependency/advisory/Expo/remoteCI/
+Linux/Node24/fresh-install/native/physical-camera/Android/store pass or push.
+
 ## November 13 — actual local encoder byte bridge
 
 Full pins/failures/limits: `HYBRID_ENCODER_BYTE_EVIDENCE.md`.19newNode regressions

@@ -1,5 +1,24 @@
 # Current state
 
+## Real-reference hybrid fails coverage — November 13, 2026
+
+- Implement experimental pure pixel-veto fusion and registered three-arm runner.
+  Freeze105sources/70old data files/public engine/actual encoder/resources and
+  unchanged8gallery/12cross/1insufficient allocation before20model loads/decodes/
+  40image predictions. Reuse pinned pixel outputs;0newpixel extraction/matching,
+  text/training/paid/network calls.12retrievals/fusions complete and zero-new-call
+  source/input/vector/counter recount passes. Community identities remain unreviewed.
+- Guarded pixel2source agreements/0disagreements/2ambiguous/8unknown; embeddings
+  and hybrid both0/0/4/8. Hybrid loses case010/016 agreements. Coverage/loss gate
+  FAIL; zero candidates is not reliability. Keep fixed gates, canonical ledger,
+  old failures and v1unwired. Full evidence: OFF_HYBRID_DEVELOPMENT_RESULTS.md.
+- Add12shared+7Node tests. Shared532overlap/full1626unique(698Node+928workspace),
+  all checks/builds/18routes pass;13old warnings remain. Quality risks stay high/
+  open; native/physical/independent identity/rights/release gates are not closed.
+- Next is separately registered cached full-frame/monotone fusion, not a retake.
+  No new external account/payment blocker; shipping app/phone10/source11/Android3
+  unchanged. No native build/install, model/dependency/key change, push/publication.
+
 ## Actual local embedding byte bridge — November 13, 2026
 
 - Implement QA-only adapter to the existing pinned2024MobileCLIP two-view

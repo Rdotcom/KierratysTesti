@@ -1,5 +1,19 @@
 # Adversarial production-readiness audit
 
+## November 13 — actual hybrid quality rejection
+
+Scoped follow-up, not a repeated30lane audit. See
+OFF_HYBRID_DEVELOPMENT_RESULTS.md and its frozen protocol/receipts.
+
+| ID / severity / state | Evidence / affected flow | Reproduction | Required remediation / boundary |
+| --- | --- | --- | --- |
+| REF-007 / high / OPEN, experimental candidate rejected | Actual center-embedding/hybrid gives0source agreements/0disagreements/4ambiguous/8unknown on12queries and loses both guarded-pixel agreements(case010/016). | Read pinned591a126…lock/dfa2bba…result and saved20worker receipts; no retake. | Locally executable separately versioned cached full-frame/monotone analysis; keep positive-conflict/quarantine veto, old fixed gates/failures, no integration until useful coverage and independent quality/native evidence. Human identity/rights remains separate, not an excuse to externalize engineering. |
+
+12shared+7Node regressions/shared532/full1626/builds/18routes pass.20actual loads/
+decodes/40predictions and zero-new-call source/data/vector/counter recount pass.
+Those checks do not reduce REF-006/007/LV/PHOTO severity or establish product
+reliability, phone/store readiness or a new current installed classifier. No push.
+
 ## November 13 evening — real OFF source data, SDK and identity safety
 
 Scoped follow-up, not a repeated30-lane audit. Exact results/hashes/failures:

@@ -1,3 +1,3 @@
 # Next action
 
-Implement a pre-registered three-arm development comparison (pixel-only, embedding-only and conservative hybrid with self-confusion quarantine) against the existing seen OFF references, freezing sources/data/gates/counters before any new predictions and retaining all prior failures without app integration or an independent-accuracy claim.
+Implement a separately versioned and pre-registered full-frame/monotone-fusion development comparison using the already captured two-view vectors, preserving guarded pixel candidates against mere embedding abstention while retaining conflict/quarantine vetoes, fixed gates and every failed v1 result, with zero new model calls and no app integration.

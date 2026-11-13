@@ -1,5 +1,17 @@
 # Release decision
 
+## November 13 — actual hybrid quality gate FAIL: NO-GO
+
+Actual20encodings/40image predictions complete, but center embeddings and hybrid
+both give0source agreements/0disagreements/4ambiguous/8unknown on12cross-upload
+queries. Guarded pixels retain2agreements; hybrid loses both. No source wrongs
+does not qualify an always-abstaining recognizer. Fixed gate fails, v1rejected
+and unwired. Details: OFF_HYBRID_DEVELOPMENT_RESULTS.md.
+
+Software shared532/full1626/builds pass, not recognition quality. Engineering's
+cached full-frame/monotone follow-up remains executable; independent identity/
+rights/native/physical/platform/privacy/operations/store gates remain open.
+
 ## November 13 — actual local byte bridge passes, product quality still NO-GO
 
 The QA adapter now verifies actual resources/input hashes/vectors and feeds the

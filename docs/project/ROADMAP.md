@@ -1,12 +1,22 @@
 # Roadmap
 
+## Actual three-arm development comparison — November 13
+
+- [x] Implement bounded fusion/fixed protocol; freeze105sources/70data files,
+  run20encodings/40predictions and recount all receipts.12shared+7Node tests,
+  shared532/full1626/all builds/18routes pass.
+- [x] Retain failed quality gate: pixel2/0/2/8 versus embeddings/hybrid0/0/4/8,
+  case010/016agreement losses. No gate tuning or deployment.
+- [ ] Repair via a separately registered cached full-frame/monotone comparison;
+  engineering coverage/human/physical/rights/platform acceptance remain open.
+
 ## Local encoder byte binding — November 13
 
 - [x] Bind actual JPEG bytes/model tree/source/worker/preprocessing/vector hashes
   through the offline pinned exporter, bounded single-flight subprocess and
   strict native progress/counters.19regressions and one frozen generated-image
   smoke pass:2decodes/4predictions, not product or native-phone acceptance.
-- [ ] Register and implement the three-arm seen-reference development comparison
+- [x] Register and implement the three-arm seen-reference development comparison
   with conflict/quarantine fusion; freeze all inputs/gates/accounting before
   new predictions. Keep independent identity/rights/native/device gates open.
 
@@ -17,7 +27,7 @@
   retrieval unit with 25 synthetic regressions. No quality/deployment claim.
 - [x] Bind actual image bytes and vectors to the pinned encoder/preprocessing
   in the QA adapter; generated-image smoke passes without app integration.
-- [ ] Freeze and execute a separately registered development comparison.
+- [x] Freeze and execute a separately registered development comparison; retain failed gate above.
 - [ ] Implement registered conflict/quarantine fusion, demonstrate useful coverage
   without unsafe accepts, obtain independent reference/rights and matching native/
   physical/platform acceptance before gated app integration. Release stays NO-GO.

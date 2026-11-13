@@ -1,5 +1,17 @@
 # Acceptance criteria
 
+## Actual hybrid development — November 13
+
+1. Freeze sources/data/encoder/engine/gates before calls; preserve all21rows/
+   12query denominators,8gallery/1insufficient and all raw worker counters/failures.
+   Source agreement is not human-verified identity; no new independent capture.
+2. Same-image/enrolled-ID/quarantine validation, explicit failure/unknown and
+   inference metadata are mandatory. Retain both native views in accounting
+   even though only center feeds retrieval; old pixel receipt reuse is not new work.
+3. Gate≥3hybrid source agreements/0disagreements/0guarded-pixel agreement losses
+   fails at0/0with2losses; never qualify zero-useful-coverage or tune after results.
+   Shared532/full1626 tests/builds are software evidence only; no app integration.
+
 ## Local embedding byte adapter — November 13
 
 1. Actual encoded bytes, trusted executable, exact current/historical source,
