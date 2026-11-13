@@ -1,7 +1,6 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import fs from "node:fs";
-import { createRequire } from "node:module";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { build } from "tsup";
@@ -11,6 +10,7 @@ import {
   writeJsonExclusive,
 } from "../local-vision/embedding-control.mjs";
 import { createNodeReferencePorts, NODE_REFERENCE_DECODE_POLICY } from "./node-runtime-ports.mjs";
+import { loadPinnedReferenceDecoder } from "./pinned-reference-decoder.mjs";
 
 // Explicit adapter integration smoke, not a product experiment. Generates only
 // original synthetic textures in memory, not grocery photos or accepted labels.
@@ -59,20 +59,16 @@ function sourceIdentity() {
 export async function runByteSmoke(outputArgument) {
   const output = checkedOutput(outputArgument, cwd);
   const sources = sourceIdentity();
-  // Reuse and VERIFY the already installed decoder identity, never auto-fetch.
-  const previous = JSON.parse(
-    readBounded(path.join(cwd, "work/vision-sounds-2026-11-12.l0vuRb/freeze/lock.json"), 1_000_000),
-  );
-  const identity = previous.decoderIdentity;
-  assert.ok(identity && Object.keys(identity.files).length === 58, "expected_decoder_identity");
-  for (const [file, digest] of Object.entries(identity.files))
-    assert.equal(sha(readBounded(file, 64_000_000)), digest, "decoder_drift");
-  const sharp = createRequire(import.meta.url)(identity.entry);
-  assert.deepEqual(sharp.versions, identity.versions, "decoder_version_drift");
+  const { sharp, identity, lockSha256 } = loadPinnedReferenceDecoder(cwd);
   fs.mkdirSync(output, { mode: 0o700 });
   const frozen = writeJsonExclusive(
     path.join(output, "source-lock.json"),
-    { sources, decoderIdentity: identity, decodePolicy: NODE_REFERENCE_DECODE_POLICY },
+    {
+      sources,
+      decoderIdentity: identity,
+      decoderLockSha256: lockSha256,
+      decodePolicy: NODE_REFERENCE_DECODE_POLICY,
+    },
     cwd,
   );
   await build({
@@ -192,6 +188,7 @@ export async function runByteSmoke(outputArgument) {
       engineSha256,
       decodePolicy: NODE_REFERENCE_DECODE_POLICY,
       decoderArtifactsRechecked: 58,
+      decoderLockSha256: lockSha256,
       counters,
       syntheticPngEncodes: 3,
       enrollmentReferences: compiled.enrollmentReferences,

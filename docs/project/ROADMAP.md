@@ -1,18 +1,27 @@
 # Roadmap
 
+## Actual OFF references and safe SKU abstention — November 13 evening
+
+- [x] Build bounded exact21 acquisition, repair decoder trust/blind-key exposure and preserve19ready/2MIMEfailures. Separate metadata-only2HEAD and explicitly frozen2GET recovery complete all21private source/review pairs without resetting evidence or accepting labels/rights.
+- [x] Freeze/run actual20decode/extract/match development diagnostic; retain8self/12cross/1insufficient and the3agreement/1disagreement/8abstention cross-upload failure. No independent quality or catalogue acceptance claim.
+- [x] Implement generic self-confusion graph/runtimev2 and10synthetic guard tests; source-only replay removes the disagreement at the cost of one cross-upload source agreement. Preserve both losses and low coverage, not a release pass.
+- [x] Align all12age-eligible SDK58patches including the final3after24h; frozen/onlineExpo/Doctor20/20/audit and full1563/mobile815/shared495 pass. Retain lower advisories/13old lint warnings; new native graph is not installed client10.
+- [ ] Roope chooses pixel-only versus permitted hybrid free on-device encoder plus own logic: single NEXT_ACTION before a materially different representation experiment.
+- [ ] Engineering improves useful coverage against reviewed variant/reference data and implements native parity/deadline tests; Roope organizes independent review/real-camera/platform/rights acceptance. Existing public-release/Android/privacy/operations/store gates remain.
+
 ## Byte binding and bounded product scope — November 13
 
 - [x] Select five source-traced grocery SKUs, including a near-identical size pair, without manufacturing identity/rights/independent-capture acceptance. Preserve 21 proposed upload lineages and ODbL/DbCL/CC BY-SA boundaries.
 - [x] Implement fail-closed actual-byte/own-feature receipt compiler, opaque inferred runtime and query exclusion. Add 28 shared + 9 Node regressions; repair type/platform-boundary failures without exceptions. Full 1507/shared 485/all builds/18 routes and frozen/advisory checks pass.
 - [x] Complete actual SHA256/PNG integration smoke on generated synthetic textures with 58 decoder/28 source pins; no real-product quality claim or app integration.
-- [ ] Build bounded selected-image acquisition and blind-review packet tooling: current single NEXT_ACTION. Never auto-accept labels/rights/capture independence or fabricate capture dates.
+- [x] Build bounded selected-image acquisition and private review-packet tooling in the evening continuation above. Never auto-accept labels/rights/capture independence or fabricate capture dates; distribution remains unapproved.
 - [ ] Obtain real identity/rights/independent-query review, freeze representative exact-SKU/unknown/mixed/near-identical tests, repair quality failures, then implement/accept native RGB/deadline/privacy/platform behavior. Existing SDK patch maintenance and public-release gates remain.
 
 ## V2 recognition and sound — November12
 
 - [x] Own four-scale feature/matcher and strict multi-view catalogue metadata intake;131new shared tests, V1immutable. Single comparative224-key run/independent recount shows37→59synthetic correct without lost/wrong candidates; not independent identity acceptance.
 - [x] Add original short cues/optional safe lifecycle/local preference/quiet event integration/FI-ENcontrol;88new sound-related cases and full1470/shared457/mobile777 pass. Inspect browser persistence/keyboard390px and config permissions; preserve first failures.
-- [ ] Align12newly recommended SDK58patches with existing supply-chain policy before native11/Android3 build; still open after the subsequent recognition work.
+- [x] Align12recommended SDK58patches with existing supply-chain policy in the November13evening continuation; matching native build remains pending.
 - [ ] Obtain actual native silent/music/background/reader/audio and reviewed product catalogue/independent real-camera/platform quality before integration/release; last verified phone10 remains unchanged.
 
 ## Own pixel recognition — November10

@@ -1,5 +1,36 @@
 # Owner actions
 
+## November 13 evening — choose direction using actual failed quality evidence
+
+- **Roope, material product/architecture choice:** read the actual source-image
+  result in OFF_RELEASE_READINESS_RESULTS. Current pixel-only method gives
+  3source agreements/1disagreement/8abstentions on12cross-upload observations;
+  the safety guard changes that to2/0/10 and loses one prior agreement. Choose
+  whether to keep the fully own pixel-only approach or permit the existing free
+  on-device visual encoder alongside our own matching/confusion logic. The
+  proposed hybrid has not been tested here and is not a wholly from-scratch
+  vision model. Respond with the chosen scope before that material change.
+- **Engineering/Codex:** after direction, write a new pre-call protocol for the
+  chosen representation, retain the original failure/guard losses and use real
+  reviewed variant/unknown data. Do not tune/reset the completed experiment,
+  fabricate identity acceptance or call source agreement independent accuracy.
+  Own native RGB/parity/deadline and useful-coverage engineering remain local
+  work, not account/credit blockers.
+- **Roope, reference/rights-review organizer:** private21-image preparation and
+  two blank forms are under `work/off-release-2026-11-13.MnzfCI/recovered/`.
+  Keep coordinator ATTRIBUTION/acquisition/source originals separate from the
+  private reviewer bundle; it is not cleared for distribution. Arrange real
+  independent name/size/GTIN/duplicate/privacy adjudication, recording actual
+  reviewers/dates/evidence rather than signing for them. Approve lawful complete
+  attribution/ShareAlike and other rights before sharing; if that process reveals
+  source identities, call it source review, not blind quality acceptance.
+- **Roope, physical-device/release owner; Engineering, preparation:** new SDK
+  graph/source11/Android3 needs a matching native build, then a separately
+  requested install and real new-camera/unknown/variant/offline/permission/
+  VoiceOver/latency/memory/energy/platform acceptance. Current installed10 is
+  unchanged. Do not deliver patched-native JS to it. Existing privacy/operations/
+  Android/store owner procedures remain; no push/publication/paid action occurs.
+
 ## November 13 — selected scope and real reference acceptance
 
 - **Engineering/Codex, next local unit:** implement the bounded acquisition and

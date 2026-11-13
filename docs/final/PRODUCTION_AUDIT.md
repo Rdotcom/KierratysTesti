@@ -1,5 +1,25 @@
 # Adversarial production-readiness audit
 
+## November 13 evening — real OFF source data, SDK and identity safety
+
+Scoped follow-up, not a repeated30-lane audit. Exact results/hashes/failures:
+`OFF_RELEASE_READINESS_RESULTS.md`. Real-source coverage is weak; do not lower
+LV-001 or claim that a seen-output abstention guard proves product accuracy.
+
+| ID / severity / state | Evidence / affected flow | Reproduction | Remediation / boundary |
+| --- | --- | --- | --- |
+| REF-003 / high / locally REPAIRED before acquisition | New acquisition and older byte-smoke loaded an executable chosen by an unpinned ignored decoder lock; an unlisted entry could evade its58file map. | Alter prior lock bytes, entry membership, versions or hash fixtures in15pin tests; all must reject before loading/network. | Hard-code known historical lock SHA before parse; verify exact listed entry/58bounded canonical artifacts/29versions before require. Host/module cache remains trusted. No old evidence is overwritten. |
+| REF-004 / high evidence risk / locally REPAIRED before acquisition | Draft “blind” page linked directly to per-case source URLs containing GTINs. | Reviewer page/form source must not contain the source key/GTIN/../attribution link; source and browser checks pass. | Separate full coordinator provenance from private/unapproved reviewer preparation with unkeyed licence notice. No lawful-distribution or independent-ground-truth approval is fabricated; owner review remains. |
+| REF-005 / medium / locally REPAIRED | Initial strict image/jpeg contract rejects two validly available generic-binary source objects. | Frozen21GET retains19ready/2response_type; separate2HEAD show200/octet-stream, not JPEG proof. | New pinned exact-two recovery keeps byte/JPEG-magic/actual decoder gates and original failures; both recover. Preserve23GET+2HEAD accounting, no silent retry/reset or generic URL/MIME relaxation. |
+| REF-006 / high quality risk / mitigation implemented, OPEN | Actual own-V2 cross-upload diagnostic3source agreements/1disagreement/8abstentions; case014 selects a different Nutella-source SKU. Source labels remain unreviewed. | Inspect frozen9e2bfd…/result8f66d7… and per-case outputs, never retake or relabel after outcome. | Generic self-confusion quarantine changes source-only replay to2/0/10 but loses one prior cross/source agreement and one self agreement. Useful coverage/true variant identity still need engineering and independent review; no brand hardcode, threshold relaxation, exact-GTIN or quality-pass claim. |
+| SDK-MAINT-01 / medium / CLOSED locally | All12recommended patches now resolve under unchanged strict1440minute policy, including final3onlyafter actual eligibility. | Frozen install/onlineExpo check/Doctor1.21.5 20/20 and fresh high-critical gate pass. | Core58.0.25 and native core/autolinking58.1.0 require a matching native build; installed10 remains unchanged. No native/platform acceptance is implied. |
+
+Full1563/mobile815/shared495/all builds/18routes pass;16moderate+6low advisory
+records/13old lint warnings remain. Existing LV-001/PHOTO/privacy/operations/
+Android/store gates and independent physical evidence remain. Own runtime stays
+experimental/unwired, integrationAllowedfalse. Proposed free-local-encoder
+hybrid needs Roope's material architecture choice, not a new payment/key.
+
 ## November 13 — byte-bound reference runtime follow-up
 
 Scoped follow-up, not a repeated 30-lane audit. Full evidence and limitations:

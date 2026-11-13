@@ -1,5 +1,43 @@
 # Test evidence
 
+## November 13 evening — actual references, SDK and generic identity quarantine
+
+Full result/source/failure hashes: `OFF_RELEASE_READINESS_RESULTS.md`. Private
+evidence: `work/off-release-2026-11-13.MnzfCI/`; earlier SDK floor evidence also
+`work/sdk58-patches-2026-11-13.MhP5qz/`.
+
+- 56new tests:13acquisition/15decoder-pin/6recovery/8development/4guard-replay/
+  10pure guard. Final full1563unique(672Node+891workspace)/all checks/builds/
+  18routes pass; mobile815/shared495overlap pass.13pre-existing lint warnings
+  remain; new pattern-check warnings and linked-macOS-temp/checker-spacing
+  failures are repaired with original logs retained, not boundary waivers.
+- Actual21GET initial source acquisition:19ready/2MIME failures. Exactly2HEAD
+  diagnose generic binary MIME; separate frozen2GET recovery succeeds. Totals
+  23GET+2HEAD/21source decodes+review encodes,433083original/2862023review bytes;
+  19oldpairs are verified copies. All21receipts/two blank forms/hash joins and
+  44file pre-guard source archive recount pass. Initial acquisition independent
+  recount includes all7source/58decoder pins. No approved human labels/rights.
+- Temporary loopback browser renders21headings/19initial images, no horizontal
+  overflow, no answer-key link;2recovered images inspected locally. AI operational
+  privacy screening only. Own tab and8127server close; no user tab/data/phone or
+  app UI change. No source image is committed or externally uploaded.
+- One frozen actual20decode/extract/match own-V2 diagnostic:8self5agreements/
+  3ambiguities;12cross3source agreements/1disagreement/8abstentions;1Coca-Cola
+  insufficient-gallery case retained. No invalid/operation failure/exact duplicate
+  group, but neither independent capture nor truthful SKU label is established.
+  Result SHA8f66d78f…359cfd8; no retake/tuning of that run.
+- Generic gallery-self-confusion guard/runtimev2 source-only replay changes cross
+  to2agreements/0disagreement/10abstentions, losing case021 and selfcase019 while
+  suppressing case014. New pixel/extraction/matcher calls0, no brand hardcode or
+  threshold change. Replay SHA8f620b2b…ce4507. This is seen safety mitigation,
+  never a quality/integration pass; oldcore/ledgers/results remain unchanged.
+- After actual24h eligibility, all12SDKpatch recommendations align, including
+  core58.0.25/dev-client58.0.20/location58.0.22. Frozen install, finalonlineExpo
+  and pinnedDoctor1.21.5 20/20 pass; fresh audit0high-critical/16moderate+6low.
+  Native core/autolinking58.1.0 does not match the old installed10; no native
+  rebuild, signing, install, camera/offline/VoiceOver/energy/Android/remote-CI/store
+  acceptance is inferred. Source11/Android3 remains distinct from installed10.
+
 ## November 13 — encoded-byte compiler, real SHA256 adapter and selected products
 
 Details/hashes/limits: `REFERENCE_RUNTIME_AND_PRODUCT_SCOPE.md`. Private logs:

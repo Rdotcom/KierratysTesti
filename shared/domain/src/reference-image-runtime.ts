@@ -9,13 +9,19 @@ import {
   type ReferenceImageFeaturesV2,
 } from "./reference-image-features-v2";
 import {
+  deriveReferenceIdentityGuard,
+  guardReferenceIdentity,
+  REFERENCE_IDENTITY_GUARD_VERSION,
+  type ReferenceIdentityGuard,
+} from "./reference-image-identity-guard";
+import {
   matchReferenceImageV2,
   REFERENCE_MATCHER_VERSION_V2,
   type ReferenceCatalogueEntryV2,
   type ReferenceMatchEvidenceV2,
 } from "./reference-image-matcher-v2";
 
-export const REFERENCE_RUNTIME_VERSION = "byte-bound-reference-runtime-v1" as const;
+export const REFERENCE_RUNTIME_VERSION = "byte-bound-reference-runtime-v2" as const;
 /** Fixed ordered JSON of the extracted FEATURES object, not a result wrapper. */
 export const REFERENCE_RUNTIME_FEATURE_HASH_POLICY = "reference-v2-features-json-ascii-v1" as const;
 export const REFERENCE_RUNTIME_LIMITS = Object.freeze({
@@ -46,6 +52,7 @@ const runtimeMetadata = Object.freeze({
   algorithmVersion: REFERENCE_MATCHER_VERSION_V2,
   featureVersion: REFERENCE_FEATURE_VERSION_V2,
   featureHashPolicy: REFERENCE_RUNTIME_FEATURE_HASH_POLICY,
+  identityGuardVersion: REFERENCE_IDENTITY_GUARD_VERSION,
   verificationStatus: "inferred",
   confidence: "uncalibrated_visual_similarity",
   integrityAssumption: "trusted_sha256_and_decoder_ports",
@@ -296,6 +303,7 @@ function createRuntime(
   catalogue: ReviewedReferenceCatalogue,
   enrollment: ReferenceCatalogueEntryV2[],
   ports: ReferenceRuntimePorts,
+  identityGuard: ReferenceIdentityGuard,
 ): ReferenceImageRuntime {
   const products = new Map(catalogue.products.map((product) => [product.productId, product]));
   const references = new Map(
@@ -323,7 +331,10 @@ function createRuntime(
           return { ...runtimeMetadata, status: "unknown", reason: "low_detail" };
         if (extracted.status !== "ok")
           return { ...runtimeMetadata, status: "unavailable", reason: extracted.status };
-        const result = matchReferenceImageV2(extracted.features, enrollment);
+        const result = guardReferenceIdentity(
+          matchReferenceImageV2(extracted.features, enrollment),
+          identityGuard,
+        );
         if (result.status === "unknown")
           return {
             ...runtimeMetadata,
@@ -338,7 +349,7 @@ function createRuntime(
             queryImageSha256,
             productIds: Object.freeze(result.productIds),
             explanation:
-              "More than one enrolled identity has similar visual features; no identity is selected.",
+              "The query or the catalogue's own references cannot separate these identities visually; no exact identity is selected. A barcode or physical variant check is required.",
           });
         if (result.status !== "candidate")
           return { ...runtimeMetadata, status: "unavailable", reason: "unexpected_matcher_result" };
@@ -454,7 +465,28 @@ export async function compileReferenceImageRuntime(
         });
       clear(encoded);
     }
-    const runtime = createRuntime(catalogue, enrollment, ports);
+    const selfObservations = enrollment.map((entry) => {
+      const result = matchReferenceImageV2(entry.features, enrollment);
+      return {
+        referenceId: entry.referenceId,
+        productId: entry.productId,
+        possibleProductIds:
+          result.status === "candidate"
+            ? [result.productId]
+            : result.status === "ambiguous"
+              ? result.productIds
+              : [],
+      };
+    });
+    const identityGuard = deriveReferenceIdentityGuard(
+      JSON.stringify({
+        inventory: enrollment.map(({ referenceId, productId }) => ({ referenceId, productId })),
+        observations: selfObservations,
+      }),
+    );
+    if (identityGuard.status !== "ready")
+      return { ...runtimeMetadata, status: "invalid", reason: "invalid_metadata" };
+    const runtime = createRuntime(catalogue, enrollment, ports, identityGuard.guard);
     return Object.freeze({
       ...runtimeMetadata,
       status: "ready",

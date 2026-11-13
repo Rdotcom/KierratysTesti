@@ -1,5 +1,28 @@
 # External blockers
 
+## November 13 evening — actual references expose a method limit
+
+No new secret/account/credit/paid compute blocker. All12SDKpatches now pass the
+unchanged age policy; online Expo and Doctor20/20 pass. The earlier time gate is
+resolved, not a continuing blocker. Data21source/review pairs are acquired
+privately with original2failures preserved and no licence/identity approval.
+
+Real-source diagnostic remains weak:3source agreements/1disagreement/8abstentions
+out of12cross-upload observations. Own safety guard changes this to2/0/10 on a
+seen-output replay, losing one prior agreement; not release-ready accuracy.
+Engineering still owns quality/data/native improvements, not an invented funding
+problem. Before materially expanding the explicit own-algorithm requirement to
+pretrained visual features, Roope must choose whether that hybrid is acceptable.
+The existing free local encoder is a proposal, not a demonstrated fix or a
+fully from-scratch model. No such architecture change occurs without direction.
+
+Independent human identity/variant/adjudication and rights/attribution acceptance
+remain uncompleted; prepared blank forms/AI screening cannot sign for people.
+Roope organizes them and actual physical camera/platform/energy acceptance after
+a matching build/install is requested. Current source11/Android3/native dependency
+graph is not installed client10. Public privacy/operations/Android/store actions
+remain. No cleanup, push, secret/key or actual production publication occurred.
+
 ## November 13 — reference scope and byte pipeline
 
 No new account, key, payment or externally blocked engineering step. Roope

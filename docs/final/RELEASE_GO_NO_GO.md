@@ -1,5 +1,31 @@
 # Release decision
 
+## November 13 evening — real data exposes low coverage: NO-GO
+
+All21free OFF source images are now privately acquired and traced, with original
+two failures plus explicit two-case recovery preserved. The sole actual own-V2
+development run yields only3source-label agreements,1disagreement and8abstentions
+on12cross-upload observations. These are community assignments, not accepted
+identity truth. A generic self-confusion safety guard suppresses the disagreement
+but also loses a prior agreement:2/0/10 in a zero-new-pixel seen-output replay.
+That is safer abstention, not reliable or release-ready product recognition.
+
+Locally repair the decoder executable trust and blind-key leakage before data
+calls; all1563software tests/web+package builds, mobile815/shared495, frozen
+install, onlineExpo/Doctor20/20 and high-critical advisory policy pass. The prior
+SDK time gate is resolved under the unchanged age policy; lower advisories/old
+lint warnings remain. No matching native build/install or independent camera/
+offline/permissions/VoiceOver/battery/Android/remote-CI evidence is created.
+
+LV-001/REF-006/PHOTO and existing privacy/content/licensing/operations/store gates
+stay open, with no severity reduction for code tests. Exact identities, human
+adjudication/rights and representative new camera samples remain unaccepted.
+Engineering still owns useful coverage and native safety/parity. Before changing
+the explicit own-algorithm scope, Roope must choose whether to permit the existing
+free local visual encoder alongside our own matcher/guard; that hybrid is not
+implemented or empirically qualified here. No GitHub/production publication.
+Owners/procedures/evidence: OWNER_ACTIONS and OFF_RELEASE_READINESS_RESULTS.
+
 ## November 13 — byte pipeline passes, recognition/public release still NO-GO
 
 The own V2 engine now has actual encoded-byte/feature receipt binding and an

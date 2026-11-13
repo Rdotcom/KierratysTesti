@@ -1,5 +1,13 @@
 # Acceptance criteria
 
+## Real-source development and self-confusion guard — November 13 evening
+
+1. Authenticate the trusted decoder lock before parsing/executing its entry; verify exact listed artifacts, versions and bounds. Fixed official acquisition URLs, no redirects/retries/auth, observed-byte stopping budgets, durable attempt receipts and new exclusive no-link outputs are mandatory. Original MIME failures and separate exact-two recovery stay auditable.
+2. Private reviewer preparation must not link an answer/source key or imply independent/rights approval. Complete attribution remains coordinator-side; sharing waits for an approved lawful procedure. Metadata-free review derivatives are not new captures, and AI privacy inspection does not create human ground truth. All21cases/blank forms remain unaccepted.
+3. Freeze source/data/decoder/compiled public engine before image work, use numeric-first-two enrollment before results and separate self/cross-upload/insufficient lanes. Preserve every failure, unknown, duplicate and missing-class limitation. Report source-label consistency, never independent accuracy or verified GTIN/material/bin.
+4. Generic self-confusion quarantine may only turn known-confusable candidates into ambiguity, never upgrade confidence or choose another identity. No brand hardcoding or outcome-tuned threshold. Preserve the actual3/1/8→2/0/10 safety tradeoff and lost agreements; a seen-output replay makes zero new image/matcher calls and is not a quality gate.
+5. Full1563/mobile815/shared495, onlineExpo/Doctor20/20/frozen/advisory checks pass under unchanged policies. Matching native builds/device/platform/privacy/store evidence remains separate. No GO or hybrid-encoder success claim follows; ask Roope before materially changing the explicit own-algorithm approach.
+
 ## Encoded-byte runtime and product selection — November 13
 
 1. Compile only internally complete asserted V2 metadata; require the exact owned bounded byte set and actual image/feature hash joins. No caller ready flag/features can replace extraction. Fail the whole compile on partial binding, invalid/low-detail sources or port failure; never enroll independent-query references.

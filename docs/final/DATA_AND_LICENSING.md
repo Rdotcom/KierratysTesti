@@ -2,6 +2,16 @@
 
 ## Active sources
 
+- November13evening:21public OFF originals/metadata-free review derivatives are
+  acquired privately, not shipped or committed. Preserve full CC BY-SA3.0
+  image/ODbL/DbCL source attribution coordinator-side and explicit unapproved
+  reviewer preparation. No accepted identity, capture independence, lawful
+  distribution or human review is claimed. Actual development diagnostic and
+  seen-output safety replay remain separate from source truth and release
+  acceptance; details in OFF_RELEASE_READINESS_RESULTS. No user photos/cloud
+  upload or payment is used. The existing source-only selection JSON remains
+  data rather than app inference truth.
+
 - November 13 reference preparation: `scripts/qa/reference-image/off-initial-selection.json`
   contains five source-reported OFF products/21 proposed front-upload identities,
   not images, features or accepted labels. Preserve ODbL/DbCL attribution and the
