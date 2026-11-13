@@ -1,12 +1,23 @@
 # Roadmap
 
+## Local encoder byte binding — November 13
+
+- [x] Bind actual JPEG bytes/model tree/source/worker/preprocessing/vector hashes
+  through the offline pinned exporter, bounded single-flight subprocess and
+  strict native progress/counters.19regressions and one frozen generated-image
+  smoke pass:2decodes/4predictions, not product or native-phone acceptance.
+- [ ] Register and implement the three-arm seen-reference development comparison
+  with conflict/quarantine fusion; freeze all inputs/gates/accounting before
+  new predictions. Keep independent identity/rights/native/device gates open.
+
 ## Approved hybrid implementation — November 13
 
 - [x] Owner approves pretrained local features alongside our original algorithms;
   write HYBRID_RECOGNITION_MASTER_PROMPT and implement its first bounded pure
   retrieval unit with 25 synthetic regressions. No quality/deployment claim.
-- [ ] Bind actual image bytes and vectors to the pinned encoder/preprocessing,
-  then freeze and execute a separately registered development comparison.
+- [x] Bind actual image bytes and vectors to the pinned encoder/preprocessing
+  in the QA adapter; generated-image smoke passes without app integration.
+- [ ] Freeze and execute a separately registered development comparison.
 - [ ] Implement registered conflict/quarantine fusion, demonstrate useful coverage
   without unsafe accepts, obtain independent reference/rights and matching native/
   physical/platform acceptance before gated app integration. Release stays NO-GO.

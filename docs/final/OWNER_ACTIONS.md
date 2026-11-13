@@ -1,5 +1,14 @@
 # Owner actions
 
+## November 13 — local byte binding complete, comparison next
+
+- **Engineering/Codex:** actual-byte encoder/retrieval bridge and generated-image
+  smoke are complete. NEXT_ACTION now owns registered three-arm development
+  comparison/fusion, not another architecture approval or account/payment step.
+- **Roope:** independent variant/identity/rights review and later matching real
+  phone/platform acceptance remain as documented below. Generated textures cannot
+  satisfy those reviews. This work does not install, publish or push anything.
+
 ## November 13 — hybrid approval recorded
 
 - **Roope, scope choice: complete.** Free local pretrained encoder plus own logic

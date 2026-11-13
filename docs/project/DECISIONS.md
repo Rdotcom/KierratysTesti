@@ -615,3 +615,21 @@
 - Preserve own pixel/confusion code, all old failures, mobile/backend behavior,
   source/phone versions and existing NO-GO. Independent reference/rights review
   and representative physical acceptance remain required, not invented by tests.
+
+## D-080 — Reuse pinned local encoder with actual-byte receipts, not caller assertions
+
+- Date: 2026-11-13. Continue owner-approved hybrid. Reuse existing offline2024
+  two-view exporter; select center features for this retrieval bridge while
+  accounting for both actual predictions. No new weights/download/API/key.
+- Exact native source check initially fails. Git0b75faf proves removal of one
+  terminal LF after the old binary build; authenticate both exact current bytes
+  and bytes-plus-one-LF against separate hard pins. Do not relax whitespace
+  generally, change old locks or claim a new native build.
+- Verify full model tree/binary/source/prototypes before and after bounded child
+  execution, validate actual image hash/unit vector/preprocessing/progress/counters,
+  retain raw failures and hold busy until close even after abort. Platform process
+  controls are not hard real-time or cryptographic memory-wipe guarantees.
+- Freeze70sources/compiled retrieval/decoder/input hashes before the canonical
+  two-generated-image smoke. Actual2decodes/4image predictions and zero-new-call
+  receipt recount pass; synthetic comparison is not product recognition accuracy.
+  Keep NO-GO, real data/fusion/human/native/platform acceptance and no app consumer.

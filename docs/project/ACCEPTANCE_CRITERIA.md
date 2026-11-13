@@ -1,5 +1,20 @@
 # Acceptance criteria
 
+## Local embedding byte adapter — November 13
+
+1. Actual encoded bytes, trusted executable, exact current/historical source,
+   compiled model tree/prototypes and preprocessing are checked before and after
+   work. Returned input hash and center-vector hash must match actual inputs and
+   outputs; caller metadata cannot replace prediction.
+2. Bound JPEG/stdin/stdout/stderr, retain one busy gate until child close, kill on
+   cancellation/deadline/overflow, reject late or incomplete results. Retain raw
+   failures and progress lower bounds; missing telemetry never means zero work.
+   Deadline plus SIGKILL is not a hard real-time/OS cancellation guarantee.
+3. Freeze integration-smoke sources/decoder/engine/input/gates before calls and
+   claim its canonical once-only ledger. Two synthetic encodings are not two
+   independent captures, product identity or a release-quality test. No app path,
+   sorting/material effect, paid call, new model or phone/Android acceptance.
+
 ## Approved hybrid experimental retrieval — November 13
 
 1. Use the staged HYBRID_RECOGNITION_MASTER_PROMPT. Pretrained encoder and own

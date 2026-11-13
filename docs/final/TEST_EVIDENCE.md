@@ -1,5 +1,22 @@
 # Test evidence
 
+## November 13 — actual local encoder byte bridge
+
+Full pins/failures/limits: `HYBRID_ENCODER_BYTE_EVIDENCE.md`.19newNode regressions
+pass, including real isolated child timeout/cancel/output-limit/spawn failures.
+Full`pnpm validate`passes1607unique(691Node+916workspace), all checks/builds and
+18web routes;13old lint warnings remain. Log:`/tmp/kig-embedding-adapter-full.LYW0o2`.
+No dependency change or fresh advisory/Expo/remoteCI/native/device claim.
+
+One preregistered generated-image integration smoke passes2actual encoder loads/
+2decodes/4image predictions/0text.70source pins/compiled public retrieval/decoder/
+model/resources/exact inputs checked before/after; actual input/center-vector
+hashes join retrieval, and gallery-self query is rejected. Source/receipt/counter
+recount passes without new calls. Canonical claim prevents replay; original
+source-pin mismatch and exact one-LF resolution are retained, not bypassed.
+Synthetic texture similarity is not product accuracy or independent identity/
+rights acceptance. No real grocery/user-photo test, native/phone update or push.
+
 ## November 13 — approved hybrid, pure retrieval first unit
 
 - Master prompt: `../project/HYBRID_RECOGNITION_MASTER_PROMPT.md`. Owner approval

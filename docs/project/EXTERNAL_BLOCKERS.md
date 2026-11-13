@@ -1,5 +1,14 @@
 # External blockers
 
+## November 13 — actual byte bridge works locally
+
+No new external blocker. Existing cached encoder/resources support an actual
+generated-image integration smoke without accounts, keys or paid requests.
+The initial source mismatch is resolved by exact historical EOF-byte evidence,
+not an account problem. Engineering owns registered real-development comparison,
+fusion and useful coverage; human identity/rights and physical acceptance remain
+separate. No push, installation or production acceptance is inferred.
+
 ## November 13 — hybrid scope approved
 
 Roope's explicit approval resolves the architecture choice described below.

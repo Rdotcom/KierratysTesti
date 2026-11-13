@@ -1,5 +1,34 @@
 # Current state
 
+## Actual local embedding byte bridge — November 13, 2026
+
+- Implement QA-only adapter to the existing pinned2024MobileCLIP two-view
+  exporter. Snapshot bounded original JPEG bytes, compute actual SHA256, verify
+  binary/source/full compiled model tree/prototypes before and after work, check
+  input hash/output shape/preprocessing/unit vectors/full progress and counters,
+  return bound center-vector receipts to the experimental retrieval interface.
+  Both native predictions remain counted. No new model, download or app path.
+- First asset check refuses historical source hash mismatch before any image
+  call. Git0b75faf removed exactly one terminal LF; authenticate current source
+  and its exact LF-restored historical bytes separately against both fixed pins.
+  No trim/normalization waiver, old binary rebuild or frozen evidence rewrite.
+- Add19regressions with synthetic worker envelopes plus actual isolated Node
+  subprocess timeout/cancel/output-limit/failure tests. Busy remains held until
+  worker close, cancellation cannot surface late success, pre/post pin failures
+  reject vectors and raw failed attempts remain available for counter accounting.
+- Freeze70source files/actual compiled public retrieval/decoder/artifacts and
+  exactly2generated JPEG inputs before one canonical smoke. Actual2model loads,
+  2decodes/4image predictions/0text calls pass; actual-image/center-vector hashes
+  join retrieval and same-encoded-image exclusion. Separate zero-new-image
+  recount passes. This tests plumbing, NOT product accuracy or independent photos.
+- Full1607unique tests(691Node+916workspace)/all builds/18routes pass, with13old
+  lint warnings. Validation/pins/failures are in TEST_EVIDENCE and
+  HYBRID_ENCODER_BYTE_EVIDENCE. No shared/mobile runtime
+  behavior, model weights, dependencies, source/phone versions, native build,
+  phone install, secret, network acquisition, paid call or GitHub action. Real
+  development comparison/fusion, human identity/rights and physical acceptance
+  remain; recognition and production stay NO-GO.
+
 ## Approved hybrid, first implementation unit — November 13, 2026
 
 - Roope explicitly approves the free on-device encoder plus our own logic and

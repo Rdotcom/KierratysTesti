@@ -1,5 +1,14 @@
 # Release decision
 
+## November 13 — actual local byte bridge passes, product quality still NO-GO
+
+The QA adapter now verifies actual resources/input hashes/vectors and feeds the
+retrieval engine. One frozen integration smoke passes2generated JPEG decodes/
+4image predictions, with19newsoftware/process regressions. No real-product
+quality comparison, conflict fusion, independent identity/rights, app/native
+phone integration or representative physical/platform evidence is established.
+Old quality failures and remaining release gates retain severity; no publication.
+
 ## November 13 — hybrid authorized, not empirically qualified: NO-GO
 
 Owner approval resolves the earlier scope choice. The first pure retrieval unit

@@ -1,3 +1,3 @@
 # Next action
 
-Implement a byte-bound experimental adapter that produces reference/query embeddings from the existing pinned local encoder with verified preprocessing, input/resource hashes and bounded failure/deadline handling, feeding the new retrieval index without enabling app integration or rerunning old experiments.
+Implement a pre-registered three-arm development comparison (pixel-only, embedding-only and conservative hybrid with self-confusion quarantine) against the existing seen OFF references, freezing sources/data/gates/counters before any new predictions and retaining all prior failures without app integration or an independent-accuracy claim.
