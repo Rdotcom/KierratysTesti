@@ -1,5 +1,13 @@
 # External blockers
 
+November14 expansion: five metadata records and25additional review images are
+available without payment/account/new key. Five fixed requests fail status/type
+validation; preserve them and unknown cause rather than bypassing origins or
+retrying. Final eligibility/family allocation and additional free-source work
+remain local engineering. Do not call metadata-complete rows accepted images.
+Physical/operator/store/publication requirements remain separate; no independent
+human checker is required underD-086 and none is fabricated.
+
 November14 corpus regression: actual existing-source pipeline now passes,
 including previously unmeasured control pixels. Broader SKU/source-image coverage
 is still locally executable with free-source research/acquisition under licence;

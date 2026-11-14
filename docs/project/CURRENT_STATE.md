@@ -1,5 +1,34 @@
 # Current state
 
+## Free OFF expansion acquired and visually profiled — November14
+
+- Revalidate official all-original image structure/anonymous AWS path for the new
+  coverage decision; five bounded public API reads produce five immutable raw
+  snapshots. Source names/brands/quantities unchanged;653numeric originals are
+  metadata, not653usable or independent photos. Conservative same-author≤24h
+  transitive families and old21upload/day exclusions prevent trivial leakage.
+- V1metadata over-rejects Barilla because `packaging_it→60` is orphaned. Preserve
+  v1plan/failure; cached v2quarantines that one annotation and exactly reproduces
+  the other four products,0newAPI calls.30fixed candidate families freeze before
+  pixels; no altered old93image benchmark, query fit, model or paid API calls.
+-30bounded anonymous AWS requests yield25original/review pairs and5status/type
+  failures,520158received bytes. No retries/alternate origins/reserve swaps.
+  All source/response/original/review/sheet hashes recount; all3canonical stage
+  repeats refuse before work. OFF_EXPANSION_RESULTS.md retains exact hashes.
+- Five actual contact sheets observed:9front/near-full,3backs/sides,3illustrations,
+  9label/text crops,1mixed scene,5no-image failures. All30observations retained;
+  sourceGTIN/size/capture independence unverified, no human/privacy/legal approval.
+  No exact pixel duplicates among25; one near-hash nutrition-layout risk is not
+  an identical-product finding. No automatic recognition acceptance/role change.
+-16newNode tests/full1742unique(752Node+990workspace) checks/builds/18routes pass,
+  13old warnings. Visual-count fixture10→9repaired without relabelling observations.
+  Dataset-quality skill drives family/completeness/appearance separation, not a
+  new reviewer gate. No app/model/dependency/native/source-version/phone/push change.
+- Next allocate explicit disjoint per-SKU references/queries from eligible legacy
+  and new observed families, retaining missing roles and old query exclusion from
+  training before any new recognition. Public release remains NO-GO; no accounts
+  or payment are needed for that local work. Previous native/corpus proofs unchanged.
+
 ## Actual source-image/native pipeline regression passes — November 14
 
 - Freeze150source/101data/16resource pins, freshly compiled Swift6CLI and actual

@@ -1,5 +1,22 @@
 # Adversarial production-readiness audit
 
+## November14 — source-parent repair and actual image suitability observations
+
+Scoped data-preparation continuation; OFF_EXPANSION_RESULTS.md has all frozen
+receipts/hashes and30row observations. Five API reads,25images/5failed requests,
+zero model calls;1742checks/builds pass. None is a release-accuracy result.
+
+| ID / severity / state | Evidence / affected flow | Reproduction | Required remediation / boundary |
+| --- | --- | --- | --- |
+| QA-EXP-001 / medium / REPAIRED locally | Cached Barilla metadata has orphan `packaging_it→60`; v1planner over-rejects the entire record despite valid numeric originals. App provider behavior is not changed. | Raw source022044ca…and originalplan4439c974…; v2quarantine regression. | Separate cached v2excludes only invalid annotation, never invents parent; unaffected four plans match,0API repeats. Invalid annotations remain documented. |
+| REF-006 / high / OPEN, source availability substep advances |25actual candidates, but9text crops/1mixed scene/3depictions and5missing rows do not establish disjoint per-SKU physical coverage. Same-uploader/time grouping is a proxy, sourceGTIN/size not independently verified. | Acquisitiondefc205b…/visualaudit164a5034…and OFF_EXPANSION_VISUAL_REVIEW.json; all30IDs retained. | Local explicit eligible reference/query allocation, duplicate/lineage controls and frozen recognition before activation. No hidden reserve swap or discarded denominator; human checker remains waived. |
+
+No exact pixel duplicates are found among25images; one low-dHash nutrition-layout
+pair is not proof of product/image equality or independence. Failure status/type
+is known, server-side cause is not; no alternate-origin bypass or retry. Source/
+appearance/recognition evidence and prior failures stay distinct; no severity
+reduction for data availability/software checks, no app/phone/GitHub change.
+
 ## November14 — whole-pipeline source controls measured, coverage still high/open
 
 Scoped continuation, not a new30lane certification. NATIVE_CORPUS_RESULTS.md

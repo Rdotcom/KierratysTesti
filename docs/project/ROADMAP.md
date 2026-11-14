@@ -1,10 +1,18 @@
 # Roadmap
 
+- [x] Five fresh bounded OFF metadata snapshots, conservative upload-family
+  leakage checks and separate cached repair of an orphan selected annotation.
+- [x] Frozen30candidate acquisition:25private review images/5failures retained,
+  actual agent contact-sheet observations and duplicate-risk audit,0model calls.
+- [ ] Explicit disjoint per-SKU appearance-qualified allocation before recognition;
+  metadata/images received alone are not sufficient test coverage or app acceptance.
+
 - [x] Frozen actual shipping-port corpus regression: all45queries complete,
   7source agreements retained/0disagreements/5ambiguities; all33controls unknown
   including actual pixel evidence. Separate480receipt recount and1726tests pass.
-- [ ] Expand free source-image coverage to a disjoint query per intended SKU;
-  keep unavailable SKUs and old failures/denominators explicit before activation.
+- [x] Acquire/profile free expansion candidates for every intended SKU; preserve
+  unavailable image rows and old failures/denominators explicitly.
+- [ ] Complete disjoint usable-query coverage/allocation perSKU before activation.
 
 - [x] Remove readiness Sendable-conversion warning; full matching unsigned iOS
   Release11rebuild and native lifecycle/orientation regressions pass. No local

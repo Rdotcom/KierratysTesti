@@ -1,3 +1,3 @@
 # Next action
 
-Prepare and freeze a free, provenance-bound Open Food Facts corpus expansion with disjoint upload families so every intended catalogue product has at least two references and one evaluation image, retaining unavailable products and all prior failures explicitly.
+Freeze an explicit per-SKU reference/query allocation from eligible legacy and newly observed image families, keeping all original queries out of training and retaining unavailable roles, prior benchmark denominators and any changed catalogue membership before new recognition.

@@ -1,5 +1,30 @@
 # Test evidence
 
+## November14 — free OFF expansion, no recognition calls
+
+OFF_EXPANSION_RESULTS.md/PROTOCOL.md/V2_PROTOCOL.md retain all stage hashes:
+metadata5060ef25…/initialplan4439c974…/cachedplan7618f187…/imageprotocol16a8b749…/
+acquisitiondefc205b…/pixel-audit164a5034…. Five bounded API reads, five raw
+response pins; no changed source name/brand/quantity. An orphan Barilla selected
+annotation makes v1fail closed, then cached v2quarantines only that annotation
+with no API repeat and exact parity for the other four products.
+
+30fixed anonymous AWS requests:25bounded original/metadata-free review pairs,
+5status/type failures,520158bytes. No retry, fallback origin or reserve swap.
+Pinned decoder verified;25pixel profiles/five actual observed contact sheets.
+All30IDs remain in agent-only observations:9fronts/near-full,3backs,3illustrations,
+9text/label crops,1mixed scene,5missing images. No exact pixel duplicates; one
+near-hash nutrition-layout flag is not a same-product/image conclusion. No GTIN/
+size/capture/privacy/legal acceptance or new recognition accuracy is asserted.
+
+Source/response/original/review/sheet pins recount; actual repeats of metadata,
+cached-plan and image stages refuse before output/network/model work.16newNode
+tests/full1742unique(752Node+990workspace), format/lint/types/boundaries/builds/
+18routes pass;13old lint warnings. Log:`/tmp/kig-off-expansion-final-20261114.log`.
+Initial count fixture10crops is corrected to actual9without relabelling a row.
+No model calls, app/shared/native/dependency/version change, new iOS/Android/
+physical/store validation, phone installation or push. Old benchmarks remain.
+
 ## November14 — actual source/native full-pipeline regression PASS
 
 NATIVE_CORPUS_PROTOCOL.md/RESULTS.md retain lock

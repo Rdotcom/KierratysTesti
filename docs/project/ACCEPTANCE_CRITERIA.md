@@ -1,5 +1,15 @@
 # Acceptance criteria
 
+November14 expansion acceptance: metadata numeric-parent count/candidate URL,
+same-uploader/time family and actual usable appearance are different units.
+Keep all5SKUs/30candidate rows,5failed requests and visual rejections; no hidden
+reserve replacement. A selected-language crop is not a new capture; an orphan
+annotation cannot enroll a nonexistent image. Names/GTIN/size/capture independence
+remain source-asserted. Final reference/query allocation must exclude old queries
+from training and document any changed catalogue universe before recognition.
+25received images/agent sheets/1742software tests do not establish catalogue
+accuracy, independent human review, physical-device or release acceptance.
+
 November14 actual-source shipping-port regression passes its fixed engineering
 gate: all48training/45query inputs processed,≥7source agreements,0wrong-source/
 prior-correct loss, all24negative/8unresolved/1sentinel unknown including actual

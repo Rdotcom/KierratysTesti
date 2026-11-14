@@ -1,5 +1,19 @@
 # Release decision
 
+## November14 — source expansion acquired, still NO-GO
+
+Five current metadata records and25new image candidates are acquired/observed,
+with five failed requests and all30roles retained. Isolated orphan selected
+annotation repaired in cached v2without new API reads or invented images.
+1742software tests/builds pass, but no new recognizer result or accepted catalogue.
+
+Source family/time proxies and actual appearance are now explicit:9label crops,
+1mixed scene and3illustrations cannot be treated as independently captured
+whole-product positives. Freeze eligible reference/query allocation before new
+recognition; preserve old query exclusion, benchmark denominators and all missing
+roles. App/phone activation stays gated. Broader quality/physical/platform/
+privacy/licensing/operations/store requirements remain, human checker waived.
+
 ## November14 — actual corpus portability passes, public release NO-GO
 
 The actual shipping Swift/mobile/shared byte pipeline completes48training and

@@ -781,3 +781,26 @@
 - Next locally expand free provenance-bound data to cover every intended SKU,
   not another paid provider, account action, reviewer recruitment or blind retuning.
   No signing/install/push/publication action or new model/app/dependency version.
+
+## D-090 — Separate upload metadata, usable appearance and recognition evidence
+
+- Date:2026-11-14. Use official numeric-original inventories, not only current
+  language-front crops, to resolve new coverage gaps. Five bounded API reads,
+  immutable sources/responses and projectUserAgent; no secrets/paid service.
+  Group same-author≤24h uploads transitively and exclude old IDs/day intervals;
+  call families metadata proxies, never independently verified captures.
+- One orphan Barilla `packaging_it→60` annotation makes v1over-reject the record.
+  Retain v1failure; separate cached v2quarantines only that field, preserves all
+  valid originals and unaffected four plans,0API retakes or invented images.
+- Freeze30candidate identities/roles before image bytes.25bounded anonymous AWS
+  objects/review derivatives arrive,5status/type failures remain. No alternate
+  origins, retries or automatic reserve replacement; exact failure cause unknown.
+- Agent observes all5contact sheets, records all30IDs and uncertainty.9text crops
+  and1mixed scene are not whole-product positives;3depictions are not proven
+  physical captures. SourceGTIN/size/privacy/legal/capture truth not promoted.
+  One near-hash pair is shared nutrition-table layout, not product identity.
+- No model calls or changes to original93image roles/gates.16newNode/full1742
+  checks/builds pass. Fix fixture10→9crop count, not labels/results. Preserve
+  source/licence/attribution/private-image boundaries and owner-waived reviewer.
+  Next freeze explicit eligible legacy/new allocation before recognition; no
+  native/app/model/dependency/version/install/signing/push/publication action.

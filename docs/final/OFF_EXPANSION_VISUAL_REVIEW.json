@@ -1,0 +1,150 @@
+{
+  "schemaVersion": "off-expansion-agent-visual-observations-v1",
+  "observedOn": "2026-11-14",
+  "reviewerKind": "agent_contact_sheet_observation_not_independent_human_review",
+  "imageSummarySha256": "defc205b180a0997961c818dcbfcd1d3fde6513aa34dde1b1738d6c021dbc798",
+  "pixelAuditSha256": "164a5034fc24239634df1d9bb5573a4b8dac6788047d14a6ce989bfdac80ced5",
+  "reviewResolution": "Five 720x720 sheets; each available image fitted within 228x310 pixels. Size, GTIN and fine private text are not independently verified.",
+  "privacyScope": "No identifiable people or legible private text observed at review resolution; hands and public packaging print occur. This is not legal or independent privacy approval.",
+  "identityStatus": "source_asserted_unverified",
+  "captureIndependence": "unverified_metadata_batch_proxy",
+  "automaticRoleSubstitution": false,
+  "modelCalls": 0,
+  "integrationAllowed": false,
+  "observations": [
+    {
+      "id": "exp-001",
+      "view": "transport_failure",
+      "note": "No review image; response-type failure retained."
+    },
+    {
+      "id": "exp-002",
+      "view": "transport_failure",
+      "note": "No review image; response-type failure retained."
+    },
+    {
+      "id": "exp-003",
+      "view": "front_or_near_full",
+      "note": "Nutella-branded jar front held by a hand; cap/body/base visible, physical size not confirmed."
+    },
+    {
+      "id": "exp-004",
+      "view": "label_crop",
+      "note": "Ingredients text only, not a whole-product appearance."
+    },
+    {
+      "id": "exp-005",
+      "view": "label_crop",
+      "note": "Nutrition table only; perceptual-hash similarity to exp-028 is shared layout, not evidence of identical product."
+    },
+    {
+      "id": "exp-006",
+      "view": "illustration_candidate",
+      "note": "Clean Nutella-branded jar depiction with visible400g print; not established as a camera capture."
+    },
+    {
+      "id": "exp-007",
+      "view": "front_or_near_full",
+      "note": "Decorated Nutella jar with mountain-themed wrap; whole jar, exact physical variant/size not confirmed."
+    },
+    {
+      "id": "exp-008",
+      "view": "label_crop",
+      "note": "Ingredients/recycling print closeup, not whole product; no sorting truth inferred."
+    },
+    {
+      "id": "exp-009",
+      "view": "front_or_near_full",
+      "note": "Nutella-branded jar on a surface, full jar visible; exact size not confirmed."
+    },
+    {
+      "id": "exp-010",
+      "view": "front_or_near_full",
+      "note": "Near-full Nutella jar front; small edge crop and physical size remain unverified."
+    },
+    {
+      "id": "exp-011",
+      "view": "illustration_candidate",
+      "note": "Clean Nutella jar depiction; physical capture and size not confirmed."
+    },
+    { "id": "exp-012", "view": "label_crop", "note": "Nutrition table closeup only." },
+    {
+      "id": "exp-013",
+      "view": "transport_failure",
+      "note": "No review image; response-type failure retained."
+    },
+    {
+      "id": "exp-014",
+      "view": "transport_failure",
+      "note": "No review image; response-type failure retained."
+    },
+    {
+      "id": "exp-015",
+      "view": "transport_failure",
+      "note": "No review image; response-type failure retained."
+    },
+    {
+      "id": "exp-016",
+      "view": "mixed_scene",
+      "note": "Several Coca-Cola-branded cans on a shelf, not an unambiguous single object."
+    },
+    {
+      "id": "exp-017",
+      "view": "back_near_full",
+      "note": "Single near-full can showing nutrition/barcode side; front/size not confirmed."
+    },
+    {
+      "id": "exp-018",
+      "view": "front_or_near_full",
+      "note": "Single Coca-Cola-branded can front depiction; physical capture and exact size not confirmed."
+    },
+    {
+      "id": "exp-019",
+      "view": "label_crop",
+      "note": "Barilla SpaghettiN5 front panel with500g print, but not a whole box."
+    },
+    {
+      "id": "exp-020",
+      "view": "front_or_near_full",
+      "note": "Near-full Barilla SpaghettiN5 box held by a hand;500g visible, source GTIN not independently verified."
+    },
+    {
+      "id": "exp-021",
+      "view": "front_or_near_full",
+      "note": "Barilla SpaghettiN5 box with500g print in store context; no identifying face observed."
+    },
+    { "id": "exp-022", "view": "label_crop", "note": "Small ingredients panel only." },
+    { "id": "exp-023", "view": "label_crop", "note": "Small multilingual ingredients panel only." },
+    {
+      "id": "exp-024",
+      "view": "front_or_near_full",
+      "note": "Angled, wrapped Barilla box with hand/partial edge crop; source GTIN remains unverified."
+    },
+    {
+      "id": "exp-025",
+      "view": "back_near_full",
+      "note": "Prince package side/back with public barcode and batch/date print; not a front appearance or independent GTIN verification."
+    },
+    {
+      "id": "exp-026",
+      "view": "front_or_near_full",
+      "note": "Prince-branded biscuit tube held by a hand; product front visible, size not confirmed."
+    },
+    { "id": "exp-027", "view": "label_crop", "note": "Ingredients text closeup only." },
+    {
+      "id": "exp-028",
+      "view": "label_crop",
+      "note": "Nutrition table only; similar layout to exp-005 is not a same-image/product conclusion."
+    },
+    {
+      "id": "exp-029",
+      "view": "illustration_candidate",
+      "note": "Prince-branded tube depiction with promotional print; no independent capture/variant verification."
+    },
+    {
+      "id": "exp-030",
+      "view": "back_near_full",
+      "note": "Dark near-full package back; fine print and physical variant not confirmed."
+    }
+  ]
+}

@@ -1,5 +1,17 @@
 # Owner actions
 
+## November14 — allocation is the next local action
+
+- **Engineering/Codex:** follow NEXT_ACTION to freeze explicit per-SKU reference/
+  query families from eligible legacy references and newly observed images.
+  Do not train on original queries, auto-swap reserves or treat text crops/mixed
+  scenes/depictions as independent physical-camera positives. Keep failed requests
+  and any changed catalogue universe explicit. No account/payment/reviewer needed.
+- **Roope/device operator/release owner, later:** actual device/platform and
+  privacy/licensing/production/store procedures remain before publication; current
+  acquisition and1742software checks are not signing/install/runtime acceptance.
+  No new owner action is needed to finish the local allocation unit.
+
 ## November14 — actual existing-corpus test complete; free expansion next
 
 - **Engineering/Codex:** follow NEXT_ACTION to prepare/freeze a free OFF corpus
