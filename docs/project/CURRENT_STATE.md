@@ -1,5 +1,21 @@
 # Current state
 
+## Expanded actual-port recognition completes; quality FAILS — November14
+
+-7/17source agreements,0wrong/oldloss,7ambiguous/3unknown;41audits unknown.
+  Allfivepilot exact matches fail, all58queries complete. No general accuracy.
+- QA undefined optional metadata stops first run after274successful native calls/
+  13saved queries. Preserve source/raw/ledger; frozen continuation replays274
+  returns without inference, reproduces13decisions and runs264remaining calls.
+- Separate Node checker verifies156source/107data/16resource/1111prefix pins,
+  all538ordered native/source/vector/RGB/query joins and exact failed gate.
+  Nine regressions pass. EXPANDED_RECOGNITION_RESULTS.md has exact hashes/limits.
+- Cached arithmetic/full-image inspection identifies sideways Barilla and weak
+  Coca/Prince view coverage; Nutella size remains ambiguous. Next own orientation
+  consensus is local, no account/payment/reviewer blocker. No app/native/version/
+  phone/GitHub change; NO-GO. Full1759unique tests/all checks/builds/18routes pass,
+  13existing lint warnings. Exact validation log in TEST_EVIDENCE.
+
 ## Five-SKU allocation locked before recognition — November14
 
 - Explicit123row inventory:93legacy+30new candidates, all failures/exclusions

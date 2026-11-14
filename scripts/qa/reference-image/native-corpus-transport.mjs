@@ -15,6 +15,14 @@ export const NATIVE_CORPUS_LIMITS = Object.freeze({
   processWallMs: 20000,
   maximumOutputBytes: 4300000,
 });
+// Separate, pre-registered experiment; the historical 480-call policy stays intact.
+export const EXPANDED_CORPUS_LIMITS = Object.freeze({
+  ...NATIVE_CORPUS_LIMITS,
+  hashes: 369,
+  encodes: 100,
+  decodes: 68,
+  processes: 538,
+});
 const commands = {
   capabilities: "--reference-capabilities",
   hashes: "--reference-hash-stdin",
@@ -23,12 +31,14 @@ const commands = {
 };
 const sha = (bytes) => createHash("sha256").update(bytes).digest("hex");
 export function claimNativeCorpusCall(counters, kind) {
+  return claimCall(counters, kind, NATIVE_CORPUS_LIMITS);
+}
+export function claimExpandedCorpusCall(counters, kind) {
+  return claimCall(counters, kind, EXPANDED_CORPUS_LIMITS);
+}
+function claimCall(counters, kind, limits) {
   assert.ok(Object.hasOwn(commands, kind), "unknown_operation");
-  assert.ok(
-    counters.processes < NATIVE_CORPUS_LIMITS.processes &&
-      counters[kind] < NATIVE_CORPUS_LIMITS[kind],
-    "call_budget",
-  );
+  assert.ok(counters.processes < limits.processes && counters[kind] < limits[kind], "call_budget");
   counters.processes++;
   counters[kind]++;
   return commands[kind];
@@ -55,6 +65,12 @@ function writeRaw(file, bytes, root) {
 /** Fresh bounded process per operation: intentionally NOT warm app latency.
  * Async I/O lets real JS deadlines fire; no spawnSync timer starvation. */
 export function createNativeCorpusTransport({ root, binary, resource, output, lockSha256 }) {
+  return createTransport({ root, binary, resource, output, lockSha256 }, NATIVE_CORPUS_LIMITS);
+}
+export function createExpandedCorpusTransport(options) {
+  return createTransport(options, EXPANDED_CORPUS_LIMITS);
+}
+function createTransport({ root, binary, resource, output, lockSha256 }, limits) {
   const counters = { capabilities: 0, hashes: 0, encodes: 0, decodes: 0, processes: 0 };
   let busy = false;
   return {
@@ -63,7 +79,7 @@ export function createNativeCorpusTransport({ root, binary, resource, output, lo
       assert.ok(!busy, "transport_busy");
       assert.equal(typeof base64, "string");
       assert.ok(base64.length <= 2000000);
-      const command = claimNativeCorpusCall(counters, kind),
+      const command = claimCall(counters, kind, limits),
         index = counters.processes - 1;
       writeJsonExclusive(
         path.join(output, `process-${index}-attempt.json`),
@@ -110,7 +126,7 @@ export function createNativeCorpusTransport({ root, binary, resource, output, lo
           for (const stream of ["stdout", "stderr"])
             child[stream].on("data", (chunk) => {
               total += chunk.length;
-              if (total > NATIVE_CORPUS_LIMITS.maximumOutputBytes) stop("output_bound");
+              if (total > limits.maximumOutputBytes) stop("output_bound");
               else chunks[stream].push(chunk);
             });
           child.on("error", (error) => {
@@ -131,7 +147,7 @@ export function createNativeCorpusTransport({ root, binary, resource, output, lo
               stderr: Buffer.concat(chunks.stderr),
             });
           });
-          timer = setTimeout(() => stop("process_timeout"), NATIVE_CORPUS_LIMITS.processWallMs);
+          timer = setTimeout(() => stop("process_timeout"), limits.processWallMs);
           child.stdin.end(base64);
         });
         const stdout = writeRaw(path.join(output, `process-${index}.stdout`), result.stdout, root);

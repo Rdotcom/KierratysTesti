@@ -1,5 +1,22 @@
 # Test evidence
 
+## November14 — expanded actual-port quality FAIL retained
+
+EXPANDED_RECOGNITION_RESULTS:7/17agreements,0wrong/oldloss,7ambiguous/3unknown,
+41audits unknown;0/5pilots fail fixed≥14/allfive gate. Swift6CLI warnings-as-errors
+passes. QA optional undefined metadata stops after274native successes/13queries;
+separate continuation authenticates/replays274without inference, reproduces13
+decisions and performs264unattempted operations. Nine regressions pass, including
+serializer/prefix integrity/scoped paths/old budgets/gates. The macOS test temp
+root /var symlink fixture is repaired with realpath, not looser file security.
+Separate Node checker verifies156source/107data/16resource/1111prefix pins,
+538ordered byte/vector/RGB/source/query joins and exact metrics,0newmodel calls.
+Its image-extension allowlist is corrected before recount, no inference retake.
+Lockefdf65ee…/resultebbf42e7…retain failed evidence and limits. Full software
+validation PASS:1759unique(769Node+990workspace), boundaries/format/lint/typecheck/
+tests/all builds/18static routes.13existing lint warnings remain. Log:
+/tmp/kig-expanded-recognition-full-20261114.log. No phone/GO/push follows.
+
 ## November14 — five-SKU allocation and leakage checks PASS, no recognition
 
 EXPANDED_ALLOCATION_PROTOCOL.md/RESULTS.md record protocol

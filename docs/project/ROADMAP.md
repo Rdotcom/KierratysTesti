@@ -3,8 +3,9 @@
 - [x] Explicit five-SKU allocation:10refs/32fit negatives/58queries,123lineage
   rows, distinct metadata families and100pixel profiles/zero exact fit-query aliases.
   Old Nutella shared batch/Coca class change/mixed-training audit moves explicit.
-- [ ] Frozen actual-port multi-SKU utility/safety/old-correct-loss evaluation;
-  no accuracy/app-activation claim from allocation alone.
+- [x] Frozen actual-port multi-SKU test:7/17agreements,41unknown audits,0/5pilots;
+  quality FAIL retained, not activated.
+- [ ] Four-orientation consensus with all58queries/failures/fixed gates retained.
 
 - [x] Five fresh bounded OFF metadata snapshots, conservative upload-family
   leakage checks and separate cached repair of an orphan selected annotation.

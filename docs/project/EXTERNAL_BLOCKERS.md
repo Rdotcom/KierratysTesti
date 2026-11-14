@@ -1,5 +1,10 @@
 # External blockers
 
+November14: complete expanded recognition fails useful coverage. Orientation/
+data/variant remediation remains local engineering, not account/payment or a
+separate reviewer. QA serializer/continuation repaired;100encodes/58queries done.
+Actual physical/platform/operator/store actions remain separate when reached.
+
 November14 allocation: five source-SKU pilots and exact-byte/family/pixel checks
 are frozen. Actual shipping-port evaluation is now executable locally with no
 account, payment, secret, download or separate reviewer. Scope/capture/identity

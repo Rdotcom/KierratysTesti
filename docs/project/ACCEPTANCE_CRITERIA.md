@@ -1,5 +1,12 @@
 # Acceptance criteria
 
+Expanded actual-port gate:≥14/17source agreements, allfivepilots correct, zero
+wrong-source/oldsevenloss/safety-nonunknown/failure and all58rows. Observed7/17,
+0/5pilots FAILS despite all41audits unknown. No software/native-completion claim
+may replace useful-product acceptance. Continuation replays authenticated outputs
+without repeating native calls/changing gates. New orientation work keeps these
+denominators and exact identity/uncertainty constraints.
+
 November14 five-SKU allocation: require123inventory/10refs/32fit negatives/
 58unique queries, two different metadata reference batches and a disjoint pilot
 perSKU, no original query ID/byte or exact canonical-pixel alias in fit. All

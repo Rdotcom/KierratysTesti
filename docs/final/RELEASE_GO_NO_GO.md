@@ -1,5 +1,14 @@
 # Release decision
 
+## November14 — actual expanded recognition quality FAIL: NO-GO
+
+Fixed≥14/17/allfivepilot/zero wrong/lost/safety-nonunknown gate fails at7/17,
+0/5pilots.41audits unknown/allsevenoldcorrect survive,58queries/538operations
+complete after documented no-retake QA continuation. Software/native success is
+not useful multi-product coverage. Keep app activation gated; orientation/data/
+variant remediation is local, no payment/account/waived-reviewer blocker. Actual
+physical/platform/privacy/licensing/operations/store evidence remains separate.
+
 ## November14 — five-SKU references/queries allocated, public release NO-GO
 
 All five source SKUs now have two distinct metadata reference families and a

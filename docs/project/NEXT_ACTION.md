@@ -1,3 +1,3 @@
 # Next action
 
-Register fixed multi-SKU utility, safety and prior-correct-loss gates and evaluate the frozen five-SKU allocation through the actual shipping native/mobile/shared ports, preserving all58query denominators, scope changes, uncertainty and failures without retuning.
+Implement and evaluate a separately frozen four-orientation consensus on the same17product/41safety queries, preserving exact-SKU uncertainty, prior correct results, all per-view failures and fixed quality gates without query fitting or threshold relaxation.

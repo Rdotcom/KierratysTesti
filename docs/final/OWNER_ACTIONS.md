@@ -1,5 +1,13 @@
 # Owner actions
 
+## November14 — engineering owns measured coverage failure
+
+- Engineering/Codex: implement/evaluate fixed orientation consensus on retained
+  17product/41safety queries; preserve allsevenoldcorrect and ambiguity/safety.
+  No key/payment/reviewer/product-selection answer required.
+- Owner/operator later: actual device/platform/store/privacy/licensing/production
+  procedures remain; do not install/share failed recognition as final.
+
 ## November14 — frozen allocation ready for local evaluation
 
 - **Engineering/Codex:** register fixed multi-SKU utility/safety/prior-correct-loss

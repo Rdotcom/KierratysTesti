@@ -1,5 +1,18 @@
 # Adversarial production-readiness audit
 
+## November14 — complete expanded experiment exposes local quality gap
+
+REF-006(high,OPEN,local):7/17source agreements,0/5pilot matches,7ambiguous/3unknown;
+all41audits unknown/0wrong/0oldloss do not prove useful multi-product coverage.
+Evidence lockefdf65ee…/resultebbf42e7…; reproduce counts with Node-only
+review-expanded-corpus, no model retake. Affected experimental shared runtime/
+reference index/future UI. Remediate orientation/view/variant/data evidence and
+fixed quality evaluation; no threshold/denominator relaxation or severity lowering.
+REF-008(high,OPEN): actual full port/source receipt path passes, activation/
+physical/platform evidence not done. QA serializer locally repaired with nine
+regressions and274cached+264new-operation continuation; failed evidence retained.
+See EXPANDED_RECOGNITION_RESULTS. No app/phone/model/push change or public GO.
+
 ## November14 — allocation leakage risks bounded, recognition gate still open
 
 Scoped continuation. EXPANDED_ALLOCATION_RESULTS.md contains3source/105data

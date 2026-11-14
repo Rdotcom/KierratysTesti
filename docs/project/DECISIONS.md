@@ -1,5 +1,17 @@
 # Decision log
 
+## D-092 — Retain expanded quality failure; resume only unattempted native work
+
+2026-11-14: fixed≥14/17/allfivepilot/zero wrong/loss/safety-nonunknown gate fails
+at7/17,7ambiguous,3unknown;41audits unknown. Do not lower it or activate. QA-only
+optional-field serialization fails after274successful calls/13saved queries.
+Freeze original source/lock/raw/ledger and separate no-native prefix continuation:
+13olddecisions identical,264unattempted calls only, same binary/JS/manifest/gates.
+Separate checker verifies538combined receipts/58queries and cached diagnostics.
+Nine regressions repair serializer/prefix boundaries. Next own orientation
+consensus is a registered hypothesis, not a promised final fix. Owner-waived
+checker stays unperformed; no install/signing/push/production authority inferred.
+
 ## D-073 — Improve scale robustness without promoting synthetic identity evidence
 
 - Date:2026-11-12. Resume own-algorithm improvement and sound request. V2retains four scale observations/gradient orientation; scale-aware3×max(scale) separation repairs pre-call three-site/12-inlier drift inflation while preserving eight spaced supports. Keep V1bytes/old evidence, absolute gates and inferred uncertainty. Source/decoder/entry/prior-transform bindings precede one new224-key seen engineering comparison; retain first pre-call test drift, no image retry.
