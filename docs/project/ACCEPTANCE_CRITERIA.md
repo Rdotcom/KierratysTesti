@@ -1,5 +1,13 @@
 # Acceptance criteria
 
+November14 actual-source shipping-port regression passes its fixed engineering
+gate: all48training/45query inputs processed,≥7source agreements,0wrong-source/
+prior-correct loss, all24negative/8unresolved/1sentinel unknown including actual
+pixel matching. No threshold/role/denominator tuning. This closes only the
+previously unmeasured control-pixel gap on the seen source corpus; all7agreements
+are one SKU. Still require broader per-SKU/disjoint/prospective/physical quality,
+source/licence/uncertainty, platform/privacy/operations/store evidence before GO.
+
 November14 native-port evidence: strict shared/mobile contracts, single-flight/
 deadline, generated JPEG orientation and actual Mac invocation of shipping Swift
 plus JS/runtime joins pass. The first mirrored-RGB failure remains recorded.

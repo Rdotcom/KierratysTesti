@@ -1,5 +1,37 @@
 # Test evidence
 
+## November14 — actual source/native full-pipeline regression PASS
+
+NATIVE_CORPUS_PROTOCOL.md/RESULTS.md retain lock
+0fcf92e80595adc08d846b26c5b1b0b31de6c7bdd45318344ed3d2f91d4224ee and result
+dba2524158bea689f6fce1dbb6e776d04a294dea5a0d0ec27d9877a6ec4bc431.
+150source/101data/16resource/actual freshly compiled Swift6CLI/two JS pins pass.
+All93images retained with8refs/40train-only/12product/24negative/8unresolved/
+1insufficient-gallery; no query fit or threshold/role change.480bounded async
+operations complete:1capability/333hashes/93encodes/53RGB,45query receipts.
+
+Fixed engineering gate passes:7source agreements(all one BarillaSKU),0source
+disagreements/prior-correct losses,5Nutella ambiguities;24negative/8unresolved/
+1sentinel all unknown INCLUDING actual pixel evidence. Prince/Coca coverage,
+source-label/seen-image and nonphysical limits stay explicit.37955mswhole Mac
+cold-process run is not phone latency; derived93predictions/146JPEGdecodes/
+94loads are not new hardware instrumentation. No cloud/API/network acquisition.
+
+Separate built-ins-only checker verifies all480ordered operation receipts,
+93vectors/53RGB/333SHA joins/45query source/confidence/catalogue joins and metrics
+without recognition imports or new model calls. Source SHA256:
+7d124274a57a169cec04f40e782d9f5cea34f95215f81054bd763655453d95e7.
+Actual canonical freeze and run repeats refuse before output/model work. Initial
+verifier work-only source-reader failure is repaired with scoped race-checked
+source reads and regression; no repeated recognition or reset ledger.
+
+15newNode regressions/full1726unique(736Node+990workspace), all format/lint/types/
+boundaries/builds/18routes pass;13old lint warnings. Final log:
+`/tmp/kig-native-corpus-final2-20261114.log` (earlier1722core/full and1726verifier
+logs retained separately). No shared/mobile runtime/model/dependency/source-version
+change, new native iOS build/install/signing, physical/Android/store pass or push.
+Previous unsigned Release11proof unchanged; independent checker remains waived.
+
 ## November14 — final readiness-warning repair and Release rebuild PASS
 
 An exact one-line contextual closure repairs the existing Swift5readiness

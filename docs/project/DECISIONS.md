@@ -757,3 +757,27 @@
   delta rather than silently claiming current sources match the old lock. No
   additional model calls or retake of completed recognition-quality experiments.
   No physical/accuracy/GO claim or change to owner-waived review policy.
+
+## D-089 — Measure full-pipeline controls and keep one-SKU scope explicit
+
+- Date:2026-11-14. Preserve original93images/roles/family split, one gallery/
+  train-only fit and all historical gates/failures. Compile fresh shipping Swift
+  operations, use actual mobile adapters/public byte runtime, freeze150source/
+  101data/16resource pins and one canonical stage before93image predictions.
+- Async native transport lets JS timers run; bounded exclusive raw RGB outputs
+  avoid a smaller JSON-string-envelope limit.480operations complete with no retry:
+  1capability/333hashes/93encodes/53RGB. All7prior agreements persist,0wrong-source,
+  5variant ambiguities;24negatives/8unresolved/1Coca-Cola sentinel all unknown.
+  The specific unmeasured control-pixel gap is closed for this seen corpus.
+- All7agreements still one BarillaSKU, Prince lacks a product query and Coca-Cola
+  insufficient gallery. Do not call7/12general accuracy or promote source/AI
+  labels, native Mac CLI evidence or a waived reviewer to independent truth.
+  Default app remains unchanged/integrationAllowedfalse; full public NO-GO stays.
+- Separate built-ins-only receipt implementation verifies150/101/16pins and all
+  480ordered receipts,93vectors/53RGB/333hashes/45query provenance and metrics,
+  with0newmodel calls. First work-only source reader failure is repaired with
+  scoped canonical/race-checked reads and regression, without recognition retake.
+  Actual canonical repeats refuse before work.15newNode/full1726checks/builds pass.
+- Next locally expand free provenance-bound data to cover every intended SKU,
+  not another paid provider, account action, reviewer recruitment or blind retuning.
+  No signing/install/push/publication action or new model/app/dependency version.

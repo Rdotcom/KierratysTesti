@@ -1,5 +1,31 @@
 # Current state
 
+## Actual source-image/native pipeline regression passes — November 14
+
+- Freeze150source/101data/16resource pins, freshly compiled Swift6CLI and actual
+  mobile/shared JS entries before one canonical run. Preserve all93images:
+  8references/40training negatives/12product queries/24evaluation negatives/
+  8unresolved jars/1insufficient-gallery sentinel; no query fitting or tuning.
+- Actual byte-bound pipeline completes48training images and45queries:7source
+  agreements/0source disagreements/5Nutella variant ambiguities; all7agreements
+  remain one BarillaSKU. All7prior agreements survive.24evaluation+8unresolved+
+  Coca-Cola sentinel all unknown, now including actual pixel evidence, not a
+  substituted unknown branch. Prince still lacks a product query. No broad or
+  independently labelled accuracy claim; owner-waived review stays unperformed.
+-480bounded async processes:1capability/333native hashes/93encodes/53RGB;
+  93predictions/146JPEG decodes/94loads derive from source/fresh-process topology.
+  Entire Mac test37955ms is not phone latency. All receipts/pins retained. Separate
+  Node-only no-recognition-import checker authenticates480ordered receipts and
+  counts with0newmodel calls; actual canonical repeats refused before work.
+-15newNode tests pass; full1726unique(736Node+990workspace) checks/builds/18routes
+  pass,13old warnings. Initial work-only verifier reader is repaired with scoped
+  race-checked source reads and path/secret regression; no recognition retake.
+  NATIVE_CORPUS_RESULTS.md has exact hashes/limits. No app/model/dependency/source
+  version/phone/GitHub/cloud change. Existing unsignedRelease11proof unchanged.
+- Engineering portability gate passes, public release NO-GO. Next expand free
+  source data for per-SKU evaluation/coverage before activation/physical/platform
+  acceptance. Lack of corpus coverage is local work, not account/reviewer blocker.
+
 ## Matching Release rebuilt; readiness warning removed — November14
 
 - Replace the old static-function-to-Sendable conversion with an explicitly

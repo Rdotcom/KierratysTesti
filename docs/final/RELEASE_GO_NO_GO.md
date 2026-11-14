@@ -1,5 +1,20 @@
 # Release decision
 
+## November14 — actual corpus portability passes, public release NO-GO
+
+The actual shipping Swift/mobile/shared byte pipeline completes48training and
+45query images with7retained source agreements/0wrong-source/5ambiguities and all
+33controls unknown INCLUDING pixels. Frozen gate, separate480receipt recount and
+1726software tests/builds pass. NATIVE_CORPUS_RESULTS.md has exact evidence/limits.
+
+This is the same seen/source-labelled corpus and all7agreements concern one
+BarillaSKU; Prince has no product query and Coca-Cola insufficient references.
+Broader corpus/SKU, prospective camera/platform/physical and privacy/licensing/
+operations/store acceptance remain. Keep app activation gated; do not convert
+portability or unknown controls into general accuracy/verified hazard safety.
+The independent human checker is owner-waived, not required or performed.
+Corpus expansion remains locally executable, not a payment/account blocker.
+
 November14 final follow-up: matching unsigned Release rebuild passes after
 removing the readiness compiler warning. Native lifecycle/RGB and1711software
 tests/builds pass; no local-vision warnings, dependency warnings remain. Public

@@ -1,5 +1,11 @@
 # Roadmap
 
+- [x] Frozen actual shipping-port corpus regression: all45queries complete,
+  7source agreements retained/0disagreements/5ambiguities; all33controls unknown
+  including actual pixel evidence. Separate480receipt recount and1726tests pass.
+- [ ] Expand free source-image coverage to a disjoint query per intended SKU;
+  keep unavailable SKUs and old failures/denominators explicit before activation.
+
 - [x] Remove readiness Sendable-conversion warning; full matching unsigned iOS
   Release11rebuild and native lifecycle/orientation regressions pass. No local
   vision compiler warnings; dependency warnings remain visible.
@@ -8,8 +14,9 @@
   actual synthetic byte-runtime/vector parity and all EXIF orientations pass.
   Failed first orientation run retained; default UI path remains unchanged.
 - [x] Matching full unsigned native app/Expo bridge Release build11.
-- [ ] Newly frozen broader actual-port product/unknown evaluation before enabling
-  the experimental runtime; then actual physical/platform acceptance.
+- [x] Frozen actual-port regression on the existing source-labelled corpus.
+- [ ] Broader per-product/prospective quality before enabling the experimental
+  runtime; then actual physical/platform acceptance.
 
 ## Runtime binding and owner-review waiver — November 14
 

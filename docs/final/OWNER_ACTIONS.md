@@ -1,5 +1,20 @@
 # Owner actions
 
+## November14 — actual existing-corpus test complete; free expansion next
+
+- **Engineering/Codex:** follow NEXT_ACTION to prepare/freeze a free OFF corpus
+  expansion with≥2references/1disjoint query per intended SKU. Verify current
+  source availability/licence/provenance for that new acquisition decision;
+  preserve unavailable products and old denominators, no blind gate retuning.
+  The actual existing-source native pipeline/control-pixel gap is now tested;
+  all7agreements still one SKU. No payment, account or reviewer is needed here.
+- **Roope/device operator, later:** matching physical camera/unknown/mixed/offline/
+  permission/accessibility/battery acceptance requires actual device interactions
+  and observed evidence under a separately approved install. The Mac CLI proof
+  and source-labelled controls do not substitute for it. No phone update occurs.
+- **Release owner, later:** existing privacy/licensing/production-service/store
+  procedures remain before publication; a separate human checker stays waived.
+
 November14: matching unsigned iOS Release and readiness-warning repair are now
 complete. Engineering proceeds with NEXT_ACTION's frozen actual-port corpus
 evaluation; no separate human checker, account or paid action is required for

@@ -1,5 +1,12 @@
 # External blockers
 
+November14 corpus regression: actual existing-source pipeline now passes,
+including previously unmeasured control pixels. Broader SKU/source-image coverage
+is still locally executable with free-source research/acquisition under licence;
+do not treat absent queries/independent labels as an account or paid-API blocker.
+No separate human checker is required(D-086). Actual physical-device/operator,
+store-account/publication and operational owner approvals remain when reached.
+
 November14: new reference-port/runtime engineering and synthetic tests need no
 account, secret, paid service or separate reviewer. Full matching unsigned native
 Release build now passes. Broader recognition evaluation remains locally

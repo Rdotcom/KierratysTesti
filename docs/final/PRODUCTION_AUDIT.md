@@ -1,5 +1,22 @@
 # Adversarial production-readiness audit
 
+## November14 — whole-pipeline source controls measured, coverage still high/open
+
+Scoped continuation, not a new30lane certification. NATIVE_CORPUS_RESULTS.md
+records the frozen actual shipping-port/mobile/shared run:8refs/40train-only/
+45queries,150source/101data/16resource pins,480ordered operation receipts and
+separate zero-new-model recount. Fixed engineering gate and1726checks/builds pass.
+
+| Finding / severity / current state | Evidence and affected flow | Reproduction | Required remediation / boundary |
+| --- | --- | --- | --- |
+| REF-006 / high / OPEN: broader coverage/identity reliability | Seven agreements still one source-assigned BarillaSKU; five Nutella variants ambiguous, Prince no query, Coca-Cola one reference/sentinel. Source/AI identities are not independent truth. | Retained lock0fcf92e8…/resultdba25241… and NATIVE_CORPUS_RESULTS; no repeat acquisition. | Engineering locally expands free provenance-bound per-SKU/disjoint evaluation and frozen prospective testing; do not replace missing coverage with aggregate7/12. Separate human reviewer is waived(D-086), not an external blocker. |
+| REF-008 / high / OPEN: activation/representative native runtime | Actual shipping Swift operations/mobile adapters/runtime now pass on all existing45queries, including pixels for24negative/8unresolved/1sentinel (all unknown). Full unsigned iOS compile already passes. These specific implementation/control-measurement substeps are complete; UI activation and actual physical/platform behavior remain unverified. | Actual480native call receipts,333SHA/93vector/53RGB/45query joins independently recounted by separate Node implementation;1726tests/builds. | Keep default behavior/gate until broader corpus/prospective quality and actual device/platform acceptance. Local corpus/integration work is not an account or paid-API blocker; later device/operator evidence is genuine. |
+
+No wrong-source/control candidate/lost prior agreement was observed in THIS
+seen development run. This does not prove zero-error general recognition or
+verified material/hazard/sorting safety. No severity downgrade, missing-denominator
+exclusion, model/API/key/version change, device installation or GitHub action.
+
 November14 follow-up: the existing readiness Sendable-conversion warning is
 repaired with one contextual closure/regression assertion; Swift5/6strict native
 compiles, native lifecycle/RGB checks,1711software tests/builds and full matching
