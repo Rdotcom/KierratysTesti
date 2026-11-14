@@ -1,11 +1,17 @@
 # Roadmap
 
+- [x] Explicit five-SKU allocation:10refs/32fit negatives/58queries,123lineage
+  rows, distinct metadata families and100pixel profiles/zero exact fit-query aliases.
+  Old Nutella shared batch/Coca class change/mixed-training audit moves explicit.
+- [ ] Frozen actual-port multi-SKU utility/safety/old-correct-loss evaluation;
+  no accuracy/app-activation claim from allocation alone.
+
 - [x] Five fresh bounded OFF metadata snapshots, conservative upload-family
   leakage checks and separate cached repair of an orphan selected annotation.
 - [x] Frozen30candidate acquisition:25private review images/5failures retained,
   actual agent contact-sheet observations and duplicate-risk audit,0model calls.
-- [ ] Explicit disjoint per-SKU appearance-qualified allocation before recognition;
-  metadata/images received alone are not sufficient test coverage or app acceptance.
+- [x] Explicit per-SKU candidate allocation before recognition, with source-only
+  identity and physical/back/depiction limits; not independent test acceptance.
 
 - [x] Frozen actual shipping-port corpus regression: all45queries complete,
   7source agreements retained/0disagreements/5ambiguities; all33controls unknown

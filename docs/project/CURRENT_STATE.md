@@ -1,5 +1,30 @@
 # Current state
 
+## Five-SKU allocation locked before recognition — November14
+
+- Explicit123row inventory:93legacy+30new candidates, all failures/exclusions
+  retained.10refs/32calibration/17source-product queries/41safety audits,58queries.
+  All five SKUs have2different reference metadata families and a disjoint pilot;
+  four pilot images new to recognition, one seen old Coca-Cola sentinel.
+- Fix hidden family weakness: old Nutella400grefs004/007share one upload batch.
+  New allocation keeps004and explicitly substitutes observed400gdepiction006;
+  old benchmark stays unchanged. Coca-Cola becomes enrolled, so008is explicitly
+  seen-positive rather than outside negative; never claim unchanged-metric gain.
+- Eight mixed training scenes move to unresolved audit before scores;32unmixed
+  negatives remain. Original45query IDs/hashes never train. Original12product+
+  4newpilots+008=17;24negative+8unresolved+8movedmixed+newmixed016=41audits.
+- Freeze3sources/105data pins before100canonical RGB profiles:0exact fit/query
+  pixel aliases. Historical control connected components also have no fit/query
+  split; same-author/time families remain proxies, not independent captures.
+-8newNode/full1750unique(760Node+990workspace)/all checks/builds/18routes pass,
+  13old warnings. Canonical actual repeat refused before decode/output. Allocation
+  and parent pins recount with0network/model calls; EXPANDED_ALLOCATION_RESULTS.md
+  retains exact hashes, role changes, depictions/back/partial-reference limits.
+- No new recognition result or app activation. Next freeze multi-SKU utility/
+  safety/loss gates and evaluate actual shipping ports on this allocation.
+  Human checker stays waived, source identity inferred; no app/model/dependency/
+  native/version/phone/GitHub change. Public release remains NO-GO.
+
 ## Free OFF expansion acquired and visually profiled — November14
 
 - Revalidate official all-original image structure/anonymous AWS path for the new

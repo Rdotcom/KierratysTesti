@@ -804,3 +804,24 @@
   source/licence/attribution/private-image boundaries and owner-waived reviewer.
   Next freeze explicit eligible legacy/new allocation before recognition; no
   native/app/model/dependency/version/install/signing/push/publication action.
+
+## D-091 — Freeze changed class membership and eliminate trivial family leakage
+
+- Date:2026-11-14. All123inventory rows remain;10refs/32fit negatives/17source
+  product+41safety queries. Each five-SKU pilot has two different metadata ref
+  families and a disjoint query, but no independent-capture/identity claim.
+- Old Nutella400grefs004/007share a batch; retain004plus observeddepiction006
+  in this NEW allocation, never rewrite old benchmark. Newly enrolled Coca-Cola
+  uses017/018; old008sentinel becomes a clearly SEEN positive query, not new or
+  retained negative-control accuracy. Four other pilot images are new to matching.
+- Eight mixed training scenes cannot prove absence of a new class; move them to
+  unresolved safety audits before outcomes. Retain old roles/denominators and
+  exclude original45query IDs AND bytes from fit. No source-only uncertainty or
+  explicit missing/failed/cropped row is relabelled verified/whole/accepted.
+- Freeze105data/3source pins and one stage before100canonical RGB profiles;
+  zero exact fit/query pixel aliases. Authenticate old connected components with
+  no cross-role leakage. Near-duplicate/capture independence is still unproven.
+  Eight regressions/full1750checks/builds and actual canonical repeat refusal pass.
+- No new recognition, app/native/model/dependency/version/phone/push change.
+  Next separately register actual-port multi-SKU quality/safety/loss gates before
+  scores. Owner-waived checker remains unperformed; no fabricated human truth.

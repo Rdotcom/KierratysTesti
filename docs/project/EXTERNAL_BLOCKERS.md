@@ -1,5 +1,11 @@
 # External blockers
 
+November14 allocation: five source-SKU pilots and exact-byte/family/pixel checks
+are frozen. Actual shipping-port evaluation is now executable locally with no
+account, payment, secret, download or separate reviewer. Scope/capture/identity
+limitations remain explicit, not external approval substitutes. Actual physical/
+platform, service/store publication and owner account actions remain when reached.
+
 November14 expansion: five metadata records and25additional review images are
 available without payment/account/new key. Five fixed requests fail status/type
 validation; preserve them and unknown cause rather than bypassing origins or

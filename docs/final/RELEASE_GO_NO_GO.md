@@ -1,5 +1,19 @@
 # Release decision
 
+## November14 — five-SKU references/queries allocated, public release NO-GO
+
+All five source SKUs now have two distinct metadata reference families and a
+disjoint pilot query in a frozen allocation.100pixel profiles show no exact fit/
+query alias; all original queries stay out of fit,1750checks/builds pass. No new
+recognition has been run, so no accuracy or app-activation approval follows.
+
+Coca-Cola is newly enrolled and its old sentinel becomes an explicitly SEEN
+positive; this is changed class membership, not an unchanged negative-control
+improvement. Four other pilots are new to matching. References include depiction/
+back/partial views; capture/identity truth remains unverified. Next fixed actual-
+port quality/safety/loss evaluation is local, no reviewer/account/payment blocker.
+Broader physical/platform/privacy/licensing/operations/store evidence remains.
+
 ## November14 — source expansion acquired, still NO-GO
 
 Five current metadata records and25new image candidates are acquired/observed,

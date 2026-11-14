@@ -1,5 +1,14 @@
 # Acceptance criteria
 
+November14 five-SKU allocation: require123inventory/10refs/32fit negatives/
+58unique queries, two different metadata reference batches and a disjoint pilot
+perSKU, no original query ID/byte or exact canonical-pixel alias in fit. All
+original benchmark roles/metrics remain separately preserved. Old Coca sentinel
+is explicitly seen-positive after class enrollment, not an unchanged negative
+control. Eight mixed-training scenes stay unresolved audits, not absence labels.
+Allocation and1750checks do not establish new recognition/physical truth; freeze
+actual multi-SKU utility/safety/loss gates before matching, no post-result tuning.
+
 November14 expansion acceptance: metadata numeric-parent count/candidate URL,
 same-uploader/time family and actual usable appearance are different units.
 Keep all5SKUs/30candidate rows,5failed requests and visual rejections; no hidden

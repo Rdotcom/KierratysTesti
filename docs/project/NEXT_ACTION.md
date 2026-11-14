@@ -1,3 +1,3 @@
 # Next action
 
-Freeze an explicit per-SKU reference/query allocation from eligible legacy and newly observed image families, keeping all original queries out of training and retaining unavailable roles, prior benchmark denominators and any changed catalogue membership before new recognition.
+Register fixed multi-SKU utility, safety and prior-correct-loss gates and evaluate the frozen five-SKU allocation through the actual shipping native/mobile/shared ports, preserving all58query denominators, scope changes, uncertainty and failures without retuning.

@@ -1,5 +1,24 @@
 # Test evidence
 
+## November14 — five-SKU allocation and leakage checks PASS, no recognition
+
+EXPANDED_ALLOCATION_PROTOCOL.md/RESULTS.md record protocol
+0eabf29c1372848e26e6734f04263040ce64675376d070cf45ce8d8a6a33d42e and allocation
+34a9964c4623c1d04aa73c2c9f08f4068155e36866ce820a92e06066a2ace08c.
+3source/105data pins,123inventory rows,100bounded canonical RGB profiles;
+10refs/32calibration/17product+41safety queries. All original45query IDs/hashes
+excluded from fit; perSKU2different metadata ref batches/disjoint pilot; no
+exact fit/query pixel aliases or old connected-component leakage. Actual stage
+repeat refuses before decode/output; source/data/count/profile recount passes.
+
+Eight new regressions/full1750unique(760Node+990workspace) checks/builds/18routes
+pass;13old lint warnings. Log:`/tmp/kig-expanded-allocation-full-20261114.log`.
+Four pilot images are new, oldCoca008is explicitly seen-positive after class
+enrollment. OldNutella004/007shared batch and8mixed-train→audit changes are
+documented BEFORE any outcome. Old benchmark and all failures remain unchanged.
+No network/model call, new recognition accuracy, app/native/dependency/version/
+phone/GitHub change or physical/store evidence is claimed by this allocation.
+
 ## November14 — free OFF expansion, no recognition calls
 
 OFF_EXPANSION_RESULTS.md/PROTOCOL.md/V2_PROTOCOL.md retain all stage hashes:

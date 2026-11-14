@@ -1,5 +1,24 @@
 # Adversarial production-readiness audit
 
+## November14 — allocation leakage risks bounded, recognition gate still open
+
+Scoped continuation. EXPANDED_ALLOCATION_RESULTS.md contains3source/105data
+pins,100canonical RGB profiles/zero exact fit-query pixel aliases,123inventory
+rows and1750software checks/builds. There are no new recognition results.
+
+REF-006(high,OPEN) advances only in coverage preparation:10refs and five pilot
+queries have different metadata families; two oldNutella400grefs share a batch,
+so the new allocation keepsoneplus an explicit depiction instead. No original
+query ID/byte enters fit, no old connected component spans fit/query, but true
+capture/GTIN/variant independence remains unverified and references include a
+back/partial/depiction. Do not reinterpret these checks as reliable recognition.
+
+REF-008(high,OPEN) still needs fixed actual-port multi-SKU utility/safety/loss
+evaluation before activation, then actual physical/platform acceptance. New
+Coca class membership changes old008from outside sentinel to seen-positive;
+8mixedtrain images move to unresolved audit before scores. Old benchmark and
+all denominators/failures remain separately retained; no scope-hidden green pass.
+
 ## November14 — source-parent repair and actual image suitability observations
 
 Scoped data-preparation continuation; OFF_EXPANSION_RESULTS.md has all frozen

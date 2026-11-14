@@ -1,5 +1,16 @@
 # Owner actions
 
+## November14 — frozen allocation ready for local evaluation
+
+- **Engineering/Codex:** register fixed multi-SKU utility/safety/prior-correct-loss
+  gates and evaluate the frozen10ref/32calibration/58query allocation through
+  actual shipping ports. Preserve all123lineage rows and explicit oldCoca
+  sentinel/class change, oldNutella shared batch, mixed-train audit moves and
+  four-new/one-seen pilot scope. Do not tune gates after results or activate app.
+- **Owner/operator, later:** existing physical/platform, privacy/licensing,
+  production/store procedures remain. No payment/key/account or independent
+  reviewer is required for this next local experiment; none is newly requested.
+
 ## November14 — allocation is the next local action
 
 - **Engineering/Codex:** follow NEXT_ACTION to freeze explicit per-SKU reference/
