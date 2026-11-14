@@ -1,5 +1,29 @@
 # Native reference ports: synthetic integration results
 
+## Subsequent readiness-warning repair
+
+The full unsigned app/bridge build succeeds, then its existing Swift5readiness
+function-to-Sendable warning is repaired with one explicit contextual closure.
+All146frozen v2source hashes authenticate at commit554bafe; replacing exactly
+that new line with the prior line authenticates the current delta. No model
+predictions are repeated and no frozen quality result is relabelled as current.
+
+Swift5shipping arm64module and Swift6QA compile warnings-as-errors. Native
+readiness8/recognition9/reference12/generated-RGB8checks pass again. Full1711
+tests/builds pass again. Matching unsigned Release11rebuild succeeds; embedded
+Hermes is unchanged,6bridge names/4notices/zero QA symbols/model pins pass.
+Zero local-vision warnings;43incremental dependency warning lines remain, not
+comparable to the first full compile's1103lines. First app archive is retained.
+
+New receipt SHA256:
+e128986a6921ef5f55fd851d5d668b9a801cc394eb9920457b456196e6ba0173.
+New binary SHA256:
+71574024db9d37c918e45d69e3ade14b9c2f6a7dfb7e46987d0b8467ee0a8761.
+Private receipt:`work/native-reference-ports-2026-11-14.P5tYhw/release-sendable-receipt.json`.
+Logs:`/tmp/kig-native-reference-ios-sendable-20261114.log` and
+`/tmp/kig-native-reference-final-20261114.log`. No signing, install, UI activation,
+phone, account, paid call or push. Earlier run/build details below are historical.
+
 2026-11-14. Experimental and not enabled in the normal app UI. This work adds
 no dependency, model, account, cloud use or product-accuracy claim.
 

@@ -741,3 +741,19 @@
   Pods/build); Expo prebuild regenerates iOS, then reinstall Pods without repo
   update. Restore its incidental npm-script changes; no dependency/source-version
   change, account, signing, phone-install or GitHub authority is inferred.
+
+## D-088 — Remove readiness compiler warning without re-running frozen quality
+
+- Date:2026-11-14. Actual Swift5full app build flags the existing static readiness
+  function conversion to @Sendable. Wrap it in an explicitly contextual closure;
+  no mutable capture, worker/cache/deadline or image operation is changed. Add a
+  policy regression and rerun Swift5shipping/Swift6QA warnings-as-errors, native
+  lifecycle/orientation, full1711software checks and actual unsigned Release.
+- Full and incremental builds pass; the latter has0local-vision warning lines,
+  43dependency warning lines. Keep both build receipts; do not compare incremental
+  warning counts as if all dependencies were freshly compiled. Archive the first
+  unsigned app before overwriting build outputs; no cleanup or install follows.
+- Pin all146frozen v2sources at committed554bafe; authenticate the exact one-line
+  delta rather than silently claiming current sources match the old lock. No
+  additional model calls or retake of completed recognition-quality experiments.
+  No physical/accuracy/GO claim or change to owner-waived review policy.

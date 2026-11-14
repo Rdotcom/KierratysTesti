@@ -1,10 +1,15 @@
 # Roadmap
 
+- [x] Remove readiness Sendable-conversion warning; full matching unsigned iOS
+  Release11rebuild and native lifecycle/orientation regressions pass. No local
+  vision compiler warnings; dependency warnings remain visible.
+
 - [x] Experimental iOS reference embedding/RGB/hash capability and mobile adapter;
   actual synthetic byte-runtime/vector parity and all EXIF orientations pass.
   Failed first orientation run retained; default UI path remains unchanged.
-- [ ] Matching full native app/bridge build and newly frozen broader actual-port
-  product/unknown evaluation before enabling the experimental runtime.
+- [x] Matching full unsigned native app/Expo bridge Release build11.
+- [ ] Newly frozen broader actual-port product/unknown evaluation before enabling
+  the experimental runtime; then actual physical/platform acceptance.
 
 ## Runtime binding and owner-review waiver — November 14
 
@@ -13,8 +18,9 @@
   full1695/builds and one actual4process/8prediction synthetic smoke pass.
 - [x] Record owner's explicit waiver of a separate checker; never mark missing
   review complete. Automated checks/visible inferred source status replace it.
-- [ ] Implement/verify capability-gated native iOS ports/mobile adapters before
-  activation; device/platform/privacy/licence/account/store gates remain.
+- [x] Implement/verify capability-gated native iOS ports/mobile adapters, with
+  synthetic source/runtime parity and full unsigned app compilation. Activation
+  still needs broader quality/device/platform/privacy/licence/store evidence.
 
 ## Meaningful midpoint/support improvement — November 14
 

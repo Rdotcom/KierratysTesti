@@ -1,5 +1,10 @@
 # Owner actions
 
+November14: matching unsigned iOS Release and readiness-warning repair are now
+complete. Engineering proceeds with NEXT_ACTION's frozen actual-port corpus
+evaluation; no separate human checker, account or paid action is required for
+that local unit. Device/store/publication procedures below remain separate.
+
 ## November 14 — native synthetic ports complete, app/quality acceptance next
 
 - **Engineering/Codex:** matching unsigned iOS app/Expo bridge build passes.

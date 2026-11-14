@@ -1,5 +1,23 @@
 # Test evidence
 
+## November14 — final readiness-warning repair and Release rebuild PASS
+
+An exact one-line contextual closure repairs the existing Swift5readiness
+Sendable-conversion warning, with regression assertion; no inference/gate change.
+All146frozen source pins authenticate from committed554bafe and the exact delta
+authenticates the current engine. Zero new model calls or recognition retakes.
+
+Swift5shipping arm64module/Swift6QA warnings-as-errors pass. Native readiness8,
+recognition9, reference lifecycle/hash12and generated-JPEG/RGB8checks pass.
+Full1711unique tests/all checks/builds/18routes pass again:
+`/tmp/kig-native-reference-final-20261114.log`. Final mobile914scoped checks also
+pass:`/tmp/kig-native-reference-mobile-final-20261114.log`. Matching unsigned iOS Release11
+rebuild passes:`/tmp/kig-native-reference-ios-sendable-20261114.log`.
+Receipt e128986a…records binary71574024…and unchanged Hermes44d80af7…,6bridge
+names/4notice matches/zero QA symbols/model pins.0local-vision warnings;
+43incremental dependency warning lines are not a clean rebuild comparison.
+The original unsigned app is archived privately; no signing/install or push.
+
 ## November14 — full matching unsigned iOS Release build PASS
 
 Actual workspace/scheme KeepItGreen, Release, generic iOS, stable Xcode26.6/

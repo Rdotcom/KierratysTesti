@@ -604,7 +604,7 @@ final class LocalVisionEngine: @unchecked Sendable {
   func inspectReadiness(completion: @escaping @Sendable (LocalVisionReadiness) -> Void) {
     // Capture the predictor only while owning the shared gate. No work is done
     // on the caller/JS thread and no image request is created or performed.
-    enqueueReadiness(deadlineSeconds: Self.deadlineSeconds, inspection: Self.inspectCapabilities,
+    enqueueReadiness(deadlineSeconds: Self.deadlineSeconds, inspection: { predictor in Self.inspectCapabilities(predictor: predictor) },
                      completion: completion)
   }
 

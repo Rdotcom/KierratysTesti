@@ -1,5 +1,11 @@
 # Release decision
 
+November14 final follow-up: matching unsigned Release rebuild passes after
+removing the readiness compiler warning. Native lifecycle/RGB and1711software
+tests/builds pass; no local-vision warnings, dependency warnings remain. Public
+release still NO-GO for the unchanged runtime/product/device/platform/privacy/
+operations/store gates below, not for a separate human-review requirement.
+
 ## November 14 — native port/parity unit passes; still NO-GO
 
 The experimental iOS ports/mobile contracts/runtime pass actual synthetic Mac

@@ -1,5 +1,25 @@
 # Current state
 
+## Matching Release rebuilt; readiness warning removed — November14
+
+- Replace the old static-function-to-Sendable conversion with an explicitly
+  contextual closure; no worker/cache/inspection or prediction behavior changes.
+  Add a regression assertion. Swift5shipping arm64module and Swift6QA compile
+  with warnings-as-errors; native readiness8/recognition9/reference12/RGB8pass.
+- Matching unsigned iOS Release11rebuild succeeds:6bridge names,4exact notices,
+  embedded Hermes99, no QA symbols, expected graph/weight pins. No local-vision
+  warnings;43incremental dependency warning lines remain (not comparable to the
+  initial full compile's1103lines). No dependency/source-version/phone change.
+- Full1711tests/builds pass again. Final log:
+  `/tmp/kig-native-reference-final-20261114.log`. Native receipt
+  e128986a…retains new binary71574024…and unchanged Hermes44d80af7…;
+  original unsigned app is archived privately before rebuilding. Disk3.0GiBfree.
+- Authenticate all146frozen v2source pins at commit554bafe and the exact one-line
+  current delta;0newmodel calls. Older synthetic parity results remain that
+  commit's measurement, not a fresh product/device-quality claim. Next action
+  stays broader actual-port corpus evaluation. Default app path remains unchanged,
+  separate reviewer waived; no install/signing/account/GitHub/publication action.
+
 ## Native reference ports pass synthetic integration — November 14
 
 - Add capability-gated iOS full-frame embedding/RGB/hash ports and strict shared

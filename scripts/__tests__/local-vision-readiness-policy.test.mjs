@@ -40,6 +40,12 @@ test("preflight checks primary interfaces and existing pinned load, never perfor
 });
 
 test("bounded readiness shares the actual native worker/gate with recognition", () => {
+  // Explicit contextual @Sendable closure avoids Swift5's static-function
+  // conversion warning without changing the worker, cache or inspection.
+  assert.match(
+    engine(),
+    /inspection: \{ predictor in Self\.inspectCapabilities\(predictor: predictor\) \}/u,
+  );
   const job = engine().match(
     /private func enqueueReadiness\(([\s\S]*?)private static func inspectCapabilities/u,
   )?.[1];

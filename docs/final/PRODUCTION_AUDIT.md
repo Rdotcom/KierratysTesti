@@ -1,5 +1,13 @@
 # Adversarial production-readiness audit
 
+November14 follow-up: the existing readiness Sendable-conversion warning is
+repaired with one contextual closure/regression assertion; Swift5/6strict native
+compiles, native lifecycle/RGB checks,1711software tests/builds and full matching
+unsigned Release rebuild pass. No local-vision warnings; dependency warnings
+remain. Frozen v2sources are authenticated at554bafe plus exact one-line delta;
+no new model calls or quality claims. Runtime/product/device/platform findings
+remain open, with the separate human reviewer owner-waived rather than performed.
+
 ## November 14 — native RGB bug caught and fixed; app/quality gate stays open
 
 Scoped engineering continuation. REF-008's port/adapter implementation is now
