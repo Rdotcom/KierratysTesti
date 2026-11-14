@@ -1,3 +1,3 @@
 # Next action
 
-Implement and evaluate a separately frozen four-orientation consensus on the same17product/41safety queries, preserving exact-SKU uncertainty, prior correct results, all per-view failures and fixed quality gates without query fitting or threshold relaxation.
+Implement and evaluate a separately frozen same-image OCR attribute corroboration for visually ambiguous product variants, retaining all17product/41safety queries, source-bound quantities, prior-correct/safety gates and explicit unknown results without automatic GTIN or sorting lookup.

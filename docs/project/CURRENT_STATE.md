@@ -1,5 +1,27 @@
 # Current state
 
+## Own four-orientation method tested; no coverage gain — November14
+
+- Implement strict shared four-view consensus: require complete byte/model/
+  catalogue-bound views; fail unavailable, retain ambiguity/conflict, never infer
+  size/material/GTIN. Experimental export only, default app unchanged.
+- Freeze174metadata-free rotated queries with pinned decoder and all original
+  17product/41audit rows. Replay538oldnative returns without inference, reproduce
+  all58olddecisions exactly;1044newnative calls/174predictions only. No retake.
+- Result remains7/17source agreements,0wrong/oldloss,7ambiguous/3unknown;
+  all41audits unknown,0/5pilots. Fixed quality FAIL, no useful coverage gain.
+  Reject default fourfold query compute cost. No phone performance claim.
+- Separate Node implementation verifies161source/2276input pins,174derived byte/
+  angle joins,1044newreceipts/538cached and all58view/consensus/metric records,
+  0newmodel calls.7shared+3QA+2recount regressions/scoped shared checks pass.
+  ORIENTATION_RECOGNITION_RESULTS.md retains exact hashes/limits and original
+  failure. Full1771unique(774Node+997workspace)/all checks/builds/18routes pass;
+  20lint warnings(13existing+7test-only assertions), exact log in TEST_EVIDENCE.
+  Actual preparation/inference canonical repeats refused,0model calls.
+- Next locally test same-image OCR attribute corroboration; broader source/view
+  coverage remains open. No payment/key/reviewer blocker, no native/version/
+  app activation/phone/push/publication. Public release remains NO-GO.
+
 ## Expanded actual-port recognition completes; quality FAILS — November14
 
 -7/17source agreements,0wrong/oldloss,7ambiguous/3unknown;41audits unknown.

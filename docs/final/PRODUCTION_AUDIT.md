@@ -1,5 +1,18 @@
 # Adversarial production-readiness audit
 
+## November14 — tested orientation remediation does not close high findings
+
+REF-006(high,OPEN,locally executable): own four-view method adds174predictions,
+retains all58queries but stays7/17/0fivepilots.0wrong/oldloss and41unknown controls
+are not useful multi-product acceptance. Evidence5e8e6ad3…/4b5e4bc3… in
+ORIENTATION_RECOGNITION_RESULTS; reproduce with Node-only review-orientation-corpus.
+Affected experimental shared consensus/runtime/future consumer. Required next
+remediation: same-image OCR attributes/reference breadth/background handling,
+fixed quality evaluation, no guessed size/GTIN/bin or threshold relaxation.
+REF-008(high,OPEN): no default/mobile/native activation or new physical/platform
+evidence. Reject default fourfold compute without gain. Software/receipt success
+does not close runtime/energy/release evidence; separate reviewer remains waived.
+
 ## November14 — complete expanded experiment exposes local quality gap
 
 REF-006(high,OPEN,local):7/17source agreements,0/5pilot matches,7ambiguous/3unknown;

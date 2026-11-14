@@ -23,6 +23,13 @@ export const EXPANDED_CORPUS_LIMITS = Object.freeze({
   decodes: 68,
   processes: 538,
 });
+export const ORIENTATION_CORPUS_LIMITS = Object.freeze({
+  ...EXPANDED_CORPUS_LIMITS,
+  hashes: 1065,
+  encodes: 274,
+  decodes: 242,
+  processes: 1582,
+});
 const commands = {
   capabilities: "--reference-capabilities",
   hashes: "--reference-hash-stdin",
@@ -35,6 +42,9 @@ export function claimNativeCorpusCall(counters, kind) {
 }
 export function claimExpandedCorpusCall(counters, kind) {
   return claimCall(counters, kind, EXPANDED_CORPUS_LIMITS);
+}
+export function claimOrientationCorpusCall(counters, kind) {
+  return claimCall(counters, kind, ORIENTATION_CORPUS_LIMITS);
 }
 function claimCall(counters, kind, limits) {
   assert.ok(Object.hasOwn(commands, kind), "unknown_operation");
@@ -69,6 +79,9 @@ export function createNativeCorpusTransport({ root, binary, resource, output, lo
 }
 export function createExpandedCorpusTransport(options) {
   return createTransport(options, EXPANDED_CORPUS_LIMITS);
+}
+export function createOrientationCorpusTransport(options) {
+  return createTransport(options, ORIENTATION_CORPUS_LIMITS);
 }
 function createTransport({ root, binary, resource, output, lockSha256 }, limits) {
   const counters = { capabilities: 0, hashes: 0, encodes: 0, decodes: 0, processes: 0 };

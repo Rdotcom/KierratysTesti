@@ -5,7 +5,10 @@
   Old Nutella shared batch/Coca class change/mixed-training audit moves explicit.
 - [x] Frozen actual-port multi-SKU test:7/17agreements,41unknown audits,0/5pilots;
   quality FAIL retained, not activated.
-- [ ] Four-orientation consensus with all58queries/failures/fixed gates retained.
+- [x] Own four-orientation consensus/all58queries:7/17unchanged,0wrong/loss/
+  control candidates; reject default compute cost, quality FAIL preserved.
+- [ ] Same-image OCR attribute corroboration plus broader view/reference quality;
+  no text-only verified identity/material, still require useful multi-SKU coverage.
 
 - [x] Five fresh bounded OFF metadata snapshots, conservative upload-family
   leakage checks and separate cached repair of an orphan selected annotation.

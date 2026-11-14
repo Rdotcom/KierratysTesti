@@ -1,5 +1,11 @@
 # External blockers
 
+November14 orientation experiment completes without a new account/key/payment:
+same7/17quality failure is local reference/variant/background engineering, not
+an external blocker. Reject default extra compute; same-image OCR corroboration
+is executable locally with existing native OCR. Actual physical/platform/store/
+operator evidence remains separate. Do not require the waived human checker.
+
 November14: complete expanded recognition fails useful coverage. Orientation/
 data/variant remediation remains local engineering, not account/payment or a
 separate reviewer. QA serializer/continuation repaired;100encodes/58queries done.

@@ -1,5 +1,24 @@
 # Test evidence
 
+## November14 — own orientation consensus complete, quality FAIL unchanged
+
+ORIENTATION_RECOGNITION_RESULTS retains lock5e8e6ad3…/result4b5e4bc3…,
+174derived inputs,538cached/1044newnative operations,58original decisions exactly
+reproduced, same7/17agreements/0wrong/loss/41unknown audits,0/5pilot agreements.
+No failed gate retuning or actual original-image inference repeated. Native/app/
+source version unchanged. Actual rotated Barilla JPEG observed with corrected
+print orientation; still unknown. No visual/physical accuracy inference from it.
+Separate Node checker verifies161source/2276input pins,all174byte/angle parents,
+1044newraw receipts and58view/source/vector/RGB/consensus/metric joins,0model calls.
+7shared+3QA+2recount regressions pass. Scoped shared validation passes:
+/tmp/kig-orientation-shared-20261114.log. Full pnpm validate PASS:1771unique
+(774Node+997workspace), boundaries/format/lint/typecheck/tests/all builds/18routes;
+/tmp/kig-orientation-full-20261114.log.20lint warnings:13existing and7non-null
+assertions in frozen regression fixtures, not runtime errors. Actual canonical
+preparation/inference repeats both refuse before input/output/model work; fresh
+receipt recount after docs also passes,0model calls. No recognition retake.
+Reject default fourfold query work without gain; no latency/battery/phone evidence.
+
 ## November14 — expanded actual-port quality FAIL retained
 
 EXPANDED_RECOGNITION_RESULTS:7/17agreements,0wrong/oldloss,7ambiguous/3unknown,

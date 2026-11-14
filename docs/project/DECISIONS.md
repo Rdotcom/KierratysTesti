@@ -1,5 +1,20 @@
 # Decision log
 
+## D-093 — Reject orientation-only compute cost after fixed null result
+
+2026-11-14: implement own generic strict four-view consensus behind experimental
+public export. All views/identity/byte-parent joins mandatory; failure/ambiguity/
+positive conflict veto recovery, no per-view threshold or exact-SKU relaxation.
+174derived byte inputs freeze before predictions;538oldnative returns replay
+without inference/all58olddecisions reproduce,1044newcalls only. Same17/41gate
+fails unchanged at7/17/0fivepilots,0wrong/oldloss/41audits unknown. Do not enable
+fourfold query work without useful benefit or call it final/battery-verified.
+Separate checker verifies161source/2276input pins/allnewreceipts/58consensus/
+metrics with0model calls;7shared+3QA+2recount regressions pass. Next same-image
+OCR attribute corroboration is a different source-bound hypothesis, not lowering
+the image threshold. Existing source/pretrained model/owner-review/physical/
+sharing boundaries remain. No default UI/native/version/phone/publication change.
+
 ## D-092 — Retain expanded quality failure; resume only unattempted native work
 
 2026-11-14: fixed≥14/17/allfivepilot/zero wrong/loss/safety-nonunknown gate fails

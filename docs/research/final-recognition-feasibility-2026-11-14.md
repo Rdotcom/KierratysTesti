@@ -19,3 +19,16 @@ local engineering if rotation does not meet the registered useful-coverage gate.
 Data-quality skill influences retained denominators, seen/new scope and preserved
 failure receipts; it introduces no new human checker. Existing Markdown/scripts
 are the engineering deliverable, not a new notebook/dashboard or publication.
+
+## Executed orientation hypothesis and API check
+
+[Sharp operation docs](https://sharp.pixelplumbing.com/api-operation/#autoorient),
+accessed2026-11-14, specify EXIF auto-orientation before explicit rotation and a
+single explicit angle per pipeline. Pinned0.35.5uses autoOrient().rotate(angle),
+metadata-free JPEGs and white sRGB. Actual rotated Barilla image is observed;
+orientation experiment preserves all58queries and fails unchanged at7/17.
+Thus the plausible rotation hypothesis is not a demonstrated coverage fix;
+do not ship the fourfold query work as an improvement. Source-bound OCR quantity/
+name corroboration and reference/background diversity are next testable options,
+not already demonstrated reliable recognition. Exact hidden size cannot be read
+from code alone, and no API/licence/documentation claim changes that limitation.

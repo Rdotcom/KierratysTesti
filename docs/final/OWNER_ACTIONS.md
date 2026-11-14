@@ -1,5 +1,14 @@
 # Owner actions
 
+## November14 — rotation experiment rejected for default activation
+
+- Engineering/Codex: follow NEXT_ACTION for fixed same-image OCR attribute
+  corroboration and preserve all old quality/safety/source/uncertainty evidence.
+  No new key/payment/account/reviewer or physical action needed for that unit.
+- Owner/operator later: existing physical/platform/store/privacy/licensing/
+  operational acceptance remains. No failed experimental recognizer is installed
+  or published as a final version; no new owner action requested now.
+
 ## November14 — engineering owns measured coverage failure
 
 - Engineering/Codex: implement/evaluate fixed orientation consensus on retained

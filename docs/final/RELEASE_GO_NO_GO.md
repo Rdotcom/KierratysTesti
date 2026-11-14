@@ -1,5 +1,13 @@
 # Release decision
 
+## November14 — orientation-only repair gives no gain: NO-GO
+
+Own strict four-view method completes174newimage predictions/all58queries, same
+7/17agreements/0wrong/oldloss/41unknown audits;0/5pilots. Fixed quality FAIL remains.
+Do not deploy fourfold query compute without benefit or claim final reliability.
+Next same-image attribute/reference engineering is local, not paid API/reviewer
+blocking. Actual physical/platform/privacy/licensing/operations/store gates remain.
+
 ## November14 — actual expanded recognition quality FAIL: NO-GO
 
 Fixed≥14/17/allfivepilot/zero wrong/lost/safety-nonunknown gate fails at7/17,

@@ -1,5 +1,12 @@
 # Acceptance criteria
 
+Orientation consensus engineering: require4fixed views/byte-parent/model/catalogue
+joins and all58zero-degree baseline decisions unchanged. Report all174derived
+views,1044newcalls and exact coverage/oldloss/control/failure metrics. The same
+≥14/17/allfivepilot gate FAILS at7/17; reject default fourfold compute cost.
+Missing/failed/ambiguous evidence never promotes an exact variant. Software
+success/owner-waived review does not establish product, battery or public GO.
+
 Expanded actual-port gate:≥14/17source agreements, allfivepilots correct, zero
 wrong-source/oldsevenloss/safety-nonunknown/failure and all58rows. Observed7/17,
 0/5pilots FAILS despite all41audits unknown. No software/native-completion claim
