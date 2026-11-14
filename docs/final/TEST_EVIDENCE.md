@@ -1,5 +1,28 @@
 # Test evidence
 
+## November14 — research-backed multimodal prototype gain7→10/17
+
+OCR_ATTRIBUTE_RESULTS.md retains lock5f8b4b74…/result8b6c1199…,95source/66data/
+16resource pins and58actual current-shipping Swift OCR/native reads. Swift6QA
+warnings-as-errors and13shared deterministic tests pass before inference;
+3QA+2independent-recount tests also pass. Same17product/41audit denominator:
+10source agreements/0wrong/oldloss,4ambiguous/3unknown, all41audits unknown;
+0/5pilots so fixed quality FAIL.3newNutella400g distinctions, old7Barilla retained.
+Native58classification/OCR calls include46observed coarse supplements/12skipped,
+not zero model work.233text lines,39nonempty/19empty-or-suppressed; empty native
+text is not proven physical absence. No API/image upload/paid inference or retake.
+Separate Node checker authenticates all native/raw/query/source/text/byte joins,
+exact metrics/provenance and3amounts with separate BigInt parser,0newmodel calls.
+Five unresolved records have name hints; never count them as exact SKU accuracy.
+Public source/capture/phone/quality/privacy/licensing/store limits unchanged.
+Scoped shared validation PASS:605tests/all scoped checks/builds,
+/tmp/kig-ocr-attribute-shared-20261114.log. Full pnpm validate PASS:1789unique
+(779Node+1010workspace), boundaries/format/lint/typecheck/tests/all builds/18routes;
+/tmp/kig-ocr-attribute-full-20261114.log.20previous lint warnings, none newly
+introduced. Actual canonical freeze/run repeats refuse before input/output/native
+work and fresh separate receipt recount passes after docs,0newmodel calls.
+Default app remains unchanged; no physical/platform/release pass is implied.
+
 ## November14 — own orientation consensus complete, quality FAIL unchanged
 
 ORIENTATION_RECOGNITION_RESULTS retains lock5e8e6ad3…/result4b5e4bc3…,

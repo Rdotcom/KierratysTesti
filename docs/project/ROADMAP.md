@@ -7,8 +7,12 @@
   quality FAIL retained, not activated.
 - [x] Own four-orientation consensus/all58queries:7/17unchanged,0wrong/loss/
   control candidates; reject default compute cost, quality FAIL preserved.
-- [ ] Same-image OCR attribute corroboration plus broader view/reference quality;
-  no text-only verified identity/material, still require useful multi-SKU coverage.
+- [x] Research-backed same-image OCR attribute fusion:7→10/17source agreements,
+  0wrong/loss/41audit accepts; three size distinctions, fixed quality still FAIL.
+- [ ] Guided readable name/net-quantity capture and bounded ROI OCR; preserve
+  family versus exact variant and source/byte/privacy/deadline boundaries.
+- [ ] Broader view/reference/near-variant/prospective quality before activation;
+  name-only hints never count as exact identity or verified material.
 
 - [x] Five fresh bounded OFF metadata snapshots, conservative upload-family
   leakage checks and separate cached repair of an orphan selected annotation.

@@ -1,5 +1,15 @@
 # Owner actions
 
+## November14 — researched path and first useful text corroboration complete
+
+- Engineering/Codex: follow NEXT_ACTION for guided readable name/net-quantity
+  capture and bounded ROI OCR, preserving all source/byte/conflict/unknown,
+  deadline/privacy and exact-SKU acceptance boundaries. No key/payment/account/
+  separate reviewer needed for that local work.
+- Owner/operator later: representative physical camera and platform/operational/
+  store/privacy/licensing procedures still apply. No phone install or public
+  sharing follows from10/17seen-source development coverage; none requested now.
+
 ## November14 — rotation experiment rejected for default activation
 
 - Engineering/Codex: follow NEXT_ACTION for fixed same-image OCR attribute

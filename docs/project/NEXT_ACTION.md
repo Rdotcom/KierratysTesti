@@ -1,3 +1,3 @@
 # Next action
 
-Implement and evaluate a separately frozen same-image OCR attribute corroboration for visually ambiguous product variants, retaining all17product/41safety queries, source-bound quantities, prior-correct/safety gates and explicit unknown results without automatic GTIN or sorting lookup.
+Implement a bounded guided name-and-net-quantity capture/ROI OCR path that preserves original-image lineage, explicit family/variant/unknown outcomes, total deadlines and transient-photo privacy, then test it on the retained hard cases without relaxing the fixed quality gates.

@@ -1,5 +1,15 @@
 # Release decision
 
+## November14 — OCR prototype improves coverage, public release remains NO-GO
+
+Same58queries now10/17source agreements versus7baseline,0wrong/oldloss and41
+unknown audits. Three additional size distinctions are actual native text plus
+visual evidence, not new query fitting. Still0/5pilots and fixed≥14/allfivegate
+FAIL. No source-labelled gain, name hint or software pass establishes verified
+GTIN/material, generic/physical/Android/privacy/licensing/operations/store GO.
+Guided readable-detail capture/ROI/reference engineering remains locally possible;
+no payment/key/account/waived-reviewer blocker. Default recognition not activated.
+
 ## November14 — orientation-only repair gives no gain: NO-GO
 
 Own strict four-view method completes174newimage predictions/all58queries, same

@@ -1,5 +1,27 @@
 # Decision log
 
+## D-094 — Use source-bound same-image text evidence, not forced SKU guessing
+
+2026-11-14: user explicitly requests research then justified implementation.
+Primary grocery multimodal/Unitail/Apple/OFF sources support a staged capture,
+visual-candidate/OCR-attribute/reconciliation/confirmation/rule architecture;
+paper accuracy is not our accuracy. Own foundational training/new large VLM not
+justified by current data/constraints. Research docs retain sources and limits.
+Implement own bounded source-name/brand/exact isolated quantity matcher; reject
+per100g/serving/multipack/fuzzy digits, mismatched bytes, failures and conflicts.
+Source-unknown recovery needs multiple distinct anchors and quantity; ambiguous
+same-name group narrows only by a unique source quantity. No automatic GTIN/bin.
+Freeze code/13shared tests and all95source/66data/16resource pins before58native
+calls. Actual current shipping OCR plus strict public contracts gives7→10/17
+source agreements,0wrong/oldloss/41audit accepts;3Nutella400g gains,7Barilla retained.
+Allfivepilots fail exact identity; fixed≥14/allfive gate remains FAIL. Native OCR
+missing amounts/logos/truncated names motivate guided capture/ROI next; never
+relabel family hints exact or unreviewed source labels verified. Separate checker
+authenticates all receipts/metrics and3BigInt quantity joins with0model calls.
+46coarse supplements observed/12skipped, not zero model work.3QA+2recount tests
+pass. Default app/native/version/phone/GitHub unchanged; owner-waived reviewer
+unperformed. No additional key/account/payment or source/photo upload required.
+
 ## D-093 — Reject orientation-only compute cost after fixed null result
 
 2026-11-14: implement own generic strict four-view consensus behind experimental

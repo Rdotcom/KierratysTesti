@@ -1,5 +1,13 @@
 # Acceptance criteria
 
+OCR attribute prototype retains all17/41queries, byte/source/name/quantity
+bindings, strict native normalization and unknown/failure distinction. Same
+≥14/17/allfivepilot/zero wrong/lost/safety-nonunknown gate remains FAIL at10/17,
+0/5pilots despite3gains/oldsevenpreserved/41audits unknown. Name hints are not
+exact-source agreements. Every new amount must be exact isolated metric text;
+no serving/multipack/numeric correction or automatic GTIN/material rule. Actual
+ROI/capture/near-variant/physical/platform/privacy/licensing acceptance remains.
+
 Orientation consensus engineering: require4fixed views/byte-parent/model/catalogue
 joins and all58zero-degree baseline decisions unchanged. Report all174derived
 views,1044newcalls and exact coverage/oldloss/control/failure metrics. The same

@@ -2,6 +2,7 @@
 
 export * from "./max-margin-runtime";
 export * from "./reference-orientation-consensus";
+export * from "./reference-text-evidence";
 
 export * from "./reference-image-catalogue";
 export * from "./reference-image-calibrated";

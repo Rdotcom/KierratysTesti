@@ -1,5 +1,13 @@
 # External blockers
 
+November14 OCR/source-attribute prototype works locally without a new key,
+account, payment, API request or model download: actual source coverage7→10/17.
+Fixed quality gate still fails; readable-detail/ROI/reference/near-variant work
+is local engineering, not an external reviewer blocker. Existing images may not
+contain readable quantity/brand at400px; do not invent it or claim a missing native
+OCR line proves absence of print. Actual new physical captures/platform/store/
+operator actions remain separate when needed; no such action requested now.
+
 November14 orientation experiment completes without a new account/key/payment:
 same7/17quality failure is local reference/variant/background engineering, not
 an external blocker. Reject default extra compute; same-image OCR corroboration

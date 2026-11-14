@@ -1,5 +1,19 @@
 # Adversarial production-readiness audit
 
+## November14 — text corroboration is useful, high quality/activation findings open
+
+REF-006(high,OPEN,local): same source17queries improve7→10with3native-OCR quantity
+joins,0wrong/oldloss/41audit accepts.4ambiguous/3unknown/0fivepilots still fail
+fixed quality gate. Evidence5f8b4b74…/8b6c1199… and OCR_ATTRIBUTE_RESULTS;
+reproduce receipt/metric/BigInt quantity checks with review-ocr-attribute-corpus,
+no model retake. Affected experimental shared text fusion and future consumer.
+Required remediation: guided readable-detail/ROI capture, near-variant/background/
+reference/prospective tests. Never promote name-only hint or source label to
+verified GTIN/bin, invent a missing number or lower gates/severity to pass.
+REF-008(high,OPEN): real native OCR/schema/source pipeline measured, but default
+UI consumer/physical/platform activation remains unimplemented/unverified. No
+app/native/version/phone/publication change. Independent reviewer stays waived.
+
 ## November14 — tested orientation remediation does not close high findings
 
 REF-006(high,OPEN,locally executable): own four-view method adds174predictions,

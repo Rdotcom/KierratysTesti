@@ -1,5 +1,31 @@
 # Current state
 
+## Research-backed same-image OCR prototype improves7→10 — November14
+
+- Primary research/actual failures support image+OCR+source-attribute reconciliation,
+  not another full-frame rotation/floor tweak or own universal model. Frozen plan
+  and post-experiment findings in docs/research/multimodal-recognition-*.md.
+- Own pure exact net-quantity/name/brand fusion implemented behind experimental
+  public export. Require same-image/catalogue/source binding; retain unknown,
+  conflicting/missing amounts, failure versus silence, inferred source provenance;
+  no automatic GTIN/material/bin lookup.13shared regressions precede inference.
+- Fresh Swift6QA compile/current shipping OCR58native reads: same17products/
+  41audits now10source agreements/0wrong/oldloss,4ambiguous/3unknown;41audits
+  unknown. Three Nutella400g distinctions added; seven Barilla retained. Still
+  0/5pilots, fixed≥14/allfive gate FAIL, no independent accuracy or release pass.
+- Separate Node implementation verifies95source/66data/16resource pins,58native
+  byte/text/source/query receipts and exact metrics; independent BigInt parser
+  corroborates3amounts,0newmodel calls.46observed coarse supplements/12skipped;
+  OCR233lines/39nonempty/19empty-or-suppressed.3QA+2recount regressions pass.
+  OCR_ATTRIBUTE_RESULTS.md has exact hashes and unobserved-detail limitations.
+- Five of seven unresolved records have name hints, not exact identity. Next
+  guided name/net-quantity capture and bounded ROI OCR, with source-safe unknown
+  recovery. No new API/key/payment/model/dependency/native/default-UI/version/
+  phone/push action. Full1789unique(779Node+1010workspace)/all checks/builds/
+  18routes and scoped shared605tests pass,20previous warnings/no new warnings.
+  Actual canonical repeats refused/fresh recount pass,0newmodel calls.
+  Public NO-GO; exact validation logs in TEST_EVIDENCE.
+
 ## Own four-orientation method tested; no coverage gain — November14
 
 - Implement strict shared four-view consensus: require complete byte/model/
