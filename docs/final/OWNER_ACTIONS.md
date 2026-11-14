@@ -1,5 +1,20 @@
 # Owner actions
 
+## November 14 — owner waives separate checker; engineering continues
+
+- **Engineering/Codex:** implement capability-gated iOS encoder/RGB ports and
+  strict mobile adapters according to NEXT_ACTION. Preserve default behavior
+  until actual resource/preprocessing/parity and cancellation evidence passes.
+  The shared byte-bound runtime and synthetic actual-encoder smoke are complete.
+- **Engineering/Codex:** replace the separate-human-checker gate with documented
+  automated source-consistency, provenance and uncertainty tests (D-086). Older
+  independent-review assignments below are superseded. Do not fabricate signed
+  forms, accepted labels or verified identities; no new reviewer request is needed.
+- **Roope, physical/release owner:** later device interaction, Apple/Google
+  account approvals and store publication still need their specific procedures
+  and evidence. No such action is required for the next local engineering unit.
+  Source licences and privacy obligations are not waived by removing a reviewer.
+
 ## November 14 — significant local gain achieved, runtime binding next
 
 - **Engineering/Codex:** implement NEXT_ACTION's experimental byte-bound

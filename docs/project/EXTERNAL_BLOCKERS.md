@@ -1,5 +1,14 @@
 # External blockers
 
+## November 14 — separate reviewer gate waived by owner
+
+Roope explicitly waives the proposed independent human reviewer. Remove it from
+current blocking prerequisites; older review-required paragraphs are historical,
+not requests to repeat. Forms stay unreviewed and source confidence inferred;
+waiver cannot be reported as actual review. Native adapters/parity remain local
+engineering; actual device actions, source licence/attribution, privacy/accounts/
+production/store procedures remain separate requirements when reached.
+
 ## November 14 — meaningful development gain, independent acceptance remains
 
 The source-labelled cached benchmark improves2→7/12without wrong-source/lost/

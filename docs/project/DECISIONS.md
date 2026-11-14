@@ -696,3 +696,27 @@
   Shared558/full1673passes. Significant development achieved, release NO-GO and
   high broader-quality/native/rights risks remain. Next bind actual vectors/bytes
   in an experimental runtime before any app integration; no new push authority.
+
+## D-085 — Derive bytes/features internally and retain ownership through timeout
+
+- Date: 2026-11-14. Implement bounded manifest/JPEG/actual hash+encoding binding,
+  source-asserted provenance, pixel extraction/self-quarantine and experimental
+  max-margin/fusion. Evaluation refs never enroll; caller descriptors and fake
+  acceptance flags reject. Logical deadlines do not release actual busy work.
+-22shared regressions and generated actual-native smoke4calls/8predictions/
+  3pixel decodes/10hashes pass;116source/58decoder/resource pins/recount retained.
+  Shared580/full1695/builds pass, not new product/camera/native-phone accuracy.
+
+## D-086 — Explicit owner waiver is not a fabricated independent review
+
+- Date: 2026-11-14. Roope answers “tee ilman tuota” to the request for a separate
+  human reviewer of recognition references/Finnish sorting guidance. This waives
+  that additional project acceptance gate. Do not require another confirmation,
+  invent reviewer identities or mark existing blank forms accepted.
+- Continue with reproducible automated/source-consistency/uncertainty tests and
+  candid source-asserted/inferred status. Update the master prompt/current gates;
+  historical frozen protocols/results stay untouched. Waiver is not evidence
+  that source identities, licences, devices or rules were independently verified.
+- No uncertainty-to-fact promotion, unsafe material/bin inference or invented
+  approval. Actual native/device/privacy/licence/account/store requirements and
+  repository-sharing boundary remain; no push/install/publication follows.

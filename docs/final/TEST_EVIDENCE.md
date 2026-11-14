@@ -1,5 +1,26 @@
 # Test evidence
 
+## November 14 — byte-bound runtime and actual encoder smoke
+
+MAX_MARGIN_RUNTIME_RESULTS.md records 22 new shared regressions, shared 580
+overlapping tests and full 1695 unique tests (719 Node + 976 workspace). Format,
+lint, strict types, package boundaries, builds and 18 web routes pass; 13 existing
+lint warnings remain. Logs: `/tmp/kig-max-runtime-shared.ibKvS7` and
+`/tmp/kig-max-runtime-full.BzsbOf`.
+
+The frozen generated-JPEG smoke makes four actual pinned encoder calls/eight
+predictions, three pixel decodes and ten runtime hashes. Compilation, inferred
+query result, provenance/byte/vector joins and training-copy exclusion pass.
+All 116 source and 58 decoder pins survive a separate zero-new-call recount.
+Protocol SHA256: 97e3a7ddff12f9bea0eafa0c9d0705475329212e66d1a7c09b06d83136dfcb9e.
+Summary SHA256: 9392e70550e23b5a165a4b73e9ece1dfc19572066ad43d8f28b8d43dec036619.
+Initial fixture/type failures and repairs are retained in the results document.
+
+This is synthetic Mac integration evidence, not real-product accuracy, native
+iOS/Android, physical-device or release evidence. The owner waives a separate
+human checker (D-086); no review forms or source assertions are marked verified.
+No model/dependency/phone change, paid call, install, push or publication occurs.
+
 ## November 14 — v4significant development gate PASS, not release accuracy
 
 CALIBRATED_V4_PROTOCOL.md/RESULTS.md retain final lock1610696…/result17afd70…,

@@ -1,5 +1,15 @@
 # Roadmap
 
+## Runtime binding and owner-review waiver — November 14
+
+- [x] Compile actual owned bytes through trusted hash/encoder/decoder ports and
+  own max-margin/pixel/self-quarantine/fusion logic;22regressions/shared580/
+  full1695/builds and one actual4process/8prediction synthetic smoke pass.
+- [x] Record owner's explicit waiver of a separate checker; never mark missing
+  review complete. Automated checks/visible inferred source status replace it.
+- [ ] Implement/verify capability-gated native iOS ports/mobile adapters before
+  activation; device/platform/privacy/licence/account/store gates remain.
+
 ## Meaningful midpoint/support improvement — November 14
 
 - [x] Register separate v4math/support before outcomes; fit gallery/train controls
@@ -9,7 +19,7 @@
   no general/independent-product reliability or release claim.
 - [x] Verify114source/265input pins and44decisions/4stats via separate arithmetic
   checker;0newencoder calls. Shared558/full1673/builds/18routes pass.
-- [ ] Implement byte-bound max-margin runtime before any gated app integration;
+- [x] Implement byte-bound max-margin runtime before any gated app integration;
   broader prospective identity/rights/native/physical/platform/release gates remain.
 
 ## Control inventory / calibration v3 — November 13

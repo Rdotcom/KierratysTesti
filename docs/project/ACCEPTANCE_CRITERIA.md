@@ -1,5 +1,15 @@
 # Acceptance criteria
 
+## Current owner-waived-review policy — November 14
+
+D-086supersedes historical mandatory independent-review gate: Roope requests
+continuation without a separate human checker. Never fabricate accepted forms.
+Use reproducible automated tests/source consistency and explicit inferred/
+source-asserted/no-independent-review status; uncertainty is never verified fact.
+Native/resource/preprocessing/device/privacy/licensing/account/store evidence
+remains required. Byte-runtime22regressions and4native/8prediction synthetic smoke
+do not replace broader recognition/camera/physical/platform acceptance.
+
 ## Meaningful v4development versus release acceptance — November 14
 
 Fixed≥4product-source agreements/0disagreements/losses/control candidates gate

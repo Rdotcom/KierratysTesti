@@ -1,3 +1,3 @@
 # Next action
 
-Implement an experimental byte-bound max-margin recognition runtime that derives reference/calibration/query vectors through trusted encoder ports, rejects unbound caller descriptors and mismatched provenance, and keeps integrationAllowed=false pending independent identity/rights and native acceptance.
+Implement capability-gated native iOS reference-embedding/RGB ports and strict mobile adapters for the byte-bound runtime, retaining default app behavior until actual resource/preprocessing/parity and cancellation tests pass under the owner-waived independent-review policy.

@@ -1,5 +1,14 @@
 # Master prompt — local hybrid product recognition
 
+## Current owner amendment — November 14, 2026
+
+Roope explicitly requests continuing WITHOUT a separate human checker. This
+supersedes independent-review prerequisites below, not truthfulness or physical/
+native/privacy/licence/account/store requirements. Do not ask again for that
+checker or mark unperformed reviews accepted. Replace the gate with documented
+automated/source-consistency checks and visible source-asserted/inferred status.
+Historical frozen evidence is not rewritten. See decisionD-086.
+
 Owner authority: Roope approved the hybrid on November 13, 2026 and requested
 this prompt and its implementation. This is local engineering authority, not
 permission for paid inference, GitHub publication or a production release.
@@ -46,8 +55,9 @@ history. Do not modify old frozen experiments or erase unsuccessful results.
 5. Measure useful coverage AND incorrect accepts, losses, unknown/mixed/hazard
    controls, runtime/memory and dependency/bundle effects. Never qualify an
    always-abstaining recognizer or hide missing classes in the denominator.
-6. Only after demonstrated quality and independently reviewed identity/rights
-   evidence, integrate behind an explicit capability gate. Preserve FI/EN,
+6. Only after demonstrated automated quality, source/rights accounting and
+   applicable native evidence, integrate behind an explicit capability gate. A
+   separate independent human review is owner-waived, not performed. Preserve FI/EN,
    retake/manual/barcode recovery, material Check+Confirm, full sorting provenance,
    accessibility and local deletion. No automatic material/bin/record from a
    product image; no raw-photo analytics, cloud fallback or service secret.
@@ -60,7 +70,8 @@ history. Do not modify old frozen experiments or erase unsuccessful results.
 
 Continue locally executable engineering. Ask only for genuinely new owner
 authority, human adjudication, physical actions, accounts, secrets or payment.
-Never fabricate human labels/review/licence approval. Retain existing NO-GO until
+Never fabricate human labels/review/licence approval; the separate reviewer is
+owner-waived. Retain existing NO-GO until
 all release gates are met. No push, production deployment, phone installation,
 cleanup or paid call is implicitly authorized by this prompt.
 

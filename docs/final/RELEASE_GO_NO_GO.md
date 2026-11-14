@@ -1,5 +1,20 @@
 # Release decision
 
+## November 14 — byte-bound runtime passes; public release remains NO-GO
+
+The experimental shared runtime now derives and joins actual image, model,
+preprocessing, vector and source receipts through trusted offline ports. Its
+22 regressions and generated-JPEG/actual-encoder smoke pass; full 1695 tests and
+builds pass. This repairs the shared byte-binding gap, not native mobile parity
+or real-product generalization. MAX_MARGIN_RUNTIME_RESULTS.md records limits.
+
+The owner explicitly waives the separate human-checker prerequisite (D-086).
+Older statements below requiring that checker are superseded, not completed.
+Source identities remain source-asserted and inference remains uncertain.
+Licensing/provenance, broader prospective quality, native/device/platform,
+privacy, operations and store requirements still apply. Native ports/adapters
+are the next locally executable work; no install, push or public release occurs.
+
 ## November 14 — significant DEVELOPMENT gain, production still NO-GO
 
 The SAME preregistered significance gate passes: source agreements2→7/12,0source

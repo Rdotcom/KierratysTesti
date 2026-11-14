@@ -1,5 +1,28 @@
 # Current state
 
+## Byte-bound runtime complete; owner waives separate checker — November 14
+
+- Implement experimental max-margin runtime: owned bounded JPEGs/manifest,
+  actual hash/encoder/preprocessing/vector joins, internally derived pixels/self
+  quarantine, calibration-only membership and opaque inferred result/source
+  receipts. No supplied descriptor/ready flag/verified identity or bin accepted.
+-22new shared regressions cover metadata/bytes/ports/mutation/source/quarantine/
+  cancellation/timeout/global busy/late settlement. Actual generated-JPEG/pinned
+  encoder smoke passes4native calls/8predictions/3pixel decodes/10runtime hashes,
+  candidate and training-copy exclusion.116source/58decoder/resource pins and
+  zero-new-call recount pass; no product-quality or phone pass is inferred.
+- Scoped580/full1695unique(719Node+976workspace)/all checks/builds/18routes pass,
+  13old warnings. MAX_MARGIN_RUNTIME_RESULTS.md retains hashes and first failures.
+  Existing7/12development result stays, runtime still experimental/unwired.
+- Owner explicitly instructs “tee ilman tuota” for the proposed separate human
+  reviewer. Independent-review gate is WAIVED, not completed. Do not ask for that
+  reviewer again or fabricate accepted forms. D-086supersedes older mandatory
+  reviewer entries: use automated source/uncertainty validation instead. Native/
+  physical/platform/licensing/account/store requirements remain real.
+- Next local unit: capability-gated iOS encoder/RGB ports and mobile adapters,
+  keeping default app behavior until native/resource/preprocessing tests pass.
+  No app/phone/version/dependency/model/key change, install, push/publication yet.
+
 ## Significant cached recognition improvement — November 14, 2026
 
 - Owner's persistence target is reached narrowly in development: unchanged

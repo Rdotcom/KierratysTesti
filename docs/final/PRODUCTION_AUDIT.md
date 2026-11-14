@@ -1,5 +1,26 @@
 # Adversarial production-readiness audit
 
+## November 14 — shared runtime gap repaired, native gap remains
+
+Scoped continuation, not a new 30-lane certification. The experimental runtime
+rejects caller descriptors/ready flags and derives actual vectors, pixels and
+self-quarantine from bounded owned bytes. Hash/resource/source joins, global
+single-flight and late-settlement/cancellation behavior have 22 new regressions.
+The frozen actual-encoder/generated-JPEG smoke and full 1695 tests/builds pass;
+MAX_MARGIN_RUNTIME_RESULTS.md retains exact pins, counters and limitations.
+
+| ID / severity / state | Evidence / affected flow | Reproduction | Required remediation / boundary |
+| --- | --- | --- | --- |
+| REF-008 / high / OPEN | Shared byte-bound runtime exists, but no mobile consumer or matching native embedding/RGB port/parity proof exists. Mac synthetic smoke cannot establish iPhone behavior. | Run the runtime tests; inspect native module exports and mobile consumers. | Locally implement gated ports/adapters, actual native resource/preprocessing/parity and cancellation tests before enabling; device/platform acceptance remains separate. |
+
+The independent-human-checker requirement is owner-waived under D-086, not
+performed; all older mandatory-review assignments are superseded. Existing
+quality findings stay open: all seven cached agreements cover one source SKU,
+other variants are ambiguous/untested and there is no prospective physical
+accuracy estimate. Waiver does not remove licensing, provenance, privacy,
+native/platform, operational or store evidence requirements. No severity is
+lowered merely because synthetic/software checks pass; no app install or push.
+
 ## November 14 — measured utility improves, release findings remain open
 
 Scoped engineering continuation, not a fresh30lane certification. The registered
