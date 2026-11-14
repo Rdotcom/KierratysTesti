@@ -2,6 +2,7 @@
 
 export * from "./reference-image-catalogue";
 export * from "./reference-image-calibrated";
+export * from "./reference-image-max-margin";
 export * from "./reference-image-embedding";
 export * from "./reference-image-fusion";
 export * from "./reference-image-fusion-v2";

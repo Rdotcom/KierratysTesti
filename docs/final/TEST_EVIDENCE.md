@@ -1,5 +1,35 @@
 # Test evidence
 
+## November 14 — v4significant development gate PASS, not release accuracy
+
+CALIBRATED_V4_PROTOCOL.md/RESULTS.md retain final lock1610696…/result17afd70…,
+114source/265input pins,40train/24evaluation/8unresolved roles and all v3failures.
+One gallery/train-only statistics fit,88logical retrievals/fusions;0newencoder/
+image/pixel/network/paid calls. All12fixed baseline outputs match exactly.
+
+Same12product queries:2→7source agreements,0source disagreements/losses,5Nutella
+variant ambiguities; all7agreements are Barilla-source images.24evaluation
+controls+8unresolved audits all unknown. SAME≥4/zero-error/loss/control gate
+passes, but data are seen/source/AI-only and controls lack measured pixel branch;
+no independent identity, whole-pipeline/camera/hazard/general-accuracy claim.
+
+Separate checker imports no recognition/fusion/encoder algorithm, authenticates
+pins and recomputes4statistics/44decisions/676cosines using independent arithmetic
+implementation. It matches all counts/outputs with0encoder calls; same-agent
+recount is NOT independent human review. Verifier source SHA256:
+14310e132959d752ac0378922b8c31ea5573086e34c249885ce61847454b25aa.
+V3/v4canonical repeats are actually refused before output/fit/query operations.
+
+V4adds6shared+7Node tests; v3/v4combined32newtests. Shared558overlap, final full
+1673unique(719Node+954workspace), all format/lint/types/boundaries/builds/18routes
+pass;13old lint warnings remain. Scoped log:`/tmp/kig-calibrated-v4-shared.4TH1Pj`;
+full after verifier addition:`/tmp/kig-calibrated-v4-final.p2BxeU` (earlier full:
+`/tmp/kig-calibrated-v4-full.HqrS37`). Four template-style infos and one import
+spacing assist in the post-result verifier are repaired; its final Biome check/
+actual recount pass without changing frozen experiment sources or gates.
+No dependency/model/secret/native/source-version/phone change, fresh advisory/
+Expo/remoteCI/Linux/Node24/fresh-install/physical/Android/store pass or GitHub push.
+
 ## November 13 — v3control/calibration failure retained
 
 CALIBRATED_V3_RESULTS.md/PROTOCOL.md record the once-only threshold fit and

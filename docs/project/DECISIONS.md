@@ -677,3 +677,22 @@
   preserves2/12coverage and zero control candidates; retain failed significance.
   Full1660/shared552pass, not quality approval. Continue new registered midpoint/
   corroboration hypothesis without retuning or rerunning v3.
+
+## D-084 — Require measured utility AND controls; distinguish development from release
+
+- Completion date: 2026-11-14(Helsinki); retained experiment paths/protocol labels
+  say November13. Owner requests persistence until significant change, not a
+  production publication, paid call, phone install or new foundation model.
+- After retaining v3failure, register scalar positive/negative midpoint with
+  0.75floor/0.05negative gap/0.08competitor margin/two-reference support and one
+  gallery/train-only fit. Keep source groups and human-pending labels; all learned
+  gates hit the floor here, so do not claim general adaptive-threshold proof.
+- Same preregistered significant gate passes7/12source agreements,0wrong-source/
+  losses/control accepts,5ambiguities.24evaluation negatives+8unresolved all
+  unknown. All7agreements are one Barilla-source SKU; Nutella variants stay
+  ambiguous. No new encoder/image calls, query-label fitting or held-out claim.
+- Separate scalar arithmetic checker matches4stats/44decisions/676cosines and
+  pin inventory; same-agent mathematical verification is not human ground truth.
+  Shared558/full1673passes. Significant development achieved, release NO-GO and
+  high broader-quality/native/rights risks remain. Next bind actual vectors/bytes
+  in an experimental runtime before any app integration; no new push authority.

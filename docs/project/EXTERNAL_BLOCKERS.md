@@ -1,5 +1,14 @@
 # External blockers
 
+## November 14 — meaningful development gain, independent acceptance remains
+
+The source-labelled cached benchmark improves2→7/12without wrong-source/lost/
+control candidates. This does not make unreviewed source labels human truth or
+one-SKU coverage general recognition. Byte-bound runtime/native parity engineering
+is local work, not a payment/account blocker. Independent identity/variant/rights,
+prospective real-camera/platform and existing privacy/operations/store acceptance
+remain external-owner requirements; no automatic app publication is authorized.
+
 ## November 13 — control/calibration work remains local
 
 72cached controls and one v3threshold fit need no new model/account/payment.

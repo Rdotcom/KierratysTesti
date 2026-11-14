@@ -1,5 +1,30 @@
 # Current state
 
+## Significant cached recognition improvement — November 14, 2026
+
+- Owner's persistence target is reached narrowly in development: unchanged
+  significance gate≥4/12agreements/0disagreements/losses/control candidates passes
+  at7source agreements/0disagreements/5ambiguous/0unknown, versus baseline2/0/4/6.
+  All7agreements are Barilla-source images;5Nutella-size cases stay ambiguous.
+  Prince/Coca coverage and source/AI-only identity limitations remain explicit.
+- New original midpoint/support retrieval uses8gallery/40training negatives only,
+  0.75floor/negative gap0.05/competitor margin0.08/two-source-reference support.
+  All4gates hit the floor here, not proof of general adaptive calibration. Existing
+  pretrained encoder unchanged; no foundation training or verified bins/GTINs.
+- Freeze114source/265data pins, fit once,88logical retrievals/fusions;0newimage/
+  encoder/pixel/network/paid calls.24evaluation controls+8unresolved audits all
+  unknown;40calibration-only controls excluded from evaluation, family split kept.
+  Whole-pipeline control pixel evidence is unmeasured, not a safety pass.
+- Separate no-recognition-import arithmetic checker reproduces4statistics and
+  44decisions/676cosines, verifies pins and counts; no independent human accuracy
+  claim. All12fixed-baseline outputs reproduce; v3failure/ledgers preserved.
+- Scoped shared558/full1673unique(719Node+954workspace)/all builds/18routes pass;
+  13old warnings remain. CALIBRATED_V4_RESULTS.md has hashes/limits. No release GO
+  or phone/runtime replacement; installed10/source11/Android3 unchanged.
+- Next local unit is a byte-bound max-margin runtime with trusted encoder ports,
+  still experimental/unwired. Independent human/rights, broader prospective/native/
+  physical/platform/privacy/operations/store acceptance remain. No push/install.
+
 ## Control inventory and gallery calibration v3 — November 13
 
 - Owner requests persistence until significant change. Register≥4/12source

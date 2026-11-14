@@ -1,5 +1,18 @@
 # Owner actions
 
+## November 14 — significant local gain achieved, runtime binding next
+
+- **Engineering/Codex:** implement NEXT_ACTION's experimental byte-bound
+  max-margin runtime. Derive actual vectors through trusted encoder ports,
+  bind reference/calibration/query bytes/provenance and preserve false integration
+  authority. No paid service/key/account or repeat hybrid approval is needed.
+- **Roope, independent-reference organizer:** existing name/size/GTIN/rights
+  review forms/procedures remain pending. Source-labelled7/12agreements and
+  source/AI-only controls cannot substitute for reviewers; all7are one SKU.
+- **Roope, physical/release owner:** later matching native/device/platform and
+  existing privacy/operations/store procedures remain required, not automatically
+  authorized by persistence to significant development progress. No install/push.
+
 ## November 13 — loss repair complete, broader cached controls next
 
 - **Engineering/Codex:** NEXT_ACTION now registers cached outside/mixed/hazard

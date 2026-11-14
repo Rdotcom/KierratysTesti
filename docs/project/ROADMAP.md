@@ -1,5 +1,17 @@
 # Roadmap
 
+## Meaningful midpoint/support improvement — November 14
+
+- [x] Register separate v4math/support before outcomes; fit gallery/train controls
+  only, keep all prior failures,8gallery/12product/40train/24evaluation/8unresolved.
+- [x] Pass SAME significant gate at7/12source agreements,0wrong-source/losses,
+  5ambiguous;24controls+8audits all unknown. All7agreements are one Barilla SKU;
+  no general/independent-product reliability or release claim.
+- [x] Verify114source/265input pins and44decisions/4stats via separate arithmetic
+  checker;0newencoder calls. Shared558/full1673/builds/18routes pass.
+- [ ] Implement byte-bound max-margin runtime before any gated app integration;
+  broader prospective identity/rights/native/physical/platform/release gates remain.
+
 ## Control inventory / calibration v3 — November 13
 
 - [x] Register72cached controls with40train/24evaluation/8unresolved roles and

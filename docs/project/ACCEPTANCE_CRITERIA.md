@@ -1,5 +1,16 @@
 # Acceptance criteria
 
+## Meaningful v4development versus release acceptance — November 14
+
+Fixed≥4product-source agreements/0disagreements/losses/control candidates gate
+passes at7/12,5ambiguities; all24evaluation negatives/8unresolved audits unknown.
+Retain all72control roles/8gallery/12product queries and training-only fit, with
+exact old12baseline parity. Two gallery hashes do not establish independence;
+all7agreements belong to one SKU. Separate44decision/4stat arithmetic recount
+and shared558/full1673tests are not independent labels, whole-pipeline/native/
+camera safety or release approval. Byte/provenance binding and human/platform
+gates must pass separately; every result remains inferred/integrationAllowed=false.
+
 ## Registered calibration/control significance — November 13
 
 Threshold fit may use gallery/training controls only, never product query labels

@@ -1,5 +1,22 @@
 # Adversarial production-readiness audit
 
+## November 14 — measured utility improves, release findings remain open
+
+Scoped engineering continuation, not a fresh30lane certification. The registered
+v4midpoint/support candidate passes its unchanged significance gate: source
+agreements2→7/12,0disagreements/losses,5ambiguities;24evaluation controls and
+8unresolved audits all unknown. Separate pin/arithmetic recount and1673software
+tests/builds pass. Details: CALIBRATED_V4_RESULTS.md; no post-result gate tuning.
+
+REF-006/LV/PHOTO and broader quality remain high/open: all7agreements are one
+source-assigned Barilla SKU, labels lack independent review, Nutella exact sizes
+stay ambiguous, Prince/Coca queries are missing, data are already seen and control
+pixel behavior is unmeasured. Narrow utility progress is real; it is not general
+identity/camera/negative-control safety, rights approval, native readiness or GO.
+Unbound-caller-vector experimental API still needs the queued byte-bound runtime
+before app integration. Do not mislabel locally executable engineering as an
+account blocker; independent human/device/operations/store gates remain separate.
+
 ## November 13 — experimental loss repair, quality remains open
 
 Scoped follow-up: OFF_CACHED_V2_RESULTS.md. REF-007's specific lossy rule is

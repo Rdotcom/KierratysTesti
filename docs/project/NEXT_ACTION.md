@@ -1,3 +1,3 @@
 # Next action
 
-Implement and preregister a separate max-margin-midpoint/two-reference-support calibration experiment using the same frozen gallery/training-control partitions, retaining v3failure and zero new model calls, then test the unchanged≥4agreement/zero-error/loss/control-candidate significance gate.
+Implement an experimental byte-bound max-margin recognition runtime that derives reference/calibration/query vectors through trusted encoder ports, rejects unbound caller descriptors and mismatched provenance, and keeps integrationAllowed=false pending independent identity/rights and native acceptance.

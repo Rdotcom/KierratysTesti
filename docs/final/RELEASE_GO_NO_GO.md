@@ -1,5 +1,18 @@
 # Release decision
 
+## November 14 — significant DEVELOPMENT gain, production still NO-GO
+
+The SAME preregistered significance gate passes: source agreements2→7/12,0source
+disagreements/baseline losses/control candidates. All7agreements are one Barilla
+SKU;5Nutella cases remain ambiguous.24evaluation negatives+8unresolved audits
+all unknown. One training-only fit and separate arithmetic/pin recount support
+this narrow cached-development improvement; no independent labels or new cameras.
+
+Full1673/shared558/builds pass, but experimental vectors still require byte-bound
+runtime integration and independent identity/rights, broader prospective/native/
+physical/Android/privacy/operations/store acceptance. No app/phone replacement,
+GitHub publication or production action. CALIBRATED_V4_RESULTS.md has exact limits.
+
 ## November 13 — v3controls pass narrowly, coverage still NO-GO
 
 Source-asserted24evaluation negatives and8unresolved audits produce0candidate
