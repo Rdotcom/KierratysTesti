@@ -1,5 +1,33 @@
 # Current state
 
+## Native reference ports pass synthetic integration — November 14
+
+- Add capability-gated iOS full-frame embedding/RGB/hash ports and strict shared
+  contracts/mobile adapters. Default coarse/OCR/UI behavior is unchanged; no
+  reference catalogue/UI consumer is enabled and integrationAllowed stays false.
+  Resource/interface encoder identity is intentionally distinct from the Mac QA
+  binary. Native and JS gates retain ownership after timeout/abort until settle.
+- Actual v1 test catches a vertically mirrored RGB image; retain its failed
+  protocol/results/binary. Remove the extra transform and add eight generated
+  JPEG orientation regressions. Separate v2 keeps all input hashes/tolerances,
+  passes all eight orientations and actual mobile-adapter/shared-runtime joins.
+  Query fit-vector max difference is0/cosine0.9999999999999993.34processes/
+  17native hashes/4newencodes/11RGBdecodes/2legacy predictions; no product accuracy.
+- Add14TypeScript+2Node regressions and20native lifecycle/hash/orientation checks.
+  Shared585/mobile914overlap and full1711unique(721Node+990workspace) tests,
+  checks/builds/18routes pass;13old lint warnings. Initial fixture typecheck and
+  stale two-method allowlist failures repaired without weakening types/policy.
+- Mac Swift6 warnings-as-errors and shipping arm64iOS17.2 module compile pass.
+  Full regenerated SDK58 unsigned iOS Release build11also succeeds, including
+  the actual Expo bridge and embedded Hermes99bundle. All6bridge names/4notices
+  present, QA symbols absent, model weight/graph pins match.73MiBapp;3.2GiBfree.
+  Existing Swift5readiness Sendable-conversion warning and dependency warnings
+  remain visible. This is not signing/camera/Android/physical-device evidence.
+  NATIVE_REFERENCE_PORTS_RESULTS.md retains exact hashes and boundaries.
+- Independent checker remains owner-waived(D-086), not performed. Broader
+  source-image/physical quality, licensing/provenance/privacy/platform/store
+  gates remain. No new source app version, phone install, paid/API call or push.
+
 ## Byte-bound runtime complete; owner waives separate checker — November 14
 
 - Implement experimental max-margin runtime: owned bounded JPEGs/manifest,

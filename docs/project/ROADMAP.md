@@ -1,5 +1,11 @@
 # Roadmap
 
+- [x] Experimental iOS reference embedding/RGB/hash capability and mobile adapter;
+  actual synthetic byte-runtime/vector parity and all EXIF orientations pass.
+  Failed first orientation run retained; default UI path remains unchanged.
+- [ ] Matching full native app/bridge build and newly frozen broader actual-port
+  product/unknown evaluation before enabling the experimental runtime.
+
 ## Runtime binding and owner-review waiver — November 14
 
 - [x] Compile actual owned bytes through trusted hash/encoder/decoder ports and

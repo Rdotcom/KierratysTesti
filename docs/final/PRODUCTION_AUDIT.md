@@ -1,5 +1,27 @@
 # Adversarial production-readiness audit
 
+## November 14 — native RGB bug caught and fixed; app/quality gate stays open
+
+Scoped engineering continuation. REF-008's port/adapter implementation is now
+present, but activation still needs matching full app/bridge and broader quality
+evidence. NATIVE_REFERENCE_PORTS_RESULTS.md contains synthetic actual-port joins,
+exact fit-vector parity and all eight orientations;1711tests/builds pass.
+
+| ID / severity / state | Evidence / affected flow | Reproduction | Required remediation / boundary |
+| --- | --- | --- | --- |
+| REF-009 / high / REPAIRED locally, not previously shipped | V1 generated quadrant shows bottom pixels in top RGB row; extra CGContext flip breaks the new reference pixel port. | Retained v1protocol6ef9ec67…/result0e8f4e85… and process receipts; new native RGB regression covers8EXIF orientations. | Remove extra transform; separately frozen unchanged-input v2passes all8corners/dimensions/hash tests. No severity downgrade or v1pass; default UI never consumed this port. |
+| REF-008 / high / OPEN, implementation substep complete | Ports/contracts/adapters now exist and synthetic Mac invocation passes. Shipping arm64module compiles, not full Expo app/device/product quality. | Native source/module,14newTS+2Node regressions and v2protocolf7bbc0e8…/resultba8339a1…. | Engineering owns full app/bridge build, new actual-port product/unknown evaluation and guarded integration; later device/operator acceptance is separate. |
+
+The subsequent full matching unsigned iOS Release11build also succeeds,
+including Expo bridge, all6methods, embedded Hermes and model/notice pins; QA
+symbols absent. REF-008's full compilation substep is repaired, not its runtime/
+quality/device acceptance. Dependency warnings and the existing Swift5readiness
+Sendable-conversion warning remain documented, not treated as zero warnings.
+
+Source/SKU coverage, privacy/licensing/provenance, Android/physical/operations/
+store findings are not closed by synthetic parity. Human checker is owner-waived
+only(D-086), never fabricated. No default recognizer, phone, account or push change.
+
 ## November 14 — shared runtime gap repaired, native gap remains
 
 Scoped continuation, not a new 30-lane certification. The experimental runtime

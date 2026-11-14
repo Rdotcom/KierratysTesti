@@ -13,7 +13,8 @@
     "./photo-image": "./src/photo-image.ts",
     "./local-vision": "./src/local-vision.ts",
     "./packaging-classifier": "./src/packaging-classifier.ts",
-    "./local-vision-readiness": "./src/local-vision-readiness.ts"
+    "./local-vision-readiness": "./src/local-vision-readiness.ts",
+    "./reference-native": "./src/reference-native.ts"
   },
   "scripts": {
     "build": "tsup src/index.ts --format esm --dts --clean",

@@ -2,6 +2,8 @@ import Foundation
 import CoreGraphics
 import ImageIO
 import UniformTypeIdentifiers
+import CoreImage
+import CryptoKit
 @preconcurrency import Vision
 
 enum LocalVisionFailure: String, Error, Sendable {
@@ -174,6 +176,23 @@ private final class LocalVisionRecognitionDelivery: @unchecked Sendable {
   }
 
   func resolve(_ result: Result<LocalVisionResult, LocalVisionFailure>) {
+    lock.lock()
+    let callback = completion
+    completion = nil
+    lock.unlock()
+    callback?(result)
+  }
+}
+
+enum LocalReferencePortOperation: Sendable {
+  case capabilities, hashBytes, encode, decodeRgb
+}
+
+private final class LocalReferencePortDelivery: @unchecked Sendable {
+  private let lock = NSLock()
+  private var completion: (@Sendable (Result<String, LocalVisionFailure>) -> Void)?
+  init(_ completion: @escaping @Sendable (Result<String, LocalVisionFailure>) -> Void) { self.completion = completion }
+  func resolve(_ result: Result<String, LocalVisionFailure>) {
     lock.lock()
     let callback = completion
     completion = nil
@@ -393,7 +412,194 @@ final class LocalVisionEngine: @unchecked Sendable {
         LocalVisionClassification(identifier: $0, score: 0, hasPrecisionRecallCurve: false, passesOperatingPoint: false)
       }, textLines: [], supplement: .unavailable(.modelUnavailable), durationMs: 0)
   }
+
+  static func referencePortLifecycleSelfTest() -> [String]? {
+    let engine = LocalVisionEngine()
+    let entered = DispatchSemaphore(value: 0), release = DispatchSemaphore(value: 0)
+    defer { release.signal() }
+    let slow = LocalVisionRecognitionQARecorder()
+    let record: @Sendable (Result<String, LocalVisionFailure>) -> Void = { result in
+      slow.record(result.map { _ in qaRecognitionObservation() })
+    }
+    engine.enqueueReferencePort(deadlineSeconds: 0.03, operation: { _ in
+      entered.signal(); release.wait(); return "late"
+    }, completion: record)
+    guard entered.wait(timeout: .now() + 2) == .success else { return nil }
+    let busy = LocalVisionRecognitionQARecorder()
+    engine.recognize(jpegBase64: "YWJjZA==", completion: busy.record)
+    guard case .failure(.busy)? = busy.snapshot().first else { return nil }
+    let readiness = LocalVisionReadinessQARecorder()
+    engine.inspectReadiness(completion: readiness.record)
+    guard case .unavailable(.busy)? = readiness.snapshot().first else { return nil }
+    guard slow.signal.wait(timeout: .now() + 2) == .success,
+          case .failure(.timeout)? = slow.snapshot().first else { return nil }
+    let after = LocalVisionRecognitionQARecorder()
+    engine.referencePort(.hashBytes, input: "AA==") { after.record($0.map { _ in qaRecognitionObservation() }) }
+    guard case .failure(.busy)? = after.snapshot().first else { return nil }
+    release.signal(); engine.worker.sync {}
+    guard slow.snapshot().count == 1 else { return nil }
+    let retry = LocalVisionRecognitionQARecorder()
+    engine.referencePort(.hashBytes, input: "AA==") { retry.record($0.map { _ in qaRecognitionObservation() }) }
+    guard retry.signal.wait(timeout: .now() + 2) == .success,
+          case .success? = retry.snapshot().first else { return nil }
+    return ["reference_blocks_recognition", "reference_blocks_readiness", "reference_timeout",
+            "reference_gate_retained_until_settlement", "reference_late_result_suppressed", "reference_retry"]
+  }
+
+  /// Actual generated JPEGs and ImageIO orientation, no model/photo/network.
+  static func referenceRgbSelfTest() throws -> Int {
+    let width = 64, height = 48
+    let colours: [[UInt8]] = [[220, 30, 30], [30, 200, 30], [30, 30, 220], [220, 200, 30]]
+    var rgb = [UInt8](repeating: 0, count: width * height * 3)
+    for y in 0..<height { for x in 0..<width {
+      let colour = colours[(y < height / 2 ? 0 : 2) + (x < width / 2 ? 0 : 1)]
+      for c in 0..<3 { rgb[(y * width + x) * 3 + c] = colour[c] }
+    } }
+    guard let colour = CGColorSpace(name: CGColorSpace.sRGB),
+          let provider = CGDataProvider(data: Data(rgb) as CFData),
+          let image = CGImage(width: width, height: height, bitsPerComponent: 8, bitsPerPixel: 24,
+            bytesPerRow: width * 3, space: colour, bitmapInfo: CGBitmapInfo(rawValue: CGImageAlphaInfo.none.rawValue),
+            provider: provider, decode: nil, shouldInterpolate: false, intent: .defaultIntent) else { throw LocalVisionFailure.failed }
+    let expected = [[0, 1, 2, 3], [1, 0, 3, 2], [3, 2, 1, 0], [2, 3, 0, 1],
+                    [0, 2, 1, 3], [2, 0, 3, 1], [3, 1, 2, 0], [1, 3, 0, 2]]
+    for orientation in 1...8 {
+      let jpeg = NSMutableData()
+      guard let destination = CGImageDestinationCreateWithData(jpeg, UTType.jpeg.identifier as CFString, 1, nil) else { throw LocalVisionFailure.failed }
+      CGImageDestinationAddImage(destination, image, [kCGImageDestinationLossyCompressionQuality: 0.95,
+        kCGImagePropertyOrientation: orientation] as CFDictionary)
+      guard CGImageDestinationFinalize(destination) else { throw LocalVisionFailure.failed }
+      let data = jpeg as Data
+      let raw = try performReferencePort(.decodeRgb, input: data.base64EncodedString(), predictor: .shared,
+        deadlineAt: ProcessInfo.processInfo.systemUptime + deadlineSeconds)
+      guard let result = try JSONSerialization.jsonObject(with: Data(raw.utf8)) as? [String: Any],
+            let w = result["width"] as? Int, let h = result["height"] as? Int,
+            w == (orientation < 5 ? width : height), h == (orientation < 5 ? height : width),
+            let base64 = result["rgbBase64"] as? String, let bytes = Data(base64Encoded: base64),
+            bytes.count == w * h * 3,
+            result["imageSha256"] as? String == SHA256.hash(data: data).map({ String(format: "%02x", $0) }).joined()
+            else { throw LocalVisionFailure.failed }
+      for (corner, point) in [(8, 8), (w - 9, 8), (8, h - 9), (w - 9, h - 9)].enumerated() {
+        for channel in 0..<3 {
+          let actual = Int(bytes[(point.1 * w + point.0) * 3 + channel])
+          guard abs(actual - Int(colours[expected[orientation - 1][corner]][channel])) <= 8 else { throw LocalVisionFailure.failed }
+        }
+      }
+    }
+    return 8
+  }
   #endif
+
+  /// Experimental, unconsumed by the default UI. Every operation shares the
+  /// existing native gate/cache/worker, including hashing and RGB extraction.
+  /// No JS paths, URLs, source labels, model downloads or persistence accepted.
+  func referencePort(_ kind: LocalReferencePortOperation, input: String = "",
+                     completion: @escaping @Sendable (Result<String, LocalVisionFailure>) -> Void) {
+    guard input.utf8.count <= Self.maxBase64Length else { completion(.failure(.invalidImage)); return }
+    let deadlineAt = ProcessInfo.processInfo.systemUptime + Self.deadlineSeconds
+    enqueueReferencePort(deadlineSeconds: Self.deadlineSeconds, operation: { predictor in
+      try Self.performReferencePort(kind, input: input, predictor: predictor, deadlineAt: deadlineAt)
+    }, completion: completion)
+  }
+
+  private func enqueueReferencePort(deadlineSeconds: TimeInterval,
+    operation: @escaping @Sendable (LocalMobileClipPredictor) throws -> String,
+    completion: @escaping @Sendable (Result<String, LocalVisionFailure>) -> Void) {
+    let started = ProcessInfo.processInfo.systemUptime
+    stateLock.lock()
+    guard !inFlight else { stateLock.unlock(); completion(.failure(.busy)); return }
+    inFlight = true
+    let predictor = supplementalPredictor
+    stateLock.unlock()
+    let delivery = LocalReferencePortDelivery(completion)
+    let deadline = DispatchSource.makeTimerSource(queue: .global(qos: .utility))
+    deadline.schedule(deadline: .now() + deadlineSeconds)
+    deadline.setEventHandler { delivery.resolve(.failure(.timeout)) }
+    deadline.resume()
+    worker.async { [self] in
+      let outcome: Result<String, LocalVisionFailure> = autoreleasepool {
+        guard ProcessInfo.processInfo.systemUptime - started < deadlineSeconds else { return .failure(.timeout) }
+        do { return .success(try operation(predictor)) }
+        catch let failure as LocalVisionFailure { return .failure(failure) }
+        catch LocalMobileClipFailure.unsupportedPlatform { return .failure(.unavailable) }
+        catch { return .failure(.failed) }
+      }
+      let onTime = ProcessInfo.processInfo.systemUptime - started < deadlineSeconds
+      deadline.setEventHandler {}; deadline.cancel()
+      // Never unlock on UI/JS timeout: Core ML and decode are synchronous.
+      stateLock.lock(); inFlight = false; stateLock.unlock()
+      delivery.resolve(onTime ? outcome : .failure(.timeout))
+    }
+  }
+
+  private static func performReferencePort(_ kind: LocalReferencePortOperation, input: String,
+    predictor: LocalMobileClipPredictor, deadlineAt: TimeInterval) throws -> String {
+    func check() throws {
+      guard ProcessInfo.processInfo.systemUptime < deadlineAt else { throw LocalVisionFailure.timeout }
+    }
+    func digest(_ bytes: Data) -> String { SHA256.hash(data: bytes).map { String(format: "%02x", $0) }.joined() }
+    func json(_ value: [String: Any]) throws -> String {
+      let data = try JSONSerialization.data(withJSONObject: value, options: [.sortedKeys, .withoutEscapingSlashes])
+      guard data.count <= 4_200_000, let text = String(data: data, encoding: .utf8) else { throw LocalVisionFailure.failed }
+      return text
+    }
+    try check()
+    if kind == .capabilities {
+      guard input.isEmpty else { throw LocalVisionFailure.invalidImage }
+      try predictor.inspectReadiness(); try check()
+      return try json(["schemaVersion": "native-reference-capabilities-v1", "evidence": "integrity_and_interface_only",
+        "encoderSha256": LocalMobileClipPredictor.referenceEncoderSha256,
+        "preprocessingSha256": LocalMobileClipPredictor.referencePreprocessingSha256,
+        "decoderPolicy": "imageio-oriented-fit-1024-srgb-rgb-v1", "integrationAllowed": false])
+    }
+    guard !input.isEmpty, let bytes = Data(base64Encoded: input), bytes.count <= maxBytes,
+          bytes.base64EncodedString() == input else { throw LocalVisionFailure.invalidImage }
+    let imageHash = digest(bytes)
+    try check()
+    if kind == .hashBytes { return imageHash }
+    let decoded = try decodeJPEG(jpegBase64: input)
+    try check()
+    if kind == .encode {
+      let vector = try predictor.referenceEmbedding(image: decoded.pixels, orientation: decoded.orientation, deadlineAt: deadlineAt)
+      try check()
+      return try json(["imageSha256": imageHash, "encoderSha256": LocalMobileClipPredictor.referenceEncoderSha256,
+        "preprocessingSha256": LocalMobileClipPredictor.referencePreprocessingSha256, "vector": vector])
+    }
+    guard let colour = CGColorSpace(name: CGColorSpace.sRGB) else { throw LocalVisionFailure.failed }
+    let context = CIContext(options: [.workingColorSpace: colour, .outputColorSpace: colour, .cacheIntermediates: false])
+    defer { context.clearCaches() }
+    let image = CIImage(cgImage: decoded.pixels).oriented(decoded.orientation)
+    let extent = image.extent
+    let scale = min(1, 1024 / max(extent.width, extent.height))
+    let width = max(1, Int((extent.width * scale).rounded())), height = max(1, Int((extent.height * scale).rounded()))
+    guard width <= 1024, height <= 1024, width * height <= 1_048_576 else { throw LocalVisionFailure.invalidImage }
+    let resized = image.transformed(by: CGAffineTransform(translationX: -extent.minX, y: -extent.minY))
+      .transformed(by: CGAffineTransform(scaleX: CGFloat(width) / extent.width, y: CGFloat(height) / extent.height))
+    guard let pixels = context.createCGImage(resized, from: CGRect(x: 0, y: 0, width: width, height: height),
+      format: .RGBA8, colorSpace: colour) else { throw LocalVisionFailure.failed }
+    try check()
+    var rgba = [UInt8](repeating: 0, count: width * height * 4)
+    var rgb = [UInt8](repeating: 0, count: width * height * 3)
+    defer {
+      _ = rgba.withUnsafeMutableBytes { $0.initializeMemory(as: UInt8.self, repeating: 0) }
+      _ = rgb.withUnsafeMutableBytes { $0.initializeMemory(as: UInt8.self, repeating: 0) }
+    }
+    let drawn = rgba.withUnsafeMutableBytes { storage -> Bool in
+      guard let drawing = CGContext(data: storage.baseAddress, width: width, height: height, bitsPerComponent: 8,
+        bytesPerRow: width * 4, space: colour, bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue | CGBitmapInfo.byteOrder32Big.rawValue) else { return false }
+      // Bitmap CGContext's first stored row already matches ImageIO/CGImage
+      // top-down pixels here. An extra UIKit-style flip mirrors the RGB port.
+      drawing.draw(pixels, in: CGRect(x: 0, y: 0, width: width, height: height))
+      return true
+    }
+    guard drawn else { throw LocalVisionFailure.failed }
+    for index in 0..<(width * height) {
+      rgb[index * 3] = rgba[index * 4]; rgb[index * 3 + 1] = rgba[index * 4 + 1]; rgb[index * 3 + 2] = rgba[index * 4 + 2]
+    }
+    try check()
+    return try json(["schemaVersion": "native-reference-rgb-v1", "imageSha256": imageHash,
+      "decoderPolicy": "imageio-oriented-fit-1024-srgb-rgb-v1", "width": width, "height": height,
+      "channels": 3, "rgbBase64": Data(rgb).base64EncodedString()])
+  }
 
   func inspectReadiness(completion: @escaping @Sendable (LocalVisionReadiness) -> Void) {
     // Capture the predictor only while owning the shared gate. No work is done

@@ -1,3 +1,3 @@
 # Next action
 
-Implement capability-gated native iOS reference-embedding/RGB ports and strict mobile adapters for the byte-bound runtime, retaining default app behavior until actual resource/preprocessing/parity and cancellation tests pass under the owner-waived independent-review policy.
+Evaluate the gated native reference runtime on the existing source-labelled product/unknown corpus under a newly frozen shipping-port Mac protocol, preserving family splits, source uncertainty, prior failures and default app behavior.

@@ -1,5 +1,18 @@
 # Release decision
 
+## November 14 — native port/parity unit passes; still NO-GO
+
+The experimental iOS ports/mobile contracts/runtime pass actual synthetic Mac
+integration after repairing a real mirrored-RGB failure. All eight orientations,
+exact fit-vector parity and1711software tests/builds pass. A matching unsigned
+iOS Release11build including the Expo bridge now succeeds; no signing/install.
+Default app recognition is unchanged; no matching physical acceptance or prospective product
+accuracy follows. NATIVE_REFERENCE_PORTS_RESULTS.md retains both runs and limits.
+The separate human checker is owner-waived, not performed. Actual app/bridge,
+broader product/unknown quality, Android, licensing/privacy, operations and stores
+remain open; local engineering is not recast as an external-account blocker.
+The full native compilation gap is repaired, not the runtime/quality gates.
+
 ## November 14 — byte-bound runtime passes; public release remains NO-GO
 
 The experimental shared runtime now derives and joins actual image, model,

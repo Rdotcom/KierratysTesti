@@ -1,5 +1,18 @@
 # Owner actions
 
+## November 14 — native synthetic ports complete, app/quality acceptance next
+
+- **Engineering/Codex:** matching unsigned iOS app/Expo bridge build passes.
+  Register an actual-port source-image/unknown comparison before enabling the
+  experimental runtime. Keep the failed orientation run and default behavior.
+  Broader recognition and Android work are local engineering, not owner accounts.
+- **Roope/device operator, later physical acceptance:** use only a separately
+  approved matching install; run the frozen camera/unknown/mixed/offline/permission/
+  screen-reader checks and record observed results. A Mac synthetic pass cannot
+  supply these results. No phone or push action occurs in this unit.
+- **Separate checker:** explicitly waived under D-086; no reviewer recruitment,
+  blank-form approval or repeated scope request is necessary.
+
 ## November 14 — owner waives separate checker; engineering continues
 
 - **Engineering/Codex:** implement capability-gated iOS encoder/RGB ports and

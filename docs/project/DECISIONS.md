@@ -720,3 +720,24 @@
 - No uncertainty-to-fact promotion, unsafe material/bin inference or invented
   approval. Actual native/device/privacy/licence/account/store requirements and
   repository-sharing boundary remain; no push/install/publication follows.
+
+## D-087 — Native reference ports remain experimental despite synthetic parity
+
+- Date: 2026-11-14. Reuse the verified bundled model on the existing native
+  single-flight worker; give full-frame reference encoding a distinct versioned
+  resource/interface identity. Never describe this descriptor as executable
+  attestation or silently reuse Mac QA vectors on iPhone. Keep default OCR/coarse
+  UI path unchanged and require actual capability/strict output contracts.
+- The first generated-image integration FAILS a mirrored RGB corner test. Keep
+  its raw evidence/binary; repair the extra transform, add all-eight-orientation
+  native regressions and run separately frozen v2 with unchanged inputs/gates.
+  V2passes 34bounded processes, actual shared/mobile/native joins and exact fit
+  vector parity. This proves no real-product, physical-device or Android quality.
+- Add14TypeScript+2Node regressions,20new native checks; shared585/mobile914/full
+  1711tests/builds pass. Swift6warnings-as-errors and shipping arm64iOS module
+  compile pass. Full app/bridge build is recorded separately when complete.
+- Align ignored generated iOS files with already accepted SDK58 packages and
+  source build11. First archive existing generated files (excluding reproducible
+  Pods/build); Expo prebuild regenerates iOS, then reinstall Pods without repo
+  update. Restore its incidental npm-script changes; no dependency/source-version
+  change, account, signing, phone-install or GitHub authority is inferred.

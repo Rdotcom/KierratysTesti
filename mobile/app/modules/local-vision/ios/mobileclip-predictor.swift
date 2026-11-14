@@ -54,6 +54,19 @@ final class LocalMobileClipPredictor: @unchecked Sendable {
   static let promptPolicy = "packaging-visible-form-v1"
   static let preprocessing = "center-square-256-srgb-v1"
   static let computeUnitsName = "cpuOnly"
+  static let referencePreprocessing = "aspect-fit-256-srgb-gray127-v1|l2-double-reduction-order-v1|final_emb_1|Float32|1,512"
+  // Versioned resource/interface identity, NOT a hash of the iOS executable and
+  // NOT interchangeable with the Mac QA binary's encoder identity.
+  static var referenceEncoderDescriptor: String {
+    ["ios-reference-encoder-v1", modelId, modelRevision, imageWeightSha256,
+     compiledGraphSha256, sourceSpecSha256, sourceManifestSha256, prototypesSha256,
+     computeUnitsName, "final_emb_1|Float32|1,512"].joined(separator: "|")
+  }
+  static var referenceEncoderSha256: String { digest(referenceEncoderDescriptor) }
+  static var referencePreprocessingSha256: String { digest(referencePreprocessing) }
+  private static func digest(_ text: String) -> String {
+    SHA256.hash(data: Data(text.utf8)).map { String(format: "%02x", $0) }.joined()
+  }
   private static let textWeightSha256 = "34723e51445b2630106e94e1fdbebed80e7676b404fb839f4eb9bec97bdcad68"
   private static let sourceSpecSha256 = "2c1afa132c41c6535817cc67894bd7484bc2cbd084ed5e2f12b24f611af17591"
   private static let sourceManifestSha256 = "fe07dde983dae92c1799132816ce55f9ff8487f2681b530abf7222025aa27fa4"
@@ -100,6 +113,28 @@ final class LocalMobileClipPredictor: @unchecked Sendable {
   }
 
   func predict(image: CGImage, orientation: CGImagePropertyOrientation) throws -> [LocalMobileClipScore] {
+    let vector = try embedding(image: image, orientation: orientation, fullFrame: false)
+    let loaded = try load()
+    return try loaded.prototypes.groups.map { group in
+      let cosine = zip(vector, group.embedding).reduce(0) { $0 + $1.0 * $1.1 }
+      guard cosine.isFinite, cosine >= -1.000_001, cosine <= 1.000_001 else {
+        throw LocalMobileClipFailure.processingFailed
+      }
+      return LocalMobileClipScore(group: group.group, cosine: min(1, max(-1, cosine)))
+    }
+  }
+
+  /// Experimental reference port only. No prototype classification/product/bin.
+  /// Shares the verified model/cache and the engine's single-flight worker.
+  func referenceEmbedding(image: CGImage, orientation: CGImagePropertyOrientation, deadlineAt: TimeInterval) throws -> [Double] {
+    try embedding(image: image, orientation: orientation, fullFrame: true, deadlineAt: deadlineAt)
+  }
+
+  private func embedding(image: CGImage, orientation: CGImagePropertyOrientation, fullFrame: Bool, deadlineAt: TimeInterval? = nil) throws -> [Double] {
+    func checkDeadline() throws {
+      if let deadlineAt, ProcessInfo.processInfo.systemUptime >= deadlineAt { throw LocalVisionFailure.timeout }
+    }
+    try checkDeadline()
     #if os(iOS)
     guard #available(iOS 17.2, *) else { throw LocalMobileClipFailure.unsupportedPlatform }
     #elseif os(macOS)
@@ -112,33 +147,28 @@ final class LocalMobileClipPredictor: @unchecked Sendable {
       throw LocalMobileClipFailure.processingFailed
     }
     let loaded = try load()
+    try checkDeadline()
     // Do not retain app-owned Core Image intermediate caches between requests.
     // This is not a promise of cryptographic wiping of every framework buffer.
     defer { loaded.context.clearCaches() }
-    let input = try imageBuffer(image, orientation: orientation, assets: loaded)
+    let input = try imageBuffer(image, orientation: orientation, assets: loaded, fullFrame: fullFrame)
+    try checkDeadline()
     let value = MLFeatureValue(pixelBuffer: input)
     guard loaded.imageFeature.isAllowedValue(value) else { throw LocalMobileClipFailure.processingFailed }
     let output: any MLFeatureProvider
     do {
       output = try loaded.model.prediction(from: MLDictionaryFeatureProvider(dictionary: ["image": value]))
     } catch { throw LocalMobileClipFailure.processingFailed }
+    try checkDeadline()
     guard let array = output.featureValue(for: "final_emb_1")?.multiArrayValue,
-          array.count == 512, [.float16, .float32, .double].contains(array.dataType) else {
+          array.count == 512, array.shape.map(\.intValue) == [1, 512], array.dataType == .float32 else {
       throw LocalMobileClipFailure.processingFailed
     }
     let raw = (0..<512).map { array[$0].doubleValue }
     guard raw.allSatisfy(\.isFinite) else { throw LocalMobileClipFailure.processingFailed }
     let norm = sqrt(raw.reduce(0) { $0 + $1 * $1 })
     guard norm.isFinite, norm > 0.000_001 else { throw LocalMobileClipFailure.processingFailed }
-    let vector = raw.map { $0 / norm }
-    return try loaded.prototypes.groups.map { group in
-      let cosine = zip(vector, group.embedding).reduce(0) { $0 + $1.0 * $1.1 }
-      guard cosine.isFinite, cosine >= -1.000_001, cosine <= 1.000_001 else {
-        throw LocalMobileClipFailure.processingFailed
-      }
-      // Numerical round-off only; this is not a confidence or acceptance gate.
-      return LocalMobileClipScore(group: group.group, cosine: min(1, max(-1, cosine)))
-    }
+    return raw.map { $0 / norm }
   }
 
   private func resources() throws -> URL {
@@ -234,15 +264,28 @@ final class LocalMobileClipPredictor: @unchecked Sendable {
     return data
   }
 
-  private func imageBuffer(_ image: CGImage, orientation: CGImagePropertyOrientation, assets: Cache) throws -> CVPixelBuffer {
+  private func imageBuffer(_ image: CGImage, orientation: CGImagePropertyOrientation, assets: Cache, fullFrame: Bool) throws -> CVPixelBuffer {
     var ciImage = CIImage(cgImage: image).oriented(orientation)
     let extent = ciImage.extent
-    let side = min(extent.width, extent.height)
-    let x = round((extent.width - side) / 2) + extent.origin.x
-    let y = round((extent.height - side) / 2) + extent.origin.y
-    ciImage = ciImage.cropped(to: CGRect(x: x, y: y, width: side, height: side))
-      .transformed(by: CGAffineTransform(translationX: -x, y: -y))
-      .transformed(by: CGAffineTransform(scaleX: 256 / side, y: 256 / side))
+    if fullFrame {
+      let scale = 256 / max(extent.width, extent.height)
+      ciImage = ciImage.transformed(by: CGAffineTransform(translationX: -extent.minX, y: -extent.minY))
+        .transformed(by: CGAffineTransform(scaleX: scale, y: scale))
+        .transformed(by: CGAffineTransform(translationX: (256 - extent.width * scale) / 2,
+                                           y: (256 - extent.height * scale) / 2))
+      guard let gray = CGColor(colorSpace: assets.colour, components: [127.0 / 255, 127.0 / 255, 127.0 / 255, 1]) else {
+        throw LocalMobileClipFailure.processingFailed
+      }
+      let canvas = CGRect(x: 0, y: 0, width: 256, height: 256)
+      ciImage = ciImage.composited(over: CIImage(color: CIColor(cgColor: gray)).cropped(to: canvas)).cropped(to: canvas)
+    } else {
+      let side = min(extent.width, extent.height)
+      let x = round((extent.width - side) / 2) + extent.origin.x
+      let y = round((extent.height - side) / 2) + extent.origin.y
+      ciImage = ciImage.cropped(to: CGRect(x: x, y: y, width: side, height: side))
+        .transformed(by: CGAffineTransform(translationX: -x, y: -y))
+        .transformed(by: CGAffineTransform(scaleX: 256 / side, y: 256 / side))
+    }
     var buffer: CVPixelBuffer?
     guard CVPixelBufferCreate(nil, 256, 256, assets.pixelFormat, nil, &buffer) == kCVReturnSuccess,
           let buffer else { throw LocalMobileClipFailure.processingFailed }

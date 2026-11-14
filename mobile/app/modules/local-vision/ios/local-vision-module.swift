@@ -4,6 +4,19 @@ public final class LocalVisionModule: Module {
   public func definition() -> ModuleDefinition {
     Name("KierratysLocalVision")
 
+    AsyncFunction("inspectReferenceCapabilities") { (promise: Promise) in
+      LocalVisionEngine.shared.referencePort(.capabilities) { Self.resolveReference($0, promise) }
+    }
+    AsyncFunction("hashReferenceBytes") { (base64: String, promise: Promise) in
+      LocalVisionEngine.shared.referencePort(.hashBytes, input: base64) { Self.resolveReference($0, promise) }
+    }
+    AsyncFunction("encodeReferenceImage") { (base64: String, promise: Promise) in
+      LocalVisionEngine.shared.referencePort(.encode, input: base64) { Self.resolveReference($0, promise) }
+    }
+    AsyncFunction("decodeReferenceRgb") { (base64: String, promise: Promise) in
+      LocalVisionEngine.shared.referencePort(.decodeRgb, input: base64) { Self.resolveReference($0, promise) }
+    }
+
     AsyncFunction("inspectReadiness") { (promise: Promise) in
       LocalVisionEngine.shared.inspectReadiness { result in
         do {
@@ -29,6 +42,13 @@ public final class LocalVisionModule: Module {
           promise.reject("ERR_LOCAL_VISION_\(code)", failure.rawValue)
         }
       }
+    }
+  }
+
+  private static func resolveReference(_ result: Result<String, LocalVisionFailure>, _ promise: Promise) {
+    switch result {
+    case .success(let value): promise.resolve(value)
+    case .failure(let failure): promise.reject("ERR_LOCAL_VISION_\(failure.rawValue.uppercased())", failure.rawValue)
     }
   }
 }

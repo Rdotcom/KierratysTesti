@@ -35,6 +35,17 @@ func emitOutcome(_ base64: String) throws {
   }
 }
 
+func referenceOutcome(_ kind: LocalReferencePortOperation, _ input: String = "") -> Result<String, LocalVisionFailure> {
+  let signal = DispatchSemaphore(value: 0), lock = NSLock()
+  nonisolated(unsafe) var result: Result<String, LocalVisionFailure>?
+  LocalVisionEngine.shared.referencePort(kind, input: input) { value in
+    lock.lock(); result = value; lock.unlock(); signal.signal()
+  }
+  guard signal.wait(timeout: .now() + LocalVisionEngine.deadlineSeconds + 2) == .success else { return .failure(.timeout) }
+  lock.lock(); defer { lock.unlock() }
+  return result ?? .failure(.failed)
+}
+
 var args = Array(CommandLine.arguments.dropFirst())
 #if LOCAL_VISION_QA
 if args.count >= 2, args[0] == "--resources" {
@@ -49,7 +60,46 @@ if args.count >= 2, args[0] == "--resources" {
   args.removeFirst(2)
 }
 #endif
-if args == ["--readiness"] {
+if args == ["--reference-rgb-self-test"] {
+  #if LOCAL_VISION_QA
+  let passed = try LocalVisionEngine.referenceRgbSelfTest()
+  emit(try JSONSerialization.data(withJSONObject: ["passed": passed, "generatedJpegDecodes": passed,
+    "imageRequestsPerformed": 0, "supplementRequestsPerformed": 0], options: [.sortedKeys]))
+  #else
+  fail("qa_only_command")
+  #endif
+} else if args == ["--reference-self-test"] {
+  #if LOCAL_VISION_QA
+  guard let cases = LocalVisionEngine.referencePortLifecycleSelfTest() else { fail("reference_lifecycle_failed") }
+  for value in ["", "AA==\n", "AB==", "file:///unused", String(repeating: "A", count: 2_000_004)] {
+    guard case .failure(.invalidImage) = referenceOutcome(.hashBytes, value) else { fail("reference_invalid_input_failed") }
+  }
+  guard case .success(let hash) = referenceOutcome(.hashBytes, "AA=="),
+        hash == "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d" else { fail("reference_hash_failed") }
+  emit(try JSONSerialization.data(withJSONObject: ["passed": cases.count + 6, "cases": cases,
+    "imageRequestsPerformed": 0, "supplementRequestsPerformed": 0,
+    "encoderSha256": LocalMobileClipPredictor.referenceEncoderSha256,
+    "preprocessingSha256": LocalMobileClipPredictor.referencePreprocessingSha256], options: [.sortedKeys]))
+  #else
+  fail("qa_only_command")
+  #endif
+} else if args == ["--reference-capabilities"] || args == ["--reference-encode-stdin"] || args == ["--reference-rgb-stdin"] || args == ["--reference-hash-stdin"] {
+  let kind: LocalReferencePortOperation = args[0] == "--reference-capabilities" ? .capabilities : args[0] == "--reference-encode-stdin" ? .encode : args[0] == "--reference-hash-stdin" ? .hashBytes : .decodeRgb
+  var input = Data()
+  if kind != .capabilities {
+    while let chunk = try FileHandle.standardInput.read(upToCount: min(65_536, LocalVisionEngine.maxBase64Length + 1 - input.count)), !chunk.isEmpty {
+      input.append(chunk)
+      guard input.count <= LocalVisionEngine.maxBase64Length else { fail("invalid_image") }
+    }
+  }
+  guard let text = String(data: input, encoding: .utf8) else { fail("invalid_image") }
+  switch referenceOutcome(kind, text) {
+  case .success(let output):
+    if kind == .hashBytes { emit(try JSONEncoder().encode(output)) }
+    else { emit(Data(output.utf8)) }
+  case .failure(let failure): fail(failure.rawValue)
+  }
+} else if args == ["--readiness"] {
   let signal = DispatchSemaphore(value: 0)
   let lock = NSLock()
   nonisolated(unsafe) var readiness: LocalVisionReadiness?

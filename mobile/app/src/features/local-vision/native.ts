@@ -1,7 +1,8 @@
 import { type NativeModule, requireOptionalNativeModule } from "expo";
 import { Platform } from "react-native";
-import { createLocalRecognizer, type LocalVisionNativeReader } from "./recognizer";
 import { createLocalReadinessInspector } from "./readiness";
+import { createLocalRecognizer, type LocalVisionNativeReader } from "./recognizer";
+import { createNativeReferenceRuntimePorts, type ReferenceNativeReader } from "./reference-ports";
 
 function reader(): LocalVisionNativeReader | undefined {
   if (Platform.OS !== "ios") return undefined;
@@ -18,3 +19,13 @@ function reader(): LocalVisionNativeReader | undefined {
 export const isLocalVisionAvailable = () => reader() !== undefined;
 export const recognizeLocalPhoto = createLocalRecognizer(reader);
 export const inspectLocalVisionReadiness = createLocalReadinessInspector(reader);
+
+/** Experimental capability only; the normal photo/UI path does not call it. */
+export const inspectReferenceRuntimePorts = (signal?: AbortSignal) =>
+  createNativeReferenceRuntimePorts(() => {
+    if (Platform.OS !== "ios") return undefined;
+    return (
+      requireOptionalNativeModule<NativeModule & ReferenceNativeReader>("KierratysLocalVision") ??
+      undefined
+    );
+  }, signal);

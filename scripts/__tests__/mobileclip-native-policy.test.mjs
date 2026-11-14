@@ -174,7 +174,51 @@ test("resource override exists only in QA and is absent from shipping bridge con
   const bridge = source(`${ios}local-vision-module.swift`);
   assert.deepEqual(
     [...bridge.matchAll(/AsyncFunction\("([^"]+)"\)/gu)].map((match) => match[1]),
-    ["inspectReadiness", "recognize"],
+    [
+      "inspectReferenceCapabilities",
+      "hashReferenceBytes",
+      "encodeReferenceImage",
+      "decodeReferenceRgb",
+      "inspectReadiness",
+      "recognize",
+    ],
   );
   assert.doesNotMatch(bridge, /resourcesURL|modelPath|proxy|configureResources|process\.env/);
+});
+
+test("experimental reference operations retain native ownership, limits and uncertainty", () => {
+  const engine = source(`${ios}local-vision-engine.swift`);
+  const method = engine.match(
+    /func referencePort\([\s\S]*?private static func inspectCapabilities/u,
+  )?.[0];
+  assert.ok(method);
+  assert.match(method, /input\.utf8\.count <= Self\.maxBase64Length/u);
+  assert.match(method, /guard !inFlight else/u);
+  assert.match(method, /LocalReferencePortDelivery/u);
+  assert.match(method, /try decodeJPEG\(jpegBase64: input\)/u);
+  assert.match(method, /SHA256\.hash\(data: bytes\)/u);
+  assert.match(method, /"integrationAllowed": false/u);
+  assert.match(method, /width <= 1024, height <= 1024, width \* height <= 1_048_576/u);
+  assert.doesNotMatch(
+    method,
+    /URLSession|URLRequest|print\(|NSLog|forWritingTo|Data\(contentsOf:/u,
+  );
+  assert.doesNotMatch(method, /drawing\.scaleBy\(x: 1, y: -1\)/u);
+});
+
+test("reference encoder uses a distinct pinned full-frame identity and default path stays centered", () => {
+  const helper = source(`${ios}mobileclip-predictor.swift`);
+  assert.match(helper, /ios-reference-encoder-v1/u);
+  assert.match(helper, /aspect-fit-256-srgb-gray127-v1/u);
+  assert.match(
+    helper,
+    /compiledGraphSha256, sourceSpecSha256, sourceManifestSha256, prototypesSha256/u,
+  );
+  assert.match(helper, /embedding\(image: image, orientation: orientation, fullFrame: false\)/u);
+  assert.match(helper, /fullFrame: true, deadlineAt: deadlineAt/u);
+  assert.match(helper, /try checkDeadline\(\)/u);
+  assert.match(
+    helper,
+    /array\.shape\.map\(\\\.intValue\) == \[1, 512\], array\.dataType == \.float32/u,
+  );
 });

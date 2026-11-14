@@ -1,5 +1,12 @@
 # External blockers
 
+November14: new reference-port/runtime engineering and synthetic tests need no
+account, secret, paid service or separate reviewer. Full matching native build
+and broader recognition evaluation are locally executable, not external blockers.
+Actual physical camera/permission/accessibility/battery acceptance still needs a
+device/operator; public signing/store accounts and service publication remain
+separate owner actions. Do not label the new Mac smoke physical-device evidence.
+
 ## November 14 — separate reviewer gate waived by owner
 
 Roope explicitly waives the proposed independent human reviewer. Remove it from

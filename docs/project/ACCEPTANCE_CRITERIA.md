@@ -1,5 +1,13 @@
 # Acceptance criteria
 
+November14 native-port evidence: strict shared/mobile contracts, single-flight/
+deadline, generated JPEG orientation and actual Mac invocation of shipping Swift
+plus JS/runtime joins pass. The first mirrored-RGB failure remains recorded.
+Neither this nor arm64iOS module compilation is a complete signed app, native
+bridge/device/Android or product-accuracy pass. Keep the reference runtime gated
+until matching app and prospective quality evidence; owner-waived human review
+does not promote source assertions to verified identity or sorting policy.
+
 ## Current owner-waived-review policy — November 14
 
 D-086supersedes historical mandatory independent-review gate: Roope requests

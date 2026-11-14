@@ -1,5 +1,48 @@
 # Test evidence
 
+## November14 — full matching unsigned iOS Release build PASS
+
+Actual workspace/scheme KeepItGreen, Release, generic iOS, stable Xcode26.6/
+iPhoneOS26.5,4jobs, CODE_SIGNING_ALLOWED/REQUIRED=NO, empty DEVELOPMENT_TEAM.
+EXPO_NO_DOTENV/TELEMETRY/CI set; no packager, LAN API, paid call or phone change.
+Build log:`/tmp/kig-native-reference-ios-release-20261114.log`; xcresult and
+unsigned73MiBapp in `work/native-reference-ports-2026-11-14.P5tYhw/`.
+
+Receipt97bd57ca…authenticates actual binary/Hermes/model/Podlock/log hashes;
+six bridge strings/four notice byte matches/zero QA symbols, embedded Hermes99
+bundle, source build11, actual code-sign absence. Graph858f2fc7…and weights
+87d8f639…match runtime pins. Native bridge now compiles; this is no runtime/device
+or signed store pass.1103warning lines remain, mostly repeated dependencies;
+one is the existing Swift5readiness Sendable-function conversion warning.
+Full software1711tests/builds and scoped585/914pass as below; no public GO.
+
+## November 14 — native reference v2 synthetic integration PASS
+
+NATIVE_REFERENCE_PORTS_RESULTS.md/PROTOCOL.md/V2_PROTOCOL.md retain the actual
+mirrored-RGB v1 failure and unchanged-gate repair. V2protocol f7bbc0e8…/result
+ba8339a1… pins146sources and matches v1input hashes.34bounded processes include
+17real native hashes,4newencodes/11RGB decodes/one capability and one old exporter
+with2predictions. Exact query fit-vector parity (max diff0), all8EXIF corner/
+dimension/hash tests and actual mobile/shared/runtime joins pass. Same-agent
+zero-new-call recount146/146passes; no product/physical accuracy claim.
+
+Add5shared+9mobile+2Node tests,12native lifecycle/hash/input and8generated-JPEG
+orientation checks. Old native readiness/recognition/input/cascade8/9/8/6pass.
+Shared585/mobile914overlap/full1711unique(721Node+990workspace) tests, format,
+lint, strict types, boundaries and all builds/18routes pass;13old warnings.
+Logs: `/tmp/kig-native-reference-shared-20261114.log`,
+`/tmp/kig-native-reference-mobile-20261114.log`,
+`/tmp/kig-native-reference-full2-20261114.log`. Initial full-run stale native
+allowlist failure and Node-only test fixture type errors are repaired, retained
+in results; no type/policy weakening. New experimental default/UI is not enabled.
+
+Mac Swift6warnings-as-errors and shipping arm64iOS17.2 module compilation against
+the real iPhoneOS SDK pass without QA hooks. This is not a full app build; its
+subsequent Release result is recorded separately. Generated native source10was
+archived then regenerated to existing source11/current SDK58. Pods reinstall
+passes; prebuild's incidental package-script changes are restored. No new model,
+dependency, app version, paid/API call, device install, account action or push.
+
 ## November 14 — byte-bound runtime and actual encoder smoke
 
 MAX_MARGIN_RUNTIME_RESULTS.md records 22 new shared regressions, shared 580
