@@ -1,5 +1,20 @@
 # Release decision
 
+## November15 — NO-GO; bounded offline flow functional, not production-validated
+
+Actual native barcode/OCR/embedding + local5product/10reference database now
+connects to the existing photo/manual/material workflow. Network-denied60request
+test,14browser offline cases,1814software tests and unsigned iOS build pass their
+recorded checks, BUT the native run retains1timeout and visual quality is below
+target:11/17rankTop1,2confirmation hints,0automatic exact-SKU acceptance. No
+independent population precision/unknown rate or≥70%coverage established.
+
+High REF-006/008/009 remain. Android/physical camera/gallery/catalogue updates,
+representative independent data and prior privacy/licensing/store/operations
+requirements remain open. Native build is unsigned/not installed; phone build10
+does not include this code. New catalogue licensing accounted for explicitly in
+its asset notice, not described as legal/commercial approval. No push/publication.
+
 ## November14 — OCR prototype improves coverage, public release remains NO-GO
 
 Same58queries now10/17source agreements versus7baseline,0wrong/oldloss and41

@@ -175,6 +175,7 @@ test("resource override exists only in QA and is absent from shipping bridge con
   assert.deepEqual(
     [...bridge.matchAll(/AsyncFunction\("([^"]+)"\)/gu)].map((match) => match[1]),
     [
+      "recognizeProductEvidence",
       "inspectReferenceCapabilities",
       "hashReferenceBytes",
       "encodeReferenceImage",

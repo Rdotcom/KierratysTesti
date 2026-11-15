@@ -1,5 +1,28 @@
 # Owner actions
 
+## November15 — offline integration follow-through
+
+- Engineering/Codex: execute the one NEXT_ACTION, freeze DINOv2-Small/current
+  comparison before scores, preserve all58source queries/timeout/previousfailed
+  gates. Implement Android/gallery/update work and calibration only with an
+  appropriate new validation split; never make user-facing confidence from cosine.
+- Engineering/Codex: reproduce current evidence with
+  `node scripts/qa/review-offline-product.mjs work/offline-product-2026-11-14.XP0QdK/evaluation`,
+  `pnpm validate:shared`, `pnpm validate:mobile`, `pnpm validate`; no model retake.
+- Owner/operator, when a fresh installation is requested: connect/unlock iPhone,
+  approve signing/trust personally if prompted; engineering builds matching
+  signed source and checks artifact. Then airplane-mode photograph a clear known
+  barcode, a valid absent code, two-code scene and unreadable/name-only package;
+  verify explicit source/unknown and separate material confirmation, cancel and
+  background clearing. Do not send private photos here. Not performed this turn.
+- Engineering/data work: acquire permissible broader Finnish/unknown/sibling
+  source coverage and separate prospective real-camera sessions, preserving
+  licence/attribution/lineage. Owner supplies physical access only where required;
+  a separate human reviewer remains explicitly waived, not newly mandatory.
+- Owner-authorized cache removal is complete: old October28intermediates/module
+  cache and CocoaPods downloads only;~5.6GiBlogical bytes,~6.3GiBfree afterward.
+  Rebuild/redownload recovers caches. No source/app/model/evidence deletion.
+
 ## November14 — researched path and first useful text corroboration complete
 
 - Engineering/Codex: follow NEXT_ACTION for guided readable name/net-quantity

@@ -1,3 +1,3 @@
 # Next action
 
-Implement a bounded guided name-and-net-quantity capture/ROI OCR path that preserves original-image lineage, explicit family/variant/unknown outcomes, total deadlines and transient-photo privacy, then test it on the retained hard cases without relaxing the fixed quality gates.
+Run a separately frozen DINOv2-Small versus current MobileCLIP retrieval comparison on the same source-bound references and all retained query/audit rows, preserving the current timeout and failed quality gates before choosing any model or automatic-acceptance change.

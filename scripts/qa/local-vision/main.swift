@@ -83,8 +83,8 @@ if args == ["--reference-rgb-self-test"] {
   #else
   fail("qa_only_command")
   #endif
-} else if args == ["--reference-capabilities"] || args == ["--reference-encode-stdin"] || args == ["--reference-rgb-stdin"] || args == ["--reference-hash-stdin"] {
-  let kind: LocalReferencePortOperation = args[0] == "--reference-capabilities" ? .capabilities : args[0] == "--reference-encode-stdin" ? .encode : args[0] == "--reference-hash-stdin" ? .hashBytes : .decodeRgb
+} else if args == ["--reference-capabilities"] || args == ["--reference-encode-stdin"] || args == ["--reference-rgb-stdin"] || args == ["--reference-hash-stdin"] || args == ["--product-evidence-stdin"] {
+  let kind: LocalReferencePortOperation = args[0] == "--product-evidence-stdin" ? .productEvidence : args[0] == "--reference-capabilities" ? .capabilities : args[0] == "--reference-encode-stdin" ? .encode : args[0] == "--reference-hash-stdin" ? .hashBytes : .decodeRgb
   var input = Data()
   if kind != .capabilities {
     while let chunk = try FileHandle.standardInput.read(upToCount: min(65_536, LocalVisionEngine.maxBase64Length + 1 - input.count)), !chunk.isEmpty {

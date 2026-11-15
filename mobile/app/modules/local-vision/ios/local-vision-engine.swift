@@ -185,7 +185,12 @@ private final class LocalVisionRecognitionDelivery: @unchecked Sendable {
 }
 
 enum LocalReferencePortOperation: Sendable {
-  case capabilities, hashBytes, encode, decodeRgb
+  case capabilities, hashBytes, encode, decodeRgb, productEvidence
+}
+
+private struct CancellableProductRequests: @unchecked Sendable {
+  let requests: [VNRequest]
+  func cancel() { for request in requests { request.cancel() } }
 }
 
 private final class LocalReferencePortDelivery: @unchecked Sendable {
@@ -558,6 +563,10 @@ final class LocalVisionEngine: @unchecked Sendable {
     if kind == .hashBytes { return imageHash }
     let decoded = try decodeJPEG(jpegBase64: input)
     try check()
+    if kind == .productEvidence {
+      return try productEvidence(image: decoded.pixels, orientation: decoded.orientation,
+        imageHash: imageHash, predictor: predictor, deadlineAt: deadlineAt)
+    }
     if kind == .encode {
       let vector = try predictor.referenceEmbedding(image: decoded.pixels, orientation: decoded.orientation, deadlineAt: deadlineAt)
       try check()
@@ -599,6 +608,77 @@ final class LocalVisionEngine: @unchecked Sendable {
     return try json(["schemaVersion": "native-reference-rgb-v1", "imageSha256": imageHash,
       "decoderPolicy": "imageio-oriented-fit-1024-srgb-rgb-v1", "width": width, "height": height,
       "channels": 3, "rgbBase64": Data(rgb).base64EncodedString()])
+  }
+
+  /// One image, one total deadline, no persistence/download/remote fallback.
+  /// Full-frame barcode evidence is never cropped away by the detail OCR view.
+  private static func productEvidence(image: CGImage, orientation: CGImagePropertyOrientation,
+    imageHash: String, predictor: LocalMobileClipPredictor, deadlineAt: TimeInterval) throws -> String {
+    let started = ProcessInfo.processInfo.systemUptime
+    func check() throws {
+      guard ProcessInfo.processInfo.systemUptime < deadlineAt else { throw LocalVisionFailure.timeout }
+    }
+    let barcode = VNDetectBarcodesRequest()
+    barcode.symbologies = [.ean13, .ean8, .itf14]
+    let full = VNRecognizeTextRequest(), detail = VNRecognizeTextRequest()
+    let requestedLanguages = ["fi-FI", "sv-SE", "en-US"]
+    for text in [full, detail] {
+      text.revision = VNRecognizeTextRequestRevision3
+      text.recognitionLevel = .accurate
+      text.usesLanguageCorrection = false
+      text.automaticallyDetectsLanguage = true
+      let supported = try text.supportedRecognitionLanguages()
+      text.recognitionLanguages = requestedLanguages.filter { supported.contains($0) }
+      guard !text.recognitionLanguages.isEmpty else { throw LocalVisionFailure.unavailable }
+    }
+    // Fixed guided ROI, not an outcome-selected crop. Original image hash and
+    // the full-frame OCR remain in the same response; no synthetic extra sample.
+    detail.regionOfInterest = CGRect(x: 0.1, y: 0.1, width: 0.8, height: 0.8)
+    let cancellable = CancellableProductRequests(requests: [barcode, full, detail])
+    let timer = DispatchSource.makeTimerSource(queue: .global(qos: .utility))
+    try check()
+    timer.schedule(deadline: .now() + max(0, deadlineAt - ProcessInfo.processInfo.systemUptime))
+    timer.setEventHandler { cancellable.cancel() }; timer.resume()
+    defer { timer.setEventHandler {}; timer.cancel() }
+    let handler = VNImageRequestHandler(cgImage: image, orientation: orientation, options: [:])
+    try handler.perform([barcode, full, detail]); try check()
+    let codes = (barcode.results ?? []).compactMap { value -> [String: String]? in
+      guard let payload = value.payloadStringValue, payload.utf8.count <= 64 else { return nil }
+      return ["symbology": value.symbology.rawValue, "value": payload]
+    }
+    func observation(_ request: VNRecognizeTextRequest, view: String) -> [String: Any] {
+      let results = request.results ?? []
+      let lines = results.compactMap { observation -> [String: Any]? in
+        guard let candidate = observation.topCandidates(1).first else { return nil }
+        let text = candidate.string.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !text.isEmpty, text.utf16.count <= 128,
+          !text.unicodeScalars.contains(where: { $0.properties.generalCategory == .control || $0.properties.generalCategory == .format }) else { return nil }
+        return ["text": text, "confidence": Double(candidate.confidence)]
+      }
+      let complete = results.count <= 48 && lines.count == results.count
+      return ["view": view, "complete": complete, "lines": Array(lines.prefix(48))]
+    }
+    var embedding: [String: Any] = ["status": "skipped_barcode"]
+    if codes.isEmpty {
+      do {
+        let vector = try predictor.referenceEmbedding(image: image, orientation: orientation, deadlineAt: deadlineAt)
+        embedding = ["status": "observed", "encoderSha256": LocalMobileClipPredictor.referenceEncoderSha256,
+          "preprocessingSha256": LocalMobileClipPredictor.referencePreprocessingSha256, "vector": vector]
+      } catch {
+        embedding = ["status": "unavailable"]
+      }
+    }
+    try check()
+    let value: [String: Any] = ["schemaVersion": "offline-product-evidence-v1", "imageSha256": imageHash,
+      "barcodeComplete": (barcode.results ?? []).count == codes.count && codes.count <= 8,
+      "barcodes": Array(codes.prefix(8)), "ocrLanguages": full.recognitionLanguages,
+      "ocrPolicy": "accurate-v3-no-correction-full-and-center-v1", "ocr": [observation(full, view: "full"), observation(detail, view: "center")],
+      "detailRoi": [0.1, 0.1, 0.8, 0.8], "embedding": embedding,
+      "width": image.width, "height": image.height,
+      "durationMs": max(0, Int(((ProcessInfo.processInfo.systemUptime - started) * 1000).rounded()))]
+    let bytes = try JSONSerialization.data(withJSONObject: value, options: [.sortedKeys])
+    guard bytes.count <= 65536, let json = String(data: bytes, encoding: .utf8) else { throw LocalVisionFailure.failed }
+    return json
   }
 
   func inspectReadiness(completion: @escaping @Sendable (LocalVisionReadiness) -> Void) {

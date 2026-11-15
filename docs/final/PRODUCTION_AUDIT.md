@@ -1,5 +1,31 @@
 # Adversarial production-readiness audit
 
+## November15 — actual offline app integration; release quality still fails
+
+REF-006(high,OPEN,local): new integrated retrieval ranks11/17first, only2explicit
+confirmation suggestions,0automatic visual accepts,1native timeout. Old10/17
+experimental source agreements remain separate. Evidence: OFFLINE_PRODUCT_INTEGRATION_RESULTS.md,
+60receipt network-denied run and independent rank recount. Reproduce with
+review-offline-product, no model retake. Remediation: model comparison, variant/
+reference/capture coverage and cold-start diagnosis; never tune gates to pass.
+
+REF-008(high,PARTIALLY REPAIRED,local+physical): existing photo UI now consumes
+real native barcode/OCR/embedding evidence and an actual local catalogue;
+offline manual/browser tests and full unsigned iOS build pass. Do not claim
+remaining Android/native-device/airplane-mode/accessibility/energy acceptance.
+Affected newoffline-productmodules,local-photo,nativebridge,catalogue. Exact
+procedure/owners in OWNER_ACTIONS; physical action does not block local research.
+
+REF-009(high,OPEN,local+data): only5source-asserted grocery SKUs/10references,
+no independent500known/100–200unknown benchmark, no authenticated incremental
+catalogue updater/gallery path/Android image runtime. Current immutable packaged
+database validates aliases/vectors/model/source schema and contains separate
+ODbL/DbCL/CC-BY-SA attribution. Remediation: implement/update/test actual assets
+and wider scope; do not fabricate records/rights/captures or declare universal AI.
+
+No wrong barcode mapping/safety identity observed in this small run; zero false
+positives is not99%population precision. Public NO-GO, no severity reduction.
+
 ## November14 — text corroboration is useful, high quality/activation findings open
 
 REF-006(high,OPEN,local): same source17queries improve7→10with3native-OCR quantity

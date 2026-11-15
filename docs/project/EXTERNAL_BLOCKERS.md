@@ -1,5 +1,22 @@
 # External blockers
 
+November15: source work remains locally executable; do not describe failed
+recognition coverage, DINO comparison, Android implementation or catalogue update
+engineering as an account/payment/human-review blocker. The owner's new master
+task authorizes local implementation/free permitted preparation, not publication.
+
+Disk fell to~500MiBduring this turn. At owner's explicit request, remove only
+old October28DerivedData Intermediates.noindex and ModuleCache.noindex plus the
+CocoaPods download-cache Pods directory after exact read-only inventories,
+no active compiler/pod process and no followed symlinks.6.3GiBfree afterward;
+new full unsigned iOS build succeeds. This disk blocker is resolved, not pending.
+
+New native photo flow has no current signed-device/airplane-mode/operator proof;
+physical acceptance still needs an accessible device/operator and a separately
+authorized signing/install step. Representative independent500known/100–200unknown
+SKU capture data is absent; source images/duplicates/generated barcodes cannot
+replace it. Separate human reviewer stays waived; no renewed reviewer request.
+
 November14 OCR/source-attribute prototype works locally without a new key,
 account, payment, API request or model download: actual source coverage7→10/17.
 Fixed quality gate still fails; readable-detail/ROI/reference/near-variant work

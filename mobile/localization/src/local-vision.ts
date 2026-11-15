@@ -1,7 +1,36 @@
 export const localVisionFi = {
+  offlineProductLocal: "Paikallinen tuoteluettelo",
+  offlineProductFound: "Koodia vastaava tuotetieto",
+  offlineProductSuggestion: "Mahdollinen tuote — vertaa pakkaukseen",
+  offlineProductConflict: "Kuvassa on useita koodeja. Kuvaa yksi pakkaus.",
+  offlineProductInvalid: "Tarkista viivakoodin numerot.",
+  offlineProductUnknown: "Tuotetta ei tunnistettu",
+  offlineProductCodeRead: "Kuvasta luettu koodi:",
+  offlineProductCodeEntered: "Syöttämäsi koodi:",
+  offlineProductMissingCode: "Tuotetta ei ole paikallisessa luettelossa. Koodi:",
+  offlineProductOnlineBarcode: "Laajempi viivakoodihaku verkossa",
+  offlineProductCommunity:
+    "Yhteisön ilmoittama tuotetieto. Nimeä, kokoa ja pakkausversiota ei ole varmennettu valmistajalta.",
+  offlineProductSource: "Avaa tuotetiedon lähde verkossa",
+  offlineProductCompare:
+    "Kuva ja teksti tukevat tätä ehdotusta. Tarkista nimi, maku ja koko pakkauksesta. Ehdotus ei ole varmistettu tunnistus.",
+  offlineProductRetake:
+    "Kuvaa viivakoodi tai ota lähempää kuva, jossa näkyvät nimi ja pakkauskoko. Luettelo ei kata kaikkia tuotteita.",
+  offlineProductSorting:
+    "Tuotetieto ei kerro pakkauksen materiaalia. Valitse alta materiaalimerkintä tai tarkista pakkauksen osa.",
+  offlineProductScope:
+    "Offline-luettelossa on nyt 5 tuotetta. Tunnistus etsii kuvasta viivakoodia sekä nimen ja koon vihjeitä. Muut tuotteet voivat jäädä tunnistamatta.",
+  offlineProductGuidance:
+    "Kuvaa yksi tuote läheltä. Pidä viivakoodi tai nimi ja pakkauskoko kokonaan kuvan keskellä. Vältä heijastuksia ja pidä puhelin paikallaan.",
+  offlineProductMaterial: "Kuvaa materiaalimerkintä",
+  offlineProductManual: "Tai syötä koodi offline-hakuun",
+  offlineProductLookup: "Hae paikallisesta luettelosta",
+  offlineProductNewCode: "Syötä toinen koodi",
+  offlineProductUpdate:
+    "Tämä asennus ei vielä tue tuotteen paikallista kuvatunnistusta. Päivitä sovellus tai syötä koodi alla.",
   localVisionTitle: "Tunnista kuva laitteessa",
   localVisionIntro:
-    "Tuetussa iPhonessa kuva käsitellään laitteessa. Voit etsiä pakkauksen materiaalikoodia ja arviota esineen tyypistä.",
+    "Etsi tuotetietoa kuvasta tai viivakoodista ilman verkkoyhteyttä. Voit myös kuvata pakkauksen materiaalimerkinnän erikseen.",
   localVisionLimit:
     "Tunnistus on rajattu ja voi jäädä epäselväksi. Kuva ei varmista tuotteen nimeä, materiaalia tai vaarattomuutta. Tarkista pakkauksen osat erikseen.",
   localVisionPrivacy:
@@ -67,9 +96,38 @@ export const localVisionFi = {
 };
 
 export const localVisionEn: { readonly [Key in keyof typeof localVisionFi]: string } = {
+  offlineProductLocal: "Local product catalogue",
+  offlineProductFound: "Product record for this code",
+  offlineProductSuggestion: "Possible product — compare the package",
+  offlineProductConflict: "Several codes are visible. Photograph one package.",
+  offlineProductInvalid: "Check the barcode digits.",
+  offlineProductUnknown: "Product not identified",
+  offlineProductCodeRead: "Code read from the image:",
+  offlineProductCodeEntered: "Code you entered:",
+  offlineProductMissingCode: "This product is absent from the local catalogue. Code:",
+  offlineProductOnlineBarcode: "Broader barcode search online",
+  offlineProductCommunity:
+    "Community-reported product data. Name, size and packaging version have not been verified with the manufacturer.",
+  offlineProductSource: "Open the product source online",
+  offlineProductCompare:
+    "The image and text support this suggestion. Check the name, flavour and size on the package. This is not a verified identification.",
+  offlineProductRetake:
+    "Photograph the barcode or take a closer view showing the name and package size. The catalogue does not cover all products.",
+  offlineProductSorting:
+    "Product identity does not establish packaging material. Choose a material marking or check a packaging part below.",
+  offlineProductScope:
+    "The offline catalogue currently contains 5 products. Recognition looks for a barcode and name and size clues. Other products may remain unknown.",
+  offlineProductGuidance:
+    "Photograph one product close up. Keep the entire barcode or name and package size in the centre. Avoid glare and hold the phone steady.",
+  offlineProductMaterial: "Photograph a material marking",
+  offlineProductManual: "Or enter a code for offline lookup",
+  offlineProductLookup: "Search the local catalogue",
+  offlineProductNewCode: "Enter another code",
+  offlineProductUpdate:
+    "This installation does not yet support local product-photo recognition. Update the app or enter a code below.",
   localVisionTitle: "Recognize an image on device",
   localVisionIntro:
-    "On a supported iPhone, the image is processed on device. Look for a packaging material code and an estimate of the object type.",
+    "Look for product data in an image or barcode without a network connection. You can also photograph a packaging material marking separately.",
   localVisionLimit:
     "Recognition is limited and may be inconclusive. An image does not verify the product name, material or safety. Check each packaging part separately.",
   localVisionPrivacy:

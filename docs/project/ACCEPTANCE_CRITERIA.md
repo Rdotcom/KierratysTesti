@@ -1,5 +1,20 @@
 # Acceptance criteria
 
+November15 integrated offline path: local lookup must validate checksums and
+GTIN8/12/13/14 normalization, preserve valid absent codes, reject conflicting
+codes and corrupt/alias-colliding/model-mismatched catalogues. Barcode records
+remain source_asserted, never manufacturer_verified. Real full-frame embeddings
+and bounded same-image full/ROI OCR may produce confirmation-required suggestions,
+not automatic exact-SKU decisions. Full-image ambiguity/truncation cannot be
+hidden by a crop, and no product name determines a material or bin.
+
+Actual observed rankTop1=11/17,2confirmation suggestions,0automatic visual accepts,
+1timeout and41non-identity safety outcomes do NOT meet99%accepted precision,
+≤1%unknown false acceptance,≥70%known coverage or prior14/17+allfive gates.
+Keep every denominator/failure. Generated2/2decoder successes and browser14/14
+offline manual cases are engineering checks, not independent real-camera quality.
+Native Mac p50/p95/RSS and unsigned iOS compilation are not phone performance.
+
 OCR attribute prototype retains all17/41queries, byte/source/name/quantity
 bindings, strict native normalization and unknown/failure distinction. Same
 ≥14/17/allfivepilot/zero wrong/lost/safety-nonunknown gate remains FAIL at10/17,

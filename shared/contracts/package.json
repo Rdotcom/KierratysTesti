@@ -14,7 +14,8 @@
     "./local-vision": "./src/local-vision.ts",
     "./packaging-classifier": "./src/packaging-classifier.ts",
     "./local-vision-readiness": "./src/local-vision-readiness.ts",
-    "./reference-native": "./src/reference-native.ts"
+    "./reference-native": "./src/reference-native.ts",
+    "./offline-product": "./src/offline-product.ts"
   },
   "scripts": {
     "build": "tsup src/index.ts --format esm --dts --clean",

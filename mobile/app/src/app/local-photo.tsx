@@ -4,13 +4,15 @@ import type {
 } from "@kierratysappi/contracts/local-vision";
 import type { LocalVisionReadiness } from "@kierratysappi/contracts/local-vision-readiness";
 import { preparePhotoBase64 } from "@kierratysappi/contracts/photo-image";
+import type { OfflineProductResult } from "@kierratysappi/domain/offline-product";
 import type { MessageKey } from "@kierratysappi/localization";
 import { CameraView, useCameraPermissions } from "expo-camera";
 import Constants from "expo-constants";
 import { File, Paths } from "expo-file-system";
 import { useFocusEffect, useRouter } from "expo-router";
 import { useCallback, useRef, useState } from "react";
-import { AppState, Image, Linking, StyleSheet, View } from "react-native";
+import { AppState, Image, Linking, StyleSheet, TextInput, View } from "react-native";
+import { OfflineProductResultView } from "@/components/offline-product-result";
 import {
   AppText,
   Button,
@@ -23,10 +25,12 @@ import {
   sharedStyles,
 } from "@/components/ui";
 import { announceAccessibility } from "@/features/accessibility/announcements";
+import { offlineCatalogue } from "@/features/local-vision/catalogue";
 import {
   inspectLocalVisionReadiness,
   isLocalVisionAvailable,
   recognizeLocalPhoto,
+  recognizeOfflineProduct,
 } from "@/features/local-vision/native";
 import { type LocalPhotoPhase, localPhotoPresentation } from "@/features/local-vision/presentation";
 import { localReadinessMessage } from "@/features/local-vision/readiness";
@@ -34,7 +38,7 @@ import { isLocalCaptureUri } from "@/features/local-vision/recognizer";
 import { canUsePhotoCapture, choosePhotoSize } from "@/features/photo/sorting";
 import { useSoundFeedback } from "@/features/sound-feedback/context";
 import { useLanguage } from "@/i18n/language-context";
-import { radius } from "@/theme/tokens";
+import { radius, useAppTheme } from "@/theme/tokens";
 
 const objectLabels: Record<LocalObjectKind, MessageKey> = {
   bottle: "localVisionBottle",
@@ -54,6 +58,10 @@ export default function LocalPhotoScreen() {
   const { play } = useSoundFeedback();
   const router = useRouter();
   const { t, language } = useLanguage();
+  const { palette } = useAppTheme();
+  const [mode, setMode] = useState<"product" | "material">("product");
+  const [productResult, setProductResult] = useState<OfflineProductResult>();
+  const [manualCode, setManualCode] = useState("");
   const [permission, requestPermission] = useCameraPermissions();
   const [phase, setPhase] = useState<LocalPhotoPhase>("intro");
   const [jpeg, setJpeg] = useState<string>();
@@ -80,6 +88,8 @@ export default function LocalPhotoScreen() {
     locked.current = false;
     setJpeg(undefined);
     setObservation(undefined);
+    setProductResult(undefined);
+    setManualCode("");
     setError(undefined);
     setBusy(false);
     setChecking(false);
@@ -99,8 +109,9 @@ export default function LocalPhotoScreen() {
     }, [clear]),
   );
 
-  const open = async () => {
+  const open = async (nextMode: "product" | "material" = mode) => {
     if (locked.current) return;
+    setMode(nextMode);
     if (!available || !canUsePhotoCapture("ios", Constants)) {
       setError("localVisionUnavailable");
       return;
@@ -194,6 +205,30 @@ export default function LocalPhotoScreen() {
     const ticket = ++generation.current;
     const controller = new AbortController();
     pending.current = controller;
+    if (mode === "product") {
+      const result = await recognizeOfflineProduct(jpeg, controller.signal);
+      if (ticket !== generation.current) return;
+      setJpeg(undefined);
+      pending.current = undefined;
+      locked.current = false;
+      setBusy(false);
+      if (result.status === "observed") {
+        setProductResult(result.result);
+        setPhase("result");
+        play("ready");
+        announceAccessibility(t("localVisionReady"));
+      } else {
+        setError(
+          result.reason === "unsupported"
+            ? "offlineProductUpdate"
+            : result.reason === "timeout"
+              ? "localVisionTimeout"
+              : "localVisionError",
+        );
+        setPhase("intro");
+      }
+      return;
+    }
     const result = await recognizeLocalPhoto(jpeg, controller.signal);
     if (ticket !== generation.current) return;
     setJpeg(undefined);
@@ -245,11 +280,13 @@ export default function LocalPhotoScreen() {
           </AppText>
         )}
         {presentation.showCaptureGuidance && (
-          <AppText testID="local-photo-capture-guidance">{t("localVisionCaptureGuidance")}</AppText>
+          <AppText testID="local-photo-capture-guidance">
+            {t(mode === "product" ? "offlineProductGuidance" : "localVisionCaptureGuidance")}
+          </AppText>
         )}
         {phase === "intro" && (
           <>
-            <AppText>{t("localVisionLimit")}</AppText>
+            <AppText>{t("offlineProductScope")}</AppText>
             {!available ? (
               <AppText testID="local-photo-unavailable">{t("localVisionUnavailable")}</AppText>
             ) : presentation.permanentDenied ? (
@@ -268,12 +305,60 @@ export default function LocalPhotoScreen() {
                       ? "localVisionOpening"
                       : "localVisionCamera",
                 )}
-                onPress={() => void open()}
+                onPress={() => void open("product")}
                 busy={busy}
                 disabled={busy}
                 testID="local-photo-open-camera"
               />
             )}
+            {available && (
+              <Button
+                label={t("offlineProductMaterial")}
+                variant="secondary"
+                onPress={() => void open("material")}
+                disabled={busy}
+                testID="local-photo-material-camera"
+              />
+            )}
+            <Paper>
+              <AppText accessibilityRole="header" variant="heading">
+                {t("offlineProductManual")}
+              </AppText>
+              <TextInput
+                value={manualCode}
+                onChangeText={setManualCode}
+                maxLength={32}
+                accessibilityLabel={t("gtinLabel")}
+                accessibilityHint={t("gtinHint")}
+                keyboardType="number-pad"
+                autoCorrect={false}
+                autoComplete="off"
+                returnKeyType="done"
+                testID="offline-product-manual-input"
+                style={[
+                  styles.codeInput,
+                  {
+                    color: palette.textPrimary,
+                    borderColor: palette.borderSubtle,
+                    backgroundColor: palette.bgSurface,
+                  },
+                ]}
+              />
+              <Button
+                label={t("offlineProductLookup")}
+                disabled={!manualCode.trim() || busy}
+                onPress={() => {
+                  setProductResult(
+                    offlineCatalogue?.lookup([manualCode], "manual") ?? { status: "unavailable" },
+                  );
+                  setObservation(undefined);
+                  setJpeg(undefined);
+                  setManualCode("");
+                  setPhase("result");
+                }}
+                testID="offline-product-manual-submit"
+              />
+            </Paper>
           </>
         )}
         {phase === "camera" && (
@@ -418,9 +503,28 @@ export default function LocalPhotoScreen() {
             />
           </>
         )}
+        {phase === "result" && productResult && (
+          <>
+            <OfflineProductResultView result={productResult} />
+            <Button
+              label={t("localVisionAgain")}
+              variant="secondary"
+              onPress={retake}
+              testID="offline-product-retake"
+            />
+            <Button
+              label={t("offlineProductNewCode")}
+              variant="secondary"
+              onPress={clear}
+              testID="offline-product-reset"
+            />
+          </>
+        )}
         {presentation.showBarcodeRecovery && (
           <Button
-            label={t("localVisionBarcodeRecovery")}
+            label={t(
+              mode === "product" ? "offlineProductOnlineBarcode" : "localVisionBarcodeRecovery",
+            )}
             variant="secondary"
             onPress={() => {
               clear();
@@ -466,4 +570,5 @@ export default function LocalPhotoScreen() {
 
 const styles = StyleSheet.create({
   camera: { width: "100%", height: 300, borderRadius: radius.lg },
+  codeInput: { minHeight: 52, borderWidth: 2, borderRadius: radius.lg, padding: 16, fontSize: 18 },
 });

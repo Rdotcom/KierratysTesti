@@ -1,5 +1,39 @@
 # Current state
 
+## Actual offline product path integrated — November15
+
+- Existing photo screen now offers on-device product capture, offline manual
+  GTIN lookup and the preserved separate material-code camera. Five authentic
+  OFF records/ten actual MobileCLIP reference embeddings are bundled locally.
+  Names/quantities remain source assertions; missing manufacturer/market/variant/
+  packaging fields remain null. No image-to-material/bin shortcut or cloud fallback.
+- New single-flight iOS native operation binds barcode, full/central ROI OCR and
+  actual full-frame embedding to original JPEG SHA, within the same12s watchdog.
+  FI/SV/EN language request yields supported SV/EN on this Mac; Finnish accuracy
+  is NOT verified. Explicit unknown/conflicting/absent-catalogue/old-client recovery.
+- Ten reference encodes plus60new integration requests run with OS network denial.
+  Same17known/41audit rows plus2generated EAN13 fixtures: rankTop1=11/17,
+  Recall5=16/17(five enrolled SKUs),2confirmation-only source agreements,0automatic
+  visual accepts;41/41audits no identity, both generated decoder outcomes correct.
+  Firstcase002times out; all60rows retained. This is NOT a replacement of the
+  earlier10/17experimental matcher, nor an independent accuracy/quality pass.
+- Mac successful native latency p50=361ms/p95=1261ms/max7819ms(n59); max child
+  RSS191332352bytes. Browser FI390/light and EN320/dark:14manual cases pass with
+  browser offline,0external requests/errors,≥44px controls and no horizontal
+  overflow. Screenshots observed; no physical camera/phone/Android inference claim.
+- Swift6warnings-as-errors,29native lifecycle checks and full unsigned iOS Release
+  build11pass; old73MiBapp preserved before rebuild. New bridge/Hermes present,
+  QAstrings absent. No signing/installation/version bump/GitHub/paid API action.
+- Full1814tests(783Node+1031workspace)/checks/builds18routes and final scoped
+  shared/mobile checks pass after copy corrections; TEST_EVIDENCE.md has receipts.
+  Public NO-GO. Current phone remains last verified build10, not this code.
+- Owner-authorized cleanup removes ONLY old October28Intermediates/ModuleCache
+  and CocoaPods download cache,5984369541logicalbytes. Original apps, current
+  build/models/source/evidence retained;6.3GiBfree immediately after removal.
+  Cache recovery is rebuild/redownload, not trash recovery. Disk blocker cleared.
+- Master status/remaining locally executable work in docs/product-recognition-status.md.
+  Prospective data/physical acceptance still absent; no reviewer recruitment gate.
+
 ## Research-backed same-image OCR prototype improves7→10 — November14
 
 - Primary research/actual failures support image+OCR+source-attribute reconciliation,

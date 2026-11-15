@@ -874,3 +874,38 @@ checker stays unperformed; no install/signing/push/production authority inferred
 - No new recognition, app/native/model/dependency/version/phone/push change.
   Next separately register actual-port multi-SKU quality/safety/loss gates before
   scores. Owner-waived checker remains unperformed; no fabricated human truth.
+
+## D-095 — Integrate safe offline product evidence, not failed exact-SKU acceptance
+
+- Date:2026-11-15. Owner's attached master task requests end-to-end offline
+  implementation and actual inference. Reuse the existing iOS Vision/Core ML
+  runtime and photo route; preserve material recognition, barcode web lookup,
+  three-package boundaries and sorting provenance. No separate application.
+- Bundle5authentic source records and10genuine full-frame reference vectors,
+  with separate ODbL/DbCL metadata and conservatively CC-BY-SA-derived descriptor
+  attribution. No original reference photos, fabricated Finnish-market status,
+  manufacturer, variant or verified material. Static deployment updates/rollback
+  only; do not imply an implemented authenticated network updater/SQLite migration.
+- Native barcode/full+fixed-central-ROI OCR/embedding share one12sworker. Numeric
+  checksum lookup is source_asserted; pure per-SKU cosine ranks are NOT probability.
+  Exact visual acceptance remains disabled. A full name/exact quantity with
+  retrieval support may be shown only as confirmation_required, with full-frame
+  conflicts/truncation vetoing. This is a new hint UX, not switching old
+  experimental integrationAllowed=false to true or claiming its failed gate passed.
+- Actual OS-denied-network experiment retains17known/41audit queries plus2generated
+  decoder fixtures.11/17rankTop1,2hints/0wrong-source hints,41no-identity audits,
+ 1initial timeout; all failures and denominators retained. Independent checker
+  recomputes ranks/counts without model calls. Browser manual offline14cases and
+  unsigned full iOS compile are not physical camera/Android/general quality proof.
+- Current official DINOv2 base code/weights are Apache2, but new XRay/Cell variants
+  have different noncommercial terms. Existing MobileCLIP original2024ASCL remains
+  pinned; current2025model licence is not substituted. Benchmark DINOv2-Small next,
+  with new explicit model/index identity, before claiming a better alternative.
+- Owner separately authorizes removing unneeded development files when disk
+  reaches~500MiB. Exact inventory/no active build checks precede removing only
+  two oldOctober28cache directories and CocoaPods downloads. Symlinks are
+  enumerated/unlinked, not traversed; source/currentbuild/oldapps/models/evidence
+  preserved.5984369541logicalbytes removed; caches are rebuildable/redownloadable.
+- No paid inference, credentials, signing/install/version bump, push or release.
+  No independent reviewer gate is reinstated. Public NO-GO and quality findings
+  remain high/open; continue measured engineering rather than relabelling success.

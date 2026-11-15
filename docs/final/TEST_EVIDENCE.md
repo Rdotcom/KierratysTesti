@@ -1,5 +1,54 @@
 # Test evidence
 
+## November15 — integrated offline product path
+
+See OFFLINE_PRODUCT_INTEGRATION_RESULTS.md and frozen protocol. New actual
+reference encodes10/query operations60run with OSnetwork denial; Node-only
+independent checker authenticates8source/16resource pins and60receipts/ranks,
+0newmodel calls.17known,41audits,2generatedcodes;11/17rankTop1,16/17Recall5,
+2confirmation-source agreements/0wrong,41noidentity,1timeout(case002). Prior
+experimental10/17result is NOT replaced or promoted. Public quality FAIL.
+
+Current run: `work/offline-product-2026-11-14.XP0QdK/`.
+Formatted catalogue SHA25626f35bf19a8f6029f9c020c5d19cef123e420f9f170c8e78fa4d9bf0a4fe3b33,
+134619bytes. Parsed equality with original generated asset proves format-only
+change; no reference re-encode. Actual model still pinned2024MobileCLIP-S0.
+
+- Full `pnpm validate`:1814unique tests(783Node+1031workspace), strict checks,
+  all builds/18routes PASS;19prior lintwarnings. Log
+  `/tmp/kig-offline-product-full-20261115.log`. First formatting/source-policy/
+  metric-fixture failures and repairs preserved in results narrative.
+- Swift6CLI warnings-as-errors PASS; no-image native lifecycle29PASS
+  (reference12,recognition9,readiness8), no inference from those29checks.
+- Full unsigned iOS Release11PASS, log
+  `/tmp/kig-offline-product-ios-20261115.log`; includes actualnewbridge/Hermes,
+  no QAresource override. Previous binary71574024… preserved at
+  `work/offline-product-2026-11-14.XP0QdK/previous-release.app`.
+  This is NOT a signed installed/physical/Android/store acceptance claim.
+- Real exported browser UI: FI390light/EN320dark,14known/absent/invalid/reset
+  cases after `context.setOffline(true)`, zero external requests/pageerrors,
+  ≥44pxcontrols/no horizontal overflow. Screenshots observed in browser-v1;
+  wording/source-action clarification is verified in final browser-v2 rerun.
+  No fake native module/camera/ML output was injected into these browser checks.
+
+Final post-copy reruns: scoped shared/mobile and full validation PASS; logs
+`/tmp/kig-offline-product-shared-20261115.log` and
+`/tmp/kig-offline-product-mobile-20261115.log`. Browser-v2 passes and final Finnish
+known-result screenshot observed. Exclusive release-receipt.json records binary
+`a9c7cee92a3529eae91d75ab4edcc26d19e1e3b3e7cb0db6e7b668fe73921b6e`,
+final Hermes `72800c6acbd1b99fecfad8bdbc130c691fdefde71be0822fe6c172b619606601`,
+build log `075b6aecdd4d50828d548c1f9abbfc0fcb76440426f63e77102d40b9f2672095`.
+Unsigned, not installed; no QA symbols, new bridge present.
+
+Mac native n59successful latency361msmedian/1261msp95/max7819ms;
+maximum childRSS191332352bytes. Failed12srequest remains in quality denominator.
+Not phone latency, battery, independent accuracy or UIjank measurement.
+
+Disk cleanup under fresh explicit owner instruction removes only the three
+inventoried cache directories, no followed links/current-build/source/models/
+apps/evidence.5984369541logicalbytes;free6.3GiBthennewnativebuild succeeds.
+No secret, paid API, phone install, GitHub push or production publication.
+
 ## November14 — research-backed multimodal prototype gain7→10/17
 
 OCR_ATTRIBUTE_RESULTS.md retains lock5f8b4b74…/result8b6c1199…,95source/66data/

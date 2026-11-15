@@ -1,5 +1,18 @@
 # Roadmap
 
+- [x] Bundled source-attributed five-product/ten-reference offline catalogue,
+  canonical local GTIN lookup and own per-SKU cosine retrieval without retraining.
+- [x] Existing photo UI integrates native barcode/full+ROI OCR/actual embeddings,
+  confirmation-only suggestions, offline manual entry and safe material recovery.
+- [x] OS-network-denied60request test,14browser offline cases and unsigned iOS
+  app build. Rank11/17,2suggestions,0visual accepts,1timeout; quality FAIL retained.
+- [ ] DINOv2-Small comparison, useful open-set/variant coverage and cold-start
+  deadline diagnosis; no acceptance threshold tuning against this seen test set.
+- [ ] Generic authenticated catalogue-update/migration/rollback tooling, broader
+  Finnish-source coverage, gallery input and Android local image inference.
+- [ ] Independent known/unknown/sibling captures, signed physical airplane-mode/
+  camera/memory/latency/energy/accessibility validation and publication requirements.
+
 - [x] Explicit five-SKU allocation:10refs/32fit negatives/58queries,123lineage
   rows, distinct metadata families and100pixel profiles/zero exact fit-query aliases.
   Old Nutella shared batch/Coca class change/mixed-training audit moves explicit.
@@ -9,7 +22,7 @@
   control candidates; reject default compute cost, quality FAIL preserved.
 - [x] Research-backed same-image OCR attribute fusion:7→10/17source agreements,
   0wrong/loss/41audit accepts; three size distinctions, fixed quality still FAIL.
-- [ ] Guided readable name/net-quantity capture and bounded ROI OCR; preserve
+- [x] Guided readable name/net-quantity capture and bounded ROI OCR; preserve
   family versus exact variant and source/byte/privacy/deadline boundaries.
 - [ ] Broader view/reference/near-variant/prospective quality before activation;
   name-only hints never count as exact identity or verified material.

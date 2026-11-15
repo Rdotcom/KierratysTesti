@@ -19,7 +19,10 @@ function button(sourceText, id) {
 test("capture guidance stays visible and localized without hiding long text", () => {
   const text = screen();
   assert.match(text, /testID="local-photo-capture-guidance"/);
-  assert.match(text, /t\("localVisionCaptureGuidance"\)/);
+  assert.match(
+    text,
+    /mode === "product" \? "offlineProductGuidance" : "localVisionCaptureGuidance"/,
+  );
   const copy = source("mobile/localization/src/local-vision.ts");
   for (const phrase of [
     "Kuvaa yksi pakkaus",
@@ -63,7 +66,7 @@ test("late camera-ready, mount-error and size callbacks cannot update a newer ge
 
 test("retake explicitly clears the previous image then opens a fresh camera without recognition", () => {
   const text = screen();
-  const handler = text.match(/const retake = (?:async )?\(\) => \{([\s\S]*?)\n  \};/u)?.[1];
+  const handler = text.match(/const retake = (?:async )?\(\) => \{([\s\S]*?)\n {2}\};/u)?.[1];
   assert.ok(handler, "Missing explicit retake handler");
   assert.ok(handler.indexOf("clear()") >= 0);
   assert.ok(handler.indexOf("open()") > handler.indexOf("clear()"));
