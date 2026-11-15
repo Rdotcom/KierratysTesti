@@ -6,8 +6,10 @@
   confirmation-only suggestions, offline manual entry and safe material recovery.
 - [x] OS-network-denied60request test,14browser offline cases and unsigned iOS
   app build. Rank11/17,2suggestions,0visual accepts,1timeout; quality FAIL retained.
-- [ ] DINOv2-Small comparison, useful open-set/variant coverage and cold-start
-  deadline diagnosis; no acceptance threshold tuning against this seen test set.
+- [x] Actual OSoffline DINOv2comparison:68encodes,14/17versus11/17top1,
+  one old loss; fixed gate FAIL. Current app model/allreceipts retained.
+- [ ] Targeted variant recovery, open-set coverage and cold-start deadline
+  diagnosis; no acceptance threshold tuning against this seen test set.
 - [ ] Generic authenticated catalogue-update/migration/rollback tooling, broader
   Finnish-source coverage, gallery input and Android local image inference.
 - [ ] Independent known/unknown/sibling captures, signed physical airplane-mode/

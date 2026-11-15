@@ -1,5 +1,15 @@
 # Release decision
 
+## November15 — still NO-GO after actual DINOv2comparison
+
+68offline encodes complete;14/17top1does not pass the predeclared no-old-loss
+gate(exp003regresses). All3wrong ranks confuse package sizes; no automatic
+acceptance or population precision established. App retains current model and
+source/quantity safeguards.1819software tests/allchecks/builds pass; this does
+not close high REF-006/008/009, independent-data/platform/physical/release gates.
+No signed installation, mobile DINOparity or publication. Next local variant
+recovery procedure and named owners are in NEXT_ACTION/OWNER_ACTIONS.
+
 ## November15 — NO-GO; bounded offline flow functional, not production-validated
 
 Actual native barcode/OCR/embedding + local5product/10reference database now

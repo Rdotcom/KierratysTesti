@@ -1,5 +1,10 @@
 # External blockers
 
+November15 DINOv2: no account/payment/access blocker;68actual offline encodes
+complete.5.7GiBdisk after isolated preparation. Failed no-old-loss gate and variant
+recovery are local engineering, not external blockers. Independent prospective
+captures/physical iOS/Android acceptance remain absent; no new reviewer gate.
+
 November15: source work remains locally executable; do not describe failed
 recognition coverage, DINO comparison, Android implementation or catalogue update
 engineering as an account/payment/human-review blocker. The owner's new master

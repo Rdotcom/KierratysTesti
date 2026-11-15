@@ -1,5 +1,17 @@
 # Adversarial production-readiness audit
 
+## November15 — DINOv2 does not close high quality finding
+
+REF-006(high,OPEN,local): genuine DINOv2comparison yields14/17top1versus11/17,
+but exp003loses prior agreement and all3wrong ranks confuse400g/750gNutella.
+Fixed no-old-loss gate fails; no model promotion/precision claim. Evidence:
+DINOV2_COMPARISON_RESULTS.md,83pins/68receipts/independent cosines. Reproduce:
+`node scripts/qa/dinov2/review.mjs work/dinov2-comparison-2026-11-15.gkByIM/evaluation`.
+Affected: QAmodel candidate and offline variant recovery. Remediation: preserve
+unknown/source/text corroboration, guided size/barcode recovery, then prospective
+variant/open-set tests; no threshold fitting against these seen queries.
+REF-008/009remain open as below; no physical/Android/catalogue-scope waiver.
+
 ## November15 — actual offline app integration; release quality still fails
 
 REF-006(high,OPEN,local): new integrated retrieval ranks11/17first, only2explicit

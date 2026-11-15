@@ -1,5 +1,26 @@
 # Test evidence
 
+## November15 — actual DINOv2 comparison
+
+DINOV2_COMPARISON_RESULTS.md:68actualCPUforwards,10refs/17known/41audits,
+OSnetwork denied. Lock1469cf8c…/rawda42d904…,83pins verified by independent
+Node arithmetic; no new model calls during recount.14/17top1versus11/17, one
+old loss(exp003), fixed gate FAIL.0/68encodefailures, no automatic accepts.
+Actual rerun refuses before output/inference; no canonical ledger reset.
+
+Five new deterministic Node regressions pass. Full `pnpm validate` exits0:
+1819unique tests(788Node+1031workspace), boundaries/format/lint/types/allbuilds/
+18routes PASS;19existing lint warnings, no newly introduced warnings. Log:
+`/tmp/kig-dinov2-full-20261115.log`. Existing scoped/native/unsigned iOS/browser
+evidence below remains; DINOexperiment changes no app/native runtime code.
+
+MacM1/8GiB, CPUfloat32persistent model: p5042.03ms/p9553.33ms/max328.16ms
+for68imageencodes,173.60msmodel-load excluding imports, maxRSS452198400bytes.
+Not phone/cold-start/battery metrics. Official pinned88249960byte safetensors,
+isolated39hashed-wheel QAenvironment, no app dependency, remote code or cloud
+inference. exp003/case018actual images observed after frozen results; cached
+OCR checked without new inference. Unknown-size failure is retained, not guessed.
+
 ## November15 — integrated offline product path
 
 See OFFLINE_PRODUCT_INTEGRATION_RESULTS.md and frozen protocol. New actual

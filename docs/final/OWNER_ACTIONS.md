@@ -1,10 +1,23 @@
 # Owner actions
 
+## November15 — after DINOv2comparison
+
+- Engineering/Codex: implement NEXT_ACTION's targeted variant recovery in the
+  existing offline photo UI; require readable same-image size/barcode, never
+  invent an exact sibling identity. Keep all frozen wrong/missing-size cases
+  and test cancellation/offline/source-label paths before any new acceptance.
+- Engineering/Codex: verify saved results using
+  `node scripts/qa/dinov2/review.mjs work/dinov2-comparison-2026-11-15.gkByIM/evaluation`;
+  do not rerun/reset canonical inference. Full software command is `pnpm validate`.
+- No immediate owner/account/payment action is needed for this local work.
+  Installation/physical procedures below still require the owner when requested;
+  the QAmodel comparison is not deployed to the phone or a production release.
+
 ## November15 — offline integration follow-through
 
-- Engineering/Codex: execute the one NEXT_ACTION, freeze DINOv2-Small/current
-  comparison before scores, preserve all58source queries/timeout/previousfailed
-  gates. Implement Android/gallery/update work and calibration only with an
+- Engineering/Codex: DINOv2-Small/current comparison is now complete with failed
+  no-old-loss gate retained, all58queries/timeout/previousfailed gates preserved.
+  Implement Android/gallery/update work and calibration only with an
   appropriate new validation split; never make user-facing confidence from cosine.
 - Engineering/Codex: reproduce current evidence with
   `node scripts/qa/review-offline-product.mjs work/offline-product-2026-11-14.XP0QdK/evaluation`,

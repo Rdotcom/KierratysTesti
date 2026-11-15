@@ -1,6 +1,6 @@
 # Offline product recognition implementation status
 
-2026-11-14 — active master task; NOT production-validated.
+2026-11-15 — active master task; NOT production-validated.
 
 ## Implementation sequence
 
@@ -35,9 +35,9 @@ the owner; this does not turn source labels into independent truth.
 ## Boundaries
 
 - No cloud API/key/payment, publication, push or phone installation implied.
-- Reuse existing licensed local MobileCLIP rather than downloading another
-  model into a disk with approximately 4 GiB free. DINOv2 is a comparison
-  candidate, not a tested replacement or an assumed accuracy improvement.
+- Existing licensed MobileCLIP remains the app model. After owner-authorized
+  cache cleanup, DINOv2-Small was actually compared in an isolated QAenvironment;
+  its no-regression gate failed, so it is not promoted to an app replacement.
 - The two named Finnish research documents were not found among repository
   research/attachment filenames. Existing primary-source research from today
   is retained in docs/research/multimodal-recognition-plan-2026-11-14.md.
@@ -86,7 +86,7 @@ Prior experimental10/17max-margin+OCR result/gate remains unchanged, not replace
 | --- | --- |
 | A architecture | Actual relevant existing code inspected; preserve three parts/native stack |
 | B catalogue/barcode | Working bundled5product catalogue; generated actual decoding+manual offline verified. Generic importer/signed incremental updates/migrations still missing |
-| C neural retrieval | Real pinnedMobileCLIP image inference/10reference embeddings integrated; DINOv2-Small comparison and Android runtime not implemented |
+| C neural retrieval | Real MobileCLIP integrated; actual DINOv2comparison14/17versus11/17but one regression fails gate. Android runtime/mobile DINOparity absent |
 | D OCR/fusion | Actual full+ROI text; confirmation hints only. SV/EN observed; no Finnish/independent calibration proof; first timeout remains |
 | E app | Existing camera/material route and manual lookup integrated; unsigned iOS build/browser pass. Gallery/Android/physical acceptance absent |
 | F measurement | Frozen authentic source corpus/OSoffline/latency/RSS measured. Independent500known/100–200unknown/sibling/multi-device dataset absent; quality targets unmet |
@@ -102,7 +102,15 @@ module and CocoaPods download files; source/apps/models/evidence/currentbuild
 preserved. Free6.3GiBafterward; disk blocker resolved. Caches recover by rebuilding
 or redownloading, not trash restore.
 
-Next executable action is exactly the one in docs/project/NEXT_ACTION.md:
-a separately frozen DINOv2-Small/current retrieval comparison before any automatic
-identity acceptance or quality claim. Broader data/device/Android/update work
-remains explicit; do not claim that all feasible engineering has been exhausted.
+## Actual DINOv2 follow-through
+
+New scripts/qa/dinov2/{download,run,review}.mjs and infer.py implement pinned
+safetensors preparation,68real OSoffline encodes and independent83pin/rank review.
+Five regressions/full1819tests pass. Top1=14/17versus11/17, paired13/16versus11/16;
+one old loss, so fixed gate FAIL. All3wrong ranks confuse400g/750gNutella. No
+threshold calibration, automatic accepts, app model switch, phone update or push.
+Exact evidence/latency/RSS/limits in DINOV2_COMPARISON_RESULTS.md.
+
+Next executable action is exactly docs/project/NEXT_ACTION.md: targeted variant
+recovery with readable size/barcode, not guessed identity. Broader data/device/
+Android/update work remains; local engineering has not been exhausted.

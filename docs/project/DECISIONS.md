@@ -1,5 +1,22 @@
 # Decision log
 
+## D-096 — Measure DINOv2, retain failed gate/current app model
+
+- Date:2026-11-15. Cleanup frees sufficient disk for isolated39hashed-wheel QA
+  environment/pinned DINOv2-Small safetensors+Apache2licence. No app dependencies.
+- Freeze10refs/17known/41audits/current MobileCLIP receipts before68CPUforwards
+  under network denial.384CLS/exactcosine, no training/calibration/retakes.
+  Independent83pin/vector/rank review passes without model calls.
+-14/17top1and13/16paired improve descriptive ranking, but exp003loses a prior
+  agreement; fixed zero-old-loss requirement FAIL. No post-outcome relaxation
+  or model promotion. All3wrong ranks confuse400g/750g; one image lacks size.
+- Next targeted size/barcode recovery; no identity from jar shape. Existing
+  text confirmation already resolves case018; do not replace it with a worse
+  visual-only SKUdecision. Preserve source assertions/material-rule separation.
+- Mac resident timings/RSS are not phone/cold-start/energy evidence. Data/
+  Android/update/physical acceptance remain open; NO-GO. No installation/push/
+  payment/reviewer recruitment/publication. Final evidence describes real checks.
+
 ## D-094 — Use source-bound same-image text evidence, not forced SKU guessing
 
 2026-11-14: user explicitly requests research then justified implementation.

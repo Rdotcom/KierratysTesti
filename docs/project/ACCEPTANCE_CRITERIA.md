@@ -1,5 +1,11 @@
 # Acceptance criteria
 
+November15 DINOv2: actual68encodes/83pin independent recount pass;14/17top1
+fails preregistered zero-old-loss criterion(one regression). This is not99%
+accepted precision/≤1%unknownfalseaccept/≥70%coverage. Descriptor/unit tests
+are not accuracy evidence. Keep variant ambiguity/source/text corroboration;
+no CoreML/Android/physical acceptance follows from MacCPUmeasurements.
+
 November15 integrated offline path: local lookup must validate checksums and
 GTIN8/12/13/14 normalization, preserve valid absent codes, reject conflicting
 codes and corrupt/alias-colliding/model-mismatched catalogues. Barcode records

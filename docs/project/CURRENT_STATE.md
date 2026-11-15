@@ -1,5 +1,20 @@
 # Current state
 
+## DINOv2 comparison completes; variant regression blocks switch — November15
+
+- Isolated pinned Apache2DINOv2-Small safetensors:68actual CPUencodes(10refs/
+  17known/41audits), OSnetwork denied. No dummy vectors/API/payment/training/
+  app dependency change. Node independently verifies83pins/68receipts/allranks.
+- Top1source agreement14/17versus11/17; paired13/16versus11/16. Four gains,
+  one loss(exp003); all3wrong ranks confuse Nutella400gwith750g. Fixed≥14and
+  zero-old-loss gate FAIL. No automatic accepts/populationprecision/retakes.
+  Baseline timeout retained; new68/68complete. Actual repeat is refused.
+- Mac resident CPUper-image p5042.03ms/p9553.33ms,RSS452198400bytes; NOT
+  phone/cold-start/NeuralEngine or comparable native end-to-end performance.
+  Model stays QAonly; app/phone unchanged. Next targeted size/barcode recovery.
+- Five new QAregressions/full1819tests/allchecks/builds pass; TEST_EVIDENCE.md
+  has exact logs. Public NO-GO; physical/platform/update/data limitations remain.
+
 ## Actual offline product path integrated — November15
 
 - Existing photo screen now offers on-device product capture, offline manual
