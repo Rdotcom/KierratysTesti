@@ -2,12 +2,11 @@
 
 ## November16 — new selection-flow check
 
-- Owner/operator, once new signed client is installed: photograph one spoon in
-  Tunnista→local AI, choose Lusikka→Metalli and check the source-backed metal
-  instruction. Back/change to another material, then retake: old guidance must
-  clear. Report only on-screen text/behavior, never upload the photo.
-- Engineering/Codex: record physical response separately from the synthetic
-  browser cases, retain all old failed quality/memory gates. MEM-01warm-pipeline
+- Owner completed the installed15spoon→Lusikka→Metalli/back-choice request,
+  replying “toimii”. Basic physical smoke recorded; no immediate new action.
+  Retake reset/VoiceOver/broader device checks were not individually described.
+- Engineering/Codex: retain this bounded owner report separately from synthetic
+  browser cases and all old failed quality/memory gates. MEM-01warm-pipeline
   allocation-owner experiment remains local backlog, not a payment blocker.
 - No new provider account/payment/API key or independent reviewer is needed.
 

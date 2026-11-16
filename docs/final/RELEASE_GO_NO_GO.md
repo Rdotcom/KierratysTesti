@@ -5,7 +5,8 @@
 Explicit object/material/use/deposit/area choices now lead to sourced local
 guidance or unknown. No model upgrade/accuracy claim, no source-backed bin from
 an unconfirmed image guess. Synthetic actual-component browser cases are UI
-evidence only. Physical selection acceptance is separate. MEM-01and prior
+evidence only. Owner subsequently confirms basic installed15spoon/material/back
+smoke with “toimii”, not a retake/VoiceOver/general-recognition approval. MEM-01and prior
 quality/platform/assets/pressure/energy/store requirements remain NO-GO.
 
 ## November16 — attribution complete for this experiment; still NO-GO

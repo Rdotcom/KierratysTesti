@@ -15,6 +15,9 @@
 - Test with actual component and clearly synthetic browser suggestions; never
   claim that fixture clicks verify physical inference/VoiceOver or memory gates.
   Physical selection acceptance remains separate. No push/paid service/release.
+- Owner follow-up2026-11-16: “toimii” to installed15spoon/material/back request
+  records basic physical smoke, without inventing exact text, step counts or a
+  retake/VoiceOver/accuracy test. No code/model/gate changes from this confirmation.
 
 ## D-109 — Attribute memory numerically; retain an unsuccessful repair hypothesis
 

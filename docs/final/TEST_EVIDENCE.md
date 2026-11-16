@@ -26,10 +26,15 @@ Hermes. No QA probe/fixture in signed app. Existing profile reused through
 paid request/key/GitHub push. Artifact/build/verification/install/launch receipts:
 `work/object-choice-client15-20261116.6464yZ/`.
 Exact0.1.0(15)inventory and same-process survival check pass after launch.
-The physical selection-flow check requested from owner is not yet recorded as
-passed; prior camera14success
-does not prove this new interaction. No new recognition/memory/energy/pressure/
+Owner later replies **“toimii”** to the installed15spoon→Lusikka→Metalli and
+back/change request: owner-reported basic physical interaction smoke passes.
+No exact result transcript, per-step counts or explicit retake confirmation was
+provided; retake reset remains browser-tested, not individually device-verified.
+Do not turn this one case into general accuracy. No new memory/energy/pressure/
 Samsung/VoiceOver/release pass. See OBJECT_SELECTION_FLOW.md and source register.
+Documentation-only owner-confirmation update reruns `pnpm validate`: exit0,
+same2015tests/allchecks/builds/19existing warnings. Log:
+`work/object-choices-20261116.jfPpoP/validate-owner-confirmation.log`.
 
 ## November16 — actual-app attribution; unsuccessful retention hypothesis retained
 

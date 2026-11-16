@@ -1,8 +1,9 @@
 # External blockers
 
 November16object-action work: no payment/account/key/database/new model needed.
-Local policy and synthetic component QA complete; physical new selection-flow
-check needs owner camera operation/unlocked device when requested. This is not
+Local policy and synthetic component QA complete; owner now confirms installed15
+basic spoon/material/back-choice smoke with “toimii”. No immediate owner action
+needed. Future retake/VoiceOver/broader physical checks remain distinct. This is not
 a new credential blocker or a human/legal-review gate. Existing MEM-01/local
 engineering and broad release/Android/quality/energy/assets limits remain.
 

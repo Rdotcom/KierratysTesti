@@ -3,7 +3,9 @@
 - [x] Actionable object hints→conditional material/use/area/type choices→sourced
   guidance, transient/reset/back/unknown safe paths;28shared+5mobile regressions
   and4FI/EN/light/dark/offline actual-component browser cases.
-- [ ] Physical new selection-flow acceptance; no browser-as-camera claim.
+- [x] Owner reports “toimii” for installed15spoon→object/material/back-choice
+  smoke; basic physical flow only, not broad recognition/VoiceOver acceptance.
+- [ ] Explicit physical retake/reset observation; browser reset tests already pass.
 - [ ] Retained MEM-01warm-pipeline allocation-owner investigation, unchanged
   failed32MiB gates; not resolved by this requested interaction change.
 

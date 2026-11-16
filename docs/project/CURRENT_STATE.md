@@ -19,7 +19,9 @@
   14legacy pins/candidate/JPEG/privacy verified, new controls in embedded Hermes,
   no QA fixtures/probe. Profile reused through23November12:53:38Helsinki.
   Shared/mobile/full validation pass:2015tests(920Node+1095workspace), allchecks/
-  builds/18web routes,19existing warnings. Owner physical selection check pending.
+  builds/18web routes,19existing warnings. Owner replies “toimii” to the client15
+  spoon→Lusikka→Metalli/back-choice smoke request: basic physical flow confirmed.
+  No exact screen text/step counts/retake/VoiceOver/general-quality claim follows.
 
 ## Memory attribution and bounded camera startup — November16
 

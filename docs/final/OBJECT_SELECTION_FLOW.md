@@ -58,8 +58,10 @@ and shared/mobile/full validation pass:2015tests(920Node+1095workspace), allchec
 builds/18web routes,19existing warnings. Signed normal0.1.0(15) installed/launched,
 11embedded signatures/14legacy pins/candidate/JPEG/privacy preserved, no QA
 fixtures/probe. New controls/rule IDs confirmed in actual Hermes. Existing profile
-expires23November12:53:38Helsinki; no renewal/reset. Owner physical interaction
-check requested, not yet marked passed. Receipts:
+expires23November12:53:38Helsinki; no renewal/reset. Owner replies “toimii” to
+the installed15spoon→Lusikka→Metalli and back/change smoke request. This confirms
+basic physical interaction, not exact text/step counts, retake, VoiceOver or broad
+recognition accuracy. Retake reset remains browser-tested only. Receipts:
 `work/object-choice-client15-20261116.6464yZ/`.
 
 Browser fixtures are not new camera/model-accuracy evidence. Physical selection-flow
