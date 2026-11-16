@@ -1,9 +1,16 @@
 # Roadmap
 
+- [x] Image-only SigLIP2 conversion and measured compression: retain original
+  FP16/per-channel failures; final125.47MBblock32/FP32compute4/4rank preservation
+  and unchanged numerical/150MiB gates, independent recount,19regressions and
+  Xcode CoreML compiler. No app promotion or device/general-quality claim.
+- [ ] Isolated iOS768Dconsumer and frozen224pixel-preprocessing parity for pinned
+  model; physical runtime/memory/energy and Android export remain separate work.
+
 - [x] ActualpreregisteredMobileCLIP/SigLIP2CPUoffline4scenes/8imageforwards:
   both2/2spoonpositives;controls1/2versus2/2,0failures.48pin/raw-output review/
   repeat refusal and5regressions. No app/model promotion from tiny seen data.
-- [ ] Registered image-only SigLIP size/export/parity before mobile model choice;
+- [x] Registered image-only SigLIP size/export/parity before mobile model choice;
   broad unknown/material/physical-platform quality remains a separate requirement.
 
 - [x] Fresh private clean-copy import:98source originals preserved/98metadata-clean

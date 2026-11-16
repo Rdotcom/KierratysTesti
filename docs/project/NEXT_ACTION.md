@@ -1,3 +1,3 @@
 # Next action
 
-Register an isolated image-only SigLIP2 export/size/numerical-and-decision-parity experiment against the frozen CPU baseline before selecting a mobile runtime; preserve the four-scene smoke and all failures, and do not change the installed app or claim general recognition accuracy.
+Implement an isolated iOS 768-D consumer for the pinned SigLIP2 block32 model with frozen 224×224 image preprocessing, and verify end-to-end decoder/vector/rank parity without replacing the installed MobileCLIP or barcode path.

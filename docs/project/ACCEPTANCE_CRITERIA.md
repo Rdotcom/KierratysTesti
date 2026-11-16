@@ -1,5 +1,15 @@
 # Acceptance criteria
 
+November16 SigLIP mobile export: keep frozen4images/15prompts and FP32parent
+score agreement<=0.00001. FP16cosine>=0.999/error<=0.001;INT8cosine>=0.995/
+error<=0.005;4/4successful/same top1 and model+prototype resources<=150MiB.
+Original FP16/INT8failures stay failures. Separately registered block32/FP32
+candidate passes these same INT8gates; this does not waive installed512Dconsumer,
+224pixelpipeline, physical-platform, open-set, material/sorting or release gates.
+Audit actual files/hashes/vectors/ranks/denominators, not only reported metrics.
+Synthetic-first repair failures cannot trigger photo calls; no heldout claim
+for reused development scenes. CoreML compilation is not a signed app build.
+
 November16websmoke: fixed4scenes/15prompts/2models/8imageattempts, exclude held
 credit sample beforehand, no retries/tuning, allfailures retained. Rehash48pins,
 rawstdout/image joins and independently recount rank outcomes. Two positive

@@ -1,5 +1,46 @@
 # Test evidence
 
+## November16 — actual SigLIP2 mobile compression and parity
+
+Initial frozen4FP32photo references exactly match prior smoke scores. Original
+FP16/per-channel INT8 conversion succeeds after retained NumPy cast/constructor
+failures, but both preserve only3/4top1 and FAIL unchanged gates. Synthetic
+tracing/FP32diagnosis passes; mixed precision and whole-model FP32compute/INT8
+fail probes and receive0photo calls. No failure hidden or threshold weakened.
+
+Separately registered selective block32 INT8storage/FP32compute compresses72
+encoder matrices, keeps remaining weights/computeFP32, iOS18/spec9. Final
+125,467,999bytes with327,254byte text prototypeJSON,4/4same ranks,0failures,
+mincosine0.9998295045,maxscore error0.0006499676. MacCPU50–61ms excludes load/
+preprocessing.16realimagecalls across this unit,22synthetic calls including
+4zero traces,15textembeddings inonebatch. Allcalls OSnetworkdenied.
+
+Independent reviewer rehashes6stage locks, historical recovery source mapping,
+all package files and raw output joins; recomputes vectors/scores/cosines/top1
+and actual size. Exit0, no model calls. Final weight.binSHA
+e0490bf502e85c813dd3f640bdfcd1419f3915a5daf882da869a8bfca4525ff5;
+blocklock d2ace54bc4e2681184210793a2b11ce9424b8491b326e2305c175b704590a859;
+results b64bc3f64653c8d0a358221bc0fce96ce08f64e335ad56b670872b45af701141;
+recount e9028ceed09df953c97486d6c635b864b165e555fefda28d3ced00e9eb9eb4b1.
+Private receipts work/siglip-mobile-20261116.yV442u/. Detailed report:
+SIGLIP_MOBILE_EXPORT_RESULTS.md. Xcode-beta coremlcompiler exit0; compile log
+SHA194b33d3e804d35fff48001ea07866708b98b0ceb00b0bf9fd66a881b19c2251.
+This is NOT signed application/physical iPhone/Samsung/energy/generalaccuracy.
+
+19newregressions pass (gates plus independent tampered-output rejection).
+First full validation included10newtests only:1897total=866Node+1031workspace,
+19existinglint warnings/allchecks/builds pass.
+Log /tmp/kig-siglip-mobile-20261116-validation.log SHA
+3148baee62d6ad45a91930101e7329a6d00b95055ec6cdebba5566a154c7f699.
+Final full validation exits0 with1906tests (875Node+1031workspace), all boundary/
+format/lint/type/test/build checks and18web routes;19existinglint warnings.
+Log /tmp/kig-siglip-mobile-20261116-final-validation.log SHA
+2e4781f701f4be30a508f9dd826b1923ad7c475c60eab3ebb19d51746c5dc52f.
+Actual repeat attempt exits1/EEXIST before Python/model dispatch; final block
+lock/results hashes remain unchanged. Independent review rerun exits0 without
+inference; original recount receipt unchanged. Only documentation follows.
+Installed app/model/barcode/OCR/sorting/phone unchanged; public NO-GO/no push.
+
 ## November16 — actual registered MobileCLIP versus SigLIP2 web-object smoke
 
 Frozen48pins/fourcleanwebscenes/15Englishprompts before predictions, excluded

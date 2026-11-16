@@ -1,5 +1,13 @@
 # External blockers
 
+November16 SigLIP export: no payment/account/key blocker. Image-only block32
+CoreML export/parity/Xcode model compile complete locally; isolated768Dconsumer
+and Android inference remain LOCAL engineering, not external blockers. Candidate
+requires iOS18; no app minimum-OS decision/change made. Actual iPhone/Samsung
+camera/latency/memory/energy and independent physical12class/fourdevice captures
+still need device/operator evidence. No new independent-human-review gate.
+App/signing/install unchanged; see SIGLIP_MOBILE_EXPORT_RESULTS.md for limits.
+
 November16 modelsmoke: actualfreeofficialSigLIP weights acquired/verified, first
 downloadtimeout recovered by explicit partial continuation; no payment/account
 blocker. Both models executeoffline successfully. Image-only export/size/parity

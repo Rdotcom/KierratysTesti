@@ -1,5 +1,24 @@
 # Decision log
 
+## D-105 — Compress SigLIP weights without silently changing computation
+
+- Date2026-11-16: owner requests lighter SigLIP2 and preserved recognition.
+  Fixed4scene/15prompt parity gates precede conversion. Initial FP16 and INT8
+  lose one top1, so retain failed status despite93MB INT8 size.
+- Synthetic isolation finds exact tracing/near-exact FP32CoreML, reduced-precision
+  and whole-model per-channel failures. Separately register selective block32
+  INT8 storage for72encoder matrices with FP32 compute/other weights. iOS18only
+  isolated candidate, not an app platform-minimum change or Android solution.
+- Final125,467,999bytes includes prototypes;4/4top1/cosine>=0.99982950 and score
+  error<=0.00064997 satisfy unchanged gates. Preserve all failed attempts, lock
+  historical recovery sources, independent raw vector/rank/size recount and
+  staged call denominators. This is engineering on seen development data.
+- Do not ship/swap existing512D app consumer or call four scenes reliable/general
+  recognition. Next implement isolated768D preprocessing/consumer parity before
+  phone integration; physical capture/latency/memory/energy and Android remain.
+- No paid service, secret, app behavior/version/signing/install or GitHub push.
+ 19new tests and Xcode CoreML compile pass; release NO-GO remains.
+
 ## D-104 — Measured text-free spoon forms, not a universal recognizer
 
 - Date2026-11-16: owner requests actual comparison on clean development images.

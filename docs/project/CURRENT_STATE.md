@@ -1,5 +1,28 @@
 # Current state
 
+## SigLIP2 image-only mobile candidate — November 16
+
+- Actual selective block32 INT8-storage/FP32-compute CoreML candidate is
+  125,467,999bytes (119.66MiB) including15cached text prototypes. Requires iOS18;
+  no app minimum-OS change.72encoder matrices compressed; no calibration/training.
+- Original FP32 photo scores match parent exactly. Final4/4same top1, minimum
+  cosine0.99982950,maxscore error0.00064997,0runtime failures; original fixed
+  INT8/150MiB gates pass. Independent hash/vector/rank/actual-byte recount passes.
+- First FP16/per-channel INT8 candidates fail3/4rank parity. Converter/constructor
+  failures and later synthetic mixed/per-channel failures retained, not overwritten.
+ 16realimagecalls total; unsuccessful synthetic candidates receive0photo calls.
+- Xcode-beta CoreML compiler passes; this is NOT a signed app/device test.
+ 19new gate/evidence regressions; full1906tests(875Node+1031workspace), allchecks/
+  builds/18web routes pass;19existinglint warnings. Repeat refuses before dispatch.
+- Installed client11/current MobileCLIP512D, barcode/OCR/catalogue/rules/UI and
+  phone profile unchanged. No GitHub push or project dependency change. The full
+  1.50GB source was never installed;91.64%reduction is not an app-size claim.
+- Next local task: isolated768D iOS consumer/preprocessing parity for this pinned
+  candidate. Four seen web scenes are not general accuracy/unknown/material or
+  physical iPhone/Samsung evidence. Public NO-GO remains.
+- Details:docs/final/SIGLIP_MOBILE_EXPORT_RESULTS.md; private frozen artifacts in
+  work/siglip-mobile-20261116.yV442u/, not committed application assets.
+
 ## Actual two-model text-free object smoke — November16
 
 - Preregister4cleanwebscenes/15classprompts,2spoonpositives/2multiobject controls;
