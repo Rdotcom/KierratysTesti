@@ -1,5 +1,20 @@
 # Adversarial production-readiness audit
 
+## November16 — icon/client18 and HSY access evidence
+
+Source/default/adaptive/monochrome icon tests and signed18delivery retain all
+prior model/JPEG/privacy pins. No recognition-quality or Android/store promotion.
+First adaptive export fails safe circle, repaired by smaller artwork; threshold
+unchanged. Exact prompt/provenance/evidence:LEAF_ICON_AND_HSY_SETUP.md.
+
+Owner rotates initially exposed HSY secret and privately stores replacement;
+initial grant is DEV and first source-confirmed PROD request401. Owner confirms
+separate approved PROD application; distinct private ignored0600PROD file→one
+new200response. No exposed secret used, no value/header/raw-body output, no mobile
+secret/account mutation/paid action. Account access blocker is resolved, not an
+unresolved external excuse. Actual attributed snapshot/search integration remains
+LOCAL NEXT_ACTION; SEARCH-01/REG-01and all older high/release findings stay open.
+
 ## November16 — barcode reachability, search and regional policy
 
 | ID | Severity/status | Evidence and affected flow | Reproduce | Remediation / owner |

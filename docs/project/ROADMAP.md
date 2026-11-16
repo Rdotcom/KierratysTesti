@@ -1,5 +1,15 @@
 # Roadmap
 
+- [x] Home-derived leaf launcher/default/adaptive/monochrome/favicon assets,
+  byte/alpha/safe-area regressions, signed installed18with unchanged17Hermes.
+- [x] Owner-confirmed HSY secret rotation and private dedicated0600local setup;
+  no chat/committed/mobile secret, existing configuration preserved.
+- [x] Owner grants separate HSY PROD app; source-confirmed1.0.4endpoint/actual
+  response shape, first401preserved and corrected private PROD credentials→200.
+- [ ] Validated attributed bounded HSY offline snapshot and HSY-only search
+  consumer (NEXT_ACTION), nullable fields/multiple reception choices/refresh tests.
+  No DEV dataset promotion or nationwide claim.
+
 - [x] Owner16confirms search/GPS area; owner17confirms no-scroll result visibility
   after result-first layout/instant submit reset. New viewport/order regression
   tests supplement older functional tests that missed this UX failure.

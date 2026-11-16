@@ -4,13 +4,13 @@
     "slug": "kierratysappi",
     "version": "0.1.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/brand/leaf-app-icon.png",
     "scheme": "kierratysappi",
     "userInterfaceStyle": "automatic",
     "ios": {
-      "icon": "./assets/images/icon.png",
+      "icon": "./assets/brand/leaf-app-icon.png",
       "bundleIdentifier": "fi.roopeaaltonen.kierratysappi",
-      "buildNumber": "17",
+      "buildNumber": "18",
       "supportsTablet": true,
       "infoPlist": {
         "NSCameraUsageDescription": "Kameraa käytetään viivakoodin lukemiseen ja tuotteen kuvaamiseen. Kuva lähetetään tunnistukseen vain erillisellä hyväksynnälläsi.",
@@ -29,12 +29,12 @@
     },
     "android": {
       "package": "fi.roopeaaltonen.kierratysappi",
-      "versionCode": 3,
+      "versionCode": 4,
       "allowBackup": false,
       "adaptiveIcon": {
-        "backgroundColor": "#F4F0E6",
-        "foregroundImage": "./assets/images/android-icon-foreground.png",
-        "monochromeImage": "./assets/images/android-icon-monochrome.png"
+        "backgroundColor": "#F4FAF5",
+        "foregroundImage": "./assets/brand/leaf-adaptive-foreground.png",
+        "monochromeImage": "./assets/brand/leaf-adaptive-monochrome.png"
       },
       "predictiveBackGestureEnabled": true,
       "permissions": ["android.permission.CAMERA"],
@@ -50,7 +50,7 @@
     },
     "web": {
       "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./assets/brand/leaf-favicon.png"
     },
     "locales": {
       "fi": "./locales/fi.json",

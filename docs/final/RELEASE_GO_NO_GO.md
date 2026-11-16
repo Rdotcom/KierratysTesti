@@ -1,5 +1,15 @@
 # Release decision
 
+## November16 — client18 icon/private PROD access; public NO-GO
+
+Leaf launcher compiled/signed/installed;2072tests and actual icon validation pass.
+Owner privately supplies correct PROD client after separate-application401;
+source-confirmed actual PROD200clears the account/credential blocker, NOT the
+dataset-import or universal-content gap. No key in mobile/Git or paid action.
+Current18Hermes is identical to17, item coverage unchanged. HSY snapshot/search
+integration now LOCAL engineering in NEXT_ACTION. Previous recognition/regions/
+MEM-01/Android/reproducible models/store gates remain. No production publication.
+
 ## November16 — client17 result visibility; public NO-GO
 
 Client16barcode/search/region work is followed by owner-reported visibility

@@ -1,3 +1,3 @@
 # Next action
 
-Add Pirkanmaan Jätehuolto's officially sourced municipality membership and ordinary ceramic/glass/plastic-object rules to the existing region policy, with Tampere regression tests that preserve unknowns and never substitute HSY guidance.
+Implement a bounded, validated and attributed HSY PROD offline snapshot import and connect it to HSY-region item searches, using the verified1.0.4schema/nullable fields and preserving unknowns, regional limits, multiple reception choices and source provenance.

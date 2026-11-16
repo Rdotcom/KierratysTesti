@@ -1,5 +1,13 @@
 # Acceptance criteria
 
+Leaf icon: retain app/deep-link identity and original Home image; opaque1024iOS,
+transparent adaptive safe-circle/monochrome parity, source pins, native asset
+build/signature and install evidence. Do not label Android config as a build.
+HSY credentials: private no-echo owner input/exclusive0600ignoredserver file,
+no chat/value logs/mobile/overwrite, separate PROD client where applicable.
+Source-confirmed endpoint/schema before auth; retain failed401and successful200
+separately. Access-test success is not a snapshot import/whole-country guarantee.
+
 Search visibility: after a home search or keyboard submit, the result heading
 and instruction start must be visible in the initial viewport without scrolling;
 region controls/reset/irrelevant material filters cannot precede the answer.

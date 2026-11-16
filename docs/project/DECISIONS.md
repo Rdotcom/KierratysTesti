@@ -1,5 +1,27 @@
 # Decision log
 
+## D-112 — Reuse Home leaf identity; isolate replacement provider credentials
+
+- Date:2026-11-16. Owner requests Home leaf as icon. Use imagegen faithful
+  extraction/upscale, not new branding or a pixel-identical claim; original Home
+  unchanged. Compile opaque/default, adaptive/monochrome and favicon from pinned
+  master; preserve old assets, app identity, source rights limitations and all
+  models/JS. Android failed safe area is repaired by smaller foreground, not a
+  larger acceptance circle. Normal18delivered, no production/Android claim.
+- Never use or reproduce the initially pasted HSY credential. Owner confirms
+  rotation, explicitly authorizes private local Terminal input and reports saved.
+  No-echo bounded TTY helper exclusively creates dedicated ignored0600provider
+  env file; preserve existing settings, no clipboard/network/value logs/mobile
+  secret. Only metadata checked by agent. No provider API process yet loads it.
+- Owner initially confirms DEV, then separately approves PROD. First request to
+  source-verified PROD returns401; owner clarifies PROD is a different client
+  application. Capture its credentials privately into separate fixed0600ignored
+  file with --prod, never overwrite DEV. New request after this external-state
+  change returns200, one remote-control hit; no retry-for-green or raw body/key
+  output. Anonymous public1.0.4OAS confirms host/security/fields; actual notes
+  nullable and waste-type URL field differ from sparse example. Import/consumer
+  normalization remains next unit, not claimed complete. No push/paid action.
+
 ## D-111 — Local identity recovery and explicit regional coverage
 
 - Date:2026-11-16. Owner requests barcode recovery, arbitrary-item search,

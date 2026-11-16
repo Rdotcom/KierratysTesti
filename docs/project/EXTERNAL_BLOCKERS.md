@@ -1,5 +1,21 @@
 # External blockers
 
+## November16 — HSY PROD credential/access blocker cleared
+
+Supersedes earlier “no account/credentials received” notes for setup only. Owner
+confirms rotation of initial exposed secret and private local replacement entry;
+dedicated backend/.env.hsy.local verified by metadata only: regular0600/ignored.
+No credential values read/printed/committed or requests made with them. Owner
+initially confirms **DEV** permission, then grants PROD on a different client
+application. First source-verified PROD call using initial client returns401.
+Owner privately enters distinct PROD client credentials into separate ignored
+regular0600backend/.env.hsy.prod.local; metadata only inspected. One fresh PROD
+read now returns200and one remote-control hit. Official1.0.4public spec confirms
+endpoint/security, actual response shape recorded, no raw text/key/header output.
+No current owner account/credential blocker for HSY import remains. Snapshot
+normalization/search/refresh/regional tests are LOCAL engineering in NEXT_ACTION,
+not completed by this access test. Previous blocked notes below are historical.
+
 ## November16 — HSY bulk guide access
 
 HSY Jäteopas REST/JSON is CC-BY4.0/free but requires owner's own registration and

@@ -1,5 +1,45 @@
 # Test evidence
 
+## November16 — leaf launcher and private HSY PROD access, client18
+
+Mobile/full validation exit0: **2072tests(928Node+1144workspace)**, allchecks/builds/
+18web routes,19existing warnings. Three icon/four private-setup Node regressions
+added; existing identity/permission tests updated only build18/Android config4.
+Logs:`work/leaf-icon-20261116.LNSXyx/{validate-mobile,validate-final}.log`.
+`render-leaf-app-icons.mjs --check` passes exact master/output pins, opaque1024/
+transparent variants, adaptive332pxsafe circle and identical black-monochrome
+alpha. First620pxvariant fails safe area(max414.50);480pxrepair passes without
+threshold relaxation. `render-check.log` failure retained; `render-check-v2.log`
+success. Original Home artwork hash unchanged. Selected1024and actual native
+compiled120pxicon visually inspected; Apple-optimized PNG required standard
+conversion before viewer could display it, not a native asset-build failure.
+
+Stable normal signed0.1.0(18) Release build/replacement install/inventory18/launch
+pass.11embedded signatures,14legacy resource pins/model/prototype/JPEG/privacy/
+no-QA checks pass. Actual Hermes SHA identical to installed17; no new app JS/
+recognition/network behavior. Existing profile reused until23November12:53:38
+Helsinki. No Android native compile/install/store or actual launcher-cache claim.
+Receipts:`work/leaf-client18-20261116.xyHJ8o/`; no device identifiers in report.
+
+Owner confirms exposed-secret rotation, approves separate no-echo local Terminal
+entry, confirms initial and later distinct PROD credential storage. Metadata only:
+regular non-symlink0600files/Git-ignored; no actual values/hashes read/logged/
+committed by agent. Exclusive-create rejects overwrites/symlinks and caller paths;
+tests use only synthetic fixtures. Existing app/OpenAI settings preserved.
+
+Public portal/OAS1.0.4source confirms PROD endpoint before auth. First bounded
+request401with initial DEV application's credentials; owner explains separate
+PROD application. No auto-retry; after private PROD input, one fresh bounded GET
+200/1557bytes/one fixed remote-control search hit. Only schema types/counts
+recorded; no raw response/header/photo/location. Two authenticated GETs total,
+zero DEV reads/paid calls; no inferred success from approval screenshot alone.
+`hsy-prod-smoke.json` and `hsy-prod-smoke-v2.json` preserve both outcomes.
+
+Full prompt/provenance/limits:LEAF_ICON_AND_HSY_SETUP.md and research counterpart.
+PROD access blocker resolved, but actual dataset import/mobile integration is
+next engineering action, NOT completed by this check. Existing quality/regional/
+MEM-01/Android/model-reproducibility/store NO-GO gates remain. No GitHub push.
+
 ## November16 — standalone barcode, item search and regional policy; client17
 
 `pnpm validate:shared` exit0 (`validate-shared-final.log`); mobile17and full17

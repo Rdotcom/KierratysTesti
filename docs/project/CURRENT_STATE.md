@@ -1,5 +1,31 @@
 # Current state
 
+## Leaf launcher and private HSY setup — November16, client18
+
+- Home leaf symbol adapted with built-in imagegen into an isolated launcher mark;
+  original Home artwork unchanged.1024opaque iOS/default, safe-area Android
+  adaptive/monochrome and64favicon compiled/pinned; no runtime dependency added.
+  Initial adaptive safe-area failure repaired by shrinking artwork, not gate.
+- Normal signed0.1.0(18) installed/inventory18/launched; compiled native icon is
+  leaf.11embedded signatures/14legacy/model/JPEG/privacy pins/no-QA pass. Hermes
+  byte-identical to17; no new recognition/data/JS behavior. Existing profile
+  expires23November12:53:38Helsinki, no renewal. Android config4is not a build.
+- Owner reports initial HSY secret reset, privately inputs replacement through
+  authorized no-echo Terminal helper and confirms saved. Metadata-only check:
+  dedicated backend/.env.hsy.local regular0600/Git-ignored; no values read/logged/
+  committed or copied to mobile. Existing settings not overwritten. API dev does
+  not automatically load this file; integration is not activated.
+- Initial owner grant/secret was DEV; first verified-PROD read returned401.
+  Owner reports a separate approved PROD application and privately enters its
+  credentials into separate0600ignoredbackend/.env.hsy.prod.local. One fresh
+  PROD read returns200/one remote-control hit, response shape recorded without
+  raw text/headers/values. HSY access blocker cleared; import still not wired.
+  Public1.0.4spec confirms endpoint and nullable actual fields. Full
+  details/prompt/provenance:docs/final/LEAF_ICON_AND_HSY_SETUP.md. No push.
+- Mobile/full validation pass2072tests(928Node+1144workspace),19existing warnings;
+  renderer byte parity/alpha/monochrome/safe circle and native icon inspection pass.
+  All existing public NO-GO/recognition/MEM-01/Android/store limits remain.
+
 ## Barcode recovery, item search and regional policy — November16, client17
 
 - Owner confirms16remote/cutlery search and actual device HSY region selection,

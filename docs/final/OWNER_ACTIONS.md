@@ -1,5 +1,20 @@
 # Owner actions
 
+## November16 — leaf icon delivered; HSY owner access actions complete
+
+- Owner completed rotation and private hidden-input setup. Initial application
+  was DEV; owner grants a separate PROD app and stores its credentials privately
+  with --prod. Actual PROD200confirmed after preserved401. No repeat key/account
+  action needed now; never send secret values/screenshots in chat. Two dedicated
+  ignored0600files remain server-side, existing settings preserved.
+- Engineering/Codex: NEXT_ACTION is actual bounded/validated/attributed HSY PROD
+  snapshot and HSY-only item-search integration. Use verified1.0.4spec/nullable
+  observed fields/multiple reception choices, not its sparse example as truth.
+  Current18app's item catalogue is unchanged; no universal coverage claim.
+- Signed18installed/launched with leaf icon; Android config changed, not a native
+  Android/store approval. Current signing expiry remains23November12:53:38Helsinki.
+  No push permission inferred; no new owner action needed for this completed unit.
+
 ## November16 — larger guide access and client17 acceptance
 
 - Owner/Roope: optional larger HSY data integration requires free account at
