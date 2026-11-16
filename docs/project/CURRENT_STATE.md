@@ -1,5 +1,22 @@
 # Current state
 
+## Owner-authorized team publication — November16
+
+- Fresh origin fetch/all advertised heads/open PRs: team main still our
+  November10commit4ea1b25, zero remote-only commits. Ten remaining heads/PRs
+  are older Dependabot proposals; no newer teammate branch/PR found. All prior
+  team-main history is an ancestor of current work, not overwritten or rebased.
+- Owner explicitly authorizes push if no others' additions. Review23local
+  commits/222changed paths; exact public destination roopeaal/KierratysAppi/main,
+  dry run then normal fast-forward4ea1b25→434f843 succeeds. Fresh ls-remote
+  verifies434f84308465eed56a00a049ca855caba55d5b43. No force/mirror/KeepItGreen
+  push or bot merge. This documentation is the publication outcome follow-up.
+- Full1819tests/allchecks/builds pass,19existingwarnings. Outgoing470blobs/
+  20652035bytes checked: no work/cache/signing/env files or supported credential
+  patterns found; bounded scan, not a full secret-audit claim. GitHubCI is separate.
+- Installed11/renewed23Novemberprofile unchanged. Production NO-GO/variant work
+  remain; source publication does not assert release-quality or remoteCI success.
+
 ## Client11 provisioning genuinely renewed — November16
 
 - Owner explicitly requests renewal. Verify and recoverably move only the one

@@ -1,5 +1,23 @@
 # Test evidence
 
+## November16 — conditional team-source publication verified
+
+Fresh git fetch/ls-remote(allheads)/GitHub open-PR inventory confirms main4ea1b25
+still ourNovember10update, local23/remote0commits. Ten other heads/openPRs are
+older Dependabot proposals; none merged. Remote URL/defaultmain/ancestry/clean
+tree/full diffcheck and allbranch tips rechecked immediately before normal push.
+Dryrun then actual4ea1b25→434f843fast-forward succeeds; fresh remote ref is
+434f84308465eed56a00a049ca855caba55d5b43. No force/mirror/private-repo push.
+
+Full pnpm validate exits0:1819unique(788Node+1031workspace), allchecks/builds/
+18routes,19existingwarnings. Log /tmp/kig-team-push-20261116.log SHA256
+bd19be3c315ee46044376c2e0189431c3d81329ca0e7d325c7ec94420e1e8e0f.
+All222outgoing history paths/470blobs(20652035bytes) checked for unwanted private
+artifacts and bounded private-key/provider-token patterns;0findings. This is
+not a full Gitleaks/history-security or remoteCI pass. Runtime/source content
+unchanged after this validation; follow-up documentation records publication.
+Phone11/profile23November and public NO-GO remain; no new installation/inference.
+
 ## November16 — actual renewed profile installed, not reused
 
 Fresh signed ReleaseBUILD SUCCEEDED; new profile creation16November10:53:38UTC,

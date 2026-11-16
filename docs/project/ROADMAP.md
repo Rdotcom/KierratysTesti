@@ -1,5 +1,9 @@
 # Roadmap
 
+- [x] November16owner-authorized KierratysAppi/main publication after fresh
+  no-incoming-commit/branch/PR check;23commits through434f843fast-forwarded.
+  Prior teammate history retained; older Dependabot proposals left untouched.
+
 - [x] Owner-requested signed client11 replacement installation, exact inventory
   and successful launch/process-survival check. No data reset or GitHub push.
 - [x] Owner-requested actual provisioning renewal and same-build reinstallation;
