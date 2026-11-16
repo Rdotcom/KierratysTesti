@@ -1,5 +1,19 @@
 # Release decision
 
+## November16 — client17 result visibility; public NO-GO
+
+Client16barcode/search/region work is followed by owner-reported visibility
+repair: search answers precede area controls, unnecessary filters disappear,
+submit returns instantly to top without animation. Owner confirms16search and
+actual device HSY municipality selection; NOT direct-network/airplane-mode proof.
+Final delivery/validation in TEST_EVIDENCE.md. Five bundled identities still
+do not constitute a universal offline database.23item categories/3operators/
+32reviewed municipalities are not all Finnish items/regions;308town geometry
+does not imply308reviewed rule sets. Broad coverage remains locally executable
+content work, larger HSY import needs owner's free PROD access. Existing high
+recognition/Android/model reproducibility/store gates and MEM-01remain open.
+No public GO or GitHub push.
+
 ## November16 — object-choice flow does not close recognition/release gates
 
 Explicit object/material/use/deposit/area choices now lead to sourced local

@@ -2,7 +2,7 @@
   "ios": {
     "CFBundleDisplayName": "KeepItGreen",
     "NSLocalNetworkUsageDescription": "This development version uses the local network to look up products through the server on your Mac.",
-    "NSLocationWhenInUseUsageDescription": "Your location is used only on your device to calculate distance to the nearest recycling point. It is not saved or uploaded.",
+    "NSLocationWhenInUseUsageDescription": "Your location is used on your device to find nearby recycling points and municipal sorting guidance. It is not saved or uploaded.",
     "NSCameraUsageDescription": "The camera is used to read barcodes and photograph products. An image is sent for identification only after your separate approval."
   },
   "android": {

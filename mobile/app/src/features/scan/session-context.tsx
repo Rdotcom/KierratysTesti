@@ -1,6 +1,7 @@
 import type { ProductLookupResult } from "@kierratysappi/contracts/lookup-schema";
 import { type Gtin, parseGtin } from "@kierratysappi/domain";
 import * as Haptics from "expo-haptics";
+import { fetch as streamingFetch } from "expo/fetch";
 import {
   createContext,
   type PropsWithChildren,
@@ -12,9 +13,12 @@ import {
 } from "react";
 import { addHistoryEntry, queuePendingLookup } from "@/features/history/storage";
 import { useSoundFeedback } from "@/features/sound-feedback/context";
+import { offlineCatalogue } from "@/features/local-vision/catalogue";
 import { useLanguage } from "@/i18n/language-context";
 import { trackTechnicalEvent } from "@/telemetry/technical-events";
 import { LookupNetworkError, requestProductLookup } from "./api";
+import { createLocalFirstLookup } from "./local-first-lookup";
+import { createPublicIdentityLookup } from "./public-identity-lookup";
 import {
   isDuplicateScan,
   type ScanSource,
@@ -33,6 +37,12 @@ type ScanSessionContextValue = {
 };
 
 const ScanSessionContext = createContext<ScanSessionContextValue | undefined>(undefined);
+const publicLookup = createPublicIdentityLookup((url, init) => streamingFetch(url, init));
+const localFirstLookup = createLocalFirstLookup(
+  offlineCatalogue,
+  requestProductLookup,
+  publicLookup,
+);
 
 export function ScanSessionProvider({ children }: PropsWithChildren) {
   const { language } = useLanguage();
@@ -64,7 +74,7 @@ export function ScanSessionProvider({ children }: PropsWithChildren) {
       void Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
       void (async () => {
         try {
-          const result = await requestProductLookup(parsed.value, language);
+          const result = await localFirstLookup(parsed.value, language);
           dispatch({ type: "completed", gtin: parsed.value, result });
           trackTechnicalEvent("lookup_completed", {
             status: result.status,

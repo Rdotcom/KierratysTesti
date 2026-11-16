@@ -1,5 +1,21 @@
 # Roadmap
 
+- [x] Owner16confirms search/GPS area; owner17confirms no-scroll result visibility
+  after result-first layout/instant submit reset. New viewport/order regression
+  tests supplement older functional tests that missed this UX failure.
+
+- [x] Barcode bundled5identity-first and bounded public OFF fallback; no-Mac
+  HTTP smoke, validated/attributed unknown-packaging response, clearer recovery.
+- [x] Search23source-backed object categories/aliases, remote→WEEE, natural
+  cutlery instruction and shared camera/manual choice component.
+- [x] Offline308town containment/manual selection; reviewed3operators/32towns,
+  regional ceramic/glass/plastic differences, coarse-boundary confirmation,
+  transient/cancellable state and named metal reception examples.
+- [ ] Owner HSY PROD access→validated attributed monthly Jäteopas snapshot import.
+- [ ] Extend regional coverage (next Pirkanmaan Jätehuolto) and reviewed item
+  index; unsupported areas/items must remain unknown until sourced.
+- [ ] Native16GPS/fallback/offline acceptance and Android equivalent evidence.
+
 - [x] Actionable object hints→conditional material/use/area/type choices→sourced
   guidance, transient/reset/back/unknown safe paths;28shared+5mobile regressions
   and4FI/EN/light/dark/offline actual-component browser cases.

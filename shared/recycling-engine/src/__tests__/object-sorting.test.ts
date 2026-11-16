@@ -8,6 +8,40 @@ const now = "2026-11-16T18:00:00.000Z";
 const run = (kind: SortableObjectKind, ...answers: string[]) =>
   evaluateObjectSorting({ kind, answers, evaluatedAt: now });
 describe("explicit object selection policy", () => {
+  it("routes remote controls to WEEE, not their plastic casing", () => {
+    expect(run("remote")).toMatchObject({
+      status: "guidance",
+      destination: { fi: "Sähkölaitteiden keräys (SER)" },
+    });
+  });
+  it.each(["hsy", "lsjh", "kiertokaari"] as const)(
+    "uses the selected %s region and never needs a redundant region answer",
+    (region) => {
+      const result = evaluateObjectSorting({
+        kind: "cup",
+        answers: ["ceramic"],
+        region,
+        evaluatedAt: now,
+      });
+      expect(result.status).toBe("guidance");
+      if (result.status !== "guidance") throw Error("result");
+      expect(result.sources[0]?.jurisdiction).toBe(
+        region === "hsy" ? "FI-HSY" : region === "lsjh" ? "FI-LSJH" : "FI-Kiertokaari",
+      );
+      if (region === "lsjh") expect(result.preparation.fi).toMatch(/astiakeramiikan.*Topinoja/);
+      if (region === "kiertokaari") expect(result.preparation.fi).toContain("5 kg");
+    },
+  );
+  it("does not substitute a supported neighbour's guidance for an unsupported municipality", () => {
+    expect(
+      evaluateObjectSorting({
+        kind: "cup",
+        answers: ["ceramic"],
+        region: "unsupported",
+        evaluatedAt: now,
+      }).status,
+    ).toBe("unknown");
+  });
   it.each(["spoon", "fork", "knife"] as const)(
     "asks material before routing %s to small metal",
     (kind) => {
@@ -16,7 +50,8 @@ describe("explicit object selection policy", () => {
       expect(result.status).toBe("guidance");
       if (result.status !== "guidance") throw Error("result");
       expect(result.destination.fi).toBe("Metallinkeräys");
-      expect(result.preparation.fi).toContain("aukkoon");
+      expect(result.preparation.fi).toContain("aterin");
+      expect(result.preparation.fi).not.toMatch(/aukkoon|Suurempi|kunnan/);
       expect(result.sources[0]?.jurisdiction).toBe("FI");
       expect(result.confidence).toBe("user_confirmed");
     },
@@ -139,7 +174,7 @@ describe("explicit object selection policy", () => {
             expect(reference.checkedAt).toMatch(/^2026-/);
             expect(reference.verificationStatus).toBe("verified");
             expect(reference.version).not.toBe("");
-            expect(["FI", "FI-HSY"]).toContain(reference.jurisdiction);
+            expect(["FI", "FI-HSY", "FI-LSJH", "FI-Kiertokaari"]).toContain(reference.jurisdiction);
           }
         }
       }

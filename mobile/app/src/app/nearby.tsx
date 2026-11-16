@@ -33,6 +33,7 @@ import { readAddressLocation, readDeviceLocation } from "@/features/nearby/devic
 import { LocationIssue } from "@/features/nearby/location-session";
 import { AddressLookupIssue } from "@/features/nearby/manual-location";
 import { useNearbySearch } from "@/features/nearby/search-context";
+import { useSortingRegion } from "@/features/region/context";
 import { useSoundFeedback } from "@/features/sound-feedback/context";
 import { useLanguage } from "@/i18n/language-context";
 import { appFontFamily } from "@/theme/fonts";
@@ -57,6 +58,7 @@ const errors = {
 } as const;
 
 export default function NearbyScreen() {
+  const { fromCoordinates } = useSortingRegion();
   const router = useRouter();
   const { t, language } = useLanguage();
   const { palette } = useAppTheme();
@@ -91,6 +93,7 @@ export default function NearbyScreen() {
     try {
       const fix = await readDeviceLocation(controller.signal);
       if (controller.signal.aborted) return;
+      fromCoordinates(fix.coords);
       const points = nearestCollectionPoints(directory.data.points, fix.coords);
       if (!points.length) {
         setState({ status: "error", message: "nearbyNoResult" });
@@ -109,7 +112,7 @@ export default function NearbyScreen() {
     } finally {
       if (active.current === controller) active.current = null;
     }
-  }, [t, play]);
+  }, [t, play, fromCoordinates]);
   const findByLocation = async () => {
     if (active.current || Platform.OS === "web") return;
     const input = locationInput;

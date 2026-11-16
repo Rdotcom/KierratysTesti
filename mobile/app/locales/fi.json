@@ -2,7 +2,7 @@
   "ios": {
     "CFBundleDisplayName": "KeepItGreen",
     "NSLocalNetworkUsageDescription": "Lähiverkkoa käytetään tämän kehitysversion tuotehakuun Macin palvelimelta.",
-    "NSLocationWhenInUseUsageDescription": "Sijaintia käytetään lähimmän kierrätyspisteen etäisyyden laskemiseen vain laitteellasi. Sijaintia ei tallenneta tai lähetetä.",
+    "NSLocationWhenInUseUsageDescription": "Sijaintia käytetään laitteellasi lähimpien kierrätyspisteiden ja kunnan lajitteluohjeiden löytämiseen. Sijaintia ei tallenneta tai lähetetä.",
     "NSCameraUsageDescription": "Kameraa käytetään viivakoodin lukemiseen ja tuotteen kuvaamiseen. Kuva lähetetään tunnistukseen vain erillisellä hyväksynnälläsi."
   },
   "android": {

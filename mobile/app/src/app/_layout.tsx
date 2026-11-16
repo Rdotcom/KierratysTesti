@@ -9,6 +9,8 @@ import { useReducedMotion } from "react-native-reanimated";
 import { BottomNavigation } from "@/components/bottom-navigation";
 import { navigationAnimation } from "@/features/accessibility/motion";
 import { NearbySearchProvider } from "@/features/nearby/search-context";
+import { readDeviceLocation } from "@/features/nearby/device-location";
+import { SortingRegionProvider } from "@/features/region/context";
 import { ScanSessionProvider } from "@/features/scan/session-context";
 import { SoundFeedbackProvider } from "@/features/sound-feedback/context";
 import { LanguageProvider } from "@/i18n/language-context";
@@ -49,11 +51,13 @@ export default function RootLayout() {
     <AppThemeProvider>
       <LanguageProvider>
         <SoundFeedbackProvider>
-          <ScanSessionProvider>
-            <NearbySearchProvider>
-              <Navigation />
-            </NearbySearchProvider>
-          </ScanSessionProvider>
+          <SortingRegionProvider readFix={readDeviceLocation}>
+            <ScanSessionProvider>
+              <NearbySearchProvider>
+                <Navigation />
+              </NearbySearchProvider>
+            </ScanSessionProvider>
+          </SortingRegionProvider>
         </SoundFeedbackProvider>
       </LanguageProvider>
     </AppThemeProvider>

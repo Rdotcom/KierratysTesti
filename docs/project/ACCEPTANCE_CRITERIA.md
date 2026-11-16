@@ -1,5 +1,24 @@
 # Acceptance criteria
 
+Search visibility: after a home search or keyboard submit, the result heading
+and instruction start must be visible in the initial viewport without scrolling;
+region controls/reset/irrelevant material filters cannot precede the answer.
+Do not steal focus while typing or add keyboard-triggered motion. Owner17confirms
+the remote answer; actual viewport assertions cover FI/EN/390and320px layouts.
+
+November16lookup/search/region unit: bundled identities require zero network and
+never imply verified packaging; unbundled codes need network. Preserve original
+backend404/other-provider behavior, six-second/four-per-minute/65536byte public
+identity-only boundary and source/licence/error recovery. Manual object search
+uses sourced policy, unknown never invents guidance. Spoon wording must omit
+irrelevant oversized-item condition. Region selected by offline containment, not
+nearest bin; coarse/border/coastal ambiguity requires confirmation.3operators/
+32town policy coverage must not be confused with308municipality geometry.
+No HSY substitution for unsupported regions, no coordinates in network/logs/
+storage, no stale choices after town/background changes. Native GPS/direct
+fallback/airplane mode and Samsung require their own evidence, not browser/unit
+or Mac HTTP. Larger free HSY API requires real owner access before import claim.
+
 November16object actions: never auto-select model top1/material/bin. Bounded
 ranked candidate buttons plus none; explicit user material/use/deposit/area/type
 answers only. Preserve back/change and new-result/capture reset, local transient

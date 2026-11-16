@@ -19,6 +19,7 @@
       "!mobile/app/modules/local-vision/ios/JpegDecoderAssets",
       "!mobile/app/modules/local-vision/ios/MemoryProbeAssets",
       "!work",
+      "!shared/recycling-engine/src/data/municipalities-2026.json",
       "!outputs"
     ]
   },

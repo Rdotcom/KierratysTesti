@@ -1,5 +1,21 @@
 # External blockers
 
+## November16 — HSY bulk guide access
+
+HSY Jäteopas REST/JSON is CC-BY4.0/free but requires owner's own registration and
+PROD application credentials. Owner action requested, no credentials received or
+authenticated API/data import performed. Exact account/access procedure in
+docs/research/offline-lookup-items-and-regions-2026-11-16.md and OWNER_ACTIONS.md.
+Do not send secrets in chat/mobile/Git; stop if portal requires payment. This
+blocks the larger HSY import only, not the implemented23item/shared rule index,
+5offline identities, public OFF identity reads or other public-source rule work.
+All-Finland/all-item coverage remains LOCAL content/engineering backlog, not a
+fictional one-database integration. Owner16confirms search and actual HSY area
+selection; owner17confirms result visibility without scrolling. Native public
+fallback/airplane-mode matrix remains unverified; signed17installed/launched.
+Older “no new
+account needed” notes below describe the earlier15unit, not this larger import.
+
 November16object-action work: no payment/account/key/database/new model needed.
 Local policy and synthetic component QA complete; owner now confirms installed15
 basic spoon/material/back-choice smoke with “toimii”. No immediate owner action

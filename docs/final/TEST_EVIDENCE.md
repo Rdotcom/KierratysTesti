@@ -1,5 +1,61 @@
 # Test evidence
 
+## November16 — standalone barcode, item search and regional policy; client17
+
+`pnpm validate:shared` exit0 (`validate-shared-final.log`); mobile17and full17
+exit0 (`validate-mobile-client17.log`, `validate-client17-final.log`). Final full
+**2065tests (921Node+1144workspace)**:69policy/379mobile/other existing suites;
+boundaries/format/lint/typechecks/builds/18web routes pass,19existing warnings.
+Logs:`work/guide-regions-20261116.nVAvUQ/`. Earlier boundary test failed because
+Node hash imports were in shared; moved byte pin to root Node test, no exception
+to architecture. First ScrollView ref type failed current RN function-instance
+typing; repaired with React ComponentRef. Final type-only import removes one new
+lint warning, returning to19; no suppression/behavior/model/threshold change.
+
+Actual new guide/context4browser cases FI/EN × light/dark ×390or320px, reduced
+motion: remote→WEEE/battery, spoon/metal/direct cutlery, LSJH→Kiertokaari→HSY→
+unsupported regional invalidation, unknown search, manual/controlled-fix selection,
+coastal confirmation, background clear/stale asynchronous result rejection.
+Zero external requests/errors; offline choices work. New **initial viewport**
+checks require result heading/instruction start visible after Enter, result
+before region controls, no irrelevant search filters;44px/overflow checks pass.
+Final:`work/guide-visible-final-20261116.oM75n8/`,16screenshots,3representative
+remote/FI-darkcutlery/EN-darkceramic visually inspected. Older4actual candidate
+component cases re-pass with offline/keyboard/normal/1.3or2×simulated text/new
+capture reset: `work/object-visible-final-20261116.kNICoR/`. These use controlled
+test location/synthetic candidates, not native GPS or recognition accuracy.
+
+Prior guide QA host failures retained (missing SafeAreaProvider/mobile dependency
+resolution, expected title mismatch, own diagnostic JSON overflow); no production
+rule gate relaxed. First successful guide contexts passed functional checks but
+missed answer position. Owner16caught low-positioned result despite green tests;
+client17layout and new viewport assertions address it. All prior browser runs
+remain in private work, including `guide-regions-20261116.nVAvUQ/`, `guide-browser-*`
+and `guide-visible-browser-20261116.7D23Dh/`.
+
+Exactly one public identity smoke GET5449000000996→HTTP200/Coca-Cola Original,
+community/ODbL+DbCL, packaging_missing/no inferred bin. No Mac API/owner photo/
+GPS/API key/paid inference. Receipt:`public-smoke.json` in main run. Timeout/
+four-per-minute/65536byte limits, invalid/mismatched data/404/unavailable and
+original transport recovery covered by16mobile lookup tests. Bundled5identity
+tests perform zero requests; not a universal offline database or physical flight-
+mode proof. Official municipal dataset308towns/2081602bytes has pinned byte hash,
+licence/provenance/transform; only32towns have one of3reviewed regional policies.
+
+Normal signed Release0.1.0(16), then visibility-repaired **0.1.0(17)** build,
+replacement install/exact inventory/launch pass.17receipts:
+`work/guide-visible-client17-20261116.i3iXE6/`.11embedded signatures,14legacy
+resource pins/candidate/prototype/JPEG/privacy preserved, embedded Hermes, no
+QA hooks/probe/fixtures. Reused profile expires23November12:53:38Helsinki.
+Owner16confirms remote/cutlery search and actual correct HSY area selection;
+owner17confirms remote result visible without scrolling (“nyt näkyy hyvin!”).
+No precise location/photo committed. No new model inference quality/physical
+VoiceOver/native public fallback/airplane-mode/Android/memory/energy assertion.
+
+No GitHub push, LAN server start, paid request or new dependency. HSY larger API
+still requires owner PROD access; import not claimed. See
+OFFLINE_LOOKUP_ITEMS_AND_REGIONS.md. Public NO-GO/MEM-01/old high findings remain.
+
 ## November16 — object choices and conditional sorting, client15
 
 `pnpm validate:shared`, `pnpm validate:mobile`, `pnpm validate` exit0. Full

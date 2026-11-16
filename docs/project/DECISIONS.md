@@ -1,5 +1,36 @@
 # Decision log
 
+## D-111 — Local identity recovery and explicit regional coverage
+
+- Date:2026-11-16. Owner requests barcode recovery, arbitrary-item search,
+  location-specific rules and natural spoon guidance. Use existing5identity
+  offline catalogue first, preserving unknown packaging. Existing backend keeps
+  multi-provider behavior; only transport failure enables a bounded no-secret
+  public OFF food-identity fallback. Service unreachable is not proof of no
+  internet. No complete offline product database or universal item recognition.
+- Editorial23item index feeds actual shared object policy, not a fake photo/model
+  response. Spoon cutlery gets object-specific text; large ordinary metal gets
+  named regional reception examples, not a guessed nearest station. Material/
+  packaging/deposit ambiguity still requires explicit choices and source metadata.
+- Official CC-BY4.0municipal geometry,308towns, five-decimal quantization without
+  removed vertices/rings; strict byte pin/attribution and1500m+GPS uncertainty.
+  Coastal uncertain selection is confirmed manually, never lower threshold to
+  pass. Reviewed3operators/32towns only; unsupported areas safe-unknown. No nearest
+  point-to-region guess, coordinate upload/persistence or background tracking.
+- Transient selected municipality clears on background and resets old answers;
+  one-shot locate explicitly requested or reused from nearby. Known context
+  bypasses redundant operator question. HSY textile rules are not generalized.
+- HSY's larger CC-BY4.0JSON guide is free but requires owner account/PROD access;
+  ask owner, never provision identity/read secret or invent authenticated schema.
+  No paid service/new dependency/GitHub push. Existing public NO-GO and failed
+  recognition/MEM-01/Android/store gates unchanged; normal clients16then17delivered.
+- Owner16confirms correct HSY area/search but catches answer below viewport.
+  Follow emil-design-eng: result-first hierarchy, hide irrelevant filters while
+  searching, instant submit scroll-to-top, no keyboard-triggered animation.
+  Source metadata stays accessible; packaging-only footer no longer attached to
+  remote-object answers. New viewport/order assertions and owner17confirmation
+  supplement earlier functional checks; do not erase their missed UX defect.
+
 ## D-110 — User-confirmed object choices, not automatic image-to-bin guesses
 
 - Date2026-11-16: owner requests suggestion buttons and conditional material

@@ -3,6 +3,7 @@ import { z } from "zod";
 import { sortPackagingComponent } from "./engine";
 import { MATERIAL_RULES } from "./rules";
 import type { SortingRuleReference } from "./types";
+import { sortingRegionNames, type SortingRegionId } from "./sorting-region";
 
 export const sortableObjectKinds = [
   "cup",
@@ -17,6 +18,8 @@ export const sortableObjectKinds = [
   "battery",
   "phone",
   "textile",
+  "remote",
+  "electronics",
 ] as const;
 export type SortableObjectKind = (typeof sortableObjectKinds)[number];
 const inputSchema = z
@@ -24,10 +27,11 @@ const inputSchema = z
     kind: z.enum(sortableObjectKinds),
     answers: z.array(z.string().max(32)).max(6),
     evaluatedAt: z.iso.datetime(),
+    region: z.enum(["hsy", "lsjh", "kiertokaari", "unsupported"]).optional(),
   })
   .strict();
 type Reference = Omit<SortingRuleReference, "jurisdiction"> & {
-  jurisdiction: "FI" | "FI-HSY";
+  jurisdiction: "FI" | "FI-HSY" | "FI-LSJH" | "FI-Kiertokaari";
 };
 type Choice = { id: string; label: LocalizedText };
 export type ObjectSortingStep =
@@ -157,27 +161,65 @@ const choice = (id: string, fi: string, en: string, next: () => Node) => ({
   label: text(fi, en),
   next,
 });
-function regional(next: () => Node): Node {
+function regional(next: (region: SortingRegionId) => Node, region?: SortingRegionId): Node {
+  if (region) return region === "unsupported" ? unknown() : next(region);
   return question(
     "region",
     text("Minkä alueen ohje?", "Which area's guidance?"),
     [
-      choice("hsy", "HSY:n jätehuollon alue", "HSY waste-management area", next),
+      choice("hsy", "HSY:n jätehuollon alue", "HSY waste-management area", () => next("hsy")),
+      choice("lsjh", "Lounais-Suomen Jätehuolto", "Southwest Finland (LSJH)", () => next("lsjh")),
+      choice("kiertokaari", "Kiertokaari", "Kiertokaari", () => next("kiertokaari")),
       choice("elsewhere", "Muu alue / en tiedä", "Elsewhere / not sure", () => unknown()),
     ],
     text(
-      "Valitse HSY vain, jos se vastaa alueesi jätehuollosta. Sijaintia ei haeta.",
-      "Choose HSY only if it manages waste in your area. Your location is not requested.",
+      "Valitse oman jätehuoltoyhtiösi alue. Voit valita kunnan myös sijainnilla.",
+      "Choose your waste operator's area. You can also select your municipality using location.",
     ),
   );
 }
-function ordinaryObject(material: string): Node {
-  if (material === "metal")
+function ordinaryObject(
+  material: string,
+  kind?: SortableObjectKind,
+  region?: SortingRegionId,
+): Node {
+  if (material === "metal" && kind && ["spoon", "fork", "knife"].includes(kind))
     return guidance(
       text("Metallinkeräys", "Metal collection"),
       text(
-        "Laita keräysastian aukkoon mahtuva pieni metalliesine metallinkeräykseen. Suurempi esine kunnan ohjeistamaan vastaanottoon.",
-        "Use metal collection for a small metal item that fits through the opening. Take larger items to the reception specified by your municipality.",
+        "Laita metallinen aterin taloyhtiön metallinkeräysastiaan tai Rinki-ekopisteen metallinkeräykseen.",
+        "Put the metal cutlery in your building's metal collection or a Rinki metal collection point.",
+      ),
+      text(
+        "Metalliset lusikat, haarukat ja veitset kuuluvat pienmetalliin.",
+        "Metal spoons, forks and knives are small household metal items.",
+      ),
+      { ...metalSource, version: "fi.object.cutlery-2026-11-16.1" },
+    );
+  if (material === "metal") {
+    const receiver =
+      region === "hsy"
+        ? "HSY:n Sortti-asema"
+        : region === "lsjh"
+          ? "LSJH:n lajitteluasema, esimerkiksi Topinoja Turussa"
+          : region === "kiertokaari"
+            ? "Ruskon jätekeskuksen Oivapiste Oulussa"
+            : undefined;
+    const receiverEn =
+      region === "hsy"
+        ? "an HSY Sortti station"
+        : region === "lsjh"
+          ? "an LSJH sorting station, such as Topinoja in Turku"
+          : "Oivapiste at Rusko waste centre in Oulu";
+    const result = guidance(
+      text("Metallinkeräys", "Metal collection"),
+      text(
+        receiver
+          ? `Laita pieni metalliesine metallinkeräykseen. Astiaan sopimattomalle metalliesineelle vastaanotto on ${receiver}.`
+          : "Laita pieni metalliesine metallinkeräykseen. Valitse kunta saadaksesi myös alueesi isojen metalliesineiden vastaanoton.",
+        receiver
+          ? `Put small metal items in metal collection. For a metal item that does not fit, use ${receiverEn}.`
+          : "Put small metal items in metal collection. Select a municipality to see the reception for larger metal items in your area.",
       ),
       text(
         "Valitsit metallisen käyttöesineen. Ringin keräykseen kuuluu myös kodin pienmetallia, kuten aterimia.",
@@ -185,40 +227,119 @@ function ordinaryObject(material: string): Node {
       ),
       metalSource,
     );
+    if (receiver && result.status === "guidance")
+      result.sources.push(
+        source(
+          `${region}.object.metal-reception`,
+          sortingRegionNames[region ?? "unsupported"],
+          region === "hsy"
+            ? "https://www.hsy.fi/jatteet-ja-kierratys/jateopas-ja-lajitteluohjeet/jatteet/metalli/"
+            : region === "lsjh"
+              ? "https://lsjh.fi/jatelaji/metalli/"
+              : "https://kiertokaari.fi/jate/aterimet-metalliset/",
+          region === "hsy" ? "FI-HSY" : region === "lsjh" ? "FI-LSJH" : "FI-Kiertokaari",
+        ),
+      );
+    return result;
+  }
+  if (
+    (material === "ceramic" || material === "glass" || material === "plastic") &&
+    region &&
+    region !== "hsy"
+  ) {
+    return regionalItem(material, region);
+  }
   if (material === "ceramic" || material === "glass")
-    return regional(() =>
-      guidance(
-        text("Sekajäte · HSY", "Mixed waste · HSY"),
-        text(
-          "Yksittäinen käytöstä poistettu astia tai sen kappaleet sekajätteeseen. Suuret määrät Sortti-aseman palamattoman jätteen vastaanottoon. Ei lasipakkausten keräykseen.",
-          "Put a single discarded vessel or its pieces in mixed waste. Take large quantities to Sortti's non-combustible waste reception. Not glass-packaging collection.",
-        ),
-        text(
-          "Valitsit lasisen tai keraamisen käyttöesineen ja HSY:n alueen. Käyttöesine ei ole lasipakkaus.",
-          "You selected a glass or ceramic household item and the HSY area. A household item is not glass packaging.",
-        ),
-        material === "ceramic" ? ceramicSource : glassSource,
-      ),
+    return regional(
+      (selected) =>
+        selected !== "hsy"
+          ? regionalItem(material, selected)
+          : guidance(
+              text("Sekajäte · HSY", "Mixed waste · HSY"),
+              text(
+                "Yksittäinen käytöstä poistettu astia tai sen kappaleet sekajätteeseen. Suuret määrät Sortti-aseman palamattoman jätteen vastaanottoon. Ei lasipakkausten keräykseen.",
+                "Put a single discarded vessel or its pieces in mixed waste. Take large quantities to Sortti's non-combustible waste reception. Not glass-packaging collection.",
+              ),
+              text(
+                "Valitsit lasisen tai keraamisen käyttöesineen ja HSY:n alueen. Käyttöesine ei ole lasipakkaus.",
+                "You selected a glass or ceramic household item and the HSY area. A household item is not glass packaging.",
+              ),
+              material === "ceramic" ? ceramicSource : glassSource,
+            ),
+      region,
     );
   if (material === "plastic")
-    return regional(() =>
-      guidance(
-        text(
-          "Sekajäte tai Sortti-aseman muovinkeräys · HSY",
-          "Mixed waste or Sortti plastic collection · HSY",
-        ),
-        text(
-          "Pieni käytöstä poistettu kovamuovinen käyttöesine sekajätteeseen tai Sortti-aseman muovinkeräykseen. Ei muovipakkausten keräykseen.",
-          "Use mixed waste or Sortti plastic collection for a small discarded rigid-plastic item. Not plastic-packaging collection.",
-        ),
-        text(
-          "Valitsit muovisen käyttöesineen, et pakkausta, ja HSY:n alueen.",
-          "You selected a plastic household item, not packaging, and the HSY area.",
-        ),
-        plasticSource,
-      ),
+    return regional(
+      (selected) =>
+        selected !== "hsy"
+          ? regionalItem(material, selected)
+          : guidance(
+              text(
+                "Sekajäte tai Sortti-aseman muovinkeräys · HSY",
+                "Mixed waste or Sortti plastic collection · HSY",
+              ),
+              text(
+                "Pieni käytöstä poistettu kovamuovinen käyttöesine sekajätteeseen tai Sortti-aseman muovinkeräykseen. Ei muovipakkausten keräykseen.",
+                "Use mixed waste or Sortti plastic collection for a small discarded rigid-plastic item. Not plastic-packaging collection.",
+              ),
+              text(
+                "Valitsit muovisen käyttöesineen, et pakkausta, ja HSY:n alueen.",
+                "You selected a plastic household item, not packaging, and the HSY area.",
+              ),
+              plasticSource,
+            ),
+      region,
     );
   return unknown();
+}
+function regionalItem(material: string, region: SortingRegionId): Node {
+  if (region !== "lsjh" && region !== "kiertokaari") return unknown();
+  const operator = sortingRegionNames[region];
+  const url =
+    region === "kiertokaari"
+      ? "https://kiertokaari.fi/jatelaji/sekajate-kiinteistolta/"
+      : material === "plastic"
+        ? "https://lsjh.fi/jate/muoviesine/"
+        : material === "ceramic"
+          ? "https://lsjh.fi/jate/astia-keraaminen/"
+          : "https://lsjh.fi/jate/lasiesine-lasiastia/";
+  const ref = source(
+    `${region}.object.${material}`,
+    operator,
+    url,
+    region === "lsjh" ? "FI-LSJH" : "FI-Kiertokaari",
+  );
+  return guidance(
+    text(
+      region === "lsjh" && material === "ceramic"
+        ? `Sekajäte tai astiakeramiikan vastaanotto · ${operator}`
+        : `Sekajäte · ${operator}`,
+      region === "lsjh" && material === "ceramic"
+        ? `Mixed waste or ceramic collection · ${operator}`
+        : `Mixed waste · ${operator}`,
+    ),
+    text(
+      region === "lsjh" && material === "ceramic"
+        ? "Laita rikkinäinen keraaminen astia kodin sekajätteeseen tai vie se LSJH:n lajitteluaseman astiakeramiikan keräykseen, esimerkiksi Turun Topinojan lajitteluasemalle."
+        : region === "kiertokaari"
+          ? material === "plastic"
+            ? "Laita pieni muovinen käyttöesine kodin sekajäteastiaan. Se ei kuulu muovipakkausten keräykseen."
+            : "Laita yksittäinen pieni käytöstä poistettu esine kodin sekajäteastiaan. Lasia ja keramiikkaa saa olla enintään 5 kg tyhjennyskertaa kohti. Ei lasipakkausten keräykseen."
+          : "Laita yksittäinen pieni käytöstä poistettu esine kodin sekajäteastiaan. Vie suuremmat erät LSJH:n lajitteluasemalle, esimerkiksi Turun Topinojan lajitteluasemalle. Ei lasi- tai muovipakkausten keräykseen.",
+      region === "lsjh" && material === "ceramic"
+        ? "Put broken ceramic tableware in household mixed waste or take it to ceramic collection at an LSJH sorting station, such as Topinoja in Turku."
+        : region === "kiertokaari"
+          ? material === "plastic"
+            ? "Put a small plastic household item in household mixed waste, not plastic-packaging collection."
+            : "Put a single small discarded item in household mixed waste. Glass and ceramics are limited to 5 kg per collection. Not glass-packaging collection."
+          : "Put a single small discarded item in household mixed waste. Take larger quantities to an LSJH sorting station, such as Topinoja in Turku. Not glass or plastic packaging collection.",
+    ),
+    text(
+      "Ohje koskee valitsemaasi käyttöesinettä ja valittua jätehuoltoaluetta, ei pakkausta.",
+      "This guidance applies to your selected household item and waste-management area, not packaging.",
+    ),
+    ref,
+  );
 }
 function packaging(
   kind: SortableObjectKind,
@@ -265,8 +386,14 @@ function packaging(
       )
     : unknown();
 }
-function packagingUse(kind: SortableObjectKind, material: string, now: string): Node {
-  if (!["plastic", "glass", "metal", "carton"].includes(material)) return ordinaryObject(material);
+function packagingUse(
+  kind: SortableObjectKind,
+  material: string,
+  now: string,
+  region?: SortingRegionId,
+): Node {
+  if (!["plastic", "glass", "metal", "carton"].includes(material))
+    return ordinaryObject(material, kind, region);
   const supported = material as "plastic" | "glass" | "metal" | "carton";
   return question(
     "use",
@@ -286,7 +413,7 @@ function packagingUse(kind: SortableObjectKind, material: string, now: string): 
         packaging(kind, supported, false, now),
       ),
       choice("item", "Käyttöesine, ei pakkaus", "Household item, not packaging", () =>
-        ordinaryObject(material),
+        ordinaryObject(material, kind, region),
       ),
       choice("unsafe", "Jäämiä, painetta tai epäselvä", "Residue, pressure or not sure", () =>
         unknown(
@@ -306,17 +433,17 @@ function packagingUse(kind: SortableObjectKind, material: string, now: string): 
     ),
   );
 }
-function tree(kind: SortableObjectKind, now: string): Node {
-  if (kind === "phone")
+function tree(kind: SortableObjectKind, now: string, region?: SortingRegionId): Node {
+  if (kind === "phone" || kind === "remote" || kind === "electronics")
     return guidance(
       text("Sähkölaitteiden keräys (SER)", "Electrical and electronic equipment collection (WEEE)"),
       text(
-        "Vie käytöstä poistettu puhelin viralliseen SER-vastaanottoon ilman pakkausta. Älä irrota sisäänrakennettua akkua väkisin. Huolehdi omien tietojesi poistosta valmistajan ohjeella.",
-        "Return the discarded phone without packaging to official WEEE collection. Do not force out an embedded battery. Remove your personal data following the manufacturer's instructions.",
+        "Vie käytöstä poistettu sähkölaite sähkölaitteiden keräykseen. Irrota helposti irtoavat paristot erikseen paristokeräykseen. Älä irrota sisäänrakennettua akkua väkisin. Poista mahdolliset omat tiedot valmistajan ohjeella.",
+        "Return the discarded electrical device to WEEE collection. Remove easily detachable batteries for separate battery collection. Do not force out an embedded battery. Remove any personal data using the manufacturer's instructions.",
       ),
       text(
-        "Valitsit puhelimen. Sähkölaitetta ei lajitella sen kuoren materiaalin mukaan.",
-        "You selected a phone. Electrical equipment is not sorted by its casing material.",
+        "Kaukosäädin ja muut sähkölaitteet kuuluvat sähkölaitekeräykseen, eivät muovi- tai metallipakkausten keräykseen.",
+        "Remote controls and other electrical devices belong in WEEE collection, not plastic or metal packaging collection.",
       ),
       phoneSource,
     );
@@ -363,48 +490,52 @@ function tree(kind: SortableObjectKind, now: string): Node {
       ),
     );
   if (kind === "textile")
-    return regional(() =>
-      question(
-        "textile-condition",
-        text("Millainen tekstiili?", "What condition is the textile in?"),
-        [
-          choice("reusable", "Puhdas ja käyttökelpoinen", "Clean and reusable", () =>
-            guidance(
-              text("Uudelleenkäyttö", "Reuse"),
-              text(
-                "Myy tai lahjoita käyttökelpoinen vaate tai kodintekstiili. Tarkista vastaanottajan ehdot.",
-                "Sell or donate reusable clothing or household textiles. Check the receiver's conditions.",
-              ),
-              text(
-                "Valitsit käyttökelpoisen tekstiilin. Se ei kuulu poistotekstiilikeräykseen.",
-                "You selected a reusable textile. It does not belong in end-of-life textile collection.",
-              ),
-              textileSource,
+    return regional(
+      (selected) =>
+        selected !== "hsy"
+          ? unknown(undefined, [textileSource])
+          : question(
+              "textile-condition",
+              text("Millainen tekstiili?", "What condition is the textile in?"),
+              [
+                choice("reusable", "Puhdas ja käyttökelpoinen", "Clean and reusable", () =>
+                  guidance(
+                    text("Uudelleenkäyttö", "Reuse"),
+                    text(
+                      "Myy tai lahjoita käyttökelpoinen vaate tai kodintekstiili. Tarkista vastaanottajan ehdot.",
+                      "Sell or donate reusable clothing or household textiles. Check the receiver's conditions.",
+                    ),
+                    text(
+                      "Valitsit käyttökelpoisen tekstiilin. Se ei kuulu poistotekstiilikeräykseen.",
+                      "You selected a reusable textile. It does not belong in end-of-life textile collection.",
+                    ),
+                    textileSource,
+                  ),
+                ),
+                choice(
+                  "worn",
+                  "Kuiva, puhdas, loppuun kulunut vaate tai kodintekstiili",
+                  "Dry, clean, worn-out clothing or household textile",
+                  () =>
+                    guidance(
+                      text("Poistotekstiilikeräys · HSY", "End-of-life textile collection · HSY"),
+                      text(
+                        "Pakkaa kuivana suljettuun muovipussiin. Ei alusvaatteita, sukkia, kenkiä, mattoja, peittoja, tyynyjä tai likaisia, märkiä, homeisia tai tuholaisia sisältäviä tekstiilejä.",
+                        "Pack dry in a closed plastic bag. Excludes underwear, socks, shoes, rugs, duvets, pillows and dirty, wet, mouldy or pest-infested textiles.",
+                      ),
+                      text(
+                        "Valitsit HSY:n alueen ja keräykseen soveltuvan loppuun kuluneen tekstiilin. Tarkista poikkeukset.",
+                        "You selected the HSY area and a suitable worn-out textile. Check the exclusions.",
+                      ),
+                      textileSource,
+                    ),
+                ),
+                choice("other", "Muu / en tiedä", "Other / not sure", () =>
+                  unknown(undefined, [textileSource]),
+                ),
+              ],
             ),
-          ),
-          choice(
-            "worn",
-            "Kuiva, puhdas, loppuun kulunut vaate tai kodintekstiili",
-            "Dry, clean, worn-out clothing or household textile",
-            () =>
-              guidance(
-                text("Poistotekstiilikeräys · HSY", "End-of-life textile collection · HSY"),
-                text(
-                  "Pakkaa kuivana suljettuun muovipussiin. Ei alusvaatteita, sukkia, kenkiä, mattoja, peittoja, tyynyjä tai likaisia, märkiä, homeisia tai tuholaisia sisältäviä tekstiilejä.",
-                  "Pack dry in a closed plastic bag. Excludes underwear, socks, shoes, rugs, duvets, pillows and dirty, wet, mouldy or pest-infested textiles.",
-                ),
-                text(
-                  "Valitsit HSY:n alueen ja keräykseen soveltuvan loppuun kuluneen tekstiilin. Tarkista poikkeukset.",
-                  "You selected the HSY area and a suitable worn-out textile. Check the exclusions.",
-                ),
-                textileSource,
-              ),
-          ),
-          choice("other", "Muu / en tiedä", "Other / not sure", () =>
-            unknown(undefined, [textileSource]),
-          ),
-        ],
-      ),
+      region,
     );
   const labels = {
     metal: text("Metalli", "Metal"),
@@ -429,8 +560,8 @@ function tree(kind: SortableObjectKind, now: string): Node {
         label: labels[material],
         next: () =>
           cutlery || (kind === "cup" && material !== "carton" && material !== "plastic")
-            ? ordinaryObject(material)
-            : packagingUse(kind, material, now),
+            ? ordinaryObject(material, kind, region)
+            : packagingUse(kind, material, now, region),
       })),
       choice("unknown", "En tiedä / muu materiaali", "Not sure / another material", () =>
         unknown(),
@@ -448,7 +579,7 @@ export function evaluateObjectSorting(input: unknown): ObjectSortingStep {
   const parsed = inputSchema.safeParse(input);
   if (!parsed.success || Date.parse(parsed.data.evaluatedAt) < Date.parse("2026-11-16T00:00:00Z"))
     return unknown();
-  let node = tree(parsed.data.kind, parsed.data.evaluatedAt);
+  let node = tree(parsed.data.kind, parsed.data.evaluatedAt, parsed.data.region);
   for (const answer of parsed.data.answers) {
     if (node.status !== "question") return unknown();
     const selected = node.choices.find((option) => option.id === answer);

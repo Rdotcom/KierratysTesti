@@ -1,3 +1,3 @@
 # Next action
 
-Preregister one bounded numeric-only actual-iPhone experiment that separates first-use UI/camera allocation from repeated recognition using an already-warmed photo-pipeline Home baseline, preserving every failed32MiB result and identifying allocation owners before another cache change.
+Add Pirkanmaan Jätehuolto's officially sourced municipality membership and ordinary ceramic/glass/plastic-object rules to the existing region policy, with Tampere regression tests that preserve unknowns and never substitute HSY guidance.

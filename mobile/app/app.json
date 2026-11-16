@@ -10,7 +10,7 @@
     "ios": {
       "icon": "./assets/images/icon.png",
       "bundleIdentifier": "fi.roopeaaltonen.kierratysappi",
-      "buildNumber": "15",
+      "buildNumber": "17",
       "supportsTablet": true,
       "infoPlist": {
         "NSCameraUsageDescription": "Kameraa käytetään viivakoodin lukemiseen ja tuotteen kuvaamiseen. Kuva lähetetään tunnistukseen vain erillisellä hyväksynnälläsi.",
@@ -61,7 +61,7 @@
       [
         "expo-location",
         {
-          "locationWhenInUsePermission": "Sijaintia käytetään lähimmän kierrätyspisteen etäisyyden laskemiseen vain laitteellasi. Sijaintia ei tallenneta tai lähetetä.",
+          "locationWhenInUsePermission": "Sijaintia käytetään laitteellasi lähimpien kierrätyspisteiden ja kunnan lajitteluohjeiden löytämiseen. Sijaintia ei tallenneta tai lähetetä.",
           "locationAlwaysAndWhenInUsePermission": false,
           "locationAlwaysPermission": false,
           "motionUsagePermission": false,

@@ -1,6 +1,16 @@
 import { useLocalSearchParams, useRouter } from "expo-router";
-import { useEffect, useState } from "react";
-import { Keyboard, Linking, Pressable, StyleSheet, TextInput, View } from "react-native";
+import { localizedText } from "@kierratysappi/localization";
+import { searchGuideItems } from "@kierratysappi/recycling-engine";
+import { type ComponentRef, useEffect, useRef, useState } from "react";
+import {
+  Keyboard,
+  Linking,
+  Pressable,
+  type ScrollView,
+  StyleSheet,
+  TextInput,
+  View,
+} from "react-native";
 import {
   AppText,
   Button,
@@ -13,6 +23,8 @@ import {
   sharedStyles,
 } from "@/components/ui";
 import { announceAccessibility } from "@/features/accessibility/announcements";
+import { ObjectSortingFlowView } from "@/components/object-sorting-flow";
+import { SortingRegionPicker } from "@/components/sorting-region-picker";
 import {
   filterGuideMaterials,
   GUIDE_SEARCH_MAX_LENGTH,
@@ -32,27 +44,33 @@ const GUIDE = [
 
 export default function GuideScreen() {
   const router = useRouter();
+  const scrollRef = useRef<ComponentRef<typeof ScrollView>>(null);
   const route = useLocalSearchParams();
   const initialSearch = parseGuideSearchParams(route);
   const { palette } = useAppTheme();
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [query, setQuery] = useState(initialSearch.query);
   const [material, setMaterial] = useState<GuideMaterial | null>(initialSearch.material);
   const [invalid, setInvalid] = useState(initialSearch.invalid);
   const [focused, setFocused] = useState(false);
   const [focusedFilter, setFocusedFilter] = useState<GuideMaterial | "all" | null>(null);
+  const [itemChoice, setItemChoice] = useState<{ id: string; query: string }>();
+  const itemMatches = searchGuideItems(invalid || material ? "" : query);
+  const selectedItem =
+    itemMatches.items.find((entry) => itemChoice?.query === query && itemChoice.id === entry.id) ??
+    (itemMatches.exact ? itemMatches.items[0] : undefined);
 
   useEffect(() => {
     setQuery(initialSearch.query);
     setMaterial(initialSearch.material);
     setInvalid(initialSearch.invalid);
+    scrollRef.current?.scrollTo({ y: 0, animated: false });
   }, [initialSearch.query, initialSearch.material, initialSearch.invalid]);
 
   const visibleMaterials = invalid ? [] : filterGuideMaterials(query, material);
-  const resultCount = t("guideSearchResultCount").replace(
-    "{count}",
-    String(visibleMaterials.length),
-  );
+  const resultCount = t(
+    itemMatches.items.length ? "guideItemResultCount" : "guideSearchResultCount",
+  ).replace("{count}", String(itemMatches.items.length || visibleMaterials.length));
   const resetSearch = () => {
     Keyboard.dismiss();
     setQuery("");
@@ -61,9 +79,12 @@ export default function GuideScreen() {
   };
 
   return (
-    <Screen testID="guide-screen">
+    <Screen testID="guide-screen" scrollRef={scrollRef}>
       <PageHeader onBack={() => (router.canGoBack() ? router.back() : router.replace("/"))} />
-      <PageIntro title={t("materialGuideTitle")} body={t("materialGuideBody")} />
+      <PageIntro
+        title={t("materialGuideTitle")}
+        body={query.trim() ? undefined : t("materialGuideBody")}
+      />
       <View style={styles.search}>
         <AppText variant="label" nativeID="guide-search-label">
           {t("guideSearchLabel")}
@@ -85,6 +106,7 @@ export default function GuideScreen() {
           onBlur={() => setFocused(false)}
           onSubmitEditing={() => {
             Keyboard.dismiss();
+            scrollRef.current?.scrollTo({ y: 0, animated: false });
             announceAccessibility(invalid ? t("guideSearchInvalid") : resultCount);
           }}
           maxLength={GUIDE_SEARCH_MAX_LENGTH}
@@ -101,70 +123,99 @@ export default function GuideScreen() {
           ]}
           testID="guide-search-input"
         />
-        <AppText variant="small" muted>
-          {t("guideSearchHint")}
-        </AppText>
-        <View
-          style={styles.filters}
-          accessibilityRole="radiogroup"
-          accessibilityLabel={t("guideSearchFilters")}
-        >
-          {([null, "plastic", "carton", "glass", "metal"] as const).map((option) => {
-            const title = GUIDE.find(([, , value]) => value === option)?.[0];
-            const label = title ? t(title) : t("guideSearchAll");
-            return (
-              <Pressable
-                key={option ?? "all"}
-                accessibilityRole="radio"
-                accessibilityLabel={label}
-                accessibilityState={{ checked: material === option }}
-                aria-checked={material === option}
-                onFocus={() => setFocusedFilter(option ?? "all")}
-                onBlur={() => setFocusedFilter(null)}
-                onPress={() => {
-                  setQuery("");
-                  setMaterial(option);
-                  setInvalid(false);
-                  Keyboard.dismiss();
-                }}
-                style={({ pressed }) => [
-                  styles.filter,
-                  {
-                    backgroundColor: material === option ? palette.pineSoft : palette.bgSurface,
-                    borderColor:
-                      material === option || focusedFilter === (option ?? "all")
-                        ? palette.actionLink
-                        : palette.borderSubtle,
-                    opacity: pressed ? interaction.pressedOpacity : 1,
-                  },
-                ]}
-                testID={`guide-material-${option ?? "all"}`}
-              >
-                <AppText variant="small" style={{ flexShrink: 1 }}>
-                  {label}
-                </AppText>
-              </Pressable>
-            );
-          })}
-        </View>
+        {!query.trim() && (
+          <>
+            <AppText variant="small" muted>
+              {t("guideSearchHint")}
+            </AppText>
+            <View
+              style={styles.filters}
+              accessibilityRole="radiogroup"
+              accessibilityLabel={t("guideSearchFilters")}
+            >
+              {([null, "plastic", "carton", "glass", "metal"] as const).map((option) => {
+                const title = GUIDE.find(([, , value]) => value === option)?.[0];
+                const label = title ? t(title) : t("guideSearchAll");
+                return (
+                  <Pressable
+                    key={option ?? "all"}
+                    accessibilityRole="radio"
+                    accessibilityLabel={label}
+                    accessibilityState={{ checked: material === option }}
+                    aria-checked={material === option}
+                    onFocus={() => setFocusedFilter(option ?? "all")}
+                    onBlur={() => setFocusedFilter(null)}
+                    onPress={() => {
+                      setQuery("");
+                      setMaterial(option);
+                      setInvalid(false);
+                      Keyboard.dismiss();
+                    }}
+                    style={({ pressed }) => [
+                      styles.filter,
+                      {
+                        backgroundColor: material === option ? palette.pineSoft : palette.bgSurface,
+                        borderColor:
+                          material === option || focusedFilter === (option ?? "all")
+                            ? palette.actionLink
+                            : palette.borderSubtle,
+                        opacity: pressed ? interaction.pressedOpacity : 1,
+                      },
+                    ]}
+                    testID={`guide-material-${option ?? "all"}`}
+                  >
+                    <AppText variant="small" style={{ flexShrink: 1 }}>
+                      {label}
+                    </AppText>
+                  </Pressable>
+                );
+              })}
+            </View>
+          </>
+        )}
         <AppText variant="small" muted accessibilityLiveRegion="polite" testID="guide-search-count">
           {resultCount}
         </AppText>
-        {(query.length > 0 || material !== null || invalid) && (
-          <Button
-            label={t("guideSearchReset")}
-            variant="secondary"
-            onPress={resetSearch}
-            testID="guide-search-reset"
-          />
-        )}
       </View>
-      {visibleMaterials.length === 0 && (
+      {itemMatches.items.length > 0 && (
+        <View style={sharedStyles.stack} testID="guide-item-results">
+          {selectedItem ? (
+            <Paper>
+              <AppText accessibilityRole="header" variant="heading">
+                {localizedText(language, selectedItem.label)}
+              </AppText>
+              <ObjectSortingFlowView
+                key={`${query}:${selectedItem.id}`}
+                kind={selectedItem.kind}
+                showRegionControl={false}
+                onChangeObject={() => {
+                  setItemChoice(undefined);
+                  resetSearch();
+                }}
+              />
+            </Paper>
+          ) : (
+            itemMatches.items.map((entry) => (
+              <Button
+                key={entry.id}
+                label={localizedText(language, entry.label)}
+                variant="secondary"
+                onPress={() => setItemChoice({ id: entry.id, query })}
+                testID={`guide-item-${entry.id}`}
+              />
+            ))
+          )}
+        </View>
+      )}
+      {visibleMaterials.length === 0 && itemMatches.items.length === 0 && (
         <DocumentSection testID="guide-search-empty">
           <AppText accessibilityRole={invalid ? "alert" : "header"} variant="heading">
             {invalid ? t("guideSearchInvalid") : t("guideSearchEmpty")}
           </AppText>
-          <AppText>{t("guideSearchEmptyBody")}</AppText>
+          <AppText>{t("itemSearchEmpty")}</AppText>
+          <AppText variant="small" muted>
+            {t("itemSearchScope")}
+          </AppText>
         </DocumentSection>
       )}
       <View style={styles.grid}>
@@ -179,25 +230,40 @@ export default function GuideScreen() {
           ),
         )}
       </View>
-      <Paper
-        style={{ backgroundColor: palette.amberSoft, borderWidth: 0, marginBottom: spacing.lg }}
-      >
-        <AppText style={{ color: palette.amber }}>{t("depositCaution")}</AppText>
-      </Paper>
-      <View style={sharedStyles.tightStack}>
-        <AppText variant="small" muted>
-          {t("ruleSourceLabel")}
-        </AppText>
-        <InlineLink
-          label="Suomen Pakkauskierrätys RINKI Oy"
-          onPress={() =>
-            void Linking.openURL("https://rinkiin.fi/lajittelu-kotona/lajitteluohjeet/")
-          }
+      {(query.length > 0 || material !== null || invalid) && (
+        <Button
+          label={t("guideSearchReset")}
+          variant="quiet"
+          onPress={resetSearch}
+          testID="guide-search-reset"
         />
-        <AppText variant="small" muted>
-          {t("checkedLabel")}: 2026-08-10
-        </AppText>
-      </View>
+      )}
+      <Paper>
+        <SortingRegionPicker />
+      </Paper>
+      {visibleMaterials.length > 0 && (
+        <>
+          <Paper
+            style={{ backgroundColor: palette.amberSoft, borderWidth: 0, marginBottom: spacing.lg }}
+          >
+            <AppText style={{ color: palette.amber }}>{t("depositCaution")}</AppText>
+          </Paper>
+          <View style={sharedStyles.tightStack}>
+            <AppText variant="small" muted>
+              {t("ruleSourceLabel")}
+            </AppText>
+            <InlineLink
+              label="Suomen Pakkauskierrätys RINKI Oy"
+              onPress={() =>
+                void Linking.openURL("https://rinkiin.fi/lajittelu-kotona/lajitteluohjeet/")
+              }
+            />
+            <AppText variant="small" muted>
+              {t("checkedLabel")}: 2026-08-10
+            </AppText>
+          </View>
+        </>
+      )}
     </Screen>
   );
 }

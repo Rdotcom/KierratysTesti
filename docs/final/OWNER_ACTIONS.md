@@ -1,5 +1,26 @@
 # Owner actions
 
+## November16 — larger guide access and client17 acceptance
+
+- Owner/Roope: optional larger HSY data integration requires free account at
+  https://eu1.anypoint.mulesoft.com/exchange/portals/hsy-1 → Login → Sign in with
+  Anypoint Platform → Sign up → HSY Jäteopas API → Request access → PROD →
+  Create new application KeepItGreen → free SLA → Request access. If payment
+  is required, stop. Keep client ID/secret private; do not paste in chat or Git.
+  Report access granted only; engineering will arrange server-side secret setup.
+  Current23item flow does not require this account. Official instructions linked
+  in docs/research/offline-lookup-items-and-regions-2026-11-16.md.
+- Engineering/Codex: validate real PROD schema only after access, normalize into
+  shared contracts, retain HSY jurisdiction/CC-BY4.0attribution/date/version,
+  bounded snapshot and refresh/rollback tests. Extend other regions separately.
+- Owner/Roope: completed16remote/cutlery and actual HSY municipality selection;
+  reported low-positioned answer, repaired in17. Owner17“nyt näkyy hyvin!” confirms
+  no-scroll remote answer. No repeat request needed. Native public-fallback and
+  airplane-mode matrix remain separate from Mac HTTP/browser tests. Existing
+  profile expires23November12:53:38Helsinki; no renewal required this delivery.
+- Engineering/Codex: continue sourced Pirkanmaan region coverage per NEXT_ACTION;
+  retain all earlier memory/quality/Android/store findings. No push authorization.
+
 ## November16 — new selection-flow check
 
 - Owner completed the installed15spoon→Lusikka→Metalli/back-choice request,

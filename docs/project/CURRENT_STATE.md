@@ -1,5 +1,40 @@
 # Current state
 
+## Barcode recovery, item search and regional policy — November16, client17
+
+- Owner confirms16remote/cutlery search and actual device HSY region selection,
+  but reports answer below initial viewport. Client17puts result immediately
+  after search, hides redundant filters/body/hint, moves region/reset below it,
+  instant submit scroll-to-top/no animation. Added viewport/order assertions.
+  Owner subsequently confirms17“nyt näkyy hyvin!” for no-scroll remote result.
+  This is not native direct-fallback/airplane-mode/VoiceOver/quality acceptance.
+
+- Previous “offline” could mean unreachable Mac API. Normal barcode now checks
+  bundled5identities first, then existing API, then one bounded direct public OFF
+  food read on transport failure only. Outside bundle still needs internet;
+  no all-product/offline-DB claim. Real HTTP200identity smoke passes, packaging
+  remains unknown/community. Source/licence/privacy preserved; no paid call/key.
+- Text search now resolves23object categories/aliases (incl remote→WEEE) via the
+  same source-backed choice flow as camera suggestions, not fake AI results.
+  Spoon/metal uses a direct cutlery instruction without oversized-item boilerplate.
+- Official CC-BY4.0/308municipality boundaries support local containment/manual
+  choice. Reviewed HSY/LSJH/Kiertokaari regional rules cover32municipalities,
+  not all Finland.1500mcoarse+GPS margin/coastal cases require confirmation;
+  unsupported region never gets HSY rules. No coordinates sent/stored/logged;
+  town choice clears in background and invalidates old answers. Nearby reuses fix.
+- Signed normal0.1.0(17) replacement-installed/inventory17/launched;11embedded
+  signatures,14legacy/model/JPEG/privacy pins preserved, no QA probe/fixtures.
+  Existing profile reused through23November12:53:38Helsinki; no renewal claim.
+- Free larger HSY Jäteopas JSON import requires owner's own PROD API account;
+  requested but not received. Never claim imported data. Research/implementation
+  details:OFFLINE_LOOKUP_ITEMS_AND_REGIONS.md and research counterpart.
+- No GitHub push/LAN server start. Public NO-GO, MEM-01/recognition/Android/
+  clean-checkout asset/store limits remain. Native direct lookup/airplane-mode
+  acceptance is separate from owner-confirmed GPS and Mac HTTP evidence.
+- Shared/mobile/full validation pass:2065tests(921Node+1144workspace), allchecks/
+  builds/18web routes,19existing warnings. Eight actual-component browser contexts
+  pass; final4guide cases include initial viewport/order/44px assertions.
+
 ## Actionable object suggestions — November16
 
 - Up to3ranked object buttons; explicit material/use/deposit/area/type questions,

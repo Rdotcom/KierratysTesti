@@ -1,5 +1,11 @@
 import { usePathname } from "expo-router";
-import { type PropsWithChildren, type ReactNode, useState } from "react";
+import {
+  type ComponentRef,
+  type PropsWithChildren,
+  type ReactNode,
+  type Ref,
+  useState,
+} from "react";
 import {
   ActivityIndicator,
   Pressable,
@@ -54,10 +60,12 @@ export function Screen({
   scroll = true,
   style,
   testID,
+  scrollRef,
 }: PropsWithChildren<{
   readonly scroll?: boolean;
   readonly style?: StyleProp<ViewStyle>;
   readonly testID?: string;
+  readonly scrollRef?: Ref<ComponentRef<typeof ScrollView>>;
 }>) {
   const { palette } = useAppTheme();
   const { language } = useLanguage();
@@ -73,6 +81,7 @@ export function Screen({
     >
       {scroll ? (
         <ScrollView
+          ref={scrollRef}
           contentContainerStyle={styles.scrollContent}
           keyboardShouldPersistTaps="handled"
           showsVerticalScrollIndicator

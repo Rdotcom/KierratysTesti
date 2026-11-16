@@ -1,4 +1,5 @@
 import type { Language, LocalizedText } from "@kierratysappi/domain";
+import { regionEn, regionFi } from "./region";
 import { guideSearchEn, guideSearchFi } from "./guide-search";
 import { localVisionEn, localVisionFi } from "./local-vision";
 import { navigationEn, navigationFi } from "./navigation";
@@ -9,6 +10,7 @@ import { photoEn, photoFi } from "./photo";
 import { soundFeedbackEn, soundFeedbackFi } from "./sound-feedback";
 
 const fi = {
+  ...regionFi,
   ...objectCandidatesFi,
   ...soundFeedbackFi,
   ...localVisionFi,
@@ -62,8 +64,9 @@ const fi = {
   providerUnavailableTitle: "Tietolähde ei vastaa",
   providerUnavailableBody:
     "Tuotetietoja ei saatu haettua. Yritä hetken kuluttua uudelleen tai avaa materiaalien yleisohje.",
-  offlineTitle: "Ei verkkoyhteyttä",
-  offlineBody: "Koodi on tallessa tällä laitteella. Yritä uudelleen, kun yhteys toimii.",
+  offlineTitle: "Tuotehakupalveluun ei saada yhteyttä",
+  offlineBody:
+    "Koodia ei löytynyt laitteen tuotevalikoimasta eikä verkkohaku vastannut. Puhelimen internetyhteys voi silti toimia. Voit jatkaa esineen tai materiaalin lajitteluohjeeseen.",
   retry: "Yritä uudelleen",
   scanAnother: "Uusi haku",
   checkCode: "Tarkista koodi",
@@ -207,7 +210,7 @@ const fi = {
   privacyTitle: "Tietojen käyttö",
   sortingInformationTitle: "Lajitteluohjeista",
   privacyInformation:
-    "Perushaku ei vaadi tiliä. Viivakoodi lähetetään KeepItGreenin palvelimelle ja edelleen Open Food Factsille. Tuotetyypin mukaan haku voidaan ohjata Open Beauty Facts-, Open Pet Food Facts- tai Open Products Facts -tietokantaan. Näiden yhteisötiedot voivat olla puutteellisia. Palvelin voi säilyttää viivakoodiin liittyvää hakutulosta prosessimuistissa enintään kuusi tuntia ja IP-osoitetta väärinkäytön estoon enintään minuutin; rutiinipyyntöjä ei lokiteta. Mainos- tai käyttöanalytiikkaa ei ole. Historia, itse kirjaamasi kierrätysmerkinnät ja materiaalimäärät sekä palauteluonnokset ovat paikallisia, mutta käyttöjärjestelmän varmuuskopio voi sisältää ne. Kierrätysmerkintä tallentuu vain, kun kirjaat sen itse; tuotehaku ei lisää kierrätettyä määrää. Kaikki paikalliset tiedot voi poistaa alta.",
+    "Perushaku ei vaadi tiliä. Viivakoodi tarkistetaan ensin laitteen pienestä tuoteluettelosta. Muut koodit lähetetään KeepItGreenin palvelimelle ja edelleen Open Food Factsille; jos palvelimeen ei saada yhteyttä, koodi lähetetään suoraan Open Food Factsin elintarvikehakuun. Verkkopalvelu näkee myös yhteyden IP-osoitteen, mutta ei kamerakuvaa tai sijaintia. Palvelimen tuotetyypin mukainen haku voi käyttää myös Open Beauty Facts-, Open Pet Food Facts- tai Open Products Facts -tietokantaa. Yhteisötiedot voivat olla puutteellisia. Palvelin voi säilyttää viivakoodiin liittyvää hakutulosta prosessimuistissa enintään kuusi tuntia ja IP-osoitetta väärinkäytön estoon enintään minuutin; rutiinipyyntöjä ei lokiteta. Mainos- tai käyttöanalytiikkaa ei ole. Historia, itse kirjaamasi kierrätysmerkinnät ja materiaalimäärät sekä palauteluonnokset ovat paikallisia, mutta käyttöjärjestelmän varmuuskopio voi sisältää ne. Kierrätysmerkintä tallentuu vain, kun kirjaat sen itse; tuotehaku ei lisää kierrätettyä määrää. Kaikki paikalliset tiedot voi poistaa alta.",
   sortingInformation:
     "Lajitteluohje perustuu ilmoitettuihin lähteisiin ja voi vaatia pakkauksen tarkistamista. Paikallinen jätehuolto ja pakkauksen vaarallisuusohjeet ovat etusijalla.",
   deleteLocalData: "Poista kaikki paikalliset tiedot",
@@ -225,6 +228,7 @@ const fi = {
 } as const;
 
 const en: Record<keyof typeof fi, string> = {
+  ...regionEn,
   ...objectCandidatesEn,
   ...soundFeedbackEn,
   ...localVisionEn,
@@ -279,8 +283,9 @@ const en: Record<keyof typeof fi, string> = {
   providerUnavailableTitle: "Data source unavailable",
   providerUnavailableBody:
     "Product data could not be retrieved. Try again shortly or open the general material guide.",
-  offlineTitle: "No network connection",
-  offlineBody: "The code is saved on this device. Try again when the connection is working.",
+  offlineTitle: "Cannot reach the product lookup service",
+  offlineBody:
+    "The code was not in the on-device catalogue and online lookup did not respond. Your phone may still have internet access. Continue with item or material sorting guidance.",
   retry: "Try again",
   scanAnother: "New lookup",
   checkCode: "Check the code",
@@ -426,7 +431,7 @@ const en: Record<keyof typeof fi, string> = {
   privacyTitle: "Use of information",
   sortingInformationTitle: "About sorting guidance",
   privacyInformation:
-    "Basic lookup needs no account. The barcode is sent to the KeepItGreen server and then to Open Food Facts. Depending on the product type, lookup may be routed to Open Beauty Facts, Open Pet Food Facts or Open Products Facts. These community databases may be incomplete. The server may retain a barcode-linked lookup result in process memory for up to six hours and an IP address for abuse prevention for up to one minute; routine requests are not logged. There is no advertising or usage analytics. History, your own recycling records and material totals, and feedback drafts are local, but an operating-system backup may include them. Recycling is recorded only when you save it yourself; a product lookup does not add to your recycled count. All local data can be deleted below.",
+    "Basic lookup needs no account. The barcode is checked in the small on-device catalogue first. Other codes are sent to the KeepItGreen server and then to Open Food Facts; if the server cannot be reached, the code is sent directly to Open Food Facts food lookup. The network service also sees your connection's IP address, but no camera image or location. Server-side lookup may also use Open Beauty Facts, Open Pet Food Facts or Open Products Facts by product type. Community data may be incomplete. The server may retain a barcode-linked lookup result in process memory for up to six hours and an IP address for abuse prevention for up to one minute; routine requests are not logged. There is no advertising or usage analytics. History, your own recycling records and material totals, and feedback drafts are local, but an operating-system backup may include them. Recycling is recorded only when you save it yourself; a product lookup does not add to your recycled count. All local data can be deleted below.",
   sortingInformation:
     "Guidance is based on the cited sources and may require checking the package. Local waste-service and hazardous-product instructions take precedence.",
   deleteLocalData: "Delete all local data",

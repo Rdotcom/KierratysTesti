@@ -1,5 +1,21 @@
 # Adversarial production-readiness audit
 
+## November16 — barcode reachability, search and regional policy
+
+| ID | Severity/status | Evidence and affected flow | Reproduce | Remediation / owner |
+| --- | --- | --- | --- | --- |
+| BRC-02 | high, locally repaired | Scan session depended on unreachable configured Mac API; old UI called this no internet. Local-first/public adapter tests, actual OFF HTTP200 and client16 delivery receipts | Stop development API; scan a valid unbundled food code with public internet | Implemented5bundled identities + existing API + one bounded public OFF transport fallback; service-unreachable copy; Codex. Physical native fallback acceptance still pending |
+| SEARCH-01 | high, partial/open | Old guide filtered only4packaging materials. Now23source-backed categories/aliases, remote→WEEE and safe unknowns; no universal dataset | Search kaukosäädin (now works); search an unindexed item (remains unknown) | Codex: extend reviewed index/other-operator content locally. Roope: free HSY PROD access blocks only larger authenticated import, not local improvements |
+| REG-01 | high, partial/open | Prior policy HSY-only without municipal resolver. Now308official municipal geometries but reviewed local policy for32towns/3operators only; textile rule HSY-only | Select Turku/Oulu/Helsinki for ceramic cup; select Tampere: safe unknown, not guessed HSY | Implemented containment/manual/border confirmation; owner16confirms actual HSY selection. Codex: extend official operator coverage and device matrix |
+| SEARCH-UI-01 | high, locally repaired | Owner16confirms search works but answer below viewport falsely looks like no action; old functional browser tests did not check initial answer position | Home search kaukosäädin; result follows filters and region panel | Client17puts results before region controls, hides filters/hint/body during search, moves reset below results and uses instant nonanimated scroll-to-top on submit. New browser viewport/order assertions; Codex |
+| COPY-01 | medium, locally repaired | Spoon reused generic large-metal conditions. Shared rule and actual component tests now require direct cutlery instruction | Lusikka→Metalli | Implemented natural source-backed cutlery copy; named larger-metal reception examples for applicable other objects, not invented nearest facilities |
+
+Evidence: OFFLINE_LOOKUP_ITEMS_AND_REGIONS.md / TEST_EVIDENCE.md. No broad quality,
+offline-universal-database, full regional coverage or production GO claim.
+MEM-01and all older failed recognition/platform/store gates remain OPEN; nothing
+here reclassifies or supersedes their severity. Source/licence/checked date and
+uncertain assumptions remain visible. No paid call/key/new dependency/push.
+
 ## November15 — DINOv2 does not close high quality finding
 
 REF-006(high,OPEN,local): genuine DINOv2comparison yields14/17top1versus11/17,
