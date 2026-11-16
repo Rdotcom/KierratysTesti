@@ -1,5 +1,36 @@
 # Decision log
 
+## D-101 — Approved bounded pilot starts with grouped data integrity
+
+- Date2026-11-16: owner says “jooo” to bounded scope/isolated experiment. Implement
+  QA preparation, not universal recognition, model promotion or app replacement.
+- Use existing built-in Node test/tool conventions, no new dependency/training.
+  Manifest is empty honestly; synthetic metadata lives only in test fixtures.
+  Separate unknown materials, rights/truth assertions and byte verification.
+- Count physical objects and block object/session/source cross-split reuse.
+  Register allfourdevice tiers from the final plan upfront (900objects/10800views
+  target); no real devices/data claimed. Always false inference/release flags
+  prevent metadata completion from masquerading as quality approval.
+- Apply data-quality skill narrowly to provenance/leakage/missingness; no notebook,
+  new reviewer or dashboard. Current app/scanner/native model remain untouched.
+
+## D-100 — Research cannot guarantee universal recognition
+
+- Date: 2026-11-16. Owner requests investigation and no implementation without
+  certainty. Do not continue prior variant work or promise all Finnish products/
+  materials can be determined from arbitrary text-free photos.
+- Preserve independent barcode scanning. Propose separate object-class, identity,
+  material evidence and jurisdiction-bound rules with unknown/detail-needed
+  outcomes; this narrower scope requires explicit owner approval.
+- Plan MobileCLIP baseline versus one SigLIP2 candidate, not unbounded model
+  trials. Android image adapter is absent. No promotion from documentation alone.
+- Reuse prior results. Sol High for critical design, Medium for implementation,
+  Low for mechanical edits; no automatic switch, measured token-saving claim,
+  agent fan-out, paid inference or skill installation. Optional GS1 Data is not
+  a free universal catalogue. Existing failed quality gates remain failed.
+- Deliver research/control docs only; no runtime/native/dependency/device/push
+  change. Detailed procedure: recognition-feasibility-and-delivery-plan-2026-11-16.md.
+
 ## D-099 — Conditional team push after fresh no-incoming-work check
 
 - Date:2026-11-16. Owner explicitly asks to check others' GitHub additions and

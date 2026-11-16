@@ -1,5 +1,20 @@
 # External blockers
 
+November16 follow-up: Roope approves bounded scope/isolated pilot; the scope
+decision below is RESOLVED. Metadata auditor implemented locally; byte import
+and model preparation remain locally executable. Real pilot manifest is empty;
+physical multi-device captures will require device/operator access when reached,
+not a paid account or independent reviewer. No new device inventory performed.
+
+November 16: owner's certainty-before-implementation boundary requires a scope
+decision, not another model/payment. Roope must approve the bounded assistant
+and isolated experiment in docs/research/recognition-feasibility-and-delivery-plan-2026-11-16.md.
+Universal arbitrary-photo recognition cannot be guaranteed. Android engineering
+is local work, not an external blocker; actual Samsung/iPhone captures require
+device/operator access (not inventoried this turn). Optional GS1 Data needs
+owner/provider agreement on fees/media/offline/ML rights if selected; it is NOT
+required for the bounded free experiment. No independent-reviewer gate reinstated.
+
 November16 renewal update: prior17Novemberdeadline is cleared. New app-bound
 development profile expires23.11.2026 at12:53:38Helsinki; reinstallation/launch
 complete without account/trust prompt. Future authentication remains owner-only

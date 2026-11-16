@@ -1,5 +1,43 @@
 # Test evidence
 
+## November 16 — approved object pilot metadata auditor
+
+Roope approves bounded scope/experiment. Implement built-ins-only metadata guard,
+empty real manifest and22synthetic regressions. Target collection900physical
+objects/10800four-device views is NOT acquired. Actual CLI audit of tracked empty
+manifest returns exit2,0samples/objects,43missing collection buckets and false
+inference/release readiness. Report /tmp/kig-object-pilot-20261116-readiness.json.
+Tests cover cross-split object/session/source leakage, duplicate IDs/hashes,
+conflicting/AI material truth, privacy/rights/schema failures, grouped counts,
+outside-class labels and complete synthetic metadata still refusing inference/GO.
+
+Narrow22tests pass before/after formatting. Full
+`npx --yes pnpm@11.16.0 validate` exits0:810Node+1031workspace=1841tests,
+boundaries/format/lint/types/package/API builds and18web routes pass.19existing
+lint warnings remain. Log /tmp/kig-object-pilot-20261116-validation.log.
+No new model/accuracy/device/native test; scanner/app/model unchanged. No new
+dependencies, paid calls, photo acquisition/upload, installation or publication.
+Byte verification and actual physical collection remain separate incomplete work.
+
+
+## November 16 — research-only all-product feasibility plan
+
+Baseline31699de, clean active integration worktree before documentation. Read
+current native adapter/resolver/catalogue/scanner and prior frozen evidence;
+confirmed iOS-only image inference, fiveSKUs/tenreferences, independent scanner
+and OCR-dependent product suggestions. No new image accuracy/device/benchmark
+test, model download, runtime patch, secret access, paid call, install or push.
+Official model/runtime/licence/data sources opened November16; skills directory
+and CLI search inspected without installing a project skill. New plan distinguishes
+impossible universal certainty from a proposed bounded assistant/experiment.
+
+`npx --yes pnpm@11.16.0 validate` exits0 on Node26.4.0: boundaries/format/lint/
+types,788Node+1031workspace=1819tests, package/API builds and web export pass.
+19existinglint warnings and NO_COLOR/FORCE_COLOR environment warnings remain.
+Log: /tmp/kig-feasibility-20261116-validation.log. This is software non-regression,
+not new recognition reliability. Subsequent edits are documentation only;
+final diff/format and one-next-action checks are recorded in the handoff.
+
 ## November16 — conditional team-source publication verified
 
 Fresh git fetch/ls-remote(allheads)/GitHub open-PR inventory confirms main4ea1b25

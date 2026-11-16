@@ -1,5 +1,18 @@
 # Acceptance criteria
 
+November16 owner approves bounded pilot. Dataset preparation must reject declared
+cross-split object/session/source lineage, duplicate IDs/hashes, contradictory
+truth and inferred material labels; count physical objects separately from views.
+Empty metadata is incomplete, not green quality; complete metadata alone never
+authorizes inference/release. Byte-backed/source/physical truth and exact model
+receipts remain separate. Existing failed SKU gates are unchanged.
+
+November 16 research-only hold: universal product/material/sorting certainty
+from arbitrary photos is not established. The new bounded object-class plan
+requires owner scope/experiment approval; its proposed pilot gates do not lower
+or replace existing failed SKU/release criteria. No app implementation, model
+promotion or physical-device/accuracy acceptance follows from documentation checks.
+
 November15 DINOv2: actual68encodes/83pin independent recount pass;14/17top1
 fails preregistered zero-old-loss criterion(one regression). This is not99%
 accepted precision/≤1%unknownfalseaccept/≥70%coverage. Descriptor/unit tests

@@ -1,5 +1,16 @@
 # Roadmap
 
+- [x] Owner approves bounded pilot; preparation auditor/empty manifest and22
+  regressions distinguish declared metadata from inference/release readiness.
+- [ ] Byte-backed import, exact/near-duplicate and privacy/lineage audit; acquire
+  real grouped physical capture evidence without relabelling source development.
+
+- [x] November 16 research-only feasibility review, iOS-only code verification,
+  official platform/data/licence sources and token-conscious staged plan.
+- [x] Owner approves bounded object-class/sorting scope and isolated experiment;
+  universal-certainty requirement is not met. No implementation under a fabricated
+  guarantee and no weakening of existing failed acceptance gates.
+
 - [x] November16owner-authorized KierratysAppi/main publication after fresh
   no-incoming-commit/branch/PR check;23commits through434f843fast-forwarded.
   Prior teammate history retained; older Dependabot proposals left untouched.

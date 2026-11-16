@@ -1,5 +1,40 @@
 # Current state
 
+## Bounded pilot approved and metadata guard implemented — November 16
+
+- Roope explicitly approves narrower object-class/evidence/rule scope and isolated
+  feasibility experiment. Prior request for scope approval below is satisfied.
+- Built-ins-only QA dataset auditor and empty real pilot manifest implemented;
+  12classes/fourdevice tiers, grouped object/session/source leakage checks,
+  duplicate/invalid/private-field rejection, separate material/source truth and
+  per-object collection counts. Full metadata is NEVER inference/release approval.
+- 22synthetic validator regressions pass; actual empty manifest exits2/incomplete,
+  zero real images or new model calls. Plan clarified to900objects/10800views
+  across allfourtiers; this is collection target, not achieved data or quality.
+- docs/research/object-recognition-pilot-protocol-2026-11-16.md records schema,
+  capture/privacy/source limits and next byte-backed audit work. Data-quality
+  skill informs lineage/denominators, not fabricated truth or a new reviewer gate.
+- App/native models/barcode scanner/phone/backend unchanged. No paid inference,
+  new model weights/dependency/skill installation or push. Public NO-GO persists.
+- Full validation passes1841tests(810Node+1031workspace), allchecks/builds/18routes;
+  19existinglint warnings. Empty real-manifest audit correctly exits2, not ready.
+
+## Research-only recognition decision — November 16
+
+- Owner requests certainty before implementation, text-free all-Finland product
+  recognition, independent barcode scanning, iPhone/Samsung support and token economy.
+- Code confirms five-SKU/ten-reference catalogue, OCR-dependent product suggestions
+  and iOS-only image adapter. Prior 11/17 retrieval is not broad accuracy; DINO
+  stays experimental. Reused prior evidence without new inference/device tests.
+- Universal exact identity/material/sorting from arbitrary photos cannot be
+  guaranteed. Proposed object-class + evidence + source/rule assistant is a
+  materially narrower scope, NOT silently approved or implemented.
+- Source-backed staged plan and token/model policy:
+  docs/research/recognition-feasibility-and-delivery-plan-2026-11-16.md.
+- Ask owner to approve bounded scope/experiment before implementation. Variant
+  recovery remains backlog. Only research/control docs changed; no app/model/
+  dependency/device/push change. Public release stays NO-GO.
+
 ## Owner-authorized team publication — November16
 
 - Fresh origin fetch/all advertised heads/open PRs: team main still our
