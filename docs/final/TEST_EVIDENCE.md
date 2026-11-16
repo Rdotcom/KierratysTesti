@@ -1,5 +1,22 @@
 # Test evidence
 
+## November16 — signed client11 physically installed
+
+CLIENT11_INSTALLATION.md records exact artifact hashes/profile/commands/limits.
+Stable Xcode signed Release BUILD SUCCEEDED; strict app+11framework signatures,
+13model files/privacy/source/newbridge/catalogue/5524744byteHermes checks pass.
+Phone exact-bundle inventory0.1.0/11, actual launch and subsequent samePID pass.
+No uninstall/reset, camera/photo/GPS/paid request or GitHub action. Profile reused,
+expiry17.11.2026 at12:06:45Helsinki. Does NOT prove native rendering/airplane mode.
+Automation initial UDID selection fails; name selection opens app, but XCTest
+helper build fails, so no semantic/screenshot claim. Session closed, app relaunched.
+
+Fresh full pnpm validate exits0:1819unique tests(788Node+1031workspace), allchecks/
+builds/18routes,19priorwarnings. Private validate-2026-11-16.log SHA256
+4b877168606de721397847752b2f8130ec8ee95571e54afa393a2f5a809adcbb under
+work/ios-client11-2026-11-15.W3CcwE. Initial private verifier syntax error repaired
+and syntax/artifact checks pass before install; no application-code change.
+
 ## November15 — actual DINOv2 comparison
 
 DINOV2_COMPARISON_RESULTS.md:68actualCPUforwards,10refs/17known/41audits,

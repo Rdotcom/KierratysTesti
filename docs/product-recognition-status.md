@@ -1,6 +1,12 @@
 # Offline product recognition implementation status
 
-2026-11-15 — active master task; NOT production-validated.
+2026-11-16 — active master task; NOT production-validated.
+
+Delivery update: owner-requested signed0.1.0/build11is now physically installed;
+inventory/launch/samePID verified, not camera/UI/airplane-mode acceptance. Actual
+profile expires17.11.2026 at12:06:45Helsinki; renewal is next. DINOQAmodel remains
+outside the app. See docs/final/CLIENT11_INSTALLATION.md; earlier delivery status
+below is historical. Fresh1819tests/allchecks/builds pass; no GitHub push.
 
 ## Implementation sequence
 

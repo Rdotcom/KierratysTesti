@@ -1,5 +1,12 @@
 # Roadmap
 
+- [x] Owner-requested signed client11 replacement installation, exact inventory
+  and successful launch/process-survival check. No data reset or GitHub push.
+- [ ] Renew development provisioning before17.11.2026 at12:06:45 Helsinki;
+  existing profile was reused, not extended by installation. Verify actual expiry.
+- [ ] Native UI/camera/airplane-mode acceptance for installed11; automation helper
+  build failure is separate from the successful app build/installation/launch.
+
 - [x] Bundled source-attributed five-product/ten-reference offline catalogue,
   canonical local GTIN lookup and own per-SKU cosine retrieval without retraining.
 - [x] Existing photo UI integrates native barcode/full+ROI OCR/actual embeddings,

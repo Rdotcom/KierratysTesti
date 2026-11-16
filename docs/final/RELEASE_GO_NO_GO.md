@@ -1,5 +1,13 @@
 # Release decision
 
+## November16 — developer client11 installed; public NO-GO unchanged
+
+Owner's iPhone now has signed0.1.0/11with verified inventory/launch/process
+survival. This supersedes earlier phone10/unsigned-only delivery status below,
+not the recognition/platform/privacy/store gates. Current development profile
+expires17.11.2026 at12:06:45Helsinki; no production distribution or renewal claim.
+Native visual/camera/offline acceptance remains unverified. See CLIENT11_INSTALLATION.md.
+
 ## November15 — still NO-GO after actual DINOv2comparison
 
 68offline encodes complete;14/17top1does not pass the predeclared no-old-loss

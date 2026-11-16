@@ -1,5 +1,12 @@
 # External blockers
 
+November16: client11 installation/launch is complete, not blocked by phone trust
+or account access. Current developer profile expires17.11.2026 at12:06:45Helsinki;
+renewal may require owner login/keychain approval if Apple prompts. No credentials
+requested/read. Native screenshot/camera acceptance remains unverified because
+the separate agent-device XCTest helper build failed; diagnose tooling locally,
+do not treat this as a failed KeepItGreen installation or proven UI behavior.
+
 November15 DINOv2: no account/payment/access blocker;68actual offline encodes
 complete.5.7GiBdisk after isolated preparation. Failed no-old-loss gate and variant
 recovery are local engineering, not external blockers. Independent prospective

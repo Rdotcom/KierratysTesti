@@ -1,5 +1,23 @@
 # Current state
 
+## Client11 installed on owner's iPhone — November16
+
+- Owner requests phone update; exact source7ed3c8b/0.1.0build11 now replaces
+  installed10. Signed Release build, app/11framework signatures, model/privacy/
+  source/embedded-Hermes checks and exact device inventory pass. Actual launch
+  and later samePID query succeed. No uninstall/reset or data-retention claim.
+- Current profile is reused, NOT renewed: expires2026-11-17T10:06:45Z,
+  **17.11.2026 klo12:06:45 Helsinki**. Renewal is the next time-sensitive action.
+  Model remains MobileCLIP; five-product offline catalogue/newnative path shipped,
+  DINOv2experiment not included. All earlier “phone10” notes below are historical.
+- Native semantic screenshot is unverified because the separate automation helper
+  build fails. No camera/airplane-mode/latency/VoiceOver acceptance inferred.
+  App remains launchable via devicectl; details in CLIENT11_INSTALLATION.md.
+- Fresh full1819tests/allchecks/builds18routes pass,19existingwarnings. Existing
+  approved LAN API is healthy/cloudAIoff; no restart/newexposure/key/payment/push.
+  Embedded JS removes Metro startup dependency; online product lookup still needs
+  Mac/LAN/internet. Public NO-GO and targeted variant-recovery work remain.
+
 ## DINOv2 comparison completes; variant regression blocks switch — November15
 
 - Isolated pinned Apache2DINOv2-Small safetensors:68actual CPUencodes(10refs/

@@ -1,5 +1,17 @@
 # Owner actions
 
+## November16 — client11 installed; provisioning deadline
+
+- Engineering/Codex: next authorized maintenance step must renew the profile,
+  verify its actual new expiry and reinstall the preserved build11 without
+  uninstalling/resetting data. Current expiry17.11.2026 at12:06:45Helsinki.
+- Owner: approve Apple login/keychain/trust personally only if prompted during
+  that renewal; never send passwords/codes. No such prompt blocked this install.
+- Engineering/owner: installed11launch passes, but camera/airplane-mode/UI
+  acceptance remains pending. Diagnose separate automation-helper build failure
+  or obtain owner-confirmed observations; no new image upload required.
+- Installation evidence/procedures: CLIENT11_INSTALLATION.md. GitHub unchanged.
+
 ## November15 — after DINOv2comparison
 
 - Engineering/Codex: implement NEXT_ACTION's targeted variant recovery in the

@@ -1,5 +1,19 @@
 # Decision log
 
+## D-097 — Deliver existing verified client11 without changing model or data
+
+- Date:2026-11-16(client); build prepared November15. Owner explicitly requests
+  phone update/continue. Use current7ed3c8b with stable Xcode Release/embedded JS,
+  existing account/team and healthy already-approved LAN product origin. No cloud
+  key/payment, new server exposure, dependency/model change or GitHub publication.
+- Preserve unsigned and signed artifacts; verify signatures/profile/device/model/
+  privacy/source/bundle before replacement installation. Never uninstall/reset.
+- Xcode reuses valid November10profile expiringNovember17at12:06:45Helsinki;
+  do not claim renewal. Make actual renewal the next time-sensitive work unit.
+- Inventory0.1.0/11and launch/samePID pass. Separate automation-helper build fails,
+  so no native visual/camera/offline/retention acceptance invented. Existing
+  recognition/production NO-GO gates remain; DINOexperimental weights not shipped.
+
 ## D-096 — Measure DINOv2, retain failed gate/current app model
 
 - Date:2026-11-15. Cleanup frees sufficient disk for isolated39hashed-wheel QA
