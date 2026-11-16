@@ -12,6 +12,7 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { ActionIcon } from "@/components/action-icon";
+import { MotionAccent } from "@/components/motion-accent";
 import {
   HomeText as AppText,
   HomeSectionHeading,
@@ -137,7 +138,9 @@ export default function HomeScreen() {
               />
             )}
             <View style={[styles.branding, expandedText && styles.brandingExpanded]}>
-              <LeafBrandMark size={canvasWidth < 360 ? 44 : 48} />
+              <MotionAccent>
+                <LeafBrandMark size={canvasWidth < 360 ? 44 : 48} />
+              </MotionAccent>
               <AppText
                 accessibilityRole="header"
                 style={[styles.wordmark, { fontSize: canvasWidth < 360 ? 25 : 27 }]}

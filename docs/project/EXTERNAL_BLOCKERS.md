@@ -1,5 +1,20 @@
 # External blockers
 
+## November17 — no new owner blocker for the school-assessment unit
+
+HSY PROD credentials already supplied privately; actual bounded658bilingual
+snapshot now ships offline. The prior account/import action is completed, not
+an external blocker.199OFF identities and bounded local lookup cache require no
+paid account/API key. No owner action is needed to build these assets.
+
+Android/Samsung physical hardware acceptance, native real-camera/silent-mode/
+airplane-mode matrix, store accounts/publication and earlier review requirements
+remain separate external/manual gates. Installed19launch is verified, not a
+claim that a new physical camera/end-to-end matrix or audio audition was run.
+MEM-01and broad recognition/regional coverage/asset reproducibility remain LOCAL
+engineering work, not excuses attributed to missing credentials. Existing
+23November12:53:38Helsinki signing expiry does not block17November assessment.
+
 ## November16 — HSY PROD credential/access blocker cleared
 
 Supersedes earlier “no account/credentials received” notes for setup only. Owner

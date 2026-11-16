@@ -45,7 +45,7 @@ describe("optional local sound driver without native or audible playback", () =>
       await driver.play(cue, () => true);
       expect(audio.createPlayer).toHaveBeenCalledExactlyOnceWith(sources[cue]);
       expect(value.loop).toBe(false);
-      expect(value.volume).toBe(0.65);
+      expect(value.volume).toBe(0.28);
       expect(value.seekTo).toHaveBeenCalledExactlyOnceWith(0);
       expect(value.play).toHaveBeenCalledTimes(1);
       expect(vi.getTimerCount()).toBe(0);

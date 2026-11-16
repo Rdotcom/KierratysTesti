@@ -1,5 +1,23 @@
 # Release decision
 
+## November17 — school demonstration prepared; public release still NO-GO
+
+The assessment unit adds real658FI/EN HSY guide records,199OFF identities,
+bounded100entry/30day device lookup cache, persistent English and restrained
+audio/motion. All16functional browser routes in4language/theme/width contexts,
+actual source-guide/transport-outage/cache/save/delete/language flows and normal
+signed19installation/launch have corresponding receipts. Assessment procedure
+and exact limitations:ASSESSMENT_READY.md. No Mac/Metro is needed to open the
+installed normal app or use shipped local capabilities. Unknown barcodes still
+require internet; identities do not magically provide packaging material.
+
+This is NOT a public GO: earlier high recognition/coverage/platform/asset/store
+findings and MEM-01are unchanged. New local locale/content/visibility defects
+were fixed rather than severity-lowered. No new physical camera/audio/airplane
+matrix, Samsung build/quality claim, independent dataset review or production
+publication. HSY credential/import blocker is now cleared; local coverage work
+must not be blamed on accounts. No Git push or paid call. Signing23November.
+
 ## November16 — client18 icon/private PROD access; public NO-GO
 
 Leaf launcher compiled/signed/installed;2072tests and actual icon validation pass.

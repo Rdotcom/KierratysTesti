@@ -18,7 +18,7 @@ import { useAppTheme } from "@/theme/tokens";
 export default function LegalScreen() {
   const router = useRouter();
   const { palette } = useAppTheme();
-  const { t } = useLanguage();
+  const { t, language, setLanguage } = useLanguage();
   const [deleted, setDeleted] = useState(false);
   const [confirming, setConfirming] = useState(false);
   const [deleting, setDeleting] = useState(false);
@@ -34,6 +34,7 @@ export default function LegalScreen() {
     try {
       await clearAllLocalData();
       reloadAfterDeletion();
+      setLanguage(language);
       setDeleted(true);
       setConfirming(false);
       announceAccessibility(t("localDataDeleted"), "high");
@@ -54,6 +55,9 @@ export default function LegalScreen() {
           {t("privacyTitle")}
         </AppText>
         <AppText>{t("privacyInformation")}</AppText>
+        <AppText>{t("offlineCachePrivacy")}</AppText>
+        <AppText>{t("offlineLibraryInfo")}</AppText>
+        <AppText>{t("guideSourceAttribution")}</AppText>
         <AppText>{t("nearbyPrivacy")}</AppText>
         <AppText>{t("nearbyLocationHint")}</AppText>
         <AppText>{t("nearbyAddressDisclosure")}</AppText>

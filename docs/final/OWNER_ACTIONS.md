@@ -1,5 +1,23 @@
 # Owner actions
 
+## November17 — assessment handoff
+
+- Roope/teacher: use `ASSESSMENT_READY.md` for the short presentation and real
+  bundled example codes. No new account/secret/legal-review task is required for
+  this school walkthrough. Do not represent it as a public-store-ready product.
+- Roope: keep normal KeepItGreen19installed. It opens without Mac/Metro/cable;
+  internet is needed for unbundled/uncached barcode identities/external maps,
+  location needs permission. English stays until explicitly changed. Sound is
+  optional in Settings, obeys silent mode. No need to renew before assessment;
+  current profile expires23November12:53:38Helsinki. No payment requested.
+- Codex after assessment: exactly NEXT_ACTION; later address remaining LOCAL
+  recognition/MEM-01/reproducibility/coverage findings. Roope/manual testers:
+  Android device and broader camera/airplane/silent-mode/VoiceOver checks before
+  public release. Existing store/prod owner actions below remain historical/
+  future gates, not overnight school requirements.
+- No GitHub publication this run; any later team push requires fresh explicit
+  authorization and actual remote/branch/history review.
+
 ## November16 — leaf icon delivered; HSY owner access actions complete
 
 - Owner completed rotation and private hidden-input setup. Initial application

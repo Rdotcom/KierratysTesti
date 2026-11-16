@@ -1,5 +1,25 @@
 # Acceptance criteria
 
+November17assessment addition: independently pin199valid OFF identities and658
+bilingual HSY records/licences/dates. Imported guidance requires HSY municipality,
+retains nullable/missing-translation/receiver alternatives/source/version and
+explicit user-selection applicability confidence. Curated exact object choices
+must retain material questions, not be bypassed by HSY synonyms. Show newly
+inserted source answer from its beginning after municipality/choice selection.
+No imported identity may imply material/deposit/verified packaging.
+
+Local successful lookup cache≤100language-specific results,≤30days, bounded
+payload, schema/GTIN binding, safe corrupt/storage/expiry recovery, no failed
+lookup retention; deletion clears it. Explicit FI/EN choice survives reload and
+local-data deletion and cannot be overwritten by stale hydration/queued writes;
+save failure is shown. English UI parity is separate from original trade names.
+Quiet no-loop feedback must honor cooldown/system mute/foreground/screen reader;
+no redundant scan tone or per-navigation noise. Decorative motion≤180ms,
+reduced-motion/race/unmount guarded; answers never hidden/delayed. Validate16app
+routes FI/EN/light/dark/390/320and isolated offline choice flows. Signed normal
+native delivery verifies models/privacy/no-QA, not new hardware accuracy or
+Android/store acceptance. See ASSESSMENT_READY.md and TEST_EVIDENCE.md.
+
 Leaf icon: retain app/deep-link identity and original Home image; opaque1024iOS,
 transparent adaptive safe-circle/monochrome parity, source pins, native asset
 build/signature and install evidence. Do not label Android config as a build.

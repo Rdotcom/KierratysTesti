@@ -13,7 +13,10 @@ const API_URL = resolveApiBaseUrl({
   appEnvironment: process.env.EXPO_PUBLIC_APP_ENV,
   configuredUrl: process.env.EXPO_PUBLIC_API_BASE_URL,
 });
-const LOOKUP_TIMEOUT_MS = 8_000;
+// A sleeping development Mac must not hold up the public, no-Mac fallback.
+const LOOKUP_TIMEOUT_MS = /^http:\/\/(?:192\.168\.|10\.|172\.(?:1[6-9]|2\d|3[01])\.)/u.test(API_URL)
+  ? 1_500
+  : 8_000;
 
 export class LookupNetworkError extends Error {
   constructor() {

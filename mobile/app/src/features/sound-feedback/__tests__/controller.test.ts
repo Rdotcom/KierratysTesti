@@ -94,9 +94,9 @@ describe("nonessential sound lifecycle", () => {
     controller.play("tap");
     clock = 100;
     controller.play("attention");
-    clock = 200;
+    clock = SOUND_FEEDBACK_COOLDOWN_MS;
     controller.play("ready");
-    clock = 250;
+    clock = SOUND_FEEDBACK_COOLDOWN_MS + 50;
     pending.resolve(driver);
     await flush();
     expect(load).toHaveBeenCalledOnce();
@@ -268,7 +268,7 @@ describe("nonessential sound lifecycle", () => {
     controller.play("tap");
     await flush();
     const oldCurrent = driver.play.mock.calls[0]?.[1];
-    at(200);
+    at(SOUND_FEEDBACK_COOLDOWN_MS);
     controller.play("ready");
     expect(oldCurrent?.()).toBe(false);
     first.reject(new Error("old_seek_cancelled"));

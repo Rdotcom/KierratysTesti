@@ -15,7 +15,7 @@ export interface SoundFeedbackController {
   dispose(): void;
 }
 
-export const SOUND_FEEDBACK_COOLDOWN_MS = 200;
+export const SOUND_FEEDBACK_COOLDOWN_MS = 600;
 export const SOUND_FEEDBACK_MAX_EVENT_AGE_MS = 300;
 const cues: readonly SoundCue[] = ["tap", "ready", "confirm", "attention"];
 interface FeedbackEvent {

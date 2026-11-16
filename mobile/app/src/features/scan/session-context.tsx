@@ -19,6 +19,9 @@ import { trackTechnicalEvent } from "@/telemetry/technical-events";
 import { LookupNetworkError, requestProductLookup } from "./api";
 import { createLocalFirstLookup } from "./local-first-lookup";
 import { createPublicIdentityLookup } from "./public-identity-lookup";
+import barcodeData from "../../../assets/data/off-finland-barcodes.json";
+import { createBarcodeLibraryLookup } from "./barcode-library";
+import { cachedLookup, cacheLookup } from "./lookup-cache";
 import {
   isDuplicateScan,
   type ScanSource,
@@ -38,11 +41,17 @@ type ScanSessionContextValue = {
 
 const ScanSessionContext = createContext<ScanSessionContextValue | undefined>(undefined);
 const publicLookup = createPublicIdentityLookup((url, init) => streamingFetch(url, init));
-const localFirstLookup = createLocalFirstLookup(
-  offlineCatalogue,
-  requestProductLookup,
-  publicLookup,
-);
+const originalLookup = createLocalFirstLookup(offlineCatalogue, requestProductLookup, publicLookup);
+const bundled = createBarcodeLibraryLookup(barcodeData);
+async function localFirstLookup(gtin: Gtin, language: "fi" | "en") {
+  const fixed = bundled.lookup(gtin, language);
+  if (fixed) return fixed;
+  const cached = await cachedLookup(gtin, language);
+  if (cached) return cached;
+  const result = await originalLookup(gtin, language);
+  await cacheLookup(result, language).catch(() => undefined);
+  return result;
+}
 
 export function ScanSessionProvider({ children }: PropsWithChildren) {
   const { language } = useLanguage();
@@ -56,7 +65,6 @@ export function ScanSessionProvider({ children }: PropsWithChildren) {
       const parsed = parseGtin(raw);
       if (!parsed.ok) {
         dispatch({ type: "invalid", input: raw });
-        play("attention");
         void Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
         return { accepted: false, reason: "invalid" };
       }
@@ -69,13 +77,18 @@ export function ScanSessionProvider({ children }: PropsWithChildren) {
       busy.current = true;
       if (source === "camera") previousScan.current = { gtin: parsed.value, at: now };
       dispatch({ type: "started", gtin: parsed.value, source });
-      play("tap");
+      if (source === "camera") play("ready");
       trackTechnicalEvent("scan_decoded", { source });
       void Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
       void (async () => {
         try {
           const result = await localFirstLookup(parsed.value, language);
           dispatch({ type: "completed", gtin: parsed.value, result });
+          if (
+            source !== "camera" &&
+            (result.status === "resolved" || result.status === "packaging_missing")
+          )
+            play("ready");
           trackTechnicalEvent("lookup_completed", {
             status: result.status,
             providerId:

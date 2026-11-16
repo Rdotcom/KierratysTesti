@@ -1,5 +1,46 @@
 # Current state
 
+## Assessment preparation — November17, normal client19
+
+- School-assessment scope, not public production GO. Whole16functional-route
+  browser pass in FI/EN/light/dark/390/320px, language survives real reload and
+  local-data deletion; no empty/overflowing/sub44pxcontrols in those checks.
+  Native camera quality, actual silent-mode hearing and Android are not inferred
+  from browser QA. Detailed demo procedure:docs/final/ASSESSMENT_READY.md.
+- Actual HSY PROD import now wired:658bilingual items, CC-BY4.0/date/version/
+  source/region/selection-confidence retained. Backend normalization→shared
+  schema→mobile; nullable translations/multiple receivers/identical source-page
+  overlaps handled, conflicts rejected. HSY municipalities only; curated23item
+  choices still win exact matches. One incomplete source translation disclosed.
+  Not a complete source catalogue or nationwide rule database.
+-199valid independently licensed OFF barcode identities + original5catalogue;
+  no model/reference changes or name→bin inference. Successful network results
+  cached locally up to100language-specific entries/30days; failures not cached,
+  corrupt/stale/boundary cases safe. Delete clears cache but keeps chosen language.
+  Unknown codes still require internet; no complete offline-market claim.
+- Camera-screen explicit manual barcode entry now uses the same expanded
+  lookup, not the old five-reference image catalogue. Misleading five-product/
+  online-only barcode labels replaced in both languages; camera image models and
+  their actual limited reference scope remain unchanged and disclosed.
+- Language load/write races repaired; provider now honors requested identity
+  language. Trade names/source names are not artificially renamed into English.
+- Sound gain0.28/cooldown600ms; no routine navigation/manual-error/start tones,
+  scan decode/result-ready/save/error cues only, no doubled camera-success tone.
+  Existing mute/screen-reader/background/no-loop guards preserved.180msdecorative
+  Home settle and navigation, reduced-motion/stale-preference/background guards;
+  search/result transitions instant. No inference or sound triggered by motion.
+- Visual QA caught new HSY result left at its footer after region selection.
+  Fixed immediate nonanimated result reveal and added four viewport assertions.
+- Normal signed19build/no-QA/model/JPEG/privacy checks pass, replacement19
+  installed and launched; original leaf icon/app identity retained. Profile still
+  expires23November12:53:38Helsinki; no paid service/key, Metro/LAN server or
+  GitHub push. Final receipts/evidence in TEST_EVIDENCE.md. MEM-01and previous
+  recognition/Android/clean-checkout-assets/store NO-GO gates remain open.
+- Final full validation:2095tests(931Node+1164workspace), allchecks/builds/18web
+  exports pass; individual3part validation also passes,19existing warnings.
+
+Earlier checkpoints below are historical, not current counts/access blockers.
+
 ## Leaf launcher and private HSY setup — November16, client18
 
 - Home leaf symbol adapted with built-in imagegen into an isolated launcher mark;

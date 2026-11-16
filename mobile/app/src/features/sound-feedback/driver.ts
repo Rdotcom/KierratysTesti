@@ -37,7 +37,7 @@ export function createLocalSoundDriver(
         player = audio.createPlayer(sources[cue]);
         try {
           player.loop = false;
-          player.volume = 0.65;
+          player.volume = 0.28;
         } catch (error) {
           try {
             player.pause();

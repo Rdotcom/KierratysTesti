@@ -20,6 +20,8 @@
       "!mobile/app/modules/local-vision/ios/MemoryProbeAssets",
       "!work",
       "!shared/recycling-engine/src/data/municipalities-2026.json",
+      "!mobile/app/assets/data/hsy-guide.json",
+      "!mobile/app/assets/data/off-finland-barcodes.json",
       "!outputs"
     ]
   },

@@ -1,6 +1,6 @@
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { localizedText } from "@kierratysappi/localization";
-import { searchGuideItems } from "@kierratysappi/recycling-engine";
+import { searchGuideItems, searchGuideLibrary } from "@kierratysappi/recycling-engine";
 import { type ComponentRef, useEffect, useRef, useState } from "react";
 import {
   Keyboard,
@@ -25,6 +25,9 @@ import {
 import { announceAccessibility } from "@/features/accessibility/announcements";
 import { ObjectSortingFlowView } from "@/components/object-sorting-flow";
 import { SortingRegionPicker } from "@/components/sorting-region-picker";
+import { SourceGuideResult } from "@/components/source-guide-result";
+import { guideLibrary } from "@/features/guide/library";
+import { useSortingRegion } from "@/features/region/context";
 import {
   filterGuideMaterials,
   GUIDE_SEARCH_MAX_LENGTH,
@@ -55,10 +58,30 @@ export default function GuideScreen() {
   const [focused, setFocused] = useState(false);
   const [focusedFilter, setFocusedFilter] = useState<GuideMaterial | "all" | null>(null);
   const [itemChoice, setItemChoice] = useState<{ id: string; query: string }>();
+  const [sourceChoice, setSourceChoice] = useState<{ id: string; query: string }>();
+  const { selection: region } = useSortingRegion();
   const itemMatches = searchGuideItems(invalid || material ? "" : query);
+  const visibleMaterials = invalid ? [] : filterGuideMaterials(query, material);
+  const sourceMatches =
+    guideLibrary && !invalid && !material && !itemMatches.exact && visibleMaterials.length === 0
+      ? searchGuideLibrary(guideLibrary, query)
+      : { items: [], exact: false };
+  const sourceAvailable = sourceMatches.items.length > 0;
+  const sourceActive = sourceAvailable && region?.regionId === "hsy";
+  const sourceItem = sourceActive
+    ? (sourceMatches.items.find((i) => sourceChoice?.query === query && sourceChoice.id === i.id) ??
+      (sourceMatches.exact ? sourceMatches.items[0] : undefined))
+    : undefined;
   const selectedItem =
     itemMatches.items.find((entry) => itemChoice?.query === query && itemChoice.id === entry.id) ??
     (itemMatches.exact ? itemMatches.items[0] : undefined);
+  const sourceItemId = sourceItem?.id;
+
+  useEffect(() => {
+    // Municipality/ambiguity controls can be below a newly inserted long answer.
+    // Reveal its beginning immediately; do not leave the user at its footer.
+    if (sourceItemId) scrollRef.current?.scrollTo({ y: 0, animated: false });
+  }, [sourceItemId]);
 
   useEffect(() => {
     setQuery(initialSearch.query);
@@ -67,10 +90,17 @@ export default function GuideScreen() {
     scrollRef.current?.scrollTo({ y: 0, animated: false });
   }, [initialSearch.query, initialSearch.material, initialSearch.invalid]);
 
-  const visibleMaterials = invalid ? [] : filterGuideMaterials(query, material);
   const resultCount = t(
-    itemMatches.items.length ? "guideItemResultCount" : "guideSearchResultCount",
-  ).replace("{count}", String(itemMatches.items.length || visibleMaterials.length));
+    sourceAvailable || itemMatches.items.length ? "guideItemResultCount" : "guideSearchResultCount",
+  ).replace(
+    "{count}",
+    String(
+      sourceActive
+        ? sourceMatches.items.length
+        : itemMatches.items.length ||
+            (sourceAvailable ? sourceMatches.items.length : visibleMaterials.length),
+    ),
+  );
   const resetSearch = () => {
     Keyboard.dismiss();
     setQuery("");
@@ -177,7 +207,33 @@ export default function GuideScreen() {
           {resultCount}
         </AppText>
       </View>
-      {itemMatches.items.length > 0 && (
+      {sourceActive && (
+        <View style={sharedStyles.stack} testID="source-guide-matches">
+          {sourceItem ? (
+            <SourceGuideResult item={sourceItem} />
+          ) : (
+            <>
+              <AppText variant="heading">{t("guideSourceChoices")}</AppText>
+              {sourceMatches.items.map((i) => (
+                <Button
+                  key={i.id}
+                  variant="secondary"
+                  label={i[language].title}
+                  onPress={() => setSourceChoice({ id: i.id, query })}
+                  testID={`source-guide-choice-${i.id}`}
+                />
+              ))}
+            </>
+          )}
+        </View>
+      )}
+      {sourceAvailable && !region && (
+        <Paper>
+          <AppText>{t("guideSourceChooseRegion")}</AppText>
+          <SortingRegionPicker />
+        </Paper>
+      )}
+      {itemMatches.items.length > 0 && !sourceActive && (
         <View style={sharedStyles.stack} testID="guide-item-results">
           {selectedItem ? (
             <Paper>
@@ -207,17 +263,20 @@ export default function GuideScreen() {
           )}
         </View>
       )}
-      {visibleMaterials.length === 0 && itemMatches.items.length === 0 && (
-        <DocumentSection testID="guide-search-empty">
-          <AppText accessibilityRole={invalid ? "alert" : "header"} variant="heading">
-            {invalid ? t("guideSearchInvalid") : t("guideSearchEmpty")}
-          </AppText>
-          <AppText>{t("itemSearchEmpty")}</AppText>
-          <AppText variant="small" muted>
-            {t("itemSearchScope")}
-          </AppText>
-        </DocumentSection>
-      )}
+      {visibleMaterials.length === 0 &&
+        itemMatches.items.length === 0 &&
+        !sourceActive &&
+        !(sourceAvailable && !region) && (
+          <DocumentSection testID="guide-search-empty">
+            <AppText accessibilityRole={invalid ? "alert" : "header"} variant="heading">
+              {invalid ? t("guideSearchInvalid") : t("guideSearchEmpty")}
+            </AppText>
+            <AppText>{t("itemSearchEmpty")}</AppText>
+            <AppText variant="small" muted>
+              {t("itemSearchScope")}
+            </AppText>
+          </DocumentSection>
+        )}
       <View style={styles.grid}>
         {GUIDE.filter(([, , value]) => visibleMaterials.includes(value)).map(
           ([title, body, value]) => (
@@ -238,9 +297,11 @@ export default function GuideScreen() {
           testID="guide-search-reset"
         />
       )}
-      <Paper>
-        <SortingRegionPicker />
-      </Paper>
+      {!(sourceAvailable && !region) && (
+        <Paper>
+          <SortingRegionPicker />
+        </Paper>
+      )}
       {visibleMaterials.length > 0 && (
         <>
           <Paper

@@ -1,4 +1,5 @@
 import type { Language, LocalizedText } from "@kierratysappi/domain";
+import { assessmentFi, assessmentEn } from "./assessment";
 import { regionEn, regionFi } from "./region";
 import { guideSearchEn, guideSearchFi } from "./guide-search";
 import { localVisionEn, localVisionFi } from "./local-vision";
@@ -10,6 +11,7 @@ import { photoEn, photoFi } from "./photo";
 import { soundFeedbackEn, soundFeedbackFi } from "./sound-feedback";
 
 const fi = {
+  ...assessmentFi,
   ...regionFi,
   ...objectCandidatesFi,
   ...soundFeedbackFi,
@@ -64,7 +66,7 @@ const fi = {
   providerUnavailableTitle: "Tietolähde ei vastaa",
   providerUnavailableBody:
     "Tuotetietoja ei saatu haettua. Yritä hetken kuluttua uudelleen tai avaa materiaalien yleisohje.",
-  offlineTitle: "Tuotehakupalveluun ei saada yhteyttä",
+  offlineTitle: "Tuotehaku ei onnistunut",
   offlineBody:
     "Koodia ei löytynyt laitteen tuotevalikoimasta eikä verkkohaku vastannut. Puhelimen internetyhteys voi silti toimia. Voit jatkaa esineen tai materiaalin lajitteluohjeeseen.",
   retry: "Yritä uudelleen",
@@ -215,11 +217,11 @@ const fi = {
     "Lajitteluohje perustuu ilmoitettuihin lähteisiin ja voi vaatia pakkauksen tarkistamista. Paikallinen jätehuolto ja pakkauksen vaarallisuusohjeet ovat etusijalla.",
   deleteLocalData: "Poista kaikki paikalliset tiedot",
   deleteLocalDataBody:
-    "Poistaa historian, kierrätysmerkinnät ja materiaalimäärät, odottavat haut, palauteluonnokset, kielivalinnan ja muut KeepItGreenin asetukset tältä laitteelta.",
+    "Poistaa KeepItGreenin historian, kierrätysmerkinnät ja materiaalimäärät, odottavat haut, tuotevälimuistin, palauteluonnokset ja muut käyttöasetukset tältä laitteelta. Kielivalinta säilyy.",
   deleteLocalDataConfirmTitle: "Poistetaanko kaikki paikalliset tiedot?",
   deleteLocalDataConfirmBody: "Toimintoa ei voi perua.",
   deleteLocalDataConfirmAction: "Poista tiedot",
-  localDataDeleted: "Kaikki KeepItGreenin paikalliset tiedot poistettiin.",
+  localDataDeleted: "KeepItGreenin paikalliset käyttötiedot poistettiin. Kielivalinta säilyy.",
   localDataDeleteError: "Paikallisia tietoja ei voitu poistaa. Yritä uudelleen.",
   rulesetVersion: "SÄÄNNÖSTÖ FI · 2026.08",
   cancel: "Peruuta",
@@ -228,6 +230,7 @@ const fi = {
 } as const;
 
 const en: Record<keyof typeof fi, string> = {
+  ...assessmentEn,
   ...regionEn,
   ...objectCandidatesEn,
   ...soundFeedbackEn,
@@ -283,7 +286,7 @@ const en: Record<keyof typeof fi, string> = {
   providerUnavailableTitle: "Data source unavailable",
   providerUnavailableBody:
     "Product data could not be retrieved. Try again shortly or open the general material guide.",
-  offlineTitle: "Cannot reach the product lookup service",
+  offlineTitle: "Product lookup could not complete",
   offlineBody:
     "The code was not in the on-device catalogue and online lookup did not respond. Your phone may still have internet access. Continue with item or material sorting guidance.",
   retry: "Try again",
@@ -436,11 +439,11 @@ const en: Record<keyof typeof fi, string> = {
     "Guidance is based on the cited sources and may require checking the package. Local waste-service and hazardous-product instructions take precedence.",
   deleteLocalData: "Delete all local data",
   deleteLocalDataBody:
-    "Removes history, recycling records and material totals, pending lookups, feedback drafts, the language choice, and other KeepItGreen settings from this device.",
+    "Removes KeepItGreen history, recycling records and material totals, pending lookups, the product cache, feedback drafts and other usage settings from this device. Your language choice is kept.",
   deleteLocalDataConfirmTitle: "Delete all local data?",
   deleteLocalDataConfirmBody: "This action cannot be undone.",
   deleteLocalDataConfirmAction: "Delete data",
-  localDataDeleted: "All KeepItGreen local data was deleted.",
+  localDataDeleted: "KeepItGreen local usage data was deleted. Your language choice is kept.",
   localDataDeleteError: "Local data could not be deleted. Try again.",
   rulesetVersion: "RULESET FI · 2026.08",
   cancel: "Cancel",

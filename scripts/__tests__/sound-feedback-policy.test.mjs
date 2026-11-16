@@ -36,7 +36,7 @@ test("playback adapter is local-only, quiet, non-recording and guarded lazy nati
   assert.doesNotMatch(loader, /https?:|requestRecording|sampling|setActiveForLockScreen/u);
   const driver = read("mobile/app/src/features/sound-feedback/driver.ts");
   assert.match(driver, /player\.loop = false/u);
-  assert.match(driver, /player\.volume = 0\.65/u);
+  assert.match(driver, /player\.volume = 0\.28/u);
   assert.match(driver, /isCurrent\(\)/u);
 });
 

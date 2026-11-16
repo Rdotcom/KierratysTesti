@@ -27,7 +27,7 @@ import {
   sharedStyles,
 } from "@/components/ui";
 import { announceAccessibility } from "@/features/accessibility/announcements";
-import { offlineCatalogue } from "@/features/local-vision/catalogue";
+import { useScanSession } from "@/features/scan/session-context";
 import {
   inspectLocalVisionReadiness,
   isLocalVisionAvailable,
@@ -64,6 +64,7 @@ export default function LocalPhotoScreen() {
   const { play } = useSoundFeedback();
   const router = useRouter();
   const { t, language } = useLanguage();
+  const { lookupBarcode } = useScanSession();
   const { palette } = useAppTheme();
   const [mode, setMode] = useState<"product" | "material">("product");
   const [productResult, setProductResult] = useState<OfflineProductResult>();
@@ -203,6 +204,19 @@ export default function LocalPhotoScreen() {
   const retake = () => {
     clear();
     void open();
+  };
+
+  const lookupEnteredBarcode = async () => {
+    if (locked.current || busy) return;
+    const ticket = generation.current;
+    // Only this explicit barcode action can use the shared online fallback.
+    // Camera photos/OCR remain in the separate local recognition pipeline.
+    const attempt = await lookupBarcode(manualCode, "manual");
+    if (ticket !== generation.current) return;
+    if (attempt.accepted) {
+      clear();
+      router.push("/result");
+    } else if (attempt.reason === "invalid") setError("offlineProductInvalid");
   };
 
   const recognize = async () => {
@@ -358,16 +372,7 @@ export default function LocalPhotoScreen() {
               <Button
                 label={t("offlineProductLookup")}
                 disabled={!manualCode.trim() || busy}
-                onPress={() => {
-                  setProductResult(
-                    offlineCatalogue?.lookup([manualCode], "manual") ?? { status: "unavailable" },
-                  );
-                  setObservation(undefined);
-                  setObjectHint(undefined);
-                  setJpeg(undefined);
-                  setManualCode("");
-                  setPhase("result");
-                }}
+                onPress={() => void lookupEnteredBarcode()}
                 testID="offline-product-manual-submit"
               />
             </Paper>

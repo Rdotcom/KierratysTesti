@@ -8,7 +8,7 @@ export const localVisionFi = {
   offlineProductCodeRead: "Kuvasta luettu koodi:",
   offlineProductCodeEntered: "Syöttämäsi koodi:",
   offlineProductMissingCode: "Tuotetta ei ole paikallisessa luettelossa. Koodi:",
-  offlineProductOnlineBarcode: "Laajempi viivakoodihaku verkossa",
+  offlineProductOnlineBarcode: "Avaa viivakoodinlukija",
   offlineProductCommunity:
     "Yhteisön ilmoittama tuotetieto. Nimeä, kokoa ja pakkausversiota ei ole varmennettu valmistajalta.",
   offlineProductSource: "Avaa tuotetiedon lähde verkossa",
@@ -19,12 +19,12 @@ export const localVisionFi = {
   offlineProductSorting:
     "Tuotetieto ei kerro pakkauksen materiaalia. Valitse alta materiaalimerkintä tai tarkista pakkauksen osa.",
   offlineProductScope:
-    "Offline-luettelossa on nyt 5 tuotetta. Tunnistus etsii kuvasta viivakoodia sekä nimen ja koon vihjeitä. Muut tuotteet voivat jäädä tunnistamatta.",
+    "Tuotteen nimen ja pakkauskoon kuvavertailu on rajattu. Viivakoodihaku käyttää laajempaa laitteen tuoteluetteloa ja tarvittaessa internetiä. Valitse esine ja materiaali ehdotuksista.",
   offlineProductGuidance:
     "Kuvaa yksi tuote läheltä. Pidä viivakoodi tai nimi ja pakkauskoko kokonaan kuvan keskellä. Vältä heijastuksia ja pidä puhelin paikallaan.",
   offlineProductMaterial: "Kuvaa materiaalimerkintä",
-  offlineProductManual: "Tai syötä koodi offline-hakuun",
-  offlineProductLookup: "Hae paikallisesta luettelosta",
+  offlineProductManual: "Tai hae viivakoodilla",
+  offlineProductLookup: "Hae tuote",
   offlineProductNewCode: "Syötä toinen koodi",
   offlineProductUpdate:
     "Tämä asennus ei vielä tue tuotteen paikallista kuvatunnistusta. Päivitä sovellus tai syötä koodi alla.",
@@ -105,7 +105,7 @@ export const localVisionEn: { readonly [Key in keyof typeof localVisionFi]: stri
   offlineProductCodeRead: "Code read from the image:",
   offlineProductCodeEntered: "Code you entered:",
   offlineProductMissingCode: "This product is absent from the local catalogue. Code:",
-  offlineProductOnlineBarcode: "Broader barcode search online",
+  offlineProductOnlineBarcode: "Open the barcode scanner",
   offlineProductCommunity:
     "Community-reported product data. Name, size and packaging version have not been verified with the manufacturer.",
   offlineProductSource: "Open the product source online",
@@ -116,12 +116,12 @@ export const localVisionEn: { readonly [Key in keyof typeof localVisionFi]: stri
   offlineProductSorting:
     "Product identity does not establish packaging material. Choose a material marking or check a packaging part below.",
   offlineProductScope:
-    "The offline catalogue currently contains 5 products. Recognition looks for a barcode and name and size clues. Other products may remain unknown.",
+    "Image matching for product names and package sizes is limited. Barcode lookup uses the larger on-device catalogue and, if needed, the internet. Choose the item and material from the suggestions.",
   offlineProductGuidance:
     "Photograph one product close up. Keep the entire barcode or name and package size in the centre. Avoid glare and hold the phone steady.",
   offlineProductMaterial: "Photograph a material marking",
-  offlineProductManual: "Or enter a code for offline lookup",
-  offlineProductLookup: "Search the local catalogue",
+  offlineProductManual: "Or look up a barcode",
+  offlineProductLookup: "Find product",
   offlineProductNewCode: "Enter another code",
   offlineProductUpdate:
     "This installation does not yet support local product-photo recognition. Update the app or enter a code below.",

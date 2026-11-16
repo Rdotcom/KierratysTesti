@@ -29,8 +29,12 @@ function Navigation() {
           headerShown: false,
           contentStyle: { backgroundColor: palette.bgCanvas },
           animation: navigationAnimation(reducedMotion),
+          animationDuration: 180,
         }}
-      />
+      >
+        <Stack.Screen name="guide" options={{ animation: "none" }} />
+        <Stack.Screen name="result" options={{ animation: "none" }} />
+      </Stack>
       <BottomNavigation />
     </View>
   );

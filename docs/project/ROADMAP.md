@@ -1,14 +1,24 @@
 # Roadmap
 
+- [x] November17assessment preparation:658bilingual HSY guide entries/area gate,
+ 199OFF barcode identities/local100entry30day cache, persistent FI/EN selection,
+  requested-language provider result, restrained sound and reduced-motion-safe
+ 180msaccent.16actual app routes across4browser contexts plus old choice/GPS
+  harnesses; normal signed19delivery, no production/Android promotion or push.
+- [x] HSY municipality/choice answer revealed immediately after selection;
+  regression checks initial heading visibility, not merely DOM presence.
+- [ ] After assessment, extend sourced regional rules to Pirkanmaan Jätehuolto
+  with explicit municipality scope and FI/EN/unsupported-area regression tests.
+
 - [x] Home-derived leaf launcher/default/adaptive/monochrome/favicon assets,
   byte/alpha/safe-area regressions, signed installed18with unchanged17Hermes.
 - [x] Owner-confirmed HSY secret rotation and private dedicated0600local setup;
   no chat/committed/mobile secret, existing configuration preserved.
 - [x] Owner grants separate HSY PROD app; source-confirmed1.0.4endpoint/actual
   response shape, first401preserved and corrected private PROD credentials→200.
-- [ ] Validated attributed bounded HSY offline snapshot and HSY-only search
-  consumer (NEXT_ACTION), nullable fields/multiple reception choices/refresh tests.
-  No DEV dataset promotion or nationwide claim.
+- [x] Validated attributed bounded HSY offline snapshot and HSY-only search
+  consumer, nullable fields/multiple reception choices/source pins and tests.
+  No DEV dataset promotion or nationwide claim; completeness remains limited.
 
 - [x] Owner16confirms search/GPS area; owner17confirms no-scroll result visibility
   after result-first layout/instant submit reset. New viewport/order regression
@@ -21,7 +31,7 @@
 - [x] Offline308town containment/manual selection; reviewed3operators/32towns,
   regional ceramic/glass/plastic differences, coarse-boundary confirmation,
   transient/cancellable state and named metal reception examples.
-- [ ] Owner HSY PROD access→validated attributed monthly Jäteopas snapshot import.
+- [x] Owner HSY PROD access→validated attributed bounded Jäteopas snapshot import.
 - [ ] Extend regional coverage (next Pirkanmaan Jätehuolto) and reviewed item
   index; unsupported areas/items must remain unknown until sourced.
 - [ ] Native16GPS/fallback/offline acceptance and Android equivalent evidence.

@@ -13,6 +13,21 @@ function jsonResponse(payload: unknown, status = 200, headers?: HeadersInit) {
 }
 
 describe("OpenFoodFactsProvider", () => {
+  it("prefers the requested English identity instead of the Finnish name", async () => {
+    const provider = new OpenFoodFactsProvider({
+      fetch: async () =>
+        jsonResponse({
+          product: {
+            code: gtin,
+            product_name_fi: "Pähkinälevite",
+            product_name_en: "Hazelnut spread",
+          },
+        }),
+    });
+    const result = await provider.findByGtin(gtin, { country: "FI", language: "en" });
+    expect(result.status).toBe("found");
+    if (result.status === "found") expect(result.product.name?.value).toBe("Hazelnut spread");
+  });
   it("requests only the fixed OFF endpoint and normalizes packaging observations", async () => {
     let requestedUrl = "";
     let requestedInit: RequestInit | undefined;

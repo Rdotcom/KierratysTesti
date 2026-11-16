@@ -1,5 +1,98 @@
 # Test evidence
 
+## November17 — assessment unit, normal client19
+
+Final **`pnpm validate` exit0:2095tests(931Node+1164workspace)**, boundary/
+format/lint/strict typecheck/all tests/all builds and18web exports pass.
+19pre-existing warnings retained, not promoted to “zero warnings”. Individual
+`pnpm validate:shared`, `pnpm validate:backend`, `pnpm validate:mobile` also exit0;
+last extra cache-eviction regression is covered by the final full run.
+Logs:`work/assessment-20261116.6vkR22/validate-{shared,backend,mobile}.log` and
+`validate-unified-final.log` in the same folder; prior full runs retained.
+Final mobile389tests; provider46/shared engine75. No security/package upgrades or
+recognition gate thresholds changed to obtain this result.
+
+New regressions cover HSY nullable/HTML/unsafe URL normalization, ambiguous and
+regional source search, independent source/hash/licence snapshots, all199GTINs
+and corrupt library fallback, language hydration/write/error/relaunch races,
+cache language/GTIN/TTL/corruption/failed-result/100entry eviction, requested EN
+provider name, quiet driver/cooldown and interruptible/reduced-motion decoration.
+Old tests initially caught new volume expectation/deletion copy branding; fixed
+intended assertions/copy, not unrelated safeguards. New stricter control-character
+validation initially rejected a soft hyphen in actual source; staging now strips
+format artifacts before validation.107CMS markers removed, pins updated after
+review. Source/plain-text/translation failures retained in previous attempt logs.
+
+### Whole-app browser and visual evidence
+
+`scripts/qa/assessment-browser.mjs` passes4contexts: FI/EN×light390/dark320px,
+844pxheight, reduced motion. Actual exported16functional routes each: Home,
+Identify, Settings, manual barcode, scanner permission, local image unavailable
+(web), guide, nearby, overview, result empty, component, material code, history,
+legal, feedback, cloud-photo boundary. All visible controls≥44px/no horizontal
+overflow in inspected states. Actual app navigation providers, not a UI mock.
+
+Each context additionally exercises camera-screen manual barcode→same expanded
+lookup(Oivariini), with zero upstream requests; no hidden five-reference manual
+lookup remains. Camera image matching still uses its unchanged bounded reference
+set; that model limitation is not erased by the larger barcode database.
+It also exercises exact HSY frying-pan search→manual Vantaa
+selection→source instruction; heading must be in initial viewport after result
+insertion. Real bundled barcode result with zero upstream requests, isolated
+synthetic OFF fixture then external-transport-failure cache read after reload,
+overview2metal records, explicit language flip/reload/delete/reload persistence,
+cache deletion and correct HTML language all pass. No real cloud/paid/product
+request, private history, GPS or owner image used. OFF fixture exists only in QA,
+never shipped as real product data. External requests are aborted, except that
+explicit fixture; loopback remains available for web-only lazy route chunks.
+This is not a phone airplane-mode test or a new barcode-camera capture.
+
+84screenshots plus4locale/deletion receipts in
+`work/assessment-20261116.6vkR22/browser-evidence.json`; final log
+`assessment-browser-unified-final.log`. Home/EN barcode result/EN dark source answer
+visually inspected. That inspection caught answer initially left near footer;
+source effect and real viewport assertions repaired it before final build.
+Earlier QA failures retained: first tests raced build/export completion; one
+query correctly resolved via curated exact guidance rather than HSY; DOMlang
+assertion ran before hydration; fully offline web transport blocked lazy chunks.
+Final QA waits on actual UI, uses distinct HSY-only item and models upstream
+outage without confusing web chunk availability with native packaging.
+
+Existing actual-component suites re-run unchanged in separate work folders:
+`assessment-guide-qa-20261117.7Y9SWk`4FI/ENlight/dark/320/390cases including
+controlled GPS/border/stale clearing and result visibility; and
+`assessment-choice-qa-20261117.ayS4tO`4FI/ENlight/dark/320/390cases including
+synthetic130%/200%text, offline/keyboard/back/material ambiguity/stale reset.
+Both pass with zero inference/external requests. Synthetic browser scaling is
+not native Dynamic Type/VoiceOver/Android acceptance.
+
+### Signed device delivery
+
+Stable Xcode Release normal0.1.0(19) final app in
+`work/assessment-client19-unified-20261117.0vk9Wt/`. Build success,11embedded
+signatures/profile device/app/expiry binding,14legacy resources, candidate model/
+prototype/JPEG/privacy notices/pins and no QA hooks/assets pass. Leaf icon/app
+identity preserved. Native binary SHA256
+`00fcd0a2dd80b158d822f435dbf7783e083e32ced45c157cef1854e537395849`;
+Hermes SHA256`47d0690e08083287a3636e875b2dfbb74564940ff9d2105998feb3dec7aefe38`.
+Replacement installation, exact installed inventory19and normal launch each
+exit0; receipts:`install.json`, `inventory.json`, `launch.json`. No Metro/LAN
+server, paid inference, new key or GitHub push. Existing valid profile reused
+through23November12:53:38Helsinki, no false renewal claim. Rollback19prior and
+18preserved; no user photos/settings/history cleared on the phone.
+`assessment-runtime-check.json` additionally verifies8new runtime markers,
+including unified camera/manual lookup, and absence of private HSY config,
+synthetic QA identity and the old five-product UI sentence in installed Hermes.
+
+Agent-device UI automation helper fails Xcode utility selection (“simctl”), even
+with an explicit Xcode environment; do not call that a successful physical UI
+test or account/device absence. Devicectl delivery succeeds independently.
+No new phone camera/audio hearing/airplane/relaunch-language measurement was
+performed; software/browser evidence does not substitute for those gates.
+MEM-01, prior recognition failures, Android/native/store/clean-checkout model
+assets remain open, unchanged in severity. School demonstration scope/procedure:
+ASSESSMENT_READY.md; public decision still NO-GO.
+
 ## November16 — leaf launcher and private HSY PROD access, client18
 
 Mobile/full validation exit0: **2072tests(928Node+1144workspace)**, allchecks/builds/

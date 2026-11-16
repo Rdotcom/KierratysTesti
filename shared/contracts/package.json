@@ -9,6 +9,7 @@
     ".": "./src/index.ts",
     "./lookup-schema": "./src/lookup-schema.ts",
     "./collection-points": "./src/collection-points.ts",
+    "./barcode-library": "./src/barcode-library.ts",
     "./photo-recognition": "./src/photo-recognition.ts",
     "./photo-image": "./src/photo-image.ts",
     "./local-vision": "./src/local-vision.ts",

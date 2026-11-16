@@ -19,7 +19,7 @@ import { controls, interaction, radius, spacing, useAppTheme } from "@/theme/tok
 
 export default function SettingsScreen() {
   const router = useRouter();
-  const { t, language, setLanguage } = useLanguage();
+  const { t, language, setLanguage, storageError } = useLanguage();
   const { palette } = useAppTheme();
   const sound = useSoundFeedback();
   const [soundFocused, setSoundFocused] = useState(false);
@@ -86,6 +86,7 @@ export default function SettingsScreen() {
               </Pressable>
             ))}
           </View>
+          {storageError && <AppText accessibilityRole="alert">{t("languageSaveError")}</AppText>}
         </Paper>
         <Paper testID="sound-feedback-settings">
           <View style={styles.soundRow}>

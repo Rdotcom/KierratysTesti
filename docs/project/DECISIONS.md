@@ -1,5 +1,42 @@
 # Decision log
 
+## D-113 — Assessment-ready bounded offline content and restrained feedback
+
+- Date:2026-11-17. Owner prioritizes tomorrow's school assessment, useful offline
+  barcode lookup, stable English, consistent sound and subtle motion. Preserve
+  all existing functionality/models; school scope is not a waiver of production
+  quality, source licensing, jurisdiction or uncertain-recognition requirements.
+- Import normalized public HSY guide records using existing owner-approved private
+  PROD credentials, no additional account/key action or paid inference. Keep
+ 658FI/EN joined IDs and all applicable receiver choices; duplicate identical
+  source pages deduplicate with receipts, conflicts fail. Strip HTML/CMS/control
+  artifacts without changing policy prose; two English title-label corrections.
+  Missing source translation is disclosed; HSY-only region gate, curated exact
+  choices/material confirmation win over imported aliases. Explicit confidence
+  is selected-item/municipality applicability, not fabricated model certainty.
+- Separate199identity OFF/ODbL+DbCL file from HSY/CC-BY data. A few hundred public
+  API rows, not a bulk crawl or alleged21625-product offline database. No material
+  inference. Bounded100entry/30day local successful-lookup cache is a documented
+  functional cache, not analytics/history consent bypass. Local deletion clears
+  it; language preference is intentionally retained. No images/location cached.
+- Camera screen's explicit typed-code action must share normal expanded lookup,
+  not retain a hidden five-reference path. Only that explicit barcode action may
+  use network fallback; image/OCR recognition stays local and model pins unchanged.
+  Distinguish limited image-reference scope from the larger barcode data in FI/EN.
+- Guard hydration generation and serialize language writes; show failure instead
+  of silently claiming persistence. Preserve selected language through delete;
+  fix provider's Finnish-name preference in English requests. Source trade names
+  remain original names even if a community translation field is not translated.
+- Quiet event feedback, not a per-tap soundtrack:0.28gain,600mscooldown; decode/
+  completion/save/error, existing system mute/screen-reader/background guards.
+  emil-design-eng guides180msnon-looping decorative/navigation motion, never
+  hide/delay answers or animate keyboard search/results. New source-result
+  viewport issue is repaired after real visual inspection, not waived.
+- Normal signed19delivery; Android config5is not an Android build. Reuse valid
+  profile through23November, preserve model hashes/no-QA/rollback. No Git push.
+  Old recognition failures/MEM-01/Android/assets/store gates remain unresolved;
+  school assessment suitability is a separate, evidence-bounded decision.
+
 ## D-112 — Reuse Home leaf identity; isolate replacement provider credentials
 
 - Date:2026-11-16. Owner requests Home leaf as icon. Use imagegen faithful

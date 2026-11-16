@@ -188,7 +188,13 @@ export class OpenFoodFactsProvider implements ProductDataProvider {
           return { status: "error", code: "invalid_response", retryable: false };
         }
 
-        const product = normalizeProduct(canonicalGtin, parsed.data.product, requestedAt, source);
+        const product = normalizeProduct(
+          canonicalGtin,
+          parsed.data.product,
+          requestedAt,
+          source,
+          context.language,
+        );
         return { status: "found", product };
       }
       return { status: "error", code: "invalid_response", retryable: false };
@@ -281,6 +287,7 @@ function normalizeProduct(
   input: Record<string, unknown>,
   retrievedAt: Date,
   source: FactsSource,
+  language: "fi" | "en",
 ) {
   const sourceUrl = `${source.origin}/product/${gtin}`;
   const databaseLicense: SourceLicense =
@@ -304,7 +311,11 @@ function normalizeProduct(
     license,
   });
 
-  const productName = firstString(input.product_name_fi, input.product_name, input.product_name_en);
+  const productName = firstString(
+    input[`product_name_${language}`],
+    input.product_name,
+    input.product_name_en,
+  );
   const brands = stringList(input.brands);
   // Sister-database image rights have not been separately reviewed; don't reuse them.
   const imageUrl = source.type === "food" ? safeHttpsUrl(input.image_front_url) : undefined;

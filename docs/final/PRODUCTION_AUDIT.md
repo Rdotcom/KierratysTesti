@@ -1,5 +1,26 @@
 # Adversarial production-readiness audit
 
+## November17 — assessment-unit adversarial checks
+
+| ID | Severity / disposition | Evidence / reproduction | Required remediation and owner |
+| --- | --- | --- | --- |
+| LANG-01 | high, locally repaired | Old asynchronous language read could overwrite newer selection; concurrent writes could persist stale choice. Reproduce delayed FI read after EN selection / rapid FI-EN toggles / relaunch. Four pure-controller regressions and four actual app reload/delete flows | Codex: generation guard, serialized writes, bounded hydration, explicit save error, language kept after local-data deletion; implemented |
+| LANG-02 | medium, locally repaired | OFF backend preferred `product_name_fi` on English requests. Request EN with both names present | Codex: requested-language-first normalization and provider regression; source trade names not rewritten |
+| DATA-01 | high, locally repaired boundary; incomplete coverage remains | HSY actual pages contain repeated IDs, null English receiver titles, HTML/CMS artifacts and multiple destinations. Failures retained; actual658bilingual IDs are not751complete records. Wrong-town search must not get HSY policy | Codex: bounded provider normalization/shared schema, identical-only dedup, conflict rejection, ID translation join, plain-text/URL/control sanitation, missing-translation notice and HSY gate. Completed; extend other operators locally later |
+| SEARCH-UI-02 | high, locally repaired | New long HSY answer inserted above municipality controls left viewport near footer. Visual screenshot exposed issue missed by DOM-only test. Select Vantaa for frying-pan search | Codex: immediate nonanimated scroll to answer when source item appears; four real viewport regressions and final screenshots |
+| BRC-03 | high, partial coverage retained, not universal offline GO | Five old references insufficient.199validated source identities + original catalogue and local100entry30day successful-result cache now work with transport unavailable. Unbundled uncached codes still need internet | Codex: implement larger bounded catalogue/cache/short LAN timeout, pin independent OFF licence/source; done. A maintained full-market offline dataset/update strategy remains local future work, not fabricated completeness |
+| BRC-04 | high, locally repaired | Camera page still had a distinct manual lookup restricted to five image-reference products and misleading scope copy after normal lookup expansion. Enter Oivariini code there | Codex: share ScanSession barcode path on explicit typed-code action, preserve local image/OCR pipeline and stale-generation guard; FI/EN source guard and four actual-browser zero-upstream regressions pass |
+| AUDIO-02 | medium, locally repaired |0.65gain/200mscooldown and start/decode/completion could be intrusive. Controller/driver/source-policy tests | Codex:0.28gain/600msand one meaningful decode or completion, save/error cues; retain mute/background/screen-reader/no-loop guards. Actual loudness audition is manual, not claimed |
+| MOTION-02 | medium, locally repaired | Decoration may ignore late reduced-motion preference or move keyboard-triggered results. Source regression and actual reduced-motion browser runs | Codex:180msscale-only nonlooping accent/short navigation, live preference/background/unmount guards; guide/result no transition, no answer opacity delay |
+
+HSY CC-BY4.0and OFF ODbL/DbCL snapshots remain separate attributed assets; no
+credentials/personal pictures/location in mobile data. Normal19native model/
+privacy/signature/no-QA verification plus install/inventory/launch recorded.
+No new recognition-quality, physical audio/camera/airplane-mode, Android/store or
+clean-checkout-assets acceptance. All older failed public-release gates and
+MEM-01remain open at original severity. Evidence:TEST_EVIDENCE.md and
+ASSESSMENT_READY.md. No push/paid inference/new third-party dependency.
+
 ## November16 — icon/client18 and HSY access evidence
 
 Source/default/adaptive/monochrome icon tests and signed18delivery retain all
