@@ -12,11 +12,20 @@ env DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer xcrun swiftc \
   -swift-version 6 -D LOCAL_VISION_QA -module-cache-path work/FRESH_ROOT/module-cache \
   mobile/app/modules/local-vision/ios/mobileclip-predictor.swift \
   mobile/app/modules/local-vision/ios/local-vision-engine.swift \
+  mobile/app/modules/local-vision/ios/siglip-image-preprocessor.swift \
+  mobile/app/modules/local-vision/ios/siglip-image-encoder.swift \
+  mobile/app/modules/local-vision/ios/siglip-object-predictor.swift \
   scripts/qa/local-vision/main.swift -o work/FRESH_ROOT/local-vision
 work/FRESH_ROOT/local-vision --self-test
 work/FRESH_ROOT/local-vision --cascade-self-test
 work/FRESH_ROOT/local-vision --readiness-self-test
 ```
+
+The optional SigLIP object path shares this engine's serial gate. Include its
+three source files even when running only the legacy CLI self-tests. Its QA
+resource store is explicitly locked/Sendable; Swift6checking stays enabled.
+Normal app builds exclude all QA resource overrides. Candidate staging and
+camera integration evidence: docs/final/SIGLIP_CAMERA_INTEGRATION.md.
 
 The eight malformed/noncanonical/oversized/non-JPEG self-tests perform no image
 inference. Actual image diagnostics require a frozen specification and cleared

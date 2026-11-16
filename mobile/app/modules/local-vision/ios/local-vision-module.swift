@@ -4,6 +4,15 @@ public final class LocalVisionModule: Module {
   public func definition() -> ModuleDefinition {
     Name("KierratysLocalVision")
 
+    AsyncFunction("recognizeObjectCandidates") { (base64: String, requestID: String, timeoutMs: Int, promise: Promise) in
+      LocalVisionEngine.shared.recognizeObjectCandidates(input: base64, requestID: requestID, timeoutMs: timeoutMs) {
+        Self.resolveReference($0, promise)
+      }
+    }
+    Function("cancelObjectCandidates") { (requestID: String) in
+      LocalVisionEngine.shared.cancelObjectCandidates(requestID: requestID)
+    }
+
     AsyncFunction("recognizeProductEvidence") { (base64: String, promise: Promise) in
       LocalVisionEngine.shared.referencePort(.productEvidence, input: base64) { Self.resolveReference($0, promise) }
     }

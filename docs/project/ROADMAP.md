@@ -1,10 +1,21 @@
 # Roadmap
 
+- [x] Client12normal camera integration: optional pinned/lazy/serial SigLIP forms,
+  uncertainty/FI/EN/cancel/watchdog, signed install and owner spoon camera report;
+  31native lifecycle checks,4+4fixedJPEG original rank/score gates pass.
+- [x] Diagnose strictMacJPEG difference without new predictions: exactly one OS
+  input differs; retain strict failure/thresholds, do not overclaim causality.
+- [ ] Reproduce optional model assets from clean checkout with public pinned
+  acquisition/export/licence receipts, not private work-directory dependencies.
+- [ ] Full-app peak/energy/memory-pressure/airplane-mode and independent object/
+  unknown/material quality; Android/Samsung engine and device evidence.
+
 - [x] Isolated768Dnative consumer/byte-exact224preprocessing and actual4/4physical
   iPhone parity;23Swift assertions/14regressions/full1920tests. Retained UIScene
   startup failure/repair, signed artifact/repeat guard/cleanup receipts.
-- [ ] Lazy serial photo-worker integration with separate candidate resources,
-  lifecycle/deadline/fallback and full-app memory/live-camera acceptance.
+- [x] Lazy serial photo-worker integration with separate candidate resources,
+  lifecycle/deadline/fallback and one owner-operated live-camera case.
+- [ ] Full-app resource acceptance (helper post-call RSS is not peak RAM/energy).
 
 - [x] Image-only SigLIP2 conversion and measured compression: retain original
   FP16/per-channel failures; final125.47MBblock32/FP32compute4/4rank preservation

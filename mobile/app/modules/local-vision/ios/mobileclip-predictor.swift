@@ -112,6 +112,12 @@ final class LocalMobileClipPredictor: @unchecked Sendable {
     _ = try load()
   }
 
+  /// Shared serial worker only: avoid keeping two image-model working sets alive.
+  func releaseCachedModel() {
+    cache?.context.clearCaches()
+    cache = nil
+  }
+
   func predict(image: CGImage, orientation: CGImagePropertyOrientation) throws -> [LocalMobileClipScore] {
     let vector = try embedding(image: image, orientation: orientation, fullFrame: false)
     let loaded = try load()

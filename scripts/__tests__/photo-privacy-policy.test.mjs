@@ -36,7 +36,7 @@ test("native permission purpose includes both barcode and explicitly approved im
     assert.doesNotMatch(purpose, /ei lähetetä/u);
   }
   assert.equal(camera[1].recordAudioAndroid, false);
-  assert.equal(app.ios.buildNumber, "11");
+  assert.equal(app.ios.buildNumber, "12");
   assert.equal(app.android.versionCode, 3);
   assert.equal(
     JSON.parse(read("mobile/app/locales/fi.json")).ios.NSCameraUsageDescription,

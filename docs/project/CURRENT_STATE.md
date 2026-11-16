@@ -1,5 +1,35 @@
 # Current state
 
+## SigLIP2 normal camera integration — November16 (supersedes earlier checkpoint)
+
+- Signed Release0.1.0(12) replacement-installed/launched; existing data/13legacy
+  resource pins/privacy preserved. Separate optional SigLIP bundle, no full source
+  checkpoint/QA/photos. Profile reused: expires23November12:53:38Helsinki.
+- Actual owner spoon camera report: “Esine-ehdotuksia / Lusikka - Haarukka - veitsi”.
+  One live case, not general accuracy. Barcode/catalogue/text evidence retains
+  priority; unknown catalogue may show up to3unverified object forms, never an
+  automatic material/bin. FI/EN/cancel/background/error recovery covered.
+- Shared lazy serial worker/12s watchdog holds gate through actual settlement;
+  matched cancellation, old cache released first, encoder per-call/autoreleasepool.
+  Coordinator15s work plus up to1s JS delivery grace, no network or key.
+- Fixed4JPEGMac+4JPEGphone calls/0failures/0retries preserve original top1 and
+  score-error≤0.005. Additional strictMac1e-5diagnostic FAILS1/4; combined review
+  remains false.145pins/raw joins and31native lifecycle checks pass.
+- Zero-prediction decoder-only check:3tensors byte-identical; case3differs53086
+  floats/maxabs0.03921568, plausibly explaining score discrepancy, not causal proof.
+  No threshold change/prediction retry. Locked launch retained; unlocked run passes.
+- Helper post-call RSS55.80–77.73MB, first1526.51ms/next161.79–176.82ms, NOT full
+  app peak/battery approval. Two full-app profiler attempts could not start.
+  StrictSwift6QA repair passes31checks; archived source proves production
+  equivalence after QA-only isolation fix. Helper removed/main12restored.
+- Final mobile/full validation exit0:1955tests(898Node+1057workspace), checks/
+  builds/18web routes pass,19existing warnings. Candidate bundle125494849bytes;
+  unpacked signed app202253643bytes, not RAM or installed allocation.
+- Details:docs/final/SIGLIP_CAMERA_INTEGRATION.md; validation in TEST_EVIDENCE.md.
+  Public NO-GO: broader quality/unknowns, full-app resources/airplane-mode,
+  Android and clean-checkout assets. No paid inference/server start/GitHub push.
+  Older checkpoints below are historical, not current integration status.
+
 ## SigLIP2 native consumer physically verified — November16
 
 - New isolated Swift768Ddecoder/encoder: bounded JPEG/PNG,sRGB,EXIF1–8,

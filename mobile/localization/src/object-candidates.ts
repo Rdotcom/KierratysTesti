@@ -1,0 +1,54 @@
+export const objectCandidatesFi = {
+  objectCandidateTitle: "Esine-ehdotuksia",
+  objectCandidateUnverified: "Tarkista ehdotus kuvasta",
+  objectCandidateIntro:
+    "Kuvamalli voi ehdottaa esineen tyyppiä myös ilman tekstiä. Se ei varmista tarkkaa tuotetta tai materiaalia.",
+  objectCandidateLimit:
+    "Ehdotukset voivat olla vääriä. Valitse esineen materiaali itse ja tarkista paikallinen lajitteluohje.",
+  objectCandidateMultiple: "Kuvassa voi olla useita esineitä. Kuvaa yksi esine kerrallaan.",
+  objectCandidateUnknown:
+    "Esineen tyyppi jäi epäselväksi. Kokeile toista kuvakulmaa tai valitse materiaali itse.",
+  objectCandidateUnavailable:
+    "Esine-ehdotuksia ei saatu. Voit kuvata uudelleen, lukea viivakoodin tai valita materiaalin itse.",
+  objectCandidateSource: "Paikallinen kuvamalli: SigLIP2 · ei varmennettu tunnistus",
+  objectCandidateGuide: "Valitse materiaali lajitteluoppaasta",
+  objectCup: "Muki tai kuppi",
+  objectSpoon: "Lusikka",
+  objectFork: "Haarukka",
+  objectKnife: "Veitsi",
+  objectBottle: "Pullo",
+  objectJar: "Purkki",
+  objectCan: "Tölkki",
+  objectCarton: "Kartonkipakkaus",
+  objectBag: "Pussi tai kassi",
+  objectBattery: "Paristo tai akku",
+  objectPhone: "Puhelin",
+  objectTextile: "Tekstiili",
+} as const;
+export const objectCandidatesEn: Record<keyof typeof objectCandidatesFi, string> = {
+  objectCandidateTitle: "Possible objects",
+  objectCandidateUnverified: "Check against the photo",
+  objectCandidateIntro:
+    "The image model can suggest an object type without text. It does not verify an exact product or material.",
+  objectCandidateLimit:
+    "Suggestions may be wrong. Choose the object's material yourself and check local sorting guidance.",
+  objectCandidateMultiple: "There may be several objects. Photograph one object at a time.",
+  objectCandidateUnknown:
+    "The object type is unclear. Try another angle or choose the material yourself.",
+  objectCandidateUnavailable:
+    "No object suggestions were available. Try another photo, read the barcode or choose the material yourself.",
+  objectCandidateSource: "On-device image model: SigLIP2 · unverified recognition",
+  objectCandidateGuide: "Choose a material in the sorting guide",
+  objectCup: "Mug or cup",
+  objectSpoon: "Spoon",
+  objectFork: "Fork",
+  objectKnife: "Knife",
+  objectBottle: "Bottle",
+  objectJar: "Jar",
+  objectCan: "Can",
+  objectCarton: "Carton",
+  objectBag: "Bag",
+  objectBattery: "Battery",
+  objectPhone: "Phone",
+  objectTextile: "Textile",
+};

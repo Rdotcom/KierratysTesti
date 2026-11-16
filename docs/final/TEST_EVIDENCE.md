@@ -1,5 +1,36 @@
 # Test evidence
 
+## November16 — actual camera SigLIP2 integration, installed client12
+
+Final `pnpm validate:mobile` and `pnpm validate` exit0:1955tests
+(898Node+1057workspace), typechecks/boundaries/format/lint/builds and18web routes
+pass;19existing lint warnings. New tests:26mobile coordinator/schema/cancellation/
+priority cases,4source-policy cases,5numeric comparator cases. Logs:
+`work/siglip-camera-20261116.3p1Vc1/{mobile-validation-complete,validate-complete}.log`.
+`git diff --check` passes. Signed candidate bundle125494849bytes, whole unpacked
+signed app202253643bytes; neither is installed disk allocation or runtime RAM.
+
+SIGLIP_CAMERA_INTEGRATION.md records scope/receipts/failures. Stable SDK26.5signed
+Release build/install/launch succeeds,11embedded signatures/13legacy pins/privacy
+preserved; candidate pinned, QA/fixtures absent. Existing profile reused through
+23November12:53:38Helsinki. One owner spoon camera report: “Esine-ehdotuksia /
+Lusikka - Haarukka - veitsi”; no owner photo collected.
+
+FourfixedJPEGs/platform,8worker imagecalls/0inference failures/0retries preserve
+original top1/error≤0.005. ExtraMac1e-5diagnostic FAILScase3at0.00085267579:
+combined review false/registeredGatePassedtrue,145pins/raw joins/31lifecycle checks.
+Zero-prediction decoder check:3identical tensors, case3differs53086floats/
+maxabs0.03921568; correspondence is not full causal proof. No weakened threshold.
+Helper wall1526.51ms cold/161.79–176.82ms later; post-callRSS55.80–77.73MB is
+not full-app peak/battery evidence. Two ActivityMonitor starts failed, including
+after unlock; no trace. Locked decoder launch retained before successful unlocked
+run. Swift6QA static isolation failure repaired with immutable lock-protected
+store;31checks pass, production source identical after QA elision/archive.
+Testhost setup failures made0predictions. Artifact verifier repeat refused to
+overwrite original receipt after checks; no inference retry. Helper uninstall/
+empty inventory/main12restore pass. No main-app reset, online barcodeE2E repeat,
+paid call/server/key use/push. Public NO-GO remains.
+
 ## November16 — actual native SigLIP2 consumer on physical iPhone
 
 SIGLIP_NATIVE_DEVICE_RESULTS.md records exact protocol/scope/receipts. Actual

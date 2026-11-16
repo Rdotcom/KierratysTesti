@@ -1,6 +1,6 @@
 # Local Apple Vision observations
 
-Local Expo module `KierratysLocalVision`, iOS only. Two native entry points:
+Local Expo module `KierratysLocalVision`, iOS only. Original material entry points:
 `inspectReadiness()` and `recognize(jpegBase64: string)`.
 The application adapter validates their untrusted results before use. Readiness
 reports full, primary-only or unavailable support; full means resource integrity
@@ -8,6 +8,40 @@ and interface availability, **not recognition accuracy**. Older clients without
 that entry report readiness unreported rather than claiming a model is absent.
 Clients without the module, Android and web report local recognition unavailable;
 never silently fall back to a paid/network provider. Linking requires a native build.
+
+## Optional SigLIP2 object suggestions (client12)
+
+`recognizeObjectCandidates(jpegBase64, requestID, timeoutMs)` and matching-ID
+`cancelObjectCandidates(requestID)` add an optional iOS18+ path. The camera
+coordinator first preserves existing barcode/catalogue/text-confirmation evidence;
+only unknown/unavailable catalogue results receive object-form suggestions.
+These are up to three **unverified, uncalibrated** labels from fifteen fixed text
+prototypes, not a product database, verified material or automatic sorting answer.
+The guide/material confirmation remains separate. No cloud fallback or service key.
+
+The pinned image-only block32 CoreML resources are in a separate optional
+`KierratysSiglipCandidates.bundle`, staged by
+`node scripts/qa/stage-siglip-camera-assets.mjs`. This development recipe currently
+requires the private, hash-verified export artifacts named by that script. A clean
+checkout does not contain the large model: it builds without this optional bundle
+and reports suggestions unavailable. Reproducible public acquisition/export and
+Android support remain unfinished; do not promise feature parity on Samsung.
+
+The same serial native gate covers both models. Release the MobileCLIP cache
+before lazy SigLIP load; release SigLIP in the worker autoreleasepool after each
+request. The native12s watchdog retains the gate until actual work settles, even
+after timeout/cancel. Matching cancellation has bounded pre-dispatch tombstones.
+The coordinator allows15s work total with up to1s JS cancellation-delivery grace;
+neither watchdog forcibly interrupts a synchronous CoreML prediction. Background/
+leave/cancel suppresses results and clears application photo/suggestion state.
+
+Client12 is installed and one owner-operated spoon camera case returned
+“Lusikka · Haarukka · Veitsi”. Four controlled worker JPEGs preserve the original
+top1/0.005 score gate; an additional strict Mac comparison fails for one JPEG.
+Decode-only testing finds different OS input tensors for exactly that JPEG, not
+proof of complete causality. See `docs/final/SIGLIP_CAMERA_INTEGRATION.md` for
+retained failures, resource/latency evidence and outstanding full-app RAM/quality
+limits. This is not general accuracy or public-release approval.
 
 This uses Apple's existing pretrained Vision model and a bundled, pinned 2024
 MobileCLIP-S0 image supplement, **not an own-trained model**. The supplement runs

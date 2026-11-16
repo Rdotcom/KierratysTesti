@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   s.static_framework = true
   s.swift_version = '5.9'
   s.source_files = '*.swift'
-  s.resource_bundles = {
+  resource_bundles = {
     'KierratysLocalVisionPrivacy' => ['PrivacyInfo.xcprivacy'],
     'KierratysLocalVisionModels' => [
       'Resources/mobileclip_s0_image.mlpackage',
@@ -25,6 +25,16 @@ Pod::Spec.new do |s|
       'Resources/Notices/*.txt'
     ]
   }
+  # Optional, independently pinned candidate. Clean checkouts retain old behavior
+  # without staging a >100MB artifact or weakening the legacy resource budget.
+  if File.directory?(File.join(__dir__, 'SiglipCandidateAssets'))
+    resource_bundles['KierratysSiglipCandidates'] = [
+      'SiglipCandidateAssets/vision-int8-block32.mlmodelc',
+      'SiglipCandidateAssets/prototypes.json',
+      'SiglipCandidateAssets/Notices/*.txt'
+    ]
+  end
+  s.resource_bundles = resource_bundles
   s.frameworks = 'Vision', 'ImageIO', 'CoreGraphics', 'UniformTypeIdentifiers', 'CoreML', 'CoreImage', 'CoreVideo', 'CryptoKit'
   s.dependency 'ExpoModulesCore'
 end

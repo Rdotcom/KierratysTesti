@@ -1,5 +1,18 @@
 # Acceptance criteria
 
+November16camera integration: client12normal camera route tested by owner with
+one spoon (“Lusikka - Haarukka - veitsi”), not general accuracy. FourfixedJPEGs/
+Mac+phone preserve original4top1/error≤0.005. StrictMac≤1e-5 remains FAIL1/4;
+combined review false. Zero-prediction decoder check finds exactly one OSinput
+differs, not causal proof/relaxed gate. Require pinned optional resources/notice,
+no shippedQA/fixture, unchanged legacy pins/privacy, strict schema/finite scores,
+shared serial gate/cancellation/watchdog/late suppression, old evidence priority
+and unverified forms only.31native lifecycle checks and mobile/policy/numeric
+regressions pass. Signed install/launch is not full-app peak/energy/airplane-mode/
+Android or release acceptance; profiler startup failed. Clean-checkout assets,
+independent unknown/material quality and Samsung implementation remain open.
+Keep owner-camera/fixed-scenes/decoder-only/helper memory denominators separate.
+
 November16native consumer: decode/resize the actual4frozen images on device;
 input tensor SHA must exactly match byte-verified Mac/Python input. Preserve
 4/4top1,cosine>=0.995,maxscore error<=0.005 versus original FP32baseline and

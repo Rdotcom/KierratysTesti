@@ -1,5 +1,17 @@
 # External blockers
 
+November16camera update supersedes prior integration-pending notes: signed12
+installed/launched; owner spoon capture confirms normal camera route. Unlock for
+extra decoder check resolved; helper removed/main12restored. No new account/
+payment/key/trust required. Existing profile expires23November12:53:38Helsinki.
+FourworkerJPEGs meet original gate; strictMacdiagnostic remains failed1/4 with
+OSinput difference found. This is LOCAL portability investigation, not external
+credentials. Full-app profiler could not start even unlocked (cause unverified);
+resource evidence with compatible tool/device is still needed, not a passed gate.
+Clean-checkout assets and Android runtime remain LOCAL engineering. Independent
+physical captures/Samsung/airplane-mode quality need device/operator evidence;
+no independent-human-review gate reinstated. Public NO-GO remains.
+
 November16native update: actual connected iPhone12ProMax build/install/4scene
 consumer parity is complete without new account/payment/trust request. Temporary
 host removed; main app untouched. Initial helper UIScene startup crash was LOCAL

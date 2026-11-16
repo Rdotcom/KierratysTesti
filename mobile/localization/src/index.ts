@@ -4,10 +4,12 @@ import { localVisionEn, localVisionFi } from "./local-vision";
 import { navigationEn, navigationFi } from "./navigation";
 import { nearbyEn, nearbyFi } from "./nearby";
 import { overviewEn, overviewFi } from "./overview";
+import { objectCandidatesEn, objectCandidatesFi } from "./object-candidates";
 import { photoEn, photoFi } from "./photo";
 import { soundFeedbackEn, soundFeedbackFi } from "./sound-feedback";
 
 const fi = {
+  ...objectCandidatesFi,
   ...soundFeedbackFi,
   ...localVisionFi,
   ...guideSearchFi,
@@ -223,6 +225,7 @@ const fi = {
 } as const;
 
 const en: Record<keyof typeof fi, string> = {
+  ...objectCandidatesEn,
   ...soundFeedbackEn,
   ...localVisionEn,
   ...guideSearchEn,

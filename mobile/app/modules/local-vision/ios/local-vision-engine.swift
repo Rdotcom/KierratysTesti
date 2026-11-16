@@ -12,6 +12,7 @@ enum LocalVisionFailure: String, Error, Sendable {
   case unavailable
   case failed
   case timeout
+  case cancelled
 }
 
 struct LocalVisionClassification: Encodable, Sendable {
@@ -277,6 +278,8 @@ final class LocalVisionEngine: @unchecked Sendable {
 
   private let stateLock = NSLock()
   private var inFlight = false
+  private var activeObjectRequest: (id: String, cancellation: SiglipRequestCancellation)?
+  private var preCancelledObjectRequests: [String: TimeInterval] = [:]
   private var supplementalPredictor = LocalMobileClipPredictor.shared
   private let worker = DispatchQueue(label: "fi.roopeaaltonen.kierratysappi.local-vision", qos: .userInitiated)
 
@@ -451,6 +454,42 @@ final class LocalVisionEngine: @unchecked Sendable {
             "reference_gate_retained_until_settlement", "reference_late_result_suppressed", "reference_retry"]
   }
 
+  static func objectCandidateLifecycleSelfTest() -> [String]? {
+    let engine = LocalVisionEngine(), token = SiglipRequestCancellation()
+    let id = UUID().uuidString, entered = DispatchSemaphore(value: 0), release = DispatchSemaphore(value: 0)
+    defer { release.signal() }
+    let recorder = LocalVisionRecognitionQARecorder()
+    engine.enqueueReferencePort(deadlineSeconds: 0.04, objectRequest: (id, token), operation: { _ in
+      entered.signal(); release.wait()
+      try token.check(deadlineAt: ProcessInfo.processInfo.systemUptime + 10)
+      return "late"
+    }, completion: { recorder.record($0.map { _ in qaRecognitionObservation() }) })
+    guard entered.wait(timeout: .now() + 2) == .success else { return nil }
+    engine.cancelObjectCandidates(requestID: UUID().uuidString)
+    do { try token.check(deadlineAt: ProcessInfo.processInfo.systemUptime + 10) } catch { return nil }
+    engine.cancelObjectCandidates(requestID: id)
+    do { try token.check(deadlineAt: ProcessInfo.processInfo.systemUptime + 10); return nil }
+    catch LocalVisionFailure.cancelled {} catch { return nil }
+    guard recorder.signal.wait(timeout: .now() + 2) == .success,
+      case .failure(.timeout)? = recorder.snapshot().first else { return nil }
+    let busy = LocalVisionRecognitionQARecorder()
+    engine.referencePort(.hashBytes, input: "AA==") { busy.record($0.map { _ in qaRecognitionObservation() }) }
+    guard case .failure(.busy)? = busy.snapshot().first else { return nil }
+    release.signal(); engine.worker.sync {}
+    guard recorder.snapshot().count == 1, engine.activeObjectRequest == nil else { return nil }
+    let retry = LocalVisionRecognitionQARecorder()
+    engine.referencePort(.hashBytes, input: "AA==") { retry.record($0.map { _ in qaRecognitionObservation() }) }
+    guard retry.signal.wait(timeout: .now() + 2) == .success, case .success? = retry.snapshot().first else { return nil }
+    let preID = UUID().uuidString, pre = LocalVisionRecognitionQARecorder()
+    engine.cancelObjectCandidates(requestID: preID)
+    engine.recognizeObjectCandidates(input: "AA==", requestID: preID, timeoutMs: 1000) {
+      pre.record($0.map { _ in qaRecognitionObservation() })
+    }
+    guard pre.signal.wait(timeout: .now() + 2) == .success, case .failure(.cancelled)? = pre.snapshot().first else { return nil }
+    return ["object_wrong_id_cannot_cancel", "object_matching_id_cancels", "object_timeout", "object_pre_dispatch_cancel",
+      "object_gate_retained_until_settlement", "object_late_result_suppressed", "object_context_released", "object_retry"]
+  }
+
   /// Actual generated JPEGs and ImageIO orientation, no model/photo/network.
   static func referenceRgbSelfTest() throws -> Int {
     let width = 64, height = 48
@@ -507,18 +546,23 @@ final class LocalVisionEngine: @unchecked Sendable {
   }
 
   private func enqueueReferencePort(deadlineSeconds: TimeInterval,
+    objectRequest: (id: String, cancellation: SiglipRequestCancellation)? = nil,
     operation: @escaping @Sendable (LocalMobileClipPredictor) throws -> String,
     completion: @escaping @Sendable (Result<String, LocalVisionFailure>) -> Void) {
     let started = ProcessInfo.processInfo.systemUptime
     stateLock.lock()
     guard !inFlight else { stateLock.unlock(); completion(.failure(.busy)); return }
     inFlight = true
+    activeObjectRequest = objectRequest
+    if let objectRequest, preCancelledObjectRequests.removeValue(forKey: objectRequest.id) != nil {
+      objectRequest.cancellation.cancel()
+    }
     let predictor = supplementalPredictor
     stateLock.unlock()
     let delivery = LocalReferencePortDelivery(completion)
     let deadline = DispatchSource.makeTimerSource(queue: .global(qos: .utility))
     deadline.schedule(deadline: .now() + deadlineSeconds)
-    deadline.setEventHandler { delivery.resolve(.failure(.timeout)) }
+    deadline.setEventHandler { objectRequest?.cancellation.cancel(); delivery.resolve(.failure(.timeout)) }
     deadline.resume()
     worker.async { [self] in
       let outcome: Result<String, LocalVisionFailure> = autoreleasepool {
@@ -531,9 +575,48 @@ final class LocalVisionEngine: @unchecked Sendable {
       let onTime = ProcessInfo.processInfo.systemUptime - started < deadlineSeconds
       deadline.setEventHandler {}; deadline.cancel()
       // Never unlock on UI/JS timeout: Core ML and decode are synchronous.
-      stateLock.lock(); inFlight = false; stateLock.unlock()
+      stateLock.lock(); inFlight = false; activeObjectRequest = nil; stateLock.unlock()
       delivery.resolve(onTime ? outcome : .failure(.timeout))
     }
+  }
+
+  /// Optional candidate path, same serial gate/watchdog as barcode/OCR/material.
+  /// Cancellation cannot kill a synchronous CoreML call; gate remains held until
+  /// real settlement and checks suppress subsequent stages and late delivery.
+  func recognizeObjectCandidates(input: String, requestID: String, timeoutMs: Int,
+    completion: @escaping @Sendable (Result<String, LocalVisionFailure>) -> Void) {
+    guard input.utf8.count <= Self.maxBase64Length, UUID(uuidString: requestID) != nil,
+      (1...12000).contains(timeoutMs) else { completion(.failure(.invalidImage)); return }
+    let cancellation = SiglipRequestCancellation()
+    let seconds = Double(timeoutMs) / 1000
+    let deadlineAt = ProcessInfo.processInfo.systemUptime + seconds
+    enqueueReferencePort(deadlineSeconds: seconds, objectRequest: (requestID, cancellation), operation: { predictor in
+      try cancellation.check(deadlineAt: deadlineAt)
+      guard let bytes = Data(base64Encoded: input), !bytes.isEmpty, bytes.count <= Self.maxBytes,
+        bytes.base64EncodedString() == input else { throw LocalVisionFailure.invalidImage }
+      try cancellation.check(deadlineAt: deadlineAt)
+      guard #available(iOS 18.0, macOS 15.0, *) else { throw LocalVisionFailure.unavailable }
+      predictor.releaseCachedModel()
+      return try SiglipObjectPredictor.predict(bytes: bytes, cancellation: cancellation, deadlineAt: deadlineAt)
+    }, completion: completion)
+  }
+
+  func cancelObjectCandidates(requestID: String) {
+    guard UUID(uuidString: requestID) != nil else { return }
+    stateLock.lock()
+    if activeObjectRequest?.id == requestID { activeObjectRequest?.cancellation.cancel() }
+    else {
+      // Cancel may arrive before Expo dispatches its async recognize call.
+      // Bounded, short-lived tombstones contain no image or identifying data.
+      let now = ProcessInfo.processInfo.systemUptime
+      preCancelledObjectRequests = preCancelledObjectRequests.filter { now - $0.value < 60 }
+      preCancelledObjectRequests[requestID] = now
+      if preCancelledObjectRequests.count > 32,
+        let oldest = preCancelledObjectRequests.min(by: { $0.value < $1.value })?.key {
+        preCancelledObjectRequests.removeValue(forKey: oldest)
+      }
+    }
+    stateLock.unlock()
   }
 
   private static func performReferencePort(_ kind: LocalReferencePortOperation, input: String,

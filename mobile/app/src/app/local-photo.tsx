@@ -13,6 +13,8 @@ import { useFocusEffect, useRouter } from "expo-router";
 import { useCallback, useRef, useState } from "react";
 import { AppState, Image, Linking, StyleSheet, TextInput, View } from "react-native";
 import { OfflineProductResultView } from "@/components/offline-product-result";
+import { ObjectCandidateResultView } from "@/components/object-candidate-result";
+import type { ObjectPhotoResponse } from "@/features/local-vision/object-candidates";
 import {
   AppText,
   Button,
@@ -61,6 +63,7 @@ export default function LocalPhotoScreen() {
   const { palette } = useAppTheme();
   const [mode, setMode] = useState<"product" | "material">("product");
   const [productResult, setProductResult] = useState<OfflineProductResult>();
+  const [objectHint, setObjectHint] = useState<ObjectPhotoResponse>();
   const [manualCode, setManualCode] = useState("");
   const [permission, requestPermission] = useCameraPermissions();
   const [phase, setPhase] = useState<LocalPhotoPhase>("intro");
@@ -89,6 +92,7 @@ export default function LocalPhotoScreen() {
     setJpeg(undefined);
     setObservation(undefined);
     setProductResult(undefined);
+    setObjectHint(undefined);
     setManualCode("");
     setError(undefined);
     setBusy(false);
@@ -214,6 +218,7 @@ export default function LocalPhotoScreen() {
       setBusy(false);
       if (result.status === "observed") {
         setProductResult(result.result);
+        setObjectHint(result.objectHint);
         setPhase("result");
         play("ready");
         announceAccessibility(t("localVisionReady"));
@@ -287,6 +292,7 @@ export default function LocalPhotoScreen() {
         {phase === "intro" && (
           <>
             <AppText>{t("offlineProductScope")}</AppText>
+            <AppText>{t("objectCandidateIntro")}</AppText>
             {!available ? (
               <AppText testID="local-photo-unavailable">{t("localVisionUnavailable")}</AppText>
             ) : presentation.permanentDenied ? (
@@ -352,6 +358,7 @@ export default function LocalPhotoScreen() {
                     offlineCatalogue?.lookup([manualCode], "manual") ?? { status: "unavailable" },
                   );
                   setObservation(undefined);
+                  setObjectHint(undefined);
                   setJpeg(undefined);
                   setManualCode("");
                   setPhase("result");
@@ -505,6 +512,15 @@ export default function LocalPhotoScreen() {
         )}
         {phase === "result" && productResult && (
           <>
+            {objectHint && (
+              <ObjectCandidateResultView
+                result={objectHint}
+                onGuide={() => {
+                  clear();
+                  router.push("/guide");
+                }}
+              />
+            )}
             <OfflineProductResultView result={productResult} />
             <Button
               label={t("localVisionAgain")}

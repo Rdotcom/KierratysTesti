@@ -1,5 +1,26 @@
 # Decision log
 
+## D-107 — Optional object forms preserve evidence and uncertain failures
+
+- Date:2026-11-16. Owner requests camera integration/actual phone test. Replace11
+  with signed12/same identity/data, retain rollback and valid existing profile.
+  Preserve barcode/catalogue/material/rules; no push/paid call/key/server exposure.
+- Optional iOS18+ separately pinned image-only bundle/fixed15text prototypes,
+  unchanged16.4app minimum. Lazy shared serial worker releases old cache; matching
+  cancellation/watchdog keeps gate through true settlement. No cloud fallback.
+- Only after unknown/unavailable catalogue evidence show up to3unverified,
+  uncalibrated object forms. Never promote them to SKU/material/bin/probability.
+  Owner spoon camera report is one case, separate from4fixedJPEGs/platform.
+- Registered original top1/error≤0.005 passes; extra strictMac1e-5diagnostic fails
+  oneJPEG and remains failed. Decoder-only zero-prediction check finds exactly
+  that OSinput differs, not proof of full causality. No threshold tuning/retries.
+- Helper post-call samples are not full-app peak/energy approval. Profiler cannot
+  start; retain failures. Android, broad unknown/material quality and reproducible
+  clean-checkout model acquisition remain unfinished, not paid-account blockers.
+- Preserve exact measured source; later Swift6QA-only isolation fix has identical
+  production code after QA elision. Helper removed/main12restored, no data reset.
+  Details in SIGLIP_CAMERA_INTEGRATION.md. Public release remains NO-GO.
+
 ## D-106 — Verify the actual native path without replacing the current app
 
 - Date2026-11-16: owner requests native SigLIP adapter and physical-phone parity.

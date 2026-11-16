@@ -11,6 +11,8 @@ coverage/
 !.env.example
 mobile/app/android/
 mobile/app/ios/
+# Optional pinned SigLIP compiled asset; staged locally, never a >100MB Git blob.
+mobile/app/modules/local-vision/ios/SiglipCandidateAssets/
 # Local-only compatibility link for previously generated native build paths.
 apps/mobile
 work/

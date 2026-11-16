@@ -14,6 +14,8 @@
       "!mobile/app/expo-env.d.ts",
       "!mobile/app/assets/expo.icon",
       "!mobile/app/modules/local-vision/ios/Resources/mobileclip_s0_image.mlpackage",
+      "!mobile/app/modules/local-vision/ios/SiglipCandidateAssets/vision-int8-block32.mlmodelc",
+      "!mobile/app/modules/local-vision/ios/SiglipCandidateAssets/prototypes.json",
       "!work",
       "!outputs"
     ]
