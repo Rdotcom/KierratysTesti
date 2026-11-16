@@ -1,5 +1,21 @@
 # Decision log
 
+## D-098 — Regenerate only this app's development profile and retain exact JS
+
+- Date:2026-11-16. Explicit owner renewal request authorizes scoped signing and
+  reinstall, not new feature/account/publication. Apple recommends removing an
+  eligible cached profile to prompt automatic provisioning; move the one matched
+  regular file to private recoverable storage after hash/inode/app/device checks.
+  Do not revoke certificates, delete app/device data or change technical identity.
+- New profile creation16November10:53:38UTC/expiry23November10:53:38UTC verified;
+  real extension, not merely another successful build. Existing signing account
+  works without password/key/token reads or owner authentication prompt.
+- Exact same installed Hermes/model/source retained; strict signed app/framework
+  verification, reinstall/inventory/launch/samePID and full1819tests pass. No
+  general native UI/camera/offline/quality acceptance implied. No GitHub action.
+- Retain old profile and signed artifacts for recovery, restore planned variant
+  recovery NEXT_ACTION, keep actual23Novemberdeadline in state/evidence.
+
 ## D-097 — Deliver existing verified client11 without changing model or data
 
 - Date:2026-11-16(client); build prepared November15. Owner explicitly requests

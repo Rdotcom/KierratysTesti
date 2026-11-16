@@ -1,5 +1,22 @@
 # Test evidence
 
+## November16 — actual renewed profile installed, not reused
+
+Fresh signed ReleaseBUILD SUCCEEDED; new profile creation16November10:53:38UTC,
+expiry23November10:53:38UTC/12:53:38Helsinki. Exact app/team/device and strict
+app+11framework signatures pass; unchanged13model resources/privacy/source and
+byte-identical5524744byteHermes. Verified artifact reinstalls0.1.0/11; exact
+inventory/actual launch/later samePID pass without trust prompt. No UI/camera/
+airplane-mode/retention acceptance inferred. Previous profile is recoverably
+moved, not deleted/revoked; no app data reset or GitHub action.
+
+Fresh full pnpm validate exits0:1819unique(788Node+1031workspace), allchecks/
+builds/18routes,19priorwarnings. LogSHA256
+61ac87a9eeb17481599f238a033f1c8c8917f504010e5e7a32d7cd21bcbab2c9.
+Private work/ios-renewal-2026-11-16.XZmRUX/ retains receipts/artifact/oldprofile;
+CLIENT11_INSTALLATION.md documents exact procedure and scoped initial inspection
+syntax repair before mutation. No application code or failed quality gate changed.
+
 ## November16 — signed client11 physically installed
 
 CLIENT11_INSTALLATION.md records exact artifact hashes/profile/commands/limits.

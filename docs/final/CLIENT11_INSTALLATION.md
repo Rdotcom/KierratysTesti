@@ -1,5 +1,44 @@
 # Client 11 developer installation — November 16, 2026
 
+## Subsequent owner-authorized renewal — completed November16
+
+Owner explicitly requests renewing the development signature. The earlier expiry
+below is superseded: new profile created2026-11-16T10:53:38Z and expires
+**2026-11-23T10:53:38Z / 23.11.2026 at12:53:38 Europe/Helsinki**.
+
+Following [Apple's automatic-signing cache guidance](https://developer.apple.com/help/account/provisioning-profiles/edit-download-or-delete-profiles/)
+(accessed2026-11-16), independently identify the one cached profile by exact
+app/team/device, regular-file type/inode/size/SHA256. Move only that file out of
+the actual Xcode UserData profile cache into private recoverable storage; do not
+delete/revoke certificates, remove device profiles, change bundle ID or reset
+app data. Old profile and previous signed app remain available for recovery.
+
+Fresh stable-Xcode automatic-signing build succeeds and downloads a genuinely
+new profile, not the previous cached one. Verify app/team/device binding, future
+expiry greater than the prior expiry with over five days remaining, strict app
+plus11embedded signatures, unchanged source/model/privacy/newbridge/catalogue.
+Embedded5524744byteHermes SHA256 is exactly the previous installed value
+45ea38249d97f482e7dd3c878164e8b00a96790dfc69123c4f27fa5874d643ca.
+New signed binary SHA256
+e44c51b85f5f9b724cd4b3d4dbef7f44c65301b3d780e52f3a072d728f513d55.
+
+Replacement installation of the preserved verified artifact succeeds; targeted
+inventory confirms0.1.0/11, terminate/relaunch succeeds, later samePID query
+passes. No trust/login prompt was needed. No native visual/camera/offline-quality
+acceptance claimed and no paid API/server exposure/GitHub push. Same model and
+application code; DINO remains QAonly. No retention inspection or wipe performed.
+
+Fresh full `pnpm validate` passes1819unique tests/allchecks/builds/18routes,
+19existing warnings. Receipt root `work/ios-renewal-2026-11-16.XZmRUX/` includes
+old profile, new signed KeepItGreen.app, build.log, verifier/verification receipt,
+install/installed/launch/process JSONs and validate.log. Validation SHA256
+61ac87a9eeb17481599f238a033f1c8c8917f504010e5e7a32d7cd21bcbab2c9;
+build log518c16d72ad10f1f65240656021324de2daf1235b61912f643ac44b30e3457e2.
+Initial metadata inspection has an extra-brace syntax failure before any mutation;
+corrected bounded read succeeds, then the exact profile move/build proceeds.
+
+## Initial update (historical profile expiry)
+
 Owner requests updating the iPhone and then continuing the installation. Source
 commit `7ed3c8b610746947330ce8c9917b7305bd15bdf9`, clean integration worktree;
 no new feature, dependency, GitHub fetch/push or production release in this unit.

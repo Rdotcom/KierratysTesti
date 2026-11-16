@@ -1,5 +1,15 @@
 # Owner actions
 
+## November16 — renewal completed
+
+- No immediate signing/account action remains. Verified new profile lasts until
+  **23.11.2026 at12:53:38Helsinki**; renew/reinstall before that time for continued
+  development-device use. Earlier17Novemberinstruction below is completed.
+- Engineering/Codex: resume NEXT_ACTION's targeted package-size recovery.
+  Native visual/camera/airplane-mode acceptance remains separate and unverified.
+- Owner alone handles any later Apple login/keychain/trust prompt; none was
+  needed in this renewal. Old profile/artifacts retained, no GitHub push.
+
 ## November16 — client11 installed; provisioning deadline
 
 - Engineering/Codex: next authorized maintenance step must renew the profile,

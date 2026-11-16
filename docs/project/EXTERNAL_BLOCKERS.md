@@ -1,5 +1,10 @@
 # External blockers
 
+November16 renewal update: prior17Novemberdeadline is cleared. New app-bound
+development profile expires23.11.2026 at12:53:38Helsinki; reinstallation/launch
+complete without account/trust prompt. Future authentication remains owner-only
+if requested by Apple. Native visual/camera acceptance limitations below persist.
+
 November16: client11 installation/launch is complete, not blocked by phone trust
 or account access. Current developer profile expires17.11.2026 at12:06:45Helsinki;
 renewal may require owner login/keychain approval if Apple prompts. No credentials

@@ -1,5 +1,9 @@
 # Release decision
 
+November16 signing renewal: installed client11now has verified development
+profile expiry23.11.2026 at12:53:38Helsinki, superseding17Novemberbelow. Reinstall/
+launch/full1819tests pass; no code/model/quality-gate change. Public NO-GO persists.
+
 ## November16 — developer client11 installed; public NO-GO unchanged
 
 Owner's iPhone now has signed0.1.0/11with verified inventory/launch/process

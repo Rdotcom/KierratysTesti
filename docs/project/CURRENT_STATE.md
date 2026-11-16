@@ -1,5 +1,20 @@
 # Current state
 
+## Client11 provisioning genuinely renewed — November16
+
+- Owner explicitly requests renewal. Verify and recoverably move only the one
+  exact app/device cached profile; no certificate revocation/device uninstall/
+  data reset. Xcode obtains new profile created16.11.2026 at10:53:38UTC,
+  expires **23.11.2026 at12:53:38Helsinki** (10:53:38UTC). Prior17.11deadline
+  below is superseded. Old profile and previous signed artifact retained.
+- Signed Releasebuild/profile bindings/app+11embedded signatures/model/privacy/
+  source checks pass. Hermes exactly matches installed11; no application/model/
+  dependency/identity change. Reinstall0.1.0/11, actual launch and later samePID
+  verified. No login/trust prompt needed; no camera/UI/airplane-mode claim.
+- Full1819tests/allchecks/builds18routes pass,19existingwarnings. No GitHub push,
+  new server exposure or paid inference. CLIENT11_INSTALLATION.md records new
+  receipts/hashes/procedure. Resume targeted variant recovery as NEXT_ACTION.
+
 ## Client11 installed on owner's iPhone — November16
 
 - Owner requests phone update; exact source7ed3c8b/0.1.0build11 now replaces

@@ -1,3 +1,3 @@
 # Next action
 
-Renew the owner's development provisioning and reinstall the same verified build11 before 2026-11-17 at12:06:45 Europe/Helsinki, verifying the new embedded profile expiry rather than assuming that another build extends it.
+Implement targeted variant recovery in the existing offline photo flow: when same-image evidence cannot distinguish sibling package sizes, request a readable size or barcode without guessing, and regression-test the frozen ambiguous cases and cancellation/offline states.
