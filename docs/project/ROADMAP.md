@@ -1,5 +1,11 @@
 # Roadmap
 
+- [x] ActualpreregisteredMobileCLIP/SigLIP2CPUoffline4scenes/8imageforwards:
+  both2/2spoonpositives;controls1/2versus2/2,0failures.48pin/raw-output review/
+  repeat refusal and5regressions. No app/model promotion from tiny seen data.
+- [ ] Registered image-only SigLIP size/export/parity before mobile model choice;
+  broad unknown/material/physical-platform quality remains a separate requirement.
+
 - [x] Fresh private clean-copy import:98source originals preserved/98metadata-clean
   pixel-identical children;5newfreeCommons sources/licence receipts/visual review.
 - [x] Actual196rowglobal lineage/receipt audit,19012pairs/0split leaks; expected

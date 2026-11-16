@@ -1,5 +1,13 @@
 # Acceptance criteria
 
+November16websmoke: fixed4scenes/15prompts/2models/8imageattempts, exclude held
+credit sample beforehand, no retries/tuning, allfailures retained. Rehash48pins,
+rawstdout/image joins and independently recount rank outcomes. Two positive
+agreements/model and1versus2control agreements are not accepted-SKU/material/
+sorting precision or platform quality. No threshold fitted;automaticaccepts0.
+Image-only deployment/quantization needs a new parity protocol and broader
+physical/unknown validation before any model promotion; existing gates unchanged.
+
 November16 clean-copy evidence: originals unchanged, each child binds original/
 source/transform hashes, actual PNG text/EXIF chunks absent after CRC-checked
 stripping, canonical pixel equality verified. Synthesized ImageIO descriptions

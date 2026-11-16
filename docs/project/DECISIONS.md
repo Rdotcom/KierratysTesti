@@ -1,5 +1,20 @@
 # Decision log
 
+## D-104 — Measured text-free spoon forms, not a universal recognizer
+
+- Date2026-11-16: owner requests actual comparison on clean development images.
+  Freeze4scenes/15classprompts/two models/one attempt before any predictions.
+  Exclude credit-held fifth image in advance, retain every prediction/failure.
+- ActualMobileCLIP2/2spoon positives,1/2multi controls;SigLIP2/2and2/2. Eight
+  image forwards/0failures, CPU/network denied; raw-output review/repeat refusal.
+  No calibrated precision/unknown/device/material/sorting or promotion claim.
+- Acquire official free safetensors, preserve300stimeout and explicitly resume
+  missing bytes with206Range/fullSHA verification. No paid API/new app dependency.
+  Full1.5GBtext+image checkpoint is not a mobile-size recommendation: explore
+  image-only export and parity in a newly registered experiment, not a retake.
+- Keepinstalledmodel/scanner unchanged. ExistingfailedSKU/productiongates remain.
+  No push/account/independent reviewer needed for this local experiment.
+
 ## D-103 — Clean derivatives preserve rights and do not create test independence
 
 - Date2026-11-16. Owner requests cleaning, lineage verification and permitted free

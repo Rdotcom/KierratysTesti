@@ -1,3 +1,3 @@
 # Next action
 
-Preregister and implement a bounded development-only MobileCLIP/SigLIP2 smoke comparison on the newly reviewed clean web-source candidates and multi-object controls, freezing model/prompt/data hashes and retaining unknown/failure outcomes without treating it as physical-device or release-quality evidence.
+Register an isolated image-only SigLIP2 export/size/numerical-and-decision-parity experiment against the frozen CPU baseline before selecting a mobile runtime; preserve the four-scene smoke and all failures, and do not change the installed app or claim general recognition accuracy.

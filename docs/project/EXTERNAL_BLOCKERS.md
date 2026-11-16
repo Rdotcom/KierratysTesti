@@ -1,5 +1,11 @@
 # External blockers
 
+November16 modelsmoke: actualfreeofficialSigLIP weights acquired/verified, first
+downloadtimeout recovered by explicit partial continuation; no payment/account
+blocker. Both models executeoffline successfully. Image-only export/size/parity
+is local engineering. Larger independent physical12class/fourdevice dataset and
+source-credit limitation remain; tinywebsmoke does not resolve those gaps.
+
 November16 cleaning update: free5image Commons acquisition and98clean-copy import
 complete without account/payment. Cleaning/global lineage are no longer pending
 for this196rowdevelopment corpus; metadata correction/failures remain explicit.

@@ -1,5 +1,24 @@
 # Current state
 
+## Actual two-model text-free object smoke — November16
+
+- Preregister4cleanwebscenes/15classprompts,2spoonpositives/2multiobject controls;
+  coffee-cup credit-held sample excluded before predictions.48pins frozen.
+- ActualCPU/no-network inference:MobileCLIP2/2positive top1,1/2controls;
+  SigLIP2/2positives,2/2controls.8imageattempts retained,0failures/0retries/
+  0automaticaccepts. Independent raw-output/rank recount passes; repeat refused.
+- FullSigLIP1.50GBcheckpoint acquired free, official revision/LFS hashes verified;
+  retained300stimeout/explicitRangecontinuation, no redownload of completed files.
+  New models/QA tools only under private work; no app/model/scanner/phone change.
+- Nativecompile/toolpath/staging-path repairs retained before model calls.
+  Transformer default-token warnings diagnosed via config/header/token checks,
+  no extra predictions. Exact details:docs/final/OBJECT_MODEL_SMOKE_RESULTS.md.
+- Five newregressions/full1887tests(856Node+1031workspace)/allchecks/builds pass,
+  19existinglint warnings. This tiny source-labelled test is NOT general accuracy,
+  material/sorting/Android/iPhone evidence. PublicNO-GO; no push or model promotion.
+- Next: register image-only SigLIP deployment/parity experiment before a phone
+  integration decision; do not ship the full text+image checkpoint or weaken gates.
+
 ## Clean copies and free source acquisition — November 16
 
 - Actual5newCommons images/metadata acquired under per-file CC licences with

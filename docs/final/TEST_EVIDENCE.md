@@ -1,5 +1,41 @@
 # Test evidence
 
+## November16 — actual registered MobileCLIP versus SigLIP2 web-object smoke
+
+Frozen48pins/fourcleanwebscenes/15Englishprompts before predictions, excluded
+coffee-cup credit-held fifth image. CPU/nativeMobileCLIP and localSigLIP2 run
+under OSdeny-network; matchingHTTPSprobe fails. Eightactualimageforwards,0failures/
+0retries, Mobile15textforwards/SigLIP15textembeddings inonebatch. Mobile2/2spoon
+top1agreements and1/2multi-controls;SigLIP2/2and2/2. Allscores/denominators retained.
+No OCR/material/bin/app acceptance. Actual perimageMac ms282/30/20/26 versus
+186/132/102/118(excludesloads),SigLIPpeakRSS1440759808bytes;notphone measures.
+
+Actualdownload1,500,800,904byte officialcheckpoint LFS hash verifies after retained
+300stimeout/840619467partialbytes and explicit206Rangecontinuation. Six smaller
+verifiedfiles reused. No account/payment/key/newprojectdependency/modeltraining.
+Swift6warnings-as-errors/nativeCoreMLcompile passes after retained toolpath/
+wrongstagingpath preparation failures (0predictions then). Pythonwarnings retained;
+config/header/token diagnostic0predictions confirms256000vocab/[256000,768]weights/
+maxtoken235250/64positions, no out-of-range input. No processor retake.
+
+Read-only review rehashes48pins, checksrawstdout/imagejoins and independently
+recounts maxima. Actual repeat refused at exclusiveattemptmarker before dispatch;
+observation/summary hashes unchanged. Lock7e54120c34745d98e00c446ee9bfd485a6a381e9a41b2ef8b3f31b59165dee72;
+observations8d5e4812d6bd46ba6c0141bcd072489d2ddd8bc132a68b0f2cf6e3d86acc135b;
+summary4875ee0d6be12039abdbcd710f3f859e3d1e9f77486020847f539bef0a40a7f3.
+Privatework/object-model-smoke-20261116.N66M3L/ retains allreceipts/stdout/stderr.
+Detailedinterpretation:OBJECT_MODEL_SMOKE_RESULTS.md; no modelpromotion/phone/push.
+
+Five newregressions pass. Initiallintassignment-expression repaired beforefreeze.
+Full1887tests(856Node+1031workspace)/allchecks/builds/18routes pass,19existinglint
+warnings. /tmp/kig-object-smoke-20261116-validation.log SHA256
+ff3e79d800310b08651cac371f474d83fb69d6bf140340b7daf1d58b4d0a0568.
+ExistingfailedSKU/releasegates untouched; this small seen webset is not99%accuracy.
+
+Finalpost-experiment fullvalidation also exits0:1887tests/allchecks/builds/18routes,
+19existinglint warnings; /tmp/kig-object-smoke-20261116-final-validation.log.
+Only documentation changes follow; source/model/data pins remain unchanged.
+
 ## November16 — metadata-clean copies and bounded free object sources
 
 ActualCommonsAPI/media acquisition:5newJPEGs with per-file author/licence/source
