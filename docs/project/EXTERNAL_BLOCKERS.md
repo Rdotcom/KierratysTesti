@@ -1,5 +1,13 @@
 # External blockers
 
+November16 byte-audit update: historical decoder cache hash drift is a local
+environment/integrity issue, not a new paid-account blocker. Retain old pins;
+separate explicit OS decoder enables the actual93image/source audit. Source
+metadata cleaning/global aggregation remain local work. New physical12class/
+fourdevice pilot still has0images; actual captures/operator/device access will
+be required for independent phone-quality evidence. No invented labels or human
+reviewer requirement; no model comparison actually run on absent data.
+
 November16 follow-up: Roope approves bounded scope/isolated pilot; the scope
 decision below is RESOLVED. Metadata auditor implemented locally; byte import
 and model preparation remain locally executable. Real pilot manifest is empty;

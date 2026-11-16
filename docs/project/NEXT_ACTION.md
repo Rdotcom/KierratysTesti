@@ -1,3 +1,3 @@
 # Next action
 
-Implement and regression-test the pilot's byte-backed image import/lineage audit, verifying safe paths, bounded reads, hashes and source/derived separation while keeping prior source-only images development-only, never physical held-out evidence.
+Implement a bounded metadata-clean development-copy import and global cross-batch lineage/duplicate aggregation, preserving immutable original/source/transform hashes and never promoting existing source images into the new physical held-out pilot.

@@ -1,5 +1,32 @@
 # Test evidence
 
+## November 16 — real source-image bytes, lineage and comparison preflight
+
+Baselineb74c2d1.19newfile/lineage+4preflight tests pass; tests use explicit
+synthetic decoder stubs, not manufactured recognition accuracy. Swift6 native
+decoder compiles warnings-as-errors. Actual malformed/empty/oversized input
+processes each reject exit1. Actual93source images/11946960bytes all decode via
+explicit separate ImageIO audit; hashes/source evidence match.93conservative
+metadata flags and one near-pair(case011/018) retained;0physical-pilot images.
+Both flagged packshots visually inspected: near-identical composition, not proof
+of independent capture. Historical source/results/denominators remain unchanged.
+
+Initial historical Sharp loader exits1 on two changed cached native binaries;
+retain failure/pins unchanged. New ImageIO binary673375b974134675d2fa5b99b341128fdfd98d4ba35298a8649720a5ab75c4ae
+is explicitly distinct OS-trusted preprocessing. See OBJECT_IMAGE_AUDIT.md.
+Actual audit report work/object-image-audit-20261116.BZ3XLX/audit.json SHA256
+3a12cb88706257d40e2ae5fd0ffbe8414e89c0918ada1c78ca83f818342d29a9.
+Preflight report same directory/comparison-preflight.json SHA256
+08c796ba516bc4b40999294446c2f488978d57bd0100017ce91c534e267062d8;
+both commands exit2/incomplete; modelsExecuted0. No source-only→physical promotion.
+
+Full `npx --yes pnpm@11.16.0 validate` exits0:833Node+1031workspace=1864tests,
+boundaries/format/lint/types/allpackage/APIbuilds/18web routes pass;19existinglint
+warnings. Log /tmp/kig-object-bytes-20261116-validation.log. No app/phone/model/
+barcode changes, new weights, paid inference, uploads or GitHub push. Physical
+capture/global cross-batch truth/lineage and actual model comparison remain open.
+
+
 ## November 16 — approved object pilot metadata auditor
 
 Roope approves bounded scope/experiment. Implement built-ins-only metadata guard,

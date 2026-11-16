@@ -1,5 +1,14 @@
 # Acceptance criteria
 
+November16 byte audit: reject unsafe/linked/unbounded paths and mismatched image/
+source bytes; preserve failed rows and derived-root lineage. Report compressed/
+canonical-pixel duplicates and perceptual review flags separately. Embedded
+metadata is a quarantine flag, not proof of personal data. Batch-local checks
+and complete source bytes do not establish global independence, rights/material
+truth or a physical heldout set. Changed decoder pins must fail, never silently
+update. Explicit alternative decoder identity is separate from prior/model
+preprocessing. Comparison preparation with absent physical data runs0models.
+
 November16 owner approves bounded pilot. Dataset preparation must reject declared
 cross-split object/session/source lineage, duplicate IDs/hashes, contradictory
 truth and inferred material labels; count physical objects separately from views.

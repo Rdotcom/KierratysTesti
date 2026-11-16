@@ -1,5 +1,13 @@
 # Roadmap
 
+- [x] Read-only byte/source/derived-lineage audit with actual93source images,
+  canonical pixels/near-duplicate review and23newregressions. Explicit ImageIO
+  decoder after retained historical Sharp drift failure; no pin relaxation.
+- [x] Comparison preflight refuses empty physical/source-only/unclean data;0models
+  run. This is preparation, not a benchmark implementation or quality pass.
+- [ ] Metadata-clean development import and global cross-batch lineage checks;
+  physical new-class capture data/frozen model receipts before quality comparison.
+
 - [x] Owner approves bounded pilot; preparation auditor/empty manifest and22
   regressions distinguish declared metadata from inference/release readiness.
 - [ ] Byte-backed import, exact/near-duplicate and privacy/lineage audit; acquire

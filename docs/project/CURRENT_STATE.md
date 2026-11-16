@@ -1,5 +1,25 @@
 # Current state
 
+## Actual byte/source audit; comparison correctly held — November 16
+
+- Implemented bounded read-only file/lineage/pixel auditor and comparison preflight.
+  Original scanner/app/model/phone unchanged; no new inference/download or push.
+- Historical Sharp pin rejects two changed cached native artifacts; retained
+  failure/pins unchanged. Separate explicit Swift6 ImageIO audit decoder compiled
+  and bound by source/binary/OS identity, not masquerading as historical Sharp.
+- Actual93development source images/11946960bytes all decoded, hashes/source
+  evidence verified.93conservative metadata flags (not93privacy leaks), one
+  near-duplicate review pair,0physical-pilot images. Originals unchanged.
+- 23newregressions pass. Empty physical dataset and unclean source-only audit
+  produce comparison preflight exit2/models0; no new accuracy or Samsung claim.
+  docs/final/OBJECT_IMAGE_AUDIT.md records actual limits and retained failures.
+- Remaining local work: clean derived development import and global aggregation;
+  then frozen comparison preparation. Physical new-class captures still absent.
+  Public release NO-GO; metadata/file checks are not recognition reliability.
+- Full validation1864tests(833Node+1031workspace)/allchecks/builds/18routes pass;
+  19existinglint warnings. Actual near-pair visually reviewed; preserve original
+  rows and do not count near-identical packshots as new independent capture.
+
 ## Bounded pilot approved and metadata guard implemented — November 16
 
 - Roope explicitly approves narrower object-class/evidence/rule scope and isolated

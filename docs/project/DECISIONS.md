@@ -1,5 +1,19 @@
 # Decision log
 
+## D-102 — Preserve decoder failure; separate real byte audit from quality
+
+- Date2026-11-16: owner requests file/origin verification then model comparison.
+  Implement safe bounded file/provenance/pixel audit and preparation preflight.
+- Historical Sharp loader rejects two changed native cache artifacts. Do not
+  edit pins or infer cause. Explicit separate OS ImageIO decoder has new source/
+  binary/OS receipts; no claim of historical/model-preprocessing equivalence.
+- Actual93source images all decode; metadata/near-pair flags retained. Source
+  images stay development-only, not physical holdout or material truth. No raw
+  metadata output, original modification, model download/inference or app change.
+- Comparison preparation refuses missing physical data/unclean batches; metadata
+  declarations alone never grant inference. No invented comparison percentage.
+  Local clean-import/global-audit work remains executable before device captures.
+
 ## D-101 — Approved bounded pilot starts with grouped data integrity
 
 - Date2026-11-16: owner says “jooo” to bounded scope/isolated experiment. Implement
