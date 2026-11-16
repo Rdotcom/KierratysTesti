@@ -1,5 +1,26 @@
 # Current state
 
+## Clean copies and free source acquisition — November 16
+
+- Actual5newCommons images/metadata acquired under per-file CC licences with
+  source/author/licence/hash receipts; visually inspected allfive. Two spoon-form
+  positives, printed/multi-object scenes and a coffee-cup candidate; source-only
+  development evidence, not physical holdout/material truth. Coffee-cup page has
+  uploader/photographer credit discrepancy retained before redistribution.
+-93existing+5new originals preserved;98cleanPNG children have0container metadata
+  flags and identical decoded pixels to parents. Failures97/97in first/v2runs
+  retained: ImageIO inserted EXIF; broad synthesized-metadata false positives then
+  corrected with actual-container parsing, not an EXIF acceptance relaxation.
+- Full196rowbyte audit and global2group aggregation:27actualoriginal metadata
+  flags,98expected parent/child duplicates,4near-review pairs,0global split leaks;
+ 19012non-parent pairs checked. All lineage/source/transform receipts retained.
+-18newregressions pass. No model/accuracy/phone/app/scanner/dependency/push change.
+- Finalfullvalidation1882tests(851Node+1031workspace)/allchecks/builds/18routes
+  passes;19existinglint warnings. Working recipe/original/failure receipts retained.
+  docs/research/free-object-image-acquisition-2026-11-16.md records actual evidence.
+- Next local work: preregister a source-only model smoke comparison distinct from
+  absent physical12class/fourdevice release-quality evidence. Public NO-GO remains.
+
 ## Actual byte/source audit; comparison correctly held — November 16
 
 - Implemented bounded read-only file/lineage/pixel auditor and comparison preflight.

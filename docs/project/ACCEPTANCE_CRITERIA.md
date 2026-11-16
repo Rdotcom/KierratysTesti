@@ -1,5 +1,13 @@
 # Acceptance criteria
 
+November16 clean-copy evidence: originals unchanged, each child binds original/
+source/transform hashes, actual PNG text/EXIF chunks absent after CRC-checked
+stripping, canonical pixel equality verified. Synthesized ImageIO descriptions
+are not proof of embedded metadata; preserve old false-positive/failure records.
+Global grouping includes byte/pixel/source/object split/pool checks; expected
+parent copies cannot multiply independent sample count. Web source/visual class
+hints remain development-only, not verified material or physical device evidence.
+
 November16 byte audit: reject unsafe/linked/unbounded paths and mismatched image/
 source bytes; preserve failed rows and derived-root lineage. Report compressed/
 canonical-pixel duplicates and perceptual review flags separately. Embedded

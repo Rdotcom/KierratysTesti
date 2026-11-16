@@ -1,5 +1,13 @@
 # External blockers
 
+November16 cleaning update: free5image Commons acquisition and98clean-copy import
+complete without account/payment. Cleaning/global lineage are no longer pending
+for this196rowdevelopment corpus; metadata correction/failures remain explicit.
+Physical12class/fourdevice dataset is still absent, but a clearly separated
+web-source development smoke comparison remains locally executable. No new
+reviewer or paid provider requirement. Coffee-cup source-credit discrepancy is
+recorded; do not redistribute/enroll it as verified until provenance is reconciled.
+
 November16 byte-audit update: historical decoder cache hash drift is a local
 environment/integrity issue, not a new paid-account blocker. Retain old pins;
 separate explicit OS decoder enables the actual93image/source audit. Source

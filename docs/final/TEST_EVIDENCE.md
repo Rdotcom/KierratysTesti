@@ -1,5 +1,43 @@
 # Test evidence
 
+## November16 — metadata-clean copies and bounded free object sources
+
+ActualCommonsAPI/media acquisition:5newJPEGs with per-file author/licence/source
+snapshots;4first acquired once, later reused by hash/credit joins,1additional
+coffee-cup request. No other image acquisition/retry/paid call. Visually inspected
+allfive:2spoon-form candidates,2printed/multi-object controls,1coffee-cup candidate
+with source-uploader/photographer credit discrepancy preserved before enrollment.
+Raw rights/source records stay private in work/object-clean-20261116.oaxGJU/.
+
+Native Swift6warnings-as-errors build succeeds. First97cleaning failures retained
+(newPNGEXIF inserted by ImageIO), next97failures retained (synthesized metadata
+falsepositive). Fix actual PNG chunk stripping with CRC validation and real JPEG/
+PNG metadata-block detection; do not waive actual EXIF/text rejection. Native
+injected JPEG comment is detected; strippedPNG has no embedded metadata and equal
+canonical pixels. Finalclean-v4:98originals/98cleanchildren,0failures/0childmetadata,
+all98parent/childpixel hashes equal; source bytes rechecked unchanged.
+
+Actual196row audit decodes all rows:27realoriginal metadata flags,98expected
+parent/child duplicates,4near-review pairs. Global historical/Commons grouping:
+19012non-parent pairs,0split/poollineage findings,4near-review pairs retained.
+Final receipts: clean-v4/combined-manifest.json SHA256
+fddc61ba656959f57368dd80317680351f9e1950dc0f5e8108abcda65c65d2ab;
+transformations.json7a430bfd0414221ecd7c0303c64b9ec0de547150715bccfb79298749de8b3554;
+file-audit.jsond104250295a5e952463a7f853898503d2d873671b74eb333d97f0af4c9a6c687;
+global-audit.jsone439f5698366a8d1ad744bb9a6538db28a2ef17c870fb90cc3819f6a1fea0da9.
+
+18newregressions pass (PNG chunk/CRC/host/licence/credit/global lineage/receipt
+joins),37including prior file-audit tests. One initial test fixture default
+hid missing licence; fix fixture to actually remove field, narrow suite passes.
+Full1882tests(851Node+1031workspace)/allchecks/builds/18routes pass with19existing
+lint warnings; log /tmp/kig-object-clean-20261116-validation.log. CLI-only aggregate
+addition subsequently narrow-tested; final full rerun also exits0:1882tests/
+allchecks/builds/18routes,19existinglint warnings. Final log
+/tmp/kig-object-clean-20261116-final-validation.log SHA256
+2c23c45599c536e9d1b241d76935db11b25146a5a566416ef73b594ff886cd48.
+No model execution, cloud inference, phone/native app/scanner change or push.
+Web development candidates never become physical12class/fourdevice quality data.
+
 ## November 16 — real source-image bytes, lineage and comparison preflight
 
 Baselineb74c2d1.19newfile/lineage+4preflight tests pass; tests use explicit

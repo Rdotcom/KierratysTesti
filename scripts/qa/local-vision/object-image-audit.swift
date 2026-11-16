@@ -4,6 +4,38 @@ import ImageIO
 import CoreGraphics
 import CryptoKit
 
+// Inspect actual container blocks, not ImageIO's synthesized descriptive tags.
+func embeddedMetadata(_ data: Data, png: Bool) throws -> Bool {
+  let bytes = [UInt8](data)
+  if png {
+    var at = 8
+    while at + 12 <= bytes.count {
+      let length = Int(bytes[at]) << 24 | Int(bytes[at + 1]) << 16 | Int(bytes[at + 2]) << 8 | Int(bytes[at + 3])
+      guard length <= bytes.count - at - 12 else { throw NSError(domain: "png_length", code: 1) }
+      let type = String(bytes: bytes[(at + 4)..<(at + 8)], encoding: .ascii) ?? ""
+      if ["eXIf", "tEXt", "iTXt", "zTXt"].contains(type) { return true }
+      at += length + 12
+      if type == "IEND" { break }
+    }
+    return false
+  }
+  var at = 2
+  while at < bytes.count {
+    guard bytes[at] == 255 else { throw NSError(domain: "jpeg_marker", code: 1) }
+    while at < bytes.count && bytes[at] == 255 { at += 1 }
+    guard at < bytes.count else { throw NSError(domain: "jpeg_marker", code: 1) }
+    let marker = bytes[at]; at += 1
+    if marker == 0xDA || marker == 0xD9 { break }
+    if marker == 0xFE || (marker >= 0xE1 && marker <= 0xEF && marker != 0xE2 && marker != 0xEE) { return true }
+    if marker == 0x01 || (marker >= 0xD0 && marker <= 0xD8) { continue }
+    guard at + 2 <= bytes.count else { throw NSError(domain: "jpeg_length", code: 1) }
+    let length = Int(bytes[at]) << 8 | Int(bytes[at + 1])
+    guard length >= 2 && length <= bytes.count - at else { throw NSError(domain: "jpeg_length", code: 1) }
+    at += length
+  }
+  return false
+}
+
 func run() throws {
   var input = Data()
   while let chunk = try FileHandle.standardInput.read(upToCount: 65536), !chunk.isEmpty {
@@ -30,13 +62,27 @@ func run() throws {
         let colour = CGColorSpace(name: CGColorSpace.sRGB) else { throw NSError(domain: "decode", code: 1) }
   let w = image.width, h = image.height
   var rgba = [UInt8](repeating: 0, count: w * h * 4)
-  let decoded = rgba.withUnsafeMutableBytes { pointer -> Bool in
+  let decoded = rgba.withUnsafeMutableBytes { pointer -> CGImage? in
     guard let ctx = CGContext(data: pointer.baseAddress, width: w, height: h, bitsPerComponent: 8,
-      bytesPerRow: w * 4, space: colour, bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue) else { return false }
+      bytesPerRow: w * 4, space: colour, bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue) else { return nil }
     ctx.draw(image, in: CGRect(x: 0, y: 0, width: w, height: h))
-    return true
+    return ctx.makeImage()
   }
-  guard decoded else { throw NSError(domain: "pixels", code: 1) }
+  guard let decoded else { throw NSError(domain: "pixels", code: 1) }
+  if CommandLine.arguments.count == 2 && CommandLine.arguments[1] == "--clean" {
+    let output = NSMutableData()
+    guard let destination = CGImageDestinationCreateWithData(output, "public.png" as CFString, 1, nil) else {
+      throw NSError(domain: "output", code: 1)
+    }
+    // Newly rendered pixels only; never copy original property dictionaries.
+    CGImageDestinationAddImage(destination, decoded, nil)
+    guard CGImageDestinationFinalize(destination), output.length <= 8_000_000 else {
+      throw NSError(domain: "output_bound", code: 1)
+    }
+    FileHandle.standardOutput.write(output as Data)
+    return
+  }
+  guard CommandLine.arguments.count == 1 else { throw NSError(domain: "arguments", code: 1) }
   var grey = [UInt8](repeating: 0, count: 72)
   let reduced = grey.withUnsafeMutableBytes { pointer -> Bool in
     guard let ctx = CGContext(data: pointer.baseAddress, width: 9, height: 8, bitsPerComponent: 8,
@@ -52,11 +98,7 @@ func run() throws {
   } }
   var canonical = Data("imageio-rgba-v1:\(w):\(h):".utf8)
   canonical.append(contentsOf: rgba)
-  let metadataKeys = [kCGImagePropertyExifDictionary, kCGImagePropertyGPSDictionary,
-    kCGImagePropertyIPTCDictionary, kCGImagePropertyTIFFDictionary]
-  // Conservative flag, never print dictionary values or precise location.
-  let metadataPresent = metadataKeys.contains { props[$0 as String] != nil }
-    || CGImageSourceCopyMetadataAtIndex(source, 0, nil) != nil
+  let metadataPresent = try embeddedMetadata(input, png: type == "public.png")
   let result: [String: Any] = [
     "width": w, "height": h,
     "pixelSha256": SHA256.hash(data: canonical).map { String(format: "%02x", $0) }.joined(),

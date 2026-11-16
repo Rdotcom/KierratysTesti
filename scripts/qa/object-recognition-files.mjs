@@ -8,6 +8,7 @@ import os from "node:os";
 import { fileURLToPath } from "node:url";
 import { readBounded } from "./local-vision/embedding-control.mjs";
 import { loadPinnedReferenceDecoder } from "./reference-image/pinned-reference-decoder.mjs";
+import { loadNativeCorpus } from "./reference-image/native-corpus-data.mjs";
 
 const sha = (b) => createHash("sha256").update(b).digest("hex");
 const digest = (s) => assert(typeof s === "string" && /^[a-f0-9]{64}$/.test(s), "invalid_digest");
@@ -33,10 +34,14 @@ export function confinedFile(root, relative) {
   assert.equal(fs.realpathSync(file), file, "linked_file");
   return file;
 }
-export function validateFileManifest(manifest) {
+export function validateFileManifest(manifest, maximumImages = 500) {
   exact(manifest, ["schemaVersion", "images"]);
   assert.equal(manifest.schemaVersion, "object-image-audit-v1");
-  assert(Array.isArray(manifest.images) && manifest.images.length <= 500, "image_count_bound");
+  assert([500, 20000].includes(maximumImages), "invalid_image_limit");
+  assert(
+    Array.isArray(manifest.images) && manifest.images.length <= maximumImages,
+    "image_count_bound",
+  );
   const ids = new Map();
   for (const row of manifest.images) {
     exact(row, [
@@ -82,6 +87,28 @@ export function validateFileManifest(manifest) {
     if (row.pool === "physical-pilot") assert.equal(cursor.origin, "physical", "nonphysical_root");
   }
   return ids;
+}
+
+export function historicalFileManifest(root) {
+  const corpus = loadNativeCorpus(root);
+  return {
+    schemaVersion: "object-image-audit-v1",
+    images: corpus.rows.map((r) => ({
+      id: r.id,
+      file: r.file,
+      sha256: r.imageSha256,
+      pool: "development",
+      split: ["reference", "calibration_only"].includes(r.role) ? "train" : "test",
+      objectId: r.id,
+      sourceFamily: sha(Buffer.from(r.sourceFamily)),
+      origin: "source",
+      parentId: null,
+      evidenceFile: Object.entries(corpus.files).find(
+        ([, hash]) => hash === r.source.snapshotSha256,
+      )?.[0],
+      evidenceSha256: r.source.snapshotSha256,
+    })),
+  };
 }
 
 export function pinnedPixelDecoder(root) {

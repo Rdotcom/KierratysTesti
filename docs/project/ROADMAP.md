@@ -1,5 +1,12 @@
 # Roadmap
 
+- [x] Fresh private clean-copy import:98source originals preserved/98metadata-clean
+  pixel-identical children;5newfreeCommons sources/licence receipts/visual review.
+- [x] Actual196rowglobal lineage/receipt audit,19012pairs/0split leaks; expected
+  copies and4near-review pairs retained.18newregressions; no model quality claim.
+- [ ] Register bounded clean web-source development model comparison, separate
+  from the still missing physical12class/fourdevice acceptance set.
+
 - [x] Read-only byte/source/derived-lineage audit with actual93source images,
   canonical pixels/near-duplicate review and23newregressions. Explicit ImageIO
   decoder after retained historical Sharp drift failure; no pin relaxation.

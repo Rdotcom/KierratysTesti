@@ -1,5 +1,23 @@
 # Decision log
 
+## D-103 — Clean derivatives preserve rights and do not create test independence
+
+- Date2026-11-16. Owner requests cleaning, lineage verification and permitted free
+  source acquisition. Use bounded fixed-host Commons API/media and per-file CC
+  licences; no unknown mirrors/NC images/public redistribution/model calls.
+- Store originals unchanged and copy only decoded/normalized pixels into clean
+  PNG children. Preserve external author/licence/source/hash/parent/recipe records.
+  Actual native PNG encoding adds EXIF; remove ancillary chunks with CRC checks.
+  ImageIO synthesizes descriptive tags: detect actual container blocks instead,
+  retain all first/v2failures and old broad reports. No silent gate relaxation.
+- Global grouping checks source/physical pools, split/object/family/byte/pixel
+  joins; related originals/children remain one scene, not new independent data.
+  Near flags require review; no hidden removal of difficult historical examples.
+- Newly acquired5web images are development candidates only, visually reviewed.
+  Printed/multiple objects are controls; source claims not material truth. Preserve
+  coffee-cup uploader/photographer credit discrepancy. Next development smoke
+  may be useful before full physical data, never a substitute for device quality.
+
 ## D-102 — Preserve decoder failure; separate real byte audit from quality
 
 - Date2026-11-16: owner requests file/origin verification then model comparison.
