@@ -1,3 +1,3 @@
 # Next action
 
-Isolate MEM-01's observed46,121,080-byte retained footprint in the actual iPhone photo pipeline using a matched warmed Home baseline and numeric per-stage profiling, preserving the original incomplete run and failed32MiB diagnostic boundary before changing caches.
+Isolate MEM-01's first-use UI/camera allocation from repeated recognition by preregistering and running one numeric-only actual-iPhone experiment with an already-warmed photo-pipeline Home baseline and bounded repeated cycles, preserving all failed32MiB results and identifying retained allocation owners before changing caches.

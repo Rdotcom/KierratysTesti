@@ -74,6 +74,10 @@ export function sortConfirmedPhotoPart(
   });
 }
 
+// The supported iOS photo flow must not start at Expo's full-resolution "Photo"
+// preset while waiting for asynchronous size negotiation.
+export const localPhotoInitialSize = "1280x720";
+
 export function choosePhotoSize(sizes: readonly string[]): string | undefined {
   return sizes
     .map((value) => ({
@@ -84,6 +88,22 @@ export function choosePhotoSize(sizes: readonly string[]): string | undefined {
     }))
     .filter((size) => size.pixels >= 300_000 && size.pixels <= 2_000_000)
     .sort((a, b) => b.pixels - a.pixels)[0]?.value;
+}
+
+export async function resolvePhotoCaptureSize(
+  getSizes: () => Promise<readonly string[]>,
+): Promise<string> {
+  try {
+    const sizes = await getSizes();
+    if (!Array.isArray(sizes)) return localPhotoInitialSize;
+    const bounded = sizes
+      .slice(0, 128)
+      .filter((value) => typeof value === "string" && value.length <= 24);
+    return choosePhotoSize(bounded) ?? localPhotoInitialSize;
+  } catch {
+    // Keep the explicit bounded preset, never reset to the native Photo default.
+    return localPhotoInitialSize;
+  }
 }
 
 export function canUsePhotoCapture(

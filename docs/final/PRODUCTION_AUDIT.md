@@ -1059,3 +1059,15 @@ The time-sensitive source set below was revalidated on 2026-08-28. The existing 
 - Google Play target API requirement effective 2026-08-31: <https://support.google.com/googleplay/android-developer/answer/11926878?hl=en-GB_ALL>
 - Apple app privacy and Google Data Safety: <https://developer.apple.com/app-store/app-privacy-details/> and <https://support.google.com/googleplay/android-developer/answer/10787469?hl=en>
 - Google Play preview assets: <https://support.google.com/googleplay/android-developer/answer/9866151?hl=en>
+
+## November16 memory finding update
+
+MEM-01 — medium / OPEN / locally executable. Actual numeric camera comparison
+retains33,882,208bytes baseline versus35,602,552bytes with bounded startup;
+both exceed unchanged32MiB. Reproduce with the preregistered protocol in
+docs/research/memory-attribution-protocol-2026-11-16.md; exact artifacts/receipts
+and source paths in MEMORY_RETENTION_ATTRIBUTION.md. Required remediation:
+identify first-use UI/camera/cache allocation owners against an already-warmed
+pipeline, then test a source-backed change. Native model RSS release is observed;
+allocator relief0bytes and restart hypothesis are not effective fixes. No
+severity lowering, forced cache purge or leak-free claim. Public NO-GO persists.

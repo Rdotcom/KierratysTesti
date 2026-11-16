@@ -1,5 +1,14 @@
 # Acceptance criteria
 
+November16memory attribution: keep original32MiBboundary and all prior failures.
+Freeze actual signed artifact/native source BEFORE calls; numeric-only bounded
+samples, distinguish RSS/footprint/lifetime peak/heap. No owner photo/OCR output.
+Native-only13.35MBretained does not explain all prior46.12MB. Camera baseline
+33,882,208and guarded35,602,552bytes BOTH fail33,554,432boundary;4starts remain
+in both. MEM-01OPEN, not a leak or memory-fix approval. Source startup/shutter
+safeguard has separate behavior tests. Normal signed build must exclude probe
+code/fixtures; preserve model/legacy/JPEG/privacy pins and prior quality gates.
+
 November16JPEG repair: all4pinned JPEG tensors byte-identical Mac/iPhone; all15
 scores identical, original top1/error≤0.005 and strictMac≤1e-5 now pass without
 model/prompt/threshold tuning. Preserve old failed results. New policy identified

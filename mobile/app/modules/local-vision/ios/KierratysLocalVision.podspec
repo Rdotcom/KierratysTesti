@@ -15,9 +15,10 @@ Pod::Spec.new do |s|
   s.static_framework = true
   s.swift_version = '5.9'
   s.source_files = '*.{swift,c,h}'
+  pod_config = {}
   if File.directory?(File.join(__dir__, 'JpegDecoderAssets/TurboJPEG.xcframework'))
     s.vendored_frameworks = 'JpegDecoderAssets/TurboJPEG.xcframework'
-    s.pod_target_xcconfig = {
+    pod_config = {
       'SWIFT_ACTIVE_COMPILATION_CONDITIONS' => '$(inherited) KIG_PINNED_JPEG',
       'HEADER_SEARCH_PATHS' => '$(inherited) "$(PODS_TARGET_SRCROOT)/JpegDecoderAssets/include"'
     }
@@ -46,7 +47,12 @@ Pod::Spec.new do |s|
       'JpegDecoderAssets/LICENSE.md', 'JpegDecoderAssets/README.ijg'
     ]
   end
+  if ENV['KIG_MEMORY_QA'] == '1'
+    pod_config['SWIFT_ACTIVE_COMPILATION_CONDITIONS'] = (pod_config['SWIFT_ACTIVE_COMPILATION_CONDITIONS'] || '$(inherited)') + ' LOCAL_MEMORY_QA'
+    resource_bundles['KierratysMemoryProbeAssets'] = ['MemoryProbeAssets/*']
+  end
   s.resource_bundles = resource_bundles
+  s.pod_target_xcconfig = pod_config unless pod_config.empty?
   s.frameworks = 'Vision', 'ImageIO', 'CoreGraphics', 'UniformTypeIdentifiers', 'CoreML', 'CoreImage', 'CoreVideo', 'CryptoKit'
   s.dependency 'ExpoModulesCore'
 end

@@ -1,5 +1,14 @@
 # Release decision
 
+## November16 — attribution complete for this experiment; still NO-GO
+
+MEM-01remains medium/open/local. Bounded camera startup/shutter safeguard does
+not pass the paired retained-memory diagnostic:33.88MBbaseline/35.60MBguarded,
+both over32MiB. Four camera starts remain. No memory improvement/leak-free claim;
+native model working set releases, allocator relief0bytes not shipped. Owner3+3
+camera captures succeed; full result:MEMORY_RETENTION_ATTRIBUTION.md. Prior
+JPEG/quality/platform/pressure/energy/assets/store gates remain; no publication.
+
 ## November16 — client13 installed, JPEG repaired; still NO-GO
 
 Four fixed JPEG input tensors/full15scores now match Mac/phone exactly under

@@ -1,5 +1,12 @@
 # Roadmap
 
+- [x] Actual-app native/camera numeric attribution without JIT,705pins/0failed
+  reads; allocator relief0bytes/rejected, model RSS releases between requests.
+- [x] Bounded720p camera startup/readiness safeguard with regression tests.
+- [ ] MEM-01 remains OPEN: paired33.88/35.60MBretained, both fail32MiB;4camera
+  starts each. Restart/memory hypothesis not confirmed. Isolate already-warmed
+  pipeline versus first-use UI/camera allocations before another cache change.
+
 - [x] Correct JPEG platform drift via pinned scalar decoder:4/4actual input and
   full-score parity, unchanged gates/model pins, bounded C adapter/1929ASan+UBSan
   checks, signed installed13and3owner camera successes.

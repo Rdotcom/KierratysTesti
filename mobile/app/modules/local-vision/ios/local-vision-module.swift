@@ -4,6 +4,10 @@ public final class LocalVisionModule: Module {
   public func definition() -> ModuleDefinition {
     Name("KierratysLocalVision")
 
+    #if LOCAL_MEMORY_QA
+    OnCreate { LocalMemoryProbe.startIfRequested() }
+    #endif
+
     AsyncFunction("recognizeObjectCandidates") { (base64: String, requestID: String, timeoutMs: Int, promise: Promise) in
       LocalVisionEngine.shared.recognizeObjectCandidates(input: base64, requestID: requestID, timeoutMs: timeoutMs) {
         Self.resolveReference($0, promise)

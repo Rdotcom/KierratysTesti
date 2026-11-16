@@ -574,6 +574,9 @@ final class LocalVisionEngine: @unchecked Sendable {
       }
       let onTime = ProcessInfo.processInfo.systemUptime - started < deadlineSeconds
       deadline.setEventHandler {}; deadline.cancel()
+      #if LOCAL_MEMORY_QA
+      LocalMemoryProbe.note("worker_pool_drained")
+      #endif
       // Never unlock on UI/JS timeout: Core ML and decode are synchronous.
       stateLock.lock(); inFlight = false; activeObjectRequest = nil; stateLock.unlock()
       delivery.resolve(onTime ? outcome : .failure(.timeout))
@@ -596,7 +599,13 @@ final class LocalVisionEngine: @unchecked Sendable {
         bytes.base64EncodedString() == input else { throw LocalVisionFailure.invalidImage }
       try cancellation.check(deadlineAt: deadlineAt)
       guard #available(iOS 18.0, macOS 15.0, *) else { throw LocalVisionFailure.unavailable }
+      #if LOCAL_MEMORY_QA
+      LocalMemoryProbe.note("before_legacy_release")
+      #endif
       predictor.releaseCachedModel()
+      #if LOCAL_MEMORY_QA
+      LocalMemoryProbe.note("after_legacy_release")
+      #endif
       return try SiglipObjectPredictor.predict(bytes: bytes, cancellation: cancellation, deadlineAt: deadlineAt)
     }, completion: completion)
   }
@@ -644,7 +653,13 @@ final class LocalVisionEngine: @unchecked Sendable {
     let imageHash = digest(bytes)
     try check()
     if kind == .hashBytes { return imageHash }
+    #if LOCAL_MEMORY_QA
+    LocalMemoryProbe.note("before_reference_decode")
+    #endif
     let decoded = try decodeJPEG(jpegBase64: input)
+    #if LOCAL_MEMORY_QA
+    LocalMemoryProbe.note("after_reference_decode")
+    #endif
     try check()
     if kind == .productEvidence {
       return try productEvidence(image: decoded.pixels, orientation: decoded.orientation,
@@ -724,7 +739,13 @@ final class LocalVisionEngine: @unchecked Sendable {
     timer.setEventHandler { cancellable.cancel() }; timer.resume()
     defer { timer.setEventHandler {}; timer.cancel() }
     let handler = VNImageRequestHandler(cgImage: image, orientation: orientation, options: [:])
+    #if LOCAL_MEMORY_QA
+    LocalMemoryProbe.note("before_vision")
+    #endif
     try handler.perform([barcode, full, detail]); try check()
+    #if LOCAL_MEMORY_QA
+    LocalMemoryProbe.note("after_vision")
+    #endif
     let codes = (barcode.results ?? []).compactMap { value -> [String: String]? in
       guard let payload = value.payloadStringValue, payload.utf8.count <= 64 else { return nil }
       return ["symbology": value.symbology.rawValue, "value": payload]
@@ -744,7 +765,13 @@ final class LocalVisionEngine: @unchecked Sendable {
     var embedding: [String: Any] = ["status": "skipped_barcode"]
     if codes.isEmpty {
       do {
+        #if LOCAL_MEMORY_QA
+        LocalMemoryProbe.note("before_mobileclip")
+        #endif
         let vector = try predictor.referenceEmbedding(image: image, orientation: orientation, deadlineAt: deadlineAt)
+        #if LOCAL_MEMORY_QA
+        LocalMemoryProbe.note("mobileclip_predicted")
+        #endif
         embedding = ["status": "observed", "encoderSha256": LocalMobileClipPredictor.referenceEncoderSha256,
           "preprocessingSha256": LocalMobileClipPredictor.referencePreprocessingSha256, "vector": vector]
       } catch {

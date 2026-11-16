@@ -1,5 +1,16 @@
 # Owner actions
 
+## November16 — memory attribution follow-through
+
+- Engineering/Codex: execute NEXT_ACTION's preregistered warmed-pipeline isolation
+  for MEM-01; preserve paired failures and inspect allocation ownership before
+  changing caches. No repeat-for-green/allocator trim/fake memory warning.
+- Owner: three baseline and three guarded spoon captures are complete. No new
+  action now; connect/unlock/operate camera only if a later bounded test requests
+  it. No photo upload/account/payment/independent reviewer required here.
+- Development profile still expires23.11.2026 at12:53:38Helsinki. No renewal or
+  GitHub publication is implied by the normal replacement installation.
+
 ## November16 — renewal completed
 
 - No immediate signing/account action remains. Verified new profile lasts until

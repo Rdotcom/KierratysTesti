@@ -1,5 +1,41 @@
 # Test evidence
 
+## November16 — actual-app attribution; unsuccessful retention hypothesis retained
+
+Details:MEMORY_RETENTION_ATTRIBUTION.md. Three frozen runs/705pins independently
+rehash unchanged. Native-only486samples/3+3forwards/0failed reads; score hashes
+match prior JPEG control. Native-only retained13,353,056bytes; allocator relief
+0bytes rejected. Camera baseline1462samples and guarded1298samples/0failed reads,
+3+3forwards each/owner confirms3captures each/no owner image/OCR/scores exported.
+Both report4session starts; retention33,882,208and35,602,552bytes BOTH FAIL the
+unchanged33,554,432budget. No proven restart or memory improvement; MEM-01OPEN.
+Old46,121,080-byte/incomplete settling failures remain. No leak-free/pressure/
+energy/general-quality/Samsung/airplane-mode approval.
+
+Startup safeguard tests:4mobile size/async/fallback cases,2source lifecycle
+cases;6QA-elision/privacy/normal-artifact policies and5numeric evidence checks.
+Old stale-size source assertion updated for the stronger generation+view guard;
+initial failure retained. Normal native engine/module/predictor equal d453a91
+after QA elision (whitespace ignored); no model/decoder/scoring changes.
+
+Final `pnpm validate:mobile` and `pnpm validate` exit0: **1982tests**
+(920Node+1062workspace), typechecks/boundaries/format/lint/builds/18web routes
+pass,19existing warnings. Logs:
+`work/memory-repair-20261116.zVxEIl/{validate-mobile-final,validate-final}.log`.
+Strict Swift6diagnostic compile/31native lifecycle checks passed before device
+runs; numerical checks are separate denominators, not general recognition tests.
+Normal signed Release14build and artifact verifier pass:11embedded signatures,
+14prior legacy pins/candidate/prototype/JPEG-notice pins/privacy preserved,
+Hermes embedded, no memory-probe markers or fixture bundle. Profile reused,
+expiry23November12:53:38Helsinki. Normal artifact/rollback/build/verification:
+`work/memory-client14-normal-20261116.ccROXb/`. No paid service/key/server/push.
+Replacement installation, normal launch and exact0.1.0(14)inventory pass; no
+uninstall/data reset. Three camera successes apply to the frozen diagnostic14,
+not a separately repeated normal14camera exercise; the same JS source and
+unchanged native production code are delivered without diagnostic hooks.
+Podspec getter failure and wrong-cwd normal pod install were repaired; failed
+logs retained. Generated QA bundle was recoverably archived, no user data reset.
+
 ## November16 — JPEG score drift repaired; actual-app memory finding retained
 
 Details/receipts:JPEG_REPAIR_AND_APP_MEMORY.md. New scalar pinned JPEG decoding

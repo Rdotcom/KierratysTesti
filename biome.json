@@ -17,6 +17,7 @@
       "!mobile/app/modules/local-vision/ios/SiglipCandidateAssets/vision-int8-block32.mlmodelc",
       "!mobile/app/modules/local-vision/ios/SiglipCandidateAssets/prototypes.json",
       "!mobile/app/modules/local-vision/ios/JpegDecoderAssets",
+      "!mobile/app/modules/local-vision/ios/MemoryProbeAssets",
       "!work",
       "!outputs"
     ]

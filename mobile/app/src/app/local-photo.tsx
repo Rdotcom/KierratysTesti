@@ -37,7 +37,11 @@ import {
 import { type LocalPhotoPhase, localPhotoPresentation } from "@/features/local-vision/presentation";
 import { localReadinessMessage } from "@/features/local-vision/readiness";
 import { isLocalCaptureUri } from "@/features/local-vision/recognizer";
-import { canUsePhotoCapture, choosePhotoSize } from "@/features/photo/sorting";
+import {
+  canUsePhotoCapture,
+  localPhotoInitialSize,
+  resolvePhotoCaptureSize,
+} from "@/features/photo/sorting";
 import { useSoundFeedback } from "@/features/sound-feedback/context";
 import { useLanguage } from "@/i18n/language-context";
 import { radius, useAppTheme } from "@/theme/tokens";
@@ -74,7 +78,7 @@ export default function LocalPhotoScreen() {
   const [checking, setChecking] = useState(false);
   const [readiness, setReadiness] = useState<LocalVisionReadiness>();
   const [ready, setReady] = useState(false);
-  const [pictureSize, setPictureSize] = useState<string>();
+  const [pictureSize, setPictureSize] = useState<string>(localPhotoInitialSize);
   const camera = useRef<CameraView>(null);
   const generation = useRef(0);
   const locked = useRef(false);
@@ -99,6 +103,7 @@ export default function LocalPhotoScreen() {
     setChecking(false);
     setReadiness(undefined);
     setReady(false);
+    setPictureSize(localPhotoInitialSize);
     setPhase("intro");
   }, []);
   useFocusEffect(
@@ -374,7 +379,7 @@ export default function LocalPhotoScreen() {
               ref={camera}
               style={styles.camera}
               facing="back"
-              {...(pictureSize ? { pictureSize } : {})}
+              pictureSize={pictureSize}
               accessibilityLabel={t("localVisionCameraLabel")}
               testID="local-photo-camera"
               onMountError={() => {
@@ -384,14 +389,16 @@ export default function LocalPhotoScreen() {
               }}
               onCameraReady={() => {
                 if (cameraGeneration !== generation.current) return;
-                setReady(true);
-                void camera.current
-                  ?.getAvailablePictureSizesAsync()
-                  .then((sizes) => {
-                    if (cameraGeneration === generation.current)
-                      setPictureSize(choosePhotoSize(sizes));
-                  })
-                  .catch(() => undefined);
+                setReady(false);
+                const view = camera.current;
+                if (!view) return;
+                void resolvePhotoCaptureSize(() => view.getAvailablePictureSizesAsync()).then(
+                  (size) => {
+                    if (cameraGeneration !== generation.current || camera.current !== view) return;
+                    setPictureSize(size);
+                    setReady(true);
+                  },
+                );
               }}
             />
             <Button

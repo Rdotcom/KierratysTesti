@@ -80,6 +80,9 @@ enum SiglipObjectPredictor {
   static func predict(bytes: Data, cancellation: SiglipRequestCancellation, deadlineAt: TimeInterval) throws -> String {
     try cancellation.check(deadlineAt: deadlineAt)
     let root = try resources(), modelURL = root.appendingPathComponent("vision-int8-block32.mlmodelc", isDirectory: true)
+    #if LOCAL_MEMORY_QA
+    LocalMemoryProbe.note("before_siglip_integrity")
+    #endif
     for (name, sha) in files {
       _ = try checkedBytes(modelURL.appendingPathComponent(name), sha: sha, maximum: 150 * 1024 * 1024)
       try cancellation.check(deadlineAt: deadlineAt)
@@ -90,11 +93,23 @@ enum SiglipObjectPredictor {
       prototypes.vectors.allSatisfy({ vector in vector.count == 768 && vector.allSatisfy(\.isFinite)
         && abs(sqrt(vector.reduce(0) { $0 + $1 * $1 }) - 1) < 0.00001 }) else { throw LocalVisionFailure.unavailable }
     try cancellation.check(deadlineAt: deadlineAt)
+    #if LOCAL_MEMORY_QA
+    LocalMemoryProbe.note("before_siglip_pixels")
+    #endif
     let tensor = try SiglipImageEncoder.preprocess(imageData: bytes)
+    #if LOCAL_MEMORY_QA
+    LocalMemoryProbe.note("after_siglip_pixels")
+    #endif
     try cancellation.check(deadlineAt: deadlineAt)
     let encoder = try SiglipImageEncoder(compiledModelURL: modelURL)
+    #if LOCAL_MEMORY_QA
+    LocalMemoryProbe.note("siglip_loaded")
+    #endif
     try cancellation.check(deadlineAt: deadlineAt)
     let vector = try encoder.encode(tensor: tensor)
+    #if LOCAL_MEMORY_QA
+    LocalMemoryProbe.note("siglip_predicted")
+    #endif
     try cancellation.check(deadlineAt: deadlineAt)
     let scores = zip(classes, prototypes.vectors).map { kind, prototype -> [String: Any] in
       let similarity = zip(vector, prototype).reduce(0) { $0 + $1.0 * $1.1 }

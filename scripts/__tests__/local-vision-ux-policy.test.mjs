@@ -60,7 +60,7 @@ test("late camera-ready, mount-error and size callbacks cannot update a newer ge
   );
   assert.match(
     text,
-    /if \(cameraGeneration === generation\.current\)\s*setPictureSize\(choosePhotoSize\(sizes\)\)/u,
+    /if \(cameraGeneration !== generation\.current \|\| camera\.current !== view\) return;\s*setPictureSize\(size\);\s*setReady\(true\)/u,
   );
 });
 

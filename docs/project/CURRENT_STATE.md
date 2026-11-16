@@ -1,5 +1,27 @@
 # Current state
 
+## Memory attribution and bounded camera startup — November16
+
+- QA-only native timer replaces debugger injection for attribution:486native/
+  1462baseline-camera/1298guarded-camera samples, zero failed reads,705frozen
+  pins reverified. Each run3MobileCLIP+3SigLIP; owner confirms3camera successes
+  per camera run. No owner photos/OCR/scores exported, no network/paid service.
+- Model RSS falls after every worker pool; native-only retained13.35MB. Allocator
+  relief releases0bytes, rejected for production. Not all old46.12MBattributed.
+- Source safeguard: explicit720p on every mount, await size negotiation before
+  shutter, bounded fallback/stale-view guard. Same eventual resolution/quality.
+  Actual paired retention33,882,208→35,602,552bytes; both FAIL unchanged32MiB.
+  Camera starts4in both: restart hypothesis NOT confirmed, no memory-fix claim.
+- MEM-01medium/local stays OPEN. Next isolate first-use UI/camera versus repeated
+  warmed-pipeline allocation. Details:MEMORY_RETENTION_ATTRIBUTION.md. Prior
+  failures remain; no pressure/energy/leak-free/general recognition approval.
+- Normal signed0.1.0(14) replacement-installed/launched, exact inventory verified;
+  11signatures/14legacy pins/candidate/JPEG/privacy pass, no probe/fixture shipped.
+  Profile reused through23November12:53:38Helsinki. Final mobile/full1982tests
+  (920Node+1062workspace)/allchecks/builds/18web routes pass,19existing warnings.
+  Delivery and final validation recorded in TEST_EVIDENCE.md.
+  No GitHub push; public NO-GO remains. Earlier checkpoints below are historical.
+
 ## JPEG repaired; actual client13 memory measured — November16
 
 - Optional SigLIP JPEG path uses pinned libjpeg-turbo3.2.1 scalar/accurate integer

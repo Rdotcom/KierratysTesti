@@ -1,5 +1,13 @@
 # External blockers
 
+November16attribution supersedes earlier numeric-instrumentation blockers:
+native timer works on actual app;705pins and3successful owner camera captures
+per comparison run. MEM-01is STILL local engineering, not an account/device
+credential blocker: paired33.88/35.60MBboth fail32MiB and restart remains.
+No new external action required now. Future matched warmed-camera experiment
+needs connected/unlocked device/operator only as requested. Existing quality/
+Samsung/energy/pressure/assets/store limits and23Novemberprofile expiry remain.
+
 November16JPEG/memory update supersedes earlier integration notes:4/4actual
 JPEG input/score drift resolved, client13signed/installed and3owner camera cycles
 succeed. No new account/payment/trust/key needed. Instruments compatibility issue

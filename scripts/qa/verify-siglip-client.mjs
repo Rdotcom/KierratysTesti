@@ -82,8 +82,13 @@ for (const marker of [
   "object_pre_dispatch_cancel",
   "commons-1-clean",
   "SiglipValidationDelegate",
+  "--local-memory-qa",
+  "--local-memory-camera-qa",
+  "memory-attribution-v1",
+  "kig-memory-attribution-start-failed.json",
 ])
   assert(!js.includes(Buffer.from(marker)) && !binary.includes(Buffer.from(marker)), marker);
+assert(!fs.existsSync(path.join(app, "KierratysMemoryProbeAssets.bundle")), "no_memory_qa_assets");
 assert(
   !/sk-proj-[A-Za-z0-9_-]{20,}|-----BEGIN (?:RSA |EC )?PRIVATE KEY-----/.test(
     js.toString("latin1"),

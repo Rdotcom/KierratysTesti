@@ -1,5 +1,22 @@
 # Decision log
 
+## D-109 — Attribute memory numerically; retain an unsuccessful repair hypothesis
+
+- Date2026-11-16: native-only and owner camera runs, no LLDB/JIT/owner-image
+  export. Freeze signed artifact/native source first; independently rehash705pins.
+  Native-only13.35MBretained; large SigLIP RSS releases each cycle. Public malloc
+  relief returns0bytes: do not ship it, fake warnings or broad cache purges.
+- Explicit720p startup and readiness/stale-view guard address a source-level
+  allocation/shutter race hazard, without changing eventual image quality/model.
+  Actual camera pair BOTH fails unchanged32MiB:33.88MBbaseline/35.60MBguarded,
+ 4starts in both. No causal proof, memory improvement or leak-free claim.
+- Keep MEM-01medium/open/local and old46.12MB/incomplete measurement. Next
+  isolate warm UI/camera/framework versus repeated allocation. One pair is not
+  statistical regression evidence; never resample or raise budget for green.
+- QA probe absent from normal build by compile flag, no public bridge; verifier
+  rejects code markers/resource bundle. Preserve rollback/data, model/legacy/
+  JPEG/privacy pins. No push/payment/key/server exposure/public release.
+
 ## D-108 — Pin JPEG decoding; measure real app without hiding retained memory
 
 - Date2026-11-16: owner requests JPEG repair/physical app memory testing. CPU
