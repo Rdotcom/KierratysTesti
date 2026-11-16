@@ -14,9 +14,16 @@ assert(
     !origin.hash &&
     origin.pathname === "/",
 );
-const prior = path.join(root, "work/ios-renewal-2026-11-16.XZmRUX/KeepItGreen.app");
+const build = JSON.parse(fs.readFileSync(path.join(root, "mobile/app/app.json"))).expo.ios
+  .buildNumber;
+assert(/^\d{1,5}$/.test(build));
+const prior = path.resolve(
+  root,
+  process.argv[4] ?? "work/ios-renewal-2026-11-16.XZmRUX/KeepItGreen.app",
+);
+assert(prior.startsWith(`${root}/work/`) && fs.realpathSync(prior) === prior);
 execFileSync("/usr/bin/codesign", ["--verify", "--deep", "--strict", prior], { stdio: "pipe" });
-const backup = path.join(run, "rollback-client11.app");
+const backup = path.join(run, "rollback-prior.app");
 assert(!fs.existsSync(backup));
 execFileSync("/bin/cp", ["-cR", prior, backup]);
 const profile = execFileSync(
@@ -33,7 +40,7 @@ assert(/^[A-Z0-9]{10}$/.test(team));
 // Reuse current build cache, never remove/clean it or upgrade dependencies.
 const derived = path.join(root, "work/native-reference-ports-2026-11-14.P5tYhw/DerivedData");
 assert(fs.realpathSync(derived) === derived);
-const log = fs.openSync(path.join(run, "client12-build.log"), "wx");
+const log = fs.openSync(path.join(run, `client${build}-build.log`), "wx");
 const r = spawnSync(
   "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild",
   [
@@ -75,14 +82,14 @@ const r = spawnSync(
 );
 fs.closeSync(log);
 fs.writeFileSync(
-  path.join(run, "client12-build-process.json"),
+  path.join(run, `client${build}-build-process.json`),
   JSON.stringify({ status: r.status, signal: r.signal, errorCode: r.error?.code ?? null }),
   { flag: "wx" },
 );
 assert.equal(r.status, 0, "native_build_failed_retained");
 const app = path.join(derived, "Build/Products/Release-iphoneos/KeepItGreen.app"),
-  out = path.join(run, "client12.app");
+  out = path.join(run, `client${build}.app`);
 execFileSync("/usr/bin/codesign", ["--verify", "--deep", "--strict", app], { stdio: "pipe" });
 assert(!fs.existsSync(out));
 execFileSync("/bin/cp", ["-cR", app, out]);
-console.log("Signed client12 preserved; verify before replacement installation.");
+console.log(`Signed client${build} preserved; verify before replacement installation.`);

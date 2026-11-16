@@ -11,6 +11,8 @@ export const objectCandidatesFi = {
   objectCandidateUnavailable:
     "Esine-ehdotuksia ei saatu. Voit kuvata uudelleen, lukea viivakoodin tai valita materiaalin itse.",
   objectCandidateSource: "Paikallinen kuvamalli: SigLIP2 · ei varmennettu tunnistus",
+  objectDecoderAttribution:
+    "JPEG-kuvien purku: libjpeg-turbo 3.2.1 (IJG ja BSD). This software is based in part on the work of the Independent JPEG Group. Lisenssit sisältyvät tätä tunnistusta tukevaan iPhone-asennukseen.",
   objectCandidateGuide: "Valitse materiaali lajitteluoppaasta",
   objectCup: "Muki tai kuppi",
   objectSpoon: "Lusikka",
@@ -38,6 +40,8 @@ export const objectCandidatesEn: Record<keyof typeof objectCandidatesFi, string>
   objectCandidateUnavailable:
     "No object suggestions were available. Try another photo, read the barcode or choose the material yourself.",
   objectCandidateSource: "On-device image model: SigLIP2 · unverified recognition",
+  objectDecoderAttribution:
+    "JPEG decoding: libjpeg-turbo 3.2.1 (IJG and BSD). This software is based in part on the work of the Independent JPEG Group. Licence notices are included in supporting iPhone installations.",
   objectCandidateGuide: "Choose a material in the sorting guide",
   objectCup: "Mug or cup",
   objectSpoon: "Spoon",

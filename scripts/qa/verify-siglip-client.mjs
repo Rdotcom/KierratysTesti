@@ -8,7 +8,10 @@ const root = fs.realpathSync(process.cwd()),
   device = process.argv[3];
 assert(run.startsWith(`${root}/work/`) && fs.realpathSync(run) === run);
 assert(/^[A-Za-z0-9-]{24,64}$/.test(device));
-const app = path.join(run, "client12.app"),
+const build = JSON.parse(fs.readFileSync(path.join(root, "mobile/app/app.json"))).expo.ios
+  .buildNumber;
+assert(/^\d{1,5}$/.test(build));
+const app = path.join(run, `client${build}.app`),
   id = "fi.roopeaaltonen.kierratysappi";
 function command(exe, args, input) {
   const r = spawnSync(exe, args, { input, encoding: "utf8", timeout: 30000, maxBuffer: 4000000 });
@@ -18,7 +21,7 @@ function command(exe, args, input) {
 const extract = (file, key) => command("/usr/bin/plutil", ["-extract", key, "raw", file]).trim();
 const hash = (p) => createHash("sha256").update(fs.readFileSync(p)).digest("hex");
 assert.equal(extract(path.join(app, "Info.plist"), "CFBundleIdentifier"), id);
-assert.equal(extract(path.join(app, "Info.plist"), "CFBundleVersion"), "12");
+assert.equal(extract(path.join(app, "Info.plist"), "CFBundleVersion"), build);
 command("/usr/bin/codesign", ["--verify", "--deep", "--strict", app]);
 const frameworks = fs
   .readdirSync(path.join(app, "Frameworks"))
@@ -86,7 +89,7 @@ assert(
     js.toString("latin1"),
   ),
 );
-const prior = path.join(run, "rollback-client11.app"),
+const prior = path.join(run, "rollback-prior.app"),
   legacy = "KierratysLocalVisionModels.bundle",
   pins = {};
 function walk(dir, prefix = "") {
@@ -105,8 +108,19 @@ for (const [p, h] of Object.entries(pins))
   assert.equal(hash(path.join(app, legacy, p)), h, `legacy:${p}`);
 const privacy = "KierratysLocalVisionPrivacy.bundle/PrivacyInfo.xcprivacy";
 assert.equal(hash(path.join(app, privacy)), hash(path.join(prior, privacy)));
+if (Number(build) >= 13) {
+  assert(
+    binary.includes(Buffer.from("siglip2-jpeg-turbo3.2.1-islow-nosimd-srgb-aa22-224-nchw-v2")),
+  );
+  for (const name of ["LICENSE.md", "README.ijg"])
+    assert.equal(
+      hash(path.join(app, "KierratysJpegDecoderNotices.bundle", name)),
+      hash(path.join(root, "mobile/app/modules/local-vision/ios/JpegDecoderAssets", name)),
+    );
+  assert(!binary.includes(Buffer.from("kig-app-memory-qa.json")), "no_compiled_memory_sampler");
+}
 const result = {
-  build: "12",
+  build,
   version: "0.1.0",
   signature: true,
   embeddedSignatures: frameworks.length,
@@ -118,11 +132,16 @@ const result = {
   embeddedJavaScript: true,
   newBridge: true,
   qaHooksAbsent: true,
+  pinnedJpegPolicyAndNotices: Number(build) >= 13,
   binarySha256: hash(path.join(app, "KeepItGreen")),
   hermesSha256: hash(path.join(app, "main.jsbundle")),
   cameraCaptureVerified: false,
 };
-fs.writeFileSync(path.join(run, "client12-verification.json"), JSON.stringify(result, null, 2), {
-  flag: "wx",
-});
+fs.writeFileSync(
+  path.join(run, `client${build}-verification.json`),
+  JSON.stringify(result, null, 2),
+  {
+    flag: "wx",
+  },
+);
 console.log(JSON.stringify(result));

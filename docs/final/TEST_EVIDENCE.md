@@ -1,5 +1,37 @@
 # Test evidence
 
+## November16 — JPEG score drift repaired; actual-app memory finding retained
+
+Details/receipts:JPEG_REPAIR_AND_APP_MEMORY.md. New scalar pinned JPEG decoding
+gives byte-identical4/4Mac/phone tensors and full15scores; all original winners,
+error≤0.005 and strictMac≤1e-5 pass.8newcontrolled worker calls total/0inference
+failures/retries; old failure remains historical.103source/input/library pins
+and31lifecycle checks pass. Signed helper hash wasn't separately frozen before
+new calls; source/library/input locks were. Not a general-quality release benchmark.
+
+1929C assertions (incl500malformed inputs/all truncated prefixes) normal and
+full dependency+wrapper ASan/UBSan exit0, sanitizer stderr empty. StableSDK26.5
+Release13build/install/11signatures/14prior legacy pins/privacy/candidate pins/
+new dependency notice hashes pass. App202613097bytes;359454byte increase from12.
+Owner3camera cases each report“lusikka - haarukka - veitsi”; no raw photos acquired.
+Profile reused through23November12:53:38Helsinki, no paid/key/server/push.
+
+Actual app1800samples/0failed reads: idle median59688776, sampled camera footprint
+max114247976, kernel lifetime peak118868168, sampled maxRSS687702016bytes.
+Maxgap934.01ms;201idle/1599capture-phase. Timer cap prevents phase2, original
+retention gate false/incomplete. Separate passiveHome150samples/14.86s,0errors/
+no new recognition: final footprint105809856bytes; delta46121080(43.98MiB)
+FAILS unchanged32MiB boundary. Follow-up kernel lifetime peak123652032 includes
+Home/JIT/serialization, not an inference peak. MEM-01medium/local attribution open.
+No observed death during cycles, no leak-free/pressure/battery approval.
+
+Final pnpm validate:mobile/validate exit0:1965tests(907Node+1058workspace), all
+checks/builds/18web routes pass,19existing warnings.9newNode tests plus1mobile
+old-policy rejection; native C checks are separate denominator. Final logs:
+work/jpeg-memory-20261116.Rq7CuZ/{validate-mobile-final,validate-final}.log.
+Initial CPU preference/zero-byte source download/CMake config/marker reuse/
+locked launch/early collection/LLDB setup failures retained, not hidden.
+
 ## November16 — actual camera SigLIP2 integration, installed client12
 
 Final `pnpm validate:mobile` and `pnpm validate` exit0:1955tests

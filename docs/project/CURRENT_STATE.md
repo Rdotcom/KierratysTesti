@@ -1,5 +1,31 @@
 # Current state
 
+## JPEG repaired; actual client13 memory measured — November16
+
+- Optional SigLIP JPEG path uses pinned libjpeg-turbo3.2.1 scalar/accurate integer
+  decode with bounded own C adapter, new strict preprocessing identity; unchanged
+  PNG math/model/prototype/legacy pins. Separate IJG/BSD notices and attribution.
+- Actual4JPEGMac/phone tensors byte-identical;4newworker calls/platform preserve
+  all original top1/error≤0.005 and strictMac≤1e-5 (score difference0all4).
+  103pins/31lifecycle checks;1929C assertions normal+full-dependency ASan/UBSan
+  pass. Earlier CPU preference and old strictJPEG failures retained, not rewritten.
+- Signed Release0.1.0(13) replacement-installed.11embedded signatures/all14prior
+  legacy pins/privacy verified; candidate unchanged. App202613097bytes,359454
+  more than12; model bundle125494849bytes unchanged. Profile reused through
+  23November12:53:38Helsinki. Owner confirms3spoon captures, each Lusikka/Haarukka/
+  Veitsi. These are unverified forms, not exact product/material/bin guarantees.
+- Actual app1800samples: idle median59.69MB, camera-phase sampled max114.25MB,
+  kernel lifetime peak118.87MB, maxRSS687.70MB. Zero failed reads. Timer cap
+  prevented original settling phase: original retention gate false/incomplete.
+- Separate passive Home150samples/14.86s, no new recognition: footprint105.81MB,
+  delta46.12MB(43.98MiB) above idle; unchanged32MiB diagnostic boundary FAILS.
+  MEM-01medium/local: isolate warm UI/OCR/model/debugger cache retention; this
+  is NOT proof of a leak or no-leak/battery/pressure approval. Report both windows.
+- Final mobile/full validation:1965tests(907Node+1058workspace), checks/builds/
+  18web routes pass,19existing warnings. No paid service/key/server exposure/push.
+  Details:docs/final/JPEG_REPAIR_AND_APP_MEMORY.md. Public NO-GO remains.
+  Earlier checkpoints below are historical.
+
 ## SigLIP2 normal camera integration — November16 (supersedes earlier checkpoint)
 
 - Signed Release0.1.0(12) replacement-installed/launched; existing data/13legacy

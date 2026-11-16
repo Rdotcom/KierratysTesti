@@ -1,5 +1,21 @@
 # Dependency decisions
 
+## November16 — bounded deterministic JPEG input for optional SigLIP2
+
+libjpeg-turbo3.2.1 official tag commit7b4993786d856cbccabfc0ed2f923ba000e326cc,
+codeload archive SHA256e10ff4ce2943a9021f9b0398fe00029915dd4eaf32c7560e36305341ec826735.
+Source/header/licence read against current official upstream. Static scalar
+accurate-integer-IDCT/smooth-upsample builds, own bounded memory-only C adapter;
+reject warnings,8MP/4096axes/8MB,32MBintermediates/100scans,8-bit RGB/gray/YCbCr.
+No stb_image integration; no source changes to upstream JPEG algorithms.
+IJG+BSD full notices ship separately and acknowledgement appears in Legal.
+No NPM package upgrade/root lock change; only local podspec checksum/new static
+XCFramework integration. macOS/iPhone/ARM64-simulator library compilation is not
+Samsung/x86simulator evidence. NativeC1929checks/ASan+UBSan500malformed inputs
+pass; no claim of formal parser safety. Actual4JPEG phone/Mac tensors and scores
+now agree exactly with unchanged rank/score gates. Model/prototype/legacy pins
+preserved. Clean-checkout model asset delivery and broader release gates remain.
+
 No production dependency is accepted solely from memory. Versions are pinned after checking current official compatibility and package metadata. Latest package compatibility check: 2026-09-10. Latest toolchain/physical startup check: 2026-09-08 (older dependency set).
 
 September 10 current set: Expo **57.0.21**, Router **57.0.20**, unchanged RN **0.86.3** / dev-client **57.0.18**. GitHub Doctor first failed 19/20 on the previous Expo/Router patches; the minimum SDK-compatible update now passes frozen install, peers, install check, Doctor 20/20 and full **188-test** validation. Expo/Router were published September 8 at 13:50:37.144 / 13:48:35.933 UTC (over 42 hours before selection). Narrow `pnpm -r update @xmldom/xmldom js-yaml --depth Infinity` retains parent ranges and selects xmldom 0.8.15/0.9.12 and js-yaml 4.3.2, published August 21/26. No exclusions, overrides, new direct parser dependencies or toolchain major migration. Live security policy passes after closing 20 high records; six moderate and one low remain documented. The physical/native acceptance described below belongs to the older set; regenerate native files and rebuild/install before claiming the new set works on-device.

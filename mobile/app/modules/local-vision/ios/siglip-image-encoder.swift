@@ -3,12 +3,13 @@ import CoreML
 import CoreGraphics
 import ImageIO
 
-// Isolated candidate consumer, not called by the shipping recognition bridge.
+// Candidate consumer used by the optional, serial object-suggestion worker.
 // Embeddings are observations, never product/material/bin verification.
 @available(iOS 18.0, macOS 15.0, *)
 final class SiglipImageEncoder {
   private let model: MLModel
   static let computeIdentity = "siglip2-block32-fp32-cpu-only-v1"
+  static let preprocessingIdentity = "siglip2-jpeg-turbo3.2.1-islow-nosimd-srgb-aa22-224-nchw-v2"
 
   init(compiledModelURL: URL) throws {
     let config = MLModelConfiguration()
@@ -27,14 +28,55 @@ final class SiglipImageEncoder {
 
   static func preprocess(imageData: Data) throws -> [Float] {
     guard !imageData.isEmpty, imageData.count <= 8_000_000,
-          let source = CGImageSourceCreateWithData(imageData as CFData, [kCGImageSourceShouldCache: false] as CFDictionary),
+      let source = CGImageSourceCreateWithData(imageData as CFData, [kCGImageSourceShouldCache: false] as CFDictionary),
+      CGImageSourceGetCount(source) == 1,
+      let type = CGImageSourceGetType(source) as String? else { throw SiglipInputFailure.invalidImage }
+    if type != "public.jpeg" { return try preprocessImageIO(imageData: imageData, cpuPreferred: false) }
+#if KIG_PINNED_JPEG
+    guard let props = CGImageSourceCopyPropertiesAtIndex(source, 0, nil) as? [String: Any],
+      let w = props[kCGImagePropertyPixelWidth as String] as? Int,
+      let h = props[kCGImagePropertyPixelHeight as String] as? Int,
+      w > 0, h > 0, w <= 4096, h <= 4096, w * h <= 8_000_000 else { throw SiglipInputFailure.invalidImage }
+    if let profile = props[kCGImagePropertyProfileName as String] as? String,
+      !profile.lowercased().contains("srgb") { throw SiglipInputFailure.unsupportedImage }
+    var rgb = [UInt8](repeating: 0, count: w * h * 3)
+    let ok = rgb.withUnsafeMutableBufferPointer { output in
+      imageData.withUnsafeBytes { input in
+        kig_jpeg_decode(input.bindMemory(to: UInt8.self).baseAddress, imageData.count,
+          output.baseAddress, output.count, Int32(w), Int32(h))
+      }
+    }
+    guard ok == 1 else { throw SiglipInputFailure.invalidImage }
+    let exif = (props[kCGImagePropertyOrientation as String] as? Int) ?? 1
+    return try SiglipImagePreprocessor.tensor(rgb: .init(pixels: rgb, width: w, height: h), exif: exif)
+#else
+    // No silent return to OS-dependent JPEG pixels when the pinned dependency is absent.
+    throw SiglipInputFailure.unsupportedImage
+#endif
+  }
+
+#if LOCAL_VISION_QA
+  // Diagnostic only: do not promote this preference to a cross-OS guarantee.
+  static func preprocessCPUPreferred(imageData: Data) throws -> [Float] {
+    try preprocessImageIO(imageData: imageData, cpuPreferred: true)
+  }
+  static func preprocessSystemDefault(imageData: Data) throws -> [Float] {
+    try preprocessImageIO(imageData: imageData, cpuPreferred: false)
+  }
+#endif
+
+  private static func preprocessImageIO(imageData: Data, cpuPreferred: Bool) throws -> [Float] {
+    var options: [CFString: Any] = [kCGImageSourceShouldCache: false]
+    if cpuPreferred { options["kCGImageSourceUseHardwareAcceleration" as CFString] = false }
+    guard !imageData.isEmpty, imageData.count <= 8_000_000,
+          let source = CGImageSourceCreateWithData(imageData as CFData, options as CFDictionary),
           CGImageSourceGetCount(source) == 1,
           let type = CGImageSourceGetType(source) as String?, ["public.jpeg", "public.png"].contains(type),
           let props = CGImageSourceCopyPropertiesAtIndex(source, 0, nil) as? [String: Any],
           let w = props[kCGImagePropertyPixelWidth as String] as? Int,
           let h = props[kCGImagePropertyPixelHeight as String] as? Int,
           w > 0, h > 0, w <= 4096, h <= 4096, w * h <= 8_000_000,
-          let image = CGImageSourceCreateImageAtIndex(source, 0, nil), image.width == w, image.height == h,
+          let image = CGImageSourceCreateImageAtIndex(source, 0, cpuPreferred ? options as CFDictionary : nil), image.width == w, image.height == h,
           let color = CGColorSpace(name: CGColorSpace.sRGB) else { throw SiglipInputFailure.invalidImage }
     let exif = (props[kCGImagePropertyOrientation as String] as? Int) ?? 1
     var rgba = [UInt8](repeating: 0, count: w * h * 4)

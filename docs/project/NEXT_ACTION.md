@@ -1,3 +1,3 @@
 # Next action
 
-Implement and verify a clean-checkout, hash-pinned SigLIP2 acquisition/export/staging recipe with licence receipts so the optional camera model no longer depends on private work-directory artifacts, preserving current model/prototype pins and failed diagnostic evidence.
+Isolate MEM-01's observed46,121,080-byte retained footprint in the actual iPhone photo pipeline using a matched warmed Home baseline and numeric per-stage profiling, preserving the original incomplete run and failed32MiB diagnostic boundary before changing caches.

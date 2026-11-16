@@ -1,5 +1,9 @@
 # SigLIP2 camera integration — November 16, 2026
 
+Historical client12checkpoint. Later JPEG repair/installed13/actual-app memory
+results supersede open status here; see JPEG_REPAIR_AND_APP_MEMORY.md. Keep the
+original failed strict diagnostic and its evidence below unchanged.
+
 ## Outcome and scope
 
 KeepItGreen0.1.0(12), same technical app identity, is signed, replacement-installed

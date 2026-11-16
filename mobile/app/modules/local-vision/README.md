@@ -11,6 +11,27 @@ never silently fall back to a paid/network provider. Linking requires a native b
 
 ## Optional SigLIP2 object suggestions (client12)
 
+Client13 follow-up: JPEG input now uses libjpeg-turbo3.2.1/accurate integer IDCT,
+smooth chroma upsampling and scalar builds shared by macOS/iOS. This corrects the
+observed OS-dependent case3JPEG tensor/score difference; PNG resize/normalization,
+model and prototype hashes are unchanged. New preprocessing identity is explicit
+in native output and strict TS validation. Profiles not declared sRGB and
+unsupported CMYK/precision inputs are rejected rather than silently converted.
+No bit-identical claim for untested OS/architecture/colour formats.
+
+Build the separate small decoder artifact with
+`node scripts/qa/build-pinned-jpeg.mjs work/FRESH_JPEG_BUILD` after acquiring and
+hash-verifying the official pinned archive as described in that recipe. It uses
+CMake/Xcode for macOSARM64/iOSARM64/simulatorARM64, with no tools/SIMD. Assets
+are ignored; a clean checkout without them reports JPEG suggestions unavailable
+rather than silently restoring the old decoder. The legacy barcode/material/
+catalogue paths are not replaced. Existing model staging is still required.
+The own bounded C adapter is not an own JPEG algorithm. Its source is public;
+the dependency's IJG/BSD notices are included in a separate app resource bundle
+and attribution in Legal. This software is based in part on the work of the
+Independent JPEG Group. Full-app memory evidence and retained diagnostic failures
+are recorded in `docs/final/JPEG_REPAIR_AND_APP_MEMORY.md`.
+
 `recognizeObjectCandidates(jpegBase64, requestID, timeoutMs)` and matching-ID
 `cancelObjectCandidates(requestID)` add an optional iOS18+ path. The camera
 coordinator first preserves existing barcode/catalogue/text-confirmation evidence;

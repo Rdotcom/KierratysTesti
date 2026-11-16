@@ -1,5 +1,27 @@
 # Decision log
 
+## D-108 — Pin JPEG decoding; measure real app without hiding retained memory
+
+- Date2026-11-16: owner requests JPEG repair/physical app memory testing. CPU
+  preference alone fails; choose pinned official libjpeg-turbo3.2.1/accurate
+  integer IDCT/smooth upsampling/noSIMD with bounded own C memory adapter. Keep
+  PNG/model/prototype/rules/barcode paths. No own JPEG or learned algorithm claim.
+- Explicit v2preprocessing contract rejects old policy. IJG/BSD notices in separate
+  resources/Legal; no NPM upgrade, upstream source edits or legacy pin relaxation.
+  4tensor pairs/full15scores now agree with original gates unchanged.1929C tests/
+  ASan+UBSan pass, not formal parser safety or independent general-quality proof.
+- Client13signed/replacement install retains data and rollback12, valid existing
+  profile. Owner3successfulspoon captures; actual app numeric-only sampler,
+  no raw photo/OCR/history/device identifiers in sampled files. No compiled sampler.
+- Original1800sample cap prevents settling, so original gate stays false. Register
+  passive150sample Home follow-up, no new model calls.46.12MBretained delta fails
+  unchanged32MiB boundary; MEM-01medium/local investigation remains open, not a
+  proven leak. Do not relabel follow-up as original protocol pass or raise gates.
+- LLDB setup failures retained; local binary target/Objective-C NSTimer/public
+  Mach metrics work despite Instruments offline. Helper removed; app relaunched
+  without injected code. Generated numeric reports copied privately; no app reset.
+  No push/paid inference/key/server exposure/public release.
+
 ## D-107 — Optional object forms preserve evidence and uncertain failures
 
 - Date:2026-11-16. Owner requests camera integration/actual phone test. Replace11

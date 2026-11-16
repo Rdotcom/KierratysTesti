@@ -1,5 +1,17 @@
 # Acceptance criteria
 
+November16JPEG repair: all4pinned JPEG tensors byte-identical Mac/iPhone; all15
+scores identical, original top1/error≤0.005 and strictMac≤1e-5 now pass without
+model/prompt/threshold tuning. Preserve old failed results. New policy identified
+in native output/TS, bounded parser and notices required; absent dependency must
+not silently restore platform-dependent JPEG decoding.1929normal/sanitizer C
+assertions are not formal safety/general accuracy. Owner3camera successes are
+separate from4fixture calls/platform. Actual app memory must distinguish
+footprint/RSS/sample max/kernel lifetime peak.1800cap prevents original phase2;
+original retention remains false/incomplete. Passive Home150samples show46.12MB
+delta and FAIL unchanged32MiB diagnostic boundary. MEM-01open/local, no leak or
+no-leak inference. Keep narrow memory/quality/battery/pressure limits explicit.
+
 November16camera integration: client12normal camera route tested by owner with
 one spoon (“Lusikka - Haarukka - veitsi”), not general accuracy. FourfixedJPEGs/
 Mac+phone preserve original4top1/error≤0.005. StrictMac≤1e-5 remains FAIL1/4;

@@ -14,7 +14,14 @@ Pod::Spec.new do |s|
   s.source = { :git => 'https://github.com/roopeaal/KierratysAppi.git' }
   s.static_framework = true
   s.swift_version = '5.9'
-  s.source_files = '*.swift'
+  s.source_files = '*.{swift,c,h}'
+  if File.directory?(File.join(__dir__, 'JpegDecoderAssets/TurboJPEG.xcframework'))
+    s.vendored_frameworks = 'JpegDecoderAssets/TurboJPEG.xcframework'
+    s.pod_target_xcconfig = {
+      'SWIFT_ACTIVE_COMPILATION_CONDITIONS' => '$(inherited) KIG_PINNED_JPEG',
+      'HEADER_SEARCH_PATHS' => '$(inherited) "$(PODS_TARGET_SRCROOT)/JpegDecoderAssets/include"'
+    }
+  end
   resource_bundles = {
     'KierratysLocalVisionPrivacy' => ['PrivacyInfo.xcprivacy'],
     'KierratysLocalVisionModels' => [
@@ -32,6 +39,11 @@ Pod::Spec.new do |s|
       'SiglipCandidateAssets/vision-int8-block32.mlmodelc',
       'SiglipCandidateAssets/prototypes.json',
       'SiglipCandidateAssets/Notices/*.txt'
+    ]
+  end
+  if File.directory?(File.join(__dir__, 'JpegDecoderAssets/TurboJPEG.xcframework'))
+    resource_bundles['KierratysJpegDecoderNotices'] = [
+      'JpegDecoderAssets/LICENSE.md', 'JpegDecoderAssets/README.ijg'
     ]
   end
   s.resource_bundles = resource_bundles

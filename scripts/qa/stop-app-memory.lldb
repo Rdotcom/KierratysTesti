@@ -1,0 +1,5 @@
+# Interrupt first. Main timer; queue serialization after resume to avoid
+# reentering a paused array mutation. Copy only this exact generated QA file.
+expression -l objc -- ({ [$kigTimer invalidate]; NSMutableArray *rows = $kigMemoryRows; [[NSOperationQueue mainQueue] addOperationWithBlock:^{ @autoreleasepool { NSDictionary *report = @{ @"schema": @"kig-app-memory-qa-v1", @"sampleIntervalMs": @100, @"sampledNotExactPeak": @YES, @"rows": rows }; NSData *data = [NSJSONSerialization dataWithJSONObject:report options:0 error:nil]; NSString *file = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject]; [data writeToFile:[file stringByAppendingPathComponent:@"kig-app-memory-qa.json"] options:NSDataWritingWithoutOverwriting error:nil]; } }]; })
+expression -l objc -- [UIApplication sharedApplication].idleTimerDisabled = NO;
+continue

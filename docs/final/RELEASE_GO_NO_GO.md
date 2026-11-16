@@ -1,5 +1,17 @@
 # Release decision
 
+## November16 — client13 installed, JPEG repaired; still NO-GO
+
+Four fixed JPEG input tensors/full15scores now match Mac/phone exactly under
+unchanged gates, owner3camera cases succeed,1965software tests pass. Actual app
+memory is now measured:60MBidle/114MBsampled inference-phase footprint/106MBHome;
+resident maximum688MB is separate. Original settling run incomplete at1800cap;
+passive150sample follow-up exceeds unchanged32MiB retained-delta boundary by
+observed46.12MBdelta. MEM-01medium/local investigation remains; not a proved
+leak or a passed memory/pressure/battery gate. Broad quality/Samsung/asset/store
+gates below remain. Details:JPEG_REPAIR_AND_APP_MEMORY.md; no production release
+or source push. Existing profile reused, expiry23November12:53:38Helsinki.
+
 November16 signing renewal: installed client11now has verified development
 profile expiry23.11.2026 at12:53:38Helsinki, superseding17Novemberbelow. Reinstall/
 launch/full1819tests pass; no code/model/quality-gate change. Public NO-GO persists.

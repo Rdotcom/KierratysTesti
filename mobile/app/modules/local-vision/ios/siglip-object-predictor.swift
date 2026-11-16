@@ -101,7 +101,7 @@ enum SiglipObjectPredictor {
       return ["kind": kind, "similarity": min(1, max(-1, similarity))]
     }
     let value: [String: Any] = ["schemaVersion": "siglip-object-candidates-v1", "modelId": modelId,
-      "modelRevision": revision, "preprocessing": SiglipImagePreprocessor.identity,
+      "modelRevision": revision, "preprocessing": SiglipImageEncoder.preprocessingIdentity,
       "verification": "unverified", "confidence": "uncalibrated", "scope": "object_form_only",
       "checkedOn": "2026-11-16", "observedAt": ISO8601DateFormatter().string(from: Date()), "scores": scores]
     let json = try JSONSerialization.data(withJSONObject: value, options: [.sortedKeys])

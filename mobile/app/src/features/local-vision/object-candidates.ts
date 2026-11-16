@@ -70,7 +70,7 @@ export function normalizeObjectCandidates(raw: unknown): ObjectCandidates {
     v.schemaVersion !== "siglip-object-candidates-v1" ||
     v.modelId !== "google-siglip2-base224-block32-v1" ||
     v.modelRevision !== "75de2d55ec2d0b4efc50b3e9ad70dba96a7b2fa2" ||
-    v.preprocessing !== "siglip2-rgb-bilinear-aa22-224-nchw-rescale-double-f32-normalize-v1" ||
+    v.preprocessing !== "siglip2-jpeg-turbo3.2.1-islow-nosimd-srgb-aa22-224-nchw-v2" ||
     v.verification !== "unverified" ||
     v.confidence !== "uncalibrated" ||
     v.scope !== "object_form_only" ||

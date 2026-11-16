@@ -1,5 +1,16 @@
 # External blockers
 
+November16JPEG/memory update supersedes earlier integration notes:4/4actual
+JPEG input/score drift resolved, client13signed/installed and3owner camera cycles
+succeed. No new account/payment/trust/key needed. Instruments compatibility issue
+has a working LLDB path; it is not a blocker to numeric physical measurements.
+Actual1800+150samples collected. Original retention gate incomplete; passiveHome
+delta46.12MBexceeds32MiB: MEM-01is LOCAL attribution/engineering, not credentials
+or an asserted leak. Device/operator help used and completed; no new owner action
+needed for this checkpoint. Public independent quality/Samsung/airplane-mode/
+pressure/battery and clean-checkout model delivery remain open. Profile expiry
+unchanged23November12:53:38Helsinki, no renewal claimed.
+
 November16camera update supersedes prior integration-pending notes: signed12
 installed/launched; owner spoon capture confirms normal camera route. Unlock for
 extra decoder check resolved; helper removed/main12restored. No new account/

@@ -1,5 +1,13 @@
 # Roadmap
 
+- [x] Correct JPEG platform drift via pinned scalar decoder:4/4actual input and
+  full-score parity, unchanged gates/model pins, bounded C adapter/1929ASan+UBSan
+  checks, signed installed13and3owner camera successes.
+- [x] Measure actual app, not helper:1800camera/idle+150passiveHome samples.
+- [ ] MEM-01: attribute46.12MBretained footprint with matched warmed-view and
+  numeric per-stage profiling. Original settling run incomplete; follow-up exceeds
+  unchanged32MiB budget. No memory-release/leak-free/battery approval yet.
+
 - [x] Client12normal camera integration: optional pinned/lazy/serial SigLIP forms,
   uncertainty/FI/EN/cancel/watchdog, signed install and owner spoon camera report;
   31native lifecycle checks,4+4fixedJPEG original rank/score gates pass.

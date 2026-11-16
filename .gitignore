@@ -13,6 +13,7 @@ mobile/app/android/
 mobile/app/ios/
 # Optional pinned SigLIP compiled asset; staged locally, never a >100MB Git blob.
 mobile/app/modules/local-vision/ios/SiglipCandidateAssets/
+mobile/app/modules/local-vision/ios/JpegDecoderAssets/
 # Local-only compatibility link for previously generated native build paths.
 apps/mobile
 work/

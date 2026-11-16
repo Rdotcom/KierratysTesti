@@ -1,0 +1,11 @@
+# Attach actual app and wait for stopped state AFTER startup, not dyld entry.
+# Main-run-loop numeric-only timer100ms,1800samples maximum. No image/app-data read.
+expression -l objc -- @import Darwin;
+expression -l objc -- @import Foundation;
+expression -l objc -- @import UIKit;
+expression -l objc -- NSMutableArray *$kigMemoryRows = [[NSMutableArray alloc] init];
+expression -l objc -- int *$kigMemoryPhase = (int *)calloc(1, sizeof(int));
+expression -l objc -- NSTimer *$kigTimer = ({ NSMutableArray *rows = $kigMemoryRows; int *phase = $kigMemoryPhase; double start = (double)CFAbsoluteTimeGetCurrent(); [NSTimer timerWithTimeInterval:0.1 repeats:YES block:^(NSTimer *timer) { @autoreleasepool { if ([rows count] >= 1800) { [timer invalidate]; return; } struct task_vm_info v = {0}; mach_msg_type_number_t n = TASK_VM_INFO_COUNT; kern_return_t k = task_info(mach_task_self(), TASK_VM_INFO, (task_info_t)&v, &n); [rows addObject:@{ @"elapsedMs": @(((double)CFAbsoluteTimeGetCurrent() - start) * 1000), @"phase": @(__atomic_load_n(phase, __ATOMIC_RELAXED)), @"status": @(k), @"footprintBytes": @(v.phys_footprint), @"rssBytes": @(v.resident_size), @"lifetimeFootprintPeakBytes": @(v.ledger_phys_footprint_peak) }]; } }]; });
+expression -l objc -- [[NSRunLoop mainRunLoop] addTimer:$kigTimer forMode:NSRunLoopCommonModes];
+expression -l objc -- [UIApplication sharedApplication].idleTimerDisabled = YES;
+continue
