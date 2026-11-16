@@ -1,5 +1,12 @@
 # Roadmap
 
+- [x] Actionable object hints→conditional material/use/area/type choices→sourced
+  guidance, transient/reset/back/unknown safe paths;28shared+5mobile regressions
+  and4FI/EN/light/dark/offline actual-component browser cases.
+- [ ] Physical new selection-flow acceptance; no browser-as-camera claim.
+- [ ] Retained MEM-01warm-pipeline allocation-owner investigation, unchanged
+  failed32MiB gates; not resolved by this requested interaction change.
+
 - [x] Actual-app native/camera numeric attribution without JIT,705pins/0failed
   reads; allocator relief0bytes/rejected, model RSS releases between requests.
 - [x] Bounded720p camera startup/readiness safeguard with regression tests.

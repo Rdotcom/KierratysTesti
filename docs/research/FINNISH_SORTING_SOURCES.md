@@ -1,5 +1,11 @@
 # Finnish sorting-source review
 
+November16extension: the original packaging engine/seed scope below is unchanged.
+The separate explicit object-selection path now has additional small-metal,
+battery/WEEE and HSY-only object/textile references and safe unknown boundaries:
+see OBJECT_SELECTION_SORTING_SOURCES_2026-11-16.md. It is not an expansion of
+automatic image-material inference or nationwide residual-waste rules.
+
 Accessed: 2026-08-10. This is product research, not legal advice. Application rule text must remain an original concise summary with a source link.
 
 ## Nationwide packaging rules

@@ -1,3 +1,3 @@
 # Next action
 
-Isolate MEM-01's first-use UI/camera allocation from repeated recognition by preregistering and running one numeric-only actual-iPhone experiment with an already-warmed photo-pipeline Home baseline and bounded repeated cycles, preserving all failed32MiB results and identifying retained allocation owners before changing caches.
+Verify the new selection flow on the installed signed iPhone client: capture one spoon, choose Lusikka→Metalli, confirm the sourced metal instruction, go back/change the material and retake to verify stale guidance clears, recording only owner-confirmed text and no photo upload.

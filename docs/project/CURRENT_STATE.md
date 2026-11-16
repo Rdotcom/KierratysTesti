@@ -1,5 +1,26 @@
 # Current state
 
+## Actionable object suggestions — November16
+
+- Up to3ranked object buttons; explicit material/use/deposit/area/type questions,
+  back/change/none recovery and source-backed guidance in the same result card.
+  No automatic material/bin or model accuracy claim; photos/scores are not rule
+  inputs. Selections stay transient and reset on a new result/capture.
+- Shared strict bounded policy reuses old packaging engine; new sourced small
+  metal/battery/WEEE and HSY-only object/textile rules, region choice required.
+  Unknown/wood/unsafe/unsupported area stays unknown; v1 API/barcode/models intact.
+-28newshared+5mobile tests and4actual-component synthetic browser cases cover
+  FI/EN/light/dark/320px/large text/reduced motion/offline/keyboard/stale reset.
+  No owner images/inference/cloud/network calls in this QA. Details:
+  OBJECT_SELECTION_FLOW.md; delivery/software evidence in TEST_EVIDENCE.md.
+- Phone14's earlier3camera successes do not verify the new selection flow.
+  MEM-01and prior recognition/platform/release failures remain OPEN; no push.
+- Normal signed0.1.0(15) replacement-installed/launched;11embedded signatures/
+  14legacy pins/candidate/JPEG/privacy verified, new controls in embedded Hermes,
+  no QA fixtures/probe. Profile reused through23November12:53:38Helsinki.
+  Shared/mobile/full validation pass:2015tests(920Node+1095workspace), allchecks/
+  builds/18web routes,19existing warnings. Owner physical selection check pending.
+
 ## Memory attribution and bounded camera startup — November16
 
 - QA-only native timer replaces debugger injection for attribution:486native/

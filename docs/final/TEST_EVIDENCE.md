@@ -1,5 +1,36 @@
 # Test evidence
 
+## November16 — object choices and conditional sorting, client15
+
+`pnpm validate:shared`, `pnpm validate:mobile`, `pnpm validate` exit0. Full
+**2015tests (920Node+1095workspace)**, boundaries/format/lint/typechecks/builds/
+18web routes pass;19existing warnings.28newshared-policy tests and5mobile
+candidate-action tests; exhaustive reachable-tree test validates bilingual
+questions, bounded choices, source/version/date/jurisdiction, unknowns and no
+serialized branch functions. Logs:
+`work/object-choices-20261116.jfPpoP/{validate-shared-final,validate-mobile-final,validate-final}.log`.
+
+Four actual-component browser contexts FI/EN × light/dark/390or320px, reduced
+motion/normal/1.3or2×simulated text pass offline+keyboard/back/change/new-result
+reset/multiple recovery.16screenshots, no44px/overflow failures, page errors or
+external requests. Explicitly SYNTHETIC suggestions, not camera/model accuracy.
+Final evidence:`work/object-choice-browser-final-20261116.qZLoQy/`; visual
+review of4representative prior-successful screenshots, same component/layout.
+QA web-resolution/test union-guard/HTMLbutton-type failures repaired, logs kept.
+
+StableSDK26.5normal signed Release0.1.0(15) build/replacement install/launch pass;
+11embedded signatures,14legacy resource pins, candidate/prototype/JPEG/privacy
+preserved. New controls/confirmation copy/rule IDs verified in actual embedded
+Hermes. No QA probe/fixture in signed app. Existing profile reused through
+23November12:53:38Helsinki, rollback14retained; no uninstall/reset/server start/
+paid request/key/GitHub push. Artifact/build/verification/install/launch receipts:
+`work/object-choice-client15-20261116.6464yZ/`.
+Exact0.1.0(15)inventory and same-process survival check pass after launch.
+The physical selection-flow check requested from owner is not yet recorded as
+passed; prior camera14success
+does not prove this new interaction. No new recognition/memory/energy/pressure/
+Samsung/VoiceOver/release pass. See OBJECT_SELECTION_FLOW.md and source register.
+
 ## November16 — actual-app attribution; unsuccessful retention hypothesis retained
 
 Details:MEMORY_RETENTION_ATTRIBUTION.md. Three frozen runs/705pins independently

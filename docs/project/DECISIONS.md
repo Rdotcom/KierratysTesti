@@ -1,5 +1,21 @@
 # Decision log
 
+## D-110 — User-confirmed object choices, not automatic image-to-bin guesses
+
+- Date2026-11-16: owner requests suggestion buttons and conditional material
+  questions. Use existing UI controls, immediate one-question-at-a-time flow,
+  back/change and result-identity reset; no new animation/dependency/model call.
+- Add separate bounded shared policy with strict input; model scores/images
+  excluded. Reuse existing packaging engine only after explicit empty/safe/use/
+  Finnish-deposit choice. Add original summaries of checked Rinki small metal,
+  Recser/SER and HSY regional rules, preserving source/version/date/jurisdiction.
+- Rule source verified is NOT recognition verified: confidence is user_confirmed,
+  not calibrated probability. HSY area must be selected; unsupported areas/wood/
+  unknown/unsafe return unknown. Packaging-v1/API/scanner/catalogue pins unchanged.
+- Test with actual component and clearly synthetic browser suggestions; never
+  claim that fixture clicks verify physical inference/VoiceOver or memory gates.
+  Physical selection acceptance remains separate. No push/paid service/release.
+
 ## D-109 — Attribute memory numerically; retain an unsuccessful repair hypothesis
 
 - Date2026-11-16: native-only and owner camera runs, no LLDB/JIT/owner-image

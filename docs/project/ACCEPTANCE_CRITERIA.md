@@ -1,5 +1,14 @@
 # Acceptance criteria
 
+November16object actions: never auto-select model top1/material/bin. Bounded
+ranked candidate buttons plus none; explicit user material/use/deposit/area/type
+answers only. Preserve back/change and new-result/capture reset, local transient
+privacy/no background inference/request/storage. Packaging uses existing engine;
+HSY rules require regional choice. Every guidance retains source/jurisdiction/
+checked date/version/source verification and user-confirmed confidence/explanation.
+Unknown/unsafe/unsupported stay unknown. Browser fixture interaction is not new
+recognition, physical Dynamic Type/VoiceOver or memory/quality acceptance.
+
 November16memory attribution: keep original32MiBboundary and all prior failures.
 Freeze actual signed artifact/native source BEFORE calls; numeric-only bounded
 samples, distinguish RSS/footprint/lifetime peak/heap. No owner photo/OCR output.

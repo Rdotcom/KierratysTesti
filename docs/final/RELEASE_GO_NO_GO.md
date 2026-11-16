@@ -1,5 +1,13 @@
 # Release decision
 
+## November16 — object-choice flow does not close recognition/release gates
+
+Explicit object/material/use/deposit/area choices now lead to sourced local
+guidance or unknown. No model upgrade/accuracy claim, no source-backed bin from
+an unconfirmed image guess. Synthetic actual-component browser cases are UI
+evidence only. Physical selection acceptance is separate. MEM-01and prior
+quality/platform/assets/pressure/energy/store requirements remain NO-GO.
+
 ## November16 — attribution complete for this experiment; still NO-GO
 
 MEM-01remains medium/open/local. Bounded camera startup/shutter safeguard does
