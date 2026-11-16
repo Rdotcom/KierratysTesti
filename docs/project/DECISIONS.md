@@ -1,5 +1,27 @@
 # Decision log
 
+## D-106 — Verify the actual native path without replacing the current app
+
+- Date2026-11-16: owner requests native SigLIP adapter and physical-phone parity.
+  Implement isolated768DSwift consumer, frozen224pixel pipeline and bounded
+  inputs. Use separate temporary native host, never replace/reset client11 or
+  its barcode/MobileCLIP512D path merely to run a model experiment.
+- Native byte-exact4scene input parity and23assertions precede device calls.
+  Retain initial iOS27UIScene startup crash/0dispatch; archive exact old sources
+  and build a new scene-compliant artifact with original model/data/gates.
+- Actual4/4rank/numeric parity on physical iPhone12ProMax passes; same compressed
+  Mac scores to3.33e-16. Four seen development scenes are not camera/general/
+  Samsung acceptance. Retain sampled~561–577MBRSS and~901msmodel load rather than
+  implying125MBstorage equals runtime RAM or app deadline/energy acceptance.
+- Keep new model out of shipping assets/bridge until lazy/serial worker, bounded
+  lifecycle/fallback and in-app memory/camera-input acceptance. iOS18candidate
+  availability does not raise app minimum16.4. Existing exact model pins/30MB
+  resource gate preserved; explicitly add only the new licence hash.
+- Remove only newly created testhost after saved results, restore original app,
+  preserve source/build/receipt rollback. Device IDs stay out of public source;
+  exact historical build source remains private/hash-verifiable. No key, payment,
+  push or main-app signing/install.14newNode tests/full1920checks pass; NO-GO.
+
 ## D-105 — Compress SigLIP weights without silently changing computation
 
 - Date2026-11-16: owner requests lighter SigLIP2 and preserved recognition.

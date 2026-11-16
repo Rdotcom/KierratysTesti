@@ -1,5 +1,49 @@
 # Test evidence
 
+## November16 — actual native SigLIP2 consumer on physical iPhone
+
+SIGLIP_NATIVE_DEVICE_RESULTS.md records exact protocol/scope/receipts. Actual
+4MacImageIO/Swift224antialiased inputs equal cached Python NPY bytes/maxabs0.
+23native preprocessing assertions pass (all8orientations,bounds,RGB constants).
+Native768DCPU_ONLY model contract/finite/unit checks; no shipping bridge change.
+
+First signed testhost fails iOS27scene-adoption startup before exclusive marker:
+0modelcalls/emptyDocuments. Crash signature/exact source/binary retained. New
+scene-compliant signed Release native host BUILD SUCCEEDED/install/launch pass.
+Exactly4actual physical iPhone12ProMax/iOS27.2 predictions:4/4same classes,
+0inference failures, originalcosine>=0.9998295045/error<=0.0006499676; score
+agreement with compressed Mac within3.33e-16. Model load900.57ms, perimage
+67.84–134.90ms including decoder/preprocessing/predict; not camera/UI/IPC time.
+Sampled RSS560840704–577454080bytes is NOT peak/battery/memory-pressure approval.
+
+Native55pins/signed84pins plus failed-run snapshots independently verified;
+historical combined274pin audit passes. Actual repeat-launch refusal retains
+byte-identical results/no new predictions. Only helper/newgenerateddevice data
+removed after receipts retained; exact helperinventory empty, product inventory
+0.1.0(11) unchanged, restored launch/later samePID pass. No real-app data-container
+inspection/reset, signing renewal, paid request, GitHub or airplane-mode claim.
+
+14newNode regressions (9parity+5source/lifecycle/privacy) and all legacy native
+policy tests pass. First full validation fails new licence resource enumeration;
+repair adds only exact MIT-CMU noticeSHA while retaining every original pin and
+30MBbudget. Preparation parse/profile-extraction/local-copy-destination failures
+retained,0inference. Public device IDs removed from buildrecipe, exact historical
+execution code archived and verified, never silently re-pinned.
+
+Final `pnpm validate:mobile` and full `pnpm validate` exit0:1920tests=889Node+
+1031workspace, boundaries/format/lint/types/allbuilds/18routes,19existingwarnings.
+Mobilelog /tmp/kig-siglip-native-20261116-mobile-confirmed.log SHA
+c85ff674503010aa4087b2bc803f333e3ca10402c83eb857339a4cd775b50e7a;
+full /tmp/kig-siglip-native-20261116-confirmed-validation.log SHA
+f53c1f4d825cc7dc5a286a672256a60d6ee9fb3c04f5020e563dc05d6c59bb05.
+Private work/siglip-native-v2-20261116.fkWS2e/:
+native-lock d8f01487961071eb0f23e97be241260e581f77a235bca495ab7e2e83967dd206;
+signed-lock38c132341352b2577423e774c2efc3dc7d2288cd5096dac916c146e3a4212395;
+raw f412e6c85944bb3be095b5d8c6235862006ae67632b11a38cbbd3d933799f8c8;
+recount429bc737acbd8d9511c85e42c78fcb11ce0795bbed0368e52673c4ccd216cbe4;
+history644f2b2c096a39712be6d16aa5b2b07770318482c40918ada0e1b62fda421fdd.
+No new general reliability/material/camera/Samsung or release claim; publicNO-GO.
+
 ## November16 — actual SigLIP2 mobile compression and parity
 
 Initial frozen4FP32photo references exactly match prior smoke scores. Original

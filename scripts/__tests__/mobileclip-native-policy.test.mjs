@@ -32,6 +32,8 @@ const pins = {
     "1fdf63aae2e325e2efde1aed1d3cc9addb063ea60a31f40d2a564bd7c29ac283",
   "Notices/huggingface-tokenizer-apache2.txt":
     "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+  // New native resampler licence only; all original model/prototype pins stay fixed.
+  "Notices/pillow-mit-cmu.txt": "1c277f85552757f5b48fd1fdac746e23a2ecef4f81bb5903c297cc63d209e0a8",
 };
 
 function files(directory = resource) {

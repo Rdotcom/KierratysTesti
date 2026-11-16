@@ -1,10 +1,16 @@
 # Roadmap
 
+- [x] Isolated768Dnative consumer/byte-exact224preprocessing and actual4/4physical
+  iPhone parity;23Swift assertions/14regressions/full1920tests. Retained UIScene
+  startup failure/repair, signed artifact/repeat guard/cleanup receipts.
+- [ ] Lazy serial photo-worker integration with separate candidate resources,
+  lifecycle/deadline/fallback and full-app memory/live-camera acceptance.
+
 - [x] Image-only SigLIP2 conversion and measured compression: retain original
   FP16/per-channel failures; final125.47MBblock32/FP32compute4/4rank preservation
   and unchanged numerical/150MiB gates, independent recount,19regressions and
   Xcode CoreML compiler. No app promotion or device/general-quality claim.
-- [ ] Isolated iOS768Dconsumer and frozen224pixel-preprocessing parity for pinned
+- [x] Isolated iOS768Dconsumer and frozen224pixel-preprocessing parity for pinned
   model; physical runtime/memory/energy and Android export remain separate work.
 
 - [x] ActualpreregisteredMobileCLIP/SigLIP2CPUoffline4scenes/8imageforwards:

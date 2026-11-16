@@ -1,5 +1,16 @@
 # Acceptance criteria
 
+November16native consumer: decode/resize the actual4frozen images on device;
+input tensor SHA must exactly match byte-verified Mac/Python input. Preserve
+4/4top1,cosine>=0.995,maxscore error<=0.005 versus original FP32baseline and
+report compressed-Mac comparison separately. No row/retry/failure erasure;
+exclusive marker before model load prevents repeat. Freeze actual signed source/
+model/images, audit raw rows and historical sources, keep main app/data unchanged.
+Actual4sceneiPhone pass is NOT live-camera/unknown/material/Samsung/general
+accuracy or peak-memory/battery acceptance. Sampled~561–577MBRAM means storage
+gate alone is insufficient: full-app lazy/serial loading, cancellation/deadline,
+resource release and camera-input validation remain mandatory before activation.
+
 November16 SigLIP mobile export: keep frozen4images/15prompts and FP32parent
 score agreement<=0.00001. FP16cosine>=0.999/error<=0.001;INT8cosine>=0.995/
 error<=0.005;4/4successful/same top1 and model+prototype resources<=150MiB.

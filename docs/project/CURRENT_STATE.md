@@ -1,5 +1,29 @@
 # Current state
 
+## SigLIP2 native consumer physically verified — November16
+
+- New isolated Swift768Ddecoder/encoder: bounded JPEG/PNG,sRGB,EXIF1–8,
+  Pillow-compatible224bilinear/NCHW preprocessing; all4Mac inputs byte-identical
+  to prior NPY tensors.23native preprocessing assertions pass; MIT-CMU notice.
+- Actual iPhone12ProMax/iOS27.2 native host runs4images once:4/4same top1,
+  mincosine0.99982950,maxoriginal-score error0.00064997; compressed Mac scores
+  agree within3.33e-16. Model load900.57ms,imagewall67.84–134.90ms.
+- Sampled RSS560.84–577.45MB (not peak):125MBstorage is NOT125MBRAM. Lazy-load/
+  release/cancellation/worker/UI-memory validation remains required before main
+  photo integration. No live-camera/airplane-mode/Android/general-quality claim.
+- Initial testhost UIScene startup crash0predictions retained; repaired lifecycle
+  passes signed build/install/physical run. Actual relaunch refuses without new
+  predictions;274historical pins/raw joins/cleanup/product inventory audit passes.
+-14newNode regressions; full1920tests(889Node+1031workspace), mobile/full checks/
+  builds/18web routes pass,19existinglint warnings. Legacy exactpins/30MB budget
+  unchanged except one exact new licence entry; no large asset in shipping bundle.
+- Temporary helper removed after receipts retained; original KeepItGreen0.1.0(11)
+  restored and later samePID confirmed. Existing app data/signing/recognition/
+  barcode/OCR/rules unchanged; SigLIP NOT yet wired to normal photo route.
+- No paid service/secret/GitHub push. Model/assets/signing/device metadata stay
+  private; buildrecipe takes device argument, archived exact execution source.
+  Details:docs/final/SIGLIP_NATIVE_DEVICE_RESULTS.md. Public NO-GO remains.
+
 ## SigLIP2 image-only mobile candidate — November 16
 
 - Actual selective block32 INT8-storage/FP32-compute CoreML candidate is

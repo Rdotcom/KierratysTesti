@@ -1,5 +1,13 @@
 # External blockers
 
+November16native update: actual connected iPhone12ProMax build/install/4scene
+consumer parity is complete without new account/payment/trust request. Temporary
+host removed; main app untouched. Initial helper UIScene startup crash was LOCAL
+and repaired, not an external blocker. Native worker/resource/lifecycle/full-app
+memory integration remains LOCAL engineering. Physical live-camera/airplane-mode,
+broader independent captures and Samsung still need appropriate device/operator
+evidence; one4scene test does not resolve these. No human-review gate reinstated.
+
 November16 SigLIP export: no payment/account/key blocker. Image-only block32
 CoreML export/parity/Xcode model compile complete locally; isolated768Dconsumer
 and Android inference remain LOCAL engineering, not external blockers. Candidate
