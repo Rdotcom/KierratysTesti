@@ -12,9 +12,11 @@ CodeQL:n ja salaisuuksien tarkistuksen.
 
 ## Olemassa oleva näyttö
 
-- Lähde `2148d4e`: 2 121 testiä ja koonnit läpäisty, Expo Doctor 20/20.
-  CI 44149097249/44150085287 läpäisee parts/full/Expo-tarkistukset ja epäonnistuu
-  vain tunnetussa picomatch-auditoinnissa. Security 44149097071/44150085543 onnistuu.
+- Siivottu lähde `2c63588`: 2 125 testiä ja koonnit läpäisty.
+  [CI 44162245767](https://github.com/roopeaal/KierratysAppi/actions/runs/44162245767)
+  läpäisee parts/full/Expo-tarkistukset ja epäonnistuu vain tunnetussa picomatch-
+  auditoinnissa. [Security 44162245784](https://github.com/roopeaal/KierratysAppi/actions/runs/44162245784)
+  läpäisee CodeQL:n ja salaisuuksien tarkistuksen.
 - Picomatch: 585 rajattua haitallista vertailua, 5 932 kirjaston omaa testiä sekä
   1 124 928 lyhyen syötteen vertailua läpäisty. Testit eivät ohita high-löydöstä.
 - Macin selainkoe käyttää oikeaa SigLIP2-mallia, JPEG/PNG:tä, erillistä lupaa,

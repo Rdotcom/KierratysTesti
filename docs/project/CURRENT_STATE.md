@@ -12,3 +12,5 @@
 - Picomatch has tested local patches but raw audit still reports
   GHSA-fc5q-39xc-vjpf/high. Public production remains NO-GO. See ../security.md.
 - Current cleanup validation and publication evidence: ../testing.md.
+- Cleanup published as KierratysAppi/main `2c63588`, public parent only. CI
+  44162245767 passes parts/full/Expo, fails only known audit; Security 44162245784 passes.
