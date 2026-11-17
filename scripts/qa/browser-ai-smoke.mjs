@@ -2,11 +2,14 @@
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
-import { chromium, expect } from "@playwright/test";
+import { expect as baseExpect, chromium } from "@playwright/test";
 import { isContainedPath } from "../lib/contained-path.mjs";
 
 const root = fs.realpathSync(process.cwd()),
   run = path.resolve(process.argv[2] ?? "work/browser-ai-proof");
+// A cold Windows route can spend ~5s just loading its JS bundle. Use the same
+// bounded budget for web-first assertions as for locator actions below.
+const expect = baseExpect.configure({ timeout: 20000 });
 assert(isContainedPath(path.join(root, "work"), run));
 fs.mkdirSync(run, { recursive: true });
 assert.equal(fs.realpathSync(run), run);

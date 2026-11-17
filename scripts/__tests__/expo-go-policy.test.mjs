@@ -1,8 +1,12 @@
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import test from "node:test";
+
 const read = (p) => fs.readFileSync(p, "utf8");
 test("Expo Go routes separate opt-in own-server inference from native; old links use the same flow", () => {
+  const smoke = read("scripts/qa/browser-ai-smoke.mjs");
+  assert.match(smoke, /baseExpect\.configure\(\{ timeout: 20000 \}\)/u);
+  assert.match(smoke, /expect\(page\)\.toHaveURL/u);
   assert.match(
     read("mobile/app/src/app/local-photo.tsx"),
     /usesNetworkRecognition\(Platform\.OS,\s*isExpoGoHost\(\)\)\s*\?\s*\(\s*<NetworkPhotoScreen \/>\s*\)\s*:\s*\(\s*<NativeLocalPhotoScreen \/>/,
