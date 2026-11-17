@@ -1,17 +1,17 @@
 # Current state
 
-## November17 — authorized picomatch source delivery to team main
+## November17 — verified picomatch source delivery to team main
 
-- Roope explicitly confirms KierratysAppi/main for this sharing step. Fetch
-  finds public main still3d53563; no newer teammate commit. Reviewed tree delta
+- Roope explicitly confirms KierratysAppi/main for this sharing step. Preflight
+  fetch found public main still3d53563; no newer teammate commit. Reviewed tree delta
   is exactly the23-file local mitigation/test/documentation unit6dd5c57.
-- Prepare a normal fast-forward publication with only that public-main parent;
-  do not publish private integration history, tags or KeepItGreen branches.
-  Existing2121/full/bundle/Doctor/model/browser evidence is unchanged; rerun
-  narrow security/patch checks before sharing. No app/native reinstall.
-- Mandatory audit is expected to remain red/high until supported upstream fix;
-  sharing authorization is not an exception or production release. Actual main
-  and CI/security outcomes must be checked after publication, not inferred.
+- Fresh21security/patch tests and frozen install pass. Normal main publication
+  e20a6fdconfirmed by actual ls-remote, parent3d53563only; no private history,
+  tags, force push or KeepItGreen write. Existing app/native23is unchanged.
+- Source CI44149097249passes all three parts, full validation and Expo health;
+  fails only unchanged dependency policy on GHSA-fc5q-39xc-vjpf/high. Security
+  44149097071CodeQL/secrets passes. No audit waiver or public production GO.
+  This outcome documentation changes no runtime or dependency.
 
 
 ## November17 — local picomatch hardening, audit remains red

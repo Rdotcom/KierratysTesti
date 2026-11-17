@@ -1,6 +1,6 @@
 # Test evidence
 
-## November17 — owner-authorized picomatch main-sharing preflight
+## November17 — verified owner-authorized picomatch main sharing
 
 Owner explicitly names KierratysAppi/main after target clarification. Fetch
 confirms3d535636ec7e7b117465dd546e2be125a6224290unchanged, no newer teammate
@@ -8,8 +8,21 @@ commit. Its source tree equals local mitigation parent b868138; selected delta
 is exactly6dd5c57's23files, no app/model/native change, secret or private history.
 Review diff/check before normal public-parent-only publication. Prior full2121/
 upstream5932/585adverse/differential/Expo/bundle/real-model evidence remains;
-fresh narrow security checks and actual push/CI receipts follow. Audit remains
-red/high by design, no exception or public production GO inferred.
+fresh21security/patch checks and frozen installation pass (main-preflight-tests.log,
+main-frozen-install.log). Actual normal push and ls-remote confirm
+e20a6fde980ddde1b8e3fc6228d93e0150bd06bd, public parent3d53563only. Commit-tree
+tree equals reviewed local delivery; no private ancestry, tags, force push or
+KeepItGreen change. Receipts: main-push.log/main-runs-initial.json.
+
+Source [CI44149097249](https://github.com/roopeaal/KierratysAppi/actions/runs/44149097249)
+passes all3parts, full validation and Expo health. Only Dependency security
+policy fails GHSA-fc5q-39xc-vjpf/high; lower-severity monitored findings remain
+visible. [Security44149097071](https://github.com/roopeaal/KierratysAppi/actions/runs/44149097071)
+passes CodeQL/secrets. Actual summaries/watch and failed audit logs retained as
+main-ci-summary.json/main-ci-watch.log/main-ci-failed.log and
+main-security-summary.json/main-security-watch.log. No audit exception, all-green
+CI claim or public production GO. Outcome-only documentation changes no runtime,
+patch, dependency, native binary or app behavior; its new runs are separate.
 
 
 ## November17 — reproduced and locally mitigated picomatch ReDoS

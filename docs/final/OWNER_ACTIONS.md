@@ -3,7 +3,9 @@
 ## November17 — picomatch team-main delivery authorized
 
 Roope confirms this source-sharing step to KierratysAppi/main. Codex owns normal
-public-parent-only publication and actual CI/security outcome verification.
+public-parent-only publication and actual CI/security outcome verification;
+e20a6fdnow confirmed. Source CI44149097249parts/full/Expo pass, only known high
+audit fails. Security44149097071CodeQL/secrets pass; no all-green claim.
 Do not copy private branch history/tags or change KeepItGreen. Team must use a
 frozen installation to apply patches and restart old Node/Metro tools. Known
 high raw-audit finding and production NO-GO remain; no phone update is needed

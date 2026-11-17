@@ -1,3 +1,3 @@
 # Next action
 
-Verify the authorized picomatch main delivery's actual GitHub CI and security outcomes, recording any failure without weakening the audit policy.
+Recheck the official picomatch advisory and npm registry for a supported fixed release, recording the exact affected and patched versions without changing the audit policy.

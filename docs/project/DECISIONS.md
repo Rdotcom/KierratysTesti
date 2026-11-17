@@ -10,6 +10,9 @@
   audit failure/NO-GO visible; source delivery is not security certification.
 - Check actual remote SHA, source CI parts/full/Expo and CodeQL/secrets. Record
   failures honestly; never weaken a gate merely to make this delivery green.
+- Normal main e20a6fdconfirmed, parent3d53563only. Source CI44149097249passes
+  parts/full/Expo, fails only known high audit; Security44149097071passes both
+  CodeQL and secrets. Publish outcome documentation without runtime changes.
 
 
 ## D-129 — Picomatch mitigation without disguising dependency risk

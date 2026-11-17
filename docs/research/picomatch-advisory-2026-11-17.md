@@ -3,7 +3,8 @@
 ## Follow-up: local mitigation, not a fixed upstream release
 
 The owner asks for a feasible repair. Absence of an official release does not
-mean a local mitigation is impossible. No publication is requested this turn.
+mean a local mitigation is impossible. The original repair request did not
+authorize publication; subsequent explicit main delivery is in TEST_EVIDENCE.md.
 Primary upstream sources reviewed on 2026-11-17:
 
 - https://github.com/micromatch/picomatch/pull/237 — open/unmerged, head
@@ -61,7 +62,8 @@ Receipts: work/picomatch-hardening-20261117.PAs54Q, summarized in TEST_EVIDENCE.
 The unchanged raw audit still fails this **high** advisory: no official release
 or audit waiver. Other lower-severity monitored advisories remain visible and
 are not repaired by this focused change. Supported-release closure and production
-NO-GO remain. No new phone install or source publication.
+NO-GO remain. No new phone install; subsequent authorized source delivery is
+recorded in TEST_EVIDENCE.md.
 
 ## Initial published-version investigation (historical)
 

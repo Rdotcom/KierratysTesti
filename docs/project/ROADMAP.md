@@ -2,8 +2,8 @@
 
 - [x] Explicit owner authorization for selected picomatch team-main sharing;
   fetch/review confirms unchanged3d53563public base and no newer teammate work.
-- [ ] Verify actual normal main publication and CI/security outcomes without
-  suppressing the known upstream high audit finding.
+- [x] Actual normal main e20a6fdconfirmed; CI44149097249parts/full/Expo pass,
+  unchanged high audit fails; Security44149097071CodeQL/secrets pass.
 
 
 - [x] Hash-pinned local picomatch2.3.2/4.0.5/4.0.7 repeated-star mitigation,

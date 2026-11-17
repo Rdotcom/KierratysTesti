@@ -1,5 +1,14 @@
 # Release decision
 
+## November17 — authorized main delivery is not production GO
+
+Tested mitigation source e20a6fdpublished normally with public parent only.
+Actual CI44149097249passes parts/full/Expo, fails only unchanged high picomatch
+audit. Security44149097071CodeQL/secrets passes. No audit waiver or all-green
+claim; production NO-GO and official-fix requirement remain. Outcome documents
+do not change runtime or install a new phone binary.
+
+
 ## November17 — NO-GO retained after local picomatch mitigation
 
 Local repeated-star hardening is reproducibly installed on all three versions,

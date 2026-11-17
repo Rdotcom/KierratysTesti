@@ -9,7 +9,9 @@ local repair. Official latest4.0.7 remains affected, unchanged audit red/high an
 production NO-GO; no exception or version disguise. Owner: Codex/dependency-security
 maintainer. Recheck official release, adopt compatible fixes, retire superseded
 patches, frozen install/regressions/unchanged audit/full/Expo/bundle checks. No
-secret/payment prerequisite. Fix is local only, not a new native binary or push.
+secret/payment prerequisite. Owner subsequently authorizes main sharing:
+e20a6fdconfirmed, CI44149097249passes parts/full/Expo but fails only this high;
+Security44149097071CodeQL/secrets passes. No new native binary or release GO.
 
 
 ## DEP-2026-112366 — newly reported high picomatch advisory; no fixed release
