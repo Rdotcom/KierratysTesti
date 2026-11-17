@@ -1,5 +1,6 @@
 import { preparePhotoBase64 } from "@kierratysappi/contracts/photo-image";
 import type { OfflinePhotoResponse } from "./offline-product";
+import type { AndroidVisionEvidence } from "@kierratysappi/contracts/android-vision";
 
 export const objectKinds = [
   "cup",
@@ -23,7 +24,7 @@ export interface ObjectCandidates {
   focus: "single" | "multiple" | "unknown";
   candidates: ObjectKind[];
   source: {
-    modelId: "google-siglip2-base224-block32-v1";
+    modelId: "google-siglip2-base224-block32-v1" | "google-siglip2-base224-onnx-weight-int8-v1";
     revision: string;
     checkedOn: "2026-11-16";
     observedAt: string;
@@ -68,9 +69,13 @@ export function normalizeObjectCandidates(raw: unknown): ObjectCandidates {
       "scores",
     ]) ||
     v.schemaVersion !== "siglip-object-candidates-v1" ||
-    v.modelId !== "google-siglip2-base224-block32-v1" ||
+    !(
+      (v.modelId === "google-siglip2-base224-block32-v1" &&
+        v.preprocessing === "siglip2-jpeg-turbo3.2.1-islow-nosimd-srgb-aa22-224-nchw-v2") ||
+      (v.modelId === "google-siglip2-base224-onnx-weight-int8-v1" &&
+        v.preprocessing === "siglip2-android-bitmap-srgb-aa22-224-nchw-v1")
+    ) ||
     v.modelRevision !== "75de2d55ec2d0b4efc50b3e9ad70dba96a7b2fa2" ||
-    v.preprocessing !== "siglip2-jpeg-turbo3.2.1-islow-nosimd-srgb-aa22-224-nchw-v2" ||
     v.verification !== "unverified" ||
     v.confidence !== "uncalibrated" ||
     v.scope !== "object_form_only" ||
@@ -115,7 +120,7 @@ export function normalizeObjectCandidates(raw: unknown): ObjectCandidates {
             .map((s) => s.kind)
         : [],
     source: {
-      modelId: "google-siglip2-base224-block32-v1",
+      modelId: v.modelId as ObjectCandidates["source"]["modelId"],
       revision: v.modelRevision,
       checkedOn: "2026-11-16",
       observedAt: v.observedAt,
@@ -226,7 +231,10 @@ export function createObjectRecognizer(
     },
   };
 }
-export type CameraProductResponse = OfflinePhotoResponse & { objectHint?: ObjectPhotoResponse };
+export type CameraProductResponse = OfflinePhotoResponse & {
+  objectHint?: ObjectPhotoResponse;
+  androidEvidence?: AndroidVisionEvidence;
+};
 /** Exact barcode/catalogue and text-confirmation evidence precede shape hints. */
 export function createCameraProductRecognizer(
   primary: (jpeg: string, signal: AbortSignal) => Promise<OfflinePhotoResponse>,

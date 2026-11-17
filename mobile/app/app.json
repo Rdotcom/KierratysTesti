@@ -10,7 +10,7 @@
     "ios": {
       "icon": "./assets/brand/leaf-app-icon.png",
       "bundleIdentifier": "fi.roopeaaltonen.kierratysappi",
-      "buildNumber": "19",
+      "buildNumber": "21",
       "supportsTablet": true,
       "infoPlist": {
         "NSCameraUsageDescription": "Kameraa käytetään viivakoodin lukemiseen ja tuotteen kuvaamiseen. Kuva lähetetään tunnistukseen vain erillisellä hyväksynnälläsi.",
@@ -29,7 +29,7 @@
     },
     "android": {
       "package": "fi.roopeaaltonen.kierratysappi",
-      "versionCode": 5,
+      "versionCode": 7,
       "allowBackup": false,
       "adaptiveIcon": {
         "backgroundColor": "#F4FAF5",
@@ -57,6 +57,7 @@
       "en": "./locales/en.json"
     },
     "plugins": [
+      "./plugins/with-local-vision-android.cjs",
       "expo-router",
       [
         "expo-location",

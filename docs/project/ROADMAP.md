@@ -1,5 +1,19 @@
 # Roadmap
 
+- [x] Separate Android Kotlin module, bounded bundled OCR/barcode contracts,
+  weight-only INT8 SigLIP2 conversion with unchanged development score gate,
+  native compilation/pixel unit tests and distinct privacy disclosure.
+- [x] Android native JPEG/OCR/barcode airplane-mode comparison and normal7APK
+  compile/signature/30ELF16KiB/pins/no-fixture checks. Standalone camera permission,
+  local capture/result/manual recovery, offline identity and EN/relaunch smoke.
+- [x] Repair Android native-constant and first-permission lifecycle defects;
+  normal signed21iPhone install/inventory/launch, frozen14legacy model pins.
+- [ ] Owner-authorized reviewed team-main publication; record actual outcome.
+- [ ]20-cycle Android capture/recognition/background PSS/readiness soak. One
+  immediate automated shutter tap needed retry; do not claim all captures pass.
+- [ ] Physical Samsung camera/permissions/offline/low-memory matrix; owner has
+  no Samsung test device. Emulator success will not close this hardware gate.
+
 - [x] November17assessment preparation:658bilingual HSY guide entries/area gate,
  199OFF barcode identities/local100entry30day cache, persistent FI/EN selection,
   requested-language provider result, restrained sound and reduced-motion-safe

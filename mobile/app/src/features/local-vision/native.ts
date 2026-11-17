@@ -1,10 +1,12 @@
 import { type NativeModule, requireOptionalNativeModule } from "expo";
 import { Platform } from "react-native";
+import { createAndroidEvidenceRecognizer, type AndroidEvidenceReader } from "./android-evidence";
 import { offlineCatalogue } from "./catalogue";
 import {
   createCameraProductRecognizer,
   createObjectRecognizer,
   type ObjectNativeReader,
+  type CameraProductResponse,
 } from "./object-candidates";
 import { createOfflineProductRecognizer, type OfflineProductReader } from "./offline-product";
 import { createLocalReadinessInspector } from "./readiness";
@@ -23,9 +25,38 @@ function reader(): LocalVisionNativeReader | undefined {
   }
 }
 
-export const isLocalVisionAvailable = () => reader() !== undefined;
+function androidReader():
+  | (NativeModule &
+      AndroidEvidenceReader &
+      ObjectNativeReader & { inspectReadiness(): Promise<unknown> })
+  | undefined {
+  if (Platform.OS !== "android") return undefined;
+  try {
+    const module = requireOptionalNativeModule<
+      NativeModule &
+        AndroidEvidenceReader &
+        ObjectNativeReader & { inspectReadiness(): Promise<unknown> }
+    >("KierratysLocalVision");
+    return module &&
+      [
+        module.recognizeObjectCandidates,
+        module.cancelObjectCandidates,
+        module.recognizeAndroidEvidence,
+        module.cancelAndroidEvidence,
+        module.inspectReadiness,
+      ].every((v) => typeof v === "function")
+      ? module
+      : undefined;
+  } catch {
+    return undefined;
+  }
+}
+export const isLocalVisionAvailable = () => reader() !== undefined || androidReader() !== undefined;
 export const recognizeLocalPhoto = createLocalRecognizer(reader);
-export const inspectLocalVisionReadiness = createLocalReadinessInspector(reader);
+export const inspectLocalVisionReadiness = createLocalReadinessInspector(() =>
+  Platform.OS === "android" ? androidReader() : reader(),
+);
+export const recognizeAndroidEvidence = createAndroidEvidenceRecognizer(androidReader);
 
 const recognizeCataloguePhoto = createOfflineProductRecognizer(() => {
   if (Platform.OS !== "ios") return undefined;
@@ -42,10 +73,33 @@ const objectRecognizer = createObjectRecognizer(() => {
     undefined
   );
 });
-export const recognizeOfflineProduct = createCameraProductRecognizer(
+const recognizeIosProduct = createCameraProductRecognizer(
   recognizeCataloguePhoto,
   objectRecognizer,
 );
+const androidObjects = createObjectRecognizer(androidReader);
+export const recognizeOfflineProduct = async (
+  jpeg: string,
+  signal: AbortSignal,
+): Promise<CameraProductResponse> => {
+  if (Platform.OS !== "android") return recognizeIosProduct(jpeg, signal);
+  const started = performance.now();
+  const evidence = await recognizeAndroidEvidence(jpeg, signal);
+  if (evidence.status !== "observed") return evidence;
+  const result = evidence.observation.codes.length
+    ? (offlineCatalogue?.lookup(evidence.observation.codes) ?? { status: "unknown" as const })
+    : { status: "unknown" as const };
+  if (result.status === "catalogue_match" || result.status === "ambiguous_barcode")
+    return { status: "observed", result, androidEvidence: evidence.observation };
+  const hint = await androidObjects.recognize(
+    jpeg,
+    signal,
+    Math.min(12000, 15000 - (performance.now() - started)),
+  );
+  if (signal.aborted) return { status: "unavailable", reason: "cancelled" };
+  if (hint.status !== "observed") return hint;
+  return { status: "observed", result, objectHint: hint, androidEvidence: evidence.observation };
+};
 
 /** Experimental capability only; the normal photo/UI path does not call it. */
 export const inspectReferenceRuntimePorts = (signal?: AbortSignal) =>

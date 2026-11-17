@@ -1,5 +1,39 @@
 # Current state
 
+## Android native delivery — November17, iPhone21 / Android7
+
+- Real Kotlin/ONNX Runtime CPU SigLIP2 and bundled offline ML Kit OCR/barcode
+  adapter added. Separate strict Android contracts; user material confirmation,
+  sorting provenance and original iOS algorithms remain. Fifteen object forms,
+  not all products/exact visual SKUs. Android SDK technical-data disclosure is
+  explicit in FI/EN; no paid inference, cloud fallback, new key or model download.
+- Four actual Android JPEGs preserve original top1and0.005score gate in airplane
+  mode/Wi-Fi off; material marking and barcode decode also pass. Dynamic INT8
+  failed and was rejected; weight-only INT8 shipped. Native pixel tests pass.
+- Normal standalone Android7ARM64 release APK built, test-signed, installed and
+  exercised on API35emulator. Native30ELFs and ZIP16KiBalignment, model/prototype/
+  licence pins, no fixtures/blocked permissions pass.181,591,203byte APK preserved.
+- Full-app tests caught/fixed missing Android build constant and first-permission
+  Activity-pause reset, with bounded active-resume/abort regressions. Permission
+  deny/grant/manual recovery, offline barcode identity, EN/relaunch, source-backed
+  search and real virtual-camera→uncertain-result→manual-guide work. Empty OCR
+  attribution card removed. One immediate automated shutter tap needed retry;
+  retained as medium/local readiness/soak follow-up, not an all-capture pass.
+- Final normal iPhone21built, signed, installed/inventory21/launched. Recompilation
+  reordered two CoreML metadata files only; graph/weights/prototypes and semantic
+  JSON unchanged. Original signed compile retained; exact frozen metadata restored
+  and signed with existing identity. All14legacy pins,11embedded signatures,
+  candidate/JPEG/privacy/no-QA checks pass. Profile23November12:53:38Helsinki.
+- Final full validation2117tests(935Node+1182workspace), mobile/shared individual
+  validation and88browser checks pass. Earlier loaded database5stimeout retained;
+  narrow/full reruns pass without changing assertions or deadlines.
+- Owner authorizes one reviewed KierratysAppi/main source publication; outcome
+  recorded after actual push. No physical Samsung available; no hardware-quality,
+  universal recognition or public-store GO claim. MEM-01/quality/coverage/iOS
+  asset/store/privacy gates remain. Exact receipts:TEST_EVIDENCE.md and
+  ANDROID_NATIVE_DELIVERY.md. Only approved old caches removed, signed backups,
+  source/models/newer iOS27.2support preserved. QA emulator shut down normally.
+
 ## Assessment preparation — November17, normal client19
 
 - School-assessment scope, not public production GO. Whole16functional-route

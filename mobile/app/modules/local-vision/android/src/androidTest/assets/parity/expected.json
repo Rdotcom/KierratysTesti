@@ -1,0 +1,97 @@
+{
+  "schema": "android-actual-jpeg-parity-v1",
+  "classes": [
+    "cup",
+    "spoon",
+    "fork",
+    "knife",
+    "bottle",
+    "jar",
+    "can",
+    "carton",
+    "bag",
+    "battery",
+    "phone",
+    "textile",
+    "multiple-cups",
+    "spoon-and-fork",
+    "other"
+  ],
+  "rows": [
+    {
+      "id": "commons-1-clean",
+      "file": "commons-1-clean.jpg",
+      "sha256": "63a796e1ee2df6d08462550c5aef38b5e5318cb2709f44b70dec6b1a092f9776",
+      "scores": [
+        0.08973831602186223, 0.03602040280667614, 0.03211818097882244, 0.014501359649433911,
+        0.04833255687390962, 0.052352618949336335, 0.05002188820646312, 0.06216697269165751,
+        0.035091700729928545, 0.03183941851089271, 0.02984240430115319, 0.04945886256952252,
+        0.09422239815625774, 0.052128409237901, 0.06266363630188541
+      ],
+      "top1": "multiple-cups",
+      "title": "File:Ceramic mug.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ceramic_mug.jpg",
+      "artist": "NNU-11-Zaclee",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "changes": "Metadata removed/canonicalized and JPEG-reencoded during previous documented development preparation; not a new test split."
+    },
+    {
+      "id": "commons-2-clean",
+      "file": "commons-2-clean.jpg",
+      "sha256": "4c5169cc1dcfcfccff581a99a6894bb3dd66fb1355a713d72a18029a0cfd8897",
+      "scores": [
+        0.07121235701743218, 0.15713336359602134, 0.09459047938374882, 0.07237665562871588,
+        0.030669065977593467, 0.04991096443136414, 0.006846265226659577, 0.03220239561044817,
+        0.021290602321921565, 0.011689783922180183, 0.012273674633581706, 0.011766603680624656,
+        0.0027824584938309412, 0.10261640688526422, 0.08244514819546996
+      ],
+      "top1": "spoon",
+      "title": "File:Wooden Spoon.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Wooden_Spoon.jpg",
+      "artist": "Donovan Govan.",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "changes": "Metadata removed/canonicalized and JPEG-reencoded during previous documented development preparation; not a new test split."
+    },
+    {
+      "id": "commons-3-clean",
+      "file": "commons-3-clean.jpg",
+      "sha256": "42b5de1f7b4880645efef9237399a9268ce54e6c8784fca11b3a98ed7d8edf71",
+      "scores": [
+        0.09171057548947342, 0.16138569224965538, 0.11315129188372136, 0.10356428949781601,
+        0.04354114976640369, 0.061616350097411204, 0.03388290077912717, 0.04485133134157984,
+        0.028448770678530327, 0.02667519438284907, 0.036677980500055773, 0.019675402046224533,
+        0.02952255542487465, 0.12952601235344527, 0.1103739910117206
+      ],
+      "top1": "spoon",
+      "title": "File:Spoon-20080714.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Spoon-20080714.jpg",
+      "artist": "Susanlesch",
+      "licence": "CC BY 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/3.0",
+      "changes": "Metadata removed/canonicalized and JPEG-reencoded during previous documented development preparation; not a new test split."
+    },
+    {
+      "id": "commons-4-clean",
+      "file": "commons-4-clean.jpg",
+      "sha256": "5ba33f1274cc557e60c1317899223f2ff6f3cd33a63e3026acf0aa9ca08ee391",
+      "scores": [
+        0.043365357448118716, 0.11505195234641585, 0.09980580336118182, 0.05493642101617302,
+        0.01938399080303853, 0.032454136500909336, -0.004291467260823102, 0.018989088705122482,
+        0.014783739780751416, -0.0059012120356625, 0.013397310113347967, 0.01338918122266822,
+        0.0167124244792103, 0.14493313830425944, 0.07025890278972739
+      ],
+      "top1": "spoon-and-fork",
+      "title": "File:Wooden Spoon and Fork 01.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Wooden_Spoon_and_Fork_01.jpg",
+      "artist": "PagesAndPathsPH",
+      "licence": "CC0",
+      "licenceUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "changes": "Metadata removed/canonicalized and JPEG-reencoded during previous documented development preparation; not a new test split."
+    }
+  ],
+  "maximumScoreError": 0.005,
+  "syntheticMarking": "PAP 21",
+  "syntheticGtin": "6408430030309"
+}

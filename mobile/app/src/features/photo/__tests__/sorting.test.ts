@@ -1,6 +1,11 @@
 import { PhotoEstimateSchema, photoModel } from "@kierratysappi/contracts/photo-recognition";
 import { describe, expect, it } from "vitest";
-import { canUsePhotoCapture, choosePhotoSize, sortConfirmedPhotoPart } from "../sorting";
+import {
+  canUsePhotoCapture,
+  canUseLocalPhotoCapture,
+  choosePhotoSize,
+  sortConfirmedPhotoPart,
+} from "../sorting";
 
 const confirmation = (material: "glass" | "paper" = "glass", conditionsConfirmed = true) => ({
   material,
@@ -34,6 +39,26 @@ function example(shape = "jar", material = "glass") {
   });
 }
 describe("photo confirmation", () => {
+  it("uses installed Android local capability without enabling cloud or Expo Go", () => {
+    const runtime = { executionEnvironment: "bare", platform: { android: {} } };
+    expect(canUseLocalPhotoCapture("android", runtime, true)).toBe(true);
+    expect(canUseLocalPhotoCapture("android", runtime, false)).toBe(false);
+    expect(canUsePhotoCapture("android", runtime)).toBe(false);
+    for (const executionEnvironment of ["storeClient", "unknown", undefined])
+      expect(canUseLocalPhotoCapture("android", { ...runtime, executionEnvironment }, true)).toBe(
+        false,
+      );
+    expect(
+      canUseLocalPhotoCapture(
+        "ios",
+        { executionEnvironment: "bare", platform: { ios: { buildNumber: "20" } } },
+        true,
+      ),
+    ).toBe(true);
+    expect(
+      canUseLocalPhotoCapture("ios", { executionEnvironment: "bare", platform: { ios: {} } }, true),
+    ).toBe(false);
+  });
   it("requires a new purpose-matched native build but not a web/native simulator claim", () => {
     expect(canUsePhotoCapture("web", {})).toBe(true);
     for (const buildNumber of ["1", null, undefined, "2.0", "invalid", "9007199254740992"])

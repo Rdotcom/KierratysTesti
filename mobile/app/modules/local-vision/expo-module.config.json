@@ -1,5 +1,8 @@
 {
-  "platforms": ["apple"],
+  "platforms": ["apple", "android"],
+  "android": {
+    "modules": ["fi.roopeaaltonen.localvision.LocalVisionModule"]
+  },
   "apple": {
     "modules": ["LocalVisionModule"],
     "podspecPath": ["ios/KierratysLocalVision.podspec"]

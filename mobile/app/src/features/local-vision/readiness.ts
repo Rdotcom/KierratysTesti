@@ -15,7 +15,10 @@ const unavailable = (reason: UnavailableReason): LocalVisionReadiness => ({
 
 /** Integrity/interface readiness only, never an image, permission or quality test. */
 export function createLocalReadinessInspector(
-  getReader: () => LocalVisionNativeReader | undefined,
+  getReader: () =>
+    | (Pick<LocalVisionNativeReader, "inspectReadiness"> &
+        Partial<Pick<LocalVisionNativeReader, "recognize">>)
+    | undefined,
   deadlineMs = 15_000,
 ) {
   let running = false;
@@ -80,6 +83,8 @@ export function createLocalReadinessInspector(
 
 export function localReadinessMessage(readiness: LocalVisionReadiness): MessageKey | undefined {
   if (readiness.status === "full") return undefined;
+  if (readiness.status === "primary_only" && readiness.reason === "android_local")
+    return "localVisionAndroidReady";
   if (readiness.status === "primary_only")
     return readiness.reason === "legacy_not_reported"
       ? "localVisionReadinessLegacy"

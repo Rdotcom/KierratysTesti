@@ -1,0 +1,3 @@
+# Serialized model headers can look like text to Git's initial-byte heuristic.
+# Never normalize, text-diff or line-merge model bytes.
+*.onnx binary

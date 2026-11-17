@@ -36,7 +36,7 @@ export const localVisionFi = {
   localVisionPrivacy:
     "Paikallinen tunnistus ei lähetä kuvaa tai kuvasta luettua tekstiä palvelimelle. Kuvaa ja tulosta ei lisätä historiaan. Näkymästä poistuminen tai sovelluksen siirtäminen taustalle tyhjentää tämän näkymän kuvan ja tuloksen.",
   localVisionUnavailable:
-    "Paikallinen tunnistus tarvitsee sitä tukevan iPhone-asennuksen. Tässä versiossa voit käyttää viivakoodia tai materiaalimerkintää.",
+    "Paikallinen tunnistus tarvitsee sitä tukevan iPhone- tai Android-asennuksen. Tässä versiossa voit käyttää viivakoodia tai materiaalimerkintää.",
   localVisionCamera: "Avaa kamera",
   localVisionChecking: "Tarkistetaan tunnistusta…",
   localVisionReadinessLegacy:
@@ -133,7 +133,7 @@ export const localVisionEn: { readonly [Key in keyof typeof localVisionFi]: stri
   localVisionPrivacy:
     "Local recognition does not send the image or recognized text to a server. The image and result are not added to history. Leaving this screen or putting the app in the background clears this screen's image and result.",
   localVisionUnavailable:
-    "Local recognition needs an iPhone installation that supports it. In this version you can use a barcode or material marking.",
+    "Local recognition needs an iPhone or Android installation that supports it. In this version you can use a barcode or material marking.",
   localVisionCamera: "Open camera",
   localVisionChecking: "Checking recognition…",
   localVisionReadinessLegacy:

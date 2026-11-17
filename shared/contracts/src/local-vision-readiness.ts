@@ -14,7 +14,7 @@ const NativePrimaryReadinessSchema = z
   .object({
     schemaVersion,
     status: z.literal("primary_only"),
-    reason: z.enum(["unsupported_model_platform", "model_unavailable"]),
+    reason: z.enum(["unsupported_model_platform", "model_unavailable", "android_local"]),
     evidence,
   })
   .strict();

@@ -1,5 +1,119 @@
 # Test evidence
 
+## November17 — Android7 and final installed iPhone21
+
+Full `pnpm validate` passes **2117tests:935Node+1182workspace**; mobile398,
+shared contracts208/domain413/engine75, localization8, provider46/application8/
+database5/API21. Boundaries/format/lint/strict types/all builds/18web exports pass.
+19existing warnings retained. Individual `pnpm validate:mobile` final and
+`pnpm validate:shared` pass. Logs in
+`work/android-support-20261117.2p6Ggr`:validate-last.log,
+validate-mobile-last.log, validate-shared.log; final staged-source/model-Git guard
+rerun:validate-commit.log. Explicit*.onnxbinary attribute prevents text merging/
+line-ending normalization; staged blob SHA256equals the pinned model above,
+not just the working copy. Earlier loaded full run times out
+one database migration at its unchanged5000ms limit; narrow five-test and final
+full reruns pass. No timeout/assertion/severity was lowered. Intermediate source
+guard/format/type failures are retained and repaired.
+
+### Native Android runtime, actual JPEGs, no network
+
+Google SigLIP2 source/prototype pins unchanged; weight-only INT8 export95,661,204
+bytes, SHA256`d90cf29df7a26cd39d5c8d03c0b6c13179f03e8e905659111be3cbf54552984b`.
+Original dynamic activation INT8 fails0.005gate and is rejected, not hidden.
+Native pure pixel JUnit passes. API35AOSP ARM64/3072MiBRAM actual instrumented
+JPEG→Android decode/EXIF→AA22pixels→CPU ORT→all15scores comparisons pass all4
+original top1labels and0.005max-score gate. Max errors:
+0.0018329817/0.0018729592/0.0017077188/0.0038615619; whole request
+5184/3039/1138/2047ms. Bundled OCR reads generated PAP21; barcode reader reads
+generated6408430030309. Airplane mode1and Wi-Fi disabled confirmed with ADB.
+JUnit`OK(1test)` in13.857s, no upstream/photo upload/model download. Fixtures are
+the existing attributed development JPEGs, not a new independent quality split.
+
+Retained native failures: v1/v2metadata-stripped EXIF0 rejection; v3timeout.
+Fix explicit unspecified→normal orientation, remove per-sample coordinate-pair
+allocations and duplicate RGB passes. Same fixed-point math, native12sdeadline
+and score gate, no quality promotion. Logs:android-instrumentation-v1..v4.log,
+weight-only-receipt.json, export-receipt.json and native Gradle timestamp logs.
+Four-image success is not broad accuracy, physical optics, battery or RAM proof.
+
+### Normal standalone Android application, not only a library test
+
+Normal7release variant built with JDK21/SDK37/NDK27.1, minSDK26/target36/ARM64,
+local test signature. APK **181,591,203bytes**, SHA256
+`2bc63882716a18819f776cd8caf3b9984eb39bdeae7e459a99f873039b371e1f`.
+Signature/ZIP16KiBalignment and actual ELF LOAD16KiBminimum for all30native
+libraries pass. Model/prototype/licence pins match packaged bytes. No test
+photos/QAfixture paths, microphone/background-location/storage/overlay permission.
+Not a Play signing key or physical16KiB-device acceptance. Receipt:
+android7-final-release-verification-v2.json; verifier and model export recipes
+are source-controlled. Protected APK:KeepItGreen-android7-arm64.apk in same run.
+
+Actual standalone installed UI (agent-device/ADB, API35emulator, no Metro):
+manual6408430030309→Oivariini/unknown packaging while airplane mode is enabled;
+camera denial→manual recovery and grant→live virtual scanner; English selection
+survives force-stop/relaunch, English remote-control search→WEEE guidance.
+Full-app tests independently catch Android Constants missing versionCode and
+first photo permission Activity pause clearing the request. Both fixed with
+pure regressions: actual native capability/bare-or-standalone only, unchanged
+iOS/cloud gates, bounded1500msactive-resume/abort handling, background image clear.
+
+First photo permission→live camera→capture→review→local model→uncertain result
+passes after repair. Final APK also completes virtual-scene camera→result→manual
+guide, unverified model/source/unknown recovery visible. Empty product-mode OCR
+attribution card removed when no barcode is detected. Real scene is deliberately
+not a product; no fabricated match/sorting answer. No personal images/GPS used.
+One immediate automated shutter tap in the final repeat stays in camera and
+needs retry; wait-for-preview fails, later retry succeeds. Retained as
+UI-AND-07medium/local, NEXT_ACTION readiness/PSS soak, NOT a clean all-capture
+matrix. No fake fixture injection into production app. Native fixture inference
+and virtual-camera smoke are separate from actual Samsung physical scanning.
+
+UI logs:agent-device-state/sessions/kig-android6/requests/ (session name retained
+across APK6→7updates, not evidence of installed6). Screens:android-en-remote-guide,
+android-en-barcode-camera, android7-camera-final and android7-final-local-result
+PNGs in run. Last result image visually inspected; source/uncertainty/recovery
+are visible, no empty OCR card. Camera/screen state cleared on guide navigation;
+session closed, own QA emulator shut down normally, no personal device reset.
+
+### Final normal iPhone21 delivery
+
+Normal Release Xcode build against unchanged native iOS algorithms/frameworks.
+Clean compilation reordered only two MobileCLIP metadata files; semantic JSON,
+graph, weights, prototypes and other12files match. Initial verification failure
+retained. Original signed compile kept; exact frozen metadata from verified20
+restored and fresh21signed with existing identity/entitlements. All14original
+byte pins remain enforced, not normalized/waived by verifier. Helper first
+certificate-prefix syntax failure occurred before file replacement, repaired;
+no private key or credential value read/logged/committed.
+
+Final21in`work/android-ios-client21-final-20261117.uw8uTb/client21.app`;
+rollback20preserved.11embedded signatures, profile/app/device binding, candidate
+model/prototype,14legacy resources, pinned JPEG/notices/privacy and no-QA pass.
+Binary SHA256`1d4f4ec9266609e20deeb68c6c8c5d185db52f1a406794d69365ac30d7b20e4a`;
+Hermes`11e7d0aefaf7f4c24cbb35317c3b457e49cde394712fdfd970c4fe93d34c3ede`.
+Existing profile expires2026-11-23T10:53:38Z/12:53:38Helsinki, no renewal claim.
+Install JSON success, actual inventory0.1.0(21), devicectl launch success:
+iphone21-{install,inventory,launch}.{json,log} in Android run. No new physical
+iOS camera/audio/VoiceOver/quality matrix claimed from install/launch.
+
+### Browser regression and remaining boundaries
+
+Final actual exported16functional routes×FI/EN×light390/dark320px, reduced motion,
+18web exports.88checks/84screens, zero page errors/overflow/sub44pxcontrols in
+tested contexts, source-guide viewport, bundled/cache/manual camera barcode,
+save/delete/language persistence pass. Final receipt:
+`work/android-final-browser-20261117.iXICoh/browser-evidence.json`, browser.log.
+Earlier Android run/browser snapshot retained separately. English dark HSY and
+native English result/camera screenshots visually inspected.
+
+Physical Samsung is unavailable by owner report. Further readiness/PSS soak,
+native vendor/thermal/energy/low-memory/APIlevel/actual16KiBkernel, broad model/
+region coverage, MEM-01, iOS clean-asset reproduction, SDK production privacy and
+store gates remain open at existing severities. No paid inference/new credential
+or production publication. Owner authorizes reviewed normal team-main source
+push; exact Git outcome is recorded separately after success.
+
 ## November17 — assessment unit, normal client19
 
 Final **`pnpm validate` exit0:2095tests(931Node+1164workspace)**, boundary/

@@ -1,5 +1,17 @@
 # External blockers
 
+## November17 — Android follow-up hardware boundary
+
+Owner confirms no physical Samsung is available. Roope/tester must later obtain
+an Android26+ Samsung and run the exact camera/permission/offline/relaunch matrix
+in the delivery evidence. Native implementation/emulator/release-build failures
+are LOCAL engineering, not this hardware blocker. Free JDK/SDK installation and
+Google SDK terms explicitly approved; no credential or paid inference required.
+Owner approved only named rebuildable caches, with signed20and rollback19 safe
+before deletion; old iOS27.0DeviceSupport removed while newer27.2support retained.
+Source and signed apps preserved. Existing production/privacy/store/MEM-01and
+broad-recognition gates remain open, not an excuse to claim Android untestable.
+
 ## November17 — no new owner blocker for the school-assessment unit
 
 HSY PROD credentials already supplied privately; actual bounded658bilingual

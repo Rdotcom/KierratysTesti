@@ -1,0 +1,11 @@
+{
+  "schema": "android-siglip-assets-v1",
+  "source": "https://huggingface.co/google/siglip2-base-patch16-224",
+  "revision": "75de2d55ec2d0b4efc50b3e9ad70dba96a7b2fa2",
+  "licence": "Apache-2.0",
+  "modelSha256": "d90cf29df7a26cd39d5c8d03c0b6c13179f03e8e905659111be3cbf54552984b",
+  "modelBytes": 95661204,
+  "prototypesSha256": "eea5bfda99ff71d076657b7f81372270eb1f4bea96f2539a697abc0ea441df21",
+  "inference": "CPU-FP32-activation-weight-only-INT8-per-channel",
+  "quality": "four-development-input-parity-not-general-quality"
+}

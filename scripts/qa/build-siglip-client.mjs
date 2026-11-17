@@ -39,6 +39,8 @@ const team = execFileSync(
 assert(/^[A-Z0-9]{10}$/.test(team));
 // Reuse current build cache, never remove/clean it or upgrade dependencies.
 const derived = path.join(root, "work/native-reference-ports-2026-11-14.P5tYhw/DerivedData");
+assert(fs.realpathSync(path.dirname(derived)) === path.dirname(derived));
+fs.mkdirSync(derived, { recursive: true });
 assert(fs.realpathSync(derived) === derived);
 const log = fs.openSync(path.join(run, `client${build}-build.log`), "wx");
 const r = spawnSync(

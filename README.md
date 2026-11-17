@@ -6,6 +6,17 @@ Previously named KierrätysAppi. The repository name, `@kierratysappi/*` package
 
 ## Kuvasta tunnistaminen
 
+17.11.2026: iOS:n lisäksi sovelluksella on oma Android-natiivisovitin:
+SigLIP2-esine-ehdotukset sekä mukana kulkeva ML Kit -teksti-/viivakoodinluku.
+Neljä oikeaa JPEG-kehityskuvaa ja materiaalimerkinnän/viivakoodin luku
+läpäisevät Android-emulaattorin lentotilakokeen. Tämä ei varmista fyysistä
+Samsung-kameraa, kaikkien esineiden tunnistusta tai julkista julkaisuvalmiutta.
+Androidin SDK:n teknisten tietojen keruu on erikseen kuvattu tietosuojassa.
+Ajantasaiset toimitus- ja testitulokset:
+[Android-natiivisovitin](docs/final/ANDROID_NATIVE_DELIVERY.md),
+[nykytila](docs/project/CURRENT_STATE.md) ja
+[arvioinnin esittelypolku](docs/final/ASSESSMENT_READY.md).
+
 **Paikallinen kuvatunnistus (iOS)** käsittelee kuvan laitteessa Apple Visionilla
 ja tarvittaessa mukana olevalla MobileCLIP-kuvamallilla. Se arvioi esineen
 muotoa ja lukee mahdollisia materiaalimerkintöjä ilman verkkopyyntöä. Arvio ei

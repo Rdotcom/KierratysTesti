@@ -1,5 +1,19 @@
 # Acceptance criteria
 
+November17Android follow-up: actual native adapter, strict distinct evidence,
+bounded on-device pixels/OCR/GTIN, explicit unverified object/material choices,
+model/licence pins and real native JPEG top1/unchanged0.005score comparisons are
+required, not a mocked Android build number/browser pass. These bounded cases
+pass on API35ARM64. Final7standalone APK must start without Metro and expose
+camera permission recovery, local capture/uncertainty/manual guide and persistent
+English; recorded smoke passes, with one immediate automated shutter tap needing
+retry retained for readiness soak. No all-camera/physical Samsung acceptance.
+Normal signed21install/launch and fourteen frozen iOS legacy resource pins pass.
+Native/ZIP16KiBstatic alignment is verified, not actual16KiB-device behavior.
+Physical Samsung/TalkBack/thermal/energy/low-memory/multipleAPIlevels and earlier
+recognition/MEM-01/iOSassets/store/privacy gates remain open. Source sharing is
+not production GO. See ANDROID_NATIVE_DELIVERY.md and TEST_EVIDENCE.md.
+
 November17assessment addition: independently pin199valid OFF identities and658
 bilingual HSY records/licences/dates. Imported guidance requires HSY municipality,
 retains nullable/missing-translation/receiver alternatives/source/version and

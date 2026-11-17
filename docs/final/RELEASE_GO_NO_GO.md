@@ -1,5 +1,20 @@
 # Release decision
 
+## November17 — Android source port; public NO-GO unchanged
+
+Android now has a separate real Kotlin/ONNX Runtime/bundled ML Kit implementation.
+Four actual native JPEG comparisons and material/barcode decoding pass airplane
+mode on API35ARM64 emulator. Earlier failed quantization/EXIF/deadline checks are
+retained; standalone UI independently catches native-build-constant and first
+permission lifecycle defects, repaired locally with regressions. Final builds/
+UI/install/source-sharing receipts are in TEST_EVIDENCE.md, not inferred here.
+
+Physical Samsung is explicitly untested because none is available. This port
+does not close general recognition quality, MEM-01/pressure/energy, full regional
+coverage, reproducible iOS assets, Google SDK production privacy/Data Safety or
+store/account/release gates. APK uses a local test signature, not Play release
+signing. School demonstration/source sharing is not public production GO.
+
 ## November17 — school demonstration prepared; public release still NO-GO
 
 The assessment unit adds real658FI/EN HSY guide records,199OFF identities,

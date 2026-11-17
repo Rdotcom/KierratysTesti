@@ -1,0 +1,26 @@
+plugins {
+  id 'com.android.library'
+  id 'expo-module-gradle-plugin'
+}
+group = 'fi.roopeaaltonen.localvision'
+version = '0.1.0'
+android {
+  namespace 'fi.roopeaaltonen.localvision'
+  testBuildType 'release'
+  defaultConfig {
+    minSdkVersion 26
+    testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+    consumerProguardFiles 'consumer-rules.pro'
+    ndk { abiFilters.addAll((findProperty('reactNativeArchitectures') ?: 'arm64-v8a,x86_64').toString().split(',')) }
+  }
+  androidResources { noCompress += ['onnx'] }
+}
+dependencies {
+  implementation 'com.microsoft.onnxruntime:onnxruntime-android:1.32.0'
+  implementation 'com.google.mlkit:text-recognition:16.0.1'
+  implementation 'com.google.mlkit:barcode-scanning:17.3.0'
+  implementation 'androidx.exifinterface:exifinterface:1.4.2'
+  testImplementation 'junit:junit:4.13.2'
+  androidTestImplementation 'androidx.test:runner:1.7.0'
+  androidTestImplementation 'androidx.test.ext:junit:1.3.0'
+}

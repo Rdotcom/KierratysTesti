@@ -84,7 +84,7 @@ test("local camera capture and recognition remain separate explicit actions with
   assert.match(screen, /phase !== "preview"/);
   assert.match(screen, /recognizeLocalPhoto\(jpeg, controller\.signal\)/);
   assert.match(screen, /testID="local-photo-recognize"/);
-  assert.match(screen, /!available \|\| !canUsePhotoCapture/);
+  assert.match(screen, /!canUseLocalPhotoCapture\(Platform\.OS, Constants, available\)/);
   assert.match(screen, /local-photo-unavailable/);
   assert.doesNotMatch(screen, /useEffect|photoAvailable|requestPhoto|AsyncStorage|console\./);
 });
@@ -99,7 +99,11 @@ test("local media is bounded and cleared on cancellation, blur and background wi
   assert.match(screen, /generation\.current\+\+/);
   assert.match(screen, /ticket !== generation\.current/);
   assert.match(screen, /AppState\.addEventListener\("change"/);
-  assert.match(screen, /state === "background"/);
+  assert.match(
+    screen,
+    /shouldClearLocalPhotoState\(state, Platform\.OS, permissionPrompt\.current\)/,
+  );
+  assert.match(screen, /waitForCameraPermissionResume/);
   assert.match(screen, /subscription\.remove\(\)/);
   assert.match(screen, /setJpeg\(undefined\)/);
   assert.match(screen, /setObservation\(undefined\)/);
@@ -109,9 +113,11 @@ test("local media is bounded and cleared on cancellation, blur and background wi
   );
 });
 
-test("native availability is explicit, optional and iOS-only, never a fake web or cloud implementation", () => {
+test("native availability is explicit and platform-specific, never a fake web or cloud implementation", () => {
   const native = source("mobile/app/src/features/local-vision/native.ts");
   assert.match(native, /Platform\.OS !== "ios"/);
+  assert.match(native, /Platform\.OS !== "android"/);
+  assert.match(native, /recognizeAndroidEvidence/);
   assert.match(native, /requireOptionalNativeModule/);
   assert.match(native, /KierratysLocalVision/);
   assert.match(native, /typeof module\.recognize === "function"/);

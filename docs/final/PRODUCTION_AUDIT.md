@@ -1,5 +1,32 @@
 # Adversarial production-readiness audit
 
+## November17 — Android native and standalone-app follow-up
+
+Scoped follow-up, not a new closure of all30lanes. Native/runtime and full-app
+evidence are separate; detailed sources, reproduction, ownership and physical
+Samsung procedure:ANDROID_NATIVE_DELIVERY.md. Final outcomes:TEST_EVIDENCE.md.
+
+| ID | Severity / status | Evidence / reproduction | Remediation / owner |
+| --- | --- | --- | --- |
+| AND-01 | high / native implementation repaired | Original module only Apple; browser checks cannot establish Android inference | Codex/local: real Kotlin/ORT/bundled ML Kit, separate validated contracts/model/licence pins. Four real JPEG comparisons and OCR/barcode pass airplane-mode instrumented test |
+| AND-02 | high / repaired | Stripped JPEG EXIF0 rejected in SiglipPixels.tensor | Codex/local: unspecified→normal1 mapping; invalid orientations remain rejected. Unit and native regression, unchanged0.005score gate |
+| AND-03 | high / repaired for measured development cases | Native run timeout; resize allocates coordinate pairs for millions of samples | Codex/local: allocation-free mapping/shared RGB loop with same fixed-point math. Four native requests1.14–5.18s, same12sdeadline; no Samsung latency/energy claim |
+| AND-04 | high / guard repaired, final UI tracked separately | Android6Open camera unavailable despite registered module; Expo58Android native constants omit versionCode | Codex/local: local flow requires actual installed module/bare-or-standalone runtime, not JS manifest. Preserve iOS build/cloud guards and regression tests; rebuild Android7/iPhone21 |
+| AND-05 | high / external physical acceptance open | Owner has no Samsung; emulatorAPI35cannot establish actual optics/autofocus/vendor/thermal/pressure behavior | Roope/tester: obtain64bit Android26+Samsung and execute delivery document's exact matrix; do not downgrade from emulator evidence |
+| AND-06 | high / lifecycle repaired, final first-permission retest required | Android7first photo permission grant returns to intro: Activity pause triggers privacy clear | Codex/local: ignore permission-only Android pause while no image exists; bounded1500msactive-resume/abort guard before opening camera. iOS/background-photo clearing retained; resume/timeout/blur tests |
+| PRIV-AND-01 | medium / disclosed; production assessment open | Local ML Kit image processing still permits SDK technical-data transmission to Google | Codex/owner: FI/ENAndroid disclosure and official policy link implemented; assess retention/Data Safety/production privacy before public release. Never claim zero SDK telemetry |
+| UI-AND-07 | medium / open local | One immediate automated shutter tap on final Android7stays in camera; later retry captures successfully. Native/image pipeline and another first-permission capture pass; cause not yet attributed | Codex: NEXT_ACTION20-cycle readiness/retake/background/PSS soak, retain miss and repair if reproducible. No all-capture reliability claim |
+
+Final outcomes: AND-04and AND-06normal Android7camera UI retests pass after repair;
+AND-05remains externally blocked. iPhone21installed/launched and all14legacy
+resource pins retained. Native/ZIP16KiBstatic checks pass for30libraries. These
+outcomes do not close the separate UI-AND-07or physical quality gates.
+
+Dynamic activation INT8 failed the original score gate and was rejected;
+weight-only export passes four development inputs, not broad quality. Existing
+recognition/region/MEM-01/iOSasset/store findings below retain severity and owners.
+No physical Samsung or public production GO is inferred from this work.
+
 ## November17 — assessment-unit adversarial checks
 
 | ID | Severity / disposition | Evidence / reproduction | Required remediation and owner |

@@ -4,6 +4,11 @@ KeepItGreen on toimiva kouluprojekti, ei vielä yleiseen jakeluun hyväksytty tu
 Tekninen nimi ja Git-repo ovat edelleen KierrätysAppi. Uudet tiedot eivät ole
 uusi kuvantunnistusmalli eikä sovellus tunnista kaikkia tuotteita varmasti.
 
+Viimeisin iPhone-asennus on0.1.0(21), käynnistys varmistettu. Androidille on
+koottu erillinen paikallisen tunnistuksen sisältävä7asennuspaketti ja testattu
+emulaattorissa; fyysistä Samsungia ei ole ollut käytettävissä. Tarkat rajat:
+ANDROID_NATIVE_DELIVERY.md. Tämä ei muuta alla olevan kouluesittelyn tavoitetta.
+
 ## Lyhyt esittely
 
 “Sovellus auttaa löytämään esineelle tai pakkaukselle lajitteluohjeen.
@@ -57,7 +62,8 @@ lähdepalvelun, yhteyden tai tuotetietojen puuttumisen takia.
 - Kuvantunnistus käyttää valmiita MobileCLIP/SigLIP2-malleja ja omaa käsittely-,
   vertailu-, epävarmuus- ja ohjeistuslogiikkaa. Ei itse tyhjästä opetettu yleis-AI.
 - Yleistä tunnistustarkkuutta, kaikkia suomalaisia tuotteita tai kaikkien kuntien
-  ohjeita ei ole varmennettu. Samsung/Androidin natiivivertailu on kesken.
+  ohjeita ei ole varmennettu. Androidin neljän JPEG-kuvan natiivivertailu ja
+  kameran käyttöpolun emulaattorikoe on tehty; fyysinen Samsung-koe puuttuu.
 - Aiempi muistijälkilöydös MEM-01 ja julkisen julkaisun laatugatet ovat edelleen
   avoimia. Kouluesittelyn toimivuus ei sulje niitä.
 - Nykyinen iPhone-kehitysallekirjoitus päättyy **23.11.2026 klo12.53 Suomen aikaa**.

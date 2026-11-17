@@ -3,6 +3,7 @@ import type {
   LocalVisionObservation,
 } from "@kierratysappi/contracts/local-vision";
 import type { LocalVisionReadiness } from "@kierratysappi/contracts/local-vision-readiness";
+import type { AndroidVisionEvidence } from "@kierratysappi/contracts/android-vision";
 import { preparePhotoBase64 } from "@kierratysappi/contracts/photo-image";
 import type { OfflineProductResult } from "@kierratysappi/domain/offline-product";
 import type { MessageKey } from "@kierratysappi/localization";
@@ -11,7 +12,7 @@ import Constants from "expo-constants";
 import { File, Paths } from "expo-file-system";
 import { useFocusEffect, useRouter } from "expo-router";
 import { useCallback, useRef, useState } from "react";
-import { AppState, Image, Linking, StyleSheet, TextInput, View } from "react-native";
+import { AppState, Image, Linking, Platform, StyleSheet, TextInput, View } from "react-native";
 import { OfflineProductResultView } from "@/components/offline-product-result";
 import { ObjectCandidateResultView } from "@/components/object-candidate-result";
 import type { ObjectPhotoResponse } from "@/features/local-vision/object-candidates";
@@ -33,12 +34,17 @@ import {
   isLocalVisionAvailable,
   recognizeLocalPhoto,
   recognizeOfflineProduct,
+  recognizeAndroidEvidence,
 } from "@/features/local-vision/native";
 import { type LocalPhotoPhase, localPhotoPresentation } from "@/features/local-vision/presentation";
 import { localReadinessMessage } from "@/features/local-vision/readiness";
 import { isLocalCaptureUri } from "@/features/local-vision/recognizer";
 import {
-  canUsePhotoCapture,
+  shouldClearLocalPhotoState,
+  waitForCameraPermissionResume,
+} from "@/features/local-vision/lifecycle";
+import {
+  canUseLocalPhotoCapture,
   localPhotoInitialSize,
   resolvePhotoCaptureSize,
 } from "@/features/photo/sorting";
@@ -69,6 +75,7 @@ export default function LocalPhotoScreen() {
   const [mode, setMode] = useState<"product" | "material">("product");
   const [productResult, setProductResult] = useState<OfflineProductResult>();
   const [objectHint, setObjectHint] = useState<ObjectPhotoResponse>();
+  const [androidEvidence, setAndroidEvidence] = useState<AndroidVisionEvidence>();
   const [manualCode, setManualCode] = useState("");
   const [permission, requestPermission] = useCameraPermissions();
   const [phase, setPhase] = useState<LocalPhotoPhase>("intro");
@@ -98,6 +105,7 @@ export default function LocalPhotoScreen() {
     setObservation(undefined);
     setProductResult(undefined);
     setObjectHint(undefined);
+    setAndroidEvidence(undefined);
     setManualCode("");
     setError(undefined);
     setBusy(false);
@@ -110,7 +118,7 @@ export default function LocalPhotoScreen() {
   useFocusEffect(
     useCallback(() => {
       const subscription = AppState.addEventListener("change", (state) => {
-        if (state === "background" || (state !== "active" && !permissionPrompt.current)) clear();
+        if (shouldClearLocalPhotoState(state, Platform.OS, permissionPrompt.current)) clear();
       });
       return () => {
         subscription.remove();
@@ -122,7 +130,7 @@ export default function LocalPhotoScreen() {
   const open = async (nextMode: "product" | "material" = mode) => {
     if (locked.current) return;
     setMode(nextMode);
-    if (!available || !canUsePhotoCapture("ios", Constants)) {
+    if (!canUseLocalPhotoCapture(Platform.OS, Constants, available)) {
       setError("localVisionUnavailable");
       return;
     }
@@ -146,6 +154,21 @@ export default function LocalPhotoScreen() {
       let granted: boolean;
       try {
         granted = permission?.granted || (await requestPermission()).granted;
+        if (Platform.OS === "android" && granted) {
+          const resumed = await waitForCameraPermissionResume(
+            {
+              get currentState() {
+                return AppState.currentState;
+              },
+              subscribe: (listener) => AppState.addEventListener("change", listener),
+            },
+            controller.signal,
+          );
+          if (!resumed) {
+            clear();
+            return;
+          }
+        }
       } finally {
         permissionPrompt.current = false;
       }
@@ -206,12 +229,12 @@ export default function LocalPhotoScreen() {
     void open();
   };
 
-  const lookupEnteredBarcode = async () => {
+  const lookupEnteredBarcode = async (code = manualCode) => {
     if (locked.current || busy) return;
     const ticket = generation.current;
     // Only this explicit barcode action can use the shared online fallback.
     // Camera photos/OCR remain in the separate local recognition pipeline.
-    const attempt = await lookupBarcode(manualCode, "manual");
+    const attempt = await lookupBarcode(code, "manual");
     if (ticket !== generation.current) return;
     if (attempt.accepted) {
       clear();
@@ -238,6 +261,7 @@ export default function LocalPhotoScreen() {
       if (result.status === "observed") {
         setProductResult(result.result);
         setObjectHint(result.objectHint);
+        setAndroidEvidence(result.androidEvidence);
         setPhase("result");
         play("ready");
         announceAccessibility(t("localVisionReady"));
@@ -249,6 +273,24 @@ export default function LocalPhotoScreen() {
               ? "localVisionTimeout"
               : "localVisionError",
         );
+        setPhase("intro");
+      }
+      return;
+    }
+    if (Platform.OS === "android") {
+      const result = await recognizeAndroidEvidence(jpeg, controller.signal);
+      if (ticket !== generation.current) return;
+      setJpeg(undefined);
+      pending.current = undefined;
+      locked.current = false;
+      setBusy(false);
+      if (result.status === "observed") {
+        setAndroidEvidence(result.observation);
+        setPhase("result");
+        play("ready");
+        announceAccessibility(t("localVisionReady"));
+      } else {
+        setError(result.reason === "timeout" ? "localVisionTimeout" : "localVisionError");
         setPhase("intro");
       }
       return;
@@ -450,6 +492,55 @@ export default function LocalPhotoScreen() {
             testID="local-photo-cancel"
           />
         )}
+        {phase === "result" &&
+          androidEvidence &&
+          (mode === "material" || androidEvidence.codes.length > 0) && (
+            <Paper testID="android-evidence-result">
+              {mode === "material" && (
+                <>
+                  <AppText variant="heading">{t("localVisionMarkings")}</AppText>
+                  <AppText>
+                    {t(
+                      androidEvidence.markings.status === "ambiguous"
+                        ? "localVisionConflicting"
+                        : androidEvidence.markings.candidates.length
+                          ? "localVisionMarkingHint"
+                          : "localVisionNoMarkings",
+                    )}
+                  </AppText>
+                  {androidEvidence.markings.status === "candidates" &&
+                    androidEvidence.markings.candidates.map((mark) => (
+                      <Button
+                        key={mark.canonicalCode}
+                        label={mark.text}
+                        variant="secondary"
+                        onPress={() => {
+                          clear();
+                          router.push({ pathname: "/material-code", params: { code: mark.text } });
+                        }}
+                      />
+                    ))}
+                  <Button label={t("localVisionAgain")} variant="secondary" onPress={retake} />
+                </>
+              )}
+              {androidEvidence.codes.map((code) => (
+                <Button
+                  key={code}
+                  label={`${t("offlineProductLookup")}: ${code}`}
+                  accessibilityHint={t("androidBarcodeNetworkHint")}
+                  variant="secondary"
+                  onPress={() => void lookupEnteredBarcode(code)}
+                  testID="android-detected-barcode"
+                />
+              ))}
+              <AppText variant="small" muted>
+                {t("androidVisionAttribution")}
+              </AppText>
+              <AppText variant="small" muted>
+                {androidEvidence.source.observedAt} · {t("confidenceUnknown")}
+              </AppText>
+            </Paper>
+          )}
         {phase === "result" && observation && (
           <>
             <StatusPill label={t("localVisionEstimate")} tone="amber" />

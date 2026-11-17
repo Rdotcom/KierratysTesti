@@ -1,5 +1,6 @@
 import { useRouter } from "expo-router";
 import { useRef, useState } from "react";
+import { Linking, Platform } from "react-native";
 import {
   AppText,
   Button,
@@ -7,6 +8,7 @@ import {
   PageHeader,
   PageIntro,
   Paper,
+  InlineLink,
   Screen,
 } from "@/components/ui";
 import { announceAccessibility } from "@/features/accessibility/announcements";
@@ -54,7 +56,19 @@ export default function LegalScreen() {
         <AppText variant="heading" accessibilityRole="header">
           {t("privacyTitle")}
         </AppText>
-        <AppText>{t("privacyInformation")}</AppText>
+        <AppText>
+          {Platform.OS === "android" ? t("androidPrivacyInformation") : t("privacyInformation")}
+        </AppText>
+        {Platform.OS === "android" && (
+          <InlineLink
+            label={t("androidPrivacyLink")}
+            onPress={() =>
+              void Linking.openURL(
+                "https://developers.google.com/ml-kit/android-data-disclosure",
+              ).catch(() => undefined)
+            }
+          />
+        )}
         <AppText>{t("offlineCachePrivacy")}</AppText>
         <AppText>{t("offlineLibraryInfo")}</AppText>
         <AppText>{t("guideSourceAttribution")}</AppText>

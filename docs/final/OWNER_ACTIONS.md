@@ -1,5 +1,25 @@
 # Owner actions
 
+## November17 — current Android follow-up delivery
+
+- Roope: normal KeepItGreen21is installed and launch/inventory verified on your
+  iPhone. No new trust/payment/key action needed. It opens without Mac/Metro/
+  cable; local guidance/image suggestions and shipped barcode identities work
+  locally, unknown uncached barcodes/external maps need internet. Signing expires
+ 23November12:53:38Helsinki; renew before then if continuing this personal-team
+  installation. Use ASSESSMENT_READY.md for the school presentation.
+- Roope/tester: no Samsung is available. Before claiming real Samsung support,
+  obtain a64bit Android8/API26+Samsung and execute the exact camera/permission/
+  offline/relaunch/large-text/TalkBack/silent-mode/thermal/low-memory matrix in
+  ANDROID_NATIVE_DELIVERY.md. Current emulator evidence is not physical acceptance.
+- Codex/local: NEXT_ACTION readiness/PSS soak; broad model/region coverage,
+  MEM-01and iOS asset reproducibility remain engineering, not credential blockers.
+  Resolve Google SDK retention/Data Safety/production privacy and existing store
+  procedures before public release. No legal/account/paywall step is required
+  just for this school demonstration. Public decision remains NO-GO.
+- Owner explicitly authorizes this KierratysAppi/main sharing step only. Do not
+  automatically push later work there or synchronize KeepItGreen history.
+
 ## November17 — assessment handoff
 
 - Roope/teacher: use `ASSESSMENT_READY.md` for the short presentation and real

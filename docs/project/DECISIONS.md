@@ -1,5 +1,49 @@
 # Decision log
 
+## D-114 — Separate Android evidence and measured mobile model conversion
+
+2026-11-17. Owner requests Android support, iPhone update and one reviewed
+KierratysAppi/main publication. Add a real Kotlin/ONNX Runtime CPU adapter and
+bundled ML Kit OCR/barcode path, not fabricated Apple metadata or a cloud
+fallback. Keep separate strict contracts, explicit user material confirmation,
+unchanged rule provenance and iOS implementation. Android SDK technical-data
+disclosure is platform-specific; no zero-telemetry claim. No physical Samsung
+available, so native emulator evidence cannot close that hardware gate.
+
+Reject dynamic activation INT8 conversion which fails the unchanged0.005score
+gate. Weight-only INT8 preserves all four development tensor top1results and
+that gate on Mac; actual Android JPEG/OCR execution is required separately.
+Bundled public model/prototypes/licences are pinned and no test photographs
+belong in production APK. SDK/JDK install and exact cache cleanup approved by
+owner; signed iPhone20/rollback19 preserved before deleting the old build cache.
+Android native runtime initially exposes metadata-stripped JPEG orientation0;
+normalize EXIF unspecified to normal1 and add a regression, not relaxed image
+or parity guards. Runtime/final delivery outcomes belong in TEST_EVIDENCE.md.
+
+Standalone UI then exposes two separate integration failures not covered by
+native tests: Android Constants omit versionCode, and permission Activity pause
+clears the first camera request. The local flow uses actual native capability
+rather than mutable manifest data; permission-only interruption gets bounded
+active-resume/abort handling before camera mount. Preserve original iOS/cloud
+gates and background-photo clearing. Final21/7source is rebuilt normally for
+both platforms; do not label intermediate20/6as final delivery.
+
+Clean iOS compilation changes only CoreML metadata map serialization order:
+twelve other resource files, graph and weights match, metadata JSON is
+semantically identical. Preserve the original signed compile; restore the two
+exact files from the verified frozen20bundle and re-sign only the fresh21artifact
+with its existing identity/entitlements. All fourteen original byte pins remain
+mandatory; do not weaken verification to accept different metadata. Existing
+profile/device/framework/privacy/candidate/JPEG/no-QA checks rerun successfully.
+Static Android ELF/ZIP16KiBchecks cover all30native libraries, not an actual
+16KiB-kernel or physical Samsung run. An immediate automated shutter miss stays
+an open local medium finding for the next soak, not hidden as a clean camera pass.
+
+Mark ONNX artifacts binary explicitly in Git: their serialized textual headers
+can fool the initial-byte diff heuristic. Never run whitespace cleanup or text
+merging on weights. Recount staged-blob SHA256against the exact public model pin
+before publication; source policy and full validation include this safeguard.
+
 ## D-113 — Assessment-ready bounded offline content and restrained feedback
 
 - Date:2026-11-17. Owner prioritizes tomorrow's school assessment, useful offline

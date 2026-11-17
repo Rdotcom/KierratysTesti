@@ -1,12 +1,44 @@
-# Local Apple Vision observations
+# Local image observations
 
-Local Expo module `KierratysLocalVision`, iOS only. Original material entry points:
+## Android adapter — source client21 / Android7
+
+Android8/API26+ has a separate Kotlin implementation: bundled ML Kit Latin OCR and
+barcode decoding, plus ONNX Runtime CPU SigLIP2 object-form suggestions. No
+Apple Vision outputs, class operating points or MobileCLIP SKU matches are
+invented on Android. The shared adapter validates Android-specific evidence and
+the paired Android model/preprocessing identities; material and sorting remain
+explicit user choices using source-backed rules.
+
+The checked-in95.7MB weight-only INT8 ONNX model and15text prototypes are pinned
+by SHA256 and Apache2 notices. It is Google's pretrained model, not an own-trained
+universal recognizer. Four development JPEGs pass native Android parity and
+bundled OCR/barcode passes airplane-mode tests; full-app smoke is recorded
+separately in project evidence. No physical Samsung has
+been tested. Legacy iOS asset-acquisition limits below remain unchanged.
+
+The serial native worker streams the verified public model to private model
+cache, opens a CPU session per request and closes it afterward. JPEG/image bounds,
+12second deadline, matching-ID cancellation and late-result suppression apply.
+Only GTIN candidates and allowlisted material markings leave OCR; no arbitrary
+OCR, images, service keys or network fallback. Models are bundled, not downloaded
+at first use. ML Kit SDK technical device/app/performance data may be sent to
+Google independently of on-device image processing; see the Android-specific
+in-app disclosure and https://developers.google.com/ml-kit/android-data-disclosure.
+Production privacy/retention assessment is not implied by an emulator pass.
+
+Android build uses JDK21, Android SDK37, minSDK26 and arm64-v8a/x86_64. Native
+unit tests cover pixels/orientation; instrumented fixtures are test-APK-only.
+See scripts/qa/build-android-assessment.mjs and the model export/staging recipes.
+
+## Existing Apple implementation
+
+Local Expo module `KierratysLocalVision`. Original iOS material entry points:
 `inspectReadiness()` and `recognize(jpegBase64: string)`.
 The application adapter validates their untrusted results before use. Readiness
 reports full, primary-only or unavailable support; full means resource integrity
 and interface availability, **not recognition accuracy**. Older clients without
 that entry report readiness unreported rather than claiming a model is absent.
-Clients without the module, Android and web report local recognition unavailable;
+Clients without the module and web report local recognition unavailable;
 never silently fall back to a paid/network provider. Linking requires a native build.
 
 ## Optional SigLIP2 object suggestions (client12)
@@ -46,7 +78,7 @@ The pinned image-only block32 CoreML resources are in a separate optional
 requires the private, hash-verified export artifacts named by that script. A clean
 checkout does not contain the large model: it builds without this optional bundle
 and reports suggestions unavailable. Reproducible public acquisition/export and
-Android support remain unfinished; do not promise feature parity on Samsung.
+physical Samsung acceptance remain unfinished; do not promise verified hardware parity.
 
 The same serial native gate covers both models. Release the MobileCLIP cache
 before lazy SigLIP load; release SigLIP in the worker autoreleasepool after each

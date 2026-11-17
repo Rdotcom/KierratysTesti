@@ -33,6 +33,23 @@ const reader = (): ObjectNativeReader => ({
 });
 afterEach(() => vi.useRealTimers());
 describe("SigLIP camera candidates are bounded unverified object hints", () => {
+  it("accepts the explicitly paired Android runtime identity, never mixed iOS preprocessing", () => {
+    const android = {
+      ...raw(),
+      modelId: "google-siglip2-base224-onnx-weight-int8-v1",
+      preprocessing: "siglip2-android-bitmap-srgb-aa22-224-nchw-v1",
+    };
+    expect(normalizeObjectCandidates(JSON.stringify(android))).toMatchObject({
+      candidates: ["spoon", "cup", "fork"],
+      source: { modelId: android.modelId, verification: "unverified" },
+    });
+    expect(() =>
+      normalizeObjectCandidates(JSON.stringify({ ...android, preprocessing: raw().preprocessing })),
+    ).toThrow();
+    expect(() =>
+      normalizeObjectCandidates(JSON.stringify({ ...raw(), preprocessing: android.preprocessing })),
+    ).toThrow();
+  });
   it("normalizes top3 without probability, material, bin or verified product", () => {
     const result = normalizeObjectCandidates(JSON.stringify(raw()));
     expect(result.candidates[0]).toBe("spoon");

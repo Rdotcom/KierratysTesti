@@ -34,7 +34,11 @@ test("background/blur clear aborts readiness, removes partial snapshot and canno
   assert.match(clear, /setChecking\(false\)/);
   assert.match(clear, /generation\.current\+\+/);
   assert.match(screen, /AppState\.addEventListener\("change"/);
-  assert.match(screen, /state === "background"/);
+  assert.match(
+    screen,
+    /shouldClearLocalPhotoState\(state, Platform\.OS, permissionPrompt\.current\)/,
+  );
+  assert.match(screen, /waitForCameraPermissionResume/);
 });
 
 test("readiness UI reports only partial support, not verified inference or arbitrary success metrics", () => {

@@ -133,3 +133,17 @@ export function canUsePhotoCapture(
     Number(build) >= 2
   );
 }
+
+/** Installed Android local-module capability replaces the absent native build
+ * constant. Never trust the mutable JS manifest or enable the separate cloud flow.
+ */
+export function canUseLocalPhotoCapture(
+  platform: string,
+  runtime: Parameters<typeof canUsePhotoCapture>[1],
+  nativeModuleAvailable: boolean,
+): boolean {
+  if (!nativeModuleAvailable) return false;
+  if (platform === "android")
+    return runtime.executionEnvironment === "bare" || runtime.executionEnvironment === "standalone";
+  return canUsePhotoCapture(platform, runtime);
+}

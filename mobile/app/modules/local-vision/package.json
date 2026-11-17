@@ -2,7 +2,7 @@
   "name": "kierratys-local-vision",
   "version": "0.1.0",
   "private": true,
-  "description": "Bounded local Apple Vision observations for KierratysAppi",
+  "description": "Bounded offline iOS and Android image observations for KierratysAppi",
   "license": "UNLICENSED",
   "author": "KierratysAppi contributors",
   "homepage": "https://github.com/roopeaal/KierratysAppi"
