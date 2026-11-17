@@ -122,3 +122,10 @@ period and requested the compatible Expo updates. The new cohort installs and
 local Expo Doctor20/20passes; compatibility/security checks remain enabled.
 No API key or paid recognition service is introduced. Current exact test and
 publication outcomes, including retained earlier failures: TEST_EVIDENCE.md.
+
+Updated-source verification: main bd96fc0passes Linux CI/Doctor20/20/security,
+Mac Chrome and actual Windows Chrome/Edge/model gates in
+[run44093472229](https://github.com/roopeaal/KierratysAppi/actions/runs/44093472229).
+Both operating systems export Android/iOS Hermes and web bundles; exports are
+not native application builds or a physical Samsung/webcam test. The old
+red Expo recommendation run is historical, resolved by this approved update.

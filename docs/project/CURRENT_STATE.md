@@ -18,9 +18,16 @@
   tests/all builds pass. Actual Mac Chrome157JPEG/PNG→real model→object/material/
   guidance, synthetic camera cleanup, EN/dark/narrow/offline pass with no page
   errors. Four frozen model cases retain the unchanged top1/0.005score gate.
-- Mac iOS/Android/web JS/Hermes export passes; repeat this in Windows proof.
-  This is explicitly not an iOS/Android native binary/device claim. Authorized
-  normal main publication/Windows results follow in TEST_EVIDENCE.md. Mac reached
+- Mac and actual Windows iOS/Android/web JS/Hermes exports pass. This is
+  explicitly not an iOS/Android native binary/device claim. Normal main push
+  confirmed bd96fc0with public d2f95d4parent only; no teammate/private history
+  overwritten or force push. CI44093470902passes all four jobs, Doctor20/20,
+  audit policy; security44093470925passes. Actual Windows44093472229passes
+  model parity/Chrome156/Edge156with empty pageerror lists and max0.003731below
+  the unchanged0.005gate. Exact evidence/logs in TEST_EVIDENCE.md.
+- Old owner Metro7373was verified and replaced with updated SDK server26118
+  on loopback8097; owner page/model3004return200. Sleep prevention follows
+  only that web PID, no persistent power change or new LAN exposure. Mac reached
   ~0.5GiBfree during checks and later recovered~1.9GiB; no new native build or
   deletion of user data is needed or attempted.
   Installed iPhone22is not replaced; physical Samsung/webcam gates remain open.

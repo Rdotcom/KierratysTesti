@@ -1,5 +1,17 @@
 # Security and privacy
 
+## November17 — explicit owner removal of dependency waiting period
+
+Owner requests minimumReleaseAge0/strictfalse and coherent Expo58patches.
+This removes the maturity delay by explicit choice; it is not equivalent to a
+guarantee that new packages are safe. Frozen lockfile/integrities, build-script
+allowlist, mandatory Expo compatibility and high/critical audit failures remain
+enabled and regression-tested. Actual main CI/security/Windows tests pass for
+bd96fc0. No new provider key, photo retention, model upload, public deployment,
+phone replacement or automatic future team synchronization. Earlier proof-only
+source-sharing notes below are historical; this selected main push is separately
+authorized. Device/production limitations remain explicit in TEST_EVIDENCE.md.
+
 ## November17 — browser files/camera, same own-server consent boundary
 
 Browser-only API receives a sanitized bounded JPEG only after the user's separate

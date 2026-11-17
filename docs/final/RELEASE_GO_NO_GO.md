@@ -5,8 +5,11 @@
 Explicit owner request supersedes the preceding24hour waiting requirement.
 SDK58patches install; local mandatory Expo Doctor20/20and audit pass without
 package exclusions/offline/continue-on-error. Frozen installs and high/critical
-security gates remain. Main/Windows updated-source outcomes are recorded in
-TEST_EVIDENCE.md after execution. Source delivery is not public production GO,
+security gates remain. Selected main source bd96fc0is confirmed; actual
+CI44093470902(Doctor20/20/all parts/audit), security44093470925and Windows
+44093472229(model/all-platform JS exports/Chrome/Edge) all pass. The earlier
+red Expo health run is retained as history, not the current state.
+Exact logs/limits are in TEST_EVIDENCE.md. Source delivery is not public production GO,
 a new native binary, universal recognition or physical Samsung/webcam proof.
 
 ## November17 — team-main browser source delivery approved

@@ -5,8 +5,8 @@
 - [x] Install coherent SDK58patch cohort; local Expo Doctor20/20/audit pass.
 - [x] Updated-source Mac real-model/browser and all-platform JS/Hermes export;
   final2102tests/all builds pass with10dependency-policy regressions.
-- [ ] Confirm authorized main CI/security and actual Windows updated-source
-  model/Chrome/Edge/all-platform export outcome.
+- [x] Authorized normal main source bd96fc0; CI44093470902/security44093470925
+  green, actual Windows44093472229model/Chrome/Edge/all-platform exports pass.
 
 - [x] Owner-approved main delivery review and main-based Windows setup guide;
   repair earlier Linux pnpm hard-link metadata failure with regression.

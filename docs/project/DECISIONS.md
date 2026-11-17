@@ -21,6 +21,14 @@
   Recheck actual remote/main, preserve teammate/public ancestry, never publish
   the private development history. Existing production/physical-device gates
   remain independent; this source task does not replace the installed phone app.
+- Source bd96fc0is normally pushed, with fresh public d2f95d4parent and tree
+  identical to reviewed localfc9cba8. Actual Linux CI/security and Windows
+  model/all-platform exports/Chrome/Edge pass; verify actual logs and original
+  numeric gate, not merely badges. Outcome docs may follow on this selected
+  authorized delivery with no runtime change. No future automatic team push.
+- Restart only the verified old owner loopback Metro to use updated dependencies;
+  preserve model3004and native22, confirm both HTTP200, tie existing idle-sleep
+  prevention to the new web PID. No camera opening/private state collection.
 
 ## D-122 — Explicit team-main delivery after Windows proof
 

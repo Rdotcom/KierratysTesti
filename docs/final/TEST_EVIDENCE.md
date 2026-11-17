@@ -23,7 +23,7 @@ update. Expo Doctor1.21.5passes20/20(expo-doctor.log), audit policy exits0with
 Frozen four-JPEG actual model top1/unchanged0.005gate and invalid-input recovery
 pass(model-parity.log). Final regression adds an explicit Windows all-platform
 JS/Hermes export step, not native build/device evidence. Final counts, actual
-Mac browser and authorized remote results follow after execution.
+Mac browser and authorized remote results are recorded below.
 
 Final local `pnpm validate` exits0with2102tests (938Node+1164workspace;
 mobile363/API30), all builds/18web routes, boundaries/format/lint/types.
@@ -39,6 +39,38 @@ ended; managed test services stop. Actual webcam remains untested.
 `expo export --platform all --max-workers 2` exits0with separate Android/iOS
 Hermes bundles and web routes (platform-export.log); this is JS packaging, not
 native compiler/linker, app installation or physical-device evidence.
+
+Selected source normally pushed to KierratysAppi/main as
+bd96fc0b5b7325a49e52206ce379da756b65a058, parent
+d2f95d4412f50ae05fd3b78d3d6b00e172af885aand exact reviewed localfc9cba8tree.
+Fresh remote URL/main inspected before push, no newer teammate commits, no
+private history/force push. Public repository verified before standard Windows
+run; no paid provider, larger runner, artifact/cache upload or production host.
+
+[Main CI44093470902](https://github.com/roopeaal/KierratysAppi/actions/runs/44093470902)
+passes full2102tests/all three part validations, Expo Doctor20/20and actual
+audit policy22reviewed advisories. Independently inspected main-ci.log:
+938Node/0fail, all workspace tests, no compatibility bypass. PR-only dependency
+review is normally skipped for push, not a missing mandatory push check.
+[Security44093470925](https://github.com/roopeaal/KierratysAppi/actions/runs/44093470925)
+passes CodeQL/secrets at the same source.
+
+[Actual Windows44093472229](https://github.com/roopeaal/KierratysAppi/actions/runs/44093472229)
+passes at source bd96fc0, completed17November15:36:50EET. Independently inspect
+windows-run.log, not only green status: Android/iOS9.2MBHermes bundles and web
+export successfully, original four JPEG top1s retained with maximum errors
+0.002305118/0.002186470/0.001957612/0.003730371below unchanged0.005.
+Actual Chrome156.0.8078.80and Edge156.0.4314.58both report platformwin32/
+actualModeltrue, all six real image/consent/object/material/source/recovery
+cases and empty pageerror lists. Synthetic camera only; no physical webcam,
+Samsung or new native app binary acceptance is implied by bundle exports.
+
+Owner's verified old loopback Metro7373restarted with updated SDK as26118,
+max-workers2; http://localhost:8097/local-photo and model3004capabilities return
+HTTP200. No paid key, new LAN/public listener or private webcam opened.
+Existing idle-sleep prevention now follows only new web PID. Owner web remains
+running; managed QA processes stopped. Docs-only outcome followup keeps the
+tested runtime tree unchanged and does not skip main CI.
 
 Mac free space falls to~0.5GiBduring checks, later recovers~1.9GiB; no old/user files deleted, native
 build/signing/phone install attempted or physical webcam opened.
