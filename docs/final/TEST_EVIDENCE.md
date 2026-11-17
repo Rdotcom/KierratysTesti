@@ -1,5 +1,48 @@
 # Test evidence
 
+## November17 — explicit wait removal and SDK58patch cohort
+
+Run work/expo-patch-20261117.7WZMvr. New owner instruction explicitly removes
+the age policy and authorizes selected main publication. Fresh remote
+d2f95d4412f50ae05fd3b78d3d6b00e172af885amatches local pre-change tree.
+Workspace now explicitly minimumReleaseAge0/strictfalse, no package-age
+exclusions. Policy regression retains build allowlist, frozen install, mandatory
+Expo Doctor/audit and prohibits offline/check-skipping workarounds.
+
+Official npm package version/integrity confirms expo58.0.26,
+expo-dev-client58.0.21, expo-file-system58.0.14and expo-router58.0.32.
+Normal lock/install succeeds; initial host fallback was Node26.4.0/pnpm11.25.0,
+then exact pnpm11.16.0frozen reinstall and final checks. Root declared versions
+and CI pins unchanged. Required CLI/Metro/router/babel/dev-launcher and their
+locked transitive platform packages update; no React/RN/model/rule change.
+Logs lock.log/install.log/pinned-install.log retain the actual commands/results.
+
+Local mobile validation and full baseline2101tests/all builds pass after Expo
+update. Expo Doctor1.21.5passes20/20(expo-doctor.log), audit policy exits0with
+22reviewed low/moderate advisories(audit.log), not zero vulnerabilities.
+Frozen four-JPEG actual model top1/unchanged0.005gate and invalid-input recovery
+pass(model-parity.log). Final regression adds an explicit Windows all-platform
+JS/Hermes export step, not native build/device evidence. Final counts, actual
+Mac browser and authorized remote results follow after execution.
+
+Final local `pnpm validate` exits0with2102tests (938Node+1164workspace;
+mobile363/API30), all builds/18web routes, boundaries/format/lint/types.
+Ten dependency-policy regressions pass, including mandatory retained security
+checks and all-platform Windows JS export. Earlier2101baseline is retained,
+not substituted for the final suite. Logs final-validate.log/dependency-tests.log.
+Mac actual Chrome157.0.8103.79/real model passes all six JPEG/PNG/explicit
+consent/object/material/source/invalid/SVG/synthetic-camera/offline/EN/reload/
+dark390px/reduced-motion cases, empty pageerrors. Screenshots
+browser-proof/browser-spoon-guidance.png and browser-en-dark-mobile.png visually
+inspected; no malformed/clipped controls observed. Synthetic camera tracks
+ended; managed test services stop. Actual webcam remains untested.
+`expo export --platform all --max-workers 2` exits0with separate Android/iOS
+Hermes bundles and web routes (platform-export.log); this is JS packaging, not
+native compiler/linker, app installation or physical-device evidence.
+
+Mac free space falls to~0.5GiBduring checks, later recovers~1.9GiB; no old/user files deleted, native
+build/signing/phone install attempted or physical webcam opened.
+
 ## November17 — selected main delivery and existing Linux CI repair
 
 Run work/browser-main-20261117.7rCuCS. Fresh origin URL is

@@ -1,11 +1,19 @@
 # Roadmap
 
+- [x] Explicit owner-authorized release-age wait removal; retain frozen installs,
+  integrity/build restrictions, mandatory Expo Doctor and vulnerability checks.
+- [x] Install coherent SDK58patch cohort; local Expo Doctor20/20/audit pass.
+- [x] Updated-source Mac real-model/browser and all-platform JS/Hermes export;
+  final2102tests/all builds pass with10dependency-policy regressions.
+- [ ] Confirm authorized main CI/security and actual Windows updated-source
+  model/Chrome/Edge/all-platform export outcome.
+
 - [x] Owner-approved main delivery review and main-based Windows setup guide;
   repair earlier Linux pnpm hard-link metadata failure with regression.
 - [x] Confirm selected normal main pusha0f90ef; Linux full tests/parts and
   security pass. Full CI is red at live Expo patch recommendation, not tests.
-- [ ] After18November14:05EET, align the newly published Expo58patch cohort
-  without waiving the mandatory24hour release-age policy, then revalidate.
+- [x] Earlier18Novemberwait superseded by explicit owner instruction D-123;
+  SDK58patch cohort is now installed without a maturity delay.
 
 - [x] Browser file/camera→preview→consent→real own-server SigLIP2→shared sorting
   UI, Mac Chrome smoke and visible owner page.

@@ -33,6 +33,8 @@ jobs:
       - run: python -m venv work/siglip-server-venv
       - run: ./work/siglip-server-venv/Scripts/python.exe -m pip install -r backend/data-providers/python/requirements.txt
       - run: pnpm vision:prepare work/network-model
+      - name: Export iOS, Android and web JS bundles (not native app builds)
+        run: pnpm --filter @kierratysappi/mobile exec expo export --platform all --output-dir ../../work/windows-platform-export --max-workers 2
       - name: Actual frozen JPEG model parity on Windows
         shell: pwsh
         run: |

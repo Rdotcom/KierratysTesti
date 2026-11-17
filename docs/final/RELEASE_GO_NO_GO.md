@@ -1,5 +1,14 @@
 # Release decision
 
+## November17 — approved wait removal and Expo patch validation
+
+Explicit owner request supersedes the preceding24hour waiting requirement.
+SDK58patches install; local mandatory Expo Doctor20/20and audit pass without
+package exclusions/offline/continue-on-error. Frozen installs and high/critical
+security gates remain. Main/Windows updated-source outcomes are recorded in
+TEST_EVIDENCE.md after execution. Source delivery is not public production GO,
+a new native binary, universal recognition or physical Samsung/webcam proof.
+
 ## November17 — team-main browser source delivery approved
 
 Owner explicitly requests publication of the tested implementation to

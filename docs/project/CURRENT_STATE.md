@@ -1,5 +1,30 @@
 # Current state
 
+## November17 — owner disables release-age wait and requests Expo patch/main
+
+- New explicit owner instruction supersedes D-122's waiting policy for this
+  task: set minimumReleaseAge0and minimumReleaseAgeStrictfalse. No per-package
+  exclusions, trustLockfile, offline Doctor or vulnerability bypass. Frozen
+  installation, integrity/build-script restrictions and high/critical audit
+  checks stay enabled; regressions now assert the new approved policy.
+- Align only the SDK58patch cohort: expo58.0.26, dev-client58.0.21,
+  file-system58.0.14, router58.0.32and required transitives. React/RN/model/
+  rules/native identities unchanged. Fresh origin main d2f95d4matches the local
+  pre-change tree; no newer teammate changes at initial fetch.
+- Installation succeeds, including a frozen reinstall with pinned pnpm11.16.0.
+  Initial shell fallback was pnpm11.25.0/Node26.4.0; final local checks use
+  pinned pnpm11.16.0, and CI retains Node24.19.0/pnpm11.16.0.
+- Expo Doctor20/20and audit policy pass; mobile validation and final full2102
+  tests/all builds pass. Actual Mac Chrome157JPEG/PNG→real model→object/material/
+  guidance, synthetic camera cleanup, EN/dark/narrow/offline pass with no page
+  errors. Four frozen model cases retain the unchanged top1/0.005score gate.
+- Mac iOS/Android/web JS/Hermes export passes; repeat this in Windows proof.
+  This is explicitly not an iOS/Android native binary/device claim. Authorized
+  normal main publication/Windows results follow in TEST_EVIDENCE.md. Mac reached
+  ~0.5GiBfree during checks and later recovered~1.9GiB; no new native build or
+  deletion of user data is needed or attempted.
+  Installed iPhone22is not replaced; physical Samsung/webcam gates remain open.
+
 ## November17 — approved browser source delivery to team main
 
 - Owner explicitly authorizes the tested browser implementation on

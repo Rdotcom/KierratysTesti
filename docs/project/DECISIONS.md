@@ -1,5 +1,27 @@
 # Decision log
 
+## D-123 — Owner-requested removal of waiting policy, not other security checks
+
+- Date:2026-11-17. Roope explicitly asks to remove the24hour restriction,
+  update Expo, test and publish KierratysAppi/main. Set minimumReleaseAge0and
+  strictfalse explicitly so machine/pnpm defaults cannot silently restore a
+  waiting period. This knowingly removes the maturity delay, not all supply-
+  chain risk. Preserve reviewed lock/integrities, allowlisted builds, Expo
+  compatibility and high/critical audit failure gates. Update rather than delete
+  policy regressions. Do not use package exclusions/offline Doctor/skip markers.
+- Apply official currently recommended SDK58patches only and required locked
+  transitives; keep React/RN/model/rules unchanged. Official npm version/integrity
+  and Expo upgrade guidance rechecked. Pin validation driver to repository
+  pnpm11.16.0after finding a newer host fallback; CI uses existing Node24.19.0.
+- Repeat actual own-server model/browser tests, not mocked responses. Add
+  Windows all-platform JS/Hermes export as cross-platform source evidence; it is
+  not native app compilation, installation, physical camera or Samsung proof.
+  Current low disk does not authorize deleting older builds/user files.
+- Owner authorizes selected normal team-main source push and outcome docs.
+  Recheck actual remote/main, preserve teammate/public ancestry, never publish
+  the private development history. Existing production/physical-device gates
+  remain independent; this source task does not replace the installed phone app.
+
 ## D-122 — Explicit team-main delivery after Windows proof
 
 - Date:2026-11-17. Owner now explicitly requests KierratysAppi/main, superseding

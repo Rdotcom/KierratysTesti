@@ -1,5 +1,22 @@
 # Owner actions
 
+## November17 — updated Expo source handoff
+
+- Codex: owner explicitly authorizes minimumReleaseAge0/strictfalse, SDK58patch
+  alignment and this selected KierratysAppi/main push. Verify local full/mobile/
+  model/browser, then main CI/security and actual Windows model/Chrome/Edge/
+  all-platform JS exports. Keep other security checks mandatory; record results.
+- Windows teammate: use main's BROWSER_AI.md, update a clean checkout with
+  git pull --ff-only, then pnpm install --frozen-lockfile. Keep your own Python/
+  model setup; run pnpm dev:web:recognition and use localhost8097/local-photo.
+  Complete the physical webcam trial yourself; CI uses synthetic camera input.
+- Roope: this source update does not reinstall the iPhone. A native framework
+  rebuild/device test is separate, requires disk headroom, and has not occurred
+  here. Physical Samsung is still unavailable. No action involving keys/payment
+  or waiting until tomorrow is required for the browser source handoff.
+- The earlier dated24hour retry instructions below are historical and
+  superseded by D-123, not current owner actions.
+
 ## November17 — main handoff for Windows teammate
 
 - Codex: selected source delivered as a0f90efon KierratysAppi/main with public

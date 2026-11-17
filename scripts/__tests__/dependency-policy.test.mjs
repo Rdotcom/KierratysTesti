@@ -5,12 +5,14 @@ import { assessAdvisories, parseAuditReport } from "../audit-policy.mjs";
 
 const workspaceUrl = new URL("../../pnpm-workspace.yaml", import.meta.url);
 
-test("dependency resolution enforces the release-age gate without exclusions", async () => {
+test("owner-disabled release-age waiting does not add per-package bypasses", async () => {
   const workspace = await readFile(workspaceUrl, "utf8");
 
-  assert.match(workspace, /^minimumReleaseAge: 1440$/m);
-  assert.match(workspace, /^minimumReleaseAgeStrict: true$/m);
+  assert.match(workspace, /^minimumReleaseAge: 0$/m);
+  assert.match(workspace, /^minimumReleaseAgeStrict: false$/m);
   assert.doesNotMatch(workspace, /^minimumReleaseAgeExclude:/m);
+  assert.match(workspace, /^allowBuilds:\n  esbuild: true$/m);
+  assert.match(workspace, /^onlyBuiltDependencies:\n  - '@biomejs\/biome'\n  - esbuild$/m);
 });
 
 test("Expo compatibility remains a mandatory CI gate without package exclusions", async () => {
@@ -24,11 +26,23 @@ test("Expo compatibility remains a mandatory CI gate without package exclusions"
 
   assert.deepEqual(mobile.expo?.install?.exclude ?? [], []);
   assert.notEqual(mobile.expo?.doctor?.appConfigFieldsNotSyncedCheck?.enabled, false);
+  assert.match(workflow, /run: pnpm install --frozen-lockfile(?:\r?\n|$)/);
   assert.match(workflow, /run: pnpm dlx expo-doctor@1\.21\.5(?:\r?\n|$)/);
+  assert.match(workflow, /run: pnpm security:audit(?:\r?\n|$)/);
   assert.doesNotMatch(
     workflow,
-    /continue-on-error: true|EXPO_DOCTOR_SKIP_DEPENDENCY_VERSION_CHECK/,
+    /continue-on-error: true|EXPO_DOCTOR_SKIP_DEPENDENCY_VERSION_CHECK|EXPO_OFFLINE/,
   );
+});
+
+test("Windows regression also exports all platform bundles without claiming native builds", async () => {
+  const workflow = await readFile(
+    new URL("../../.github/workflows/windows-browser-recognition.yml", import.meta.url),
+    "utf8",
+  );
+  assert.match(workflow, /Export iOS, Android and web JS bundles \(not native app builds\)/);
+  assert.match(workflow, /expo export --platform all .* --max-workers 2/);
+  assert.doesNotMatch(workflow, /continue-on-error: true/);
 });
 
 test("locked fast-uri versions retain their patched security floors", async () => {

@@ -1,5 +1,15 @@
 # External blockers
 
+## November17 — release-age delay resolved by explicit owner choice
+
+Roope explicitly instructs disabling the waiting policy and updating/testing/
+sharing main. The preceding24hour timing blocker is resolved, not still pending
+until tomorrow. SDK58patches install; Expo Doctor20/20and audit pass locally.
+No new key/payment/account prerequisite. Mac free space~0.5GiBdoes not support
+a new native rebuild, and no deletion is authorized by this task. Use Windows
+CI for all-platform JS bundle checks; do not equate them with native builds or
+physical iPhone/Samsung/webcam acceptance.
+
 ## November17 — team-main source sharing authorized
 
 Owner explicitly authorizes the tested browser changes in KierratysAppi/main.

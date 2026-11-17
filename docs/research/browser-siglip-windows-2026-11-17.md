@@ -57,3 +57,15 @@ https://github.com/expo/expo/blob/sdk-58/packages/expo-dev-client/CHANGELOG.md,
 https://github.com/expo/expo/blob/sdk-58/packages/expo-file-system/CHANGELOG.md,
 https://github.com/expo/expo/blob/sdk-58/packages/expo-router/CHANGELOG.md.
 No unsupported inference that a version warning breaks our tested browser flow.
+
+## Explicit owner policy change
+
+The owner subsequently instructs disabling the wait, applying the SDK58patches,
+testing and publishing main. Official pnpm settings rechecked November17:
+https://pnpm.io/settings/dependency-resolution#minimumreleaseage and
+https://pnpm.io/settings/dependency-resolution#minimumreleaseagestrict.
+Use explicit0/false, not merely deleting keys and inheriting defaults. Actual
+effective settings and successful fresh-package installation verify behavior
+with the installed pnpm; revalidate using repository-pinned11.16.0. This removes
+one supply-chain precaution by owner choice, not an autonomous check bypass.
+Frozen lock/integrities/build permissions/audit/Expo compatibility remain.

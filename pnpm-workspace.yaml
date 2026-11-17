@@ -3,8 +3,10 @@ packages:
   - backend/*
   - shared/*
 
-minimumReleaseAge: 1440
-minimumReleaseAgeStrict: true
+# Owner explicitly disabled the release-age waiting period on 2026-11-17.
+# Keep frozen lockfile, integrity, build-script and vulnerability checks enabled.
+minimumReleaseAge: 0
+minimumReleaseAgeStrict: false
 
 # Historical CLI-only Zod security guard; CLI58.1.19 no longer declares Zod,
 # so this selector is currently inert and retained with the frozen lock values.
