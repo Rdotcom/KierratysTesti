@@ -99,7 +99,7 @@ function currentSources(root) {
   for (const file of [
     "package.json",
     "pnpm-lock.yaml",
-    "docs/final/CALIBRATED_V3_PROTOCOL.md",
+    "scripts/qa/protocols/calibrated-v3-protocol.md",
     "scripts/__tests__/calibrated-v3.test.mjs",
   ])
     out[file] = sha(readBounded(path.join(root, file), 2_000_000));

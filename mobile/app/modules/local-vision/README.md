@@ -1,6 +1,6 @@
 # Local image observations
 
-## Android adapter — source client21 / Android7
+## Android adapter
 
 Android8/API26+ has a separate Kotlin implementation: bundled ML Kit Latin OCR and
 barcode decoding, plus ONNX Runtime CPU SigLIP2 object-form suggestions. No
@@ -62,7 +62,7 @@ The own bounded C adapter is not an own JPEG algorithm. Its source is public;
 the dependency's IJG/BSD notices are included in a separate app resource bundle
 and attribution in Legal. This software is based in part on the work of the
 Independent JPEG Group. Full-app memory evidence and retained diagnostic failures
-are recorded in `docs/final/JPEG_REPAIR_AND_APP_MEMORY.md`.
+are recorded in `https://github.com/roopeaal/KeepItGreen/tree/21e27aa124c07b4f37350e4961342a5e710dde18/archives/kierratysappi-2026-11-17`.
 
 `recognizeObjectCandidates(jpegBase64, requestID, timeoutMs)` and matching-ID
 `cancelObjectCandidates(requestID)` add an optional iOS18+ path. The camera
@@ -92,7 +92,7 @@ Client12 is installed and one owner-operated spoon camera case returned
 “Lusikka · Haarukka · Veitsi”. Four controlled worker JPEGs preserve the original
 top1/0.005 score gate; an additional strict Mac comparison fails for one JPEG.
 Decode-only testing finds different OS input tensors for exactly that JPEG, not
-proof of complete causality. See `docs/final/SIGLIP_CAMERA_INTEGRATION.md` for
+proof of complete causality. See `https://github.com/roopeaal/KeepItGreen/tree/21e27aa124c07b4f37350e4961342a5e710dde18/archives/kierratysappi-2026-11-17` for
 retained failures, resource/latency evidence and outstanding full-app RAM/quality
 limits. This is not general accuracy or public-release approval.
 
@@ -157,7 +157,7 @@ that file-reading code is not in the native app engine.
 
 The pinned supplement's full four component/weight notices are in
 `ios/Resources/Notices/` and bundled by the podspec. See
-`docs/final/LOCAL_CLASSIFIER_UPGRADE.md` at the repository root
+`https://github.com/roopeaal/KeepItGreen/tree/21e27aa124c07b4f37350e4961342a5e710dde18/archives/kierratysappi-2026-11-17` at the repository root
 for acquisition/licensing/evaluation scope. Rejected learned heads and QA-only
 exporters are not shipped; current known quality failures remain release gates.
 

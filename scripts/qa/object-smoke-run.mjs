@@ -98,7 +98,7 @@ if (process.argv[2] === "prepare") {
     "scripts/qa/object-smoke-mobileclip.swift",
     "scripts/qa/object-smoke-siglip.py",
     "scripts/qa/local-vision/mobileclip-tokenizer.swift",
-    "docs/research/object-model-smoke-protocol-2026-11-16.md",
+    "scripts/qa/protocols/object-model-smoke-protocol-2026-11-16.md",
     relative(path.join(run, "mobileclip-smoke-v1")),
   ])
     pin(file);

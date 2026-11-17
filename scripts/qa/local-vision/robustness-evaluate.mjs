@@ -408,8 +408,8 @@ export async function evaluate(options, cwd = process.cwd()) {
     committedManifest: path.join(cwd, "scripts/qa/local-vision/robustness-manifest.json"),
     corpusHelpers: path.join(cwd, "scripts/qa/local-vision/independent-corpus.mjs"),
     legacyCorpusValidator: path.join(cwd, "scripts/qa/local-vision/packaging-corpus.mjs"),
-    protocol: path.join(cwd, "docs/final/LOCAL_VISION_ROBUSTNESS_PROTOCOL.md"),
-    accountingAmendment: path.join(cwd, "docs/final/PACKAGING_ACCOUNTING_AMENDMENT.md"),
+    protocol: path.join(cwd, "scripts/qa/protocols/local-vision-robustness-protocol.md"),
+    accountingAmendment: path.join(cwd, "scripts/qa/protocols/packaging-accounting-amendment.md"),
     modelAssets: path.join(cwd, "scripts/qa/local-vision/mobileclip-assets.json"),
   };
   const hashesNow = () => ({

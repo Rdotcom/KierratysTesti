@@ -54,8 +54,8 @@ function sources(root) {
     "mobile/app/modules/local-vision/ios/mobileclip-predictor.swift",
     "scripts/qa/local-vision/main.swift",
     "scripts/__tests__/ocr-attribute-corpus.test.mjs",
-    "docs/final/OCR_ATTRIBUTE_PROTOCOL.md",
-    "docs/research/multimodal-recognition-plan-2026-11-14.md",
+    "scripts/qa/protocols/ocr-attribute-protocol.md",
+    "scripts/qa/protocols/multimodal-recognition-plan-2026-11-14.md",
     "package.json",
     "pnpm-lock.yaml",
   ])

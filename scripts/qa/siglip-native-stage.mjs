@@ -134,7 +134,7 @@ for (const p of [
   "scripts/qa/siglip-native-stage.mjs",
   "scripts/qa/siglip-native-main.swift",
   "scripts/qa/siglip-preprocessor-tests.swift",
-  "docs/research/siglip-native-device-protocol-2026-11-16.md",
+  "scripts/qa/protocols/siglip-native-device-protocol-2026-11-16.md",
 ])
   pin(path.join(root, p));
 for (const p of ["native-qa", "preprocessor-tests"]) pin(path.join(run, p));

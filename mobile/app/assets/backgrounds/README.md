@@ -8,7 +8,7 @@ existing scan illustration and Roope's supplied Home reference. It is not a real
 product, recognition result or material-acceptance evidence. Original files are
 unchanged. PNG alpha, 1087×1447, 916,816 bytes; SHA-256:
 `758d97337078e36687e98e3d177a4c35d6dc42ea61b70e940c1321e635e4b6f5`.
-Exact prompt/input roles: `../../../../docs/final/REFERENCE_HOME_REFINEMENT.md`.
+Exact prompt/input roles: `https://github.com/roopeaal/KeepItGreen/tree/21e27aa124c07b4f37350e4961342a5e710dde18/archives/kierratysappi-2026-11-17`.
 
 ## Original selected files
 

@@ -23,7 +23,7 @@ const pins = {
     "7618f1876275d01aeb80a5401dea0bf903021cd28027358f9136fae84eebb86f",
   "work/off-expansion-2026-11-14.KK6s7m/images/summary.json":
     "defc205b180a0997961c818dcbfcd1d3fde6513aa34dde1b1738d6c021dbc798",
-  "docs/final/OFF_EXPANSION_VISUAL_REVIEW.json":
+  "scripts/qa/protocols/off-expansion-visual-review.json":
     "bd720f0383f1b8ac6832ea60d4140e45afd0987c93280197223e6de9aa048014",
 };
 const ledger = "work/expanded-corpus-allocation-v1-attempt.json";
@@ -204,7 +204,7 @@ export async function freezeExpandedAllocation(outputArgument, root = rootDefaul
   const sourceFiles = [
     "scripts/qa/reference-image/allocate-expanded-corpus.mjs",
     "scripts/__tests__/expanded-allocation.test.mjs",
-    "docs/final/EXPANDED_ALLOCATION_PROTOCOL.md",
+    "scripts/qa/protocols/expanded-allocation-protocol.md",
   ];
   const sources = Object.fromEntries(
     sourceFiles.map((f) => [f, sha(readBounded(path.join(root, f), 2_000_000))]),

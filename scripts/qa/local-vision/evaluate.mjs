@@ -109,7 +109,7 @@ export async function evaluate(options, cwd = process.cwd()) {
     engine: path.join(cwd, "mobile/app/modules/local-vision/ios/local-vision-engine.swift"),
     cli: path.join(cwd, "scripts/qa/local-vision/main.swift"),
     normalizer: normalizerPath,
-    spec: path.join(cwd, "docs/final/LOCAL_VISION_BASELINE_SPEC.md"),
+    spec: path.join(cwd, "scripts/qa/protocols/local-vision-baseline-spec.md"),
     fixtureManifest: manifestPath,
     ...(syntheticManifestPath ? { syntheticManifest: syntheticManifestPath } : {}),
   };

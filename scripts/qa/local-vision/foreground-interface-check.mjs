@@ -125,7 +125,7 @@ export function runProbe(args, cwd = process.cwd()) {
   const sources = {
     binary,
     source: path.join(cwd, "scripts/qa/local-vision/foreground-main.swift"),
-    protocol: path.join(cwd, "docs/final/LOCAL_VISION_FOREGROUND_PROTOCOL.md"),
+    protocol: path.join(cwd, "scripts/qa/protocols/local-vision-foreground-protocol.md"),
     runner: path.join(cwd, "scripts/qa/local-vision/foreground-interface-check.mjs"),
   };
   const hashesNow = () =>

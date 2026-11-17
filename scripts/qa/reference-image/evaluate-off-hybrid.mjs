@@ -74,7 +74,7 @@ function sources(root) {
   for (const file of [
     "pnpm-lock.yaml",
     "package.json",
-    "docs/final/OFF_HYBRID_DEVELOPMENT_PROTOCOL.md",
+    "scripts/qa/protocols/off-hybrid-development-protocol.md",
     "scripts/__tests__/off-hybrid-development.test.mjs",
   ])
     result[file] = sha(readBounded(path.join(root, file), 2_000_000));

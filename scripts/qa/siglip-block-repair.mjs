@@ -25,7 +25,7 @@ collect(path.join(run, "storage"), lock.pins);
 for (const file of [
   "scripts/qa/siglip-block-repair.py",
   "scripts/qa/siglip-block-repair.mjs",
-  "docs/research/siglip-block-storage-repair-2026-11-16.md",
+  "scripts/qa/protocols/siglip-block-storage-repair-2026-11-16.md",
 ])
   lock.pins[file] = hash(path.join(root, file));
 for (const [p, h] of Object.entries(lock.pins)) assert.equal(hash(path.join(root, p)), h);

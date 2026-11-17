@@ -385,7 +385,7 @@ export async function evaluate(options, cwd = process.cwd()) {
     baselineDecoder: path.join(cwd, "scripts/qa/local-vision/packaging-evaluate.mjs"),
     baselineAlgorithms: path.join(cwd, "scripts/qa/local-vision/robustness-evaluate.mjs"),
     prompts: path.join(cwd, "scripts/qa/local-vision/mobileclip-prompts.json"),
-    protocol: path.join(cwd, "docs/final/LOCAL_VISION_SPATIAL_PROTOCOL.md"),
+    protocol: path.join(cwd, "scripts/qa/protocols/local-vision-spatial-protocol.md"),
     modelAssets: path.join(cwd, "scripts/qa/local-vision/mobileclip-assets.json"),
   };
   const dataPrefix = development ? "robustness" : "spatial-data";

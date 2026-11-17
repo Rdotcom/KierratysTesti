@@ -128,14 +128,15 @@ function snapshot(root) {
     "package.json",
     "pnpm-lock.yaml",
     "scripts/__tests__/expanded-corpus.test.mjs",
-    "docs/final/EXPANDED_RECOGNITION_PROTOCOL.md",
-    "docs/final/EXPANDED_RECOGNITION_CONTINUATION.md",
+    "scripts/qa/protocols/expanded-recognition-protocol.md",
+    "scripts/qa/protocols/expanded-recognition-continuation.md",
   ])
     pins[file] = sha(readBounded(path.join(root, file), 2_000_000));
   return pins;
 }
 export function expandedInputPath(file, root) {
-  if (file === "docs/final/OFF_EXPANSION_VISUAL_REVIEW.json") return path.join(root, file);
+  if (file === "scripts/qa/protocols/off-expansion-visual-review.json")
+    return path.join(root, file);
   return checkedWorkFile(file, root);
 }
 function pinnedBytes(file, digest, root, maximum = 4_000_000) {

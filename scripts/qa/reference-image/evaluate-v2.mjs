@@ -112,7 +112,7 @@ function sources(cwd) {
     "package.json",
     "pnpm-lock.yaml",
     "pnpm-workspace.yaml",
-    "docs/final/OWN_PIXEL_V2_PROTOCOL.md",
+    "scripts/qa/protocols/own-pixel-v2-protocol.md",
     "scripts/__tests__/reference-image-evaluator.test.mjs",
     "scripts/__tests__/reference-image-evaluator-v2.test.mjs",
     "scripts/qa/local-vision/embedding-control.mjs",

@@ -102,8 +102,8 @@ test("continuation consumes only authenticated prefix and refuses changed input 
 });
 test("only exact visual-review document may be read outside work", () => {
   assert.equal(
-    expandedInputPath("docs/final/OFF_EXPANSION_VISUAL_REVIEW.json", "/repo"),
-    "/repo/docs/final/OFF_EXPANSION_VISUAL_REVIEW.json",
+    expandedInputPath("scripts/qa/protocols/off-expansion-visual-review.json", "/repo"),
+    "/repo/scripts/qa/protocols/off-expansion-visual-review.json",
   );
   for (const f of [".env", "docs/final/../../.env", "/private/key", "docs/final/other.json"])
     assert.throws(() => expandedInputPath(f, "/repo"));

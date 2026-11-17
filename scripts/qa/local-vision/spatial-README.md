@@ -1,6 +1,6 @@
 # Fixed spatial disagreement experiment
 
-QA only. Read `docs/final/LOCAL_VISION_SPATIAL_PROTOCOL.md` before any picture
+QA only. Read `scripts/qa/protocols/local-vision-spatial-protocol.md` before any picture
 prediction. This is development on the already-seen original validation16 and,
 only after a locked qualifying choice, a separately frozen prospective20. No
 old held-out result is read or reused by this tool. No app behavior, model,

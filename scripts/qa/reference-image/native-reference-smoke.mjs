@@ -61,7 +61,7 @@ function sources() {
   for (const file of [
     "package.json",
     "pnpm-lock.yaml",
-    "docs/final/NATIVE_REFERENCE_PORTS_V2_PROTOCOL.md",
+    "scripts/qa/protocols/native-reference-ports-v2-protocol.md",
   ])
     out[file] = sha(readBounded(path.join(root, file), 2_000_000));
   return out;

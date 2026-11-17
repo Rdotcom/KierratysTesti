@@ -1,17 +1,12 @@
-# Security policy
+# Security
 
-KeepItGreen is pre-release. Do not report sensitive vulnerabilities in a public issue.
+Report sensitive issues privately to the repository owner through your existing
+team contact channel. Do not post secrets, private photos or exploit data in
+public issues.
 
-## Reporting
+Do not access unrelated data or test denial-of-service payloads against live
+services. Use bounded local reproductions.
 
-**OWNER ACTION REQUIRED before publication:** configure a private security-reporting channel and replace this line with the monitored address or GitHub private vulnerability reporting URL.
-
-Include the affected version/commit, reproducible steps, impact, and any suggested mitigation. Do not access unrelated data, degrade service, upload unlawful/personal content, or publish details before coordinated remediation.
-
-## Supported versions
-
-No public production version is currently supported. Once released, the latest store version and active API version will receive security fixes; the exact support window will be documented here.
-
-## Safe harbor intent
-
-The owner should obtain legal review and publish a good-faith research safe-harbor statement before launch. This draft does not create one.
+Known dependency findings and the local picomatch mitigation are documented in
+[docs/security.md](docs/security.md). This project is not approved for public
+production distribution.

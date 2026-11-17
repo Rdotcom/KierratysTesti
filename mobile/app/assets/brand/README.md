@@ -4,7 +4,7 @@
 leaf-recycling symbol in the owner-supplied `backgrounds/welcome-background.png`,
 made with the built-in imagegen tool. It is not a pixel-identical crop. Original
 Home artwork/crop is unchanged. No credential screenshot was an image input.
-Exact prompt/source provenance and validation: `docs/final/LEAF_ICON_AND_HSY_SETUP.md`.
+Exact prompt/source provenance and validation: `https://github.com/roopeaal/KeepItGreen/tree/21e27aa124c07b4f37350e4961342a5e710dde18/archives/kierratysappi-2026-11-17`.
 
 Master1254×1254RGBA SHA256:
 `bb137dfe7cd1e1a4062a52acf2ae19e167ad44d3b0da1751ea7c28274dcd08b0`.

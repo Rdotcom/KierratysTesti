@@ -1,6 +1,6 @@
 # One frozen two-view local learning experiment
 
-Read `docs/final/LOCAL_VISION_TWO_VIEW_PROTOCOL.md` and the closed
+Read `scripts/qa/protocols/local-vision-two-view-protocol.md` and the closed
 `embedding-learning-spec.json` before running. This is a distinct experiment
 informed by the failed18-feature head, not an independent validation or clean
 feature-only ablation. It changes image information, normalization and ridge

@@ -1,6 +1,6 @@
 # Experimental reference-image QA
 
-November13actual data/result: `docs/final/OFF_RELEASE_READINESS_RESULTS.md`.
+November13actual data/result: `https://github.com/roopeaal/KeepItGreen/tree/21e27aa124c07b4f37350e4961342a5e710dde18/archives/kierratysappi-2026-11-17`.
 The real source-image diagnostic fails to establish useful exact-SKU coverage;
 the safety replay is not independent accuracy or deployment permission.
 
@@ -52,7 +52,7 @@ node scripts/qa/reference-image/prepare-off-candidates.mjs work/<new-run>/off-ca
 This makes five serial bounded keyless API reads, never image requests, and
 refuses to overwrite an existing snapshot. It does not update the committed
 selection, perform inference, assert human review, select a query split or
-authorize integration. See `docs/research/reference-product-selection-2026-11-13.md`.
+authorize integration. See `https://github.com/roopeaal/KeepItGreen/tree/21e27aa124c07b4f37350e4961342a5e710dde18/archives/kierratysappi-2026-11-17`.
 
 The completed V1/V2 experiment scripts and their original freezes/ledgers remain
 historical evidence. Do not rerun them as independent product testing or modify

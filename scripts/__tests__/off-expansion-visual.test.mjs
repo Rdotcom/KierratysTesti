@@ -3,7 +3,9 @@ import { readFileSync } from "node:fs";
 import test from "node:test";
 
 const review = JSON.parse(
-  readFileSync(new URL("../../docs/final/OFF_EXPANSION_VISUAL_REVIEW.json", import.meta.url)),
+  readFileSync(
+    new URL("../../scripts/qa/protocols/off-expansion-visual-review.json", import.meta.url),
+  ),
 );
 test("visual observations retain all30planned IDs, missing images and uncertainty", () => {
   assert.equal(review.observations.length, 30);

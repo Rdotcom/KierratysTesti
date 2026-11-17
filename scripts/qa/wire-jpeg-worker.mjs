@@ -38,7 +38,7 @@ for (const p of [
   "mobile/app/modules/local-vision/ios/jpeg-decoder.h",
   "mobile/app/modules/local-vision/ios/JpegDecoderAssets/include/turbojpeg.h",
   "mobile/app/modules/local-vision/ios/JpegDecoderAssets/TurboJPEG.xcframework/ios-arm64/libturbojpeg.a",
-  "docs/research/jpeg-repair-memory-protocol-2026-11-16.md",
+  "scripts/qa/protocols/jpeg-repair-memory-protocol-2026-11-16.md",
 ])
   lock.pins[p] = hash(path.join(root, p));
 assert(!fs.existsSync(path.join(run, "native-before-jpeg-lock.json")));

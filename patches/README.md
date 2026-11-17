@@ -43,8 +43,8 @@ all locked runtime edges, actual Expo/Metro/Vite/tinyglobby/micromatch resolutio
 ordinary matching, capture/literal fallback and 585 adverse matches in bounded subprocesses.
 The child probes have heap/output/deadline bounds; they do not attack a service.
 
-See [research and reproduction](../docs/research/picomatch-advisory-2026-11-17.md)
-and [test evidence](../docs/final/TEST_EVIDENCE.md) for original-versus-patched
+See [security status and boundaries](../docs/security.md)
+and [test evidence](../docs/testing.md) for original-versus-patched
 measurements, upstream compatibility suites, intentional limits and run receipts.
 
 When a supported fixed release is available, review it against the advisory,

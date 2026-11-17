@@ -235,8 +235,8 @@ export async function evaluate(options, cwd = process.cwd()) {
     modelAssets: path.join(cwd, "scripts/qa/local-vision/mobileclip-assets.json"),
     baselineEngine: path.join(cwd, "mobile/app/modules/local-vision/ios/local-vision-engine.swift"),
     corpusValidator: path.join(cwd, "scripts/qa/local-vision/packaging-corpus.mjs"),
-    protocol: path.join(cwd, "docs/final/PACKAGING_CLASSIFIER_PROTOCOL.md"),
-    accountingAmendment: path.join(cwd, "docs/final/PACKAGING_ACCOUNTING_AMENDMENT.md"),
+    protocol: path.join(cwd, "scripts/qa/protocols/packaging-classifier-protocol.md"),
+    accountingAmendment: path.join(cwd, "scripts/qa/protocols/packaging-accounting-amendment.md"),
     evaluator: path.join(cwd, "scripts/qa/local-vision/packaging-evaluate.mjs"),
   };
   const hashesNow = () => ({

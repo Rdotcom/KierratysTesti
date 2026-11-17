@@ -58,7 +58,7 @@ if (process.argv[2] === "prepare") {
   for (const p of [
     "scripts/qa/siglip-camera-main.swift",
     "scripts/qa/siglip-camera-experiment.mjs",
-    "docs/research/siglip-camera-integration-protocol-2026-11-16.md",
+    "scripts/qa/protocols/siglip-camera-integration-protocol-2026-11-16.md",
     "work/siglip-mobile-20261116.yV442u/baseline.json",
     "work/siglip-mobile-20261116.yV442u/lock.json",
   ])

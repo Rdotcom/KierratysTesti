@@ -28,7 +28,7 @@ if (process.argv[2] === "prepare") {
   for (const file of [
     "scripts/qa/siglip-storage-repair.py",
     "scripts/qa/siglip-storage-repair.mjs",
-    "docs/research/siglip-fp32-compute-int8-repair-2026-11-16.md",
+    "scripts/qa/protocols/siglip-fp32-compute-int8-repair-2026-11-16.md",
   ])
     lock.pins[file] = hash(path.join(root, file));
   lock.pins[path.relative(root, path.join(run, "recovery-v2/results.json"))] = hash(

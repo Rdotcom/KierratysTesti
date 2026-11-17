@@ -84,7 +84,7 @@ const files = [
   "shared/domain/src/reference-text-evidence.ts",
   "shared/contracts/src/offline-product.ts",
   "scripts/qa/evaluate-offline-product.mjs",
-  "docs/final/OFFLINE_PRODUCT_INTEGRATION_PROTOCOL.md",
+  "scripts/qa/protocols/offline-product-integration-protocol.md",
 ];
 const pins = Object.fromEntries(files.map((f) => [f, hash(fs.readFileSync(path.join(root, f)))]));
 const runtimeFile = path.join(output, "js/runtime.mjs"),

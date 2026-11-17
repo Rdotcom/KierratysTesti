@@ -21,7 +21,7 @@ const sha = (bytes) => createHash("sha256").update(bytes).digest("hex");
 const objectHash = (value) => sha(JSON.stringify(value));
 const hashPattern = /^[a-f0-9]{64}$/u;
 const specPath = "scripts/qa/local-vision/linear-learning-spec.json";
-const protocolPath = "docs/final/LOCAL_VISION_LINEAR_PROTOCOL.md";
+const protocolPath = "scripts/qa/protocols/local-vision-linear-protocol.md";
 
 function read(file, maximum = 2_000_000) {
   const fd = fs.openSync(file, fs.constants.O_RDONLY | (fs.constants.O_NOFOLLOW ?? 0));

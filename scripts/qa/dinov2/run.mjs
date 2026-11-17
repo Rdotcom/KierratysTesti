@@ -53,7 +53,7 @@ for (const file of [
   "requirements-macos-arm64-py312.txt",
 ])
   pin(`scripts/qa/dinov2/${file}`);
-pin("docs/final/DINOV2_COMPARISON_PROTOCOL.md");
+pin("scripts/qa/protocols/dinov2-comparison-protocol.md");
 const modelDirectory = path.relative(root, path.join(base, "model"));
 const receipt = JSON.parse(pin(`${modelDirectory}/download-receipt.json`));
 assert.equal(receipt.revision, "ed25f3a31f01632728cabb09d1542f84ab7b0056");

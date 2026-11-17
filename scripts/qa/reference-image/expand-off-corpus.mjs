@@ -322,7 +322,7 @@ export async function expandOffMetadata(
     "scripts/qa/reference-image/expand-off-corpus.mjs",
     "scripts/qa/reference-image/prepare-off-candidates.mjs",
     "scripts/__tests__/off-expansion.test.mjs",
-    "docs/final/OFF_EXPANSION_PROTOCOL.md",
+    "scripts/qa/protocols/off-expansion-protocol.md",
     "package.json",
     "pnpm-lock.yaml",
   ];

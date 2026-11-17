@@ -53,7 +53,7 @@ const sourceFiles = [
   manifestFile,
   "tsconfig.base.json",
   "shared/domain/tsconfig.json",
-  "docs/final/OWN_PIXEL_RECOGNITION_PROTOCOL.md",
+  "scripts/qa/protocols/own-pixel-recognition-protocol.md",
   "pnpm-lock.yaml",
 ];
 function sources(cwd) {

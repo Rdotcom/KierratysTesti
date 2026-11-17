@@ -80,7 +80,7 @@ function sourcePins(root) {
     [
       "scripts/qa/reference-image/prepare-off-expansion-v2.mjs",
       "scripts/__tests__/off-expansion-v2.test.mjs",
-      "docs/final/OFF_EXPANSION_V2_PROTOCOL.md",
+      "scripts/qa/protocols/off-expansion-v2-protocol.md",
       "scripts/qa/reference-image/acquire-off-references.mjs",
       "scripts/qa/reference-image/pinned-reference-decoder.mjs",
     ].map((f) => [f, sha(readBounded(path.join(root, f), 2_000_000))]),

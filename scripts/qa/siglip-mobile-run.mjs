@@ -52,7 +52,7 @@ if (process.argv[2] === "prepare") {
     "scripts/qa/siglip-mobile.py",
     "scripts/qa/siglip-mobile-policy.mjs",
     "scripts/qa/siglip-mobile-run.mjs",
-    "docs/research/siglip-mobile-export-protocol-2026-11-16.md",
+    "scripts/qa/protocols/siglip-mobile-export-protocol-2026-11-16.md",
   ])
     add(path.join(root, file));
   const walk = (dir) => {

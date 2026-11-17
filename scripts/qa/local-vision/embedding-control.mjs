@@ -342,8 +342,8 @@ export function captureEmbeddingSources(cwd = project) {
   for (const tree of ["scripts/qa/local-vision", "shared/contracts/src", "shared/domain/src"])
     visit(tree);
   for (const relative of [
-    "docs/final/LOCAL_VISION_TWO_VIEW_PROTOCOL.md",
-    "docs/final/LOCAL_VISION_LINEAR_PROTOCOL.md",
+    "scripts/qa/protocols/local-vision-two-view-protocol.md",
+    "scripts/qa/protocols/local-vision-linear-protocol.md",
     "pnpm-lock.yaml",
     "pnpm-workspace.yaml",
     "package.json",

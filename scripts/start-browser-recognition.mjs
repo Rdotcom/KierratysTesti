@@ -8,7 +8,7 @@ import { browserRecognitionRuntime } from "./lib/browser-recognition-runtime.mjs
 const root = fs.realpathSync(process.cwd()),
   runtime = browserRecognitionRuntime(root, process.env);
 if (!fs.existsSync(runtime.python) || !fs.existsSync(path.join(runtime.assets, "vision-int8.onnx")))
-  throw Error("Prepare the Python environment and model first: docs/final/BROWSER_AI.md");
+  throw Error("Prepare the Python environment and model first: docs/setup.md");
 const require = createRequire(path.join(root, "mobile/app/package.json")),
   expoManifest = require.resolve("expo/package.json");
 const expo = JSON.parse(fs.readFileSync(expoManifest, "utf8"));

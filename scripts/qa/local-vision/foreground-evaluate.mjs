@@ -234,7 +234,7 @@ export async function evaluate(options, cwd = process.cwd()) {
     workspaceLock: path.join(cwd, "pnpm-lock.yaml"),
     contractsPackage: path.join(cwd, "shared/contracts/package.json"),
     domainPackage: path.join(cwd, "shared/domain/package.json"),
-    protocol: path.join(cwd, "docs/final/LOCAL_VISION_FOREGROUND_PROTOCOL.md"),
+    protocol: path.join(cwd, "scripts/qa/protocols/local-vision-foreground-protocol.md"),
     prompts: path.join(cwd, "scripts/qa/local-vision/mobileclip-prompts.json"),
   };
   const phasePaths = {},

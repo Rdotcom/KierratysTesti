@@ -40,7 +40,7 @@ function sources() {
   for (const file of [
     "package.json",
     "pnpm-lock.yaml",
-    "docs/final/MAX_MARGIN_RUNTIME_PROTOCOL.md",
+    "scripts/qa/protocols/max-margin-runtime-protocol.md",
   ])
     out[file] = sha(readBounded(path.join(root, file), 2_000_000));
   return out;

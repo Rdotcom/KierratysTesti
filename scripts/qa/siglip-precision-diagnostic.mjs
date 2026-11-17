@@ -11,7 +11,7 @@ const lock = JSON.parse(fs.readFileSync(path.join(run, "recovery-v2-lock.json"))
 for (const file of [
   "scripts/qa/siglip-precision-diagnostic.py",
   "scripts/qa/siglip-precision-diagnostic.mjs",
-  "docs/research/siglip-precision-diagnostic-2026-11-16.md",
+  "scripts/qa/protocols/siglip-precision-diagnostic-2026-11-16.md",
 ])
   lock.pins[file] = createHash("sha256")
     .update(fs.readFileSync(path.join(root, file)))

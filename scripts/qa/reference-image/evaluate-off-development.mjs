@@ -579,7 +579,7 @@ function sources(cwd) {
     "scripts/__tests__/off-reference-development.test.mjs",
     "scripts/qa/local-vision/embedding-control.mjs",
     "scripts/qa/local-vision/embedding-head.mjs",
-    "docs/final/OFF_REFERENCE_DEVELOPMENT_PROTOCOL.md",
+    "scripts/qa/protocols/off-reference-development-protocol.md",
   ];
   const visit = (relative) => {
     const stat = fs.lstatSync(path.join(cwd, relative));

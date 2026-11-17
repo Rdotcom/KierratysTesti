@@ -60,7 +60,7 @@ if (process.argv[2] === "prepare") {
   for (const file of [
     "scripts/qa/siglip-mobile-recover.py",
     "scripts/qa/siglip-mobile-recover-run.mjs",
-    "docs/research/siglip-mobile-converter-recovery-2026-11-16.md",
+    "scripts/qa/protocols/siglip-mobile-converter-recovery-2026-11-16.md",
   ])
     pins[file] = digest(path.join(root, file));
   collect(path.join(run, "failed-recovery-source"), pins);

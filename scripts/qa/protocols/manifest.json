@@ -1,0 +1,196 @@
+{
+  "source": "2148d4e79aa916c687ef0326aaa29d2c75f321b1",
+  "archiveCommit": "21e27aa124c07b4f37350e4961342a5e710dde18",
+  "files": [
+    {
+      "file": "calibrated-v3-protocol.md",
+      "original": "docs/final/CALIBRATED_V3_PROTOCOL.md",
+      "sha256": "317815ac5e958565a208ded9639ef08f3c02543f4dc5bcd7d5ddb55b64474482"
+    },
+    {
+      "file": "calibrated-v4-protocol.md",
+      "original": "docs/final/CALIBRATED_V4_PROTOCOL.md",
+      "sha256": "d277e4fa3694706bd59044701a0fc575f3bcbcaffe893cb3ec13984e67deca59"
+    },
+    {
+      "file": "dinov2-comparison-protocol.md",
+      "original": "docs/final/DINOV2_COMPARISON_PROTOCOL.md",
+      "sha256": "bec15a7bf724b07793e1477ca604d998624ce6deeeee92442092a91defd2e10c"
+    },
+    {
+      "file": "expanded-allocation-protocol.md",
+      "original": "docs/final/EXPANDED_ALLOCATION_PROTOCOL.md",
+      "sha256": "fcd4f7472aab195c7a1c73d0df1573ed4cdde80da14c58e96aa160d3b51470a2"
+    },
+    {
+      "file": "expanded-recognition-continuation.md",
+      "original": "docs/final/EXPANDED_RECOGNITION_CONTINUATION.md",
+      "sha256": "bb85b142c383392c7974bdabd7e99ea06c28468218de3d80a4187efc42072f8d"
+    },
+    {
+      "file": "expanded-recognition-protocol.md",
+      "original": "docs/final/EXPANDED_RECOGNITION_PROTOCOL.md",
+      "sha256": "5820f90cffc63550ca3c30c1330aa221a2cb91137aaca0fab63d4dd6258d2dfc"
+    },
+    {
+      "file": "local-vision-baseline-spec.md",
+      "original": "docs/final/LOCAL_VISION_BASELINE_SPEC.md",
+      "sha256": "4cd9c3d763c5caecf2ff4789c017ac3ebe4839777a58b489c048b825dc06533e"
+    },
+    {
+      "file": "local-vision-foreground-protocol.md",
+      "original": "docs/final/LOCAL_VISION_FOREGROUND_PROTOCOL.md",
+      "sha256": "f645f4af5e867698e32efef1acc7947479fe7163caa6fab6bda6f5c3e1f9bf85"
+    },
+    {
+      "file": "local-vision-linear-protocol.md",
+      "original": "docs/final/LOCAL_VISION_LINEAR_PROTOCOL.md",
+      "sha256": "858afc476f9a8820989fc27a517c74d3cc1223029c30b60587e7757fd2218a95"
+    },
+    {
+      "file": "local-vision-robustness-protocol.md",
+      "original": "docs/final/LOCAL_VISION_ROBUSTNESS_PROTOCOL.md",
+      "sha256": "854b279e0f2173d46900ab927f84fd7ef765c2b7ff3b15d53565b8f08ad32c04"
+    },
+    {
+      "file": "local-vision-spatial-protocol.md",
+      "original": "docs/final/LOCAL_VISION_SPATIAL_PROTOCOL.md",
+      "sha256": "c4c55b38f00078dd702d35b601253bd360e22847d61e4d1350a4e0e365d9ae03"
+    },
+    {
+      "file": "local-vision-two-view-protocol.md",
+      "original": "docs/final/LOCAL_VISION_TWO_VIEW_PROTOCOL.md",
+      "sha256": "2dfe7a680c7160850c166dfd68faee13bd4c2443998c56b9a158d0136925b27a"
+    },
+    {
+      "file": "max-margin-runtime-protocol.md",
+      "original": "docs/final/MAX_MARGIN_RUNTIME_PROTOCOL.md",
+      "sha256": "50e71df70549d104252bcbcd299f15e08d42913b6183cb907356a3ec51047bcd"
+    },
+    {
+      "file": "native-corpus-protocol.md",
+      "original": "docs/final/NATIVE_CORPUS_PROTOCOL.md",
+      "sha256": "b14522d1b533efe9b581e9fab32d8a768f09e6790176cd632860fd500ef8f631"
+    },
+    {
+      "file": "native-reference-ports-v2-protocol.md",
+      "original": "docs/final/NATIVE_REFERENCE_PORTS_V2_PROTOCOL.md",
+      "sha256": "54a3dbc2f8f82c54e4298cccf500cdaff0cee65ddf147a8b7bd1e2d8c72d6ca0"
+    },
+    {
+      "file": "ocr-attribute-protocol.md",
+      "original": "docs/final/OCR_ATTRIBUTE_PROTOCOL.md",
+      "sha256": "f294d7a406be9f7c43194c3bce630df6ac85703fc647d9356e187858923c1053"
+    },
+    {
+      "file": "offline-product-integration-protocol.md",
+      "original": "docs/final/OFFLINE_PRODUCT_INTEGRATION_PROTOCOL.md",
+      "sha256": "2f7ad7ab2f58567a3b3c9bb3178940401577a912b99a54266c7e67d373ce6ca8"
+    },
+    {
+      "file": "off-cached-v2-protocol.md",
+      "original": "docs/final/OFF_CACHED_V2_PROTOCOL.md",
+      "sha256": "4e1acaa80be34e60a885c2b95b2e5ef9b1ccb4a223caf5f2576cf8bf086e41fb"
+    },
+    {
+      "file": "off-expansion-protocol.md",
+      "original": "docs/final/OFF_EXPANSION_PROTOCOL.md",
+      "sha256": "8b8c1b57479d588009b229acb343aaf47e695d5d27f84a6cc955ac95e1379120"
+    },
+    {
+      "file": "off-expansion-v2-protocol.md",
+      "original": "docs/final/OFF_EXPANSION_V2_PROTOCOL.md",
+      "sha256": "3f28f4a6144fcfef2c52433baaa87e475a122b62ea4289f55adf68466af162bb"
+    },
+    {
+      "file": "off-expansion-visual-review.json",
+      "original": "docs/final/OFF_EXPANSION_VISUAL_REVIEW.json",
+      "sha256": "bd720f0383f1b8ac6832ea60d4140e45afd0987c93280197223e6de9aa048014"
+    },
+    {
+      "file": "off-hybrid-development-protocol.md",
+      "original": "docs/final/OFF_HYBRID_DEVELOPMENT_PROTOCOL.md",
+      "sha256": "3a8bdc7f0d340ce3c739d437fe34c2e1f760bfe2e28475675d1ef2ad735fb876"
+    },
+    {
+      "file": "off-reference-development-protocol.md",
+      "original": "docs/final/OFF_REFERENCE_DEVELOPMENT_PROTOCOL.md",
+      "sha256": "00ddc85c92d81b94e1cb92e14c9b7b10bcacda14fae3d1f6738fa6e81d243683"
+    },
+    {
+      "file": "orientation-recognition-protocol.md",
+      "original": "docs/final/ORIENTATION_RECOGNITION_PROTOCOL.md",
+      "sha256": "8ad67a6c0ec7ddbcaa48007a77f9833b703599d58cfb143e7a5cf9839b4e540f"
+    },
+    {
+      "file": "own-pixel-recognition-protocol.md",
+      "original": "docs/final/OWN_PIXEL_RECOGNITION_PROTOCOL.md",
+      "sha256": "4f0fc8bdc6b5b57ebb801f289e567eb0e994e5a5d93650b97a822146a92062a8"
+    },
+    {
+      "file": "own-pixel-v2-protocol.md",
+      "original": "docs/final/OWN_PIXEL_V2_PROTOCOL.md",
+      "sha256": "8283b26fd74ae12b168a607a22a1e2163f4c6e061a66ac6520aa81736a48dfa8"
+    },
+    {
+      "file": "packaging-accounting-amendment.md",
+      "original": "docs/final/PACKAGING_ACCOUNTING_AMENDMENT.md",
+      "sha256": "440e360412f0cb034eb4ca69792de7bb6c28182f67833d9e2fde64ad32e297cf"
+    },
+    {
+      "file": "packaging-classifier-protocol.md",
+      "original": "docs/final/PACKAGING_CLASSIFIER_PROTOCOL.md",
+      "sha256": "976827d60f712b7a836b0c5f9881d10fb7add13952ea9e67f27ff26c67f3a295"
+    },
+    {
+      "file": "jpeg-repair-memory-protocol-2026-11-16.md",
+      "original": "docs/research/jpeg-repair-memory-protocol-2026-11-16.md",
+      "sha256": "014ecfd1d8647b36e81adf7debdbf7d1f953ee22a8632771b624144b8b835f98"
+    },
+    {
+      "file": "multimodal-recognition-plan-2026-11-14.md",
+      "original": "docs/research/multimodal-recognition-plan-2026-11-14.md",
+      "sha256": "dc584af18a8e3d770065712ac5b591ae71ae619d0a59829509bd7bbc8d4f47fd"
+    },
+    {
+      "file": "object-model-smoke-protocol-2026-11-16.md",
+      "original": "docs/research/object-model-smoke-protocol-2026-11-16.md",
+      "sha256": "22147d218bc172b9178f3b489953ff8cf1ca42d2a7a3847f2f0a7943e2850afa"
+    },
+    {
+      "file": "siglip-block-storage-repair-2026-11-16.md",
+      "original": "docs/research/siglip-block-storage-repair-2026-11-16.md",
+      "sha256": "7ebacc06f41493784207285870528ae438469abf7df11aced815045976172b89"
+    },
+    {
+      "file": "siglip-camera-integration-protocol-2026-11-16.md",
+      "original": "docs/research/siglip-camera-integration-protocol-2026-11-16.md",
+      "sha256": "c501e5dcb42820465085e8133226d9ce2471250420cf434580d5ec2ab127089d"
+    },
+    {
+      "file": "siglip-fp32-compute-int8-repair-2026-11-16.md",
+      "original": "docs/research/siglip-fp32-compute-int8-repair-2026-11-16.md",
+      "sha256": "5423246363a140ba2ed240a4dde34353e0742f3b53bfa289579031de08a1b448"
+    },
+    {
+      "file": "siglip-mobile-converter-recovery-2026-11-16.md",
+      "original": "docs/research/siglip-mobile-converter-recovery-2026-11-16.md",
+      "sha256": "f3c45dd22d0866e4730c89c0d8010a3e6ec3f29b0c87cb85d2731ee8606d2bc6"
+    },
+    {
+      "file": "siglip-mobile-export-protocol-2026-11-16.md",
+      "original": "docs/research/siglip-mobile-export-protocol-2026-11-16.md",
+      "sha256": "2e4b6fa3a1193cbfb86bcddbf0078bac14a9f06f59de0a15ed7e6fe11e6f9889"
+    },
+    {
+      "file": "siglip-native-device-protocol-2026-11-16.md",
+      "original": "docs/research/siglip-native-device-protocol-2026-11-16.md",
+      "sha256": "b012d74cf963631eed51cd90cb70d6ee7141fb6435d102351832f04b3ee2a6ad"
+    },
+    {
+      "file": "siglip-precision-diagnostic-2026-11-16.md",
+      "original": "docs/research/siglip-precision-diagnostic-2026-11-16.md",
+      "sha256": "a9d19f854fe82212e2d95bd28fd0726dc1c451f2abe4bd35e04f58ead0d87ba2"
+    }
+  ]
+}

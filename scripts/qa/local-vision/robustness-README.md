@@ -1,6 +1,6 @@
 # Frozen local recognition reliability comparison
 
-QA only. Read `docs/final/LOCAL_VISION_ROBUSTNESS_PROTOCOL.md` before execution.
+QA only. Read `scripts/qa/protocols/local-vision-robustness-protocol.md` before execution.
 No app classifier is changed by these tools; two veto-only algorithms compare
 against the decomposed current V4 baseline. No training, paid service, user-photo
 reuse, material/SKU/safety/bin inference or physical-device acceptance is implied.

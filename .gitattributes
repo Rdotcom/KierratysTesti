@@ -7,3 +7,5 @@ mobile/app/modules/local-vision/android/src/main/assets/siglip/prototypes.json -
 patches/*.patch text eol=lf
 # Unified diffs require a context-space prefix, including on blank lines.
 patches/*.patch whitespace=-blank-at-eol,-blank-at-eof
+# Frozen QA document bytes must also survive Windows core.autocrlf checkouts.
+scripts/qa/protocols/* text eol=lf

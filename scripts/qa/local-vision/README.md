@@ -25,7 +25,7 @@ The optional SigLIP object path shares this engine's serial gate. Include its
 three source files even when running only the legacy CLI self-tests. Its QA
 resource store is explicitly locked/Sendable; Swift6checking stays enabled.
 Normal app builds exclude all QA resource overrides. Candidate staging and
-camera integration evidence: docs/final/SIGLIP_CAMERA_INTEGRATION.md.
+camera integration evidence: https://github.com/roopeaal/KeepItGreen/tree/21e27aa124c07b4f37350e4961342a5e710dde18/archives/kierratysappi-2026-11-17.
 
 The eight malformed/noncanonical/oversized/non-JPEG self-tests perform no image
 inference. Actual image diagnostics require a frozen specification and cleared

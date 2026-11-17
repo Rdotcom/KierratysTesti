@@ -108,7 +108,7 @@ function sourcePins(root) {
   for (const file of [
     "pnpm-lock.yaml",
     "package.json",
-    "docs/final/OFF_CACHED_V2_PROTOCOL.md",
+    "scripts/qa/protocols/off-cached-v2-protocol.md",
     "scripts/__tests__/off-cached-v2.test.mjs",
   ])
     result[file] = sha(readBounded(path.join(root, file), 2_000_000));

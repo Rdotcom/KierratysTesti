@@ -24,4 +24,4 @@ sovellukseen. HTTP-sopimus on `shared/contracts`, ei `backend/application`.
 
 Esimerkiksi painikkeen ulkoasu tai käännös voidaan muuttaa täällä ilman backendin
 tiedostojen muokkaamista. Shared-sopimuksen muutos on erillinen koordinoitu työ.
-Koko integraatio: `pnpm validate`. Ohje: `../docs/project/TEAM_STRUCTURE.md`.
+Koko integraatio: `pnpm validate`. Ohje: `../docs/architecture.md`.

@@ -1,6 +1,6 @@
 # One bounded local learned-head experiment
 
-Read `docs/final/LOCAL_VISION_LINEAR_PROTOCOL.md` and the fixed
+Read `scripts/qa/protocols/local-vision-linear-protocol.md` and the fixed
 `linear-learning-spec.json` before running. This learns an original small
 six-output ridge head on18 captured pretrained-image similarities, not a vision
 foundation model, exact product identity, material truth or sorting policy.

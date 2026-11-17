@@ -60,7 +60,7 @@ function sources(root) {
   for (const file of [
     "package.json",
     "pnpm-lock.yaml",
-    "docs/final/NATIVE_CORPUS_PROTOCOL.md",
+    "scripts/qa/protocols/native-corpus-protocol.md",
     "scripts/__tests__/native-corpus.test.mjs",
   ])
     out[file] = sha(readBounded(path.join(root, file), 2_000_000));

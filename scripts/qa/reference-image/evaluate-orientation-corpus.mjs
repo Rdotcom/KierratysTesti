@@ -65,7 +65,7 @@ function parents(root) {
     "shared/domain/src/__tests__/reference-orientation-consensus.test.ts",
     "scripts/qa/reference-image/evaluate-orientation-corpus.mjs",
     "scripts/__tests__/orientation-corpus.test.mjs",
-    "docs/final/ORIENTATION_RECOGNITION_PROTOCOL.md",
+    "scripts/qa/protocols/orientation-recognition-protocol.md",
   ])
     sources[f] = sha(readBounded(path.join(root, f), 4_000_000));
   const inputPins = {

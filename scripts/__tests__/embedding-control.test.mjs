@@ -51,7 +51,7 @@ test("source snapshot is deterministic and performs no claim or model operation"
   assert.deepEqual(first, second);
   assert.match(first.sourceHash, /^[a-f0-9]{64}$/u);
   assert.ok(first.files["scripts/qa/local-vision/embedding-main.swift"]);
-  assert.ok(first.files["docs/final/LOCAL_VISION_TWO_VIEW_PROTOCOL.md"]);
+  assert.ok(first.files["scripts/qa/protocols/local-vision-two-view-protocol.md"]);
 });
 test("bounded reads support empty failed output but reject oversize and hard links", (t) => {
   const cwd = temp(t),
@@ -71,13 +71,13 @@ test("only the pinned installed-runtime metadata may have a package-cache hard-l
     "scripts/qa/local-vision",
     "shared/contracts/src",
     "shared/domain/src",
-    "docs/final",
+    "scripts/qa/protocols",
     "node_modules/.pnpm/tsx@4.21.0/node_modules/tsx",
   ])
     fs.mkdirSync(path.join(cwd, dir), { recursive: true });
   for (const p of [
-    "docs/final/LOCAL_VISION_TWO_VIEW_PROTOCOL.md",
-    "docs/final/LOCAL_VISION_LINEAR_PROTOCOL.md",
+    "scripts/qa/protocols/local-vision-two-view-protocol.md",
+    "scripts/qa/protocols/local-vision-linear-protocol.md",
     "pnpm-lock.yaml",
     "pnpm-workspace.yaml",
     "package.json",
