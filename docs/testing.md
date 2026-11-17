@@ -48,6 +48,14 @@ CodeQL:n ja salaisuuksien tarkistuksen.
   Nykyinen maksuton kuvapolku kirjaa vain valitun materiaalin, ei mallin arviota;
   saman kuvan materiaalikorjaus ei tuplaa kirjausta. Testifixturet eivät ole
   oikeaa tuotetietoa eikä tässä kokeessa käytetä maksullista tunnistusta.
+- Lähde `7022f66`: [CI 44187544355](https://github.com/roopeaal/KierratysAppi/actions/runs/44187544355),
+  [Security 44187544303](https://github.com/roopeaal/KierratysAppi/actions/runs/44187544303) ja
+  [Windows 44187891912](https://github.com/roopeaal/KierratysAppi/actions/runs/44187891912)
+  läpäisty. Windowsin Chrome/Edge suorittavat kaikki kahdeksan oikean mallin tapausta.
+  Kylmän reitin URL-assertion 5 s oletus yhtenäistettiin muiden odotusten 20 s rajaan;
+  tarkistuksia ei poistettu. Macin uusinta-ajossa PGliten alustus ylitti rinnakkaisen
+  5 s testirajan; erillinen tietokanta-ajo ja kaikki 1 142 workspace-testiä
+  paketti kerrallaan läpäisevät muuttamattomin aikarajoin. CI:n koko validate läpäisee.
 
 ## Siivouksen rajaus
 

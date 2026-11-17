@@ -7,6 +7,8 @@
   redirect to /local-photo; old paid HTTP endpoints are absent, not a fallback.
   Shared image sanitization and native camera guards remain independent.
   Removal source `f0b3349` is published in KierratysAppi/main; no native reinstall.
+  Follow-up `7022f66` passes CI 44187544355, Security 44187544303 and Windows
+  44187891912, including actual-model Chrome/Edge and all-platform JS exports.
 - Owner authorized main publication on 2026-11-17. KierratysAppi/main now contains
   tested migration `ec1e137` (code `774ad41`); no private experiment ancestry was shared.
 - Picomatch and Micromatch are genuinely absent from the installed graph.
