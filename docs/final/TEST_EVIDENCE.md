@@ -28,7 +28,10 @@ Hermes271f4414e5b5fe6c8b5f7bfa629139dadc666395b4970e03342be99eaaf231ff.
 Existing device-bound profile expires2026-11-23T10:53:38Z(12:53:38Helsinki).
 In-place install succeeds; actual filtered inventory confirms0.1.0(23), not
 merely app.json. First activated launch denied Locked; owner unlock requested.
-No uninstall/local-data wipe or new camera/private-image collection.
+No uninstall/local-data wipe or new camera/private-image collection. Owner then
+confirms unlock: normal activated launch succeeds (launch-unlocked.json/log),
+filtered process queries twice confirm the same native23executable is running
+(running-process*.json/log). Launch is not a fresh native camera/visual test.
 
 Native/privacy regression13tests, mobile validation and full2110tests
 (943Node+1167workspace)/all builds pass. SDK check up to date/Doctor20/20.
@@ -36,7 +39,13 @@ Fresh security audit fails GHSA-fc5q-39xc-vjpf. Verified primary advisory says
 all picomatch through4.0.7affected/no patched version; independent npm latest
 still4.0.7. No suppression, fake patched version or high-severity downgrade.
 DEP-2026-112366and production NO-GO recorded. Earlier green audit is historical,
-not the current security result. Publication/remote outcomes follow actual runs.
+not the current security result. Reviewed source published as0884d825607c6b264d91372955718085c046082e,
+normal parent80a3848only; actual ls-remote confirms main. No private ancestry,
+KeepItGreen write, force push or native artifact/credential upload. Actual
+CI44139116735: all three parts, full validation and Expo health pass; only
+Dependency security policy fails on GHSA-fc5q-39xc-vjpf (main-ci-failed.log).
+Security44139116821: CodeQL and secrets pass. This is not all-green source CI or
+production GO. Final outcome documentation shares the same runtime/source tree.
 
 Trusted-LAN barcode service returns HTTP200/resolved identity for the earlier
 public control and HTTP200/paid photo enabledfalse (barcode-service-smoke.log).

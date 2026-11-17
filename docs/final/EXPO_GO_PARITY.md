@@ -3,7 +3,8 @@
 The owner chooses stock Expo Go, not another development-build installation.
 Use the same app-owned UI, real data and sorting components. Do not simulate a
 working native library or describe server processing as on-device/offline work.
-No GitHub push or replacement of installed iPhone22 is part of this work unit.
+The initial UI-refactor unit did not push or replace installed iPhone22.
+Subsequently authorized native23installation/source sharing is recorded below.
 
 ## Implemented
 
@@ -79,12 +80,13 @@ on final source (delivery-native-library.log). Only the task's QA emulator and
 its loopback8098Metro are stopped; owner Go8096/web8097/model3004stay available.
 
 Screenshots are inspectable, but common source does not prove pixel-identical
-OS rendering. The installed iPhone22 has not been rebuilt with these shared-UI
-edits. Owner subsequently answers “joo” to the new combined photo/manual-barcode
-protocol: owner-reported acceptance, not independently observed pixels. Owner
-then authorizes a separate native23installation and KierratysAppi/main push;
-consult CURRENT_STATE/TEST_EVIDENCE for actual delivery status. No fresh Windows
-runner, physical Samsung, universal accuracy, release build or store GO claimed.
+OS rendering. Owner answers “joo” to the new combined Go photo/manual-barcode
+protocol: owner-reported acceptance, not independently observed pixels. Later
+authorized native23Release is built/signed/verified/installed and launched after
+owner unlock, with filtered inventory/process receipts. Source0884d82is on
+KierratysAppi/main; current CI's dependency audit fails the documented upstream
+high, while other checks pass. See CURRENT_STATE/TEST_EVIDENCE. No fresh Windows
+runner, physical Samsung, universal accuracy or store readiness claimed.
 
 Reproduce with a configured own recognition service and web Metro:
 

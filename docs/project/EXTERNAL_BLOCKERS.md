@@ -8,7 +8,8 @@ independent npm metadata still reports latest4.0.7. Three versions occur in the
 graph. Runtime reachability is not established; severity stays high. No ignored
 advisory, rewritten version, suppressed check or untested fork. Upstream package
 remediation is externally blocked; public production remains NO-GO and source
-CI's audit may fail. Ordinary UI tests/native installation are separate evidence.
+CI44139116735fails only its dependency audit on this finding; CodeQL/secrets
+44139116821pass. Ordinary UI tests/native installation are separate evidence.
 Owner: Codex/dependency-security maintainer. Recheck primary advisory/registry,
 adopt supported fixed versions when available, frozen install, unchanged audit,
 full/Expo/model/browser checks, then fresh main CI/security acceptance. Procedure
@@ -23,7 +24,9 @@ be made identical from JS. Doctor20/20/SDK check and actual Go library probe pas
 Owner now answers “joo” to the new physical iPhone Go photo/manual-barcode
 protocol, resolving that acceptance request as owner-reported evidence. Physical
 Samsung and new teammate webcam acceptance remain unperformed. Owner separately
-authorizes native23update and team-main sharing; both require actual receipts.
+authorizes native23update and team-main sharing. Installation/inventory23,
+owner-unlocked activated launch and normal main0884d82now have actual receipts;
+the locked-phone prerequisite is resolved, not a remaining installation blocker.
 
 ## November17 — shorter consent notice
 

@@ -2,7 +2,9 @@
 
 - [x] Owner-authorized native23Release build/sign/in-place install; actual
   inventory23, original model/privacy/JPEG/no-QA/no-audio/shared-UI verification.
-- [ ] Native23foreground launch after owner unlock; first attempt denied Locked.
+- [x] Owner unlocks; native23activated launch and same running executable verified.
+- [x] Authorized normal main0884d82, all three CIparts/validation/Expo health and
+  CodeQL/secrets pass; CIaudit fails only recorded upstream high, not a green GO.
 - [x] New full2110tests/all builds, mobile, SDK alignment and Doctor20/20.
 - [!] DEP-2026-112366: fresh high picomatch advisory, no published upstream fix;
   security audit remains failing, no suppression or production GO.

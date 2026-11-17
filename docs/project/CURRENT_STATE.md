@@ -18,7 +18,9 @@
   verification, retain original compile. Final verifier passes all14legacy pins,
   candidate/JPEG/privacy/no-QA/no-audio/shared-UI and11embedded signatures.
   Profile valid until23November12:53:38Helsinki. Initial foreground launch is
-  denied specifically because device is locked; owner asked to unlock.
+  denied Locked; owner confirms unlock, activated launch then succeeds. Filtered
+  process queries confirm the same23executable remains running. No new native
+  camera/private-image or pixel-identity acceptance inferred from launch.
 - Barcode service on approved trusted LAN3003 returns resolved public control
   and disabled paid-photo capability. Current direct runner does not load env
   files, logger off, PHOTO_AI_ENABLEDfalse; native recognition remains local.
@@ -27,6 +29,11 @@
   GHSA-fc5q-39xc-vjpf; primary advisory/npm show no fixed release, latest4.0.7
   affected. No exception/waiver/false green; DEP-2026-112366records upstream
   blocker and production NO-GO. Selected authorized source sharing is separate.
+- Reviewed normal main publication0884d82confirmed, parent80a3848only; no private
+  history/KeepItGreen change/force push. Actual source CI44139116735passes all
+  three parts, full validation and Expo health, fails only dependency audit on
+  that high. Security44139116821CodeQL/secrets passes. Outcomes documented;
+  documentation-only publication follows within this authorized sharing step.
 
 ## November17 — shared native/Go/browser recognition presentation
 

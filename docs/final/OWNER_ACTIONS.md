@@ -1,5 +1,19 @@
 # Owner actions
 
+## November17 — installed native23and source delivery
+
+- Roope: installed native0.1.0(23)and activated launch are verified after unlock.
+  Open KeepItGreen directly, not Expo Go. Existing development profile expires
+ 23November2026at12:53:38Helsinki; renewal then requires the usual locally signed
+  update with the paired/unlocked phone and own Xcode account, not credentials
+  in chat. No uninstall/local-data wipe performed. Native photo processing is
+  local; online barcode fallback still needs a network.
+- Team: reviewed main source0884d82is published with public-main-only ancestry;
+  pull a clean main checkout with git pull --ff-only and frozen installation.
+  Source CI44139116735has green parts/validation/Expo health but fails dependency
+  audit on the upstream high below. CodeQL/secrets44139116821pass. Do not report
+  all-green CI, production readiness or an audit waiver.
+
 ## DEP-2026-112366 — supported upstream fix required
 
 - Owner: Codex/dependency-security maintainer. No owner secret/payment needed.

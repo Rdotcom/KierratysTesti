@@ -14,6 +14,12 @@
   inject newer JS into an unverified older native binary.
 - Run trusted-LAN barcode service with no env-file loading/logger/paid photo
   recognizer. No new key/account/payment or cloud inference authorized.
+- Native23actual inventory/signature/model pins/activated launch now verified;
+  owner unlock resolves the first Locked denial. Normal source0884d82has only
+  public-main parent80a3848. All parts/validation/Expo health and CodeQL/secrets
+  pass; CI44139116735fails its unchanged dependency gate on newly reviewed high
+  picomatch. No fixed upstream version identified; preserve high/NO-GO, do not
+  misrepresent authorized source sharing as a security exception or release.
 
 ## D-127 — One presentation, truthful host-specific recognition
 
