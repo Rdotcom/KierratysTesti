@@ -1,12 +1,22 @@
 # Release decision
 
-## November17 — desktop browser ready for local trial; Windows proof pending
+## November17 — team-main browser source delivery approved
+
+Owner explicitly requests publication of the tested implementation to
+KierratysAppi/main. Prior proof-only sharing restriction no longer applies to
+this selected delivery. Browser runtime/model remain the real Mac/Windows-tested
+source; only a narrow QA-tool Linux hard-link repair and handoff documentation
+are added. Main CI/security must be checked after a normal non-forced push.
+This is source-sharing approval, not public production GO. Physical webcam/
+WindowsARM64, existing quality/operational/release gates remain open.
+
+## November17 — browser verified on Mac/Windows; public NO-GO unchanged
 
 Local actual Chrome/real-model JPEG and PNG/object/material/guidance smoke,
 synthetic camera shutdown, consent/no-upload, EN/dark/narrow/offline and2100tests
-pass. Owner's actual Chrome page is open. Windows-compatible launcher/path/
-runtime fixes and owner-authorized isolated proof workflow are prepared; do not
-claim Windows passed before its job completes. No physical webcam/WindowsARM64
+pass. Owner's actual Chrome page is open. Windows run44086483622passes actual
+model parity and Chrome/Edge flows for dde3ff3. Main remains63b49a6, no private
+history copied. No physical webcam/WindowsARM64
 or public production GO. Main is not authorized to change; only the reviewed
 proof branch may be shared in this step. Setup: BROWSER_AI.md.
 

@@ -1,6 +1,24 @@
 # Current state
 
-## Browser AI and authorized Windows proof — November17
+## November17 — approved browser source delivery to team main
+
+- Owner explicitly authorizes the tested browser implementation on
+  roopeaal/KierratysAppi/main. Fresh remote main63b49a6has no newer teammate
+  changes; proof6610375is its descendant and has the same tree as localf3197de.
+  Publish only reviewed public-parent history, not private development ancestry.
+- Actual Windows model/Chrome/Edge evidence remains run44086483622/source
+  dde3ff3; browser/model code is unchanged. Update BROWSER_AI.md to main with
+  fresh-clone/safe-fast-forward and per-computer Python/model setup instructions.
+- Prior main Linux CI43998611335failed two blind-review packet tests because
+  pnpm may hard-link installed tsx metadata. Permit this only for the canonical
+  pinned package path and matching name/version; keep image/data hard-link and
+  byte bounds. New regression covers permitted metadata, forbidden aliases/
+  images, wrong package/version and oversize. No safety gate/test skipped.
+- Local `pnpm validate` passes2101tests/all builds; blind-review19/19pass.
+  Normal main publication results follow in TEST_EVIDENCE.md.
+  Physical webcam, WindowsARM64 and public production gates remain unverified.
+
+## Browser AI verified on Mac and Windows — November17
 
 - Owner clarifies teammate uses Chrome/Edge web, not Go, and requests working
   browser recognition/Mac opening/Windows verification. New .web screen supports
@@ -14,15 +32,22 @@
   was not opened; fake test camera is not physical acceptance.
 - Exact local CORS, Windows native path/venv/OS-DLL environment compatibility,
   prototype CRLF protection and portable dual-service launcher added. Official
-  Windowsx64Python3.12wheels available; real Windows run still pending.
+  Windowsx64Python3.12model parity and Chrome156/Edge156full flows now pass
+  run44086483622, independently of the Mac test.
 - Owner separately authorizes reviewed source publication only to
   codex/browser-windows-proof on public KierratysAppi and standard Windows tests.
-  Main remains63b49a6. No private commit-history mirror, paid runner, cache/
-  artifact upload or production deployment. A fresh reviewed source-tree commit
-  will be parented at public main after local validations pass.
+  Main remains63b49a6. Reviewed source dde3ff3is parented only at that public
+  main; no private history mirrored. Standard Windows job completed successfully
+  14:50:34EET; no paid runner/cache/artifact upload or production deployment.
 - Current user browser uses8097and dedicated model3004. Old Go8096was stopped
   when focus moved to desktop web; managed test ports8098/3005were shut down.
   Existing native iPhone22not replaced. Run: work/browser-ai-20261117.JMPqXU.
+  Both owner services now bind loopback only, with sleep prevention following
+  web Metro's PID. No ongoing phone/LAN dependency.
+- Final local2100tests/all builds, original model gates, audit policy and real
+  browser smoke pass. Windows max score error0.003241<unchanged0.005; both
+  browsers return real spoon choices/guidance, not a mocked inference. Physical
+  webcams/OS permission acceptance and WindowsARM64 remain separate gates.
 
 ## Phone QR handoff diagnosis — November17
 

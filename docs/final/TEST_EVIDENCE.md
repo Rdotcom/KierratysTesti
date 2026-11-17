@@ -1,6 +1,29 @@
 # Test evidence
 
-## November17 — desktop browser recognition, Windows proof pending
+## November17 — selected main delivery and existing Linux CI repair
+
+Run work/browser-main-20261117.7rCuCS. Fresh origin URL is
+https://github.com/roopeaal/KierratysAppi.git, main63b49a6; no newer teammate
+commits. Proof6610375and localf3197dehave identical trees, with public source
+dde3ff3parented directly at63b49a6. Preserve this public-only source ancestry,
+not local private ancestors. No app/model change relative to Windows proof.
+
+Independent inspection of old main CI43998611335shows two blind-review packet
+tests fail on Linux at generationSources/file_bound. Installed pnpm tsx metadata
+can share a store inode; unrelated review images cannot. The repair permits
+only canonical pinned tsx4.21.0metadata with correct package name/version, retains
+byte bounds and adds post-read stat checks. Regression simulates a real hard
+link and rejects other aliases/images, wrong identity/version and oversize.
+Targeted blind-review tests pass; the earlier full Mac validate also passes.
+Initial optional prettier invocation finds no installed prettier; no dependency
+is installed. Repository Biome formatting is the applicable check and passes.
+Final `pnpm validate` exits0with2101tests (937Node+1164workspace), all package
+builds/18web routes, boundary/type/lint/format checks. Biome retains19existing
+warnings; none is hidden. Targeted blind-review19/19pass with no skips.
+Logs: final-validate.log and blind-review-tests.log in the run directory.
+Remote main CI results will be recorded after the authorized source push.
+
+## November17 — desktop browser recognition, Mac and actual Windows passed
 
 Run work/browser-ai-20261117.JMPqXU. Actual Chrome157on Mac uses real own-server
 SigLIP2, no provider/model response stub. JPEG→preview(no POST)→separate consent→
@@ -16,7 +39,7 @@ Windows-native separators/drive/case/space paths and Python Scripts defaults
 tested, exact CORS preflight and malformed-origin rejection pass. Frozen
 prototype line endings protected; worker/parity subprocesses whitelist needed
 Windows OS variables rather than service environment. Official pinned Windows
-wheel availability checked. Actual Windows execution is **not yet verified**.
+wheel availability checked. Actual Windows outcome is recorded below.
 Owner authorizes separate fresh proof branch/main unchanged; no private history,
 paid runner, caching/artifact storage or public deployment. Native app22unchanged.
 
@@ -31,6 +54,25 @@ parity still max0.003862<unchanged0.005. Final real-Chrome rerun additionally
 instruments camera-track state and confirms every synthetic track ended after
 capture (`final-browser-proof`, `final-browser-smoke.log`). Dependency audit
 policy passes with22reviewed low/moderate advisories, not zero vulnerabilities.
+
+Actual Windows proof: [run44086483622](https://github.com/roopeaal/KierratysAppi/actions/runs/44086483622),
+source dde3ff32e513f4fe72e110b9b68d8aa86b4ffd7d; standard windows-latest x64,
+Node24.19.0and pinned Python3.12packages. Completed14:50:34EET/2m49s, all steps
+success. Independently read actual logs (`windows-run.log`), not only a green
+badge: frozen JPEG top1s retained, max errors0.002403/0.001728/0.001936/0.003241
+all below original0.005; invalid/oversized input fails safely. Windows Chrome
+156.0.8078.80and Edge156.0.4314.58each report platform win32/actualModel true,
+all six real JPEG/PNG/consent/object/material/source/offline/language cases and
+synthetic-camera track cleanup, empty pageerror lists. No physical webcam claim.
+
+Publication: actual origin URL inspected, new proof branch initially absent,
+public main63b49a6confirmed. Reviewed fresh source-tree commit has exactly that
+public parent; local private ancestry is not published. Normal non-forced push
+only to codex/browser-windows-proof; remote main remains63b49a6. Outcome-only
+documentation followup retains tested source SHA and uses [skip ci] to avoid
+rerunning identical implementation; it does not replace or skip implementation
+tests. No PR, paid runner, cache/artifact upload or production release. Current
+owner model3004/web8097remain healthy and loopback-only, old Go8096stopped.
 
 ## November17 — independent QR diagnosis and standard-link handoff
 

@@ -1,5 +1,23 @@
 # Decision log
 
+## D-122 — Explicit team-main delivery after Windows proof
+
+- Date:2026-11-17. Owner now explicitly requests KierratysAppi/main, superseding
+  the preceding proof-branch-only authorization for this selected delivery.
+  Inspect actual origin and fresh main; retain all teammate commits. Publish
+  reviewed trees parented only at public main/proof source, no private-history
+  mirror, force push, automatic later synchronization or public app deployment.
+- Keep the already tested browser/model implementation unchanged. Fix the
+  independently observed older Linux CI failure narrowly: pinned installed
+  tsx4.21.0metadata may have pnpm store hard links, only at its canonical exact
+  path and with correct package identity. Review images/source aliases remain
+  bounded/non-hard-linked. Add simulated hard-link regression; do not weaken
+  checks to obtain a green badge.
+- Main handoff includes exact Windows quick start and one physical webcam trial;
+  pulling source alone does not provision the teammate's Python/model services.
+  Main delivery runs normal CI, without skip markers. Public production NO-GO
+  and physical hardware limits remain, independent of source sharing.
+
 ## D-121 — Desktop browser path and explicit Windows proof sharing
 
 - Actual target is Chrome/Edge on Windows. Implement .web file/camera path with
@@ -21,6 +39,10 @@
   Windows run in public KierratysAppi; main is untouched. Publish a fresh commit
   from public main with reviewed required source, not private development history.
   No paid runner, artifact/cache storage, public review or production release.
+- Actual proof succeeds on Windowsx64Chrome156and Edge156. Retain run URL and
+  tested source SHA. Outcome-only docs follow on the same authorized branch with
+  unchanged code; skip redundant CI for that documentation commit, not tests of
+  implementation changes. Main and private ancestry remain untouched.
 
 ## D-120 — Independently decode QR before blaming transport or rebuilding
 

@@ -11,6 +11,7 @@ import {
   loadFrozenCorpora,
   parseArguments,
   planBlindReview,
+  readBlindReviewSource,
   sanitizeReviewImage,
   writeBlindReviewPacket,
 } from "../qa/local-vision/blind-review-packet.mjs";
@@ -57,6 +58,29 @@ function temporary(t) {
   });
   return root;
 }
+
+test("only pinned tsx metadata permits pnpm package-store hard links", (t) => {
+  const cwd = temporary(t);
+  const directory = path.join(cwd, "node_modules/.pnpm/tsx@4.21.0/node_modules/tsx");
+  fs.mkdirSync(directory, { recursive: true });
+  const metadata = path.join(directory, "package.json");
+  const bytes = JSON.stringify({ name: "tsx", version: "4.21.0" });
+  fs.writeFileSync(metadata, bytes);
+  const alias = path.join(cwd, "work/cache-alias");
+  fs.linkSync(metadata, alias);
+  assert.equal(readBlindReviewSource(metadata, cwd).toString(), bytes);
+  assert.throws(() => readBlindReviewSource(alias, cwd), /file_bound/u);
+  const imagePath = path.join(cwd, "work/image.jpg");
+  fs.writeFileSync(imagePath, image());
+  fs.linkSync(imagePath, path.join(cwd, "work/image-alias"));
+  assert.throws(() => readBlindReviewSource(imagePath, cwd), /file_bound/u);
+  fs.writeFileSync(metadata, JSON.stringify({ name: "other", version: "4.21.0" }));
+  assert.throws(() => readBlindReviewSource(metadata, cwd), /runtime_package/u);
+  fs.writeFileSync(metadata, JSON.stringify({ name: "tsx", version: "5.0.0" }));
+  assert.throws(() => readBlindReviewSource(metadata, cwd), /runtime_version/u);
+  fs.writeFileSync(metadata, "x".repeat(1_000_001));
+  assert.throws(() => readBlindReviewSource(metadata, cwd), /file_bound/u);
+});
 function fixture(t, count = 3) {
   const cwd = temporary(t),
     directory = path.join(cwd, "work", "corpus");

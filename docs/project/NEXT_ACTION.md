@@ -1,3 +1,3 @@
 # Next action
 
-Publish the reviewed browser AI source to the owner-authorized codex/browser-windows-proof branch without private history or main changes, then resolve the actual Windows model/Chrome/Edge proof result.
+Have the Windows teammate follow BROWSER_AI.md from KierratysAppi/main and record one physical-webcam permission → preview → explicit consent → object/material-guidance result without photographing people or private text.

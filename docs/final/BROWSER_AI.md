@@ -8,9 +8,18 @@ sorting guidance. The native installed app's offline pipeline is unchanged.
 
 ## Windows quick start (PowerShell, x64)
 
-Use a fresh copy of the reviewed `codex/browser-windows-proof` test branch after
-publication, not an unrelated old main checkout. Main is not changed by the proof
-branch. Existing Node24.x/pnpm11 and Python3.12x64 are needed; install Python from
+Use the current `main` branch of `roopeaal/KierratysAppi`. In an existing clean
+main checkout, run `git pull --ff-only origin main`; check `git remote -v` first.
+Do not reset or discard local work to update. For a separate fresh copy:
+
+```powershell
+git clone --branch main https://github.com/roopeaal/KierratysAppi.git
+cd KierratysAppi
+```
+
+Git pull alone does not install Python, dependencies or model files. Initial
+setup below is required once per computer. Existing Node24.x/pnpm11 and
+Python3.12x64 are needed; install Python from
 its official distribution if missing. Do not copy the Mac's Python environment
 or use its private Wi-Fi address from another network.
 
@@ -100,3 +109,10 @@ It has no cache/artifact upload, paid AI key, larger runner or production deploy
 
 Current evidence, retained failures and exact Windows result status are in
 TEST_EVIDENCE.md. Mac Chromium evidence does **not** count as a Windows test.
+
+Verified November17: actual Windows x64 model parity, Chrome156and Edge156all
+pass [run44086483622](https://github.com/roopeaal/KierratysAppi/actions/runs/44086483622)
+for source dde3ff3. Mac Chrome157passes too. Camera tests use synthetic video;
+your own webcam/OS permission still needs a physical test. The owner now
+authorizes sharing this tested implementation in main; this is source delivery,
+not a public hosted service or a new production-readiness claim.

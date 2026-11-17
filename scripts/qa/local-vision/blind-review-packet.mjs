@@ -44,12 +44,16 @@ function workPath(input, cwd, directory = false) {
   if (!directory) assert.equal(stat.nlink, 1, "hard_link");
   return file;
 }
-function boundedRead(file, maximum) {
+function boundedRead(file, maximum, rejectHardLinks = true) {
   const fd = fs.openSync(file, fs.constants.O_RDONLY | (fs.constants.O_NOFOLLOW ?? 0));
   try {
     const stat = fs.fstatSync(fd);
     assert.ok(
-      stat.isFile() && stat.nlink === 1 && stat.size > 0 && stat.size <= maximum,
+      stat.isFile() &&
+        stat.nlink >= 1 &&
+        (!rejectHardLinks || stat.nlink === 1) &&
+        stat.size > 0 &&
+        stat.size <= maximum,
       "file_bound",
     );
     const output = Buffer.alloc(maximum + 1);
@@ -61,10 +65,31 @@ function boundedRead(file, maximum) {
       assert.ok(count <= maximum, "growing_file");
     }
     assert.equal(count, stat.size, "file_changed");
+    const after = fs.fstatSync(fd);
+    for (const key of ["dev", "ino", "nlink", "size", "mtimeMs", "ctimeMs"])
+      assert.equal(after[key], stat[key], "file_changed");
     return output.subarray(0, count);
   } finally {
     fs.closeSync(fd);
   }
+}
+
+/** Only pinned installed package metadata may share a pnpm store inode, never review data. */
+export function readBlindReviewSource(file, root = project) {
+  const canonical = fs.realpathSync(file);
+  assert.equal(canonical, path.resolve(file), "linked_source");
+  const pinnedMetadata = path.join(
+    fs.realpathSync(root),
+    "node_modules/.pnpm/tsx@4.21.0/node_modules/tsx/package.json",
+  );
+  const installedMetadata = canonical === pinnedMetadata;
+  const bytes = boundedRead(canonical, 1_000_000, !installedMetadata);
+  if (installedMetadata) {
+    const metadata = JSON.parse(bytes);
+    assert.equal(metadata.name, "tsx", "runtime_package");
+    assert.equal(metadata.version, "4.21.0", "runtime_version");
+  }
+  return bytes;
 }
 function readJson(file, maximum = 2_000_000) {
   const bytes = boundedRead(file, maximum);
@@ -352,7 +377,7 @@ function generationSources() {
     ...Object.values(registry).map((name) => [name, fileURLToPath(new URL(name, import.meta.url))]),
   ];
   return Object.fromEntries(
-    sources.map(([name, file]) => [name, sha(boundedRead(fs.realpathSync(file), 1_000_000))]),
+    sources.map(([name, file]) => [name, sha(readBlindReviewSource(fs.realpathSync(file)))]),
   );
 }
 
