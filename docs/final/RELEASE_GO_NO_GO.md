@@ -1,5 +1,16 @@
 # Release decision
 
+## November17 — NO-GO: fresh high upstream advisory supersedes earlier green audit
+
+`pnpm security:audit` now fails GHSA-fc5q-39xc-vjpf/CVE-2026-112366 in picomatch.
+Official advisory and npm registry identify no fixed release (latest4.0.7is
+affected). Keep high severity, the failing gate and all older open release
+requirements; no suppression or fabricated patch. See PRODUCTION_AUDIT.md /
+EXTERNAL_BLOCKERS.md and ../research/picomatch-advisory-2026-11-17.md.
+Owner-authorized native23installation/source sharing is not a production release
+or evidence that current security CI passes. Earlier green audit receipts remain
+historical and must not be presented as the current dependency status.
+
 ## November17 — approved wait removal and Expo patch validation
 
 Explicit owner request supersedes the preceding24hour waiting requirement.

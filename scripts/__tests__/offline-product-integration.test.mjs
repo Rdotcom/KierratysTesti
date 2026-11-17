@@ -41,7 +41,11 @@ test("UI shows uncertain catalogue data without automatic sorting, raw OCR or ne
     result = read("mobile/app/src/components/offline-product-result.tsx");
   assert.match(screen, /recognizeOfflineProduct\(jpeg, controller\.signal\)/);
   assert.match(screen, /setProductResult\(undefined\)/);
-  assert.match(screen, /setManualCode\(""\)/);
+  assert.match(screen, /<RecognitionStart/);
+  const shared = read("mobile/app/src/components/recognition-presentation.tsx");
+  assert.match(shared, /setValue\(""\)/);
+  assert.match(shared, /AppState.addEventListener\("change"/);
+  assert.match(shared, /generation.current\+\+/);
   assert.match(result, /offlineProductCompare/);
   assert.match(result, /product\.source\.licence/);
   assert.doesNotMatch(result, /cosine|textLines|\.vector|sortPackaging|requestPhoto|fetch\(/);

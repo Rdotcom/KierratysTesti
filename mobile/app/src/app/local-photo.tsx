@@ -12,7 +12,14 @@ import Constants from "expo-constants";
 import { File, Paths } from "expo-file-system";
 import { useFocusEffect, useRouter } from "expo-router";
 import { useCallback, useRef, useState } from "react";
-import { AppState, Image, Linking, Platform, StyleSheet, TextInput, View } from "react-native";
+import { AppState, Linking, Platform, View } from "react-native";
+import {
+  RecognitionHeading,
+  RecognitionPreview,
+  RecognitionRecovery,
+  RecognitionStart,
+  recognitionStyles as styles,
+} from "@/components/recognition-presentation";
 import { NetworkPhotoScreen } from "@/components/network-photo-screen";
 import { ObjectCandidateResultView } from "@/components/object-candidate-result";
 import { OfflineProductResultView } from "@/components/offline-product-result";
@@ -21,7 +28,6 @@ import {
   Button,
   InlineLink,
   PageHeader,
-  PageIntro,
   Paper,
   Screen,
   StatusPill,
@@ -53,7 +59,6 @@ import { isExpoGoHost } from "@/features/runtime/host";
 import { usesNetworkRecognition } from "@/features/runtime/network-mode";
 import { useScanSession } from "@/features/scan/session-context";
 import { useLanguage } from "@/i18n/language-context";
-import { radius, useAppTheme } from "@/theme/tokens";
 
 const objectLabels: Record<LocalObjectKind, MessageKey> = {
   bottle: "localVisionBottle",
@@ -81,12 +86,10 @@ function NativeLocalPhotoScreen() {
   const router = useRouter();
   const { t, language } = useLanguage();
   const { lookupBarcode } = useScanSession();
-  const { palette } = useAppTheme();
   const [mode, setMode] = useState<"product" | "material">("product");
   const [productResult, setProductResult] = useState<OfflineProductResult>();
   const [objectHint, setObjectHint] = useState<ObjectPhotoResponse>();
   const [androidEvidence, setAndroidEvidence] = useState<AndroidVisionEvidence>();
-  const [manualCode, setManualCode] = useState("");
   const [permission, requestPermission] = useCameraPermissions();
   const [phase, setPhase] = useState<LocalPhotoPhase>("intro");
   const [jpeg, setJpeg] = useState<string>();
@@ -116,7 +119,6 @@ function NativeLocalPhotoScreen() {
     setProductResult(undefined);
     setObjectHint(undefined);
     setAndroidEvidence(undefined);
-    setManualCode("");
     setError(undefined);
     setBusy(false);
     setChecking(false);
@@ -239,7 +241,7 @@ function NativeLocalPhotoScreen() {
     void open();
   };
 
-  const lookupEnteredBarcode = async (code = manualCode) => {
+  const lookupEnteredBarcode = async (code: string) => {
     if (locked.current || busy) return;
     const ticket = generation.current;
     // Only this explicit barcode action can use the shared online fallback.
@@ -339,10 +341,7 @@ function NativeLocalPhotoScreen() {
           else router.replace("/identify");
         }}
       />
-      <PageIntro
-        title={t("localVisionTitle")}
-        {...(phase === "intro" ? { body: t("localVisionIntro") } : {})}
-      />
+      <RecognitionHeading intro={phase === "intro"} />
       <View style={sharedStyles.stack}>
         {presentation.inlineError && (
           <AppText accessibilityRole="alert" testID="local-photo-error">
@@ -354,80 +353,69 @@ function NativeLocalPhotoScreen() {
             {t(localReadinessMessage(readiness) ?? "localVisionReadinessPartial")}
           </AppText>
         )}
-        {presentation.showCaptureGuidance && (
+        {phase === "camera" && (
           <AppText testID="local-photo-capture-guidance">
             {t(mode === "product" ? "offlineProductGuidance" : "localVisionCaptureGuidance")}
           </AppText>
         )}
         {phase === "intro" && (
-          <>
-            <AppText>{t("offlineProductScope")}</AppText>
-            <AppText>{t("objectCandidateIntro")}</AppText>
-            {!available ? (
-              <AppText testID="local-photo-unavailable">{t("localVisionUnavailable")}</AppText>
-            ) : presentation.permanentDenied ? (
+          <RecognitionStart
+            busy={busy}
+            beforeNavigate={clear}
+            cameraAction={
+              !available ? (
+                <AppText testID="local-photo-unavailable">{t("localVisionUnavailable")}</AppText>
+              ) : presentation.permanentDenied ? (
+                <>
+                  <AppText accessibilityRole="alert" testID="local-photo-permission-denied">
+                    {t("cameraDenied")}
+                  </AppText>
+                  <Button label={t("openSettings")} onPress={() => void Linking.openSettings()} />
+                </>
+              ) : (
+                <Button
+                  label={t(
+                    checking
+                      ? "localVisionChecking"
+                      : busy
+                        ? "localVisionOpening"
+                        : "localVisionCamera",
+                  )}
+                  onPress={() => void open("product")}
+                  busy={busy}
+                  disabled={busy}
+                  testID="local-photo-open-camera"
+                />
+              )
+            }
+            details={
               <>
-                <AppText accessibilityRole="alert" testID="local-photo-permission-denied">
-                  {t("cameraDenied")}
+                <AppText>{t("localVisionIntro")}</AppText>
+                <AppText>{t("offlineProductScope")}</AppText>
+                <AppText variant="small" muted>
+                  {t("localVisionPrivacy")}
                 </AppText>
-                <Button label={t("openSettings")} onPress={() => void Linking.openSettings()} />
-              </>
-            ) : (
-              <Button
-                label={t(
-                  checking
-                    ? "localVisionChecking"
-                    : busy
-                      ? "localVisionOpening"
-                      : "localVisionCamera",
+                {available && (
+                  <Button
+                    label={t("offlineProductMaterial")}
+                    variant="secondary"
+                    onPress={() => void open("material")}
+                    disabled={busy}
+                    testID="local-photo-material-camera"
+                  />
                 )}
-                onPress={() => void open("product")}
-                busy={busy}
-                disabled={busy}
-                testID="local-photo-open-camera"
-              />
-            )}
-            {available && (
-              <Button
-                label={t("offlineProductMaterial")}
-                variant="secondary"
-                onPress={() => void open("material")}
-                disabled={busy}
-                testID="local-photo-material-camera"
-              />
-            )}
-            <Paper>
-              <AppText accessibilityRole="header" variant="heading">
-                {t("offlineProductManual")}
-              </AppText>
-              <TextInput
-                value={manualCode}
-                onChangeText={setManualCode}
-                maxLength={32}
-                accessibilityLabel={t("gtinLabel")}
-                accessibilityHint={t("gtinHint")}
-                keyboardType="number-pad"
-                autoCorrect={false}
-                autoComplete="off"
-                returnKeyType="done"
-                testID="offline-product-manual-input"
-                style={[
-                  styles.codeInput,
-                  {
-                    color: palette.textPrimary,
-                    borderColor: palette.borderSubtle,
-                    backgroundColor: palette.bgSurface,
-                  },
-                ]}
-              />
-              <Button
-                label={t("offlineProductLookup")}
-                disabled={!manualCode.trim() || busy}
-                onPress={() => void lookupEnteredBarcode()}
-                testID="offline-product-manual-submit"
-              />
-            </Paper>
-          </>
+                <AppText variant="small" muted>
+                  {t("localVisionCloudCost")}
+                </AppText>
+                <InlineLink
+                  label={t("localVisionCloud")}
+                  accessibilityHint={t("localVisionCloudHint")}
+                  onPress={() => router.push("/photo")}
+                  testID="local-photo-cloud-action"
+                />
+              </>
+            }
+          />
         )}
         {phase === "camera" && (
           <>
@@ -466,27 +454,12 @@ function NativeLocalPhotoScreen() {
           </>
         )}
         {phase === "preview" && jpeg && (
-          <>
-            <AppText variant="heading">{t("localVisionPreview")}</AppText>
-            <Image
-              source={{ uri: `data:image/jpeg;base64,${jpeg}` }}
-              style={styles.camera}
-              accessibilityLabel={t("localVisionPreview")}
-              resizeMode="contain"
-            />
-            <Button
-              label={t("localVisionRecognize")}
-              onPress={() => void recognize()}
-              disabled={busy}
-              testID="local-photo-recognize"
-            />
-            <Button
-              label={t("localVisionAgain")}
-              variant="secondary"
-              onPress={retake}
-              testID="local-photo-retake"
-            />
-          </>
+          <RecognitionPreview
+            jpeg={jpeg}
+            onRecognize={() => void recognize()}
+            onRetake={retake}
+            busy={busy}
+          />
         )}
         {phase === "processing" && (
           <AppText accessibilityLiveRegion="polite" testID="local-photo-loading">
@@ -652,55 +625,12 @@ function NativeLocalPhotoScreen() {
             />
           </>
         )}
-        {presentation.showBarcodeRecovery && (
-          <Button
-            label={t(
-              mode === "product" ? "offlineProductOnlineBarcode" : "localVisionBarcodeRecovery",
-            )}
-            variant="secondary"
-            onPress={() => {
-              clear();
-              router.push("/scan");
-            }}
-            testID="local-photo-barcode-action"
-          />
-        )}
-        <Button
-          label={t("materialCodeAction")}
-          variant="secondary"
-          onPress={() => {
-            clear();
-            router.push("/material-code");
-          }}
-          testID="local-photo-marking-action"
+        <RecognitionRecovery
+          beforeNavigate={clear}
+          showBarcode={presentation.showBarcodeRecovery}
+          showMarking={phase !== "intro"}
         />
-        <Button
-          label={t("manualComponentAction")}
-          variant="secondary"
-          onPress={() => {
-            clear();
-            router.push("/component");
-          }}
-        />
-        {phase === "intro" && (
-          <>
-            <AppText variant="small" muted>
-              {t("localVisionCloudCost")}
-            </AppText>
-            <InlineLink
-              label={t("localVisionCloud")}
-              accessibilityHint={t("localVisionCloudHint")}
-              onPress={() => router.push("/photo")}
-              testID="local-photo-cloud-action"
-            />
-          </>
-        )}
       </View>
     </Screen>
   );
 }
-
-const styles = StyleSheet.create({
-  camera: { width: "100%", height: 300, borderRadius: radius.lg },
-  codeInput: { minHeight: 52, borderWidth: 2, borderRadius: radius.lg, padding: 16, fontSize: 18 },
-});

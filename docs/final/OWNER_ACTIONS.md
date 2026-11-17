@@ -1,5 +1,20 @@
 # Owner actions
 
+## DEP-2026-112366 — supported upstream fix required
+
+- Owner: Codex/dependency-security maintainer. No owner secret/payment needed.
+- Recheck https://github.com/advisories/GHSA-fc5q-39xc-vjpf and the npm registry;
+  current latest4.0.7is affected, no patched release identified. Keep severity
+  high and audit failure visible. Do not disable the gate or revive the removed
+ 24hour delay as an alleged fix.
+- Once a supported fixed release exists, update compatible direct/transitive
+  resolutions using existing policy, run frozen installation, unchanged
+  pnpm security:audit / pnpm validate / Expo health and relevant real-model
+  browser checks, then require fresh main CI/security receipts. Any source
+  sharing still needs the normal explicit owner authorization.
+- Production remains NO-GO. Current authorized native/source delivery is not
+  an audit-risk waiver or app-store publication.
+
 ## November17 — updated Expo source handoff
 
 - Codex: selected source bd96fc0delivered; local full2102/mobile/model/browser,

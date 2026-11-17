@@ -5,7 +5,7 @@ import { CameraView, useCameraPermissions } from "expo-camera";
 import { File, Paths } from "expo-file-system";
 import { useFocusEffect, useRouter } from "expo-router";
 import { useCallback, useRef, useState } from "react";
-import { AppState, Image, Linking, Platform, View } from "react-native";
+import { AppState, Linking, Platform, View } from "react-native";
 import { announceAccessibility } from "@/features/accessibility/announcements";
 import {
   shouldClearLocalPhotoState,
@@ -20,7 +20,15 @@ import { localPhotoInitialSize, resolvePhotoCaptureSize } from "@/features/photo
 import { useLanguage } from "@/i18n/language-context";
 import { ExpoGoRecognition } from "./expo-go-recognition";
 import { ObjectCandidateResultView } from "./object-candidate-result";
-import { AppText, Button, PageHeader, PageIntro, Paper, Screen, sharedStyles } from "./ui";
+import {
+  RecognitionConsent,
+  RecognitionHeading,
+  RecognitionPreview,
+  RecognitionRecovery,
+  RecognitionStart,
+  recognitionStyles,
+} from "./recognition-presentation";
+import { AppText, Button, PageHeader, Screen, sharedStyles } from "./ui";
 
 function removeCapture(uri: string): void {
   if (!isLocalCaptureUri(uri, Paths.cache.uri)) throw Error("invalid_capture_path");
@@ -30,14 +38,19 @@ function removeCapture(uri: string): void {
 
 /** Stock Go uses an explicit, opt-in own-server transport, never the paid photo route. */
 export function NetworkPhotoScreen() {
-  return origin ? <ConfiguredNetworkPhotoScreen /> : <ExpoGoRecognition networkSetup />;
+  return origin ? (
+    <ConfiguredNetworkPhotoScreen origin={origin} />
+  ) : (
+    <ExpoGoRecognition networkSetup />
+  );
 }
-function ConfiguredNetworkPhotoScreen() {
+function ConfiguredNetworkPhotoScreen({ origin }: { readonly origin: string }) {
   const router = useRouter(),
     { t } = useLanguage();
   const [permission, requestPermission] = useCameraPermissions();
   const [phase, setPhase] = useState<"intro" | "camera" | "preview" | "result">("intro");
   const [jpeg, setJpeg] = useState<string>();
+  const [consent, setConsent] = useState(false);
   const [result, setResult] = useState<Extract<NetworkResult, { status: "observed" }>>();
   const [error, setError] = useState<MessageKey>();
   const [busy, setBusy] = useState(false),
@@ -56,6 +69,7 @@ function ConfiguredNetworkPhotoScreen() {
     setBusy(false);
     setReady(false);
     setJpeg(undefined);
+    setConsent(false);
     setResult(undefined);
     setError(undefined);
     setPhase("intro");
@@ -160,7 +174,7 @@ function ConfiguredNetworkPhotoScreen() {
   };
   // Only this separate button handler grants transport consent. Capture never sends.
   const send = async () => {
-    if (locked.current || !jpeg || phase !== "preview") return;
+    if (locked.current || !jpeg || phase !== "preview" || !consent) return;
     locked.current = true;
     setBusy(true);
     setError(undefined);
@@ -174,6 +188,7 @@ function ConfiguredNetworkPhotoScreen() {
       if (response.status === "observed") {
         setResult(response);
         setJpeg(undefined);
+        setConsent(false);
         setPhase("result");
         announceAccessibility(t("objectCandidateTitle"));
       } else
@@ -204,10 +219,7 @@ function ConfiguredNetworkPhotoScreen() {
           router.canGoBack() ? router.back() : router.replace("/identify");
         }}
       />
-      <PageIntro
-        title={t("networkTitle")}
-        {...(phase === "intro" ? { body: t("networkIntro") } : {})}
-      />
+      <RecognitionHeading intro={phase === "intro"} />
       <View style={sharedStyles.stack}>
         {error && (
           <AppText accessibilityRole="alert" testID="network-photo-error">
@@ -215,25 +227,31 @@ function ConfiguredNetworkPhotoScreen() {
           </AppText>
         )}
         {phase === "intro" && (
-          <>
-            <AppText variant="small" muted>
-              {t("networkRecipient")}: {origin}
-            </AppText>
-            <AppText>{t("networkConsent")}</AppText>
-            {origin?.startsWith("http:") && (
-              <AppText variant="small">{t("networkHttpNotice")}</AppText>
-            )}
-            {permission && !permission.granted && !permission.canAskAgain ? (
-              <Button label={t("openSettings")} onPress={() => void Linking.openSettings()} />
-            ) : (
-              <Button
-                label={t("localVisionCamera")}
-                busy={busy}
-                onPress={() => void open()}
-                testID="network-photo-open-camera"
-              />
-            )}
-          </>
+          <RecognitionStart
+            busy={busy}
+            beforeNavigate={clear}
+            cameraAction={
+              permission && !permission.granted && !permission.canAskAgain ? (
+                <Button label={t("openSettings")} onPress={() => void Linking.openSettings()} />
+              ) : (
+                <Button
+                  label={t("localVisionCamera")}
+                  busy={busy}
+                  onPress={() => void open()}
+                  testID="network-photo-open-camera"
+                />
+              )
+            }
+            details={
+              <>
+                <AppText>{t("networkIntro")}</AppText>
+                <AppText>{t("recognitionMarkingManual")}</AppText>
+                <AppText variant="small">
+                  {t("networkRecipient")}: {origin}
+                </AppText>
+              </>
+            }
+          />
         )}
         {phase === "camera" && (
           <>
@@ -242,7 +260,7 @@ function ConfiguredNetworkPhotoScreen() {
               ref={camera}
               facing="back"
               pictureSize={pictureSize}
-              style={{ height: 320, width: "100%", borderRadius: 20, overflow: "hidden" }}
+              style={recognitionStyles.camera}
               accessibilityLabel={t("networkCameraLabel")}
               onMountError={() => {
                 if (cameraGeneration === generation.current) {
@@ -273,50 +291,52 @@ function ConfiguredNetworkPhotoScreen() {
             />
           </>
         )}
-        {phase === "preview" && jpeg && (
-          <Paper>
-            <Image
-              source={{ uri: `data:image/jpeg;base64,${jpeg}` }}
-              style={{ width: "100%", height: 200 }}
-              resizeMode="contain"
-              accessibilityLabel={t("localVisionPreview")}
-            />
-            <AppText variant="small">
-              {t("networkRecipient")}: {origin}
-            </AppText>
-            <AppText>{t("networkConsent")}</AppText>
-            {origin?.startsWith("http:") && (
-              <AppText variant="small">{t("networkHttpNotice")}</AppText>
-            )}
-            <Button
-              label={t("networkSend")}
+        {phase === "preview" &&
+          jpeg &&
+          (consent ? (
+            <RecognitionConsent
+              origin={origin}
               busy={busy}
-              onPress={() => void send()}
-              testID="network-photo-send"
+              onConfirm={() => void send()}
+              onCancel={() => setConsent(false)}
             />
-            {busy && <AppText accessibilityLiveRegion="polite">{t("networkSending")}</AppText>}
-          </Paper>
-        )}
+          ) : (
+            <RecognitionPreview
+              jpeg={jpeg}
+              busy={busy}
+              onRecognize={() => setConsent(true)}
+              onRetake={() => {
+                clear();
+                void open();
+              }}
+            />
+          ))}
         {result && (
           <ObjectCandidateResultView result={result} onGuide={() => router.push("/guide")} />
         )}
         {phase !== "intro" && (
           <Button
-            label={t(phase === "result" ? "networkRetake" : "cancel")}
+            label={t(phase === "result" ? "offlineProductNewCode" : "localVisionCancel")}
             variant="secondary"
             onPress={clear}
             testID="network-photo-cancel"
           />
         )}
-        <Button
-          label={t("identifyScanAction")}
-          variant="quiet"
-          onPress={() => router.push("/scan")}
-        />
-        <Button
-          label={t("expoGoManualTitle")}
-          variant="quiet"
-          onPress={() => router.push("/guide")}
+        {phase === "result" && (
+          <Button
+            label={t("localVisionAgain")}
+            variant="secondary"
+            onPress={() => {
+              clear();
+              void open();
+            }}
+            testID="network-photo-retake"
+          />
+        )}
+        <RecognitionRecovery
+          beforeNavigate={clear}
+          showBarcode={phase === "intro" || phase === "result"}
+          showMarking={phase !== "intro"}
         />
       </View>
     </Screen>

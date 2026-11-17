@@ -3,7 +3,6 @@ import { useCallback, useState } from "react";
 import {
   Image,
   Keyboard,
-  Platform,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -31,9 +30,6 @@ import { homeHistoryPreview } from "@/features/history/home-preview";
 import { historyStatusMessageKey } from "@/features/history/presentation";
 import { type HistoryEntry, isHistoryEnabled, readHistory } from "@/features/history/storage";
 import { useNearbySearch } from "@/features/nearby/search-context";
-import { isExpoGoHost } from "@/features/runtime/host";
-import { usesNetworkRecognition } from "@/features/runtime/network-mode";
-import { networkRecognitionOrigin } from "@/features/network-recognition/config";
 import { useScanSession } from "@/features/scan/session-context";
 import { useLanguage } from "@/i18n/language-context";
 import { homeColors } from "@/theme/home-colors";
@@ -239,13 +235,7 @@ export default function HomeScreen() {
             <Pressable
               accessibilityRole="button"
               accessibilityLabel={t("homeIdentifyTitle")}
-              accessibilityHint={t(
-                usesNetworkRecognition(Platform.OS, isExpoGoHost())
-                  ? networkRecognitionOrigin
-                    ? "networkHomeDetail"
-                    : "expoGoHomeDetail"
-                  : "homeIdentifyDetail",
-              )}
+              accessibilityHint={t("homeIdentifyDetail")}
               testID="home-identify-action"
               onPress={() => router.push("/identify")}
               onFocus={() => setIdentifyFocused(true)}
@@ -276,13 +266,7 @@ export default function HomeScreen() {
                 <View style={styles.grow}>
                   <AppText style={styles.identifyTitle}>{t("homeIdentifyTitle")}</AppText>
                   <AppText style={[styles.identifyBody, { color: home.muted }]}>
-                    {t(
-                      usesNetworkRecognition(Platform.OS, isExpoGoHost())
-                        ? networkRecognitionOrigin
-                          ? "networkHomeDetail"
-                          : "expoGoHomeDetail"
-                        : "homeIdentifyDetail",
-                    )}
+                    {t("homeIdentifyDetail")}
                   </AppText>
                 </View>
               </View>

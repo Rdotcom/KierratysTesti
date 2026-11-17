@@ -1,9 +1,23 @@
 # Own-server image suggestions in Expo Go
 
+November17presentation update: native/Go/browser now share the app-owned heading,
+start/manual-barcode/preview/recovery components. After the common Recognize
+action, Go/web open a separate recipient/retention/HTTP/explicit-send confirmation.
+Opening or cancelling it sends nothing. Native-only details remain honest rather
+than simulated; see [EXPO_GO_PARITY.md](EXPO_GO_PARITY.md) for implementation,
+library checks and remaining physical-device acceptance. Installed iPhone22 is
+not replaced by this source refactor.
+
 Implemented November 17, 2026. This is an optional network mode, not offline
 native-module support or public release approval. No paid inference/API key is
 needed. The owner pays any ordinary hardware/electricity/network/hosting costs.
 The existing installed native app keeps its on-device pipeline unchanged.
+
+November17wording alignment: Go and browser now use the native-style base
+title/review/new-picture labels and calmer FI/EN instructions. They still say
+that recognition needs the own server/network and require separate photo sending;
+they do not claim on-device/offline processing. No model/provider behavior or
+installed-native-app change. Updated-copy evidence is in TEST_EVIDENCE.md.
 
 ## What is shared, and what is not
 
@@ -24,6 +38,16 @@ Four existing development JPEGs pass the unchanged top-one/0.005 score gate;
 that is compatibility evidence, not an accuracy percentage or Samsung acceptance.
 
 ## Reproducible setup
+
+Physical iPhone prerequisite: install matched Go58 and sign into the **same
+Expo account** in phone Go and Mac Expo CLI. Expo and Apple accounts are
+different. Check CLI with `pnpm --filter @kierratysappi/mobile exec expo whoami`;
+if needed, sign in yourself with `pnpm --filter @kierratysappi/mobile exec expo
+login`. Do not paste credentials/codes into chat. Current physical iOS Go checks
+this even when Metro appears healthy; Android/emulators are different. USB and
+renewing the separately installed native app are not required for Go over Wi-Fi.
+Official requirement rechecked November17:
+https://docs.expo.dev/troubleshooting/expo-go-sign-in-required/.
 
 From repository root, with Python 3.12 and the repository Node/pnpm versions:
 
@@ -104,3 +128,18 @@ product test. A real licensed spoon JPEG through HTTP returned spoon/fork/knife.
 Physical Samsung, iOS Expo Go/local-network permission and physical camera
 quality are not verified by that evidence. Installed native iPhone22 and remote
 GitHub branches were not replaced or pushed in this unit.
+
+Later November17physical followup: owner completes matching CLI/Go login and
+reports “Metallinkeräys-ohje näkyy” after the scripted iPhone Go spoon photo→
+preview/consent→Lusikka→Metalli flow. This adds one owner-reported physical Go
+path, not a general camera/accuracy/offline claim. EN/reopen/barcode followup
+outcomes are below; native offline and physical Samsung remain distinct. See the
+newest TEST_EVIDENCE entry rather than treating the earlier emulator-only limit
+as the final status of this one physical iPhone trial.
+
+Owner also confirms EN survives project reopening and a verified public
+non-bundled barcode opens the named product. He clarifies the message was
+“Packaging data is missing”, not product_not_found. Current Go barcode lookup
+deliberately requests identity fields only; this is not evidence that the
+source database lacks packaging data. This controlled physical smoke passes;
+it is not full offline/native-provider/Samsung or general barcode coverage.

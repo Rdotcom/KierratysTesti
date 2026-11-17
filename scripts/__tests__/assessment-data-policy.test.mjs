@@ -42,9 +42,11 @@ test("the independently licensed HSY and OFF offline snapshots retain pinned sou
 test("the camera manual barcode action shares the expanded lookup, not the five-reference image catalogue", () => {
   const local = read("mobile/app/src/app/local-photo.tsx"),
     copy = read("mobile/localization/src/local-vision.ts");
-  assert.match(local, /const lookupEnteredBarcode = async \(code = manualCode\)/);
+  assert.match(local, /const lookupEnteredBarcode = async \(code: string\)/);
   assert.match(local, /lookupBarcode\(code, "manual"\)/);
-  assert.match(local, /onPress=\{\(\) => void lookupEnteredBarcode\(\)\}/);
+  const shared = read("mobile/app/src/components/recognition-presentation.tsx");
+  assert.match(shared, /lookupBarcode\(value, "manual"\)/);
+  assert.match(shared, /testID="offline-product-manual-submit"/);
   assert.doesNotMatch(local, /offlineCatalogue\?\.lookup/);
   assert.doesNotMatch(copy, /contains 5 products|on nyt 5 tuotetta/);
 });

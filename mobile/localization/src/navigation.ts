@@ -36,7 +36,7 @@ export const navigationFi = {
   identifyPhotoAction: "Tunnista tuote tekoälyllä",
   identifyScanDetail: "Hae tuotteen tiedot pakkauksen viivakoodilla.",
   identifyManualDetail: "Jos kamera ei lue koodia, kirjoita se itse.",
-  identifyPhotoDetail: "Arvio esineen tyypistä laitteessa. Tarkistat materiaalin itse.",
+  identifyPhotoDetail: "Arvio esineen tyypistä. Tarkistat materiaalin itse.",
   settingsTitle: "Asetukset",
   settingsLoading: "Luetaan asetuksia…",
   settingsReadError: "Asetuksia ei voitu lukea. Avaa hakuhistoria ja yritä uudelleen.",
@@ -83,8 +83,7 @@ export const navigationEn: { readonly [Key in keyof typeof navigationFi]: string
   identifyPhotoAction: "Identify an item with AI",
   identifyScanDetail: "Look up product information using the packaging's barcode.",
   identifyManualDetail: "If the camera cannot read the code, type it yourself.",
-  identifyPhotoDetail:
-    "An estimate of the object type on device. You review the material yourself.",
+  identifyPhotoDetail: "An estimate of the object type. You review the material yourself.",
   settingsTitle: "Settings",
   settingsLoading: "Reading settings…",
   settingsReadError: "Settings could not be read. Open lookup history and try again.",

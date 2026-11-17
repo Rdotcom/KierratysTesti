@@ -1,9 +1,13 @@
 export const networkRecognitionFi = {
-  webImageStart: "Valitse kuva esineestä",
+  recognitionDetails: "Tietoa tunnistuksesta",
+  recognitionAction: "Tunnista kuva",
+  recognitionSendTitle: "Lähetetäänkö kuva tunnistettavaksi?",
+  recognitionMarkingManual:
+    "Materiaalikoodin voi syöttää käsin. Merkinnän kuvatunnistus on käytössä vain erikseen asennetussa sovelluksessa.",
+  webImageStart: "Ota tai valitse kuva",
   webImagePreparing: "Kuvaa valmistellaan…",
-  webImageHint:
-    "Valitse kuva tiedostosta tai ota kuva kameralla. Kuvaa ei lähetetä vielä tässä vaiheessa.",
-  webChooseImage: "Valitse kuva tiedostosta",
+  webImageHint: "Tarkistat kuvan ennen lähettämistä.",
+  webChooseImage: "Valitse kuva",
   webChooseAnother: "Valitse toinen kuva",
   webImageInvalid:
     "Kuvaa ei voitu avata. Valitse JPEG-, PNG- tai WebP-kuva (enintään 12 Mt ja 16 megapikseliä). HEIC-, SVG- ja liikkuvat kuvat eivät käy.",
@@ -14,34 +18,39 @@ export const networkRecognitionFi = {
   networkLegalTitle: "Valinnainen verkkotunnistus selaimessa ja Expo Gossa",
   networkHttpNotice: "Lähiverkon HTTP-yhteys ei ole salattu. Käytä vain luotettua verkkoa.",
   networkCaptureGuidance:
-    "Kuvaa yksi esine kerrallaan kokonaan hyvässä valossa. Tunnistin ehdottaa esineen tyyppiä; valitset materiaalin itse.",
-  networkCameraLabel: "Esine-ehdotuksen kamera",
-  networkTitle: "Tunnista tuote kuvasta",
+    "Kuvaa yksi esine kokonaan hyvässä valossa. Vältä heijastuksia ja pidä kamera paikallaan.",
+  networkCameraLabel: "Kuvatunnistuksen kamera",
+  networkTitle: "Tunnista kuva",
   networkIntro:
-    "Kuva käsitellään omalla SigLIP2-palvelimella. Tulos on esine-ehdotus, ei varmistettu tuote tai materiaali.",
-  networkRecipient: "Kuvan vastaanottava palvelin",
+    "Tarkista esine-ehdotus ja valitse materiaali itse. Tunnistus käyttää omaa palvelintasi ja vaatii verkkoyhteyden.",
+  networkRecipient: "Kuvan vastaanottaja",
   networkConsent:
-    "Lähetä vain kuva esineestä: ei ihmisiä tai yksityisiä tekstejä. Kuva käsitellään palvelimen muistissa, sitä ei tallenneta tiedostoon eikä lähetetä tekoäly-yhtiölle. Tunnistuspalvelimen pitää olla käynnissä ja saavutettavissa.",
-  networkSend: "Hyväksyn lähetyksen · tunnista kuva",
-  networkSending: "Tunnistetaan palvelimella…",
+    "Kuva lähetetään tunnistuspalvelimelle. Se käsitellään muistissa, eikä sitä tallenneta tiedostoon tai välitetä muihin palveluihin.",
+  networkSend: "Lähetä kuva ja tunnista",
+  networkSending: "Tunnistetaan kuvaa…",
   networkUnavailable:
-    "Tunnistuspalvelimeen ei saada yhteyttä. Tarkista, että palvelin on käynnissä ja sen osoite on oikein, tai käytä viivakoodia.",
+    "Tunnistuspalvelimeen ei saada yhteyttä. Tarkista verkkoyhteys ja että palvelin on käynnissä. Voit myös käyttää viivakoodia.",
   networkSetup:
     "Verkkotunnistinta ei ole määritetty tähän kehitysistuntoon. Käytä erillistä KeepItGreen-asennusta tai käynnistä oma SigLIP2-palvelin ja määritä sen osoite.",
-  networkError: "Kuvasta ei saatu esine-ehdotuksia. Kokeile uudelleen tai valitse esine itse.",
+  networkError: "Kuvaa ei voitu tunnistaa. Ota uusi kuva tai valitse materiaali lajitteluoppaasta.",
   networkRateLimited:
     "Tunnistin on varattu tai pyyntöjä on liikaa. Odota hetki ja yritä uudelleen.",
-  networkRetake: "Ota uusi kuva",
-  networkCandidateSource: "Oma palvelin: SigLIP2 · ei varmennettu tunnistus",
-  networkDetail: "Esine-ehdotus omalta palvelimelta · vaatii verkkoyhteyden",
-  networkHomeDetail: "Lue viivakoodi tai tunnista kuvasta verkossa",
+  networkRetake: "Uusi kuva",
+  networkCandidateSource: "Arvion lähde: SigLIP2 · oma palvelin · ei varmennettu tunnistus",
+  networkDetail: "Arvio esineestä. Tarkistat materiaalin itse. Vaatii yhteyden palvelimeen.",
+  networkHomeDetail: "Lue viivakoodi tai tunnista tuote kuvasta",
 };
 export const networkRecognitionEn: Record<keyof typeof networkRecognitionFi, string> = {
-  webImageStart: "Choose a photo of an item",
+  recognitionDetails: "About recognition",
+  recognitionAction: "Recognize the image",
+  recognitionSendTitle: "Send this photo for recognition?",
+  recognitionMarkingManual:
+    "You can enter a material code manually. Recognition of photographed markings is available only in the separately installed app.",
+  webImageStart: "Take or choose a photo",
   webImagePreparing: "Preparing the image…",
-  webImageHint: "Choose an image file or take a photo. Nothing is sent at this stage.",
-  webChooseImage: "Choose an image file",
-  webChooseAnother: "Choose another image",
+  webImageHint: "Review the photo before sending.",
+  webChooseImage: "Choose a photo",
+  webChooseAnother: "Choose another photo",
   webImageInvalid:
     "Cannot open this image. Choose JPEG, PNG or WebP (up to 12 MB and 16 megapixels). HEIC, SVG and animated images are not supported.",
   webCameraSecure:
@@ -51,25 +60,27 @@ export const networkRecognitionEn: Record<keyof typeof networkRecognitionFi, str
   networkLegalTitle: "Optional online recognition in the browser and Expo Go",
   networkHttpNotice: "The local HTTP connection is not encrypted. Use only a trusted network.",
   networkCaptureGuidance:
-    "Photograph one whole item in good light. The recognizer suggests an object type; you choose the material yourself.",
-  networkCameraLabel: "Object suggestion camera",
-  networkTitle: "Identify an item from a photo",
+    "Photograph one whole item in good light. Avoid reflections and hold the camera steady.",
+  networkCameraLabel: "Image recognition camera",
+  networkTitle: "Recognize an image",
   networkIntro:
-    "Your own SigLIP2 server processes the image. The result is an object suggestion, not a verified product or material.",
-  networkRecipient: "Server receiving the image",
+    "Review the suggested item and choose its material yourself. Recognition uses your own server and needs a network connection.",
+  networkRecipient: "Photo recipient",
   networkConsent:
-    "Send only a photo of an item: no people or private text. The image is processed in server memory, not saved to a file or sent to an AI company. The recognition server must be running and reachable.",
-  networkSend: "I agree to send · identify image",
-  networkSending: "Recognizing on the server…",
+    "Your photo is sent to the recognition server. It is processed in memory, not saved to a file or forwarded to other services.",
+  networkSend: "Send photo and identify",
+  networkSending: "Recognizing the image…",
   networkUnavailable:
-    "Cannot reach the recognition server. Check that the server is running and its address is correct, or use a barcode.",
+    "Cannot reach the recognition server. Check your network connection and that the server is running. You can also use a barcode.",
   networkSetup:
     "No recognition server is configured for this development session. Use the separately installed KeepItGreen app, or start your own SigLIP2 server and configure its address.",
-  networkError: "No object suggestions were available. Try again or choose the item yourself.",
+  networkError:
+    "Could not recognize this photo. Take another photo or choose a material in the sorting guide.",
   networkRateLimited:
     "The recognizer is busy or there are too many requests. Wait a moment and try again.",
-  networkRetake: "Take another photo",
-  networkCandidateSource: "Own server: SigLIP2 · unverified recognition",
-  networkDetail: "Object suggestions from your own server · network required",
-  networkHomeDetail: "Scan a barcode or recognize an image online",
+  networkRetake: "New picture",
+  networkCandidateSource: "Estimate source: SigLIP2 · own server · unverified recognition",
+  networkDetail:
+    "An estimate of the object type. You review the material yourself. Requires a server connection.",
+  networkHomeDetail: "Scan a barcode or identify an item from a photo",
 };

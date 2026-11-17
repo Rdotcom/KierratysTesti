@@ -94,6 +94,17 @@ if (Number(build) >= 22) {
   checkNoAudioAssets(app);
 }
 assert.equal(js.subarray(0, 8).toString("hex"), "c61fbc03c103191f");
+if (Number(build) >= 23) {
+  for (const marker of [
+    "recognition-details-toggle",
+    "recognition-manual-card",
+    "recognition-material-code",
+    "local-photo-recognize",
+    "local-photo-retake",
+    "network-photo-consent",
+  ])
+    assert(js.includes(Buffer.from(marker)), `shared_recognition_ui:${marker}`);
+}
 for (const marker of [
   "object-candidate-result",
   "recognizeObjectCandidates",
@@ -171,6 +182,7 @@ const result = {
   qaHooksAbsent: true,
   pinnedJpegPolicyAndNotices: Number(build) >= 13,
   quietUiEmbeddedAndAudioAbsent: Number(build) >= 22,
+  sharedRecognitionUiEmbedded: Number(build) >= 23,
   binarySha256: hash(path.join(app, "KeepItGreen")),
   hermesSha256: hash(path.join(app, "main.jsbundle")),
   cameraCaptureVerified: false,

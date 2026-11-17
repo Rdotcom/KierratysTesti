@@ -1,3 +1,3 @@
 # Next action
 
-Have the Windows teammate follow main's BROWSER_AI.md and record one physical webcam permission → preview → explicit consent → object/material-guidance result using a nonprivate item.
+Clarify the FI/EN barcode-result copy so a found product is clearly distinguished from unavailable packaging information, with a regression retaining the no-material-inference boundary.

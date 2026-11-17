@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
-import { execFileSync, spawnSync } from "node:child_process";
+import { execFileSync, spawn } from "node:child_process";
 const root = fs.realpathSync(process.cwd()),
   run = path.resolve(root, process.argv[2]);
 assert(run.startsWith(`${root}/work/`) && fs.realpathSync(run) === run);
@@ -43,7 +43,12 @@ assert(fs.realpathSync(path.dirname(derived)) === path.dirname(derived));
 fs.mkdirSync(derived, { recursive: true });
 assert(fs.realpathSync(derived) === derived);
 const log = fs.openSync(path.join(run, `client${build}-build.log`), "wx");
-const r = spawnSync(
+const availableBytes = () => {
+  const stat = fs.statfsSync(run);
+  return stat.bavail * stat.bsize;
+};
+assert(availableBytes() >= 2_000_000_000, "insufficient_space_before_native_build");
+const child = spawn(
   "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild",
   [
     "-workspace",
@@ -70,7 +75,6 @@ const r = spawnSync(
   ],
   {
     cwd: root,
-    timeout: 1200000,
     stdio: ["ignore", log, log],
     env: {
       ...process.env,
@@ -82,13 +86,36 @@ const r = spawnSync(
     },
   },
 );
+let lowSpace = false;
+const watch = setInterval(() => {
+  if (availableBytes() < 1_200_000_000) {
+    lowSpace = true;
+    child.kill("SIGTERM");
+  }
+}, 5000);
+const timeout = setTimeout(() => child.kill("SIGTERM"), 1200000);
+const r = await new Promise((resolve) => {
+  child.once("error", (error) => resolve({ status: null, signal: null, error }));
+  child.once("exit", (status, signal) => resolve({ status, signal }));
+});
+clearInterval(watch);
+clearTimeout(timeout);
 fs.closeSync(log);
 fs.writeFileSync(
   path.join(run, `client${build}-build-process.json`),
-  JSON.stringify({ status: r.status, signal: r.signal, errorCode: r.error?.code ?? null }),
+  JSON.stringify({
+    status: r.status,
+    signal: r.signal,
+    errorCode: r.error?.code ?? null,
+    lowSpace,
+  }),
   { flag: "wx" },
 );
-assert.equal(r.status, 0, "native_build_failed_retained");
+assert.equal(
+  r.status,
+  0,
+  lowSpace ? "native_build_stopped_before_disk_exhaustion" : "native_build_failed_retained",
+);
 const app = path.join(derived, "Build/Products/Release-iphoneos/KeepItGreen.app"),
   out = path.join(run, `client${build}.app`);
 execFileSync("/usr/bin/codesign", ["--verify", "--deep", "--strict", app], { stdio: "pipe" });

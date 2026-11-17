@@ -1,5 +1,70 @@
 # External blockers
 
+## DEP-2026-112366 — newly reported high picomatch advisory; no fixed release
+
+November17fresh mandatory audit fails GHSA-fc5q-39xc-vjpf/CVE-2026-112366.
+Official advisory lists all versions through4.0.7affected and no patched release;
+independent npm metadata still reports latest4.0.7. Three versions occur in the
+graph. Runtime reachability is not established; severity stays high. No ignored
+advisory, rewritten version, suppressed check or untested fork. Upstream package
+remediation is externally blocked; public production remains NO-GO and source
+CI's audit may fail. Ordinary UI tests/native installation are separate evidence.
+Owner: Codex/dependency-security maintainer. Recheck primary advisory/registry,
+adopt supported fixed versions when available, frozen install, unchanged audit,
+full/Expo/model/browser checks, then fresh main CI/security acceptance. Procedure
+and sources: docs/research/picomatch-advisory-2026-11-17.md and OWNER_ACTIONS.md.
+
+## November17 — stock Go host and physical acceptance boundaries
+
+No new secret/account/payment blocker. Stock Go cannot load custom local-vision
+native code; approved own-server object recognition and real manual marking
+recovery remain. Native-only OCR/product evidence and Go-owned OS/splash cannot
+be made identical from JS. Doctor20/20/SDK check and actual Go library probe pass.
+Owner now answers “joo” to the new physical iPhone Go photo/manual-barcode
+protocol, resolving that acceptance request as owner-reported evidence. Physical
+Samsung and new teammate webcam acceptance remain unperformed. Owner separately
+authorizes native23update and team-main sharing; both require actual receipts.
+
+## November17 — shorter consent notice
+
+No external prerequisite. Only the two requested reminders are removed in FI/EN;
+capture, separate consent/send, recipient and retention behavior are unchanged.
+Existing physical/runtime acceptance limits are not resolved by this text edit.
+
+## November17 — recognition wording alignment has no new external prerequisite
+
+Go/web FI/EN copy uses the existing verified setup; no secret/account/payment or
+native installation required. Existing LAN services remain available. Previous
+owner physical Go smoke verifies its earlier copy/behavior, not a new screenshot
+of the changed wording. No new Windows/Samsung or native-binary test claimed.
+First browser smoke hits its5sassertion while model is still busy under parallel
+build load; sequential retry passes without changing any application/test deadline.
+
+## November17 — physical iPhone Expo Go account/installation prerequisite
+
+Safe CLI whoami reports not logged in. Official physical iOS Go requires the
+same Expo account in Expo Go and Expo CLI; healthy development servers do not
+prove that account gate passed. Roope must confirm/install matched Go58 and
+sign in himself; never send passwords/codes. Owner now confirms Go installed
+and shared trusted Wi-Fi; those two prerequisites are resolved. Browser login
+completed by owner; CLI login exits0and independent whoami signedIntrue.
+Account/installation/Wi-Fi setup blockers are resolved for this trial.
+USB/signing/native reinstall/payment is not required by this Wi-Fi test.
+Current phone tunnel is disconnected; this is not itself a Wi-Fi-test blocker.
+Approved keyless model3004/Go Metro8096now listen on that LAN; readiness checks
+pass. Owner now reports Metallinkeräys for the scripted physical Go spoon/
+consent/object/material trial: this one path is resolved as owner-reported
+evidence. Owner now confirms EN persists after reopen; an unknown food scan
+reports not found, so a verified public control is prepared before drawing
+conclusions about catalogue absence or scanner/network failure. Mac control
+API200and independent barcode decode pass. Owner now confirms the physical
+control displays its real product name plus packaging_missing; the earlier
+not-found interpretation was corrected. This control's barcode acceptance is
+resolved as owner-reported evidence. Copy clarity is locally actionable, not an
+external blocker. Go identity-only lookup does not establish absence of source
+packaging fields. Samsung and broader camera/
+recognition quality remain separate; no offline Go or public-host acceptance.
+
 ## November17 — release-age delay resolved by explicit owner choice
 
 Roope explicitly instructs disabling the waiting policy and updating/testing/

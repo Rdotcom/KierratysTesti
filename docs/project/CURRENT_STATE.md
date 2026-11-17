@@ -1,5 +1,143 @@
 # Current state
 
+## November17 — owner confirms new Go flow and authorizes native/main delivery
+
+- Roope answers “joo” to the combined physical iPhone Go shared-UI photo→preview→
+  separate send→Lusikka→Metalli and manual-barcode protocol. Record as owner-
+  reported acceptance, not agent-observed pixels or universal camera accuracy.
+- Owner now requests an in-place native update and explicitly confirms sharing
+  to roopeaal/KierratysAppi/main. Fetch finds remote main still80a3848, no newer
+  teammate commits. Review selected tree delta; never push private branch history.
+- Prepare native23 with SDK58patches/common UI, prior signed22 preserved and
+  existing derived cache reused. Refresh generated iOS/Pods, restore prebuild's
+  unrelated npm-script rewrites. Add initial/periodic disk guard, no broad cleanup.
+  Native verification now checks shared-UI markers as well as original model/
+  privacy/JPEG/no-QA/signature/device/profile pins. Release23build/sign/install
+  succeeds; actual filtered inventory confirms0.1.0(23). Restore only the same
+  two compiler-serialized legacy metadata files after semantic/all-other-pins
+  verification, retain original compile. Final verifier passes all14legacy pins,
+  candidate/JPEG/privacy/no-QA/no-audio/shared-UI and11embedded signatures.
+  Profile valid until23November12:53:38Helsinki. Initial foreground launch is
+  denied specifically because device is locked; owner asked to unlock.
+- Barcode service on approved trusted LAN3003 returns resolved public control
+  and disabled paid-photo capability. Current direct runner does not load env
+  files, logger off, PHOTO_AI_ENABLEDfalse; native recognition remains local.
+- Mobile/full validation passes2110tests/all builds, SDK check up to date and
+  Doctor20/20. Fresh audit FAILS newly reviewed high picomatch advisory
+  GHSA-fc5q-39xc-vjpf; primary advisory/npm show no fixed release, latest4.0.7
+  affected. No exception/waiver/false green; DEP-2026-112366records upstream
+  blocker and production NO-GO. Selected authorized source sharing is separate.
+
+## November17 — shared native/Go/browser recognition presentation
+
+- Owner chooses stock Go with the common app UI and an explicit own-server
+  substitute, not a new development build. Home/Identify labels/routes now match;
+  native/Go/web share heading/start/manual-barcode/300ptpreview/recovery components.
+  Reuse existing theme/fonts/controls; no model/rule/dependency changes or fake data.
+- Native scope/privacy/material-photo/OCR/catalogue/cloud functionality remains
+  in About recognition. Go exposes real manual marking recovery, not fake OCR.
+  Shared preview opens separate recipient/retention/HTTP/send confirmation on
+  network hosts. Capture, preview and opening/backing out of confirmation never
+  upload. Preserve busy/background/blur/late-response/cache-deletion guards.
+- Mobile validation, Doctor20/20, SDK check and repaired full2108tests/all builds
+  pass. Real Mac model/browser smoke and four-profile20-stage control/layout
+  test pass. Actual Android Go probe verifies9safe library operations/presence
+  checks, including removal of temporary file/key; no private data/GPS read.
+  See TEST_EVIDENCE.md and EXPO_GO_PARITY.md for precise evidence and limits.
+- Final actual Android Go camera/preview/consent/back/real-model flow and shared
+  manual invalid/valid public barcode pass. Inspect normal screenshots; synthetic
+  camera frame correctly unclear. Fix duplicate result-action labels. Close only
+  QA emulator/8098Metro after evidence; owner's8096/8097/3004stay running.
+- No push or native app replacement. Installed iPhone22 retains its earlier
+  embedded UI; new physical iPhone Go smoke requested. Go-owned OS/splash and
+  custom native-vision binaries cannot be identical from JS. No new Windows,
+  physical Samsung, universal recognition or release GO claim.
+
+## November17 — shorten the own-server consent notice
+
+- Owner asks to remove the people/private-text warning and keep-server-running
+  reminder from this notice. Remove both in FI/EN, including shared legal copy.
+- Retain server recipient address, memory/no-file/no-forward disclosure,
+  separate send button and HTTP warning. Server/network dependency remains
+  contextual in intro/error recovery. No transport, retention, model or inference
+  behavior change, native installation or GitHub push.
+- Exact bilingual-copy regression passes; mobile validation and full2105tests/
+  all builds pass. FI/EN390pxpreview checks retain explicit sending with0image
+  POSTs/no pageerrors. Evidence: TEST_EVIDENCE.md. Existing Go/web sessions can
+  refresh the wording. No new camera/model or physical-device acceptance claim.
+
+## November17 — align recognition copy with installed-phone wording
+
+- Owner requests AI text closer to the installed phone version. Keep native
+  source copy unchanged; align Go/web title to the native base, reuse native
+  review/new-picture wording and show a visible shared review heading.
+- Shorten FI/EN intro/camera/file instructions, move SigLIP2jargon to existing
+  result source caption. Preserve object suggestion/material self-selection,
+  explicit server/network requirement, recipient address, memory-only/no-forward
+  disclosure, HTTP notice and separate “Send photo and identify” action.
+  Consent text also works in the legal page without a nonexistent “above” URL.
+- No provider/model/rules/packaging-result/consent-protocol/transport change,
+  native rebuild, private photo, new account or GitHub push. Existing owner
+  web8097and Go8096remain live and can refresh the copy.
+- Localization and Go/web preview-binding regressions pass. Mobile validation
+  and final2104tests/all builds pass (reviewed-validate.log); real Mac model/
+  browser smoke passes with final wording (reviewed-browser-smoke.log).
+  FI review/EN390pxdark final screenshots inspected; Back/title remain visible
+  after explicit test scroll reset. No app scrolling behavior change.
+  Real Mac model/browser smoke passes sequentially
+  with unchanged deadlines; preserve first five-second test wait failure under
+  parallel build load. No new physical Go-copy/Windows/Samsung acceptance claim.
+
+## November17 — owner-reported physical iPhone Expo Go spoon trial passed
+
+- Owner asks to test the phone's Expo Go. Current app source remains the tested
+  SDK58patch delivery; no runtime edit, app replacement or new push.
+- Initial readiness check finds Expo CLI not signed in (whoami, no account/
+  secret value printed). Current official Expo docs require the same Expo account
+  in CLI and Go for physical iOS, unlike Android/simulators. This prerequisite
+  was absent from the earlier handoff; an apparently healthy Metro is not proof
+  that physical iOS Go can open the project.
+- Owner confirms Go installed and shared trusted Wi-Fi. Browser login launched
+  with CLI stdout/stderr discarded (no OAuth URL/code retained); owner completes
+  same-account login himself. Owner now confirms both logins complete; browser
+  login exits0and independent CLI whoami exits0/signedIntrue, no username printed.
+  Account prerequisite resolved.
+- Verified old model13856replaced with keyless model28464on LAN3004;
+  Go-mode Metro28483on8096uses actual private origin192.168.10.42.
+  Existing browser8097remains available. Capabilities/SDK58iOSmanifest/16.1MB
+  iOSbundle and current model origin pass Mac-side checks; HTTP handoff307and
+  new QR independently Apple Vision decoded. These are not physical acceptance.
+  Idle-sleep prevention follows only Go Metro PID. Physical iPhone
+  CoreDevice tunnel is disconnected, but USB is not required for the Wi-Fi trial.
+  Use per-command DEVELOPER_DIR if device diagnostics are needed: global
+  xcode-select currently selects CommandLineTools, not Xcode.
+- Owner reports “Metallinkeräys-ohje näkyy” for the explicit QR→Go→photo of a
+  nonprivate spoon→separate send consent→Lusikka→Metalli protocol. Record this
+  one physical iPhone Go path as owner-reported pass, not agent-observed UI,
+  universal recognition, Samsung or offline Go acceptance.
+  Diagnostic receipts: work/phone-expo-go-20261117.QX2O7s; no image collected.
+- Fresh pnpm validate passes2102tests/all builds after this documentation/setup
+  work. Owner is given the QR and one physical spoon→explicit consent→Lusikka→
+  Metalli→Metallinkeräys trial, with no photo requested in chat.
+- Owner reports “Englanti säilyy, mutta tuotetta ei löytynyt”: EN/reopen passes
+  as owner-reported evidence. Unknown food scan's not-found result is retained;
+  no raw barcode/name/photo collected, so absence vs decoding cannot be proven.
+- Code inspection and21targeted barcode tests pass;404/not_found is distinct
+  from503/429/provider_unavailable and transport/offline. Mac live lookup of a
+  public non-bundled control UPC and equivalent EAN13both returns200/matching
+  named food. New EAN13control image independently Apple Vision decoded and
+  handed to owner for a physical camera→online lookup check.
+- Owner clarifies the control does show “Thai peanut noodle kit includes
+  stir-fry rice noodles & thai peanut seasoning” plus “Packaging data is
+  missing”; earlier “Product not found” interpretation was a wording confusion.
+  Record this control's physical camera/online identity lookup as owner-reported
+  pass, not a provider failure. Initial unidentified food cannot be reclassified.
+- Expo Go public lookup intentionally requests identity fields only and always
+  returns packaging_missing for a valid identity. This does not prove OFF lacks
+  packaging fields. Product-found vs missing-packaging UI needs clearer wording;
+  do not guess materials or claim full packaging-provider parity. AI spoon,
+  EN/reopen and this barcode control smoke now pass as owner-reported evidence.
+
 ## November17 — owner disables release-age wait and requests Expo patch/main
 
 - New explicit owner instruction supersedes D-122's waiting policy for this

@@ -12,7 +12,7 @@ test("own-server recognition is explicit, ephemeral, bounded and separate from p
   assert.match(capture, /removeCapture\(photo.uri\)/);
   assert.match(screen, /phase !== "preview"/);
   assert.match(screen, /pending.current\?\.abort/);
-  assert.match(screen, /networkHttpNotice/);
+  assert.match(read("mobile/app/src/components/recognition-presentation.tsx"), /networkHttpNotice/);
   assert.match(screen, /networkRecipient/);
   assert.doesNotMatch(screen, /AsyncStorage|addHistoryEntry|trackTechnicalEvent|console\./);
   const worker = read("backend/data-providers/python/siglip-worker.py");
@@ -60,7 +60,7 @@ test("native permission purpose includes both barcode and explicitly approved im
     assert.doesNotMatch(purpose, /ei lähetetä/u);
   }
   assert.equal(camera[1].recordAudioAndroid, false);
-  assert.equal(app.ios.buildNumber, "22");
+  assert.equal(app.ios.buildNumber, "23");
   assert.equal(app.android.versionCode, 7);
   assert.equal(
     JSON.parse(read("mobile/app/locales/fi.json")).ios.NSCameraUsageDescription,

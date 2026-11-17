@@ -3,6 +3,30 @@ import fs from "node:fs";
 import test from "node:test";
 const source = (p) => fs.readFileSync(new URL(`../../${p}`, import.meta.url), "utf8");
 const ios = "mobile/app/modules/local-vision/ios/";
+test("normal app build stops before disk exhaustion without deleting caches or rollback", () => {
+  const build = source("scripts/qa/build-siglip-client.mjs");
+  assert.match(build, /statfsSync\(run\)/);
+  assert.match(build, /availableBytes\(\) >= 2_000_000_000/);
+  assert.match(build, /availableBytes\(\) < 1_200_000_000/);
+  assert.match(build, /child.kill\("SIGTERM"\)/);
+  assert.match(build, /rollback-prior.app/);
+  assert.doesNotMatch(build, /rmSync|unlinkSync|removeSync|rm -|--clean/);
+});
+test("client23 verifier checks the real bundled shared recognition controls without changing model pins", () => {
+  const verifier = source("scripts/qa/verify-siglip-client.mjs");
+  assert.match(verifier, /Number\(build\) >= 23/);
+  for (const marker of [
+    "recognition-details-toggle",
+    "recognition-manual-card",
+    "recognition-material-code",
+    "local-photo-recognize",
+    "network-photo-consent",
+  ])
+    assert(verifier.includes(marker));
+  assert.match(verifier, /legacyResourcePinsPreserved/);
+  assert.match(verifier, /candidateModelAndPrototypePins/);
+  assert.match(verifier, /profileAppDeviceBound/);
+});
 test("candidate native input is bounded, explicit orientation/RGB and never MobileCLIP padded", () => {
   const input = source(`${ios}siglip-image-encoder.swift`),
     resize = source(`${ios}siglip-image-preprocessor.swift`);

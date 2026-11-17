@@ -58,9 +58,20 @@ try {
   await expect(page.getByTestId("web-image-choose")).toBeVisible();
   assert.equal(posts.length, 0);
   await page.getByTestId("web-image-input").setInputFiles(fixture);
-  await expect(page.getByTestId("network-photo-send")).toBeVisible();
+  await expect(page.getByTestId("local-photo-recognize")).toBeVisible();
+  await expect(page.getByTestId("network-photo-preview-title")).toHaveText("Tarkista kuva");
+  await expect(page.getByTestId("local-photo-recognize")).toHaveText("Tunnista kuva");
+  await expect(page.getByTestId("network-photo-send")).toHaveCount(0);
   assert.equal(posts.length, 0, "Preview must not upload");
   await page.screenshot({ path: path.join(run, "browser-preview.png"), fullPage: true });
+  await page.getByTestId("local-photo-recognize").click();
+  await expect(page.getByTestId("network-photo-consent")).toBeVisible();
+  assert.equal(posts.length, 0, "Opening consent must not upload");
+  await page.getByTestId("network-consent-back").click();
+  await expect(page.getByTestId("network-photo-send")).toHaveCount(0);
+  await page.getByTestId("local-photo-recognize").click();
+  await expect(page.getByTestId("network-photo-send")).toHaveText("Lähetä kuva ja tunnista");
+  await page.screenshot({ path: path.join(run, "browser-consent.png"), fullPage: true });
   await page.getByTestId("network-photo-send").click();
   await expect(page.getByTestId("object-choice-spoon")).toBeVisible();
   assert.equal(posts.length, 1);
@@ -88,8 +99,9 @@ try {
     mimeType: "image/png",
     buffer: Buffer.from(png, "base64"),
   });
-  await expect(page.getByTestId("network-photo-send")).toBeVisible();
+  await expect(page.getByTestId("local-photo-recognize")).toBeVisible();
   assert.equal(posts.length, 1);
+  await page.getByTestId("local-photo-recognize").click();
   await page.getByTestId("network-photo-send").click();
   await expect(page.getByTestId("object-choice-spoon")).toBeVisible();
   assert.equal(posts.length, 2);
@@ -115,7 +127,8 @@ try {
     true,
   );
   await page.getByTestId("web-camera-capture").click();
-  await expect(page.getByTestId("network-photo-send")).toBeVisible();
+  await expect(page.getByTestId("local-photo-recognize")).toBeVisible();
+  await expect(page.getByTestId("network-photo-send")).toHaveCount(0);
   assert.equal(posts.length, 2);
   assert.equal(await page.locator("video").count(), 0, "Camera unmounted after capture");
   assert.equal(
@@ -133,11 +146,19 @@ try {
   await page.goto(base + "/settings");
   await page.getByRole("radio", { name: "English", exact: true }).click();
   await page.goto(base + "/local-photo");
-  await expect(page.getByTestId("web-image-choose")).toHaveText("Choose an image file");
+  await expect(page.getByTestId("web-image-choose")).toHaveText("Choose a photo");
   await page.reload();
-  await expect(page.getByTestId("web-image-choose")).toHaveText("Choose an image file");
+  await expect(page.getByTestId("web-image-choose")).toHaveText("Choose a photo");
   await page.emulateMedia({ colorScheme: "dark", reducedMotion: "reduce" });
   await page.setViewportSize({ width: 390, height: 844 });
+  const heading = page.getByRole("heading", { name: "Recognize an image", exact: true });
+  // Capture the top, not a scroll position restored from the previous interaction.
+  await heading.evaluate((element) => {
+    for (let parent = element.parentElement; parent; parent = parent.parentElement)
+      parent.scrollTop = 0;
+  });
+  await expect(heading).toBeInViewport();
+  await expect(page.getByRole("button", { name: "Back", exact: true })).toBeInViewport();
   await page.screenshot({ path: path.join(run, "browser-en-dark-mobile.png"), fullPage: true });
   evidence.cases.push(
     "EN persistence across navigation/reload; dark, narrow viewport and reduced motion",

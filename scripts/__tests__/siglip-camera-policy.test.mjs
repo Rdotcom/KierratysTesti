@@ -14,7 +14,11 @@ test("camera uses catalogue-first local coordinator and clears candidate state",
   assert.match(screen, /setObjectHint\(undefined\)/);
   assert.match(screen, /ObjectCandidateResultView/);
   assert.match(screen, /pending.current\?\.abort/);
-  assert.match(screen, /router.push\("\/scan"\)/);
+  assert.match(screen, /<RecognitionRecovery\s+beforeNavigate=\{clear\}/);
+  assert.match(
+    source("mobile/app/src/components/recognition-presentation.tsx"),
+    /navigate\("\/scan"\)/,
+  );
   assert.match(screen, /router.push\("\/guide"\)/);
 });
 test("native object inference shares serial gate, cancellation and settlement safety", () => {

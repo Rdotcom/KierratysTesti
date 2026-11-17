@@ -1,5 +1,117 @@
 # Decision log
 
+## D-128 — Owner-reported Go acceptance and explicit native/team-main update
+
+- Date:2026-11-17. Record “joo” to the combined physical Go protocol as owner-
+  reported success, without inventing screenshots, exact scanned product or
+  separate per-case measurements. No Samsung/offline Go/pixel-identity claim.
+- New owner request explicitly authorizes native installation; follow-up confirms
+  KierratysAppi/main, not KeepItGreen. Fetch/review actual main, preserve teammate
+  content and publish only selected tree changes with public-main ancestry.
+- Build23 reuses existing native cache/signing; preserve signed22 rollback,
+  byte-pinned models/privacy/JPEG and no-QA/no-audio checks. Stop before disk
+  exhaustion, no unapproved deletion. Refresh Expo native cohort rather than
+  inject newer JS into an unverified older native binary.
+- Run trusted-LAN barcode service with no env-file loading/logger/paid photo
+  recognizer. No new key/account/payment or cloud inference authorized.
+
+## D-127 — One presentation, truthful host-specific recognition
+
+- Date:2026-11-17. Owner chooses stock Go after clarification that a development
+  build is a separate app, not a way to inject native code into Go. Share app
+  components rather than maintain a second demo design. Frontend-design guidance
+  preserves the selected native tokens/fonts/controls instead of a new theme.
+- Common Home/Identify/title/preview text is execution-neutral. Go/web show a
+  separate per-photo recipient/retention/HTTP/send confirmation after preview;
+  no auto-upload, paid fallback or false on-device claim. Background/blur/new
+  capture clear consent. Manual barcode shares the real expanded lookup.
+- Preserve native material-photo/OCR/product evidence and Android barcode
+  recovery. Go's object server is not those native libraries; manual marking
+  recovery is explicit. Never fake parity of custom native/Go-owned OS screens.
+- Distinguish SDK checks, initialized modules, safe test-file/key operations,
+  browser controls, emulator capture and physical acceptance. Do not import
+  unused libraries, read private data/GPS or alter system appearance just for QA.
+- No dependency change, secret, native reinstall, GitHub push or public release.
+
+## D-126 — Remove two requested reminders, retain meaningful sending disclosure
+
+- Date:2026-11-17. Owner explicitly removes the people/private-text and running-
+  server reminders from the Go/web consent notice, in both languages. It is
+  UI-copy reduction only, not permission to collect private images or a change
+  to server storage/forwarding. Recipient, retention, HTTP notice and separate
+  explicit send remain. Intro/unavailable recovery still explains the network
+  service dependency. No new source-sharing authorization or phone install.
+- Test exact FI/EN copy and a licensed-fixture preview without sending a photo;
+  reuse existing runtime/model evidence rather than invent new recognition proof.
+
+## D-125 — Align wording without pretending network inference is on device
+
+- Date:2026-11-17. Owner requests recognition texts nearer the phone app.
+  Limit edits to Go/web recognition copy and shared preview labels; no unrelated
+  packaging-not-found rewrite, native app reinstall, provider or model change.
+- Match native title base and preview/new-picture language in FI/EN. Keep
+  technical model attribution in result source, rather than leading with it.
+  Intro still says own server/network and manual material choice. Explicit
+  “Send photo and identify”, recipient, retention/no forwarding and HTTP warning
+  remain; no “offline/on device” claim for Go/web. Shared legal copy must not
+  refer to an address “above” when that page has none.
+- Test both languages, native/shared label relation, visible preview binding,
+  no-auto-upload and real model/browser recovery. Preserve the initial5stest
+  wait failure under simultaneous compilation; sequential smoke succeeds with
+  the same5sassertion and existing15sapp deadline, no gate relaxation or mock.
+- No new Windows run or source-sharing authorization in this text-only task;
+  previous Windows evidence predates the new wording. Keep user native/Go
+  physical smoke and new-copy visual evidence separate.
+- Final full2104tests and real Mac browser/model flow pass. Screenshot setup
+  explicitly resets restored ancestor scroll positions and asserts Back/title
+  are in viewport before capture; this is a QA precondition, not a production
+  scrolling change. Final FI preview and EN390pxdark text inspected. Preserve
+  all original recognition/timeout gates and capture/consent behavior.
+
+## D-124 — Physical Expo Go login is not an Apple-signing or USB problem
+
+- Date:2026-11-17. Owner requests physical-phone Expo Go testing. Verify actual
+  host/login prerequisites before claiming compatibility from healthy servers.
+  CLI whoami reports not logged in; expose no account credential/value. Official
+  current Expo docs require the same Expo login on physical iOS and CLI.
+  Android/emulator proof does not establish this physical iOS acceptance.
+- Ask owner for Go installation and shared trusted Wi-Fi; any login/App Store
+  action belongs to him. No secret in chat, automatic account creation, public
+  tunnel, paid provider, native app replacement, new push or UI runner signing.
+  A disconnected CoreDevice tunnel is not a blocker for a Wi-Fi Go trial.
+  Keep existing loopback services until the network prerequisites are confirmed.
+- Owner subsequently confirms Go installed/same trusted Wi-Fi. Start only the
+  dedicated keyless model/Go Metro on that private LAN, not paid routes or a
+  tunnel. Keep browser8097usable. Launch official browser login with output
+  discarded so no OAuth URL/code is exposed or retained. Do not inspect the
+  private login page or type credentials. New QR independently Apple-decoded;
+  manifest/bundle readiness is explicitly Mac-side, not phone camera evidence.
+- Owner confirms login/same phone account, CLI login exits0and independent
+  whoami reports signedIntrue. Resolve account gate, but do not infer physical
+  camera success. Hand off one nonprivate spoon/explicit consent/material
+  trial via current QR; no private user photo or account value requested.
+- Owner reports the scripted spoon trial reaches Metallinkeräys. Accept as
+  manual owner-reported physical Go evidence, not independently observed frames,
+  model accuracy percentage, offline Go or Samsung acceptance. Keep the Mac/LAN
+  dependency explicit. Next combine EN reopen and physical food-barcode checks,
+  asking only outcome/error text, never a photo or raw barcode.
+- Owner reports EN persists but unknown food not found. Do not call all barcode
+  functionality broken or fully verified from this. Inspect distinct error/
+  not-found boundaries;21regressions pass. Use a public known non-bundled
+  control instead of requesting his code/photo. Verify actual UPC/EAN API200
+  and independently Apple-decode the generated barcode before phone handoff.
+  This is a reproducible QA control, not fabricated product data or a new
+  product match/packaging/material assertion. No application code change.
+- Owner corrects the control result: actual product name plus “Packaging data
+  is missing”. Resolve the supposed not-found failure for that control only,
+  preserve the earlier interpretation as history, and record owner-reported
+  optical camera/online identity success. No CDP attachment/runtime evaluation
+  or private state collection was needed after clarification.
+- Identify why the wording misleads: Go's direct public adapter deliberately
+  requests identity-only fields and returns packaging_missing for valid records.
+  Do not say OFF has no packaging information or infer a material from the name.
+  Record copy clarity as next work, not silently change behavior during diagnosis.
+
 ## D-123 — Owner-requested removal of waiting policy, not other security checks
 
 - Date:2026-11-17. Roope explicitly asks to remove the24hour restriction,

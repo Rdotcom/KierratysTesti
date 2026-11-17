@@ -71,15 +71,20 @@ test("retake explicitly clears the previous image then opens a fresh camera with
   assert.ok(handler.indexOf("clear()") >= 0);
   assert.ok(handler.indexOf("open()") > handler.indexOf("clear()"));
   assert.doesNotMatch(handler, /recognize|takePicture|capture\(/u);
-  for (const id of ["local-photo-retake", "local-photo-reset"])
-    assert.match(button(text, id), /onPress=\{(?:retake|\(\) => void retake\(\))\}/u);
+  assert.match(button(text, "local-photo-reset"), /onPress=\{retake\}/u);
+  assert.match(text, /<RecognitionPreview[\s\S]*?onRetake=\{retake\}/u);
+  assert.match(
+    button(source("mobile/app/src/components/recognition-presentation.tsx"), "local-photo-retake"),
+    /onPress=\{onRetake\}/u,
+  );
 });
 
 test("local failure has an explicit barcode recovery that clears sensitive view state", () => {
-  const recovery = button(screen(), "local-photo-barcode-action");
-  assert.match(recovery, /clear\(\)/u);
-  assert.match(recovery, /router\.push\("\/scan"\)/u);
-  assert.ok(recovery.indexOf("clear()") < recovery.indexOf('router.push("/scan")'));
+  assert.match(screen(), /<RecognitionRecovery\s+beforeNavigate=\{clear\}/);
+  const shared = source("mobile/app/src/components/recognition-presentation.tsx");
+  const recovery = button(shared, "local-photo-barcode-action");
+  assert.match(recovery, /navigate\("\/scan"\)/u);
+  assert.match(shared, /beforeNavigate\(\);\s*router.push\(route\)/);
   assert.doesNotMatch(recovery, /requestPermission|recognizeLocalPhoto|takePicture/u);
 });
 

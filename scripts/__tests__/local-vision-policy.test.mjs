@@ -83,7 +83,11 @@ test("local camera capture and recognition remain separate explicit actions with
   assert.match(screen, /const recognize = async/);
   assert.match(screen, /phase !== "preview"/);
   assert.match(screen, /recognizeLocalPhoto\(jpeg, controller\.signal\)/);
-  assert.match(screen, /testID="local-photo-recognize"/);
+  assert.match(screen, /<RecognitionPreview[\s\S]*?onRecognize=\{\(\) => void recognize\(\)\}/);
+  assert.match(
+    source("mobile/app/src/components/recognition-presentation.tsx"),
+    /testID="local-photo-recognize"/,
+  );
   assert.match(screen, /!canUseLocalPhotoCapture\(Platform\.OS, Constants, available\)/);
   assert.match(screen, /local-photo-unavailable/);
   assert.doesNotMatch(screen, /useEffect|photoAvailable|requestPhoto|AsyncStorage|console\./);

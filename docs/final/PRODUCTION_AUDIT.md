@@ -1,5 +1,24 @@
 # Adversarial production-readiness audit
 
+## November17 — DEP-2026-112366, HIGH / externally blocked upstream
+
+- Evidence: fresh security-audit.log fails GHSA-fc5q-39xc-vjpf (CVE-2026-112366).
+  Reviewed primary advisory updated November17affects picomatch through4.0.7,
+  no patched version; npm registry independently still latest4.0.7. Source and
+  receipts: ../research/picomatch-advisory-2026-11-17.md.
+- Affected: pnpm-lock.yaml dependency graph (three picomatch versions), Expo/
+  Metro/Vite-related tooling and mandatory main audit. App/runtime reachability
+  is not inferred from dependency presence alone.
+- Reproduction: frozen checkout → `pnpm security:audit`; `pnpm -r why picomatch`
+  and `npm view picomatch version versions --json` establish current versions.
+- Remediation: dependency-security maintainer/Codex must verify a fixed release,
+  update compatible resolution(s), frozen install and unchanged audit/full/Expo/
+  browser-model tests, require new CI/security evidence. No published upstream
+  fix currently identified; replacing/forking the tooling is not an already
+  validated drop-in fix. No severity lowering or audit exception added.
+- Native installation and authorized source sharing are not production GO;
+  retain the failing security gate and all earlier unclosed release findings.
+
 ## November17 — Android native and standalone-app follow-up
 
 Scoped follow-up, not a new closure of all30lanes. Native/runtime and full-app

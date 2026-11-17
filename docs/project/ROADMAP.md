@@ -1,5 +1,47 @@
 # Roadmap
 
+- [x] Owner-authorized native23Release build/sign/in-place install; actual
+  inventory23, original model/privacy/JPEG/no-QA/no-audio/shared-UI verification.
+- [ ] Native23foreground launch after owner unlock; first attempt denied Locked.
+- [x] New full2110tests/all builds, mobile, SDK alignment and Doctor20/20.
+- [!] DEP-2026-112366: fresh high picomatch advisory, no published upstream fix;
+  security audit remains failing, no suppression or production GO.
+
+- [x] Shared native/Go/web recognition UI, manual barcode, preview and recovery;
+  matching Home/Identify navigation and neutral copy, explicit send confirmation.
+- [x] Preserve native-only capabilities with honest Go manual recovery; SDK/
+  Doctor20/20, full2108tests, actual Mac model/control matrix and Go library probe.
+- [x] Owner-reported new physical iPhone Go shared-UI camera/manual-barcode
+  acceptance (“joo” to the combined protocol); no physical Samsung available.
+- [x] Final actual Android Go synthetic-camera/confirmation/real-model/manual
+  invalid+valid barcode smoke and visual inspection; duplicate action labels fixed.
+
+- [x] Remove owner-selected photo/server reminders from FI/EN consent notice;
+  preserve recipient/retention, explicit sending and contextual network recovery.
+
+- [x] FI/EN Go/web recognition wording aligned with native title/review/retake,
+  without false on-device/offline claims or hidden image sending.
+- [x] Localization/preview regressions and sequential real Mac browser/model
+  flow; no inference/transport/deadline change.
+- [x] Final trimmed-copy2104tests/all builds, actual browser/model smoke and
+  FI preview/EN narrow-dark visual check; no push or native app replacement.
+
+- [x] Physical iPhone Go preparation: safe CLI login-state/device checks and
+  official same-account prerequisite identified; no phone success claimed.
+- [x] Owner confirms Go installed/shared trusted Wi-Fi; dedicated keyless LAN
+  model and Go Metro started, SDK58iOSbundle/manifest and Apple-decoded QR ready.
+- [x] Owner same-account CLI+phone login confirmed; independent safe CLI check
+  reports signedIntrue and full2102tests/all builds pass.
+- [x] Owner-reported physical iPhone Go spoon camera→preview→consent→object/
+  material-guidance path; explicit Metallinkeräys result, not universal accuracy.
+- [x] Owner-reported physical iPhone Go EN persistence/reopen.
+- [x] Preserve unknown food scan's not-found outcome;21targeted lookup tests
+  and Mac live non-bundled UPC/EAN control200pass, control image Apple-decoded.
+- [x] Physical iPhone Go control barcode→known online product smoke, owner
+  clarifies actual product name plus packaging_missing, not product_not_found.
+- [ ] Clearer FI/EN product-found/missing-packaging distinction without inferred
+  material or claims that the source database lacks unrequested fields.
+
 - [x] Explicit owner-authorized release-age wait removal; retain frozen installs,
   integrity/build restrictions, mandatory Expo Doctor and vulnerability checks.
 - [x] Install coherent SDK58patch cohort; local Expo Doctor20/20/audit pass.

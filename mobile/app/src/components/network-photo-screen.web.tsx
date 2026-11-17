@@ -2,7 +2,7 @@ import type { NetworkResult } from "@kierratysappi/contracts/network-recognition
 import type { MessageKey } from "@kierratysappi/localization";
 import { useFocusEffect, useRouter } from "expo-router";
 import { useCallback, useRef, useState } from "react";
-import { Image, View } from "react-native";
+import { View } from "react-native";
 import { announceAccessibility } from "@/features/accessibility/announcements";
 import {
   captureBrowserVideo,
@@ -16,7 +16,14 @@ import {
 import { useLanguage } from "@/i18n/language-context";
 import { radius, useAppTheme } from "@/theme/tokens";
 import { ObjectCandidateResultView } from "./object-candidate-result";
-import { AppText, Button, PageHeader, PageIntro, Paper, Screen, sharedStyles } from "./ui";
+import {
+  RecognitionConsent,
+  RecognitionHeading,
+  RecognitionPreview,
+  RecognitionRecovery,
+  RecognitionStart,
+} from "./recognition-presentation";
+import { AppText, Button, PageHeader, Screen, sharedStyles } from "./ui";
 
 /** Browser-only capture. No native hooks, local photo files or automatic image requests. */
 export function NetworkPhotoScreen() {
@@ -24,6 +31,7 @@ export function NetworkPhotoScreen() {
     { t } = useLanguage(),
     { palette } = useAppTheme();
   const [phase, setPhase] = useState<"intro" | "camera" | "preview" | "result">("intro");
+  const [consent, setConsent] = useState(false);
   const [jpeg, setJpeg] = useState<string>(),
     [result, setResult] = useState<Extract<NetworkResult, { status: "observed" }>>();
   const [error, setError] = useState<MessageKey>(),
@@ -49,6 +57,7 @@ export function NetworkPhotoScreen() {
     locked.current = false;
     stop();
     setJpeg(undefined);
+    setConsent(false);
     setResult(undefined);
     setError(undefined);
     setBusy(false);
@@ -172,7 +181,7 @@ export function NetworkPhotoScreen() {
     }
   };
   const send = async () => {
-    if (locked.current || !jpeg || phase !== "preview") return;
+    if (locked.current || !jpeg || phase !== "preview" || !consent) return;
     locked.current = true;
     setBusy(true);
     setError(undefined);
@@ -186,6 +195,7 @@ export function NetworkPhotoScreen() {
       if (response.status === "observed") {
         setResult(response);
         setJpeg(undefined);
+        setConsent(false);
         setPhase("result");
         announceAccessibility(t("objectCandidateTitle"));
       } else
@@ -215,10 +225,7 @@ export function NetworkPhotoScreen() {
           router.canGoBack() ? router.back() : router.replace("/identify");
         }}
       />
-      <PageIntro
-        title={t("networkTitle")}
-        {...(phase === "intro" ? { body: t("networkIntro") } : {})}
-      />
+      <RecognitionHeading intro={phase === "intro"} />
       <View style={sharedStyles.stack}>
         {error && (
           <AppText accessibilityRole="alert" testID="network-photo-error">
@@ -243,31 +250,39 @@ export function NetworkPhotoScreen() {
               }}
             />
             {phase === "intro" && (
-              <Paper>
-                <AppText accessibilityRole="header" variant="heading">
-                  {t("webImageStart")}
-                </AppText>
-                <AppText>{t("webImageHint")}</AppText>
-                <Button
-                  label={t("webChooseImage")}
-                  onPress={() => input.current?.click()}
-                  disabled={busy}
-                  busy={busy && loadingKey === "webImagePreparing"}
-                  testID="web-image-choose"
-                />
-                <Button
-                  label={t("localVisionCamera")}
-                  onPress={() => void open()}
-                  variant="secondary"
-                  disabled={busy}
-                  busy={busy && loadingKey === "localVisionOpening"}
-                  testID="web-camera-open"
-                />
-                <AppText variant="small" muted>
-                  {t("networkRecipient")}: {origin}
-                </AppText>
-                {busy && <AppText accessibilityLiveRegion="polite">{t(loadingKey)}</AppText>}
-              </Paper>
+              <RecognitionStart
+                busy={busy}
+                beforeNavigate={clear}
+                fileAction={
+                  <Button
+                    label={t("webChooseImage")}
+                    variant="secondary"
+                    onPress={() => input.current?.click()}
+                    disabled={busy}
+                    busy={busy && loadingKey === "webImagePreparing"}
+                    testID="web-image-choose"
+                  />
+                }
+                cameraAction={
+                  <Button
+                    label={t("localVisionCamera")}
+                    onPress={() => void open()}
+                    disabled={busy}
+                    busy={busy && loadingKey === "localVisionOpening"}
+                    testID="web-camera-open"
+                  />
+                }
+                details={
+                  <>
+                    <AppText>{t("networkIntro")}</AppText>
+                    <AppText>{t("recognitionMarkingManual")}</AppText>
+                    <AppText variant="small" muted>
+                      {t("networkRecipient")}: {origin}
+                    </AppText>
+                    {busy && <AppText accessibilityLiveRegion="polite">{t(loadingKey)}</AppText>}
+                  </>
+                }
+              />
             )}
             {phase === "camera" && (
               <>
@@ -281,10 +296,10 @@ export function NetworkPhotoScreen() {
                   onLoadedData={() => setReady(true)}
                   style={{
                     width: "100%",
-                    maxHeight: 360,
+                    height: 300,
                     objectFit: "contain",
                     background: palette.bgSurface,
-                    borderRadius: radius.md,
+                    borderRadius: radius.lg,
                   }}
                 />
                 <Button
@@ -295,36 +310,32 @@ export function NetworkPhotoScreen() {
                 />
               </>
             )}
-            {phase === "preview" && jpeg && (
-              <Paper>
-                <Image
-                  source={{ uri: `data:image/jpeg;base64,${jpeg}` }}
-                  accessibilityLabel={t("localVisionPreview")}
-                  resizeMode="contain"
-                  style={{ width: "100%", height: 240 }}
-                />
-                <AppText variant="small" muted>
-                  {t("networkRecipient")}: {origin}
-                </AppText>
-                <AppText>{t("networkConsent")}</AppText>
-                {origin.startsWith("http:") && (
-                  <AppText variant="small">{t("networkHttpNotice")}</AppText>
-                )}
-                <Button
-                  label={t("networkSend")}
-                  onPress={() => void send()}
+            {phase === "preview" &&
+              jpeg &&
+              (consent ? (
+                <RecognitionConsent
+                  origin={origin}
                   busy={busy}
-                  testID="network-photo-send"
+                  onConfirm={() => void send()}
+                  onCancel={() => setConsent(false)}
                 />
-                {busy && <AppText accessibilityLiveRegion="polite">{t("networkSending")}</AppText>}
-              </Paper>
-            )}
+              ) : (
+                <RecognitionPreview
+                  jpeg={jpeg}
+                  busy={busy}
+                  onRecognize={() => setConsent(true)}
+                  onRetake={() => {
+                    clear();
+                    void open();
+                  }}
+                />
+              ))}
             {result && (
               <ObjectCandidateResultView result={result} onGuide={() => router.push("/guide")} />
             )}
             {(phase !== "intro" || busy) && (
               <Button
-                label={t("cancel")}
+                label={t(phase === "result" ? "offlineProductNewCode" : "localVisionCancel")}
                 onPress={clear}
                 variant="secondary"
                 testID="network-photo-cancel"
@@ -339,15 +350,10 @@ export function NetworkPhotoScreen() {
             )}
           </>
         )}
-        <Button
-          label={t("identifyScanAction")}
-          variant="quiet"
-          onPress={() => router.push("/scan")}
-        />
-        <Button
-          label={t("expoGoManualTitle")}
-          variant="quiet"
-          onPress={() => router.push("/guide")}
+        <RecognitionRecovery
+          beforeNavigate={clear}
+          showBarcode={phase === "intro" || phase === "result"}
+          showMarking={phase !== "intro"}
         />
       </View>
     </Screen>

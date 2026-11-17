@@ -1,5 +1,253 @@
 # Test evidence
 
+## November17 — new physical Go acceptance and native23/main delivery
+
+Owner answers “joo” to the combined new iPhone Go shared-UI photo→preview→
+explicit send→Lusikka→Metalli and manual-barcode question. Owner-reported pass,
+no agent UI/image/GTIN capture, individual measurements or Samsung claim.
+Owner then requests native update and explicitly confirms KierratysAppi/main.
+Fetch sees80a3848unchanged; public-main ancestry only for the reviewed delivery.
+
+Native run work/ios-go-parity-client23-20261117.Jc49XI. Before-install filtered
+device inventory confirms0.1.0(22), physical device paired/available. Bump iOS23,
+Android7unchanged; generated iOS refreshed, prebuild npm-script rewrites restored.
+Initial root-cwd pod invocation cannot resolve the mobile Expo package; correct
+the cwd to mobile/app/ios, pod install succeeds (both attempts retained). Existing
+signed22rollback preserved; reused derived cache, no broad cleanup. Add build
+2GBinitial/1.2GBperiodic free-space guard with regression. Full model/privacy/
+signature/no-QA verifier also checks actual embedded shared-UI controls for23.
+Actual client23-build-process.json: exit0, lowSpacefalse; build/signing succeeds.
+First verifier rejects compiler-serialized MobileCLIP coremldata/metadata (same
+two known files), not a silently changed model. Preserve original signed compile;
+preservation helper checks semantic JSON and other12pins, restores original two
+files and resigns with existing identity. Final verifier passes14legacy pins,
+candidate model/prototype, JPEG/notices/privacy/no-QA/no-audio/shared-UI and
+11embedded signatures (verification-final.log/client23-verification.json).
+Binary3340c900d467bf273579e7a4fadcbebb199da1a45f22d4eaa4372fdfa8c423bb;
+Hermes271f4414e5b5fe6c8b5f7bfa629139dadc666395b4970e03342be99eaaf231ff.
+Existing device-bound profile expires2026-11-23T10:53:38Z(12:53:38Helsinki).
+In-place install succeeds; actual filtered inventory confirms0.1.0(23), not
+merely app.json. First activated launch denied Locked; owner unlock requested.
+No uninstall/local-data wipe or new camera/private-image collection.
+
+Native/privacy regression13tests, mobile validation and full2110tests
+(943Node+1167workspace)/all builds pass. SDK check up to date/Doctor20/20.
+Fresh security audit fails GHSA-fc5q-39xc-vjpf. Verified primary advisory says
+all picomatch through4.0.7affected/no patched version; independent npm latest
+still4.0.7. No suppression, fake patched version or high-severity downgrade.
+DEP-2026-112366and production NO-GO recorded. Earlier green audit is historical,
+not the current security result. Publication/remote outcomes follow actual runs.
+
+Trusted-LAN barcode service returns HTTP200/resolved identity for the earlier
+public control and HTTP200/paid photo enabledfalse (barcode-service-smoke.log).
+Initial normal dev script auto-loads its configured env file with explicit
+paid-disable override; stop that task's exact processes and replace it with
+direct no-env-file runner and OPENAI_API_KEYunset. No secret printed, phone key,
+paid call or owner-data lookup; logger off. Existing Go/browser/model services
+stay running. Native photo inference still uses its bundled local models.
+
+## November17 — shared recognition UI and actual Go library checks
+
+Run work/go-ui-parity-20261117.BiY0a8 (ignored). Native/Go/browser share actual
+heading/start/manual entry/300ptpreview/recovery components; common Home/Identify
+navigation. Existing theme retained per frontend-design, no new demo styling,
+model/rule/provider/dependency/secret/native-binary change.
+
+- policy.log:34targeted guards; moved-controls.log:8additional guards;
+  localization.log:12bilingual tests. Expo check up to date, pinned Doctor1.21.5
+  20/20, mobile-validate.log passes mobile/dependencies and export.
+- First validate.log fails two old source-layout assertions after shared-component
+  extraction. Update them to retain transient manual clearing, expanded lookup,
+  late-navigation and scan recovery checks at their real new location; no skips.
+  repaired-validate.log exits0:2108tests (941Node+1167workspace), all builds and
+  boundaries pass. Final busy-guard/doc verification is recorded below.
+- First browser-smoke.log lacks optional cached Playwright Chromium, before
+  any app/model work. Reuse installed Chrome via the supported executable-path
+  option, no download/skip. browser-smoke-retry.log passes six real model cases
+  on Mac Chrome157.0.8103.79: JPEG/PNG, preview/confirmation/back without upload,
+  real spoon→metal→source, invalid SVG, synthetic camera/cancel/stopped tracks,
+  EN/reload/dark/narrow/reduced-motion and offline recovery. Preview PNG now
+  visibly renders the licensed image. Inspected FIpreview/ENdark390screens.
+- controls-smoke.log / controls-proof/controls-evidence.json:20stages across
+  FI/EN390light/320dark. Actual Home/Identify/scanner-permission/manual recovery,
+  invalid and bundled Oivariini lookup, shared photo manual entry, material
+  code→guidance→explicit recycling, details, manual component, settings overview/
+  history/guide/legal and Location-denial recovery. No pageerrors, clipping,
+  sub44px controls or photo uploads from these actions. Isolated browser storage,
+  no owner data or physical camera/GPS used.
+- Actual Android API35ARM64Go58.0.5 Hermes module inventory plus strict9flag
+  probe: native-library-operations-pass.log/native-library-operations.json.
+  Temporary cache-file and unique AsyncStorage-key create/write/read/remove
+  roundtrips pass and leave no QA data. Code font loaded; camera permission API,
+  foreground-location API, SystemUI/Gesture Handler native presence pass.
+  SDK/Reanimated/Worklets/screens/safe-area modules initialize. Metadata/API
+  presence is not a test of every native method or physical permission.
+- Retain failed diagnostic attempts: CDP initially omitted required Origin;
+  the retry supplies the legitimate local debugger Origin. Initial QA used a
+  wrong camera export/compiled-module path and treated Hermes' polyfilled
+  Promise as a finished value. Correct the probe (Camera.Camera API, actual
+  compiled core path, explicit async polling and strict complete-key assertion),
+  not app compatibility/security/model gates. Earlier QA warning screenshot
+  is not normal app acceptance. No private image/history/location inspected.
+
+Final android-controls-final.log/android-controls-evidence.json pass actual
+Go camera→preview→confirmation/back→explicit send→real model with synthetic
+emulator image (appropriately unclear, not a fabricated object), plus actual
+shared manual numeric entry→invalid recovery→bundled public Oivariini identity.
+Final start/preview/consent/result/barcode screenshots inspected with no QA
+error toast. Earlier android-controls attempts are retained: initial launch
+did not reach the foreground; QA then tapped before camera readiness and used
+Android Back as if it always hid a keyboard. Correct the QA deep link/readiness
+wait and use the actual Enter/submit action; do not bypass the app's disabled
+shutter or change inference gates. The real preview exposed duplicate New
+picture labels for different result actions; fix the reset label to Enter
+another code, retain actual New picture capture, and add a binding regression.
+No model/source/deadline change. final-browser-smoke.log passes the real-model
+flow on the corrected source. final-controls-smoke.log times out waiting for
+settings-guide-action after19stages during concurrent build/emulator work;
+errors[]empty, root cause not proven. Preserve the failed attempt, do not skip
+that action or extend the30sdeadline. After builds finish, sequential
+delivery-controls-smoke.log passes all20stages/errors[]empty with unchanged
+test/app code/deadlines (delivery-controls-proof). delivery-validate.log exits0
+with all2108tests/builds after busy and result-label repairs; no failed tests.
+delivery-native-library.log repeats all9strict Go checks successfully. Stop
+only the QA emulator and8098Metro; existing owner8096/8097/3004remain live.
+Free space recovers from~419MiBduring parallel QA to~2.9GiB; no files deleted.
+
+Go's synthetic camera capture/preview is inspectable, not recognition quality.
+New physical iPhone Go smoke requested; older owner physical results retain
+their earlier scope. No new Windows/physical Samsung/native build/install,
+GitHub push or release GO. See EXPO_GO_PARITY.md for the library/host matrix.
+
+## November17 — shorter server consent notice
+
+Run work/consent-copy-20261117.wOnYhy. Only two FI/EN localization values change
+to remove the people/private-text and keep-server-running reminders. Exact-copy
+regression added, with recipient/retention/send/HTTP tests retained. No model/
+transport/camera/retention change, public push or native installation.
+Localization11tests, mobile validation and full `pnpm validate` pass:
+2105tests (939Node+1166workspace), all builds, original19warnings. Logs:
+localization.log/mobile-validate.log/validate.log. Isolated actual Chrome at
+owner's localhost8097with licensed fixture checks both390pxFI/ENpreviews,
+removed reminders absent, recipient/retention and separate send retained;
+0imagePOSTs/no pageerrors(preview-check.log). Wait for the fixture image decode/
+paint before screenshot; no production image/scroll behavior change.
+Preview screenshots visually inspected. No owner camera, user image, actual
+inference request, new Windows/Samsung/native installation or GitHub push.
+
+## November17 — native-aligned Go/web recognition wording
+
+Run work/recognition-copy-20261117.p3be6X. App changes are FI/EN network copy plus
+a visible native-key review heading on both Go/web previews; model, provider,
+rules, transport/consent schema, capture bounds, deadlines and installed native
+app unchanged. SigLIP2remains in source caption; server/network/manual material/
+recipient/retention/no-forward/plain-HTTP and separate send remain explicit.
+No new GitHub push/Windows run; old Windows success is not relabelled new-copy
+acceptance. Old owner physical Go tests remain separately owner-reported.
+
+Localization10tests and Go/native-preview policy3tests pass. Mobile validation
+and first full2104tests (939Node+1165workspace, mobile363/API30) pass. After
+the last shorter intro/file-hint, final validation results follow below.
+
+Retained initial browser-smoke.log: actual inference still busy when default
+5sexpectation expires during simultaneous mobile/full builds. No incorrect
+suggestion or UI error observed. Sequential rerun final-browser-smoke.log passes
+all six actual JPEG/PNG→model→object/material/source, no-upload preview, synthetic
+camera capture/cancel/ended tracks, invalid SVG, EN/reload/dark/narrow/reduced
+motion/offline cases, with no pageerrors. Same test/application deadlines/model
+gates, no mock or threshold change. Actual Chrome157.0.8103.79on Mac.
+The simctl/CLT warning is retained, not a failed web launch or native evidence.
+
+Visually inspected FI preview with native “Tarkista kuva” heading and explicit
+send button, and EN390pxdark intro (final-browser-proof PNGs). Final intro was
+then shortened to remove repetition.
+Latest full `pnpm validate` exits0with2104tests/all builds, original19warnings,
+no failures (reviewed-validate.log). Latest actual browser/model flow passes all
+six cases with no pageerrors (reviewed-browser-smoke.log), same5sassertions.
+Final localization10/preview-policy3regressions pass; no deadline/model gate
+changed. Source edit does not introduce a new recognition accuracy claim.
+
+Initial delivery-browser-proof narrow capture retained an earlier scroll offset
+and omitted the top header. Correct only the QA capture precondition: reset
+ancestor scroll positions, explicitly assert Back and “Recognize an image”
+heading are in viewport. Do not alter application scroll behavior. Final
+reviewed-browser-proof/browser-en-dark-mobile.png and FI preview visually
+inspected: title/controls visible, shorter copy wraps without horizontal clipping.
+No private photo or webcam captured, only existing licensed/synthetic fixtures.
+
+## November17 — physical Expo Go prerequisites and owner-reported spoon pass
+
+Run work/phone-expo-go-20261117.QX2O7s. No source/dependency change after tested
+80a3848delivery, no new physical success or full-suite rerun claimed in this
+account-handoff step. CLI whoami exit1/loginRequiredtrue; output restricted to
+status, no username/credential printed. Owner asked to confirm Go installation/
+same trusted Wi-Fi. Official current Expo docs confirm physical-iOS same-account
+requirement: https://docs.expo.dev/troubleshooting/expo-go-sign-in-required/.
+
+Initial devicectl check fails because global xcode-select is CommandLineTools;
+per-command DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer works.
+CoreDevice phone tunnel disconnected, no installed-app inventory or UI/camera
+access attempted. Do not mistake this for a USB requirement for Go over Wi-Fi.
+Owner subsequently confirms Go installed/same trusted Wi-Fi. Official
+expo login --browser launched with stdout/stderr discarded; no account/OAuth
+URL/code captured. Owner now confirms login/same account in Go; CLI login exits0
+and independent whoami reports signedIntrue without printing the username.
+Verified old
+model13856replaced with keyless model28464on0.0.0.0:3004, Go Metro28483on8096,
+explicit current private origin. Browser8097still HTTP200; no public tunnel,
+paid provider or secret use. Sleep prevention follows only Go Metro PID.
+
+Mac-side LAN capabilities200/enabled, SDK58.0.0manifest/current debugger/model
+origin, actual16124872byte iOSbundle and HTTP307correct Expo Go redirect pass.
+New QR independently Apple Vision decoded to the exact current HTTP handoff
+(qr-decode.log). Generated bundle-evidence.json contains only size/status/origin
+checks, not a user image. Current Metro reports the expected login-required
+message; this alone does not identify whether a request was our readiness probe
+or the physical phone, so no physical launch success is inferred.
+
+Fresh full pnpm validate exits0with2102tests/all builds (validate.log); no code/
+dependency change. Physical trial handed off via current QR: one nonprivate
+spoon→explicit send consent→Lusikka→Metalli→Metallinkeräys. Owner replies exactly
+“Metallinkeräys-ohje näkyy”. This is manual owner-reported physical iPhone Go
+acceptance of that scripted path, not agent-observed frames/telemetry or a
+recognition accuracy estimate. No user image or account value received, new
+native installation or GitHub push. Go still depends on the Mac/LAN service.
+Next combined owner trial asks EN persistence after project reopen and one
+physical food-package barcode scan, collecting outcome/error text only.
+
+Owner replies “Englanti säilyy, mutta tuotetta ei löytynyt”: record EN/reopen
+as manual pass and retain the unknown food not-found outcome, not a full
+barcode success/failure. No actual owner barcode/name/image requested or obtained.
+Review Go local/catalogue/public routing and separate result UI:404is not_found,
+503/429/malformed response provider_unavailable, transport error offline. All21
+targeted tests in runtime-lookup/public-identity-lookup/barcode-library pass
+(barcode-diagnostics-tests.log), not physical network proof.
+
+Independent live Mac checks use public non-bundled UPC737628064502and equivalent
+EAN130737628064502, with the same bounded fields/endpoint/agent as the app.
+Both return200and a matching named food record, with no owner data/image sent
+(public-barcode-control.log/ean-control-lookup.log). Generated control PNG is
+independently decoded by Apple Vision to exact EAN13(barcode-control-decode.log).
+Owner asked to scan it through Go's real barcode screen. This
+does not prove that his unknown scanned product is absent or identify what it
+was. Test artifact is a real public identity control, not an app/demo-data change.
+
+Retain followup: owner initially selects “Product not found”, then clarifies
+the actual display is “Thai peanut noodle kit includes stir-fry rice noodles &
+thai peanut seasoning” and “Packaging data is missing”, and says he may have
+misread the latter. Record that controlled optical/online identity path as
+manual owner-reported pass; do not infer success/absence for his original
+unidentified food. No user image/raw original product code collected.
+
+Adapter/source inspection confirms current Expo Go direct lookup requests only
+code/type/name/brand, never packaging fields, and normalizes valid identities to
+packaging_missing. The status is NOT evidence that OFF's record lacks packaging.
+Actual source HTTP200and21targeted tests remain separate from the user report.
+Only read-only Metro target discovery was performed; no debugger attachment,
+native runtime evaluation, UI state/history dump or private network capture.
+No implementation change or confirmed technical barcode failure remains for
+the control; clearer FI/EN found-vs-packaging copy is the actionable UX finding.
+
 ## November17 — explicit wait removal and SDK58patch cohort
 
 Run work/expo-patch-20261117.7WZMvr. New owner instruction explicitly removes

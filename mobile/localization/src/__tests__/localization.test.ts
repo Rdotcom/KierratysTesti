@@ -2,6 +2,30 @@ import { describe, expect, it } from "vitest";
 import { localizedText, messages, translate } from "../index";
 
 describe("localization", () => {
+  it("keeps shared recognition controls neutral about execution and translates transport-only details", () => {
+    for (const language of ["fi", "en"] as const) {
+      for (const key of [
+        "recognitionAction",
+        "recognitionDetails",
+        "recognitionSendTitle",
+        "recognitionMarkingManual",
+      ] as const)
+        expect(translate(language, key)).not.toBe(key);
+      const common = [
+        "networkTitle",
+        "recognitionAction",
+        "homeIdentifyDetail",
+        "identifyPhotoDetail",
+      ] as const;
+      expect(common.map((key) => translate(language, key)).join(" ")).not.toMatch(
+        /laitteessa|offline|on.device|palvelin|server/iu,
+      );
+    }
+    expect(translate("fi", "recognitionMarkingManual")).toContain("vain erikseen asennetussa");
+    expect(translate("en", "recognitionMarkingManual")).toContain(
+      "only in the separately installed",
+    );
+  });
   it("keeps own-server consent and uncertain suggestions explicit in both languages", () => {
     for (const language of ["fi", "en"] as const) {
       for (const key of [
@@ -13,11 +37,46 @@ describe("localization", () => {
         "networkCandidateSource",
       ] as const)
         expect(translate(language, key)).not.toBe(key);
-      expect(translate(language, "networkIntro")).toContain("SigLIP2");
+      expect(translate(language, "networkCandidateSource")).toContain("SigLIP2");
     }
     expect(translate("fi", "networkConsent")).toContain("muistissa");
     expect(translate("en", "networkConsent")).toContain("memory");
     expect(translate("en", "networkHttpNotice")).toContain("not encrypted");
+  });
+  it("aligns recognition wording with native while preserving server execution and explicit sending", () => {
+    for (const language of ["fi", "en"] as const) {
+      expect(translate(language, "localVisionTitle")).toContain(
+        translate(language, "networkTitle"),
+      );
+      expect(translate(language, "networkRetake")).toBe(translate(language, "localVisionAgain"));
+      expect(translate(language, "networkIntro")).not.toContain("SigLIP2");
+      const executionKeys = [
+        "networkTitle",
+        "networkIntro",
+        "networkSend",
+        "networkDetail",
+      ] as const;
+      const executionCopy = executionKeys.map((key) => translate(language, key)).join(" ");
+      expect(executionCopy).not.toMatch(/laitteessa|ilman verkkoyhteyttä|on.device|offline/iu);
+    }
+    expect(translate("fi", "networkIntro")).toContain("palvelintasi");
+    expect(translate("fi", "networkIntro")).toContain("verkkoyhteyden");
+    expect(translate("fi", "networkIntro")).toContain("materiaali itse");
+    expect(translate("en", "networkIntro")).toContain("your own server");
+    expect(translate("en", "networkIntro")).toContain("network connection");
+    expect(translate("en", "networkIntro")).toContain("material yourself");
+    expect(translate("fi", "networkSend")).toBe("Lähetä kuva ja tunnista");
+    expect(translate("en", "networkSend")).toBe("Send photo and identify");
+    expect(translate("fi", "networkConsent")).toContain("muistissa");
+    expect(translate("en", "networkConsent")).toContain("not saved to a file");
+  });
+  it("keeps concise recipient and retention copy without the removed camera and server reminders", () => {
+    expect(translate("fi", "networkConsent")).toBe(
+      "Kuva lähetetään tunnistuspalvelimelle. Se käsitellään muistissa, eikä sitä tallenneta tiedostoon tai välitetä muihin palveluihin.",
+    );
+    expect(translate("en", "networkConsent")).toBe(
+      "Your photo is sent to the recognition server. It is processed in memory, not saved to a file or forwarded to other services.",
+    );
   });
   it("uses the owner-selected Home shortcut heading in Finnish and English", () => {
     expect(translate("fi", "homeMaterials")).toBe("Suositut haut");
