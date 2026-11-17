@@ -1,3 +1,3 @@
 # Next action
 
-Recheck the official picomatch advisory and registry for a supported fixed release, retaining the unchanged high-severity audit policy.
+Run CI and Windows browser/model checks on the owner-authorized codex/minimatch-migration test branch and repair any failing check.

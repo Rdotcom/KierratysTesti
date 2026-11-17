@@ -1,0 +1,30 @@
+diff --git a/dist/index.cjs b/dist/index.cjs
+index 4868ffba35d991e03831204695d11e703a78c2d3..96803b372b8723a029d1658a7a9ce39f75f19f91 100644
+--- a/dist/index.cjs
++++ b/dist/index.cjs
+@@ -458,8 +458,8 @@ var APIBuilder = class {
+ let pm = null;
+ /* c8 ignore next 6 */
+ try {
+-	require.resolve("picomatch");
+-	pm = require("picomatch");
++	require.resolve("@keepitgreen/build-glob");
++	pm = require("@keepitgreen/build-glob");
+ } catch {}
+ var Builder = class {
+ 	globCache = {};
+diff --git a/dist/index.mjs b/dist/index.mjs
+index 5c37e092b507dccc97d1b5a815cecceb94445698..c201c563a2799cbbd4d87dd766a15fe8e1c2fa99 100644
+--- a/dist/index.mjs
++++ b/dist/index.mjs
+@@ -440,8 +440,8 @@ var APIBuilder = class {
+ let pm = null;
+ /* c8 ignore next 6 */
+ try {
+-	__require.resolve("picomatch");
+-	pm = __require("picomatch");
++	__require.resolve("@keepitgreen/build-glob");
++	pm = __require("@keepitgreen/build-glob");
+ } catch {}
+ var Builder = class {
+ 	globCache = {};

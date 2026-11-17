@@ -1,0 +1,13 @@
+diff --git a/build/globsToMatcher.js b/build/globsToMatcher.js
+index 7a60911948a6be603320e1fb59bc4756695f4407..66834d73e7c586570fef9875a6b6d1d9df3bd023 100644
+--- a/build/globsToMatcher.js
++++ b/build/globsToMatcher.js
+@@ -5,7 +5,7 @@ Object.defineProperty(exports, '__esModule', {
+ });
+ exports.default = globsToMatcher;
+ function _picomatch() {
+-  const data = _interopRequireDefault(require('picomatch'));
++  const data = _interopRequireDefault(require('@keepitgreen/build-glob'));
+   _picomatch = function () {
+     return data;
+   };

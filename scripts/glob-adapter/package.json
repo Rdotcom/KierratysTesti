@@ -1,0 +1,28 @@
+{
+  "name": "@keepitgreen/build-glob",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Bounded non-regexp glob adapter for the pinned build tools; not picomatch",
+  "license": "UNLICENSED",
+  "main": "./index.cjs",
+  "types": "./index.d.cts",
+  "exports": {
+    ".": {
+      "types": "./index.d.cts",
+      "default": "./index.cjs"
+    }
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "minimatch": "11.0.9"
+  },
+  "devDependencies": {
+    "@types/node": "24.13.3",
+    "typescript": "6.0.3"
+  },
+  "engines": {
+    "node": ">=24 <27"
+  }
+}

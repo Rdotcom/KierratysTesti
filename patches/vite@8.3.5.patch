@@ -1,0 +1,45 @@
+diff --git a/dist/node/chunks/node.js b/dist/node/chunks/node.js
+index 797794fd975e746a691212c9fe265fca28167242..92445b9d43bd54f626c2a687f7128088fa8e1ae6 100644
+--- a/dist/node/chunks/node.js
++++ b/dist/node/chunks/node.js
+@@ -11,7 +11,7 @@ import { performance as performance$1 } from "node:perf_hooks";
+ import { URL as URL$1, fileURLToPath, pathToFileURL } from "node:url";
+ import { format, formatWithOptions, inspect, isDeepStrictEqual, parseEnv, promisify, stripVTControlCharacters } from "node:util";
+ import { MessageChannel, Worker } from "node:worker_threads";
+-import pm from "picomatch";
++import pm from "@keepitgreen/build-glob";
+ import { VERSION as rolldownVersion, rolldown } from "rolldown";
+ import { dev, oxcRuntimePlugin, resolveTsconfig, scan, viteAliasPlugin, viteBuildImportAnalysisPlugin, viteDynamicImportVarsPlugin, viteImportGlobPlugin, viteJsonPlugin, viteLoadFallbackPlugin, viteManifestPlugin, viteModulePreloadPolyfillPlugin, viteReporterPlugin, viteResolvePlugin, viteTransformPlugin, viteWebWorkerPostPlugin } from "rolldown/experimental";
+ import childProcess, { exec, execFile, execSync, spawn } from "node:child_process";
+@@ -9028,7 +9028,7 @@ var require_readdirp = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+ 	const { Readable } = __require("stream");
+ 	const sysPath = __require("path");
+ 	const { promisify } = __require("util");
+-	const picomatch = __require("picomatch");
++	const picomatch = __require("@keepitgreen/build-glob");
+ 	const readdir = promisify(fs.readdir);
+ 	const stat = promisify(fs.stat);
+ 	const lstat = promisify(fs.lstat);
+@@ -9306,7 +9306,7 @@ var require_normalize_path = /* @__PURE__ */ __commonJSMin(((exports, module) =>
+ //#region ../../node_modules/.pnpm/anymatch@3.1.3/node_modules/anymatch/index.js
+ var require_anymatch = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+ 	Object.defineProperty(exports, "__esModule", { value: true });
+-	const picomatch = __require("picomatch");
++	const picomatch = __require("@keepitgreen/build-glob");
+ 	const normalizePath = require_normalize_path();
+ 	/**
+ 	* @typedef {(testString: string) => boolean} AnymatchFn
+@@ -32545,11 +32545,8 @@ function assetPlugin(config) {
+ 			cssEntriesMap.set(this.environment, /* @__PURE__ */ new Map());
+ 		},
+ 		resolveId: {
+-			filter: { id: [
+-				urlRE$1,
+-				DEFAULT_ASSETS_RE,
+-				...makeIdFiltersToMatchWithQuery(config.rawAssetsInclude).map((v) => typeof v === "string" ? pm.makeRe(v, { dot: true }) : v)
+-			] },
++			// The handler below is the authoritative assetsInclude/url predicate.
++			// Do not turn globs into backtracking regexps for an optional prefilter.
+ 			handler(id) {
+ 				if (!config.assetsInclude(cleanUrl(id)) && !urlRE$1.test(id)) return;
+ 				if (checkPublicFile(id, config)) return id;

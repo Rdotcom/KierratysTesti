@@ -17,8 +17,8 @@ CodeQL:n ja salaisuuksien tarkistuksen.
   läpäisee parts/full/Expo-tarkistukset ja epäonnistuu vain tunnetussa picomatch-
   auditoinnissa. [Security 44162245784](https://github.com/roopeaal/KierratysAppi/actions/runs/44162245784)
   läpäisee CodeQL:n ja salaisuuksien tarkistuksen.
-- Picomatch: 585 rajattua haitallista vertailua, 5 932 kirjaston omaa testiä sekä
-  1 124 928 lyhyen syötteen vertailua läpäisty. Testit eivät ohita high-löydöstä.
+- Aiemmat picomatch-paikkauskokeet koskevat vanhaa toteutusta, eivät uuden
+  moottorin hyväksyntää. Nykyiset regressiot testaavat oikeaa uutta toteutusta.
 - Macin selainkoe käyttää oikeaa SigLIP2-mallia, JPEG/PNG:tä, erillistä lupaa,
   materiaalivalintaa, lähteistettyä ohjetta, EN-pysyvyyttä ja offline-palautumista.
   Windows x64:n malli/Chrome/Edge on ajettu GitHubin Windows-koneella.
@@ -38,8 +38,26 @@ Sovelluskoodia, malleja, aineistoja, riippuvuuksia tai testejä ei poisteta.
 Siivouksen jälkeen `pnpm validate`: 2 125 testiä (958 Node + 1 167 workspace)
 ja kaikki koonnit läpäisty. Neljä uutta testiä tarkistaa rakenteen, linkit,
 QA-syötteiden tavut ja laaduntarkistusten säilymisen. Oikean mallin selainkoe
-läpäisee kaikki kuusi tapausta ilman sivuvirheitä. Raaka auditointi raportoi
-edelleen tunnetun high-löydöksen; sitä ei ole ohitettu.
+läpäisee kaikki kuusi tapausta ilman sivuvirheitä. Siivoushetken raaka auditointi
+raportoi tunnetun high-löydöksen; sitä ei ohitettu (korvaus kuvataan alla).
+
+## Nonrecursive-glob-korjaus 17.11.2026
+
+- Picomatch/Micromatch poistettu lukituksesta. Kahdeksan työkalun oikeat
+  moduuliresoluutiot ja SHA-256-lukitut sovituspaikat tarkistetaan automaattisesti.
+- 5 544 jäädytettyä vastausvertailua ja 52 672 erillistä projektipolkuvertailua:
+  ei eroja oletus-, dot-, kirjainkoko-, basename- ja Windows-tapauksissa.
+- 159 hyökkäystapausta, positiiviset kontrollit sekä pituus-/määrä-/syvyys-/
+  sulkulaajennusrajat testataan 10 s / 128 Mt V8 old-heap -aliprosessissa.
+- Oikeat Expo/Jest/Metro/tinyglobby/fdir/Vite-kokeet kattavat hakukuviot,
+  poissulut, piilotiedostot, erikoismerkit, import.meta.glob, custom assetit
+  ja Viten fs.deny-suojan. Ei pelkkiä mockeja tai regexp-muotoisia korvikkeita.
+- Paikallinen frozen install, koko validate ja koonnit, Expo Doctor 20/20,
+  iOS/Android/web-JS-export sekä oikean mallin Chromen kuusi polkua läpäisty.
+  JS-export ei ole natiivi iOS-/Android-koonti tai fyysinen Samsung-hyväksyntä.
+- Muuttamaton security:audit läpäisee: 0 high/critical; 22 low/moderate
+  raportoidaan edelleen. Ei poikkeusta, version vääristelyä tai scannerin vaihtoa.
+- GitHubin CI/Windows-ajo odottaa testihaaran julkaisua; main ei ole muuttunut.
 
 Kuvantunnistuksen yleinen luotettavuus, kaikki materiaalit/alueet, oikean
 Samsungin kamera ja pitkäaikainen muistinkulutus eivät ole näillä testeillä

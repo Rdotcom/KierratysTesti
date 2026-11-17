@@ -1,0 +1,37 @@
+diff --git a/LICENSE-third-party b/LICENSE-third-party
+deleted file mode 100644
+index 3fef7e70dd7e720044de98e835e838fd72909012..0000000000000000000000000000000000000000
+diff --git a/build/src/export/exportAssets.js b/build/src/export/exportAssets.js
+index 56f5b6a19de6e1e100f593628bcfeb1eb327d762..062152da19a634a22f818d132debc30ffb7870f5 100644
+--- a/build/src/export/exportAssets.js
++++ b/build/src/export/exportAssets.js
+@@ -39,7 +39,7 @@ function _path() {
+     return data;
+ }
+ function _picomatch() {
+-    const data = /*#__PURE__*/ _interop_require_default(require("picomatch"));
++    const data = /*#__PURE__*/ _interop_require_default(require("@keepitgreen/build-glob"));
+     _picomatch = function() {
+         return data;
+     };
+diff --git a/build/src/utils/createFileTransform.d.ts b/build/src/utils/createFileTransform.d.ts
+index c6e67dc949fabd45df964480b22bb31dd6106c04..2509c5e1054b7da6fefc3182a4a0c8415545660d 100644
+--- a/build/src/utils/createFileTransform.d.ts
++++ b/build/src/utils/createFileTransform.d.ts
+@@ -1,2 +1,2 @@
+-import picomatch from 'picomatch';
++import picomatch from '@keepitgreen/build-glob';
+ export declare function createGlobFilter(globPattern: picomatch.Glob, options?: picomatch.PicomatchOptions): (path: string) => boolean;
+diff --git a/build/src/utils/createFileTransform.js b/build/src/utils/createFileTransform.js
+index a1171a60467e16dc961347a38b6815e8edf4b308..1c74647c088b1575957d9860366616741980b849 100644
+--- a/build/src/utils/createFileTransform.js
++++ b/build/src/utils/createFileTransform.js
+@@ -9,7 +9,7 @@ Object.defineProperty(exports, "createGlobFilter", {
+     }
+ });
+ function _picomatch() {
+-    const data = /*#__PURE__*/ _interop_require_default(require("picomatch"));
++    const data = /*#__PURE__*/ _interop_require_default(require("@keepitgreen/build-glob"));
+     _picomatch = function() {
+         return data;
+     };

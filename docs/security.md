@@ -1,18 +1,23 @@
 # Tietoturva ja rajaukset
 
-## Picomatch
+## Glob-riippuvuuden korvaus
 
-GHSA-fc5q-39xc-vjpf / CVE-2026-112366 on **high**-löydös. Julkaistua virallista
-korjattua versiota ei tarkistuksessa 17.11.2026 löytynyt. Projektissa on
-testatut pnpm-paikkaukset kaikille kolmelle käytössä olevalle versiolle.
-Ne estävät toistetut ongelmatapaukset; ne eivät ole virallinen julkaisu tai
-yleinen kaikkien säännöllisten lausekkeiden turvallisuustodistus.
+GHSA-fc5q-39xc-vjpf / CVE-2026-112366 on edelleen picomatchin **high**-löydös:
+https://github.com/advisories/GHSA-fc5q-39xc-vjpf.
+Tässä korjauksessa picomatch ja Micromatch poistetaan kokonaan sovelluksen
+riippuvuusgraafista. Niiden koodia ei nimetä uudelleen eikä versioita vääristetä.
+Kahdeksan työkalun oikeat kutsut sovitetaan alkuperäisellä rakennustyökalusovittimella
+Minimatch 11.0.9:n ei-rekursiiviseen moottoriin.
 
-`pnpm security:audit` näyttää löydöksen edelleen eikä tarkistusta ohiteta.
-[Paikkausten alkuperä, MIT-lisenssi ja rajaukset](../patches/README.md).
-Virallinen lähde: https://github.com/advisories/GHSA-fc5q-39xc-vjpf.
-Riippuvuusylläpitäjän seuraava työ on ottaa käyttöön tuettu virallinen korjaus
-sen ilmestyessä ja suorittaa samat tarkistukset uudelleen.
+Muuttamaton `pnpm security:audit` läpäisee high/critical-rajan. Muut 22
+low/moderate-löydöstä näkyvät edelleen; niitä ei piiloteta poikkeuksilla.
+Yhtäkään auditoinnin poikkeusta, tasomuutosta tai ohitusta ei lisätä.
+[Toteutus, lisenssit ja rajatut API-muutokset](../patches/README.md).
+Moottorin muutos: https://github.com/isaacs/minimatch/blob/main/changelog.md.
+
+Sovitin rajoittaa syötteiden, kuvioiden, sulkulaajennusten ja polkujen kuormaa.
+Rajatut hyökkäystestit ja puhdas high-audit eivät todista kaikkien mahdollisten
+kuvioiden turvallisuutta. Uudet työkalupäivitykset vaativat uuden sovitusarvion.
 
 ## Yksityisyys ja palvelimet
 

@@ -30,6 +30,8 @@ jobs:
           python-version: "3.12"
           architecture: x64
       - run: pnpm install --frozen-lockfile
+      - name: Real Windows nonrecursive glob and build-tool contracts
+        run: node --test scripts/__tests__/build-glob.test.mjs
       - run: python -m venv work/siglip-server-venv
       - run: ./work/siglip-server-venv/Scripts/python.exe -m pip install -r backend/data-providers/python/requirements.txt
       - run: pnpm vision:prepare work/network-model

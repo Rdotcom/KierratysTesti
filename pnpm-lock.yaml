@@ -7,10 +7,17 @@ settings:
 overrides:
   '@expo/cli>zod': 4.6.7
 
+pnpmfileChecksum: sha256-qpauAUCIi0QMO82CvovrqYFRRo0m2m7O0BvxIh/PYLY=
+
 patchedDependencies:
-  picomatch@2.3.2: 692b4676f2e4fa9d867b927cd265775aad56b7b45da894bee7f5bb18444d6117
-  picomatch@4.0.5: 31f97c13bcfdd44cd7b68af9dfcb3ce43a850acd3a0a3c27dacd9d75b50a6063
-  picomatch@4.0.7: b874de120678edf28d1eda9539418d1d4827281967fb94d81e4b5cc2ba829d19
+  '@expo/cli@58.1.21': 1ad2f78131e963afdb4b429be96ed5e95350fcc22bc7b84485d68035b24c748f
+  '@expo/metro-config@58.0.23': 2a447e47dece87fdb0b03810227b5714feabeac71c82a2092f6c689378ab48f5
+  fdir@6.5.0: 285173763b441bb04f26809ce0bd2f9728c2f5addb4fbc62d9d29ed323d67ceb
+  jest-util@29.7.0: 1ab2269dd951ef40534406185a3e9196bd8fbc7bf463f2b9ea6b7525c4dd8717
+  metro-file-map@0.87.1: 0dedebc7dc3d10af31ea41a02c7d0c98f3fa2570c1e1cc40aa1f70664083a01d
+  tinyglobby@0.2.17: e9ac4bf58da22e3f4bdc3e222a5fafe4824021fd13140ac9407c987925708643
+  vite@8.3.5: 8e6148feea5b73ee5da62b6da7039519d5dec704616e1fbade273f9e6b85768c
+  vitest@4.1.12: 8ab92b767460a59da73a4eaa9db78f885a588d39ce1af48221d71de61edc6fab
 
 importers:
 
@@ -19,6 +26,9 @@ importers:
       '@biomejs/biome':
         specifier: 2.5.7
         version: 2.5.7
+      '@keepitgreen/build-glob':
+        specifier: workspace:*
+        version: link:scripts/glob-adapter
       '@playwright/test':
         specifier: 1.65.1
         version: 1.65.1
@@ -36,10 +46,10 @@ importers:
         version: 6.0.3
       vite:
         specifier: 8.3.5
-        version: 8.3.5(@types/node@24.13.3)(esbuild@0.27.7)(terser@5.49.2)(tsx@4.21.0)(yaml@2.9.0)
+        version: 8.3.5(patch_hash=8e6148feea5b73ee5da62b6da7039519d5dec704616e1fbade273f9e6b85768c)(@types/node@24.13.3)(esbuild@0.27.7)(terser@5.49.2)(tsx@4.21.0)(yaml@2.9.0)
       vitest:
         specifier: 4.1.12
-        version: 4.1.12(@types/node@24.13.3)(@vitest/coverage-v8@4.1.12)(vite@8.3.5(@types/node@24.13.3)(esbuild@0.27.7)(terser@5.49.2)(tsx@4.21.0)(yaml@2.9.0))
+        version: 4.1.12(patch_hash=8ab92b767460a59da73a4eaa9db78f885a588d39ce1af48221d71de61edc6fab)(@types/node@24.13.3)(@vitest/coverage-v8@4.1.12)(vite@8.3.5(patch_hash=8e6148feea5b73ee5da62b6da7039519d5dec704616e1fbade273f9e6b85768c)(@types/node@24.13.3)(esbuild@0.27.7)(terser@5.49.2)(tsx@4.21.0)(yaml@2.9.0))
 
   backend/api:
     dependencies:
@@ -215,13 +225,26 @@ importers:
         version: 6.0.3
       vitest:
         specifier: 4.1.12
-        version: 4.1.12(@types/node@24.13.3)(@vitest/coverage-v8@4.1.12)(vite@8.3.5(@types/node@24.13.3)(esbuild@0.27.7)(terser@5.49.2)(tsx@4.21.0)(yaml@2.9.0))
+        version: 4.1.12(patch_hash=8ab92b767460a59da73a4eaa9db78f885a588d39ce1af48221d71de61edc6fab)(@types/node@24.13.3)(@vitest/coverage-v8@4.1.12)(vite@8.3.5(patch_hash=8e6148feea5b73ee5da62b6da7039519d5dec704616e1fbade273f9e6b85768c)(@types/node@24.13.3)(esbuild@0.27.7)(terser@5.49.2)(tsx@4.21.0)(yaml@2.9.0))
 
   mobile/localization:
     dependencies:
       '@kierratysappi/domain':
         specifier: workspace:*
         version: link:../../shared/domain
+
+  scripts/glob-adapter:
+    dependencies:
+      minimatch:
+        specifier: 11.0.9
+        version: 11.0.9
+    devDependencies:
+      '@types/node':
+        specifier: 24.13.3
+        version: 24.13.3
+      typescript:
+        specifier: 6.0.3
+        version: 6.0.3
 
   shared/contracts:
     dependencies:
@@ -1105,6 +1128,9 @@ packages:
   '@fastify/swagger@9.8.1':
     resolution: {integrity: sha512-VpHMnqZTY8iBZYJE8WWkbKPrXIYWy2rDfIf5qLr6DzZSpQYZ+KxQVcJFiq/AMlvNwI4gCBd66++iUlxXXGT0IQ==}
 
+  '@isaacs/nonrecursive-glob-match@1.1.0':
+    resolution: {integrity: sha512-GPm/Dbvk5RLmhRnxXIa7nTpK0xtl4E0wj0MslsuNiJ1FIROU+2+9lgUC/dgF7Ey4QCWhfEsgxilMRMCdHPfDfw==}
+
   '@isaacs/ttlcache@1.4.1':
     resolution: {integrity: sha512-RQgQ4uQ+pLbqXfOmieB91ejmLwvSgv9nLx6sT6sD83s7umBypgg+OIBOBbEUiJXrfpnp9j0mRhYYdzp9uqq3lA==}
     engines: {node: '>=12'}
@@ -1954,10 +1980,6 @@ packages:
     resolution: {integrity: sha512-YovQ3rzhaLMIrDjNDMkNS01tea93qhEhG5xy8f6+R0l+dw3Ki+5sCoIoI942iuLZTHWogWktgwVDhU09iNEimQ==}
     engines: {node: 20 || >=22}
 
-  braces@3.0.3:
-    resolution: {integrity: sha512-yQbXgO/OSZVD2IsiLlro+7Hf6Q18EJrKSEsdoMzKePKXct3gvD8oLcOQdIzGupr5Fj+EDe8gO/lxc1BzfMpxvA==}
-    engines: {node: '>=8'}
-
   browserslist@4.28.8:
     resolution: {integrity: sha512-V2NpofLblG64mfOtSgDhOJESZEGogzDMBv/q+W6oc4LXWP/q75eOXoOaaOu1EOadB9U4Bwx/e0yzbvwKH8zalA==}
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
@@ -2480,18 +2502,9 @@ packages:
   fdir@6.5.0:
     resolution: {integrity: sha512-tIbYtZbucOs0BRGqPJkshJUYdL+SDH7dVM8gjy+ERp3WAUjLEFJE+02kanyHtwjWOnwrKYBiwAmM0p4kLJAnXg==}
     engines: {node: '>=12.0.0'}
-    peerDependencies:
-      picomatch: ^3 || ^4
-    peerDependenciesMeta:
-      picomatch:
-        optional: true
 
   fetch-nodeshim@0.4.10:
     resolution: {integrity: sha512-m6I8ALe4L4XpdETy7MJZWs6L1IVMbjs99bwbpIKphxX+0CTns4IKDWJY0LWfr4YsFjfg+z1TjzTMU8lKl8rG0w==}
-
-  fill-range@7.1.1:
-    resolution: {integrity: sha512-YsGpe3WHLK8ZYi4tWDg2Jy3ebRz2rXowDxnld4bkQB00cc/1Zw9AWnC0i9ztDJitivtQvaI9KaLyKrc+hBW0yg==}
-    engines: {node: '>=8'}
 
   finalhandler@1.1.2:
     resolution: {integrity: sha512-aAWcW57uxVNrQZqFXjITpW3sIUQmHGG3qSb9mUah9MgMC4NeWhNOlNjXEYq3HjRAvL6arUviZGGJsBg6z0zsWA==}
@@ -2628,10 +2641,6 @@ packages:
   is-fullwidth-code-point@3.0.0:
     resolution: {integrity: sha512-zymm5+u+sCsSWyD9qNaejV3DFvhCKclKdizYaJUuHA83RLjb7nSuGnddCHGv0hk+KY7BMAlsWeK4Ueg6EV6XQg==}
     engines: {node: '>=8'}
-
-  is-number@7.0.0:
-    resolution: {integrity: sha512-41Cifkg6e8TylSpdtTpeLVMqvSBEVzTttHvERD741+pnZ8ANv0004MRL43QKPDlK9cGvNp6NZWZUBlbGXYxxng==}
-    engines: {node: '>=0.12.0'}
 
   is-plain-obj@2.1.0:
     resolution: {integrity: sha512-YWnfyRwxL/+SsrWYfOpUtz5b3YD+nyfkHvjbcanzk8zgyO4ASD67uVMRt8k5bM4lLMDnXfriRhOpemw+NfT1eA==}
@@ -2916,10 +2925,6 @@ packages:
     engines: {node: ^22.13.0 || ^24.3.0 || >= 26.0.0}
     hasBin: true
 
-  micromatch@4.0.8:
-    resolution: {integrity: sha512-PXwfBhYu0hBCPw8Dn0E+WDYb7af3dSLVWKi3HGv84IdF4TyFoC0ysxFd0Goxw7nSv4T/PzEJQxsYsEiFCKo2BA==}
-    engines: {node: '>=8.6'}
-
   mime-db@1.52.0:
     resolution: {integrity: sha512-sPU4uV7dYlvtWJxwwxHD0PuihVNiE7TyAbQ5SWxDCB9mUYvOgroQOwYQQOKPJ8CIbE+1ETVlOoK1UC2nU3gYvg==}
     engines: {node: '>= 0.6'}
@@ -2948,6 +2953,10 @@ packages:
   minimatch@10.2.6:
     resolution: {integrity: sha512-vpLQEs+VLCr1nU0BXS07maYoFwlDAH0gngQuuttxIwutDFEMHq2blX+8vpgxDdK3J1PwjCJiep77OitTZ4Ll1A==}
     engines: {node: 18 || 20 || >=22}
+
+  minimatch@11.0.9:
+    resolution: {integrity: sha512-KCFkfyjqerNlSstjlhIGNXIKZGA/6O4V4RlhZ+Dsr621SPPw0mzlypE9D9ZOoPiVefHID+j7/XuMMlqfD/F60Q==}
+    engines: {node: 20 || >=22}
 
   mlly@1.8.2:
     resolution: {integrity: sha512-d+ObxMQFmbt10sretNDytwt85VrbkhhUA/JBGm1MPaWJ65Cl4wOgLaB1NYvJSZ0Ef03MMEU/0xpPMXUIQ29UfA==}
@@ -3075,18 +3084,6 @@ packages:
 
   picocolors@1.1.1:
     resolution: {integrity: sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==}
-
-  picomatch@2.3.2:
-    resolution: {integrity: sha512-V7+vQEJ06Z+c5tSye8S+nHUfI51xoXIXjHQ99cQtKUkQqqO1kO/KCJUfZXuB47h/YBlDhah2H3hdUGXn8ie0oA==}
-    engines: {node: '>=8.6'}
-
-  picomatch@4.0.5:
-    resolution: {integrity: sha512-RvwwcruNjI1ncT5xRakeyS9Lf8lcItv34KD+aif+VH9kduAyfYBipGh12274xtenIPZ119/R9BdTBa8gAwSh0A==}
-    engines: {node: '>=12'}
-
-  picomatch@4.0.7:
-    resolution: {integrity: sha512-qcJu88Q2IWqJsDD529JKMdwGm/dvInW4HvQnRwiH9JtihJvzGOscDtHE3x1pBKeUOTysQ8kVmLnJ2kJu7yhcGA==}
-    engines: {node: '>=12'}
 
   pino-abstract-transport@3.0.0:
     resolution: {integrity: sha512-wlfUczU+n7Hy/Ha5j9a/gZNy7We5+cXp8YL+X+PG8S0KXxw7n/JXA3c46Y0zQznIJ83URJiwy7Lh56WLokNuxg==}
@@ -3596,10 +3593,6 @@ packages:
 
   tmpl@1.0.5:
     resolution: {integrity: sha512-3f0uOEAQwIqGuWW2MVzYg8fV/QNnc/IpuJNG837rLuczAaLVHslWHZQj4IGiEl5Hs3kkbhwL9Ab7Hrsmuj+Smw==}
-
-  to-regex-range@5.0.1:
-    resolution: {integrity: sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==}
-    engines: {node: '>=8.0'}
 
   toad-cache@3.7.4:
     resolution: {integrity: sha512-m1TdR/rvT7kgGJZhspNtXdsdYk0fddFpJJFlG5s+UkPFo6lkLoZ3YLOaovPYjq1R75NP5JfeTlSHaOsE09peCg==}
@@ -4517,7 +4510,7 @@ snapshots:
 
   '@expo-google-fonts/ibm-plex-mono@0.4.1': {}
 
-  '@expo/cli@58.1.21(@expo/dom-webview@58.0.2)(@expo/metro-runtime@58.0.17)(expo-constants@58.0.16)(expo-font@58.0.12(expo@58.0.26)(react-native@0.88.1(@babel/core@7.29.7(supports-color@8.1.1))(@react-native/metro-config@0.88.1(@babel/core@7.29.7(supports-color@8.1.1))(supports-color@8.1.1))(@types/react@19.3.0)(react@19.3.0)(supports-color@8.1.1))(react@19.3.0))(expo-router@58.0.32)(expo@58.0.26)(react-dom@19.3.0(react@19.3.0))(react-native@0.88.1(@babel/core@7.29.7(supports-color@8.1.1))(@react-native/metro-config@0.88.1(@babel/core@7.29.7(supports-color@8.1.1))(supports-color@8.1.1))(@types/react@19.3.0)(react@19.3.0)(supports-color@8.1.1))(react@19.3.0)(supports-color@8.1.1)(typescript@6.0.3)':
+  '@expo/cli@58.1.21(patch_hash=1ad2f78131e963afdb4b429be96ed5e95350fcc22bc7b84485d68035b24c748f)(@expo/dom-webview@58.0.2)(@expo/metro-runtime@58.0.17)(expo-constants@58.0.16)(expo-font@58.0.12(expo@58.0.26)(react-native@0.88.1(@babel/core@7.29.7(supports-color@8.1.1))(@react-native/metro-config@0.88.1(@babel/core@7.29.7(supports-color@8.1.1))(supports-color@8.1.1))(@types/react@19.3.0)(react@19.3.0)(supports-color@8.1.1))(react@19.3.0))(expo-router@58.0.32)(expo@58.0.26)(react-dom@19.3.0(react@19.3.0))(react-native@0.88.1(@babel/core@7.29.7(supports-color@8.1.1))(@react-native/metro-config@0.88.1(@babel/core@7.29.7(supports-color@8.1.1))(supports-color@8.1.1))(@types/react@19.3.0)(react@19.3.0)(supports-color@8.1.1))(react@19.3.0)(supports-color@8.1.1)(typescript@6.0.3)':
     dependencies:
       2g: 1.0.1(typescript@6.0.3)
       '@expo/code-signing-certificates': 0.0.7
@@ -4531,7 +4524,7 @@ snapshots:
       '@expo/log-box': 58.0.15(@expo/dom-webview@58.0.2)(expo@58.0.26)(react-native@0.88.1(@babel/core@7.29.7(supports-color@8.1.1))(@react-native/metro-config@0.88.1(@babel/core@7.29.7(supports-color@8.1.1))(supports-color@8.1.1))(@types/react@19.3.0)(react@19.3.0)(supports-color@8.1.1))(react@19.3.0)
       '@expo/log-box-utils': 58.0.2
       '@expo/metro': 58.0.0(supports-color@8.1.1)
-      '@expo/metro-config': 58.0.23(expo@58.0.26)(supports-color@8.1.1)(typescript@6.0.3)
+      '@expo/metro-config': 58.0.23(patch_hash=2a447e47dece87fdb0b03810227b5714feabeac71c82a2092f6c689378ab48f5)(expo@58.0.26)(supports-color@8.1.1)(typescript@6.0.3)
       '@expo/metro-file-map': 58.0.6(supports-color@8.1.1)(typescript@6.0.3)
       '@expo/osascript': 2.8.1
       '@expo/package-manager': 1.14.2
@@ -4544,6 +4537,7 @@ snapshots:
       '@expo/spawn-async': 1.8.0
       '@expo/ws-tunnel': 2.0.1(ws@8.21.3)
       '@expo/xcpretty': 4.4.7
+      '@keepitgreen/build-glob': link:scripts/glob-adapter
       '@react-native/asset-utils': 0.88.1
       '@react-native/dev-middleware': 0.88.1(supports-color@8.1.1)
       '@react-native/js-polyfills': 0.88.1
@@ -4565,7 +4559,6 @@ snapshots:
       node-forge: 1.4.2
       npm-package-arg: 11.0.3
       ora: 3.4.0
-      picomatch: 4.0.7(patch_hash=b874de120678edf28d1eda9539418d1d4827281967fb94d81e4b5cc2ba829d19)
       pretty-format: 29.7.0
       progress: 2.0.3
       prompts: 2.4.2
@@ -4577,7 +4570,7 @@ snapshots:
       stacktrace-parser: 0.1.11
       structured-headers: 0.4.1
       terminal-link: 2.1.1
-      tinyglobby: 0.2.17
+      tinyglobby: 0.2.17(patch_hash=e9ac4bf58da22e3f4bdc3e222a5fafe4824021fd13140ac9407c987925708643)
       toqr: 0.1.1
       wrap-ansi: 7.0.0
       ws: 8.21.3
@@ -4612,7 +4605,7 @@ snapshots:
       debug: 4.4.3(supports-color@8.1.1)
       semver: 7.8.5
       slugify: 1.6.9
-      tinyglobby: 0.2.17
+      tinyglobby: 0.2.17(patch_hash=e9ac4bf58da22e3f4bdc3e222a5fafe4824021fd13140ac9407c987925708643)
       xcode: 4.0.0
       xml2js: 0.6.0
     transitivePeerDependencies:
@@ -4722,7 +4715,7 @@ snapshots:
     optionalDependencies:
       expo: 58.0.26(@babel/core@7.29.7(supports-color@8.1.1))(@expo/dom-webview@58.0.2)(@expo/metro-runtime@58.0.17)(expo-router@58.0.32)(react-dom@19.3.0(react@19.3.0))(react-native-web@0.21.4(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react-native-worklets@0.13.0(@babel/core@7.29.7(supports-color@8.1.1))(@react-native/metro-config@0.88.1(@babel/core@7.29.7(supports-color@8.1.1))(supports-color@8.1.1))(react-native@0.88.1(@babel/core@7.29.7(supports-color@8.1.1))(@react-native/metro-config@0.88.1(@babel/core@7.29.7(supports-color@8.1.1))(supports-color@8.1.1))(@types/react@19.3.0)(react@19.3.0)(supports-color@8.1.1))(react@19.3.0)(supports-color@8.1.1))(react-native@0.88.1(@babel/core@7.29.7(supports-color@8.1.1))(@react-native/metro-config@0.88.1(@babel/core@7.29.7(supports-color@8.1.1))(supports-color@8.1.1))(@types/react@19.3.0)(react@19.3.0)(supports-color@8.1.1))(react@19.3.0)(supports-color@8.1.1)(typescript@6.0.3)
 
-  '@expo/metro-config@58.0.23(expo@58.0.26)(supports-color@8.1.1)(typescript@6.0.3)':
+  '@expo/metro-config@58.0.23(patch_hash=2a447e47dece87fdb0b03810227b5714feabeac71c82a2092f6c689378ab48f5)(expo@58.0.26)(supports-color@8.1.1)(typescript@6.0.3)':
     dependencies:
       2g: 1.0.1(typescript@6.0.3)
       '@babel/code-frame': 7.29.7
@@ -4739,6 +4732,7 @@ snapshots:
       '@jridgewell/remapping': 2.3.5
       '@jridgewell/sourcemap-codec': 1.5.5
       '@jridgewell/trace-mapping': 0.3.31
+      '@keepitgreen/build-glob': link:scripts/glob-adapter
       '@react-native/js-polyfills': 0.88.1
       browserslist: 4.28.8
       chalk: 4.1.2
@@ -4747,10 +4741,9 @@ snapshots:
       jsc-safe-url: 0.2.4
       lightningcss: 1.33.0
       noxcturnal: 0.1.14
-      picomatch: 4.0.7(patch_hash=b874de120678edf28d1eda9539418d1d4827281967fb94d81e4b5cc2ba829d19)
       postcss: 8.5.32
       resolve-from: 5.0.0
-      tinyglobby: 0.2.17
+      tinyglobby: 0.2.17(patch_hash=e9ac4bf58da22e3f4bdc3e222a5fafe4824021fd13140ac9407c987925708643)
     optionalDependencies:
       expo: 58.0.26(@babel/core@7.29.7(supports-color@8.1.1))(@expo/dom-webview@58.0.2)(@expo/metro-runtime@58.0.17)(expo-router@58.0.32)(react-dom@19.3.0(react@19.3.0))(react-native-web@0.21.4(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react-native-worklets@0.13.0(@babel/core@7.29.7(supports-color@8.1.1))(@react-native/metro-config@0.88.1(@babel/core@7.29.7(supports-color@8.1.1))(supports-color@8.1.1))(react-native@0.88.1(@babel/core@7.29.7(supports-color@8.1.1))(@react-native/metro-config@0.88.1(@babel/core@7.29.7(supports-color@8.1.1))(supports-color@8.1.1))(@types/react@19.3.0)(react@19.3.0)(supports-color@8.1.1))(react@19.3.0)(supports-color@8.1.1))(react-native@0.88.1(@babel/core@7.29.7(supports-color@8.1.1))(@react-native/metro-config@0.88.1(@babel/core@7.29.7(supports-color@8.1.1))(supports-color@8.1.1))(@types/react@19.3.0)(react@19.3.0)(supports-color@8.1.1))(react@19.3.0)(supports-color@8.1.1)(typescript@6.0.3)
     transitivePeerDependencies:
@@ -4792,7 +4785,7 @@ snapshots:
       metro-cache-key: 0.87.1
       metro-config: 0.87.1(supports-color@8.1.1)
       metro-core: 0.87.1
-      metro-file-map: 0.87.1(supports-color@8.1.1)
+      metro-file-map: 0.87.1(patch_hash=0dedebc7dc3d10af31ea41a02c7d0c98f3fa2570c1e1cc40aa1f70664083a01d)(supports-color@8.1.1)
       metro-minify-terser: 0.87.1
       metro-resolver: 0.87.1
       metro-runtime: 0.87.1
@@ -4947,6 +4940,8 @@ snapshots:
       yaml: 2.9.0
     transitivePeerDependencies:
       - supports-color
+
+  '@isaacs/nonrecursive-glob-match@1.1.0': {}
 
   '@isaacs/ttlcache@1.4.1': {}
 
@@ -5219,7 +5214,7 @@ snapshots:
       flow-parser: 0.327.0
       invariant: 2.2.4
       nullthrows: 1.1.1
-      tinyglobby: 0.2.17
+      tinyglobby: 0.2.17(patch_hash=e9ac4bf58da22e3f4bdc3e222a5fafe4824021fd13140ac9407c987925708643)
       yargs: 17.7.3
 
   '@react-native/community-cli-plugin@0.88.1(@react-native/metro-config@0.88.1(@babel/core@7.29.7(supports-color@8.1.1))(supports-color@8.1.1))(supports-color@8.1.1)':
@@ -5482,7 +5477,7 @@ snapshots:
       obug: 2.1.4
       std-env: 4.2.0
       tinyrainbow: 3.1.1
-      vitest: 4.1.12(@types/node@24.13.3)(@vitest/coverage-v8@4.1.12)(vite@8.3.5(@types/node@24.13.3)(esbuild@0.27.7)(terser@5.49.2)(tsx@4.21.0)(yaml@2.9.0))
+      vitest: 4.1.12(patch_hash=8ab92b767460a59da73a4eaa9db78f885a588d39ce1af48221d71de61edc6fab)(@types/node@24.13.3)(@vitest/coverage-v8@4.1.12)(vite@8.3.5(patch_hash=8e6148feea5b73ee5da62b6da7039519d5dec704616e1fbade273f9e6b85768c)(@types/node@24.13.3)(esbuild@0.27.7)(terser@5.49.2)(tsx@4.21.0)(yaml@2.9.0))
 
   '@vitest/expect@4.1.12':
     dependencies:
@@ -5493,13 +5488,13 @@ snapshots:
       chai: 6.2.2
       tinyrainbow: 3.1.1
 
-  '@vitest/mocker@4.1.12(vite@8.3.5(@types/node@24.13.3)(esbuild@0.27.7)(terser@5.49.2)(tsx@4.21.0)(yaml@2.9.0))':
+  '@vitest/mocker@4.1.12(vite@8.3.5(patch_hash=8e6148feea5b73ee5da62b6da7039519d5dec704616e1fbade273f9e6b85768c)(@types/node@24.13.3)(esbuild@0.27.7)(terser@5.49.2)(tsx@4.21.0)(yaml@2.9.0))':
     dependencies:
       '@vitest/spy': 4.1.12
       estree-walker: 3.0.3
       magic-string: 0.30.21
     optionalDependencies:
-      vite: 8.3.5(@types/node@24.13.3)(esbuild@0.27.7)(terser@5.49.2)(tsx@4.21.0)(yaml@2.9.0)
+      vite: 8.3.5(patch_hash=8e6148feea5b73ee5da62b6da7039519d5dec704616e1fbade273f9e6b85768c)(@types/node@24.13.3)(esbuild@0.27.7)(terser@5.49.2)(tsx@4.21.0)(yaml@2.9.0)
 
   '@vitest/pretty-format@4.1.12':
     dependencies:
@@ -5722,10 +5717,6 @@ snapshots:
   brace-expansion@5.0.12:
     dependencies:
       balanced-match: 4.0.4
-
-  braces@3.0.3:
-    dependencies:
-      fill-range: 7.1.1
 
   browserslist@4.28.8:
     dependencies:
@@ -6191,7 +6182,7 @@ snapshots:
   expo@58.0.26(@babel/core@7.29.7(supports-color@8.1.1))(@expo/dom-webview@58.0.2)(@expo/metro-runtime@58.0.17)(expo-router@58.0.32)(react-dom@19.3.0(react@19.3.0))(react-native-web@0.21.4(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react-native-worklets@0.13.0(@babel/core@7.29.7(supports-color@8.1.1))(@react-native/metro-config@0.88.1(@babel/core@7.29.7(supports-color@8.1.1))(supports-color@8.1.1))(react-native@0.88.1(@babel/core@7.29.7(supports-color@8.1.1))(@react-native/metro-config@0.88.1(@babel/core@7.29.7(supports-color@8.1.1))(supports-color@8.1.1))(@types/react@19.3.0)(react@19.3.0)(supports-color@8.1.1))(react@19.3.0)(supports-color@8.1.1))(react-native@0.88.1(@babel/core@7.29.7(supports-color@8.1.1))(@react-native/metro-config@0.88.1(@babel/core@7.29.7(supports-color@8.1.1))(supports-color@8.1.1))(@types/react@19.3.0)(react@19.3.0)(supports-color@8.1.1))(react@19.3.0)(supports-color@8.1.1)(typescript@6.0.3):
     dependencies:
       '@babel/runtime': 7.29.7
-      '@expo/cli': 58.1.21(@expo/dom-webview@58.0.2)(@expo/metro-runtime@58.0.17)(expo-constants@58.0.16)(expo-font@58.0.12(expo@58.0.26)(react-native@0.88.1(@babel/core@7.29.7(supports-color@8.1.1))(@react-native/metro-config@0.88.1(@babel/core@7.29.7(supports-color@8.1.1))(supports-color@8.1.1))(@types/react@19.3.0)(react@19.3.0)(supports-color@8.1.1))(react@19.3.0))(expo-router@58.0.32)(expo@58.0.26)(react-dom@19.3.0(react@19.3.0))(react-native@0.88.1(@babel/core@7.29.7(supports-color@8.1.1))(@react-native/metro-config@0.88.1(@babel/core@7.29.7(supports-color@8.1.1))(supports-color@8.1.1))(@types/react@19.3.0)(react@19.3.0)(supports-color@8.1.1))(react@19.3.0)(supports-color@8.1.1)(typescript@6.0.3)
+      '@expo/cli': 58.1.21(patch_hash=1ad2f78131e963afdb4b429be96ed5e95350fcc22bc7b84485d68035b24c748f)(@expo/dom-webview@58.0.2)(@expo/metro-runtime@58.0.17)(expo-constants@58.0.16)(expo-font@58.0.12(expo@58.0.26)(react-native@0.88.1(@babel/core@7.29.7(supports-color@8.1.1))(@react-native/metro-config@0.88.1(@babel/core@7.29.7(supports-color@8.1.1))(supports-color@8.1.1))(@types/react@19.3.0)(react@19.3.0)(supports-color@8.1.1))(react@19.3.0))(expo-router@58.0.32)(expo@58.0.26)(react-dom@19.3.0(react@19.3.0))(react-native@0.88.1(@babel/core@7.29.7(supports-color@8.1.1))(@react-native/metro-config@0.88.1(@babel/core@7.29.7(supports-color@8.1.1))(supports-color@8.1.1))(@types/react@19.3.0)(react@19.3.0)(supports-color@8.1.1))(react@19.3.0)(supports-color@8.1.1)(typescript@6.0.3)
       '@expo/config': 58.0.12(supports-color@8.1.1)(typescript@6.0.3)
       '@expo/config-plugins': 58.0.13(supports-color@8.1.1)(typescript@6.0.3)
       '@expo/devtools': 58.0.2(expo@58.0.26)(react-native@0.88.1(@babel/core@7.29.7(supports-color@8.1.1))(@react-native/metro-config@0.88.1(@babel/core@7.29.7(supports-color@8.1.1))(supports-color@8.1.1))(@types/react@19.3.0)(react@19.3.0)(supports-color@8.1.1))(react@19.3.0)
@@ -6200,7 +6191,7 @@ snapshots:
       '@expo/log-box': 58.0.15(@expo/dom-webview@58.0.2)(expo@58.0.26)(react-native@0.88.1(@babel/core@7.29.7(supports-color@8.1.1))(@react-native/metro-config@0.88.1(@babel/core@7.29.7(supports-color@8.1.1))(supports-color@8.1.1))(@types/react@19.3.0)(react@19.3.0)(supports-color@8.1.1))(react@19.3.0)
       '@expo/log-box-utils': 58.0.2
       '@expo/metro': 58.0.0(supports-color@8.1.1)
-      '@expo/metro-config': 58.0.23(expo@58.0.26)(supports-color@8.1.1)(typescript@6.0.3)
+      '@expo/metro-config': 58.0.23(patch_hash=2a447e47dece87fdb0b03810227b5714feabeac71c82a2092f6c689378ab48f5)(expo@58.0.26)(supports-color@8.1.1)(typescript@6.0.3)
       '@ungap/structured-clone': 1.3.3
       babel-preset-expo: 58.0.26(@babel/core@7.29.7(supports-color@8.1.1))(@babel/runtime@7.29.7)(expo@58.0.26)(react-refresh@0.14.2)(supports-color@8.1.1)
       expo-asset: 58.0.21(expo@58.0.26)(react-native@0.88.1(@babel/core@7.29.7(supports-color@8.1.1))(@react-native/metro-config@0.88.1(@babel/core@7.29.7(supports-color@8.1.1))(supports-color@8.1.1))(@types/react@19.3.0)(react@19.3.0)(supports-color@8.1.1))(react@19.3.0)(supports-color@8.1.1)(typescript@6.0.3)
@@ -6300,15 +6291,11 @@ snapshots:
     transitivePeerDependencies:
       - encoding
 
-  fdir@6.5.0(picomatch@4.0.5(patch_hash=31f97c13bcfdd44cd7b68af9dfcb3ce43a850acd3a0a3c27dacd9d75b50a6063)):
-    optionalDependencies:
-      picomatch: 4.0.5(patch_hash=31f97c13bcfdd44cd7b68af9dfcb3ce43a850acd3a0a3c27dacd9d75b50a6063)
+  fdir@6.5.0(patch_hash=285173763b441bb04f26809ce0bd2f9728c2f5addb4fbc62d9d29ed323d67ceb):
+    dependencies:
+      '@keepitgreen/build-glob': link:scripts/glob-adapter
 
   fetch-nodeshim@0.4.10: {}
-
-  fill-range@7.1.1:
-    dependencies:
-      to-regex-range: 5.0.1
 
   finalhandler@1.1.2(supports-color@8.1.1):
     dependencies:
@@ -6432,8 +6419,6 @@ snapshots:
 
   is-fullwidth-code-point@3.0.0: {}
 
-  is-number@7.0.0: {}
-
   is-plain-obj@2.1.0: {}
 
   is-wsl@2.2.0:
@@ -6457,14 +6442,14 @@ snapshots:
 
   jest-get-type@29.6.3: {}
 
-  jest-util@29.7.0:
+  jest-util@29.7.0(patch_hash=1ab2269dd951ef40534406185a3e9196bd8fbc7bf463f2b9ea6b7525c4dd8717):
     dependencies:
       '@jest/types': 29.6.3
+      '@keepitgreen/build-glob': link:scripts/glob-adapter
       '@types/node': 24.13.3
       chalk: 4.1.2
       ci-info: 3.9.0
       graceful-fs: 4.2.11
-      picomatch: 2.3.2(patch_hash=692b4676f2e4fa9d867b927cd265775aad56b7b45da894bee7f5bb18444d6117)
 
   jest-validate@29.7.0:
     dependencies:
@@ -6478,7 +6463,7 @@ snapshots:
   jest-worker@29.7.0:
     dependencies:
       '@types/node': 24.13.3
-      jest-util: 29.7.0
+      jest-util: 29.7.0(patch_hash=1ab2269dd951ef40534406185a3e9196bd8fbc7bf463f2b9ea6b7525c4dd8717)
       merge-stream: 2.0.0
       supports-color: 8.1.1
 
@@ -6670,15 +6655,15 @@ snapshots:
       lodash.throttle: 4.1.1
       metro-resolver: 0.87.1
 
-  metro-file-map@0.87.1(supports-color@8.1.1):
+  metro-file-map@0.87.1(patch_hash=0dedebc7dc3d10af31ea41a02c7d0c98f3fa2570c1e1cc40aa1f70664083a01d)(supports-color@8.1.1):
     dependencies:
+      '@keepitgreen/build-glob': link:scripts/glob-adapter
       debug: 4.4.3(supports-color@8.1.1)
       fb-watchman: 2.0.2
       flow-enums-runtime: 0.0.6
       graceful-fs: 4.2.11
       invariant: 2.2.4
       jest-worker: 29.7.0
-      micromatch: 4.0.8
       nullthrows: 1.1.1
     transitivePeerDependencies:
       - supports-color
@@ -6778,7 +6763,7 @@ snapshots:
       metro-cache-key: 0.87.1
       metro-config: 0.87.1(supports-color@8.1.1)
       metro-core: 0.87.1
-      metro-file-map: 0.87.1(supports-color@8.1.1)
+      metro-file-map: 0.87.1(patch_hash=0dedebc7dc3d10af31ea41a02c7d0c98f3fa2570c1e1cc40aa1f70664083a01d)(supports-color@8.1.1)
       metro-resolver: 0.87.1
       metro-runtime: 0.87.1
       metro-source-map: 0.87.1(supports-color@8.1.1)
@@ -6796,11 +6781,6 @@ snapshots:
       - bufferutil
       - supports-color
       - utf-8-validate
-
-  micromatch@4.0.8:
-    dependencies:
-      braces: 3.0.3
-      picomatch: 2.3.2(patch_hash=692b4676f2e4fa9d867b927cd265775aad56b7b45da894bee7f5bb18444d6117)
 
   mime-db@1.52.0: {}
 
@@ -6820,6 +6800,11 @@ snapshots:
 
   minimatch@10.2.6:
     dependencies:
+      brace-expansion: 5.0.12
+
+  minimatch@11.0.9:
+    dependencies:
+      '@isaacs/nonrecursive-glob-match': 1.1.0
       brace-expansion: 5.0.12
 
   mlly@1.8.2:
@@ -6936,12 +6921,6 @@ snapshots:
   pathe@2.0.3: {}
 
   picocolors@1.1.1: {}
-
-  picomatch@2.3.2(patch_hash=692b4676f2e4fa9d867b927cd265775aad56b7b45da894bee7f5bb18444d6117): {}
-
-  picomatch@4.0.5(patch_hash=31f97c13bcfdd44cd7b68af9dfcb3ce43a850acd3a0a3c27dacd9d75b50a6063): {}
-
-  picomatch@4.0.7(patch_hash=b874de120678edf28d1eda9539418d1d4827281967fb94d81e4b5cc2ba829d19): {}
 
   pino-abstract-transport@3.0.0:
     dependencies:
@@ -7164,7 +7143,7 @@ snapshots:
       scheduler: 0.28.0
       semver: 7.8.5
       stacktrace-parser: 0.1.11
-      tinyglobby: 0.2.17
+      tinyglobby: 0.2.17(patch_hash=e9ac4bf58da22e3f4bdc3e222a5fafe4824021fd13140ac9407c987925708643)
       whatwg-fetch: 3.6.20
       ws: 7.5.13
       yargs: 17.7.3
@@ -7439,7 +7418,7 @@ snapshots:
       lines-and-columns: 1.2.4
       mz: 2.7.0
       pirates: 4.0.7
-      tinyglobby: 0.2.17
+      tinyglobby: 0.2.17(patch_hash=e9ac4bf58da22e3f4bdc3e222a5fafe4824021fd13140ac9407c987925708643)
       ts-interface-checker: 0.1.13
 
   supports-color@5.5.0:
@@ -7495,18 +7474,14 @@ snapshots:
 
   tinyexec@1.3.0: {}
 
-  tinyglobby@0.2.17:
+  tinyglobby@0.2.17(patch_hash=e9ac4bf58da22e3f4bdc3e222a5fafe4824021fd13140ac9407c987925708643):
     dependencies:
-      fdir: 6.5.0(picomatch@4.0.5(patch_hash=31f97c13bcfdd44cd7b68af9dfcb3ce43a850acd3a0a3c27dacd9d75b50a6063))
-      picomatch: 4.0.5(patch_hash=31f97c13bcfdd44cd7b68af9dfcb3ce43a850acd3a0a3c27dacd9d75b50a6063)
+      '@keepitgreen/build-glob': link:scripts/glob-adapter
+      fdir: 6.5.0(patch_hash=285173763b441bb04f26809ce0bd2f9728c2f5addb4fbc62d9d29ed323d67ceb)
 
   tinyrainbow@3.1.1: {}
 
   tmpl@1.0.5: {}
-
-  to-regex-range@5.0.1:
-    dependencies:
-      is-number: 7.0.0
 
   toad-cache@3.7.4: {}
 
@@ -7537,7 +7512,7 @@ snapshots:
       source-map: 0.7.6
       sucrase: 3.35.1
       tinyexec: 0.3.2
-      tinyglobby: 0.2.17
+      tinyglobby: 0.2.17(patch_hash=e9ac4bf58da22e3f4bdc3e222a5fafe4824021fd13140ac9407c987925708643)
       tree-kill: 1.2.2
     optionalDependencies:
       postcss: 8.5.32
@@ -7600,13 +7575,13 @@ snapshots:
 
   vary@1.1.2: {}
 
-  vite@8.3.5(@types/node@24.13.3)(esbuild@0.27.7)(terser@5.49.2)(tsx@4.21.0)(yaml@2.9.0):
+  vite@8.3.5(patch_hash=8e6148feea5b73ee5da62b6da7039519d5dec704616e1fbade273f9e6b85768c)(@types/node@24.13.3)(esbuild@0.27.7)(terser@5.49.2)(tsx@4.21.0)(yaml@2.9.0):
     dependencies:
+      '@keepitgreen/build-glob': link:scripts/glob-adapter
       lightningcss: 1.33.0
-      picomatch: 4.0.7(patch_hash=b874de120678edf28d1eda9539418d1d4827281967fb94d81e4b5cc2ba829d19)
       postcss: 8.5.32
       rolldown: 1.2.15
-      tinyglobby: 0.2.17
+      tinyglobby: 0.2.17(patch_hash=e9ac4bf58da22e3f4bdc3e222a5fafe4824021fd13140ac9407c987925708643)
     optionalDependencies:
       '@types/node': 24.13.3
       esbuild: 0.27.7
@@ -7615,10 +7590,11 @@ snapshots:
       tsx: 4.21.0
       yaml: 2.9.0
 
-  vitest@4.1.12(@types/node@24.13.3)(@vitest/coverage-v8@4.1.12)(vite@8.3.5(@types/node@24.13.3)(esbuild@0.27.7)(terser@5.49.2)(tsx@4.21.0)(yaml@2.9.0)):
+  vitest@4.1.12(patch_hash=8ab92b767460a59da73a4eaa9db78f885a588d39ce1af48221d71de61edc6fab)(@types/node@24.13.3)(@vitest/coverage-v8@4.1.12)(vite@8.3.5(patch_hash=8e6148feea5b73ee5da62b6da7039519d5dec704616e1fbade273f9e6b85768c)(@types/node@24.13.3)(esbuild@0.27.7)(terser@5.49.2)(tsx@4.21.0)(yaml@2.9.0)):
     dependencies:
+      '@keepitgreen/build-glob': link:scripts/glob-adapter
       '@vitest/expect': 4.1.12
-      '@vitest/mocker': 4.1.12(vite@8.3.5(@types/node@24.13.3)(esbuild@0.27.7)(terser@5.49.2)(tsx@4.21.0)(yaml@2.9.0))
+      '@vitest/mocker': 4.1.12(vite@8.3.5(patch_hash=8e6148feea5b73ee5da62b6da7039519d5dec704616e1fbade273f9e6b85768c)(@types/node@24.13.3)(esbuild@0.27.7)(terser@5.49.2)(tsx@4.21.0)(yaml@2.9.0))
       '@vitest/pretty-format': 4.1.12
       '@vitest/runner': 4.1.12
       '@vitest/snapshot': 4.1.12
@@ -7629,13 +7605,12 @@ snapshots:
       magic-string: 0.30.21
       obug: 2.1.4
       pathe: 2.0.3
-      picomatch: 4.0.5(patch_hash=31f97c13bcfdd44cd7b68af9dfcb3ce43a850acd3a0a3c27dacd9d75b50a6063)
       std-env: 4.2.0
       tinybench: 2.9.0
       tinyexec: 1.3.0
-      tinyglobby: 0.2.17
+      tinyglobby: 0.2.17(patch_hash=e9ac4bf58da22e3f4bdc3e222a5fafe4824021fd13140ac9407c987925708643)
       tinyrainbow: 3.1.1
-      vite: 8.3.5(@types/node@24.13.3)(esbuild@0.27.7)(terser@5.49.2)(tsx@4.21.0)(yaml@2.9.0)
+      vite: 8.3.5(patch_hash=8e6148feea5b73ee5da62b6da7039519d5dec704616e1fbade273f9e6b85768c)(@types/node@24.13.3)(esbuild@0.27.7)(terser@5.49.2)(tsx@4.21.0)(yaml@2.9.0)
       why-is-node-running: 2.3.0
     optionalDependencies:
       '@types/node': 24.13.3

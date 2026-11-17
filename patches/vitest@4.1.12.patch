@@ -1,0 +1,52 @@
+diff --git a/dist/chunks/cli-api.B0Pz1_R7.js b/dist/chunks/cli-api.B0Pz1_R7.js
+index f3ac9b14803fb8bdae42ecb712f5e62db72efbcc..e59fbb6a7823a0372d3d406bf49505174c4cea37 100644
+--- a/dist/chunks/cli-api.B0Pz1_R7.js
++++ b/dist/chunks/cli-api.B0Pz1_R7.js
+@@ -37,7 +37,7 @@ import { c as createBirpc } from './index.Chj8NDwU.js';
+ import { i as isBuiltin, t as toBuiltin } from './modules.BJuCwlRJ.js';
+ import { fork } from 'node:child_process';
+ import { Worker } from 'node:worker_threads';
+-import pm from 'picomatch';
++import pm from '@keepitgreen/build-glob';
+ import { glob, isDynamicPattern } from 'tinyglobby';
+ import { performance as performance$1 } from 'node:perf_hooks';
+ import require$$0$3 from 'events';
+diff --git a/dist/chunks/coverage.DM_a_rWm.js b/dist/chunks/coverage.DM_a_rWm.js
+index 0e039440d46cadf3057f1937c0552670a7ec1b53..593b0a02d04254fb422ac1dcf8cd56424871a976 100644
+--- a/dist/chunks/coverage.DM_a_rWm.js
++++ b/dist/chunks/coverage.DM_a_rWm.js
+@@ -4,7 +4,7 @@ import path from 'node:path';
+ import { pathToFileURL, fileURLToPath } from 'node:url';
+ import { slash, shuffle, toArray, cleanUrl } from '@vitest/utils/helpers';
+ import { resolve, relative, normalize, join } from 'pathe';
+-import pm from 'picomatch';
++import pm from '@keepitgreen/build-glob';
+ import { glob } from 'tinyglobby';
+ import c from 'tinyrainbow';
+ import { c as configDefaults, e as benchmarkConfigDefaults, a as coverageConfigDefaults } from './defaults.9aQKnqFk.js';
+diff --git a/dist/coverage.js b/dist/coverage.js
+index c11a76351852bd56ea64a75c748228c3ace12dfd..ee9489b975fbdda32c6e2d6975fac14c5dd8b6ea 100644
+--- a/dist/coverage.js
++++ b/dist/coverage.js
+@@ -5,7 +5,7 @@ import 'node:path';
+ import 'node:url';
+ import '@vitest/utils/helpers';
+ import 'pathe';
+-import 'picomatch';
++import '@keepitgreen/build-glob';
+ import 'tinyglobby';
+ import 'tinyrainbow';
+ import './chunks/defaults.9aQKnqFk.js';
+diff --git a/dist/node.js b/dist/node.js
+index 826aa63b1306868436afed6a0227b4297b3579ee..7c5953d56d651c25ae240153dd8c92b9a316d2a3 100644
+--- a/dist/node.js
++++ b/dist/node.js
+@@ -45,7 +45,7 @@ import './chunks/index.Chj8NDwU.js';
+ import './chunks/modules.BJuCwlRJ.js';
+ import 'node:child_process';
+ import 'node:worker_threads';
+-import 'picomatch';
++import '@keepitgreen/build-glob';
+ import 'tinyglobby';
+ import 'node:perf_hooks';
+ import 'events';

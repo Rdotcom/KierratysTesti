@@ -1,8 +1,8 @@
 # External blockers
 
-- HIGH GHSA-fc5q-39xc-vjpf: no official fixed picomatch release identified.
-  Local mitigation is tested, but unchanged raw audit still fails. Dependency
-  maintainer owns official-release adoption and revalidation; see ../security.md.
+- Picomatch no longer blocks the migration's local audit: the implementation is
+  removed, not exempted. Test-branch GitHub proof remains engineering validation.
+  Main merge needs separate owner authorization; test publication alone is not it.
 - Physical Samsung acceptance is unperformed: no device available. Emulator
   evidence does not certify its camera, permissions, accessibility or performance.
 - Public production hosting, store accounts/submission and applicable privacy/

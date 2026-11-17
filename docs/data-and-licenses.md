@@ -18,6 +18,11 @@
   Oma koodi tekee esikäsittelyn, vertailun, epävarmuuden hallinnan ja ohjevalinnan.
   Mallien, JPEG-käsittelyn, tokenizerien ja muiden mukana jaettavien osien
   lisenssit/notices säilyvät natiiviresursseissa ja palvelimen mallipaketissa.
+- **Rakennustyökalujen glob-moottori:** Minimatch 11 ja
+  @isaacs/nonrecursive-glob-match ovat BlueOak-1.0.0-lisensoituja.
+  https://blueoakcouncil.org/license/1.0.0.
+  Riippuvuuksien alkuperäiset LICENSE-tiedostot säilyvät. Oma sovitin ei sisällä
+  picomatchin koodia; kahdeksan MIT-työkalun sovitukset ovat patches-kansiossa.
 
 Lähteiden lisenssit eivät muutu tämän projektin lähdekoodilisenssiksi.
 Puuttuvaa tietoa, vastaanottopaikkaa tai tuotteen materiaalia ei keksitä.

@@ -1,0 +1,13 @@
+diff --git a/build/serializer/sideEffects.js b/build/serializer/sideEffects.js
+index 48fad7fdf30766405ed789822a85bf27097ae418..fc19637dbcb9cb2445389d81949ad03a123d4c85 100644
+--- a/build/serializer/sideEffects.js
++++ b/build/serializer/sideEffects.js
+@@ -51,7 +51,7 @@ function _path() {
+     return data;
+ }
+ function _picomatch() {
+-    const data = /*#__PURE__*/ _interop_require_default(require("picomatch"));
++    const data = /*#__PURE__*/ _interop_require_default(require("@keepitgreen/build-glob"));
+     _picomatch = function() {
+         return data;
+     };

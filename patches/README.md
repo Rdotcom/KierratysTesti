@@ -1,57 +1,51 @@
-# Picomatch local security hardening
+# Nonrecursive build-glob migration
 
-Review date: 2026-11-17. Advisory: [GHSA-fc5q-39xc-vjpf](https://github.com/advisories/GHSA-fc5q-39xc-vjpf), CVE-2026-112366, **high**.
+Reviewed 2026-11-17. Picomatch/Micromatch are removed from the installed graph,
+not renamed or assigned a fictitious fixed version. The original adapter
+in scripts/glob-adapter delegates matching to Minimatch 11.0.9's nonrecursive
+engine. No picomatch parser, regexp compiler or lib/utils is retained.
 
-The registry currently has no fixed release (latest 4.0.7). These are local
-`pnpm patch` changes, **not** an upstream-approved release or a complete security
-certification. Package versions/integrities remain truthful. The unchanged audit
-policy still fails this advisory; do not add an exception or claim production GO.
+## Source patches and dependency metadata
 
-## Origin and scope
+Pinned pnpm patches change imports in @expo/cli 58.1.21, @expo/metro-config
+58.0.23, Vite 8.3.5, Vitest 4.1.12, tinyglobby 0.2.17, fdir 6.5.0,
+jest-util 29.7.0 and metro-file-map 0.87.1. Their upstream versions,
+registry integrities and installed licences remain unchanged.
+The version-scoped .pnpmfile.cjs readPackage hook replaces their dependency
+edges with the real @keepitgreen/build-glob workspace package.
+It does not modify audit results or arbitrary packages. Future tool versions
+require a new source review; an unreviewed picomatch edge fails regression tests.
+pnpm records patch and hook checksums in the frozen lockfile.
 
-- Original MIT picomatch parser: tags 2.3.2, 4.0.5 and 4.0.7.
-- Based on the single-branch repeated-wildcard analysis and quantifier-collapse
-  idea in unmerged [PR 246](https://github.com/micromatch/picomatch/pull/246),
-  head `f03bec2c02e46f063fbfdc161aae1d0f854b2565`, and
-  [PR 237](https://github.com/micromatch/picomatch/pull/237),
-  head `1bf0d04563cb9ce568cf36efc5f6b7187d9911d5`.
-- Local additions distinguish wildcard from quoted/escaped/bracket literal
-  stars and extglob operators. Simple separator-free branches with a real star
-  lose the ambiguous outer repetition. Positive ASCII member classes, `?` and
-  within-segment repeated stars are included because narrower PR 246 still
-  times out on these variants. Existing nested-star handling is retained.
-- New advanced-star forms (paths, nested expressions, complex classes, escaped
-  components) and `capture: true` use the parser's existing **literal fallback**.
-  This intentionally changes matching for those forms, rather than emit a
-  potentially unsafe expression or claim preservation of repeated captures.
-- The upstream `maxExtglobRecursion: false` explicit security opt-out remains
-  an opt-out. This mitigation does not certify that mode, arbitrary regex
-  expressions, all other ReDoS families, or unbounded attacker-controlled input.
-  No application caller introduces that option. Do not use it for untrusted globs.
+Vite's optional resolveId regexp prefilter is removed. Its authoritative
+assetsInclude/URL handler and fs.deny protection remain and are integration-tested.
+No fake regexp/source object or match-everything substitute is used.
 
-All three patches change only `lib/parse.js`. The application, model, native
-binaries and sorting data are unchanged. A running Node process must restart to
-discard its old loaded parser. A frozen install applies the patches automatically;
-never repair `node_modules` manually or rewrite published package versions.
-Git attributes keep patch files LF-stable on Windows, preserving pnpm SHA-256
-values even when the developer uses core.autocrlf.
+## Supported contract and bounds
 
-## Verification and retirement
+The adapter implements the inspected consumers' boolean factory, arrays,
+isMatch, some, negation state and path scan (base/parts/isGlob).
+It handles dotfiles, nocase, basename, Windows input separators, braces,
+extglobs, exclusions and zero-depth trailing /**. It is not an implementation
+of every public picomatch API. Capture, contains and bash modes fail explicitly.
+The noextglob/noglobstar switches follow literal/single-level semantics;
+old picomatch regexp fast-path exceptions for these switches are not retained.
+No application configuration depends on those exceptions.
 
-`node --test scripts/__tests__/picomatch-hardening.test.mjs` checks patch hashes,
-all locked runtime edges, actual Expo/Metro/Vite/tinyglobby/micromatch resolution,
-ordinary matching, capture/literal fallback and 585 adverse matches in bounded subprocesses.
-The child probes have heap/output/deadline bounds; they do not attack a service.
+Inputs, pattern count, syntax/nesting, brace expansion and path depth are bounded.
+The linear lexer rejects excessive work before the third-party expander.
+Tests retain the original repeated-extglob attack families, positive controls,
+malformed input, real Expo/Jest/Metro/tinyglobby/fdir/Vite contracts and a
+5,544-comparison frozen baseline. A separate 52,672-comparison repository-path
+check passed. Neither bounded tests nor a clean advisory scan prove universal
+algorithmic security or device/store readiness.
 
-See [security status and boundaries](../docs/security.md)
-and [test evidence](../docs/testing.md) for original-versus-patched
-measurements, upstream compatibility suites, intentional limits and run receipts.
+Run pnpm install --frozen-lockfile, pnpm validate, pnpm security:audit,
+Expo Doctor and all-platform exports after a tool or adapter change.
+The high/critical audit policy and its advisory regression tests are unchanged.
+See [current evidence](../docs/testing.md) and [security boundaries](../docs/security.md).
 
-When a supported fixed release is available, review it against the advisory,
-update every dependency line, remove only superseded patch mappings/files with
-pnpm, and retain the regression suite adapted to the fixed versions. Repeat frozen
-install, raw audit, full validation, Expo health and all-platform JS exports.
-Only an actual clean audit and remaining release requirements can clear NO-GO.
-
-Original MIT copyright/permission notice: [picomatch-MIT.txt](picomatch-MIT.txt).
-Installed package LICENSE files are not modified.
+Upstream tool source is MIT-licensed and its notices remain in installed packages.
+Minimatch 11 and @isaacs/nonrecursive-glob-match use BlueOak-1.0.0:
+https://blueoakcouncil.org/license/1.0.0.
+The adapter is project-original code, not relicensed upstream picomatch code.

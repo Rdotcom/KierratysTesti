@@ -2,6 +2,7 @@ packages:
   - mobile/*
   - backend/*
   - shared/*
+  - scripts/glob-adapter
 
 # Owner explicitly disabled the release-age waiting period on 2026-11-17.
 # Keep frozen lockfile, integrity, build-script and vulnerability checks enabled.
@@ -22,6 +23,11 @@ onlyBuiltDependencies:
   - esbuild
 
 patchedDependencies:
-  picomatch@2.3.2: patches/picomatch@2.3.2.patch
-  picomatch@4.0.5: patches/picomatch@4.0.5.patch
-  picomatch@4.0.7: patches/picomatch@4.0.7.patch
+  '@expo/cli@58.1.21': patches/@expo__cli@58.1.21.patch
+  '@expo/metro-config@58.0.23': patches/@expo__metro-config@58.0.23.patch
+  fdir@6.5.0: patches/fdir@6.5.0.patch
+  jest-util@29.7.0: patches/jest-util@29.7.0.patch
+  metro-file-map@0.87.1: patches/metro-file-map@0.87.1.patch
+  tinyglobby@0.2.17: patches/tinyglobby@0.2.17.patch
+  vite@8.3.5: patches/vite@8.3.5.patch
+  vitest@4.1.12: patches/vitest@4.1.12.patch

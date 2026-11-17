@@ -1,0 +1,26 @@
+diff --git a/src/watchers/common.js b/src/watchers/common.js
+index 2f8187838907df3fac3f16949c8f16f02c111ea8..38442ee657edf4380c072bc5ae1af369affc59d8 100644
+--- a/src/watchers/common.js
++++ b/src/watchers/common.js
+@@ -11,7 +11,7 @@ exports.TOUCH_EVENT =
+ exports.includedByGlob = includedByGlob;
+ exports.posixPathMatchesPattern = void 0;
+ exports.typeFromStat = typeFromStat;
+-var _micromatch = _interopRequireDefault(require("micromatch"));
++var _micromatch = _interopRequireDefault(require("@keepitgreen/build-glob"));
+ var _nodePath = _interopRequireDefault(require("node:path"));
+ function _interopRequireDefault(e) {
+   return e && e.__esModule ? e : { default: e };
+diff --git a/src/watchers/common.js.flow b/src/watchers/common.js.flow
+index 10e35277c12bb3e47dc5863ec091bce0083d2196..b14be094e240b338169004434da6792aad0477b7 100644
+--- a/src/watchers/common.js.flow
++++ b/src/watchers/common.js.flow
+@@ -18,7 +18,7 @@ import type {ChangeEventMetadata} from '../flow-types';
+ import type {Stats} from 'node:fs';
+ 
+ // $FlowFixMe[untyped-import] - Write libdefs for `micromatch`
+-import micromatch from 'micromatch';
++import micromatch from '@keepitgreen/build-glob';
+ import path from 'node:path';
+ 
+ /**

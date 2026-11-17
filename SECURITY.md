@@ -7,6 +7,6 @@ public issues.
 Do not access unrelated data or test denial-of-service payloads against live
 services. Use bounded local reproductions.
 
-Known dependency findings and the local picomatch mitigation are documented in
+Known dependency findings and the nonrecursive glob migration are documented in
 [docs/security.md](docs/security.md). This project is not approved for public
 production distribution.

@@ -34,6 +34,7 @@
     "validate": "pnpm check:boundaries && pnpm format:check && pnpm lint && pnpm typecheck && pnpm test && pnpm build"
   },
   "devDependencies": {
+    "@keepitgreen/build-glob": "workspace:*",
     "@biomejs/biome": "2.5.7",
     "@playwright/test": "1.65.1",
     "@types/node": "24.13.3",

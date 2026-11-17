@@ -1,0 +1,26 @@
+diff --git a/dist/index.cjs b/dist/index.cjs
+index c93b23393d316a44a19b6821e69afad47b714101..cb61f70a4a5d38589a22105369d9bcd4da6ace16 100644
+--- a/dist/index.cjs
++++ b/dist/index.cjs
+@@ -25,7 +25,7 @@ let fs = require("fs");
+ let path = require("path");
+ let url = require("url");
+ let fdir = require("fdir");
+-let picomatch = require("picomatch");
++let picomatch = require("@keepitgreen/build-glob");
+ picomatch = __toESM(picomatch, 1);
+ //#region src/utils.ts
+ const isReadonlyArray = Array.isArray;
+diff --git a/dist/index.mjs b/dist/index.mjs
+index f5db1ed7627736963cec8db6d5ec0b3c6f5915ff..64f481a0733fc7e634e044358d5a148aa43ee06b 100644
+--- a/dist/index.mjs
++++ b/dist/index.mjs
+@@ -2,7 +2,7 @@ import { readdir, readdirSync, realpath, realpathSync, stat, statSync } from "fs
+ import { isAbsolute, posix, resolve } from "path";
+ import { fileURLToPath } from "url";
+ import { fdir } from "fdir";
+-import picomatch from "picomatch";
++import picomatch from "@keepitgreen/build-glob";
+ //#region src/utils.ts
+ const isReadonlyArray = Array.isArray;
+ const BACKSLASHES = /\\/g;
