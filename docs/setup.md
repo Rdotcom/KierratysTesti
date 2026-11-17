@@ -91,5 +91,5 @@ Laiteallekirjoitus ja asentaminen edellyttävät omaa Xcode-/Android-ympäristö
 Valinnainen tavallinen tuotehaku-API käynnistyy `pnpm dev:backend`.
 Tämä komento voi lukea palvelimen paikallisen `.env.local`-tiedoston; säilytä
 avaimet vain palvelimella. Älä aseta salaisuuksia `EXPO_PUBLIC_*`-muuttujiin.
-Kuvantunnistuksen oma SigLIP2-palvelin ei käytä OpenAI-avainta tai maksullista
+Erillinen OpenAI-tunnistus on poistettu. Oma SigLIP2-palvelin ei käytä avainta tai maksullista
 tunnistuspalvelua. Verkkotuotehaku ja ulkoinen kartta voivat tarvita internetin.

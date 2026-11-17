@@ -83,13 +83,20 @@ describe("localization", () => {
     expect(translate("en", "homeMaterials")).toBe("Popular searches");
   });
 
-  it("makes photo recipients, retention, inference and exhausted-credit recovery explicit in both languages", () => {
+  it("removes retired paid-provider actions and disclosures in both languages", () => {
     for (const language of ["fi", "en"] as const) {
-      expect(translate(language, "photoPrivacy")).toContain("OpenAI");
-      expect(translate(language, "photoPrivacy")).toContain("30");
-      expect(translate(language, "photoEstimate")).toBeTruthy();
-      expect(translate(language, "photoQuota")).toBeTruthy();
-      expect(translate(language, "photoConfirmBody")).toBeTruthy();
+      for (const key of [
+        "photoPrivacy",
+        "photoQuota",
+        "photoSend",
+        "localVisionCloud",
+        "localVisionCloudHint",
+        "localVisionCloudCost",
+      ])
+        expect(messages[language]).not.toHaveProperty(key);
+      expect(Object.values(messages[language]).join(" ")).not.toMatch(/OpenAI/u);
+      expect(translate(language, "networkConsent")).toBeTruthy();
+      expect(translate(language, "localVisionPrivacy")).toBeTruthy();
     }
   });
   it("keeps Finnish and English key sets in parity", () => {

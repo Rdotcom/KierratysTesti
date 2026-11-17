@@ -1,4 +1,5 @@
-import { maxPhotoBase64Length, maxPhotoBytes } from "./photo-recognition";
+export const maxPhotoBytes = 1_500_000;
+export const maxPhotoBase64Length = 2_000_000;
 
 const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 

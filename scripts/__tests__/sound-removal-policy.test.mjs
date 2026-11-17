@@ -36,8 +36,9 @@ test("custom sound and haptic feature, assets, dependencies and settings are rem
   }
 });
 test("visual and screen-reader feedback remain after removing sound", () => {
-  for (const file of ["local-photo.tsx", "photo.tsx", "nearby.tsx", "overview.tsx"])
+  for (const file of ["local-photo.tsx", "nearby.tsx", "overview.tsx"])
     assert.match(read(`mobile/app/src/app/${file}`), /announceAccessibility/);
+  assert.match(read("mobile/app/src/app/photo.tsx"), /<Redirect href="\/local-photo" \/>/u);
   assert.match(read("mobile/app/src/components/recycle-action.tsx"), /await recordRecycling/);
   assert.match(read("mobile/app/src/app/legal.tsx"), /await clearAllLocalData/);
 });

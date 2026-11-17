@@ -13,7 +13,7 @@ import {
   normalizeLocalVisionResult,
   parseLocalMaterialCodeCandidate,
 } from "../local-vision";
-import { photoModel, PhotoResultSchema } from "../photo-recognition";
+import { NetworkResultSchema } from "../network-recognition";
 
 type ClassUpdate = {
   identifier: (typeof localVisionSupportedIdentifiers)[number];
@@ -181,8 +181,7 @@ describe("local vision V2 boundary", () => {
     });
     expect(result.durationMs).toBe(123.5);
     expect(LocalVisionResultSchema.safeParse(result).success).toBe(true);
-    expect(PhotoResultSchema.safeParse(result).success).toBe(false);
-    expect(photoModel).toBe("gpt-4.1-mini-2025-04-14");
+    expect(NetworkResultSchema.safeParse(result).success).toBe(false);
   });
 
   it("accepts explicitly reported fallback classification revision 1", () => {

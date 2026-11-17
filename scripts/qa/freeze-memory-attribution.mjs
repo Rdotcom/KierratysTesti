@@ -42,7 +42,7 @@ const walk = (dir) => {
 };
 for (const file of [
   "mobile/app/src/app/local-photo.tsx",
-  "mobile/app/src/features/photo/sorting.ts",
+  "mobile/app/src/features/camera/capture.ts",
 ]) {
   const to = path.join(archive, path.basename(file));
   fs.copyFileSync(path.join(root, file), to, fs.constants.COPYFILE_EXCL);

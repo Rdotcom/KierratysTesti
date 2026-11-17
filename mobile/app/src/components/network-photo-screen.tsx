@@ -16,7 +16,7 @@ import {
   networkRecognitionClient as client,
   networkRecognitionOrigin as origin,
 } from "@/features/network-recognition/config";
-import { localPhotoInitialSize, resolvePhotoCaptureSize } from "@/features/photo/sorting";
+import { localPhotoInitialSize, resolvePhotoCaptureSize } from "@/features/camera/capture";
 import { useLanguage } from "@/i18n/language-context";
 import { ExpoGoRecognition } from "./expo-go-recognition";
 import { ObjectCandidateResultView } from "./object-candidate-result";

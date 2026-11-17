@@ -1,7 +1,7 @@
 import { ProductResolutionService } from "@kierratysappi/application";
-import { OpenAiPhotoRecognizer, OpenFoodFactsProvider } from "@kierratysappi/data-providers";
+import { OpenFoodFactsProvider } from "@kierratysappi/data-providers";
 import { buildApp } from "./app";
-import { allowPhotoRecognition, parseEnvironment } from "./config";
+import { parseEnvironment } from "./config";
 
 const environment = parseEnvironment(process.env);
 const service = new ProductResolutionService({
@@ -10,11 +10,6 @@ const service = new ProductResolutionService({
   ],
 });
 const app = await buildApp({
-  ...(allowPhotoRecognition(environment, Boolean(process.env.OPENAI_API_KEY))
-    ? {
-        photoRecognizer: new OpenAiPhotoRecognizer({ apiKey: process.env.OPENAI_API_KEY ?? "" }),
-      }
-    : {}),
   lookupService: service,
   allowedWebOrigins: environment.WEB_ALLOWED_ORIGINS,
   logger: environment.LOG_LEVEL === "silent" ? false : { level: environment.LOG_LEVEL },

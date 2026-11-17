@@ -84,10 +84,6 @@ export default function LegalScreen() {
         </AppText>
         <AppText>{t("networkConsent")}</AppText>
         <AppText>{t("networkHttpNotice")}</AppText>
-        <AppText variant="heading" accessibilityRole="header">
-          {t("localVisionCloud")}
-        </AppText>
-        <AppText>{t("photoPrivacy")}</AppText>
       </DocumentSection>
       <DocumentSection>
         <AppText variant="heading">{t("deleteLocalData")}</AppText>

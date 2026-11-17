@@ -46,28 +46,30 @@ test("native recognition uses local bounded Vision work and per-class operating 
   assert.match(module, /AsyncFunction\("recognize"\)/);
 });
 
-test("cloud fee disclosure remains specific to the explicit separate cloud entry", () => {
-  const screen = local();
-  assert.match(screen, /t\("localVisionCloudCost"\)/);
+test("paid cloud entry and disclosures are removed without removing local or own-server privacy", () => {
+  assert.doesNotMatch(
+    local(),
+    /localVisionCloud|local-photo-cloud-action|router\.push\("\/photo"\)/u,
+  );
   const messages = source("mobile/localization/src/local-vision.ts");
-  assert.match(messages, /maksullista rajapintaa/);
-  assert.match(messages, /paid API/);
+  assert.doesNotMatch(messages, /localVisionCloud|OpenAI|paid API|maksullista rajapintaa/u);
   const privacy = source("mobile/app/src/app/legal.tsx");
-  assert.match(privacy, /t\("localVisionPrivacy"\)/);
-  assert.match(privacy, /t\("localVisionCloud"\)/);
+  assert.match(privacy, /t\("localVisionPrivacy"\)/u);
+  assert.match(privacy, /t\("networkConsent"\)/u);
+  assert.doesNotMatch(privacy, /localVisionCloud|photoPrivacy/u);
 });
 
 // Source-policy checks supplement pure/native tests and browser interaction;
 // they are not physical camera, recognition accuracy or a network packet audit.
-test("the AI entry defaults to local recognition, with cloud available only by a named separate action", () => {
+test("the AI entry uses the shared free recognition flow without a paid alternate action", () => {
   const identify = source("mobile/app/src/app/identify.tsx");
   assert.match(identify, /router\.push\("\/local-photo"\)/);
   assert.doesNotMatch(identify, /router\.push\("\/photo"\)/);
   const screen = local();
-  assert.match(screen, /testID="local-photo-cloud-action"/);
-  assert.match(screen, /label=\{t\("localVisionCloud"\)\}/);
-  assert.match(screen, /accessibilityHint=\{t\("localVisionCloudHint"\)\}/);
-  assert.match(screen, /onPress=\{\(\) => router\.push\("\/photo"\)\}/);
+  assert.doesNotMatch(
+    screen,
+    /local-photo-cloud-action|localVisionCloud|router\.push\("\/photo"\)/u,
+  );
   assert.doesNotMatch(
     screen,
     /photoAvailable|requestPhoto|features\/photo\/api|fetch\(|XMLHttpRequest|WebSocket|https?:\/\//,
@@ -179,7 +181,7 @@ test("local estimates do not infer sorting, and marking navigation still require
   assert.doesNotMatch(markingScreen, /useFocusEffect/);
 });
 
-test("FI and EN local copy keep image inference, material checking, unavailable recovery and cloud recipient explicit", () => {
+test("FI and EN retain image inference, material checking and unavailable recovery without paid copy", () => {
   const messages = source("mobile/localization/src/local-vision.ts");
   const en = messages.indexOf("export const localVisionEn:");
   assert.ok(en > 0);
@@ -194,13 +196,11 @@ test("FI and EN local copy keep image inference, material checking, unavailable 
       "localVisionMarkingHint",
       "localVisionConflicting",
       "localVisionSource",
-      "localVisionCloud",
-      "localVisionCloudHint",
       "localVisionBusy",
       "localVisionTimeout",
     ])
       assert.match(block, new RegExp(`\\b${key}:`));
-    assert.match(block, /OpenAI/);
+    assert.doesNotMatch(block, /OpenAI/);
     assert.match(block, /Apple Vision/);
     assert.match(block, /ei varmista|does not verify/);
     assert.match(block, /ei varmennettu|not verified/);

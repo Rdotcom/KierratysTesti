@@ -9,7 +9,6 @@ import { navigationEn, navigationFi } from "./navigation";
 import { nearbyEn, nearbyFi } from "./nearby";
 import { objectCandidatesEn, objectCandidatesFi } from "./object-candidates";
 import { overviewEn, overviewFi } from "./overview";
-import { photoEn, photoFi } from "./photo";
 import { regionEn, regionFi } from "./region";
 
 const fi = {
@@ -22,7 +21,6 @@ const fi = {
   ...localVisionFi,
   ...guideSearchFi,
   ...navigationFi,
-  ...photoFi,
   ...nearbyFi,
   ...overviewFi,
   appName: "KeepItGreen",
@@ -242,7 +240,6 @@ const en: Record<keyof typeof fi, string> = {
   ...localVisionEn,
   ...guideSearchEn,
   ...navigationEn,
-  ...photoEn,
   ...nearbyEn,
   ...overviewEn,
   appName: "KeepItGreen",

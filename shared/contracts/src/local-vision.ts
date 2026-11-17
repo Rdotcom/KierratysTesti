@@ -373,7 +373,7 @@ function normalizeObjectGuess(
     : { status: "unknown", reason: "no_operating_point_match" };
 }
 
-/** Independent local observation contract: never masquerade as an OpenAI PhotoEstimate. */
+/** Independent local observation contract: never masquerade as a server observation. */
 export function normalizeLocalVisionResult(input: unknown): LocalVisionResult {
   const parsed = NativeLocalVisionResultSchema.safeParse(input);
   if (!parsed.success) return { status: "unavailable", reason: "invalid_response" };

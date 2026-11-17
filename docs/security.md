@@ -21,6 +21,9 @@ kuvioiden turvallisuutta. Uudet työkalupäivitykset vaativat uuden sovitusarvio
 
 ## Yksityisyys ja palvelimet
 
+- OpenAI-kuvatunnistus on poistettu: ei palvelinkutsua, käynnistysavainta,
+  käyttökytkintä tai vanhoja photo-/photo-capabilities-HTTP-reittejä.
+  Vanha sovelluksen /photo-linkki ohjaa nykyiseen maksuttomaan tunnistukseen.
 - Käyttö ei vaadi käyttäjätiliä. Historia ja kierrätysmerkinnät ovat paikallisia.
 - Natiivikuva käsitellään laitteessa. Go/browser lähettää kuvan omalle palvelimelle
   vasta erillisestä hyväksynnästä. Palvelin käsittelee kuvan muistissa, ei kirjoita

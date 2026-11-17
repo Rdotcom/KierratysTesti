@@ -26,6 +26,22 @@ CodeQL:n ja salaisuuksien tarkistuksen.
   kokeillut Go:n lusikka-/materiaaliohjeen ja kielivalinnan. Android-emulaattorissa
   on tehty natiivi- ja Go-kokeita. Tämä ei ole fyysinen Samsung-hyväksyntä.
 
+## OpenAI-polun poisto 17.11.2026
+
+- Vanha /photo-linkki ohjaa /local-photo-näkymään kaikilla alustoilla.
+  OpenAI-provider, asetukset, kopiot ja maksettavia pyyntöjä tekevät QA-komennot
+  on poistettu; vanhat HTTP-reitit vastaavat 404 eikä vanha avain/kytkin aktivoi niitä.
+- Kameran koko-/lupatestit sekä JPEG:n EXIF/GPS-poisto- ja kokorajat säilyvät.
+  Maksuttoman palvelimen suostumus-, katkaisu-, kuorma- ja sopimustestit säilyvät.
+- Paikallinen validate läpäisee 2 093 testiä (951 Node + 1 142 workspace), koonnit,
+  tyypityksen, lintin ja rajat. Poistetun palvelun omat testit korvataan
+  poistumis-/404-regressioilla; yhteiset kamera-/kuvaturvatestit siirretään.
+- Expo Doctor 20/20, frozen install ja iOS/Android/web-JS-paketoinnit läpäisty.
+  Muuttamaton auditointi läpäisee edelleen; 22 low/moderate-löydöstä näkyy.
+- Oikea SigLIP2/Chrome: 8 tapausta, mukaan lukien vanha linkki, JPEG/PNG,
+  lupa, lusikka/metalli, FI/EN-tietosuoja, EN-pysyvyys, offline ja nolla
+  OpenAI-/vanhan photo-API:n pyyntöä. Tämä ei ole uusi natiivilaitteen asennus.
+
 ## Siivouksen rajaus
 
 Alkuperäiset 533 docs-/scripts-/juuritiedostoa on arkistoitu KeepItGreeniin ennen

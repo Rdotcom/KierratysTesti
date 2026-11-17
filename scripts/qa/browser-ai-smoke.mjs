@@ -4,6 +4,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { chromium, expect } from "@playwright/test";
 import { isContainedPath } from "../lib/contained-path.mjs";
+
 const root = fs.realpathSync(process.cwd()),
   run = path.resolve(process.argv[2] ?? "work/browser-ai-proof");
 assert(isContainedPath(path.join(root, "work"), run));
@@ -49,11 +50,23 @@ try {
   page.setDefaultTimeout(20000);
   page.on("pageerror", (error) => evidence.errors.push(error.message));
   const posts = [];
+  const forbiddenRequests = [];
   page.on("request", (request) => {
+    const url = new URL(request.url());
+    if (
+      url.hostname === "api.openai.com" ||
+      ["/v1/recycling/photo", "/v1/recycling/photo-capabilities"].includes(url.pathname)
+    )
+      forbiddenRequests.push(url.origin + url.pathname);
     if (request.method() === "POST" && request.url().endsWith("/v1/recycling/object-image"))
       posts.push(request);
   });
-  await page.goto(base + "/identify");
+  await page.goto(`${base}/photo`);
+  await expect(page).toHaveURL(/\/local-photo$/u);
+  await expect(page.getByTestId("web-image-choose")).toBeVisible();
+  await expect(page.getByTestId("local-photo-cloud-action")).toHaveCount(0);
+  evidence.cases.push("Legacy photo link redirects to the shared free recognition flow");
+  await page.goto(`${base}/identify`);
   await page.getByTestId("identify-photo-action").click();
   await expect(page.getByTestId("web-image-choose")).toBeVisible();
   assert.equal(posts.length, 0);
@@ -86,7 +99,7 @@ try {
   // A PNG exercises browser decode/canvas/re-encode, not only direct bounded JPEG reuse.
   const png = await page.evaluate(async (jpeg) => {
     const image = new Image();
-    image.src = "data:image/jpeg;base64," + jpeg;
+    image.src = `data:image/jpeg;base64,${jpeg}`;
     await image.decode();
     const canvas = document.createElement("canvas");
     canvas.width = image.width;
@@ -143,9 +156,9 @@ try {
   await page.getByTestId("network-photo-cancel").click();
   assert.equal(posts.length, 2);
   evidence.cases.push("Fake camera capture → preview → cancel, no upload");
-  await page.goto(base + "/settings");
+  await page.goto(`${base}/settings`);
   await page.getByRole("radio", { name: "English", exact: true }).click();
-  await page.goto(base + "/local-photo");
+  await page.goto(`${base}/local-photo`);
   await expect(page.getByTestId("web-image-choose")).toHaveText("Choose a photo");
   await page.reload();
   await expect(page.getByTestId("web-image-choose")).toHaveText("Choose a photo");
@@ -169,13 +182,29 @@ try {
   await expect(page.getByTestId("network-photo-error")).toContainText("Cannot reach");
   await context.setOffline(false);
   evidence.cases.push("Offline capability recovery without camera or upload");
+  for (const [language, consent] of [
+    ["fi", "Kuva lähetetään tunnistuspalvelimelle."],
+    ["en", "Your photo is sent to the recognition server."],
+  ]) {
+    await page.evaluate(
+      (value) => localStorage.setItem("@kierratysappi/language/v1", value),
+      language,
+    );
+    await page.goto(`${base}/legal`);
+    await expect(page.getByText(consent, { exact: false })).toBeVisible();
+    assert.doesNotMatch(await page.locator("body").innerText(), /OpenAI/u);
+  }
+  assert.deepEqual(forbiddenRequests, [], "No retired paid endpoint or OpenAI request");
+  evidence.cases.push(
+    "FI/EN privacy has only current recipients and no paid-provider action or request",
+  );
   assert.deepEqual(evidence.errors, []);
   await context.close();
 } finally {
   await browser.close();
   fs.writeFileSync(
     path.join(run, "browser-evidence.json"),
-    JSON.stringify(evidence, null, 2) + "\n",
+    `${JSON.stringify(evidence, null, 2)}\n`,
   );
 }
 console.log(JSON.stringify(evidence, null, 2));

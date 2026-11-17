@@ -89,10 +89,6 @@ export const localVisionFi = {
   localVisionSupplementUnavailable:
     "Täydentävä paikallinen malli ei ollut käytettävissä. Voit kokeilla viivakoodia tai tarkistaa materiaalimerkinnän käsin.",
   localVisionSourceDetail: "Malliversio ja havainnon aika",
-  localVisionCloud: "Erillinen OpenAI-kuvatunnistus",
-  localVisionCloudHint: "Avaa verkkotunnistuksen tietojen lähetyksen hyväksyntä",
-  localVisionCloudCost:
-    "Erillinen OpenAI-polku käyttää maksullista rajapintaa. Sitä ei käytetä paikallisen tunnistuksen varapalveluna.",
 };
 
 export const localVisionEn: { readonly [Key in keyof typeof localVisionFi]: string } = {
@@ -185,8 +181,4 @@ export const localVisionEn: { readonly [Key in keyof typeof localVisionFi]: stri
   localVisionSupplementUnavailable:
     "The supplemental local model was unavailable. Try a barcode or check the material marking manually.",
   localVisionSourceDetail: "Model revision and observation time",
-  localVisionCloud: "Separate OpenAI image recognition",
-  localVisionCloudHint: "Open the network recognition and image-sharing consent",
-  localVisionCloudCost:
-    "The separate OpenAI flow uses a paid API. It is not used as a fallback for local recognition.",
 };

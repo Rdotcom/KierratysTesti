@@ -2,15 +2,12 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import test from "node:test";
 const read = (p) => fs.readFileSync(p, "utf8");
-test("Expo Go routes separate opt-in own-server inference from native and paid routes", () => {
+test("Expo Go routes separate opt-in own-server inference from native; old links use the same flow", () => {
   assert.match(
     read("mobile/app/src/app/local-photo.tsx"),
     /usesNetworkRecognition\(Platform\.OS,\s*isExpoGoHost\(\)\)\s*\?\s*\(\s*<NetworkPhotoScreen \/>\s*\)\s*:\s*\(\s*<NativeLocalPhotoScreen \/>/,
   );
-  assert.match(
-    read("mobile/app/src/app/photo.tsx"),
-    /isExpoGoHost\(\) \? <ExpoGoRecognition \/> : <Native/,
-  );
+  assert.match(read("mobile/app/src/app/photo.tsx"), /<Redirect href="\/local-photo" \/>/);
   const network = read("mobile/app/src/components/network-photo-screen.tsx");
   assert.match(network, /client\.recognize\(jpeg,\s*true,\s*controller.signal\)/);
   assert.match(network, /<RecognitionConsent/);

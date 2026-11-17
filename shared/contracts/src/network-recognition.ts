@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { maxPhotoBase64Length } from "./photo-recognition";
+import { maxPhotoBase64Length } from "./photo-image";
 
 export const objectKinds = [
   "cup",

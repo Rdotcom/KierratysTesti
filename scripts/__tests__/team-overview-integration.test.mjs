@@ -55,8 +55,7 @@ test("local-model privacy and attribution coexist with team deletion confirmatio
     "localVisionTitle",
     "localVisionPrivacy",
     "localVisionModelAttribution",
-    "localVisionCloud",
-    "photoPrivacy",
+    "networkConsent",
     "localDataDeleteError",
   ])
     assert.ok(legal.includes(`t("${key}")`), `${key} retained`);

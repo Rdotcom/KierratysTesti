@@ -9,7 +9,8 @@ const { chromium } = require(modulePath);
 const base = process.env.APP_QA_URL ?? "http://127.0.0.1:8110";
 const evidence = path.resolve(process.env.APP_QA_EVIDENCE_DIR ?? "work/overview-qa");
 const storageKey = "@kierratysappi/recycling-overview/v1";
-const gtin = "3017620422003";
+// Valid synthetic test code absent from the offline product catalogue.
+const gtin = "1234567890128";
 fs.mkdirSync(evidence, { recursive: true });
 
 const provenance = {
@@ -112,27 +113,21 @@ const resolved = {
   ],
 };
 const estimate = {
-  status: "estimated",
+  status: "observed",
   observation: {
-    status: "clear",
-    label: { fi: "QA-esimerkkipurkki", en: "QA example jar" },
-    confidence: "medium",
-    risk: "ordinary_packaging",
-    parts: [
-      {
-        label: { fi: "QA-muovipurkki", en: "QA plastic jar" },
-        material: "plastic",
-        shape: "jar",
-        packagingStatus: "packaging",
-      },
-    ],
-  },
-  source: {
-    id: "openai-vision",
-    model: "gpt-4.1-mini-2025-04-14",
-    version: "photo-observation-v1",
-    observedAt: "2026-10-30T12:00:00.000Z",
-    verificationStatus: "inferred",
+    focus: "single",
+    candidates: ["jar"],
+    source: {
+      modelId: "siglip2-server-onnx-weight-int8-v1",
+      revision: "75de2d55ec2d0b4efc50b3e9ad70dba96a7b2fa2",
+      preprocessing: "siglip2-server-pillow13-rgb-bilinear224-v1",
+      checkedOn: "2026-11-16",
+      observedAt: "2026-11-17T12:00:00.000Z",
+      verification: "unverified",
+      confidence: "uncalibrated",
+      scope: "object_form_only",
+      execution: "server",
+    },
   },
 };
 const cors = {
@@ -140,7 +135,14 @@ const cors = {
   "access-control-allow-methods": "GET,POST,OPTIONS",
   "access-control-allow-headers": "content-type",
 };
-const get = (page, id) => page.getByTestId(id);
+const get = (page, id) =>
+  id.startsWith("recycle-")
+    ? page
+        .getByTestId("sorting-result-resolved")
+        .locator("..")
+        .getByTestId(id)
+        .or(page.getByTestId("object-sorting-flow").getByTestId(id))
+    : page.getByTestId(id);
 
 async function stored(page) {
   return page.evaluate((key) => {
@@ -266,14 +268,24 @@ async function largeText(page) {
         assert.equal(route.request().postDataJSON().gtin, gtin);
         return route.fulfill({ headers: cors, json: resolved });
       });
-      await context.route("**/v1/recycling/photo-capabilities", (route) =>
-        route.fulfill({ headers: cors, json: { enabled: true, consentVersion: "photo-ai-v1" } }),
+      await context.route("**/v1/recycling/object-image-capabilities", (route) =>
+        route.fulfill({
+          headers: cors,
+          json: {
+            enabled: true,
+            consentVersion: "self-hosted-image-v1",
+            modelId: "siglip2-server-onnx-weight-int8-v1",
+            execution: "server",
+            retention: "memory-only",
+            maxImageBytes: 1500000,
+          },
+        }),
       );
-      await context.route("**/v1/recycling/photo", async (route) => {
+      await context.route("**/v1/recycling/object-image", async (route) => {
         if (route.request().method() === "OPTIONS")
           return route.fulfill({ status: 204, headers: cors });
         photos++;
-        assert.equal(route.request().postDataJSON().consentVersion, "photo-ai-v1");
+        assert.equal(route.request().postDataJSON().consentVersion, "self-hosted-image-v1");
         return route.fulfill({ headers: cors, json: estimate });
       });
       const page = await context.newPage();
@@ -313,16 +325,12 @@ async function largeText(page) {
         (key) => JSON.parse(localStorage.getItem(key) ?? "null")?.counts.plastic === 1,
         storageKey,
       );
-      await page.waitForFunction(
-        () => !document.querySelector('[data-testid="recycle-mark-action"]'),
-      );
+      await get(page, "recycle-mark-action").waitFor({ state: "hidden" });
       await get(page, "recycle-overview-action").click();
       await total(page, 1);
       await page.goBack({ waitUntil: "networkidle" });
       await get(page, "product-result-screen").waitFor();
-      await page.waitForFunction(
-        () => !document.querySelector('[data-testid="recycle-mark-action"]'),
-      );
+      await get(page, "recycle-mark-action").waitFor({ state: "hidden" });
       assert.equal(
         await get(page, "recycle-mark-action").count(),
         0,
@@ -560,7 +568,13 @@ async function largeText(page) {
       await get(page, "privacy-delete-action").click();
       await get(page, "privacy-delete-confirm-action").click();
       await page.waitForFunction(() =>
-        Object.keys(localStorage).every((key) => !key.startsWith("@kierratysappi/")),
+        Object.keys(localStorage).every(
+          (key) => !key.startsWith("@kierratysappi/") || key === "@kierratysappi/language/v1",
+        ),
+      );
+      assert.equal(
+        await page.evaluate(() => localStorage.getItem("@kierratysappi/language/v1")),
+        language,
       );
       assert.equal(await page.evaluate(() => localStorage.getItem("@another-app/keep")), "keep");
       await open(page, "/overview", "overview-total");
@@ -569,21 +583,19 @@ async function largeText(page) {
       process.stdout.write(
         `${language}: layouts, corrupt-data recovery and privacy deletion passed.\n`,
       );
-      await open(page, "/photo", "photo-open-camera");
-      await get(page, "photo-open-camera").click();
-      await get(page, "photo-capture").waitFor();
-      await page.waitForFunction(() =>
-        [...document.querySelectorAll("video")].some(
-          (video) => video.readyState >= 2 && video.videoWidth > 0,
+      await open(page, "/photo", "web-image-choose");
+      assert.equal(new URL(page.url()).pathname, "/local-photo");
+      await get(page, "web-image-input").setInputFiles(
+        path.resolve(
+          "mobile/app/modules/local-vision/android/src/androidTest/assets/parity/commons-2-clean.jpg",
         ),
       );
-      await get(page, "photo-capture").click();
-      await get(page, "photo-send").click();
-      await get(page, "photo-product").waitFor();
+      await get(page, "local-photo-recognize").click();
+      await get(page, "network-photo-send").click();
+      await get(page, "object-choice-jar").click();
       assert.equal(await get(page, "recycle-mark-action").count(), 0);
-      await get(page, "photo-material-0-glass").click();
-      await get(page, "photo-conditions-0").click();
-      await get(page, "photo-confirm-0").click();
+      await get(page, "object-answer-material-glass").click();
+      await get(page, "object-answer-use-packaging").click();
       await get(page, "recycle-mark-action").click();
       await get(page, "recycle-confirm-action").click();
       await page.waitForFunction(
@@ -591,22 +603,23 @@ async function largeText(page) {
         storageKey,
       );
       const photoRecord = await stored(page);
-      assert.equal(
-        photoRecord.counts.plastic,
-        0,
-        "The confirmed correction, not AI's material, is recorded",
-      );
+      assert.equal(photoRecord.counts.plastic, 0, "Only the chosen material is recorded");
       assert.equal(photoRecord.counts.glass, 1);
-      await get(page, "photo-material-0-plastic").click();
-      await get(page, "photo-conditions-0").click();
-      await get(page, "photo-confirm-0").click();
-      await page.waitForFunction(
-        () => !document.querySelector('[data-testid="recycle-mark-action"]'),
-      );
+      await get(page, "object-sorting-back").click();
+      await get(page, "object-sorting-back").click();
+      await get(page, "object-answer-material-plastic").click();
+      await get(page, "object-answer-use-packaging").click();
+      await page
+        .getByText(
+          language === "fi" ? "Tallennettu yhteenvetoon · Lasi" : "Saved to Overview · Glass",
+          { exact: true },
+        )
+        .waitFor();
+      await get(page, "recycle-mark-action").waitFor({ state: "hidden" });
       assert.equal(
         await get(page, "recycle-mark-action").count(),
         0,
-        "Correcting an already recorded part cannot double-count it",
+        "Changing the material cannot double-count the same image",
       );
       assert.equal((await stored(page)).counts.glass, 1);
       await page
@@ -615,16 +628,8 @@ async function largeText(page) {
           { exact: true },
         )
         .waitFor();
-      await page
-        .getByText(
-          language === "fi"
-            ? "Jos kirjasit väärän materiaalin, poista merkintä yhteenvedosta ja kirjaa osa uudelleen."
-            : "If you recorded the wrong material, delete the record in Overview and record the part again.",
-          { exact: true },
-        )
-        .waitFor();
       assert.equal(photos, 1);
-      assert.equal(lookups, 2);
+      assert.equal(lookups, 1, "Repeated same-code lookup uses the local product cache");
       assert.deepEqual(errors, []);
       await context.close();
       process.stdout.write(

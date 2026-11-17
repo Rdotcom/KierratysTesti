@@ -4,12 +4,7 @@ import test from "node:test";
 const read = (file) => fs.readFileSync(`mobile/app/src/${file}`, "utf8");
 
 test("all guidance families expose explicit recording without background saves", () => {
-  for (const file of [
-    "app/result.tsx",
-    "app/component.tsx",
-    "app/photo.tsx",
-    "app/material-code.tsx",
-  ])
+  for (const file of ["app/result.tsx", "app/component.tsx", "app/material-code.tsx"])
     assert.match(read(file), /<RecycleAction/);
   for (const file of [
     "app/guide.tsx",
@@ -30,6 +25,9 @@ test("all guidance families expose explicit recording without background saves",
     "components/nearby-point-card.tsx",
   ])
     assert.doesNotMatch(read(file), /recordRecycling\(/);
+  assert.match(read("app/local-photo.tsx"), /<ObjectCandidateResultView/u);
+  assert.match(read("components/network-photo-screen.web.tsx"), /<ObjectCandidateResultView/u);
+  assert.match(read("components/object-candidate-result.tsx"), /<ObjectSortingFlowView/u);
 });
 test("unknown material selection cannot silently default or bypass confirmation", () => {
   const action = read("components/recycle-action.tsx");

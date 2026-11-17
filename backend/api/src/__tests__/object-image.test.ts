@@ -66,7 +66,7 @@ describe("self-hosted object image API", () => {
     await request;
     await vi.waitFor(() => expect(cancelled).toBe(true));
   });
-  it("is disabled by default, separate from paid photo capabilities", async () => {
+  it("is disabled by default until the own-server recognizer is configured", async () => {
     const app = await make();
     expect((await app.inject({ url: networkCapabilitiesPath })).json()).toMatchObject({
       enabled: false,

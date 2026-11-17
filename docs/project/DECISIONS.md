@@ -24,3 +24,9 @@
 - 2026-11-17: owner explicitly authorizes pushing the tested corrections to
   KierratysAppi/main. Fast-forward the verified public-parent-only migration;
   do not force-push, change KeepItGreen or infer device-installation authority.
+- 2026-11-17: owner requests removal of the separate paid OpenAI recognition
+  feature and publication to KierratysAppi. Remove executable provider/routes,
+  environment switches, obsolete contracts/copy and billable QA commands.
+  Preserve /photo as a redirect, not a second recognition implementation.
+  Native/Go/browser free paths, consent, image bounds, camera guards, stored
+  records and required third-party notices remain. Do not read/revoke stored keys.

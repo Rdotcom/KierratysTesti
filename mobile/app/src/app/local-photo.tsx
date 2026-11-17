@@ -26,7 +26,6 @@ import { OfflineProductResultView } from "@/components/offline-product-result";
 import {
   AppText,
   Button,
-  InlineLink,
   PageHeader,
   Paper,
   Screen,
@@ -54,7 +53,7 @@ import {
   canUseLocalPhotoCapture,
   localPhotoInitialSize,
   resolvePhotoCaptureSize,
-} from "@/features/photo/sorting";
+} from "@/features/camera/capture";
 import { isExpoGoHost } from "@/features/runtime/host";
 import { usesNetworkRecognition } from "@/features/runtime/network-mode";
 import { useScanSession } from "@/features/scan/session-context";
@@ -404,15 +403,6 @@ function NativeLocalPhotoScreen() {
                     testID="local-photo-material-camera"
                   />
                 )}
-                <AppText variant="small" muted>
-                  {t("localVisionCloudCost")}
-                </AppText>
-                <InlineLink
-                  label={t("localVisionCloud")}
-                  accessibilityHint={t("localVisionCloudHint")}
-                  onPress={() => router.push("/photo")}
-                  testID="local-photo-cloud-action"
-                />
               </>
             }
           />

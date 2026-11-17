@@ -2,6 +2,10 @@
 
 - The app retains mobile/backend/shared boundaries. Native image inference is
   on-device; Expo Go/browser suggestions use explicit own-computer server consent.
+- Owner-requested OpenAI retirement removes its provider, API routes/configuration,
+  UI entry, FI/EN text, contracts and paid-only QA tools. Old /photo bookmarks
+  redirect to /local-photo; old paid HTTP endpoints are absent, not a fallback.
+  Shared image sanitization and native camera guards remain independent.
 - Owner authorized main publication on 2026-11-17. KierratysAppi/main now contains
   tested migration `ec1e137` (code `774ad41`); no private experiment ancestry was shared.
 - Picomatch and Micromatch are genuinely absent from the installed graph.
@@ -10,8 +14,9 @@
 - GitHub CI 44177999529 and Security 44177999523 pass. Windows 44178058438
   passes real glob/tool contracts, frozen model parity, all-platform JS exports
   and actual Chrome/Edge consent/image/guidance/offline flows.
-- Validation: 2,125 tests, typechecking/builds, Expo Doctor 20/20; actual Mac Chrome
-  model flow passes all six cases. App UI/model/data source is unchanged.
+- Current local validation: 2,093 tests, typechecking/builds, Expo Doctor 20/20,
+  all-platform JS exports and eight actual-model Chrome cases pass. Models,
+  sorting data and persisted recycling records are unchanged by provider removal.
 - Native iPhone build 23 is unchanged. Physical Samsung, general recognition
   accuracy, memory/energy and store/production readiness are not certified.
 - Eleven concise docs and 38 byte-pinned QA protocols remain. Historical archive

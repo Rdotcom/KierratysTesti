@@ -124,17 +124,12 @@ async function main() {
         messages[language].offlineProductGuidance,
         "The current localized capture instructions must render; stale bundles cannot pass",
       );
-      for (const key of [
-        "localVisionIntro",
-        "offlineProductScope",
-        "objectCandidateIntro",
-        "localVisionCloudCost",
-      ]) {
+      for (const key of ["localVisionIntro", "offlineProductScope", "objectCandidateIntro"]) {
         const text = messages[language][key];
         assert.equal(
           await page.getByText(text, { exact: true }).count(),
           1,
-          `${language}/${key} must render current scope, uncertainty and paid-cloud disclosures`,
+          `${language}/${key} must render current scope and uncertainty`,
         );
       }
       assert.equal(await page.getByTestId("local-photo-open-camera").count(), 0);
@@ -142,7 +137,7 @@ async function main() {
       assert.equal(await page.getByTestId("local-photo-object").count(), 0);
       assert.equal(await page.getByTestId("local-photo-retake").count(), 0);
       assert.equal(await page.getByTestId("local-photo-reset").count(), 0);
-      await page.getByTestId("local-photo-cloud-action").filter({ hasText: "OpenAI" }).waitFor();
+      assert.equal(await page.getByTestId("local-photo-cloud-action").count(), 0);
       const assertPassive = async () => {
         assert.deepEqual(requests, [], "Local entry/recovery must not request an API");
         assert.equal(await page.evaluate(() => window.qaCameraCalls), 0);
@@ -325,15 +320,7 @@ async function main() {
           exact: true,
         })
         .waitFor();
-      await page
-        .getByRole("heading", {
-          name:
-            language === "fi"
-              ? "Erillinen OpenAI-kuvatunnistus"
-              : "Separate OpenAI image recognition",
-          exact: true,
-        })
-        .waitFor();
+      assert.doesNotMatch(await page.locator("body").innerText(), /OpenAI/u);
       const localPrivacy = messages[language].localVisionPrivacy;
       assert.equal(await page.getByText(localPrivacy, { exact: true }).count(), 1);
       const modelAttribution = page.getByText(messages[language].localVisionModelAttribution, {
@@ -342,17 +329,14 @@ async function main() {
       assert.equal(await modelAttribution.count(), 1);
       await modelAttribution.scrollIntoViewIfNeeded();
       await inspect(page, `${language}-privacy-model-attribution`);
-      const cloudPrivacy = page.getByText(
-        language === "fi"
-          ? /^Kuva lähetetään vain hyväksynnälläsi tämän sovelluksen palvelimen kautta OpenAI:lle\./u
-          : /^Only after your approval, the image is sent through this app's server to OpenAI\./u,
+      assert.equal(
+        await page.getByText(messages[language].networkConsent, { exact: true }).count(),
+        1,
       );
-      assert.equal(await cloudPrivacy.count(), 1);
-      assert.match(await cloudPrivacy.innerText(), /30/u);
       await page.getByTestId("privacy-delete-action").click();
       await page.getByTestId("privacy-delete-confirm-panel").waitFor();
       assert.deepEqual(await storedRecycling(page), confirmedRecord, "Opening deletion is passive");
-      await inspect(page, `${language}-privacy-local-cloud-overview-deletion`);
+      await inspect(page, `${language}-privacy-local-server-overview-deletion`);
       await page.getByTestId("privacy-delete-cancel").click();
       assert.equal(await page.getByTestId("privacy-delete-confirm-panel").count(), 0);
       assert.deepEqual(

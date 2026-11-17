@@ -4,7 +4,6 @@ const ApiEnvironmentSchema = z.object({
   NODE_ENV: z.enum(["development", "test", "production"]).default("development"),
   HOST: z.string().min(1).default("127.0.0.1"),
   PORT: z.coerce.number().int().min(1).max(65_535).default(3_000),
-  PHOTO_AI_ENABLED: z.enum(["true", "false"]).default("false"),
   LOG_LEVEL: z.enum(["fatal", "error", "warn", "info", "debug", "trace", "silent"]).default("info"),
   OFF_USER_AGENT: z
     .string()
@@ -34,12 +33,6 @@ const ApiEnvironmentSchema = z.object({
 });
 
 export type ApiEnvironment = z.infer<typeof ApiEnvironmentSchema>;
-
-export function allowPhotoRecognition(environment: ApiEnvironment, hasKey: boolean): boolean {
-  return (
-    environment.NODE_ENV === "development" && environment.PHOTO_AI_ENABLED === "true" && hasKey
-  );
-}
 
 export function parseEnvironment(environment: NodeJS.ProcessEnv): ApiEnvironment {
   const parsed = ApiEnvironmentSchema.parse(environment);

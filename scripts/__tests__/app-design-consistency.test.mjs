@@ -46,7 +46,7 @@ test("Home presentation derives from the same live light and dark palettes as al
   assert.match(ui, /backgroundColor: palette\.bgSurface/);
 });
 
-test("all fifteen functional subpages use shared text and navigation without legacy sans overrides", () => {
+test("all fourteen functional subpages use shared text and navigation; the old photo route redirects", () => {
   for (const route of [
     "identify",
     "settings",
@@ -60,7 +60,6 @@ test("all fifteen functional subpages use shared text and navigation without leg
     "history",
     "feedback",
     "legal",
-    "photo",
     "local-photo",
     "overview",
   ]) {
@@ -72,6 +71,7 @@ test("all fifteen functional subpages use shared text and navigation without leg
   }
   for (const component of ["ui", "packaging-mark"])
     assert.doesNotMatch(mobile(`components/${component}.tsx`), /Atkinson_/);
+  assert.match(mobile("app/photo.tsx"), /<Redirect href="\/local-photo" \/>/u);
 });
 
 test("compact subpage branding is decorative and leaves labelled back controls scalable", () => {
@@ -138,16 +138,15 @@ test("camera and inference screens retain focused capture contrast and explicit 
   const scan = mobile("app/scan.tsx");
   assert.match(scan, /backgroundColor: palette\.cameraOverlay/);
   assert.match(scan, /color="#FFFFFF"/);
-  const photo = mobile("app/photo.tsx");
+  const photo = mobile("app/local-photo.tsx");
   for (const affordance of [
-    "photoPrivacy",
-    "photoSend",
-    "photoEstimate",
-    "photoSelectMaterial",
-    "photoConfirmBody",
+    "localVisionPrivacy",
+    "localVisionEstimate",
+    "localVisionSource",
+    "ObjectCandidateResultView",
   ])
-    assert.ok(photo.includes(`"${affordance}"`), `${affordance} remains visible in the flow`);
-  assert.match(photo, /<SortingResultCard\b/);
+    assert.ok(photo.includes(affordance), `${affordance} remains visible in the flow`);
+  assert.match(photo, /<ObjectCandidateResultView\b/);
   assert.doesNotMatch(photo, /<ScanIllustration|<PhotoCardBackdrop/);
 });
 

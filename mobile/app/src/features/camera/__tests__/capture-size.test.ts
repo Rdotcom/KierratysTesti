@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { localPhotoInitialSize, resolvePhotoCaptureSize } from "../sorting";
+import { localPhotoInitialSize, resolvePhotoCaptureSize } from "../capture";
+
 describe("bounded local camera startup", () => {
   it("starts at the same720p preset previously negotiated on iOS, not full Photo", async () => {
     expect(localPhotoInitialSize).toBe("1280x720");

@@ -28,26 +28,16 @@ test("own-server recognition is explicit, ephemeral, bounded and separate from p
   assert.match(read("mobile/app/src/app/legal.tsx"), /networkConsent/);
 });
 
-test("photo entry passes the real native constants to the tested compatibility guard", () => {
-  const screen = read("mobile/app/src/app/photo.tsx");
-  assert.match(screen, /canUsePhotoCapture\(Platform\.OS, Constants\)/u);
+test("native photo entry passes real installed constants to the camera guard", () => {
+  const screen = read("mobile/app/src/app/local-photo.tsx");
+  assert.match(screen, /canUseLocalPhotoCapture\(Platform\.OS, Constants, available\)/u);
   assert.doesNotMatch(screen, /Constants\.nativeBuildVersion|Constants\.expoConfig/u);
-  assert.match(screen, /photoOpening/u);
 });
 
-test("photo upload is a separate explicit preview action, with metadata removal and cancellation", () => {
+test("legacy photo links redirect without camera, upload or paid provider code", () => {
   const screen = read("mobile/app/src/app/photo.tsx");
-  assert.match(screen, /phase !== "preview"/u);
-  assert.match(screen, /preparePhotoBase64/u);
-  assert.match(screen, /removeCapture\(picture.uri\)/u);
-  assert.match(screen, /pending.current\?\.abort/u);
-  assert.match(screen, /state === "background"/u);
-  assert.match(screen, /photoSend/u);
-  assert.doesNotMatch(screen, /addHistoryEntry|AsyncStorage|trackTechnicalEvent/u);
-  assert.doesNotMatch(
-    read("mobile/app/src/features/photo/api.ts"),
-    /OPENAI_API_KEY|api.openai.com/u,
-  );
+  assert.match(screen, /<Redirect href="\/local-photo" \/>/u);
+  assert.doesNotMatch(screen, /useCameraPermissions|fetch\(|requestPhoto|OpenAI|CameraView/u);
 });
 
 test("native permission purpose includes both barcode and explicitly approved image recognition", () => {
@@ -83,14 +73,18 @@ test("standalone development client describes the real local product server in F
     assert.doesNotMatch(purpose, /Dev Launcher|discover/u);
 });
 
-test("paid photo boundary is development-only, bounded and separate from normal lookup logging/cache", () => {
-  const config = read("backend/api/src/config.ts");
-  assert.match(config, /NODE_ENV === "development"/u);
-  const routes = read("backend/api/src/photo-routes.ts");
-  assert.match(routes, /admitted >= 20/u);
-  assert.match(routes, /active >= 2/u);
-  assert.match(routes, /max: 3/u);
-  assert.match(routes, /no-store/u);
-  assert.doesNotMatch(routes, /request.log|console\.|writeFile|cache\.set/u);
-  assert.match(read("backend/data-providers/src/photo-recognition.ts"), /store: false/u);
+test("server startup and public exports cannot enable the removed paid implementation", () => {
+  for (const path of [
+    "backend/api/src/server.ts",
+    "backend/api/src/config.ts",
+    "backend/api/src/app.ts",
+    "backend/data-providers/src/index.ts",
+  ]) {
+    assert.doesNotMatch(
+      read(path),
+      /OpenAiPhotoRecognizer|OPENAI_API_KEY|PHOTO_AI_ENABLED|registerPhotoRoutes|photoRecognizer/u,
+    );
+  }
+  assert.doesNotMatch(read("backend/api/.env.example"), /OPENAI|PHOTO_AI/u);
+  assert.doesNotMatch(read("shared/contracts/package.json"), /photo-recognition/u);
 });
