@@ -57,7 +57,15 @@ raportoi tunnetun high-löydöksen; sitä ei ohitettu (korvaus kuvataan alla).
   JS-export ei ole natiivi iOS-/Android-koonti tai fyysinen Samsung-hyväksyntä.
 - Muuttamaton security:audit läpäisee: 0 high/critical; 22 low/moderate
   raportoidaan edelleen. Ei poikkeusta, version vääristelyä tai scannerin vaihtoa.
-- GitHubin CI/Windows-ajo odottaa testihaaran julkaisua; main ei ole muuttunut.
+- Lähde `774ad41` testihaarassa: [CI 44177999529](https://github.com/roopeaal/KierratysAppi/actions/runs/44177999529)
+  läpäisee kaikki kolme osaa, 2 125 testiä, koonnit, Doctorin ja muuttamattoman auditoinnin.
+  [Security 44177999523](https://github.com/roopeaal/KierratysAppi/actions/runs/44177999523)
+  läpäisee CodeQL:n ja salaisuustarkistuksen.
+- [Windows 44178058438](https://github.com/roopeaal/KierratysAppi/actions/runs/44178058438):
+  oikeat glob-sovitukset, frozen install, mallin JPEG-pariteetti, kaikki kolme
+  JS-exportia sekä todelliset Chrome- ja Edge-mallipolut läpäisty.
+  PR-kohtainen dependency-review ei kuulu push-ajoon; PR:ää ei ole avattu.
+- Main on edelleen `5fa2557`. Puhelimen asennusta tai KeepItGreen-repoa ei muutettu.
 
 Kuvantunnistuksen yleinen luotettavuus, kaikki materiaalit/alueet, oikean
 Samsungin kamera ja pitkäaikainen muistinkulutus eivät ole näillä testeillä

@@ -19,3 +19,5 @@
   Vite retains its authoritative asset and fs.deny predicates without a regexp
   prefilter. Explicit noextglob/noglobstar switches do not retain old regexp
   fast-path exceptions; actual app configuration and default-contract parity pass.
+- Validate the public-parent-only test source before any main decision; GitHub
+  CI/Security/Windows evidence is recorded without changing the audit policy.
