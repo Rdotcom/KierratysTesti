@@ -6,6 +6,7 @@
   UI entry, FI/EN text, contracts and paid-only QA tools. Old /photo bookmarks
   redirect to /local-photo; old paid HTTP endpoints are absent, not a fallback.
   Shared image sanitization and native camera guards remain independent.
+  Removal source `f0b3349` is published in KierratysAppi/main; no native reinstall.
 - Owner authorized main publication on 2026-11-17. KierratysAppi/main now contains
   tested migration `ec1e137` (code `774ad41`); no private experiment ancestry was shared.
 - Picomatch and Micromatch are genuinely absent from the installed graph.
@@ -17,6 +18,8 @@
 - Current local validation: 2,093 tests, typechecking/builds, Expo Doctor 20/20,
   all-platform JS exports and eight actual-model Chrome cases pass. Models,
   sorting data and persisted recycling records are unchanged by provider removal.
+  Independent FI/EN Overview browser checks also pass after migrating photo
+  fixtures to the free protocol, including material correction without duplicates.
 - Native iPhone build 23 is unchanged. Physical Samsung, general recognition
   accuracy, memory/energy and store/production readiness are not certified.
 - Eleven concise docs and 38 byte-pinned QA protocols remain. Historical archive

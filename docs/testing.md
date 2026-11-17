@@ -41,6 +41,13 @@ CodeQL:n ja salaisuuksien tarkistuksen.
 - Oikea SigLIP2/Chrome: 8 tapausta, mukaan lukien vanha linkki, JPEG/PNG,
   lupa, lusikka/metalli, FI/EN-tietosuoja, EN-pysyvyys, offline ja nolla
   OpenAI-/vanhan photo-API:n pyyntöä. Tämä ei ole uusi natiivilaitteen asennus.
+- Julkaistu lähde `f0b3349`: 21 vietyä JS-pakettia tarkistettu ilman vanhan
+  OpenAI-päätepisteen, mallin tai erillisen toiminnon tekstejä.
+- Erillinen Overview-selainkoe läpäisee FI/EN-, vaalea/tumma-, kapea-/suuri teksti-,
+  kirjaus-, kuittauskatko-, uusinta-, prosentti-, poisto- ja tietosuojatapaukset.
+  Nykyinen maksuton kuvapolku kirjaa vain valitun materiaalin, ei mallin arviota;
+  saman kuvan materiaalikorjaus ei tuplaa kirjausta. Testifixturet eivät ole
+  oikeaa tuotetietoa eikä tässä kokeessa käytetä maksullista tunnistusta.
 
 ## Siivouksen rajaus
 
