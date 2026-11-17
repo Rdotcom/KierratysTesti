@@ -38,7 +38,6 @@ function patternList(value) {
 function boundExpansion(pattern) {
   const frames = [{ product: 1, sum: 0, start: 0, nested: false }];
   let escaped = false;
-  let inClass = false;
   for (let i = 0; i < pattern.length; i++) {
     const ch = pattern[i];
     if (escaped) {
@@ -49,9 +48,7 @@ function boundExpansion(pattern) {
       escaped = true;
       continue;
     }
-    if (ch === "[") inClass = true;
-    else if (ch === "]") inClass = false;
-    if (inClass) continue;
+    // Bound braces even inside a class: expansion runs before glob parsing.
     const frame = frames[frames.length - 1];
     if (ch === "{") {
       frame.nested = true;
@@ -189,7 +186,9 @@ function createMatcher(patterns, options = {}, _returnState = false) {
     let parent = positive;
     while (parent.endsWith("/**")) parent = parent.slice(0, -3);
     const parentEngine =
-      parent !== positive && parent ? new Minimatch(parent, engineOptions) : null;
+      !options.noglobstar && parent !== positive && parent
+        ? new Minimatch(parent, engineOptions)
+        : null;
     return { engine, parentEngine, negated: prefix % 2 === 1, negatedExtglob };
   });
   const ignored =

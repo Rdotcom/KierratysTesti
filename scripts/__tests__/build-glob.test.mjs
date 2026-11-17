@@ -142,6 +142,8 @@ test("disable switches use literal extglobs and single-level globstars, not rege
   assert.equal(glob("src/@(a|b)/*.ts", { noextglob: true })("src/@(a|b)/file.ts"), true);
   assert.equal(glob("**/*.ts", { noglobstar: true })("a/b/c.ts"), false);
   assert.equal(glob("**/*.ts", { noglobstar: true })("a/b.ts"), true);
+  assert.equal(glob("dir/**")("dir"), true);
+  assert.equal(glob("dir/**", { noglobstar: true })("dir"), false);
   for (const options of [{ capture: true }, { contains: true }, { bash: true }]) {
     assert.throws(() => glob("**/*", options), /does not implement/u);
   }
@@ -171,6 +173,7 @@ test("input count, depth, types and paths fail explicitly instead of allowing un
   assert.throws(() => glob(new Array(1025).fill("*.js")), RangeError);
   assert.throws(() => glob(new Array(100).fill("a".repeat(1000))), RangeError);
   assert.throws(() => glob(new Array(8).fill("{a,b}".repeat(10))), RangeError);
+  assert.throws(() => glob(`[${"{a,b}".repeat(32)}`), RangeError);
   assert.throws(() => glob.scan("(".repeat(65)), RangeError);
   assert.throws(() => glob.scan("a/".repeat(257)), RangeError);
   assert.throws(() => glob(42), TypeError);
