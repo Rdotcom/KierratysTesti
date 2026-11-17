@@ -2,9 +2,10 @@
 
 ## November17 — main handoff for Windows teammate
 
-- Codex: publish only reviewed selected source to authorized KierratysAppi/main,
-  retain public main ancestry and confirm full CI/security. No force push,
-  private-history copy, phone replacement or production deployment.
+- Codex: selected source delivered as a0f90efon KierratysAppi/main with public
+  ancestry only. Full tests/parts and security pass; Expo health remains red
+  because the live recommended patch cohort is still inside the24hour release
+  safety window. No force push, private-history copy or phone replacement.
 - Windows teammate: use main's BROWSER_AI.md. Check remote/branch, safely pull
   with --ff-only (or clone separately), install the listed Node/pnpm/Python
   prerequisites, create your own venv, prepare the pinned model, then run
@@ -14,6 +15,16 @@
 - Teammate: try one nonprivate item through physical webcam permission, preview,
   explicit consent, object/material and guidance; record success/error text,
   not a private image. Synthetic camera CI is not hardware acceptance.
+- Codex, after18November202614:05EET: recheck official Expo recommendations,
+  apply the SDK58patch cohort (currently expo58.0.26, dev-client58.0.21,
+  file-system58.0.14, router58.0.32), regenerate/install the frozen lock normally,
+  then run pnpm validate:mobile, pnpm validate, pnpm security:audit and
+  pnpm dlx expo-doctor@1.21.5 from mobile/app. Repeat the actual browser/model
+  flow; native framework changes need their own build/device evidence before
+  claiming installed-phone parity. If any required package is still too new,
+  retain the age-policy failure and wait; never add an age exclusion.
+- Roope: future source publication still requires the usual explicit approval.
+  The current tested browser handoff does not depend on accepting new patches.
 
 ## November17 — desktop browser trial and approved Windows proof
 

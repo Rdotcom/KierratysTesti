@@ -2,7 +2,10 @@
 
 - [x] Owner-approved main delivery review and main-based Windows setup guide;
   repair earlier Linux pnpm hard-link metadata failure with regression.
-- [ ] Confirm selected normal main push and full main CI/security outcome.
+- [x] Confirm selected normal main pusha0f90ef; Linux full tests/parts and
+  security pass. Full CI is red at live Expo patch recommendation, not tests.
+- [ ] After18November14:05EET, align the newly published Expo58patch cohort
+  without waiving the mandatory24hour release-age policy, then revalidate.
 
 - [x] Browser file/camera→preview→consent→real own-server SigLIP2→shared sorting
   UI, Mac Chrome smoke and visible owner page.

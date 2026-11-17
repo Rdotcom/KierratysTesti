@@ -15,7 +15,18 @@
   byte bounds. New regression covers permitted metadata, forbidden aliases/
   images, wrong package/version and oversize. No safety gate/test skipped.
 - Local `pnpm validate` passes2101tests/all builds; blind-review19/19pass.
-  Normal main publication results follow in TEST_EVIDENCE.md.
+- Normal main push confirmed a0f90efcfda41578066217a86f425dd5ba4eb97c.
+  Linux CI44089429846now passes pnpm validate and all three part jobs; security
+  run44089429459passes CodeQL/secrets. Full CI remains FAILURE at Expo health,
+  19/20checks: its live expected patch cohort advanced during this work.
+- Attempted Expo58.0.26/dev-client58.0.21/file-system58.0.14/router58.0.32
+  alignment is refused by mandatory1440minute minimumReleaseAgeStrict:
+  new packages/transitives were published17November11:59–12:04UTC.
+  Restore original tested manifest; lockfile/install stay unchanged. No age
+  exclusion/offline-doctor/continue-on-error bypass. This is not all-green CI.
+  Earliest cohort retry18November14:05EET, after rechecking current metadata.
+- Separate local audit policy passes22reviewed low/moderate advisories;
+  CI's later audit step was skipped after the doctor failure, not claimed run.
   Physical webcam, WindowsARM64 and public production gates remain unverified.
 
 ## Browser AI verified on Mac and Windows — November17

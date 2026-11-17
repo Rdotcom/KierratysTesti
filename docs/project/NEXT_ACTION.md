@@ -1,3 +1,3 @@
 # Next action
 
-Have the Windows teammate follow BROWSER_AI.md from KierratysAppi/main and record one physical-webcam permission → preview → explicit consent → object/material-guidance result without photographing people or private text.
+After 18 November 2026 14:05 EET, update the Expo 58 patch cohort against fresh official metadata without weakening the 24-hour release-age gate, then run pnpm validate:mobile, pnpm validate, Expo Doctor and the real browser/model regression.

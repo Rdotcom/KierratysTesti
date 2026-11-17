@@ -37,3 +37,23 @@ Use standard browser APIs on both desktop OSes, but keep actual runtime evidence
 separate: Mac/headless fake camera, Windows-hosted Chrome/Edge, physical camera.
 Use a fresh test branch parented at public main; do not mirror private development
 history. Keep every uncertain model suggestion and independent sorting provenance.
+
+## Main-delivery revalidation
+
+Owner subsequently authorizes main. Actual CI44089429846passes full tests but
+fails live Expo health19/20. Official registry endpoints accessed November17:
+https://registry.npmjs.org/expo/58.0.26,
+https://registry.npmjs.org/expo-dev-client/58.0.21,
+https://registry.npmjs.org/expo-file-system/58.0.14,
+https://registry.npmjs.org/expo-router/58.0.32.
+Version/integrity matches confirmed with pnpm view. Normal pnpm resolution
+independently reports the cohort/transitive publish times as today11:59–12:04UTC,
+inside our required24hour maturity gate. Preserve tested pins, not a blind
+upgrade/age exclusion or offline-doctor bypass. Revisit after18November14:05EET.
+Official incremental-update procedure:
+https://docs.expo.dev/workflow/upgrading-expo-sdk-walkthrough/;
+official relevant changelogs:
+https://github.com/expo/expo/blob/sdk-58/packages/expo-dev-client/CHANGELOG.md,
+https://github.com/expo/expo/blob/sdk-58/packages/expo-file-system/CHANGELOG.md,
+https://github.com/expo/expo/blob/sdk-58/packages/expo-router/CHANGELOG.md.
+No unsupported inference that a version warning breaks our tested browser flow.

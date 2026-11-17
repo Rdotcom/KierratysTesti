@@ -21,7 +21,24 @@ Final `pnpm validate` exits0with2101tests (937Node+1164workspace), all package
 builds/18web routes, boundary/type/lint/format checks. Biome retains19existing
 warnings; none is hidden. Targeted blind-review19/19pass with no skips.
 Logs: final-validate.log and blind-review-tests.log in the run directory.
-Remote main CI results will be recorded after the authorized source push.
+Normal source push confirmed remote main a0f90efcfda41578066217a86f425dd5ba4eb97c,
+history63b49a6→dde3ff3→a0f90ef; reviewed tree equals local26fa327. No private
+ancestry or force push. [Linux CI44089429846](https://github.com/roopeaal/KierratysAppi/actions/runs/44089429846)
+passes pnpm validate/all three parts, proving the previous Linux hard-link
+failure repaired. [Security44089429459](https://github.com/roopeaal/KierratysAppi/actions/runs/44089429459)
+passes CodeQL/secrets. Overall CI is FAILURE, not green: Expo health19/20fails
+only at latest SDK58patch expectations (expo58.0.26/dev-client58.0.21/
+file-system58.0.14/router58.0.32). Later CI audit step is skipped, not passed.
+
+Retained actual doctor output: main-ci-failure.log. Official npm registry
+confirms versions/integrities; attempted normal lock resolution stops with
+ERR_PNPM_NO_MATURE_MATCHING_VERSION for11entries in this new cohort/transitives,
+published17November11:59–12:04UTC (patch-lock.log). Current strict1440minute age
+gate remains untouched. Restore manifest with apply_patch; git diff confirms
+manifest/lock exactly unchanged and install never ran. No offline/exclude/skip
+or continue-on-error workaround. Earliest cohort retry18November14:05EET,
+fresh metadata required. Actual local pnpm security:audit exits0with22reviewed
+low/moderate advisories (audit-policy.log), not a zero-vulnerability claim.
 
 ## November17 — desktop browser recognition, Mac and actual Windows passed
 

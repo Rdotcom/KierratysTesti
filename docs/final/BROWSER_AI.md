@@ -116,3 +116,10 @@ for source dde3ff3. Mac Chrome157passes too. Camera tests use synthetic video;
 your own webcam/OS permission still needs a physical test. The owner now
 authorizes sharing this tested implementation in main; this is source delivery,
 not a public hosted service or a new production-readiness claim.
+
+Main delivery note: Linux full tests/part checks and security pass for a0f90ef,
+but full CI is red at Expo Doctor's newly advanced patch recommendations. The
+recommended cohort is temporarily refused by our mandatory24hour release-age
+policy. The published tested manifest/lock were retained; no check is disabled.
+This does not require an API key or prevent the documented browser setup.
+Exact failure and earliest safe update procedure: TEST_EVIDENCE.md/OWNER_ACTIONS.md.

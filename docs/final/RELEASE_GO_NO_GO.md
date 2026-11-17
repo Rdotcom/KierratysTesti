@@ -6,7 +6,12 @@ Owner explicitly requests publication of the tested implementation to
 KierratysAppi/main. Prior proof-only sharing restriction no longer applies to
 this selected delivery. Browser runtime/model remain the real Mac/Windows-tested
 source; only a narrow QA-tool Linux hard-link repair and handoff documentation
-are added. Main CI/security must be checked after a normal non-forced push.
+are added. Normal main push confirmed a0f90ef; CI44089429846passes Linux full
+tests and all parts, security44089429459passes. Overall CI is FAILURE at Expo
+health19/20: four live patch recommendations are newer than the strict24hour
+release-age gate permits installing. Attempted alignment is safely refused;
+manifest restored, no lockfile/runtime change or bypass. Retry no earlier than
+18November14:05EETafter checking current metadata. This red gate remains visible.
 This is source-sharing approval, not public production GO. Physical webcam/
 WindowsARM64, existing quality/operational/release gates remain open.
 

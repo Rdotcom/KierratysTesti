@@ -9,6 +9,19 @@ locally repairable, not an external blocker. Physical teammate webcam/OS
 permissions and WindowsARM64 remain unverified; source delivery does not satisfy
 those gates or authorize public hosting/production publication.
 
+## November17 — live Expo patch recommendations vs mandatory release-age gate
+
+Source a0f90efis delivered. Actual Linux full tests/parts and security pass, but
+CI44089429846fails Expo health19/20: remote SDK metadata now recommends
+expo58.0.26/dev-client58.0.21/file-system58.0.14/router58.0.32.
+The attempted update is rejected by existing minimumReleaseAge1440/strict:
+the cohort/transitives were published17November11:59–12:04UTC. Manifest restored
+exactly; no install/lockfile/runtime change or skipped compatibility check.
+Earliest cohort retry18November14:05EET, with fresh metadata review. Codex owns
+the local patch/test procedure in OWNER_ACTIONS.md; future sharing needs its
+normal owner authorization. Browser source is available despite this red CI
+gate. This is a time dependency, not a claim that every release check passes.
+
 ## November17 — desktop browser replaces Go for teammate testing
 
 Owner clarifies target is Windows Chrome/Edge, not Expo Go. Physical Go

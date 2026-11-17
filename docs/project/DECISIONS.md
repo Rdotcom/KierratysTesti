@@ -17,6 +17,14 @@
   pulling source alone does not provision the teammate's Python/model services.
   Main delivery runs normal CI, without skip markers. Public production NO-GO
   and physical hardware limits remain, independent of source sharing.
+- Main source a0f90efis confirmed. Linux pnpm validate/parts and security pass,
+  but Expo Doctor's live recommendation advances four patches and fails19/20.
+  Registry-backed update attempt is rejected by the existing24hour supply-chain
+  gate (new cohort17November~12UTC). Restore manifest exactly; no lockfile,
+  installed dependency, model or native-binary change. Do not disable Doctor,
+  add package exclusions or weaken minimumReleaseAgeStrict just for green CI.
+  Record the red run and earliest18November14:05EETretry as a time dependency.
+  Docs-only delivery followup retains this failure honestly.
 
 ## D-121 — Desktop browser path and explicit Windows proof sharing
 
