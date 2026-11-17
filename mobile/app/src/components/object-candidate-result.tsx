@@ -4,9 +4,11 @@ import { useState } from "react";
 import { View } from "react-native";
 import type { ObjectPhotoResponse } from "@/features/local-vision/object-candidates";
 import { selectableObjectCandidates } from "@/features/local-vision/object-selection";
+import { recyclingIntent } from "@/features/overview/recording";
 import { useLanguage } from "@/i18n/language-context";
 import { ObjectSortingFlowView } from "./object-sorting-flow";
 import { AppText, Button, Paper, StatusPill, sharedStyles } from "./ui";
+
 const labels: Partial<Record<SortableObjectKind, MessageKey>> = {
   cup: "objectCup",
   spoon: "objectSpoon",
@@ -24,9 +26,11 @@ const labels: Partial<Record<SortableObjectKind, MessageKey>> = {
 export function ObjectCandidateResultView({
   result,
   onGuide,
+  recordId,
 }: {
   result: ObjectPhotoResponse;
   onGuide: () => void;
+  recordId?: string;
 }) {
   const { t } = useLanguage(),
     candidates = selectableObjectCandidates(result);
@@ -48,6 +52,8 @@ export function ObjectCandidateResultView({
             <ObjectSortingFlowView
               key={current.kind}
               kind={current.kind}
+              recordId={recordId ?? recyclingIntent(result, "object")}
+              label={t(labels[current.kind] ?? "objectCandidateUnknown")}
               onChangeObject={() => setSelection(undefined)}
             />
           ) : (

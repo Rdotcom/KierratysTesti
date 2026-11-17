@@ -1,5 +1,12 @@
 # Roadmap
 
+- [x] Remove custom audio/haptic feature and dependencies, rename Location,
+  compact material-first point cards/filtering with incomplete-point opt-in.
+- [x] Explicit recycling records in all guidance families, unknown material
+  choice, shared photo intent, single-check material-code result and FI/EN copy.
+- [ ] Build/install normal iPhone22 from this quiet source revision and verify
+  Location/material filters/records/code flow; prior21 is not this UI revision.
+
 - [x] Separate Android Kotlin module, bounded bundled OCR/barcode contracts,
   weight-only INT8 SigLIP2 conversion with unchanged development score gate,
   native compilation/pixel unit tests and distinct privacy disclosure.

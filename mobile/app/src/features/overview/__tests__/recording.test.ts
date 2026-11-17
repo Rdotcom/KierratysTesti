@@ -1,7 +1,7 @@
 import { parseMaterialIdentificationCode } from "@kierratysappi/domain";
 import { describe, expect, it } from "vitest";
 import { sortRecognizedMaterialCode } from "../../material-code/sorting";
-import { recordableMaterial, recyclingIntent } from "../recording";
+import { recordableMaterial, recordingMaterialFromAnswer, recyclingIntent } from "../recording";
 
 function guidance(code: string) {
   const recognition = parseMaterialIdentificationCode(code);
@@ -17,6 +17,13 @@ function guidance(code: string) {
 }
 
 describe("recording a confirmed packaging part", () => {
+  it("uses only an explicit supported material answer, never a destination or object guess", () => {
+    expect(recordingMaterialFromAnswer("material", "metal")).toBe("metal");
+    expect(recordingMaterialFromAnswer("material", "ceramic")).toBeUndefined();
+    expect(recordingMaterialFromAnswer("use", "metal")).toBeUndefined();
+    expect(recordingMaterialFromAnswer("region", "hsy")).toBeUndefined();
+    expect(recordingMaterialFromAnswer("material", "spoon")).toBeUndefined();
+  });
   it("preserves paper as a material even when its sorting destination collects carton", () => {
     const { recognition, sorting } = guidance("PAP 22");
     expect(sorting).toMatchObject({ status: "resolved", destination: { id: "carton_packaging" } });

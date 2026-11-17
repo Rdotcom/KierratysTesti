@@ -41,10 +41,9 @@ ilman uusia vääriä osumia tässä kokeessa. Tämä ei ole yleinen tuotetunnis
 tarkkuusluku. Tarkistettujen vertailukuvien tuonti on toteutettu erikseen;
 tunnistin pysyy vielä kokeellisena, ei puhelimen oletustoimintona.
 
-Sovellukseen on lisätty lyhyet äänipalautteet ja niiden FI/ENpäälle/pois-asetus.
-Äänet eivät korvaa virheilmoituksia tai tuotetiedon epävarmuutta. Uusi
-natiivikoonti tarvitaan puhelimessa; vanha asennus jatkaa ilman äänimoduulia.
-Tulokset ja hyväksymisrajat: [V2 ja äänet](docs/final/VISION_V2_AND_SOUND_FEEDBACK.md).
+Äänipalautteet ja niiden asetukset on poistettu. Toiminnot käyttävät näkyviä
+tilaviestejä ja ruudunlukijan ilmoituksia. Vanhojen äänikokeiden dokumentit ovat
+historiallista testievidenssiä, eivät nykyisen sovelluksen ominaisuuskuvaus.
 
 Kehityskäyttöön on lisäksi toteutettu **Tunnista kuvasta**: kamera → esikatselu →
 erillinen lupa lähettää kuva OpenAI:lle → tekoälyn arvio → pakkausosan vahvistus →

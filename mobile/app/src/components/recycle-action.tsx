@@ -3,12 +3,16 @@ import { useFocusEffect, useRouter } from "expo-router";
 import { useCallback, useRef, useState } from "react";
 import { View } from "react-native";
 import { announceAccessibility } from "@/features/accessibility/announcements";
-import type { OverviewMaterial, RecyclingEntry } from "@/features/overview/model";
+import {
+  type OverviewMaterial,
+  overviewMaterials,
+  type RecyclingEntry,
+} from "@/features/overview/model";
 import { recordableMaterial } from "@/features/overview/recording";
 import { readRecyclingSummary, recordRecycling } from "@/features/overview/storage";
-import { useSoundFeedback } from "@/features/sound-feedback/context";
 import { useLanguage } from "@/i18n/language-context";
 import { useAppTheme } from "@/theme/tokens";
+import { ChoiceChip } from "./choice-chip";
 import { AppText, Button, InlineLink, Paper, sharedStyles } from "./ui";
 
 const materialKeys = {
@@ -34,7 +38,6 @@ export function RecycleAction({
   readonly label?: string;
 }) {
   const knownMaterial = recordableMaterial(sorting, material);
-  if (!knownMaterial) return null;
   return (
     <RecordAction
       key={`${recordId}:${knownMaterial}`}
@@ -45,12 +48,25 @@ export function RecycleAction({
   );
 }
 
+/** Explicit self-report only. Unknown materials require a choice, never a model guess. */
+export function RecyclingRecordAction({
+  material,
+  recordId,
+  label,
+}: {
+  readonly material?: OverviewMaterial;
+  readonly recordId: string;
+  readonly label?: string;
+}) {
+  return <RecordAction key={recordId} material={material} recordId={recordId} label={label} />;
+}
+
 function RecordAction({
   material,
   recordId,
   label,
 }: {
-  readonly material: OverviewMaterial;
+  readonly material: OverviewMaterial | undefined;
   readonly recordId: string;
   readonly label: string | undefined;
 }) {
@@ -59,13 +75,14 @@ function RecordAction({
   const { palette } = useAppTheme();
   const [state, setState] = useState<"loading" | "ready" | "saved" | "error">("loading");
   const [savedMaterial, setSavedMaterial] = useState<OverviewMaterial>();
-  const { play } = useSoundFeedback();
+  const [selectedMaterial, setSelectedMaterial] = useState<OverviewMaterial>();
   const [confirming, setConfirming] = useState(false);
   const [saving, setSaving] = useState(false);
   const loadVersion = useRef(0);
   const locked = useRef(false);
   const active = useRef(false);
   const pending = useRef<RecyclingEntry | undefined>(undefined);
+  const chosenMaterial = pending.current?.material ?? material ?? selectedMaterial;
 
   const refresh = useCallback(() => {
     const request = ++loadVersion.current;
@@ -97,7 +114,7 @@ function RecordAction({
   );
 
   const save = async () => {
-    if (locked.current || !confirming || state !== "ready") return;
+    if (locked.current || !confirming || state !== "ready" || !chosenMaterial) return;
     locked.current = true;
     setSaving(true);
     const savedLabel = label
@@ -107,7 +124,7 @@ function RecordAction({
       .slice(0, 80);
     pending.current ??= {
       id: recordId,
-      material,
+      material: chosenMaterial,
       quantity: 1,
       recycledAt: new Date().toISOString(),
       ...(savedLabel ? { label: savedLabel } : {}),
@@ -118,14 +135,14 @@ function RecordAction({
         setSavedMaterial(summary.recent.find((entry) => entry.id === recordId)?.material);
         setState("saved");
         setConfirming(false);
-        play("confirm");
+
         announceAccessibility(t("recyclingSaved"));
       }
     } catch {
       if (active.current) {
         setState("error");
         setConfirming(false);
-        play("attention");
+
         announceAccessibility(t("recyclingSaveError"), "high");
       }
     } finally {
@@ -142,7 +159,7 @@ function RecordAction({
             {t("recyclingAlreadySaved")}
             {savedMaterial ? ` · ${t(materialKeys[savedMaterial])}` : ""}
           </AppText>
-          {savedMaterial && savedMaterial !== material && (
+          {material && savedMaterial && savedMaterial !== material && (
             <AppText variant="small" muted>
               {t("recyclingCorrectionNote")}
             </AppText>
@@ -161,12 +178,36 @@ function RecordAction({
             {t("recyclingConfirmTitle")}
           </AppText>
           <AppText>{t("recyclingConfirmBody")}</AppText>
-          <AppText variant="label">
-            {t(materialKeys[material])} · 1 {t("overviewPartSingular")}
-          </AppText>
+          {material === undefined && !pending.current && (
+            <>
+              <AppText variant="small" muted>
+                {t("recyclingChooseMaterialHint")}
+              </AppText>
+              <View
+                accessibilityRole="radiogroup"
+                accessibilityLabel={t("overviewMaterialLabel")}
+                style={{ flexDirection: "row", flexWrap: "wrap", gap: 8 }}
+              >
+                {overviewMaterials.map((value) => (
+                  <ChoiceChip
+                    key={value}
+                    label={t(materialKeys[value])}
+                    selected={selectedMaterial === value}
+                    onPress={() => setSelectedMaterial(value)}
+                    testID={`recycle-material-${value}`}
+                  />
+                ))}
+              </View>
+            </>
+          )}
+          {chosenMaterial && (
+            <AppText variant="label">
+              {t(materialKeys[chosenMaterial])} · 1 {t("overviewPartSingular")}
+            </AppText>
+          )}
           <Button
             label={t("recyclingConfirmAction")}
-            disabled={saving}
+            disabled={saving || !chosenMaterial}
             busy={saving}
             onPress={() => void save()}
             testID="recycle-confirm-action"

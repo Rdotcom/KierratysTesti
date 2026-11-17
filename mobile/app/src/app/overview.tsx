@@ -39,7 +39,6 @@ import {
   readRecyclingSummary,
   removeRecyclingEntry,
 } from "@/features/overview/storage";
-import { useSoundFeedback } from "@/features/sound-feedback/context";
 import { useLanguage } from "@/i18n/language-context";
 import type { AppPalette } from "@/theme/palettes";
 import { controls, focusRing, interaction, radius, spacing, useAppTheme } from "@/theme/tokens";
@@ -94,7 +93,6 @@ export default function OverviewScreen() {
   const [notice, setNotice] = useState<string>();
   const [focused, setFocused] = useState<string>();
   const generation = useRef(0);
-  const { play } = useSoundFeedback();
   const active = useRef(false);
   const operationLocked = useRef(false);
   const pendingEntry = useRef<RecyclingEntry | undefined>(undefined);
@@ -162,14 +160,14 @@ export default function OverviewScreen() {
         setState({ status: "ready", summary });
         setConfirmation(undefined);
         setNotice(success);
-        play("confirm");
+
         announceAccessibility(success);
       }
     } catch {
       if (active.current && request === generation.current) {
         const message = failureMessage ?? t("overviewStorageError");
         setOperationError(message);
-        play("attention");
+
         announceAccessibility(message, "high");
       }
     } finally {

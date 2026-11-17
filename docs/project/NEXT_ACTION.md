@@ -1,3 +1,3 @@
 # Next action
 
-Run a20-cycle Android7 offline capture/recognition/retake/background soak on the isolated API35 ARM64 emulator, recording shutter readiness, cancellation and peak/retained PSS to reproduce the missed immediate shutter tap.
+Build and install normal iPhone22 from the quiet Location revision, verifying signatures, absence of linked audio/haptic modules and the Location filters, single-check material code and explicit recycling records without Metro; preserve the previous signed21 rollback.

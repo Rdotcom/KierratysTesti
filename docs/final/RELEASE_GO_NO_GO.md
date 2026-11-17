@@ -1,5 +1,17 @@
 # Release decision
 
+## November17 — quiet Location source revision; public NO-GO unchanged
+
+Audio/haptic functionality and modules removed; compact material-first Location,
+explicit self-reported recycling entries and single-check material-code guidance
+implemented and locally tested. Source/region/uncertainty remain, incomplete
+points are opt-in rather than recommendations. See LOCATION_RECYCLING_POLISH.md
+and current TEST_EVIDENCE.md. No new native install or camera/recognition-quality
+claim in this unit. Earlier iPhone21/Android7 binary receipts do not certify this
+revision; next native builds must remove linked modules and recheck UI behavior.
+Existing MEM-01, Android soak/Samsung, coverage, reproducibility/store/privacy
+gates remain open. Historical audio-audition work is superseded, not passed.
+
 ## November17 — Android source port; public NO-GO unchanged
 
 Android now has a separate real Kotlin/ONNX Runtime/bundled ML Kit implementation.

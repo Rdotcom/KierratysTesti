@@ -1,5 +1,5 @@
 import type { SortingResult } from "@kierratysappi/recycling-engine";
-import { overviewMaterials, type OverviewMaterial } from "./model";
+import { type OverviewMaterial, overviewMaterials } from "./model";
 
 const intents = new WeakMap<object, Map<string, string>>();
 
@@ -9,6 +9,14 @@ export function recordableMaterial(
 ): OverviewMaterial | undefined {
   if (sorting.status !== "resolved") return undefined;
   return overviewMaterials.find((candidate) => candidate === material);
+}
+
+/** Only an explicit material answer, never an object name or destination. */
+export function recordingMaterialFromAnswer(
+  question: string,
+  answer: string,
+): OverviewMaterial | undefined {
+  return question === "material" ? overviewMaterials.find((value) => value === answer) : undefined;
 }
 
 export function recyclingIntent(scope: object, part: string): string {

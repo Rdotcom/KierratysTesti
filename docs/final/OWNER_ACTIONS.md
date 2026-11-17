@@ -1,5 +1,18 @@
 # Owner actions
 
+## November17 — quiet Location source handoff
+
+- Codex/local: next build/install is normal iPhone22, preserving signed21 rollback
+  and checking signatures/no linked audio modules, Location material filters,
+  single-check material codes and explicit recycling records. Source changes are
+  not a claim of a new phone installation. No new key/payment/account is needed.
+- Roope: existing installed21 still has the previous UI until replacement. Keep
+  existing signing-expiry renewal procedure below; no new trust step requested
+  by this source unit. Custom audio is removed, not an uncompleted hearing test.
+- Existing Android soak/physical Samsung/MEM-01/coverage/production release gates
+  remain. This turn expressly authorizes only the reviewed KierratysAppi/main
+  push; no future automatic team push or KeepItGreen synchronization.
+
 ## November17 — current Android follow-up delivery
 
 - Roope: normal KeepItGreen21is installed and launch/inventory verified on your

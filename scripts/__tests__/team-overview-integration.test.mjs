@@ -29,8 +29,8 @@ test("material-code recording preserves editable hydration and independent physi
   for (const update of ["setValue(prefill)", "setAttempt(undefined)", "setSorting(undefined)"])
     assert.ok(effect.includes(update));
   assert.doesNotMatch(effect, /sortRecognized|confirm\(|recordRecycling/u);
-  assert.match(text, /onConfirm=\{\(\) => confirm\(attempt\)\}/u);
-  assert.match(text, /!sorting && <Button label=\{t\("materialCodeConfirmAction"\)\}/u);
+  assert.doesNotMatch(text, /materialCodeConfirmAction|onConfirm=/u);
+  assert.match(text, /nextAttempt.status === "recognized"[\s\S]*sortRecognizedMaterialCode/u);
   assert.match(text, /sorting && \([\s\S]*?<SortingResultCard[\s\S]*?<RecycleAction/u);
   assert.match(text, /recordId=\{recyclingIntent\(recordingScope, "material-code"\)\}/u);
   assert.doesNotMatch(text, /recordRecycling\(/u);
@@ -41,7 +41,11 @@ test("local image estimates still route to explicit material checking rather tha
   assert.match(local, /pathname: "\/material-code", params: \{ code: marking\.text \}/u);
   assert.match(local, /recognizeLocalPhoto\(jpeg, controller\.signal\)/u);
   assert.match(local, /inspectLocalVisionReadiness\(controller\.signal\)/u);
-  assert.doesNotMatch(local, /recordRecycling|RecycleAction|recyclingIntent|\/overview/u);
+  assert.doesNotMatch(local, /recordRecycling\(/u);
+  assert.equal(
+    (local.match(/recordId=\{recyclingIntent\(productResult, "photo"\)\}/gu) ?? []).length,
+    2,
+  );
 });
 
 test("local-model privacy and attribution coexist with team deletion confirmation", () => {

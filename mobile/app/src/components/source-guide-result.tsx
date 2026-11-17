@@ -1,10 +1,14 @@
 import type { GuideLibraryItem } from "@kierratysappi/recycling-engine";
+import { useState } from "react";
 import { Linking, View } from "react-native";
-import { useLanguage } from "@/i18n/language-context";
 import { guideLibrary } from "@/features/guide/library";
+import { recyclingIntent } from "@/features/overview/recording";
+import { useLanguage } from "@/i18n/language-context";
+import { RecyclingRecordAction } from "./recycle-action";
 import { AppText, InlineLink, Paper, StatusPill, sharedStyles } from "./ui";
 export function SourceGuideResult({ item }: { item: GuideLibraryItem }) {
   const { language, t } = useLanguage();
+  const [recordingScope] = useState(() => ({}));
   if (!guideLibrary) return null;
   const library = guideLibrary;
   const data = item[language];
@@ -36,6 +40,10 @@ export function SourceGuideResult({ item }: { item: GuideLibraryItem }) {
       {data.translationIncomplete && (
         <AppText variant="small">{t("guideTranslationIncomplete")}</AppText>
       )}
+      <RecyclingRecordAction
+        recordId={recyclingIntent(recordingScope, item.id)}
+        label={data.title}
+      />
       <AppText variant="label">{t("guideSourceReceivers")}</AppText>
       {data.receivers.map((r) => (
         <View key={r.id} style={sharedStyles.tightStack} testID="source-guide-receiver">

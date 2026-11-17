@@ -1,5 +1,32 @@
 # Current state
 
+## Quiet UI and material-first Location — November17
+
+- Custom sound feedback, preference UI/provider/driver/assets/generator and
+  expo-audio/expo-haptics removed. Visual states and accessibility announcements
+  retained. Four deleted WAVs and implementation are recoverable in Git history.
+- Pisteet renamed Sijainti / Location. Compact point cards show reported material
+  chips, identity/address/map and estimated distance. Default excludes missing
+  material reports; explicit category filters find nearest five across the whole
+  bundled directory. Incomplete map points are opt-in, not recommendations.
+- Explicit recycling records added to object/AI suggestions, source-backed HSY
+  guides, general materials, missing-packaging barcode results, local product
+  results and point details; existing cloud/component/material-code records kept.
+  Unknown material requires a user choice, never an inferred/default material.
+  One photo capture shares an idempotent intent across product/object options.
+- Material-code Check now evaluates immediately and reveals the answer, without
+  redundant “I see this code” confirmation. Query/OCR suggestion remains editable
+  prefill only. Rule conditions/provenance remain; no automatic recycling record.
+- FI/EN item/package copy made consistent. Existing language persistence,
+  source/region/uncertainty, private location lifecycle and storage v1 retained.
+  No model/rule/provider changes, native build or install in this unit.
+- Validation and publication receipts: docs/final/TEST_EVIDENCE.md;
+  full validation2040tests/18web exports, mobile validation and actual FI/EN
+  browser/recording/location/code checks pass. No new native-device claim.
+  UI review: docs/final/LOCATION_RECYCLING_POLISH.md. Previous iPhone21/Android7
+  delivery is historical evidence, not an installation of these UI changes.
+  Public NO-GO, MEM-01, Android soak and physical Samsung gates remain open.
+
 ## Android native delivery — November17, iPhone21 / Android7
 
 - Real Kotlin/ONNX Runtime CPU SigLIP2 and bundled offline ML Kit OCR/barcode

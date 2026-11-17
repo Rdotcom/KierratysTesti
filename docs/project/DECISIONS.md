@@ -1,5 +1,27 @@
 # Decision log
 
+## D-115 — Quiet UI, material-first points and explicit item recording
+
+- Owner requests complete audio removal and explicitly authorizes a reviewed
+  KierratysAppi push for this work. Remove custom audio/haptic modules rather
+  than merely muting them; keep screen-reader/visible feedback. Old records and
+  language preference are not erased to remove an unused audio preference.
+- A nearest point with no acceptance data is not useful as a default collection
+  recommendation. Prefer source-reported material points, filter the full local
+  directory, and separate incomplete points behind an explicit warning/toggle.
+  Do not infer materials from a name/operator or invent richer point data.
+- Recycling is a user's physical-action record, not AI verification. Reuse only
+  explicit supported material evidence; unknown requires a manual group choice.
+  Share a photo's intent across alternatives and keep retry/double-tap guards.
+  Preserve storage v1 and the team's totals/deletion behavior.
+- Entering/checking a material code is sufficient user observation; remove the
+  second redundant confirmation. Suggested query codes do not auto-evaluate.
+  Source/version/conditions and separate recycled-action confirmation remain.
+- Apply focused hierarchy/card/copy improvements in the existing design system.
+  Browser/synthetic component tests do not certify new native binaries, camera
+  accuracy, Samsung hardware or production release. Build/install follows as a
+  separate concrete next work unit; no KeepItGreen sync or force push authorized.
+
 ## D-114 — Separate Android evidence and measured mobile model conversion
 
 2026-11-17. Owner requests Android support, iPhone update and one reviewed

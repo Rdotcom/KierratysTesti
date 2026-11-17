@@ -3,8 +3,10 @@ import { evaluateObjectSorting, type SortableObjectKind } from "@kierratysappi/r
 import { useState } from "react";
 import { Linking, View } from "react-native";
 import { announceAccessibility } from "@/features/accessibility/announcements";
+import { recordingMaterialFromAnswer, recyclingIntent } from "@/features/overview/recording";
 import { useSortingRegion } from "@/features/region/context";
 import { useLanguage } from "@/i18n/language-context";
+import { RecyclingRecordAction } from "./recycle-action";
 import { SortingRegionPicker } from "./sorting-region-picker";
 import { AppText, Button, InlineLink, sharedStyles } from "./ui";
 
@@ -13,10 +15,14 @@ export function ObjectSortingFlowView({
   kind,
   onChangeObject,
   showRegionControl = true,
+  recordId,
+  label,
 }: {
   kind: SortableObjectKind;
   onChangeObject: () => void;
   showRegionControl?: boolean;
+  recordId?: string;
+  label?: string;
 }) {
   const { t, language } = useLanguage(),
     { selection } = useSortingRegion();
@@ -26,6 +32,7 @@ export function ObjectSortingFlowView({
     answers: [] as string[],
     evaluatedAt: new Date().toISOString(),
   });
+  const [recordingScope] = useState(() => ({}));
   const current =
     state.key === key ? state : { key, answers: [], evaluatedAt: new Date().toISOString() };
   const input = (answers: string[]) => ({
@@ -35,6 +42,12 @@ export function ObjectSortingFlowView({
     ...(selection ? { region: selection.regionId } : {}),
   });
   const step = evaluateObjectSorting(input(current.answers));
+  const recordedMaterial = current.answers.flatMap((answer, index) => {
+    const previous = evaluateObjectSorting(input(current.answers.slice(0, index)));
+    const material =
+      previous.status === "question" ? recordingMaterialFromAnswer(previous.id, answer) : undefined;
+    return material ? [material] : [];
+  })[0];
   const labels = current.answers.flatMap((answer, index) => {
     const previous = evaluateObjectSorting(input(current.answers.slice(0, index)));
     const label =
@@ -112,6 +125,13 @@ export function ObjectSortingFlowView({
           </AppText>
           {step.status === "guidance" &&
             step.exceptions.map((e) => <AppText key={e.en}>{localizedText(language, e)}</AppText>)}
+          {step.status === "guidance" && (
+            <RecyclingRecordAction
+              recordId={recordId ?? recyclingIntent(recordingScope, "object")}
+              material={recordedMaterial}
+              label={label ?? localizedText(language, step.destination)}
+            />
+          )}
           {step.sources.map((reference) => (
             <View key={reference.id} style={sharedStyles.tightStack} testID="object-sorting-source">
               <InlineLink

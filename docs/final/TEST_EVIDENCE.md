@@ -1,5 +1,65 @@
 # Test evidence
 
+## November17 — quiet Location and explicit recycling records
+
+Work directory: `work/location-polish-20261117.7PJIkk`.
+
+- `pnpm validate:mobile` passes (`validate-mobile-final.log`): strict types,
+  boundaries/format/lint, mobile328tests and declared shared/localization tests,
+  consumer builds and18web exports. No new native binaries inferred.
+- `pnpm validate` passes **2040tests:928Node+1112workspace**, all consumer builds
+  and18web exports (`validate-final.log`, exit0). Boundaries, formatting, lint
+  and strict types pass;19existing warnings remain. Node sound implementation
+  tests are intentionally deleted with the feature; replacement
+  no-audio/dependency/config and entrypoint/privacy regressions are added.
+  Existing storage/deduplication/error/locale/region/provenance tests remain.
+- Actual exported-app `scripts/qa/assessment-browser.mjs`:88checks in FI/EN ×
+  light390/dark320/reduced-motion,84screenshots.16routes, off-network barcode/
+  cache, source-backed HSY area gating, language reload/delete and self-reported
+  barcode/HSY/general-material records plus Overview totals pass. This is not
+  proof of a product's material; the test explicitly chooses a report group.
+- `scripts/qa/nearby-ux-browser.cjs`: passes one-press Home acquisition, direct
+  URL no acquisition, independent distance ranks for reported materials,
+  battery category across the directory, no new GPS on filter change, opt-in
+  incomplete points, exclusions/source/date, keyboard details/map visibility,
+  offline, FI/EN, light/dark,320/390 and130%synthetic text, denial/cancel/timeout/
+  watcher cleanup. Explicit point-detail recording requires material selection.
+  Coordinates are public source fixtures, not user GPS; no native permission
+  acceptance claimed. Six screenshots in `nearby/` inspected for hierarchy.
+- `scripts/qa/object-choice-browser.mjs`: four actual-component FI/EN/light390/
+  dark320 cases,130%/200%synthetic text, reduced motion/offline/keyboard/44px/
+  no overflow/no external requests. Spoon→metal record, cancel/double-click
+  idempotence, same-capture changed candidate no duplicate, unknown ceramic
+  material disabled until explicit group, stale/multiple recovery pass.20screens
+  in `objects-regression/`; input choices are explicitly synthetic, not accuracy
+  evidence. Existing native models and object inference are unchanged.
+- `scripts/qa/local-vision-browser.cjs`: actual unsupported-native web recovery,
+  FI/EN, light/dark,320/390/1280,130%text, keyboard, no implicit camera/GPS/API,
+  editable query prefill and one Check→visible sorting heading, absent redundant
+  button, separate cancel-safe recycling confirmation with exactly one record,
+  invalid query/history, privacy/model attribution/delete pass.28screens in
+  `local-vision/`; no image captured or paid/cloud inference performed.
+
+Retained first failures: `root-tests.log` and `narrow-policy.log` expected the old
+two-step code/point/sound behavior; new behavior-specific assertions and actual
+component tests replace those assumptions. A readonly synthetic fixture type
+error was repaired. A missing community/unverified directory footer was restored.
+Visual inspection caught a cramped name/distance column with large320pxtext;
+the heading now stacks at narrow widths/native large-font scales. First image
+retained as `fi-large-before-stack.png`; full-width-heading regression added.
+Older local-vision harness expected pre-Android capture copy and raced a route
+transition against an existing textbox; corrected to current translations and
+an explicit URL wait. `local-vision-browser.log` retains that first mismatch;
+`local-vision-browser-final.log` is the successful run. No deadline/assertion was
+relaxed to claim native quality. Current browser/code/source scope is explicit.
+
+Installed iPhone21 and Android7 were not rebuilt/reinstalled here. Audio removal
+from linked native binaries and hardware UI acceptance remain pending; existing
+public NO-GO/MEM-01/recognition/coverage/Samsung/store gates are unchanged. No
+secrets, real user images/location or paid API calls used. Deleted sound files
+are recoverable from Git. Owner-authorized team-main sharing receipt follows
+once the actual normal push has completed.
+
 ### Verified team source publication — November17,02:55Helsinki
 
 Actual push destination inspected as

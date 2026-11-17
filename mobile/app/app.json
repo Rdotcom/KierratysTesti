@@ -81,15 +81,6 @@
         }
       ],
       [
-        "expo-audio",
-        {
-          "microphonePermission": false,
-          "recordAudioAndroid": false,
-          "enableBackgroundPlayback": false,
-          "enableBackgroundRecording": false
-        }
-      ],
-      [
         "expo-splash-screen",
         {
           "backgroundColor": "#F4F0E6",

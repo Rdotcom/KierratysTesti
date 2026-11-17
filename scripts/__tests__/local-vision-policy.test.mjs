@@ -160,7 +160,11 @@ test("local estimates do not infer sorting, and marking navigation still require
   assert.match(markingScreen, /useState\(""\)/);
   assert.match(markingScreen, /useEffect\(\(\) => \{\s*setValue\(prefill\);/);
   assert.match(markingScreen, /materialCodeParseAction/);
-  assert.match(markingScreen, /materialCodeConfirmAction/);
+  assert.doesNotMatch(markingScreen, /materialCodeConfirmAction/);
+  assert.match(
+    markingScreen,
+    /nextAttempt.status === "recognized"[\s\S]*sortRecognizedMaterialCode/,
+  );
   const prefillEffect = markingScreen.match(
     /useEffect\(\(\) => \{([\s\S]*?)\}, \[prefill\]\)/,
   )?.[1];

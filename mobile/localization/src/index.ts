@@ -1,20 +1,20 @@
 import type { Language, LocalizedText } from "@kierratysappi/domain";
-import { assessmentFi, assessmentEn } from "./assessment";
-import { regionEn, regionFi } from "./region";
+import { assessmentEn, assessmentFi } from "./assessment";
 import { guideSearchEn, guideSearchFi } from "./guide-search";
 import { localVisionEn, localVisionFi } from "./local-vision";
+import { locationPolishEn, locationPolishFi } from "./location-polish";
 import { navigationEn, navigationFi } from "./navigation";
 import { nearbyEn, nearbyFi } from "./nearby";
-import { overviewEn, overviewFi } from "./overview";
 import { objectCandidatesEn, objectCandidatesFi } from "./object-candidates";
+import { overviewEn, overviewFi } from "./overview";
 import { photoEn, photoFi } from "./photo";
-import { soundFeedbackEn, soundFeedbackFi } from "./sound-feedback";
+import { regionEn, regionFi } from "./region";
 
 const fi = {
+  ...locationPolishFi,
   ...assessmentFi,
   ...regionFi,
   ...objectCandidatesFi,
-  ...soundFeedbackFi,
   ...localVisionFi,
   ...guideSearchFi,
   ...navigationFi,
@@ -99,10 +99,9 @@ const fi = {
   materialCodeLabel: "Pakkauksessa näkyvä koodi",
   materialCodeHint: "Kirjoita sekä lyhenne että numero, jos molemmat näkyvät.",
   materialCodeParseAction: "Tarkista koodi",
-  materialCodeRecognized: "Koodi tunnistettu — vahvista pakkauksesta",
+  materialCodeRecognized: "Materiaalikoodi tunnistettu",
   materialCodeRecognizedBody:
     "Koodi kertoo materiaaliryhmän. Tarkista erikseen pakkauksen muoto ja panttimerkki; pelkkä koodi ei kerro, mihin pakkaus kuuluu.",
-  materialCodeConfirmAction: "Näen tämän koodin pakkauksessa",
   materialCodeAmbiguousTitle: "Koodissa on vielä epäselvyyttä",
   materialCodeAmbiguousBody:
     "Kirjoita yksi kokonainen merkintä pakkauksesta. Jos merkintöjä on useita, tarkista ne erikseen.",
@@ -230,10 +229,10 @@ const fi = {
 } as const;
 
 const en: Record<keyof typeof fi, string> = {
+  ...locationPolishEn,
   ...assessmentEn,
   ...regionEn,
   ...objectCandidatesEn,
-  ...soundFeedbackEn,
   ...localVisionEn,
   ...guideSearchEn,
   ...navigationEn,
@@ -319,10 +318,9 @@ const en: Record<keyof typeof fi, string> = {
   materialCodeLabel: "Code visible on the package",
   materialCodeHint: "Enter both the abbreviation and number when both are visible.",
   materialCodeParseAction: "Check code",
-  materialCodeRecognized: "Code recognized — confirm it on the package",
+  materialCodeRecognized: "Material code recognized",
   materialCodeRecognizedBody:
     "The code identifies the material group. Check the package shape and deposit mark separately; the code alone does not tell you where the package belongs.",
-  materialCodeConfirmAction: "I see this code on the package",
   materialCodeAmbiguousTitle: "The code is still ambiguous",
   materialCodeAmbiguousBody:
     "Enter one complete marking from the package. If there are several markings, check them separately.",

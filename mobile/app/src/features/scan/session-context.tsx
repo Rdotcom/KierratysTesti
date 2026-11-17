@@ -1,6 +1,5 @@
 import type { ProductLookupResult } from "@kierratysappi/contracts/lookup-schema";
 import { type Gtin, parseGtin } from "@kierratysappi/domain";
-import * as Haptics from "expo-haptics";
 import { fetch as streamingFetch } from "expo/fetch";
 import {
   createContext,
@@ -12,16 +11,15 @@ import {
   useRef,
 } from "react";
 import { addHistoryEntry, queuePendingLookup } from "@/features/history/storage";
-import { useSoundFeedback } from "@/features/sound-feedback/context";
 import { offlineCatalogue } from "@/features/local-vision/catalogue";
 import { useLanguage } from "@/i18n/language-context";
 import { trackTechnicalEvent } from "@/telemetry/technical-events";
-import { LookupNetworkError, requestProductLookup } from "./api";
-import { createLocalFirstLookup } from "./local-first-lookup";
-import { createPublicIdentityLookup } from "./public-identity-lookup";
 import barcodeData from "../../../assets/data/off-finland-barcodes.json";
+import { LookupNetworkError, requestProductLookup } from "./api";
 import { createBarcodeLibraryLookup } from "./barcode-library";
+import { createLocalFirstLookup } from "./local-first-lookup";
 import { cachedLookup, cacheLookup } from "./lookup-cache";
+import { createPublicIdentityLookup } from "./public-identity-lookup";
 import {
   isDuplicateScan,
   type ScanSource,
@@ -55,7 +53,6 @@ async function localFirstLookup(gtin: Gtin, language: "fi" | "en") {
 
 export function ScanSessionProvider({ children }: PropsWithChildren) {
   const { language } = useLanguage();
-  const { play } = useSoundFeedback();
   const [state, dispatch] = useReducer(sessionReducer, { status: "idle" });
   const busy = useRef(false);
   const previousScan = useRef<{ gtin: Gtin; at: number } | undefined>(undefined);
@@ -65,7 +62,6 @@ export function ScanSessionProvider({ children }: PropsWithChildren) {
       const parsed = parseGtin(raw);
       if (!parsed.ok) {
         dispatch({ type: "invalid", input: raw });
-        void Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
         return { accepted: false, reason: "invalid" };
       }
       if (busy.current) return { accepted: false, reason: "busy" };
@@ -77,18 +73,12 @@ export function ScanSessionProvider({ children }: PropsWithChildren) {
       busy.current = true;
       if (source === "camera") previousScan.current = { gtin: parsed.value, at: now };
       dispatch({ type: "started", gtin: parsed.value, source });
-      if (source === "camera") play("ready");
+
       trackTechnicalEvent("scan_decoded", { source });
-      void Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
       void (async () => {
         try {
           const result = await localFirstLookup(parsed.value, language);
           dispatch({ type: "completed", gtin: parsed.value, result });
-          if (
-            source !== "camera" &&
-            (result.status === "resolved" || result.status === "packaging_missing")
-          )
-            play("ready");
           trackTechnicalEvent("lookup_completed", {
             status: result.status,
             providerId:
@@ -101,9 +91,6 @@ export function ScanSessionProvider({ children }: PropsWithChildren) {
                 : false,
           });
           void saveHistoryResult(parsed.value, result).catch(() => undefined);
-          if (result.status === "resolved") {
-            void Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
-          }
         } catch (error) {
           dispatch({ type: "offline", gtin: parsed.value });
           if (error instanceof LookupNetworkError) {
@@ -116,7 +103,7 @@ export function ScanSessionProvider({ children }: PropsWithChildren) {
       })();
       return { accepted: true };
     },
-    [language, play],
+    [language],
   );
 
   const reset = useCallback(() => dispatch({ type: "reset" }), []);

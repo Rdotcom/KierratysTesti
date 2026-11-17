@@ -1,5 +1,13 @@
 # External blockers
 
+## November17 — quiet UI unit
+
+No new credential, service or owner decision blocks this source change. New
+native builds/installations are pending LOCAL verification, not an external
+account blocker. Existing physical Samsung unavailability and public-release
+gates below remain. Historical audio-audition tasks are superseded by D-115's
+complete custom audio/haptic removal; screen-reader testing remains relevant.
+
 ## November17 — Android follow-up hardware boundary
 
 Owner confirms no physical Samsung is available. Roope/tester must later obtain

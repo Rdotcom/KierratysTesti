@@ -1,6 +1,8 @@
 import type { OfflineProduct, OfflineProductResult } from "@kierratysappi/domain/offline-product";
 import { Linking, View } from "react-native";
+import { recyclingIntent } from "@/features/overview/recording";
 import { useLanguage } from "@/i18n/language-context";
+import { RecyclingRecordAction } from "./recycle-action";
 import { AppText, InlineLink, Paper, StatusPill, sharedStyles } from "./ui";
 
 function SourceProduct({ product }: { product: OfflineProduct }) {
@@ -28,7 +30,13 @@ function SourceProduct({ product }: { product: OfflineProduct }) {
   );
 }
 
-export function OfflineProductResultView({ result }: { result: OfflineProductResult }) {
+export function OfflineProductResultView({
+  result,
+  recordId,
+}: {
+  result: OfflineProductResult;
+  recordId?: string;
+}) {
   const { t } = useLanguage();
   return (
     <View style={sharedStyles.stack} testID="offline-product-result">
@@ -78,6 +86,12 @@ export function OfflineProductResultView({ result }: { result: OfflineProductRes
         <AppText>{t("offlineProductRetake")}</AppText>
       )}
       <AppText>{t("offlineProductSorting")}</AppText>
+      {(result.status === "catalogue_match" || result.status === "confirmation_required") && (
+        <RecyclingRecordAction
+          recordId={recordId ?? recyclingIntent(result, "offline")}
+          label={result.status === "catalogue_match" ? result.product.name : undefined}
+        />
+      )}
     </View>
   );
 }

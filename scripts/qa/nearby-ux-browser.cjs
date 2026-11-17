@@ -16,9 +16,10 @@ const sample = directory.points.find(
 );
 const unknown = directory.points.find((p) => !p.reportedMaterials.length);
 assert.ok(sample && unknown);
-function expectedPoints(position) {
+function expectedPoints(position, accepts = (p) => p.reportedMaterials.length > 0) {
   const rad = (v) => (v * Math.PI) / 180;
   return directory.points
+    .filter(accepts)
     .map((point) => {
       const a =
         Math.sin(rad(point.coordinates.latitude - position.latitude) / 2) ** 2 +
@@ -147,20 +148,29 @@ async function noOverflow(page) {
       tyres: "pointTyres",
     };
     for (const [index, { point }] of expected.entries()) {
-      const materials = point.reportedMaterials.length
-        ? point.reportedMaterials.map((m) => labels[labelKeys[m]]).join(" · ")
-        : labels.nearbyMaterialsUnknown;
-      assert.equal(await page.getByTestId("nearby-materials-" + index).innerText(), materials);
-      for (const excluded of point.reportedExclusions)
+      for (const material of point.reportedMaterials.slice(0, 4))
         assert.ok(
-          (await page.getByTestId("nearby-point-" + index).innerText()).includes(
-            labels[labelKeys[excluded]],
+          (await page.getByTestId("nearby-materials-" + index).innerText()).includes(
+            labels[labelKeys[material]],
           ),
         );
       await page.getByTestId("nearby-details-toggle-" + index).focus();
       await page.getByTestId("nearby-details-toggle-" + index).press("Enter");
       const details = page.getByTestId("nearby-details-" + index);
       await details.waitFor();
+      if (index === 0) {
+        await details.getByTestId("recycle-mark-action").click();
+        assert.equal(await details.getByTestId("recycle-confirm-action").isEnabled(), false);
+        await details.getByTestId("recycle-material-other").click();
+        await details.getByTestId("recycle-confirm-action").click();
+        await page.waitForFunction(
+          () =>
+            JSON.parse(localStorage.getItem("@kierratysappi/recycling-overview/v1") ?? "null")
+              ?.counts.other === 1,
+        );
+      }
+      for (const excluded of point.reportedExclusions)
+        assert.ok((await details.innerText()).includes(labels[labelKeys[excluded]]));
       assert.ok(
         (await details.innerText()).includes(point.id),
         "Real nearest order must match independent distance calculation",
@@ -175,6 +185,25 @@ async function noOverflow(page) {
       for (const element of screen.querySelectorAll("div")) element.scrollTop = 0;
     });
     await page.screenshot({ path: path.join(evidenceDir, "fi-light.png"), fullPage: true });
+    await page.getByTestId("nearby-filter-batteries").click();
+    assert.equal(
+      await page.evaluate(() => window.qaLocation.watch),
+      1,
+      "Filtering must not reacquire location",
+    );
+    const batteries = expectedPoints(sample.coordinates, (p) =>
+      p.reportedMaterials.some(
+        (m) => ["batteries", "carBatteries"].includes(m) && !p.reportedExclusions.includes(m),
+      ),
+    );
+    assert.equal(await page.locator('[data-testid^="nearby-point-"]').count(), batteries.length);
+    for (const [i, { point }] of batteries.entries()) {
+      await page.getByTestId("nearby-details-toggle-" + i).click();
+      assert.ok((await page.getByTestId("nearby-details-" + i).innerText()).includes(point.id));
+      await page.getByTestId("nearby-details-toggle-" + i).click();
+    }
+    await page.screenshot({ path: path.join(evidenceDir, "fi-batteries.png"), fullPage: true });
+    await page.getByTestId("nearby-filter-all").click();
     await context.setOffline(true);
     await page.getByTestId("nearby-find").click();
     await page.getByTestId("nearby-result").waitFor();
@@ -209,6 +238,22 @@ async function noOverflow(page) {
     for (const width of [390, 320]) {
       await page.setViewportSize({ width, height: 844 });
       await noOverflow(page);
+      if (width === 320) {
+        await page.waitForFunction(() => {
+          const card = document.querySelector('[data-testid="nearby-point-0"]');
+          const heading = card?.querySelector('[role="heading"]');
+          return (
+            heading &&
+            heading.getBoundingClientRect().width >= card.getBoundingClientRect().width - 36
+          );
+        });
+        const card = await page.getByTestId("nearby-point-0").boundingBox();
+        const heading = await page.getByTestId("nearby-point-0").getByRole("heading").boundingBox();
+        assert.ok(
+          heading.width >= card.width - 36,
+          "Large-text name needs full card width, not a cramped distance column",
+        );
+      }
     }
     await page.screenshot({ path: path.join(evidenceDir, "fi-large.png"), fullPage: true });
     assert.deepEqual(errors, []);
@@ -231,7 +276,19 @@ async function noOverflow(page) {
       })
       .waitFor();
     assert.ok(
-      (await en.getByTestId("nearby-result").innerText()).includes(
+      !(await en.getByTestId("nearby-result").innerText()).includes(
+        "Accepted materials have not been reported.",
+      ),
+    );
+    await en.getByTestId("nearby-missing-toggle").click();
+    await en.getByTestId("nearby-missing-results").waitFor();
+    assert.ok(
+      (await en.getByTestId("nearby-missing-results").innerText()).includes(
+        "not collection recommendations",
+      ),
+    );
+    assert.ok(
+      (await en.getByTestId("nearby-missing-results").innerText()).includes(
         "Accepted materials have not been reported.",
       ),
     );

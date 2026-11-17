@@ -147,6 +147,22 @@ try {
     );
     assert.match(await get("object-sorting-source").innerText(), /2026-11-16|2026-08-10/);
     await inspect("metal");
+    const overview = () =>
+      page.evaluate(() =>
+        JSON.parse(localStorage.getItem("@kierratysappi/recycling-overview/v1") ?? "null"),
+      );
+    assert.equal(await overview(), null, "Guidance alone never records recycling");
+    await get("recycle-mark-action").click();
+    await get("recycle-confirm-cancel").click();
+    assert.equal(await overview(), null, "Cancelling never records recycling");
+    await get("recycle-mark-action").click();
+    await get("recycle-confirm-action").dblclick();
+    await page.waitForFunction(
+      () =>
+        JSON.parse(localStorage.getItem("@kierratysappi/recycling-overview/v1") ?? "null")?.counts
+          .metal === 1,
+    );
+    assert.equal((await overview()).recent.length, 1, "Repeated confirmation is idempotent");
     await get("object-sorting-change").click();
     await get("object-choice-cup").click();
     await get("object-answer-material-ceramic").click();
@@ -157,6 +173,30 @@ try {
     assert.match(await get("object-sorting-heading").innerText(), /Sekajäte|Mixed waste/);
     assert.match(await get("object-sorting-source").innerText(), /HSY/);
     await inspect("ceramic");
+    assert.equal(
+      await get("recycle-mark-action").count(),
+      0,
+      "Changing an object choice in one capture must not count it twice",
+    );
+    await get("qa-new-result").click();
+    await get("object-choice-cup").click();
+    await get("object-answer-material-ceramic").click();
+    await get("object-answer-region-hsy").click();
+    await get("recycle-mark-action").click();
+    assert.equal(
+      await get("recycle-confirm-action").isEnabled(),
+      false,
+      "Unknown material needs an explicit self-report",
+    );
+    await get("recycle-material-other").click();
+    await inspect("record-material-choice");
+    await get("recycle-confirm-action").click();
+    await page.waitForFunction(
+      () =>
+        JSON.parse(localStorage.getItem("@kierratysappi/recycling-overview/v1") ?? "null")?.counts
+          .other === 1,
+    );
+    assert.equal((await overview()).recent.length, 2);
     await get("object-sorting-change").click();
     await get("object-choice-bottle").click();
     await get("object-answer-material-plastic").click();
@@ -191,6 +231,9 @@ try {
       offlineChoices: true,
       keyboardSelection: true,
       staleReset: true,
+      recordingRequiresConfirmation: true,
+      unknownMaterialRequiresChoice: true,
+      sameCaptureIdempotent: true,
       multipleRecovery: true,
       overflowAnd44pxChecks: true,
       externalRequests: unexpected.length,

@@ -87,6 +87,18 @@ try {
       return route.abort();
     });
     const get = (id) => page.getByTestId(id);
+    async function recordUnknownMaterial(expected) {
+      await get("recycle-mark-action").click();
+      assert.equal(await get("recycle-confirm-action").isEnabled(), false);
+      await get("recycle-material-metal").click();
+      await get("recycle-confirm-action").click();
+      await page.waitForFunction(
+        (expected) =>
+          JSON.parse(localStorage.getItem("@kierratysappi/recycling-overview/v1") ?? "null")?.recent
+            .length === expected,
+        expected,
+      );
+    }
     async function inspect(stage) {
       await page.evaluate(() => document.fonts.ready);
       const issues = await page.evaluate(() => {
@@ -146,6 +158,7 @@ try {
     assert.match(await get("product-result-screen").innerText(), /Oivariini/);
     assert.equal(remoteRequests, beforePhoto);
     await inspect("camera-shared-barcode");
+    await recordUnknownMaterial(1);
     // A source-backed HSY query must require a matching municipality, not guess.
     await page.goto(
       base +
@@ -167,6 +180,25 @@ try {
       return r && r.top >= 0 && r.bottom < innerHeight - 160;
     });
     await inspect("hsy-offline-source");
+    await recordUnknownMaterial(2);
+    await page.goto(base + "/guide?material=plastic");
+    await get("recycle-mark-action").click();
+    assert.equal(
+      await get("recycle-material-plastic").count(),
+      0,
+      "Explicit general material needs no second picker",
+    );
+    await get("recycle-confirm-action").click();
+    await page.waitForFunction(
+      () =>
+        JSON.parse(localStorage.getItem("@kierratysappi/recycling-overview/v1") ?? "null")?.counts
+          .plastic === 1,
+    );
+    await page.goto(
+      base +
+        "/guide?query=" +
+        encodeURIComponent(language === "fi" ? "Paistinpannu, kasari" : "Frying pan, saucepan"),
+    );
     await page.reload();
     // Region intentionally transient across full relaunch; language is not.
     await get("sorting-region-manual").waitFor();
@@ -211,7 +243,7 @@ try {
     await get("overview-quantity-input").fill("2");
     await get("overview-add-action").click();
     await page.waitForFunction(
-      () => document.querySelector('[data-testid="overview-total"]')?.textContent === "2",
+      () => document.querySelector('[data-testid="overview-total"]')?.textContent === "5",
     );
     await inspect("overview-saved");
     await page.goto(base + "/settings");

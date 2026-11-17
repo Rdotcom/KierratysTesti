@@ -1,8 +1,6 @@
 import {
   CollectionDirectorySchema,
   directoryAgeDays,
-  type NearbyCollectionPoint,
-  nearestCollectionPoints,
 } from "@kierratysappi/contracts/collection-points";
 import type { MessageKey } from "@kierratysappi/localization";
 import { useFocusEffect, useRouter } from "expo-router";
@@ -18,6 +16,7 @@ import {
   View,
 } from "react-native";
 import snapshot from "@/assets/data/finland-recycling.json";
+import { ChoiceChip } from "@/components/choice-chip";
 import { NearbyPointCard } from "@/components/nearby-point-card";
 import {
   AppText,
@@ -32,9 +31,14 @@ import { announceAccessibility } from "@/features/accessibility/announcements";
 import { readAddressLocation, readDeviceLocation } from "@/features/nearby/device-location";
 import { LocationIssue } from "@/features/nearby/location-session";
 import { AddressLookupIssue } from "@/features/nearby/manual-location";
+import {
+  buildNearbyResults,
+  type NearbyFilter,
+  type NearbyResults,
+  nearbyMaterialGroups,
+} from "@/features/nearby/results";
 import { useNearbySearch } from "@/features/nearby/search-context";
 import { useSortingRegion } from "@/features/region/context";
-import { useSoundFeedback } from "@/features/sound-feedback/context";
 import { useLanguage } from "@/i18n/language-context";
 import { appFontFamily } from "@/theme/fonts";
 import { radius, spacing, useAppTheme } from "@/theme/tokens";
@@ -45,7 +49,7 @@ type State =
   | { status: "error"; message: MessageKey }
   | {
       status: "ready";
-      points: readonly NearbyCollectionPoint[];
+      results: NearbyResults;
       accuracy: number | null;
       origin: "device" | "address";
     };
@@ -63,8 +67,9 @@ export default function NearbyScreen() {
   const { t, language } = useLanguage();
   const { palette } = useAppTheme();
   const { consumeSearchRequest } = useNearbySearch();
-  const { play } = useSoundFeedback();
   const [state, setState] = useState<State>({ status: "idle" });
+  const [filter, setFilter] = useState<NearbyFilter>("all");
+  const [missingOpen, setMissingOpen] = useState(false);
   const [privacyOpen, setPrivacyOpen] = useState(false);
   const [linkError, setLinkError] = useState(false);
   const [manualOpen, setManualOpen] = useState(false);
@@ -75,6 +80,8 @@ export default function NearbyScreen() {
     active.current = null;
     setState({ status: "idle" });
     setPrivacyOpen(false);
+    setFilter("all");
+    setMissingOpen(false);
     setLinkError(false);
     setManualOpen(false);
     setLocationInput("");
@@ -94,25 +101,30 @@ export default function NearbyScreen() {
       const fix = await readDeviceLocation(controller.signal);
       if (controller.signal.aborted) return;
       fromCoordinates(fix.coords);
-      const points = nearestCollectionPoints(directory.data.points, fix.coords);
-      if (!points.length) {
+      const results = buildNearbyResults(directory.data.points, fix.coords);
+      if (!results.reported.length && !results.missing.length) {
         setState({ status: "error", message: "nearbyNoResult" });
         announceAccessibility(t("nearbyNoResult"), "high");
       } else {
-        setState({ status: "ready", points, accuracy: fix.coords.accuracy ?? 0, origin: "device" });
-        play("ready");
+        setState({
+          status: "ready",
+          results,
+          accuracy: fix.coords.accuracy ?? 0,
+          origin: "device",
+        });
+
         announceAccessibility(t("nearbyResult"), "high");
       }
     } catch (error) {
       if (controller.signal.aborted) return;
       const message = error instanceof LocationIssue ? errors[error.reason] : "nearbyUnavailable";
       setState({ status: "error", message });
-      play("attention");
+
       announceAccessibility(t(message), "high");
     } finally {
       if (active.current === controller) active.current = null;
     }
-  }, [t, play, fromCoordinates]);
+  }, [t, fromCoordinates]);
   const findByLocation = async () => {
     if (active.current || Platform.OS === "web") return;
     const input = locationInput;
@@ -129,13 +141,13 @@ export default function NearbyScreen() {
     try {
       const coordinates = await readAddressLocation(input, controller.signal);
       if (controller.signal.aborted) return;
-      const points = nearestCollectionPoints(directory.data.points, coordinates);
-      if (!points.length) {
+      const results = buildNearbyResults(directory.data.points, coordinates);
+      if (!results.reported.length && !results.missing.length) {
         setState({ status: "error", message: "nearbyNoResult" });
         announceAccessibility(t("nearbyNoResult"), "high");
       } else {
-        setState({ status: "ready", points, accuracy: null, origin: "address" });
-        play("ready");
+        setState({ status: "ready", results, accuracy: null, origin: "address" });
+
         announceAccessibility(`${t("nearbyResult")}. ${t("nearbyManualEstimate")}`, "high");
       }
     } catch (error) {
@@ -149,7 +161,7 @@ export default function NearbyScreen() {
               ? "nearbyLocationBusy"
               : "nearbyLocationError";
       setState({ status: "error", message });
-      play("attention");
+
       announceAccessibility(t(message), "high");
     } finally {
       if (active.current === controller) active.current = null;
@@ -226,9 +238,82 @@ export default function NearbyScreen() {
       {state.status === "ready" && (
         <>
           <View style={sharedStyles.tightStack}>
+            <AppText variant="label">{t("nearbyFilterTitle")}</AppText>
+            <View
+              accessibilityRole="radiogroup"
+              accessibilityLabel={t("nearbyFilterTitle")}
+              style={styles.filters}
+            >
+              {(["all", ...Object.keys(nearbyMaterialGroups)] as NearbyFilter[]).map((value) => (
+                <ChoiceChip
+                  key={value}
+                  selected={filter === value}
+                  label={t(filterLabels[value])}
+                  onPress={() => {
+                    setFilter(value);
+                    setMissingOpen(false);
+                  }}
+                  testID={`nearby-filter-${value}`}
+                />
+              ))}
+            </View>
+          </View>
+          <View style={sharedStyles.tightStack} testID="nearby-result">
+            {(filter === "all" ? state.results.reported : state.results.materials[filter])
+              .length === 0 && (
+              <AppText testID="nearby-no-material-result">
+                {t(filter === "all" ? "nearbyNoReported" : "nearbyNoMaterialMatch")}
+              </AppText>
+            )}
+            {(filter === "all" ? state.results.reported : state.results.materials[filter]).map(
+              (result, index) => (
+                <NearbyPointCard
+                  key={result.point.id}
+                  result={result}
+                  index={index}
+                  accuracy={state.accuracy}
+                />
+              ),
+            )}
+          </View>
+          {filter === "all" && state.results.missing.length > 0 && (
+            <View style={sharedStyles.tightStack}>
+              <InlineLink
+                label={t(missingOpen ? "nearbyHideMissing" : "nearbyShowMissing")}
+                role="button"
+                expanded={missingOpen}
+                onPress={() => setMissingOpen((value) => !value)}
+                testID="nearby-missing-toggle"
+              />
+              {missingOpen && (
+                <View testID="nearby-missing-results" style={sharedStyles.tightStack}>
+                  <AppText variant="small" muted>
+                    {t("nearbyMissingNote")}
+                  </AppText>
+                  {state.results.missing.map((result, index) => (
+                    <NearbyPointCard
+                      key={result.point.id}
+                      result={result}
+                      index={index + 5}
+                      accuracy={state.accuracy}
+                    />
+                  ))}
+                </View>
+              )}
+            </View>
+          )}
+          <View style={sharedStyles.tightStack}>
             <AppText variant="small" muted>
-              {t("nearbyUnverified")}
+              {t("nearbyQuickCaution")}
             </AppText>
+            {state.origin === "address" && (
+              <AppText variant="small" muted>
+                {t("nearbyManualEstimate")}
+              </AppText>
+            )}
+            {state.accuracy !== null && state.accuracy > 100 && (
+              <AppText variant="small">{t("nearbyApproximate")}</AppText>
+            )}
             {directory.success && (
               <AppText variant="small" muted>
                 {t("nearbyRetrieved")}:{" "}
@@ -237,25 +322,15 @@ export default function NearbyScreen() {
                 )}
               </AppText>
             )}
+            <AppText variant="small" muted>
+              {t("nearbyUnverified")}
+            </AppText>
             <InlineLink label={t("nearbySource")} onPress={openSource} />
             {directory.success && directoryAgeDays(directory.data) > 30 && (
-              <AppText>{t("nearbyStale")}</AppText>
+              <AppText variant="small" muted>
+                {t("nearbyStale")}
+              </AppText>
             )}
-            <AppText variant="small">{t("nearbyQuickCaution")}</AppText>
-            {state.origin === "address" && <AppText>{t("nearbyManualEstimate")}</AppText>}
-            {state.accuracy !== null && state.accuracy > 100 && (
-              <AppText>{t("nearbyApproximate")}</AppText>
-            )}
-          </View>
-          <View style={sharedStyles.stack} testID="nearby-result">
-            {state.points.map((result, index) => (
-              <NearbyPointCard
-                key={result.point.id}
-                result={result}
-                index={index}
-                accuracy={state.accuracy}
-              />
-            ))}
           </View>
           <Button
             label={t("nearbyRefresh")}
@@ -362,7 +437,20 @@ export default function NearbyScreen() {
     </Screen>
   );
 }
+const filterLabels = {
+  all: "nearbyFilterAll",
+  plastic: "pointPlastic",
+  glass: "pointGlass",
+  metal: "pointMetal",
+  cardboard: "pointCartons",
+  paper: "pointPaper",
+  batteries: "pointBatteries",
+  electronics: "pointElectricalAppliances",
+  textiles: "pointTextiles",
+  other: "nearbyFilterOther",
+} as const satisfies Record<NearbyFilter, MessageKey>;
 const styles = StyleSheet.create({
+  filters: { flexDirection: "row", flexWrap: "wrap", gap: 8 },
   screen: { gap: spacing.md },
   provenance: { gap: spacing.sm, paddingTop: spacing.sm },
   locationInput: {

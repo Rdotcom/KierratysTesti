@@ -1,6 +1,6 @@
-import { useLocalSearchParams, useRouter } from "expo-router";
 import { localizedText } from "@kierratysappi/localization";
 import { searchGuideItems, searchGuideLibrary } from "@kierratysappi/recycling-engine";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import { type ComponentRef, useEffect, useRef, useState } from "react";
 import {
   Keyboard,
@@ -11,6 +11,10 @@ import {
   TextInput,
   View,
 } from "react-native";
+import { ObjectSortingFlowView } from "@/components/object-sorting-flow";
+import { RecyclingRecordAction } from "@/components/recycle-action";
+import { SortingRegionPicker } from "@/components/sorting-region-picker";
+import { SourceGuideResult } from "@/components/source-guide-result";
 import {
   AppText,
   Button,
@@ -23,17 +27,15 @@ import {
   sharedStyles,
 } from "@/components/ui";
 import { announceAccessibility } from "@/features/accessibility/announcements";
-import { ObjectSortingFlowView } from "@/components/object-sorting-flow";
-import { SortingRegionPicker } from "@/components/sorting-region-picker";
-import { SourceGuideResult } from "@/components/source-guide-result";
 import { guideLibrary } from "@/features/guide/library";
-import { useSortingRegion } from "@/features/region/context";
 import {
   filterGuideMaterials,
   GUIDE_SEARCH_MAX_LENGTH,
   type GuideMaterial,
   parseGuideSearchParams,
 } from "@/features/guide/search";
+import { recyclingIntent } from "@/features/overview/recording";
+import { useSortingRegion } from "@/features/region/context";
 import { useLanguage } from "@/i18n/language-context";
 import { appFontFamily } from "@/theme/fonts";
 import { controls, interaction, radius, spacing, useAppTheme } from "@/theme/tokens";
@@ -56,6 +58,7 @@ export default function GuideScreen() {
   const [material, setMaterial] = useState<GuideMaterial | null>(initialSearch.material);
   const [invalid, setInvalid] = useState(initialSearch.invalid);
   const [focused, setFocused] = useState(false);
+  const [recordingScope] = useState(() => ({}));
   const [focusedFilter, setFocusedFilter] = useState<GuideMaterial | "all" | null>(null);
   const [itemChoice, setItemChoice] = useState<{ id: string; query: string }>();
   const [sourceChoice, setSourceChoice] = useState<{ id: string; query: string }>();
@@ -243,6 +246,7 @@ export default function GuideScreen() {
               <ObjectSortingFlowView
                 key={`${query}:${selectedItem.id}`}
                 kind={selectedItem.kind}
+                label={localizedText(language, selectedItem.label)}
                 showRegionControl={false}
                 onChangeObject={() => {
                   setItemChoice(undefined);
@@ -285,6 +289,11 @@ export default function GuideScreen() {
                 {t(title)}
               </AppText>
               <AppText>{t(body)}</AppText>
+              <RecyclingRecordAction
+                material={value}
+                recordId={recyclingIntent(recordingScope, value)}
+                label={t(title)}
+              />
             </DocumentSection>
           ),
         )}

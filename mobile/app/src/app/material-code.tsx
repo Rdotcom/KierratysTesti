@@ -7,10 +7,10 @@ import {
 import { localizedText } from "@kierratysappi/localization";
 import type { SortingResult } from "@kierratysappi/recycling-engine";
 import { useLocalSearchParams, useRouter } from "expo-router";
-import { useEffect, useState } from "react";
-import { Keyboard, Linking, StyleSheet, TextInput, View } from "react-native";
-import { SortingResultCard } from "@/components/sorting-result";
+import { type ComponentRef, useEffect, useRef, useState } from "react";
+import { Keyboard, Linking, type ScrollView, StyleSheet, TextInput, View } from "react-native";
 import { RecycleAction } from "@/components/recycle-action";
+import { SortingResultCard } from "@/components/sorting-result";
 import {
   AppText,
   Button,
@@ -46,6 +46,8 @@ export default function MaterialCodeScreen() {
   const [sorting, setSorting] = useState<SortingResult>();
   const [focused, setFocused] = useState(false);
   const [recordingScope] = useState(() => ({}));
+  const scrollRef = useRef<ComponentRef<typeof ScrollView>>(null);
+  const [resultY, setResultY] = useState(0);
 
   useEffect(() => {
     setValue(prefill);
@@ -53,14 +55,28 @@ export default function MaterialCodeScreen() {
     setSorting(undefined);
   }, [prefill]);
 
+  useEffect(() => {
+    if (attempt && resultY > 0)
+      scrollRef.current?.scrollTo({ y: Math.max(0, resultY - 16), animated: false });
+  }, [attempt, resultY]);
+
   const parse = () => {
     Keyboard.dismiss();
     const nextAttempt = parseMaterialIdentificationCode(value);
     setAttempt(nextAttempt);
-    setSorting(undefined);
-    announceAccessibility(
+    const nextSorting =
       nextAttempt.status === "recognized"
-        ? t("materialCodeRecognized")
+        ? sortRecognizedMaterialCode({
+            recognition: nextAttempt,
+            language,
+            observedAt: new Date().toISOString(),
+            componentId: `material-code-${Date.now()}`,
+          })
+        : undefined;
+    setSorting(nextSorting);
+    announceAccessibility(
+      nextSorting
+        ? sortingAnnouncement(nextSorting, language)
         : nextAttempt.status === "ambiguous"
           ? t("materialCodeAmbiguousTitle")
           : t("materialCodeUnknownTitle"),
@@ -68,20 +84,8 @@ export default function MaterialCodeScreen() {
     );
   };
 
-  const confirm = (recognition: RecognizedMaterialCode) => {
-    const observedAt = new Date().toISOString();
-    const nextSorting = sortRecognizedMaterialCode({
-      recognition,
-      language,
-      observedAt,
-      componentId: `material-code-${Date.now()}`,
-    });
-    setSorting(nextSorting);
-    announceAccessibility(sortingAnnouncement(nextSorting, language));
-  };
-
   return (
-    <Screen>
+    <Screen scrollRef={scrollRef}>
       <PageHeader onBack={() => router.back()} />
       <PageIntro title={t("materialCodeTitle")} body={t("materialCodeBody")} />
 
@@ -140,12 +144,16 @@ export default function MaterialCodeScreen() {
       </View>
 
       {attempt && (
-        <View accessibilityLiveRegion="polite" style={styles.result}>
+        <View
+          accessibilityLiveRegion="polite"
+          style={styles.result}
+          testID="material-code-result"
+          onLayout={(event) => setResultY(event.nativeEvent.layout.y)}
+        >
           {attempt.status === "recognized" ? (
             <RecognizedCode
               recognition={attempt}
               sorting={sorting}
-              onConfirm={() => confirm(attempt)}
               recordId={recyclingIntent(recordingScope, "material-code")}
             />
           ) : (
@@ -166,12 +174,10 @@ function sortingAnnouncement(result: SortingResult, language: "fi" | "en"): stri
 function RecognizedCode({
   recognition,
   sorting,
-  onConfirm,
   recordId,
 }: {
   readonly recognition: RecognizedMaterialCode;
   readonly sorting?: SortingResult;
-  readonly onConfirm: () => void;
   readonly recordId: string;
 }) {
   const { language, t } = useLanguage();
@@ -179,40 +185,13 @@ function RecognizedCode({
 
   return (
     <View style={sharedStyles.stack}>
-      <Paper style={{ borderColor: sorting ? palette.pine : palette.amber }}>
-        <StatusPill
-          label={sorting ? t("localObservation") : t("materialCodeRecognized")}
-          tone={sorting ? "pine" : "amber"}
-        />
-        <View
-          style={[
-            styles.codePlate,
-            { backgroundColor: palette.surfaceRaised, borderColor: palette.ink },
-          ]}
-        >
-          <AppText variant="small" muted>
-            {recognition.precision === "exact" ? t("identifierExact") : t("identifierGroup")}
-          </AppText>
-          <AppText style={styles.code}>{recognition.canonicalCode}</AppText>
-          <AppText variant="heading">{localizedText(language, recognition.materialName)}</AppText>
-        </View>
-        <AppText>{t("materialCodeRecognizedBody")}</AppText>
-        <Rule />
-        <View style={sharedStyles.tightStack}>
-          <AppText variant="small" muted>
-            {t("materialCodeSource")}
-          </AppText>
-          <InlineLink
-            label={recognition.source.sourceName}
-            onPress={() => void Linking.openURL(recognition.source.sourceUrl)}
-          />
-          <AppText variant="small" muted>
-            {recognition.source.jurisdiction} · {recognition.source.version} · {t("checkedLabel")}:{" "}
-            {recognition.source.checkedAt}
-          </AppText>
-        </View>
-        {!sorting && <Button label={t("materialCodeConfirmAction")} onPress={onConfirm} />}
-      </Paper>
+      <View style={[styles.codePlate, { borderColor: palette.borderSubtle }]}>
+        <AppText style={styles.code}>{recognition.canonicalCode}</AppText>
+        <AppText variant="label">{localizedText(language, recognition.materialName)}</AppText>
+        <AppText variant="small" muted>
+          {recognition.precision === "exact" ? t("identifierExact") : t("identifierGroup")}
+        </AppText>
+      </View>
       {sorting && (
         <>
           <SortingResultCard result={sorting} />
@@ -224,6 +203,23 @@ function RecognizedCode({
           />
         </>
       )}
+      <AppText variant="small" muted>
+        {t("materialCodeRecognizedBody")}
+      </AppText>
+      <Rule />
+      <View style={sharedStyles.tightStack}>
+        <AppText variant="small" muted>
+          {t("materialCodeSource")}
+        </AppText>
+        <InlineLink
+          label={recognition.source.sourceName}
+          onPress={() => void Linking.openURL(recognition.source.sourceUrl)}
+        />
+        <AppText variant="small" muted>
+          {recognition.source.jurisdiction} · {recognition.source.version} · {t("checkedLabel")}:{" "}
+          {recognition.source.checkedAt}
+        </AppText>
+      </View>
     </View>
   );
 }
@@ -273,17 +269,17 @@ const styles = StyleSheet.create({
     fontSize: 20,
     letterSpacing: 1.2,
   },
-  result: { paddingTop: spacing.xl },
+  result: { paddingTop: spacing.md },
   codePlate: {
-    borderLeftWidth: 3,
+    borderLeftWidth: 2,
     borderRadius: radius.md,
-    padding: spacing.md,
+    padding: spacing.sm,
     gap: spacing.xs,
   },
   code: {
     fontFamily: codeFontFamily,
-    fontSize: 28,
-    lineHeight: 36,
+    fontSize: 22,
+    lineHeight: 28,
     letterSpacing: -1,
   },
 });

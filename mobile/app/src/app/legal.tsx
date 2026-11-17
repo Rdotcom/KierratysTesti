@@ -5,15 +5,14 @@ import {
   AppText,
   Button,
   DocumentSection,
+  InlineLink,
   PageHeader,
   PageIntro,
   Paper,
-  InlineLink,
   Screen,
 } from "@/components/ui";
 import { announceAccessibility } from "@/features/accessibility/announcements";
 import { clearAllLocalData } from "@/features/history/storage";
-import { useSoundFeedback } from "@/features/sound-feedback/context";
 import { useLanguage } from "@/i18n/language-context";
 import { useAppTheme } from "@/theme/tokens";
 
@@ -26,7 +25,6 @@ export default function LegalScreen() {
   const [deleting, setDeleting] = useState(false);
   const [failed, setFailed] = useState(false);
   const locked = useRef(false);
-  const { reloadAfterDeletion } = useSoundFeedback();
 
   const deleteData = async () => {
     if (locked.current) return;
@@ -35,7 +33,7 @@ export default function LegalScreen() {
     setFailed(false);
     try {
       await clearAllLocalData();
-      reloadAfterDeletion();
+
       setLanguage(language);
       setDeleted(true);
       setConfirming(false);

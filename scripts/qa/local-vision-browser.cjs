@@ -58,6 +58,7 @@ async function scaleText(page) {
 }
 
 async function main() {
+  const { messages } = await import("../../mobile/localization/dist/index.js");
   const browser = await chromium.launch({
     executablePath: process.env.BROWSER_EXECUTABLE_PATH,
     headless: true,
@@ -120,26 +121,20 @@ async function main() {
       await page.getByTestId("local-photo-capture-guidance").waitFor();
       assert.equal(
         await page.getByTestId("local-photo-capture-guidance").innerText(),
-        language === "fi"
-          ? "Kuvaa yksi pakkaus kerrallaan. Materiaalikoodia varten ota lähikuva koko numero–kirjainparista, esimerkiksi 05 PP. Pidä teksti suorassa ja vältä heijastuksia."
-          : "Photograph one package at a time. For a material code, take a close-up of the full number–letter pair, such as 05 PP. Keep the text straight and avoid reflections.",
+        messages[language].offlineProductGuidance,
         "The current localized capture instructions must render; stale bundles cannot pass",
       );
-      for (const text of language === "fi"
-        ? [
-            "Tuetussa iPhonessa kuva käsitellään laitteessa. Voit etsiä pakkauksen materiaalikoodia ja arviota esineen tyypistä.",
-            "Tunnistus on rajattu ja voi jäädä epäselväksi. Kuva ei varmista tuotteen nimeä, materiaalia tai vaarattomuutta. Tarkista pakkauksen osat erikseen.",
-            "Erillinen OpenAI-polku käyttää maksullista rajapintaa. Sitä ei käytetä paikallisen tunnistuksen varapalveluna.",
-          ]
-        : [
-            "On a supported iPhone, the image is processed on device. Look for a packaging material code and an estimate of the object type.",
-            "Recognition is limited and may be inconclusive. An image does not verify the product name, material or safety. Check each packaging part separately.",
-            "The separate OpenAI flow uses a paid API. It is not used as a fallback for local recognition.",
-          ]) {
+      for (const key of [
+        "localVisionIntro",
+        "offlineProductScope",
+        "objectCandidateIntro",
+        "localVisionCloudCost",
+      ]) {
+        const text = messages[language][key];
         assert.equal(
           await page.getByText(text, { exact: true }).count(),
           1,
-          `${language} must render the final supported-device, limitation and paid-cloud disclosures; stale bundles cannot pass`,
+          `${language}/${key} must render current scope, uncertainty and paid-cloud disclosures`,
         );
       }
       assert.equal(await page.getByTestId("local-photo-open-camera").count(), 0);
@@ -228,6 +223,7 @@ async function main() {
       // Web cannot fabricate native OCR. Enter via the real local manual recovery,
       // then supply a public suggested code through the same public query boundary.
       await page.getByTestId("local-photo-marking-action").click();
+      await page.waitForURL("**/material-code");
       await page.getByRole("textbox").waitFor();
       assert.equal(new URL(page.url()).pathname, "/material-code");
       assert.equal(await storedRecycling(page), null, "No automatic recycling record on recovery");
@@ -260,12 +256,17 @@ async function main() {
       assert.equal(await confirm.count(), 0);
       await inspect(page, `${language}-material-prefill-editable`);
       await checkCode.click();
-      await confirm.waitFor();
-      assert.equal(await page.locator('[data-testid^="sorting-result-"]').count(), 0);
-      assert.equal(await page.getByTestId("recycle-mark-action").count(), 0);
+      assert.equal(await confirm.count(), 0);
+      await page.locator('[data-testid^="sorting-result-"]').waitFor();
+      await page.waitForFunction(() => {
+        const heading = document.querySelector(
+          '[data-testid="sorting-result-resolved"] [role="heading"]',
+        );
+        const rect = heading?.getBoundingClientRect();
+        return rect && rect.top >= 0 && rect.bottom < innerHeight - 40;
+      });
       assert.equal(await storedRecycling(page), null, "No automatic recycling record from Check");
-      await inspect(page, `${language}-material-requires-confirmation`);
-      await confirm.click();
+      await inspect(page, `${language}-material-single-check`);
       await page.locator('[data-testid^="sorting-result-"]').waitFor();
       const mark = page.getByTestId("recycle-mark-action");
       await mark.waitFor();
@@ -333,17 +334,11 @@ async function main() {
           exact: true,
         })
         .waitFor();
-      const localPrivacy =
-        language === "fi"
-          ? "Paikallinen tunnistus ei lähetä kuvaa tai kuvasta luettua tekstiä palvelimelle. Kuvaa ja tulosta ei lisätä historiaan. Näkymästä poistuminen tai sovelluksen siirtäminen taustalle tyhjentää tämän näkymän kuvan ja tuloksen."
-          : "Local recognition does not send the image or recognized text to a server. The image and result are not added to history. Leaving this screen or putting the app in the background clears this screen's image and result.";
+      const localPrivacy = messages[language].localVisionPrivacy;
       assert.equal(await page.getByText(localPrivacy, { exact: true }).count(), 1);
-      const modelAttribution = page.getByText(
-        language === "fi"
-          ? "Täydentävä esinetyyppiarvio käyttää Applen MobileCLIP-S0-mallia (2024). Malli ja lisenssihuomautukset sisältyvät sitä tukevaan iPhone-asennukseen. Tämä ei tarkoita Applen hyväksyntää sovellukselle. Tulos ei varmista materiaalia tai tuotetta."
-          : "The supplemental object-type estimate uses Apple's MobileCLIP-S0 model (2024). The model and licence notices are included in supporting iPhone installations. This does not imply Apple's endorsement of the app. The estimate does not verify material or product identity.",
-        { exact: true },
-      );
+      const modelAttribution = page.getByText(messages[language].localVisionModelAttribution, {
+        exact: true,
+      });
       assert.equal(await modelAttribution.count(), 1);
       await modelAttribution.scrollIntoViewIfNeeded();
       await inspect(page, `${language}-privacy-model-attribution`);
@@ -371,7 +366,7 @@ async function main() {
       await context.close();
     }
     console.log(
-      "PASS: actual FI/EN web final supported-iPhone/limited-recognition/paid-cloud copy and capture guidance, explicit unsupported-native state (no fake estimate/retake), zero implicit API/camera/GPS, keyboard barcode permission-explanation/back and manual-marking recovery, separate named cloud consent entry/back without capture/send, 44pt controls, dark/light 320/390/1280 and 130% synthetic text; local recovery/public-code prefill requires explicit Check, physical confirmation and a separate recycled-part confirmation before one Overview record, with passive cancellation and invalid-query preservation; Privacy retains local no-upload/clearing, conditional MobileCLIP-S0/2024 attribution without endorsement/material certainty, separately consented OpenAI retention and cancel-safe Overview deletion. Native capture/retake, image inference and accuracy remain unverified.",
+      "PASS: actual FI/EN web scope/uncertainty/cloud disclosures, unsupported-native recovery, no implicit API/camera/GPS, keyboard navigation, 44pt controls, dark/light 320/390/1280 and 130% synthetic text. Suggested code only prefills; one explicit Check reveals guidance in the viewport without a redundant confirmation. Recycling remains a separate cancel-safe confirmation with one stored record. Invalid query, local-image privacy, model attribution and cancel-safe deletion pass. Native capture and recognition accuracy are not verified here.",
     );
   } finally {
     await browser.close();

@@ -1,9 +1,9 @@
+import type { AndroidVisionEvidence } from "@kierratysappi/contracts/android-vision";
 import type {
   LocalObjectKind,
   LocalVisionObservation,
 } from "@kierratysappi/contracts/local-vision";
 import type { LocalVisionReadiness } from "@kierratysappi/contracts/local-vision-readiness";
-import type { AndroidVisionEvidence } from "@kierratysappi/contracts/android-vision";
 import { preparePhotoBase64 } from "@kierratysappi/contracts/photo-image";
 import type { OfflineProductResult } from "@kierratysappi/domain/offline-product";
 import type { MessageKey } from "@kierratysappi/localization";
@@ -13,9 +13,8 @@ import { File, Paths } from "expo-file-system";
 import { useFocusEffect, useRouter } from "expo-router";
 import { useCallback, useRef, useState } from "react";
 import { AppState, Image, Linking, Platform, StyleSheet, TextInput, View } from "react-native";
-import { OfflineProductResultView } from "@/components/offline-product-result";
 import { ObjectCandidateResultView } from "@/components/object-candidate-result";
-import type { ObjectPhotoResponse } from "@/features/local-vision/object-candidates";
+import { OfflineProductResultView } from "@/components/offline-product-result";
 import {
   AppText,
   Button,
@@ -28,27 +27,28 @@ import {
   sharedStyles,
 } from "@/components/ui";
 import { announceAccessibility } from "@/features/accessibility/announcements";
-import { useScanSession } from "@/features/scan/session-context";
-import {
-  inspectLocalVisionReadiness,
-  isLocalVisionAvailable,
-  recognizeLocalPhoto,
-  recognizeOfflineProduct,
-  recognizeAndroidEvidence,
-} from "@/features/local-vision/native";
-import { type LocalPhotoPhase, localPhotoPresentation } from "@/features/local-vision/presentation";
-import { localReadinessMessage } from "@/features/local-vision/readiness";
-import { isLocalCaptureUri } from "@/features/local-vision/recognizer";
 import {
   shouldClearLocalPhotoState,
   waitForCameraPermissionResume,
 } from "@/features/local-vision/lifecycle";
 import {
+  inspectLocalVisionReadiness,
+  isLocalVisionAvailable,
+  recognizeAndroidEvidence,
+  recognizeLocalPhoto,
+  recognizeOfflineProduct,
+} from "@/features/local-vision/native";
+import type { ObjectPhotoResponse } from "@/features/local-vision/object-candidates";
+import { type LocalPhotoPhase, localPhotoPresentation } from "@/features/local-vision/presentation";
+import { localReadinessMessage } from "@/features/local-vision/readiness";
+import { isLocalCaptureUri } from "@/features/local-vision/recognizer";
+import { recyclingIntent } from "@/features/overview/recording";
+import {
   canUseLocalPhotoCapture,
   localPhotoInitialSize,
   resolvePhotoCaptureSize,
 } from "@/features/photo/sorting";
-import { useSoundFeedback } from "@/features/sound-feedback/context";
+import { useScanSession } from "@/features/scan/session-context";
 import { useLanguage } from "@/i18n/language-context";
 import { radius, useAppTheme } from "@/theme/tokens";
 
@@ -67,7 +67,6 @@ function removeCapture(uri: string): void {
 }
 
 export default function LocalPhotoScreen() {
-  const { play } = useSoundFeedback();
   const router = useRouter();
   const { t, language } = useLanguage();
   const { lookupBarcode } = useScanSession();
@@ -263,7 +262,7 @@ export default function LocalPhotoScreen() {
         setObjectHint(result.objectHint);
         setAndroidEvidence(result.androidEvidence);
         setPhase("result");
-        play("ready");
+
         announceAccessibility(t("localVisionReady"));
       } else {
         setError(
@@ -287,7 +286,7 @@ export default function LocalPhotoScreen() {
       if (result.status === "observed") {
         setAndroidEvidence(result.observation);
         setPhase("result");
-        play("ready");
+
         announceAccessibility(t("localVisionReady"));
       } else {
         setError(result.reason === "timeout" ? "localVisionTimeout" : "localVisionError");
@@ -304,7 +303,7 @@ export default function LocalPhotoScreen() {
     if (result.status === "observed") {
       setObservation(result.observation);
       setPhase("result");
-      play("ready");
+
       announceAccessibility(t("localVisionReady"));
     } else {
       setError(
@@ -317,7 +316,6 @@ export default function LocalPhotoScreen() {
               : "localVisionError",
       );
       setPhase("intro");
-      play("attention");
     }
   };
 
@@ -617,6 +615,7 @@ export default function LocalPhotoScreen() {
           <>
             {objectHint && (
               <ObjectCandidateResultView
+                recordId={recyclingIntent(productResult, "photo")}
                 result={objectHint}
                 onGuide={() => {
                   clear();
@@ -624,7 +623,10 @@ export default function LocalPhotoScreen() {
                 }}
               />
             )}
-            <OfflineProductResultView result={productResult} />
+            <OfflineProductResultView
+              result={productResult}
+              recordId={recyclingIntent(productResult, "photo")}
+            />
             <Button
               label={t("localVisionAgain")}
               variant="secondary"

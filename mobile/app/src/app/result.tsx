@@ -5,7 +5,7 @@ import { useRouter } from "expo-router";
 import { useEffect } from "react";
 import { ActivityIndicator, Linking, StyleSheet, View } from "react-native";
 import { PackagingMark } from "@/components/packaging-mark";
-import { RecycleAction } from "@/components/recycle-action";
+import { RecycleAction, RecyclingRecordAction } from "@/components/recycle-action";
 import { SortingResultCard } from "@/components/sorting-result";
 import {
   AppText,
@@ -164,6 +164,10 @@ function ProductResult({
             <AppText variant="heading">{t("packagingMissingTitle")}</AppText>
             <AppText>{t("packagingMissingBody")}</AppText>
           </Paper>
+          <RecyclingRecordAction
+            recordId={recyclingIntent(result, "manual-material")}
+            label={name}
+          />
           <Button
             label={t("materialCodeAction")}
             onPress={() => router.push("./material-code")}
