@@ -87,7 +87,12 @@ test("locked YAML parser retains the bounded-merge security patch", async () => 
 });
 
 test("every high and critical advisory fails, including formerly excepted image-size IDs", () => {
-  const ids = ["GHSA-w3rx-r6r6-pgpr", "GHSA-5p2g-fcmc-qvqq", "GHSA-new-advisory"];
+  const ids = [
+    "GHSA-w3rx-r6r6-pgpr",
+    "GHSA-5p2g-fcmc-qvqq",
+    "GHSA-fc5q-39xc-vjpf",
+    "GHSA-new-advisory",
+  ];
   const advisories = ids.flatMap((github_advisory_id) =>
     ["high", "critical"].map((severity) => ({
       github_advisory_id,

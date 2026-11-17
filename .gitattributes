@@ -3,3 +3,7 @@
 *.onnx binary
 # A frozen prototype digest must survive Windows core.autocrlf checkouts byte-for-byte.
 mobile/app/modules/local-vision/android/src/main/assets/siglip/prototypes.json -text
+# pnpm patch SHA-256 values must survive Windows core.autocrlf unchanged.
+patches/*.patch text eol=lf
+# Unified diffs require a context-space prefix, including on blank lines.
+patches/*.patch whitespace=-blank-at-eol,-blank-at-eof

@@ -1,5 +1,80 @@
 # Test evidence
 
+## November17 — owner-authorized picomatch main-sharing preflight
+
+Owner explicitly names KierratysAppi/main after target clarification. Fetch
+confirms3d535636ec7e7b117465dd546e2be125a6224290unchanged, no newer teammate
+commit. Its source tree equals local mitigation parent b868138; selected delta
+is exactly6dd5c57's23files, no app/model/native change, secret or private history.
+Review diff/check before normal public-parent-only publication. Prior full2121/
+upstream5932/585adverse/differential/Expo/bundle/real-model evidence remains;
+fresh narrow security checks and actual push/CI receipts follow. Audit remains
+red/high by design, no exception or public production GO inferred.
+
+
+## November17 — reproduced and locally mitigated picomatch ReDoS
+
+Run: work/picomatch-hardening-20261117.PAs54Q (ignored). Changes limited to
+dependency patches/lock/workspace, Git LF attributes, security QA and documents.
+No UI/model/rule change, owner photo, secret read, paid call, phone update or push.
+All three original versions exceed700ms on33-character `+(*a)` near miss
+(baseline-all-versions.log). Original4.0.7probe times out12/18; conservative
+PR246candidate times out6/18. Retain these failures, not only final success.
+
+Final patch SHA-256 values, checked against lock and installed active parser:
+
+- 2.3.2: `692b4676f2e4fa9d867b927cd265775aad56b7b45da894bee7f5bb18444d6117`
+- 4.0.5: `31f97c13bcfdd44cd7b68af9dfcb3ce43a850acd3a0a3c27dacd9d75b50a6063`
+- 4.0.7: `b874de120678edf28d1eda9539418d1d4827281967fb94d81e4b5cc2ba829d19`
+
+Frozen install passes (frozen-install-final.log). Root regression checks all
+versions/lock edges, actual Expo/Metro/Vite/tinyglobby/micromatch resolution,
+ordinary/nested/literal-star behavior, intentional advanced/capture literal
+fallback, upstream opt-out boundary and585adverse matches under10s/128MiB
+subprocess bounds plus malformed4096-bracket compilation.21targeted security/
+policy tests pass on Node26.4.0 and actual Node24.19.0
+(regression-final.log/node24-regression-final.log). No new Windows-host execution
+claimed; LF Git attributes preserve patch hashes under Windows core.autocrlf.
+
+Unmodified reviewed upstream tag assertions through Node's BDD adapter pass
+1972/1977/1983tests (5932total), no skipped/cancelled tests. Original tags also
+pass the same suites. Final logs: upstream-{232,405,407}-final.log and
+upstream-{232,405,407}-original.log. Loader checks actual target parser execution;
+this is not upstream Mocha CI. Committed picomatch-differential.mjs compares all
+strings up to5characters over a/b/c/dot/slash for12patterns/8option settings:
+374,976comparisons per version,1,124,928total, zero differences
+(differential-final.log). Not a proof for every possible glob/option/input.
+
+`pnpm validate` passes2121tests (954Node+1167workspace), boundaries, formatting,
+lint, typechecks and all builds (validate-final.log); pre-existing non-failing
+lint warnings/info remain visible. All-platform iOS/Android/web JS/Hermes export
+passes (platform-export-final.log), not native binaries or physical-device behavior.
+Expo install check up to date; Doctor20/20passes. First Doctor invocation used
+an incorrect nested npx command and fails127; correct direct npm exec succeeds
+(expo-doctor-retry.log), no check disabled or package exclusion.
+
+Fresh managed loopback8098/3005Chrome/real-model smoke passes all6cases and
+zero pageerrors (browser-smoke-final.log/browser-proof-retry/browser-evidence.json):
+JPEG/PNG, preview/no upload, separate consent, real spoon suggestion/material/
+sourced guidance, rejected SVG, synthetic camera stopped/cancel, EN persistence,
+dark/narrow/reduced motion and offline recovery. Initial default Chromium binary
+is absent; use already-installed Chrome, no browser download. First Chrome attempt
+passes4cases then cannot find photo chooser within its existing5sEN assertion.
+Sequential unchanged retry passes all6; retain both, no timeout weakening and no
+proven cause assigned. Screenshot evidence is test UI with licensed fixture/fake
+camera, not owner's camera or new physical acceptance. Temporary test services
+stop; pre-existing owner services remain and need normal restart to discard old
+loaded tooling parsers. Native23on phone is unchanged.
+
+Raw unchanged `pnpm security:audit` **fails** GHSA-fc5q-39xc-vjpf/high; other
+lower-severity monitored advisories remain listed (security-audit.log). The
+registry still lists original versions as affected, no official fixed release.
+No audit suppression, version disguise, exception or severity reduction. Local
+mitigation/source compatibility does not certify all ReDoS, explicit opt-out,
+fresh Windows/Samsung/iPhone hardware or production GO. Official-release/audit
+closure remains DEP-2026-112366; owner procedure in OWNER_ACTIONS.md.
+
+
 ## November17 — new physical Go acceptance and native23/main delivery
 
 Owner answers “joo” to the combined new iPhone Go shared-UI photo→preview→

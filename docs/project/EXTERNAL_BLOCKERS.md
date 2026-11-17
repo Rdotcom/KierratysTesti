@@ -1,5 +1,17 @@
 # External blockers
 
+## DEP-2026-112366 — local mitigation implemented; official closure remains
+
+Follow-up November17: hash-pinned patches now mitigate reproduced repeated-star
+cases on all three versions, with compatibility/adversarial tests, source/MIT
+provenance and explicit limits. Absence of a release does not imply no executable
+local repair. Official latest4.0.7 remains affected, unchanged audit red/high and
+production NO-GO; no exception or version disguise. Owner: Codex/dependency-security
+maintainer. Recheck official release, adopt compatible fixes, retire superseded
+patches, frozen install/regressions/unchanged audit/full/Expo/bundle checks. No
+secret/payment prerequisite. Fix is local only, not a new native binary or push.
+
+
 ## DEP-2026-112366 — newly reported high picomatch advisory; no fixed release
 
 November17fresh mandatory audit fails GHSA-fc5q-39xc-vjpf/CVE-2026-112366.

@@ -1,5 +1,39 @@
 # Current state
 
+## November17 — authorized picomatch source delivery to team main
+
+- Roope explicitly confirms KierratysAppi/main for this sharing step. Fetch
+  finds public main still3d53563; no newer teammate commit. Reviewed tree delta
+  is exactly the23-file local mitigation/test/documentation unit6dd5c57.
+- Prepare a normal fast-forward publication with only that public-main parent;
+  do not publish private integration history, tags or KeepItGreen branches.
+  Existing2121/full/bundle/Doctor/model/browser evidence is unchanged; rerun
+  narrow security/patch checks before sharing. No app/native reinstall.
+- Mandatory audit is expected to remain red/high until supported upstream fix;
+  sharing authorization is not an exception or production release. Actual main
+  and CI/security outcomes must be checked after publication, not inferred.
+
+
+## November17 — local picomatch hardening, audit remains red
+
+- Owner requests investigation/repair of the high ReDoS finding. A tested local
+  mitigation is possible despite no supported fixed release. Review unmerged
+  proposals; the narrow one still hangs on six variants, so extend it locally.
+- Hash-pin pnpm patches for2.3.2/4.0.5/4.0.7. Collapse simple repeated-star
+  branches; advanced/capture cases fail closed to literals. Preserve ordinary,
+  nested and literal-star matching. Document explicit upstream security opt-out
+  as not certified. Include source/MIT provenance and patch retirement procedure.
+- Actual consumer/lock-edge/hash checks,585adverse matches, malformed-class
+  compilation,5932upstream assertions and1,124,928short differential comparisons
+  pass. Full2121tests/all builds, all-platform JS exports, SDK alignment,
+  Doctor20/20and final real Mac model/browser smoke pass; see TEST_EVIDENCE.md
+  for retained failed attempts and exact scope. No fresh Windows/device claim.
+- Unchanged audit still fails GHSA-fc5q-39xc-vjpf at high; other monitored
+  advisories remain visible. Local mitigation does not clear official-release/
+  audit closure or production NO-GO. No push, native reinstall, secret access,
+  private image or paid call in this task. Existing native23is unchanged.
+
+
 ## November17 — owner confirms new Go flow and authorizes native/main delivery
 
 - Roope answers “joo” to the combined physical iPhone Go shared-UI photo→preview→

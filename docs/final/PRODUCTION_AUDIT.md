@@ -1,5 +1,22 @@
 # Adversarial production-readiness audit
 
+## November17 — DEP-2026-112366, HIGH / locally mitigated, not closed
+
+- Evidence: original three versions exceed700ms on a33-character near miss.
+  Narrow unmerged proposal misses six variants. Hardened local patches pass
+  585adverse matches,5932upstream assertions and1,124,928short differential
+  comparisons; unchanged raw audit still flags high, no official fixed release.
+- Affected: picomatch graph/patches, Expo/Metro/Vite/tinyglobby/micromatch tooling.
+  Reproduction and remediation: patches/README.md and research security note.
+- Executed: pnpm hash-pinned patches, tests and MIT/source provenance. Advanced
+  newly guarded/capture cases intentionally use literal fallback; explicit
+  safeguard opt-out/arbitrary regex/all ReDoS not certified. Restart old Node
+  tools to discard their loaded parser. No UI/model/sorting/native change.
+- Closure: Codex/dependency-security maintainer owns verified official fix and
+  unchanged audit/revalidation. Remains externally blocked on supported release;
+  no severity downgrade, audit exemption, fresh device or production GO claim.
+
+
 ## November17 — DEP-2026-112366, HIGH / externally blocked upstream
 
 - Evidence: fresh security-audit.log fails GHSA-fc5q-39xc-vjpf (CVE-2026-112366).

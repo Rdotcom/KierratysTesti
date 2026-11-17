@@ -1,5 +1,15 @@
 # Release decision
 
+## November17 — NO-GO retained after local picomatch mitigation
+
+Local repeated-star hardening is reproducibly installed on all three versions,
+with compatibility/adversarial tests and MIT/source provenance. This mitigates
+reproduced behavior, not an official patched release or universal safety proof.
+Unchanged mandatory audit **still fails high** GHSA-fc5q-39xc-vjpf. No exception,
+renaming or severity reduction; older release requirements remain. No new push
+or native installation. See patches/README.md, research and TEST_EVIDENCE.md.
+
+
 ## November17 — NO-GO: fresh high upstream advisory supersedes earlier green audit
 
 `pnpm security:audit` now fails GHSA-fc5q-39xc-vjpf/CVE-2026-112366 in picomatch.

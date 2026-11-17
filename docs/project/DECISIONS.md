@@ -1,5 +1,32 @@
 # Decision log
 
+## D-130 — Explicit picomatch team-main sharing, public ancestry only
+
+- Date:2026-11-17. Roope confirms “joo pushaa KierratysAppi-repon mainiin”.
+  Authorizes the selected tested local mitigation and outcome documentation,
+  not future automatic synchronization, private history, tags or KeepItGreen.
+- Fetch/review actual origin/main, preserve teammate work, publish reviewed tree
+  as a normal fast-forward with public-main-only parent. Keep unchanged high
+  audit failure/NO-GO visible; source delivery is not security certification.
+- Check actual remote SHA, source CI parts/full/Expo and CodeQL/secrets. Record
+  failures honestly; never weaken a gate merely to make this delivery green.
+
+
+## D-129 — Picomatch mitigation without disguising dependency risk
+
+- Date:2026-11-17. Owner requests repair, not publication or audit suppression.
+  Apply best-practices security/compatibility guidance: inspect source, exploit
+  behavior and normal matching rather than trust an unmerged proposal.
+- Use reproducible pnpm patches on all three versions with truthful metadata,
+  MIT/source provenance and bounded tests. Extend the narrow collapse proposal
+  to missed wildcard variants; advanced/capture forms use literal fallback.
+  Prevent new malformed-bracket suffix rescanning. Preserve evidenced ordinary/
+  nested/literal behavior, document intentional limits and explicit opt-out.
+- Keep no-exceptions audit red/high. Official supported-release closure and
+  production NO-GO remain; replace patches only after official fix revalidation.
+  No app UI/model/rule/native change, new push, paid inference or secret use.
+
+
 ## D-128 — Owner-reported Go acceptance and explicit native/team-main update
 
 - Date:2026-11-17. Record “joo” to the combined physical Go protocol as owner-

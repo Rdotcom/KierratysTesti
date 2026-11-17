@@ -1,5 +1,20 @@
 # Roadmap
 
+- [x] Explicit owner authorization for selected picomatch team-main sharing;
+  fetch/review confirms unchanged3d53563public base and no newer teammate work.
+- [ ] Verify actual normal main publication and CI/security outcomes without
+  suppressing the known upstream high audit finding.
+
+
+- [x] Hash-pinned local picomatch2.3.2/4.0.5/4.0.7 repeated-star mitigation,
+  source/MIT provenance, consumer/edge/hash and bounded regression checks.
+- [x] All5932upstream assertions,585adverse matches, malformed-class compile and
+  1,124,928short differential comparisons pass; full2121tests/builds, Expo health,
+  all-platform JS exports and final actual Mac model/browser smoke pass.
+- [!] Official fix/audit closure remains unavailable: preserve high severity,
+  failing unchanged audit and public NO-GO, not a local-patch exception.
+
+
 - [x] Owner-authorized native23Release build/sign/in-place install; actual
   inventory23, original model/privacy/JPEG/no-QA/no-audio/shared-UI verification.
 - [x] Owner unlocks; native23activated launch and same running executable verified.

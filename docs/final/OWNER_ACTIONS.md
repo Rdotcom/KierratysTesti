@@ -1,5 +1,28 @@
 # Owner actions
 
+## November17 — picomatch team-main delivery authorized
+
+Roope confirms this source-sharing step to KierratysAppi/main. Codex owns normal
+public-parent-only publication and actual CI/security outcome verification.
+Do not copy private branch history/tags or change KeepItGreen. Team must use a
+frozen installation to apply patches and restart old Node/Metro tools. Known
+high raw-audit finding and production NO-GO remain; no phone update is needed
+for this tooling-only source change.
+
+
+## November17 — local picomatch mitigation handoff
+
+- Codex/dependency-security maintainer: keep high audit visible; recheck official
+  registry/advisory, adopt supported compatible fixes on every line, retire only
+  superseded patches, frozen install and unchanged audit/full/Expo/bundle checks.
+  No owner key/payment required; local mitigation is not official closure.
+- Developers: `pnpm install --frozen-lockfile`, then restart existing Metro/Vite/
+  Node tools so they discard old loaded parsers. Do not edit node_modules by hand,
+  disable maxExtglobRecursion safeguards or ignore the audit. Read patch limits.
+- Roope: fix remains local; current request does not authorize GitHub publication
+  or phone update. Native23/UI/model unchanged, production NO-GO retained.
+
+
 ## November17 — installed native23and source delivery
 
 - Roope: installed native0.1.0(23)and activated launch are verified after unlock.
