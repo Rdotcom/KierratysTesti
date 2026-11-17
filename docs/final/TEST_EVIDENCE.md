@@ -1,5 +1,21 @@
 # Test evidence
 
+### Verified team source publication — November17,02:55Helsinki
+
+Actual push destination inspected as
+`https://github.com/roopeaal/KierratysAppi.git`, local branch
+`codex/illustrated-functional-integration`, explicit refspec`HEAD:main`. Fresh
+fetch shows origin/main31699deis an ancestor, no teammate additions missing;
+reviewed14earlier scoped commits plus new implementationb2e8ccf. Normal
+fast-forward push succeeds31699de→b2e8ccf72b85382e52707f5fe572a6dbb2fa5f13,
+independent`git ls-remote origin refs/heads/main` matches. No force/mirror/private
+branch/KeepItGreen push, account/secret/settings copy or store publication.
+GitHub warns that91.23MiBONNX exceeds its50MBrecommendation but accepts it below
+the hard file limit. Staged blob matches original model SHA256; binary Git
+attributes prevent whitespace/line-ending corruption. Log:
+work/android-support-20261117.2p6Ggr/team-main-source-push.log. This receipt is
+committed/pushed as outcome documentation under the same owner authorization.
+
 ## November17 — Android7 and final installed iPhone21
 
 Full `pnpm validate` passes **2117tests:935Node+1182workspace**; mobile398,

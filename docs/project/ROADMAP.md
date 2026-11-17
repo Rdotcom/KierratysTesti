@@ -8,7 +8,8 @@
   local capture/result/manual recovery, offline identity and EN/relaunch smoke.
 - [x] Repair Android native-constant and first-permission lifecycle defects;
   normal signed21iPhone install/inventory/launch, frozen14legacy model pins.
-- [ ] Owner-authorized reviewed team-main publication; record actual outcome.
+- [x] Owner-authorized reviewed normal team-main publication31699de→b2e8ccf;
+  actual remote head verified. Outcome documentation follows in the same step.
 - [ ]20-cycle Android capture/recognition/background PSS/readiness soak. One
   immediate automated shutter tap needed retry; do not claim all captures pass.
 - [ ] Physical Samsung camera/permissions/offline/low-memory matrix; owner has

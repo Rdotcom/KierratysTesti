@@ -44,6 +44,13 @@ can fool the initial-byte diff heuristic. Never run whitespace cleanup or text
 merging on weights. Recount staged-blob SHA256against the exact public model pin
 before publication; source policy and full validation include this safeguard.
 
+Owner-authorized source publication completed2026-11-17: actual origin push URL
+KierratysAppi, fresh main31699deancestor, selected14prior scoped commits and
+b2e8ccfimplementation reviewed; normal HEAD:main succeeds and independent remote
+OID matches. No private KeepItGreen/branch synchronization, force push or store
+release. Record this outcome in a final documentation-only commit in the same
+authorized sharing step; future team pushes still require explicit permission.
+
 ## D-113 — Assessment-ready bounded offline content and restrained feedback
 
 - Date:2026-11-17. Owner prioritizes tomorrow's school assessment, useful offline
