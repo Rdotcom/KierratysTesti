@@ -21,3 +21,6 @@
   fast-path exceptions; actual app configuration and default-contract parity pass.
 - Validate the public-parent-only test source before any main decision; GitHub
   CI/Security/Windows evidence is recorded without changing the audit policy.
+- 2026-11-17: owner explicitly authorizes pushing the tested corrections to
+  KierratysAppi/main. Fast-forward the verified public-parent-only migration;
+  do not force-push, change KeepItGreen or infer device-installation authority.

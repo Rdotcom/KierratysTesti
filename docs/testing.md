@@ -65,7 +65,9 @@ raportoi tunnetun high-löydöksen; sitä ei ohitettu (korvaus kuvataan alla).
   oikeat glob-sovitukset, frozen install, mallin JPEG-pariteetti, kaikki kolme
   JS-exportia sekä todelliset Chrome- ja Edge-mallipolut läpäisty.
   PR-kohtainen dependency-review ei kuulu push-ajoon; PR:ää ei ole avattu.
-- Main on edelleen `5fa2557`. Puhelimen asennusta tai KeepItGreen-repoa ei muutettu.
+- Omistaja hyväksyi main-julkaisun 17.11.2026: testattu `ec1e137` siirrettiin
+  KierratysAppi/mainiin fast-forward-pushilla. Auditointipolitiikka, appikoodi,
+  mallit ja aineistot säilyvät. Puhelinasennusta tai KeepItGreen-repoa ei muutettu.
 
 Kuvantunnistuksen yleinen luotettavuus, kaikki materiaalit/alueet, oikean
 Samsungin kamera ja pitkäaikainen muistinkulutus eivät ole näillä testeillä

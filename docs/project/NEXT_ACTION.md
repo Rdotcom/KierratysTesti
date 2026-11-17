@@ -1,3 +1,3 @@
 # Next action
 
-Review the validated codex/minimatch-migration diff against KierratysAppi/main for the owner's separate merge decision.
+Review the remaining moderate fast-uri advisories for supported non-breaking fixes, retaining the unchanged security policy.

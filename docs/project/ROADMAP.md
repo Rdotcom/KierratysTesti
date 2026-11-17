@@ -6,6 +6,6 @@
 - [x] Archive historical reports and keep concise app/setup/maintenance documentation.
 - [x] Replace picomatch/Micromatch with a real nonrecursive engine; pass raw audit.
 - [x] Verify migration CI, Security and actual Windows Chrome/Edge/model/export flow.
-- [ ] Integrate the validated test branch only after separate owner main-merge authorization.
+- [x] Owner authorizes and receives the validated migration in KierratysAppi/main.
 - [ ] Complete physical Samsung, broader recognition and memory/energy validation.
 - [ ] Complete production hosting, operational/privacy and store-release requirements.

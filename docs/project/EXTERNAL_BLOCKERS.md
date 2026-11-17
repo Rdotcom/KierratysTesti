@@ -1,8 +1,5 @@
 # External blockers
 
-- Picomatch no longer blocks the migration's local audit: the implementation is
-  removed, not exempted. CI, Security and Windows proof pass on source 774ad41.
-  Main merge needs separate owner authorization; test publication alone is not it.
 - Physical Samsung acceptance is unperformed: no device available. Emulator
   evidence does not certify its camera, permissions, accessibility or performance.
 - Public production hosting, store accounts/submission and applicable privacy/
