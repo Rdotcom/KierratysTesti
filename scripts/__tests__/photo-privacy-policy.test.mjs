@@ -4,6 +4,30 @@ import test from "node:test";
 
 const read = (path) => readFileSync(new URL(`../../${path}`, import.meta.url), "utf8");
 
+test("own-server recognition is explicit, ephemeral, bounded and separate from paid inference", () => {
+  const screen = read("mobile/app/src/components/network-photo-screen.tsx");
+  const capture = screen.slice(screen.indexOf("const capture ="), screen.indexOf("const send ="));
+  assert.doesNotMatch(capture, /client\.recognize|fetch\(|requestPhoto/);
+  assert.match(capture, /preparePhotoBase64/);
+  assert.match(capture, /removeCapture\(photo.uri\)/);
+  assert.match(screen, /phase !== "preview"/);
+  assert.match(screen, /pending.current\?\.abort/);
+  assert.match(screen, /networkHttpNotice/);
+  assert.match(screen, /networkRecipient/);
+  assert.doesNotMatch(screen, /AsyncStorage|addHistoryEntry|trackTechnicalEvent|console\./);
+  const worker = read("backend/data-providers/python/siglip-worker.py");
+  assert.doesNotMatch(worker, /requests\.|urllib|openai|write_bytes|write_text/);
+  const provider = read("backend/data-providers/src/siglip-recognition.ts");
+  assert.match(provider, /12_000/);
+  assert.match(provider, /SIGKILL/);
+  assert.match(provider, /input.fill\(0\)/);
+  const routes = read("backend/api/src/object-image-routes.ts");
+  assert.match(routes, /max: 4/);
+  assert.match(routes, /no-store/);
+  assert.doesNotMatch(routes, /request.log|console\.|writeFile|cache\.set/);
+  assert.match(read("mobile/app/src/app/legal.tsx"), /networkConsent/);
+});
+
 test("photo entry passes the real native constants to the tested compatibility guard", () => {
   const screen = read("mobile/app/src/app/photo.tsx");
   assert.match(screen, /canUsePhotoCapture\(Platform\.OS, Constants\)/u);
@@ -36,7 +60,7 @@ test("native permission purpose includes both barcode and explicitly approved im
     assert.doesNotMatch(purpose, /ei lähetetä/u);
   }
   assert.equal(camera[1].recordAudioAndroid, false);
-  assert.equal(app.ios.buildNumber, "21");
+  assert.equal(app.ios.buildNumber, "22");
   assert.equal(app.android.versionCode, 7);
   assert.equal(
     JSON.parse(read("mobile/app/locales/fi.json")).ios.NSCameraUsageDescription,

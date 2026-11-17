@@ -13,6 +13,7 @@ import { File, Paths } from "expo-file-system";
 import { useFocusEffect, useRouter } from "expo-router";
 import { useCallback, useRef, useState } from "react";
 import { AppState, Image, Linking, Platform, StyleSheet, TextInput, View } from "react-native";
+import { NetworkPhotoScreen } from "@/components/network-photo-screen";
 import { ObjectCandidateResultView } from "@/components/object-candidate-result";
 import { OfflineProductResultView } from "@/components/offline-product-result";
 import {
@@ -48,6 +49,8 @@ import {
   localPhotoInitialSize,
   resolvePhotoCaptureSize,
 } from "@/features/photo/sorting";
+import { isExpoGoHost } from "@/features/runtime/host";
+import { usesNetworkRecognition } from "@/features/runtime/network-mode";
 import { useScanSession } from "@/features/scan/session-context";
 import { useLanguage } from "@/i18n/language-context";
 import { radius, useAppTheme } from "@/theme/tokens";
@@ -67,6 +70,14 @@ function removeCapture(uri: string): void {
 }
 
 export default function LocalPhotoScreen() {
+  return usesNetworkRecognition(Platform.OS, isExpoGoHost()) ? (
+    <NetworkPhotoScreen />
+  ) : (
+    <NativeLocalPhotoScreen />
+  );
+}
+
+function NativeLocalPhotoScreen() {
   const router = useRouter();
   const { t, language } = useLanguage();
   const { lookupBarcode } = useScanSession();

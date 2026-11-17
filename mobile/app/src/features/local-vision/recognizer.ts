@@ -102,6 +102,11 @@ export function isLocalCaptureUri(uri: string, cacheUri: string): boolean {
   try {
     const image = new URL(uri);
     const cache = new URL(cacheUri);
+    // Expo Go scopes cache roots with encoded experience identifiers. Trust only
+    // the exact OS-provided root; reject encoded traversal in the relative leaf.
+    const prefix = `${cacheUri.replace(/\/$/u, "")}/`;
+    if (!uri.startsWith(prefix)) return false;
+    const leaf = uri.slice(prefix.length);
     return (
       image.protocol === "file:" &&
       cache.protocol === "file:" &&
@@ -109,7 +114,10 @@ export function isLocalCaptureUri(uri: string, cacheUri: string): boolean {
       !image.search &&
       !image.hash &&
       !/[\p{Cc}\p{Cf}\\]/u.test(uri) &&
-      !/%(?:00|25|2e|2f|5c)/iu.test(uri) &&
+      !cache.search &&
+      !cache.hash &&
+      !/%(?:00|25|2e|2f|5c)/iu.test(leaf) &&
+      !leaf.split("/").some((part) => part === "." || part === "..") &&
       image.pathname.startsWith(`${cache.pathname.replace(/\/$/u, "")}/`) &&
       /\.jpe?g$/iu.test(image.pathname)
     );

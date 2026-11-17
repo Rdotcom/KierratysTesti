@@ -1,30 +1,18 @@
 import { preparePhotoBase64 } from "@kierratysappi/contracts/photo-image";
+import { objectKinds, type networkModelId } from "@kierratysappi/contracts/network-recognition";
 import type { OfflinePhotoResponse } from "./offline-product";
 import type { AndroidVisionEvidence } from "@kierratysappi/contracts/android-vision";
 
-export const objectKinds = [
-  "cup",
-  "spoon",
-  "fork",
-  "knife",
-  "bottle",
-  "jar",
-  "can",
-  "carton",
-  "bag",
-  "battery",
-  "phone",
-  "textile",
-  "multiple-cups",
-  "spoon-and-fork",
-  "other",
-] as const;
+export { objectKinds };
 export type ObjectKind = (typeof objectKinds)[number];
 export interface ObjectCandidates {
   focus: "single" | "multiple" | "unknown";
   candidates: ObjectKind[];
   source: {
-    modelId: "google-siglip2-base224-block32-v1" | "google-siglip2-base224-onnx-weight-int8-v1";
+    modelId:
+      | "google-siglip2-base224-block32-v1"
+      | "google-siglip2-base224-onnx-weight-int8-v1"
+      | typeof networkModelId;
     revision: string;
     checkedOn: "2026-11-16";
     observedAt: string;

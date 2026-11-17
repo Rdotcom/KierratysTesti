@@ -1,5 +1,136 @@
 # Current state
 
+## Browser AI and authorized Windows proof — November17
+
+- Owner clarifies teammate uses Chrome/Edge web, not Go, and requests working
+  browser recognition/Mac opening/Windows verification. New .web screen supports
+  bounded JPEG/PNG/WebP file selection and explicit camera; preview and consent
+  precede image upload. Same model/provenance/object/material/guidance/recycling
+  UI; installed native offline behavior remains unchanged.
+- Real Mac Chrome157browser flow passes JPEG/PNG→actual SigLIP2→spoon→explicit
+  metal→sourced guidance, plus invalid image/no upload, synthetic camera/cancel,
+  EN persistence/dark/narrow/reduced motion/offline. Visible real Chrome window
+  opened at localhost8097/local-photo and controls observed. Private Mac webcam
+  was not opened; fake test camera is not physical acceptance.
+- Exact local CORS, Windows native path/venv/OS-DLL environment compatibility,
+  prototype CRLF protection and portable dual-service launcher added. Official
+  Windowsx64Python3.12wheels available; real Windows run still pending.
+- Owner separately authorizes reviewed source publication only to
+  codex/browser-windows-proof on public KierratysAppi and standard Windows tests.
+  Main remains63b49a6. No private commit-history mirror, paid runner, cache/
+  artifact upload or production deployment. A fresh reviewed source-tree commit
+  will be parented at public main after local validations pass.
+- Current user browser uses8097and dedicated model3004. Old Go8096was stopped
+  when focus moved to desktop web; managed test ports8098/3005were shut down.
+  Existing native iPhone22not replaced. Run: work/browser-ai-20261117.JMPqXU.
+
+## Phone QR handoff diagnosis — November17
+
+- Owner says iPhone Camera does not recognize the QR and is unsure whether Go
+  is installed. Both LAN listeners/current address and Metro status are healthy.
+- Independent macOS Apple Vision QR decoding returns the exact intended exp URL
+  from the original PNG. No malformed QR/server failure established. Prepared a
+  larger high-error-correction ordinary-HTTP QR, independently Apple-decoded;
+  Expo's platform-qualified link returns307to the correct exp URL.
+- Owner must confirm/install matched Expo Go58on iPhone before opening the
+  project. KeepItGreen native installation is not Go. No phone-install/camera
+  success claim, new service/account/tunnel/app-code change or GitHub push.
+  Existing LAN processes remain running for the trial. Diagnostic PNG/Swift and
+  receipts are ignored under the same network-siglip run directory.
+
+## Owner-requested LAN session running — November17 14:00EET
+
+- Roope explicitly requests starting the own-server recognizer and Expo Go for
+  his phone. Dedicated keyless SigLIP2 service now listens on3004; Metro on8096
+  uses explicit Go mode/current private-LAN origin with dotenv/telemetry off.
+  No tunnel, port forwarding, paid provider, app replacement or GitHub push.
+- LAN capabilities show own-server enabled and paid photo disabled. Licensed
+  spoon JPEG through the actual LAN address returns200/spoon-fork-knife/server.
+  SDK58iOS manifest and actual16.1MB iOS bundle resolve, include the correct
+  server origin; Metro status running. This is Mac-side evidence, not phone
+  permission/camera success. QR and receipts remain in the ignored run directory.
+- Leave both processes running for the requested test. Idle sleep is inhibited
+  only while the current Metro PID exists; no persistent power setting changed.
+  Use trusted same Wi-Fi; the development HTTP transport is not encrypted.
+  Run directory/session details: work/network-siglip-20261117.Nb3TDy. This
+  supersedes the preceding unit's stopped-QA state, not its offline/native limits.
+
+## Opt-in own-server SigLIP2 in Expo Go — November17
+
+- Owner agrees to network-backed Go recognition. Configured Go Home/Identify
+  opens a real photo flow: own-server recipient/disclosure → bounded capture →
+  metadata-free preview → separate upload consent → existing object/material/
+  sourced-guidance/recycling-record UI. Missing configuration and unavailable
+  Mac recover honestly. Native offline pipeline and installed iPhone22 unchanged.
+- New strict shared protocol, disabled-by-default API route and dedicated
+  keyless local server. Same pinned95.7MB INT8 SigLIP2/prototypes; Pillow13/ORT1.32/
+  NumPy2.5.5; independent ignored server assets, no mobile/backend imports. Node
+  worker adapter has its own public subpath, not the provider-agnostic export.
+- No OpenAI/HSY secret read or paid call. Explicit HTTP trusted-network warning,
+  no photo files/logging on server, 1.5MB/8MP image and8KiB output bounds,
+  one worker/four requests per minute, disconnect cancellation and hard deadline.
+  API is a local development service, not public authenticated hosting.
+- Four original JPEGs retain top1 and max score error0.003862<unchanged0.005;
+  real HTTP spoon returns spoon/fork/knife. Actual Android Go58.0.5 camera →
+  preview → consent → real own-server inference → unknown result passes using
+  its synthetic camera, not a real product. EN/dark/font1.3/server-down recovery
+  checked. Encoded Go cache-root cleanup repaired with traversal regressions.
+- All three part validations and full2085tests pass (932Node+1153workspace;
+  mobile354);18web exports,19existing warnings. Initial backend type leak and
+  capture-path failures retained with repaired evidence. Real worker busy,
+  cancellation and subsequent successful inference verified independently.
+- No new native build, phone install, LAN/public listener or GitHub push. QA
+  services/emulator stopped after checks. iOS Go/physical Samsung/real-camera
+  acceptance remain unverified, not hidden by emulator results. Setup and scope:
+  docs/final/EXPO_GO_NETWORK_RECOGNITION.md; current TEST_EVIDENCE entry.
+
+## Expo Go compatibility — November17
+
+- Explicit `pnpm dev:expo-go` and separate native-client command added. Matched
+  SDK58dependencies checked; genuine official Go58.0.5APK/digest/signature used
+  in isolated API35Android emulator, not a mocked web host. Metro binds loopback
+  with ADB reverse only; no privileged API/LAN listener, key or paid inference.
+- Go host detection combines SDK native ExpoGo probe with storeClient constant.
+  Home/Identify no longer advertise unavailable image inference. Direct local
+  and cloud photo routes show an honest recovery screen before camera hooks;
+  custom native-module readers short-circuit. No automatic capture/upload or
+  fake AI result. Real barcode/manual/guide/material-code routes remain.
+- Go online barcode identity uses bounded public OFF adapter directly, after
+  shipped catalogue/cache, without waiting for a Mac backend. Normal native
+  builds retain backend semantics/public transport fallback. Offline errors and
+  pending recovery preserved; identities never imply packaging material.
+- Actual Android Go Home/Identify/capability recovery/manual product resolution
+  and permission→virtual barcode-camera preview tested (not optical decoding);
+  mobile/runtime regressions and full2060tests pass. No iOS Go/physical Samsung
+  or physical optical quality claim. Full offline AI still requires our own
+  native build: stock Go cannot link custom Swift/Kotlin/model runtime.
+- Installed iPhone22 unchanged. No native rebuild/phone install/GitHub push in
+  this unit. Research and receipts: TEST_EVIDENCE.md and
+  docs/research/expo-go-runtime-2026-11-17.md.
+
+## Quiet iPhone22 installed — November17
+
+- Owner requests installing the just-published quiet Location revision. Normal
+  Release22 built/signed and installed in place; actual filtered device inventory
+  reports KeepItGreen0.1.0(22). No uninstall, history/settings wipe, paid call,
+  new account, LAN listener or GitHub push. Prior signed21 rollback preserved.
+- Generated iOS project/dependencies refreshed; ExpoAudio/ExpoHaptics absent from
+  Pod lock/provider, actual app binary/Hermes and audio assets. Embedded Location
+  filters, incomplete-point opt-in, material picker and single-check code markers
+  verified. Main JavaScript is bundled: no Metro needed to start the app.
+- Compiler again serialized two legacy model metadata files differently; first
+  pin failure retained. Reviewed frozen metadata restored only after semantic
+  JSON/other12files match; original signed compile retained, existing identity
+  used to resign. All14legacy pins, SigLIP/prototype/JPEG/privacy and11embedded
+  signatures pass. Recognition algorithms/data are not changed.
+- Existing device-bound profile expires23November12:53:38Helsinki. Initial
+  foreground launch denied by device lock; owner unlocks and normal SDK launch
+  succeeds. Same22process remains in filtered device process inventory. No
+  native camera/new-UI interaction/recognition-quality success inferred from
+  launch alone. Mobile/full validation2041tests pass; TEST_EVIDENCE.md.
+- Previous source push remains63b49a6on KierratysAppi/main. This installation
+  unit's build-number/helper/evidence changes remain local; no new push authority.
+
 ## Quiet UI and material-first Location — November17
 
 - Custom sound feedback, preference UI/provider/driver/assets/generator and

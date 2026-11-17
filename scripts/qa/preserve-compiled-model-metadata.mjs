@@ -9,11 +9,11 @@ const root = fs.realpathSync(process.cwd()),
   run = path.resolve(root, process.argv[2]);
 assert(run.startsWith(`${root}/work/`) && fs.realpathSync(run) === run);
 const build = JSON.parse(fs.readFileSync("mobile/app/app.json")).expo.ios.buildNumber;
-assert.equal(build, "21");
+assert(/^\d{1,5}$/.test(build) && Number(build) >= 21, "supported_native_build");
 assert(!fs.existsSync(path.join(run, "frozen-model-preservation.json")));
-const app = path.join(run, "client21.app"),
+const app = path.join(run, `client${build}.app`),
   prior = path.join(run, "rollback-prior.app"),
-  backup = path.join(run, "client21-recompiled-metadata.app");
+  backup = path.join(run, `client${build}-recompiled-metadata.app`);
 const command = (exe, args) =>
   execFileSync(exe, args, {
     encoding: "utf8",

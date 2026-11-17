@@ -1,5 +1,112 @@
 # Decision log
 
+## D-121 — Desktop browser path and explicit Windows proof sharing
+
+- Actual target is Chrome/Edge on Windows. Implement .web file/camera path with
+  existing visual tokens/fonts/controls rather than installing a phone simulator.
+  Own-server transport is chosen for web and Go only, not installed native apps.
+- Inspect real signatures/file/pixel limits before decode; direct bounded JPEGs
+  retain pixels with stripped metadata, others become bounded canvas JPEGs.
+  File names/raw originals are not sent. Preview requires a separate consent
+  click; explicit recipient, camera permission and trustworthy-context recovery.
+  Stop camera tracks/late streams and transient image state on exit/hide/cancel.
+- Use exact loopback CORS, no credentialed request/public tunnel/paid provider.
+  Add portable Node launcher/native path tests, Windows DLL environment allowlist
+  and byte-preserving prototype Git attribute. Recreate pinned Python venv on
+  Windows; do not distribute a Mac-only environment or guess Windows success.
+- Real browser/model tests use licensed images and an isolated synthetic camera,
+  never the user's webcam. Frontend-design skill retains established colors,
+  typography and a single quiet task panel; primary file action, secondary camera.
+- Owner explicitly approves one reviewed test-branch publication and standard
+  Windows run in public KierratysAppi; main is untouched. Publish a fresh commit
+  from public main with reviewed required source, not private development history.
+  No paid runner, artifact/cache storage, public review or production release.
+
+## D-120 — Independently decode QR before blaming transport or rebuilding
+
+- Owner reports Camera cannot recognize QR, and Go installation is uncertain.
+  Test existing PNG with local Apple Vision: original payload is valid. Do not
+  claim the QR was malformed or network transport fixed by a bigger image.
+- Supply independently decoded larger HTTP QR and explicit platform-qualified
+  Expo Go redirect, verified307to the existing Go project. Reuse same running
+  private-LAN services, not a new port/tunnel or native replacement.
+- Confirm owner installs/updates Go58through the official Expo download page.
+  This physical App Store action stays with the owner; no credentials requested.
+
+## D-119 — Explicit owner-authorized private-LAN Go test session
+
+- Roope requests starting both services so he can try recognition on his phone.
+  Use current private-LAN address in an explicitly configured Go session, not
+  loopback on the phone, a public tunnel or the privileged ordinary API server.
+- Reuse verified isolated model/runtime, dotenv disabled, keyless SigLIP2 and
+  paid photo disabled. Leave services up for this test; keep Mac idle-awake with
+  caffeinate tied to Metro's process lifetime, not persistent power changes.
+- Verify LAN capabilities/model response and generate the SDK58iOS bundle/QR.
+  Do not label these checks a physical iOS Go camera/permission acceptance.
+  No new installation, account, source implementation or GitHub push.
+
+## D-118 — Own-server Go transport, not pretend on-device or universal AI
+
+- Owner accepts using our existing SigLIP2 on a Mac for Expo Go. Configure an
+  explicit public origin; no automatic paid provider/native-module substitution.
+  Native builds retain offline behavior; Go needs the reachable owner-run host.
+- Reuse frozen INT8 model/prototypes/ranking and the same UI/material/sorting
+  flow. Keep server execution/preprocessing provenance distinct and suggestions
+  unverified/uncalibrated/object-only. No exact SKU, material or broad accuracy
+  promise. Existing JPEG gate remains0.005; no new test/training split invented.
+- Stage licensed assets through root integration tooling into an independent
+  ignored server directory. Export the Node-only adapter through a separate
+  public subpath so provider-agnostic application code does not acquire Node
+  filesystem/subprocess ambient requirements.
+- Strip metadata on both sides; show recipient and HTTP warning; capture and
+  consent/upload are separate. Remove only the exact capture beneath the
+  OS-provided cache root. Accept encoded Go experience roots but reject encoded
+  relative traversal, foreign paths and non-JPEGs. No history/analytics images.
+- Use one bounded disposable CPU worker, pinned current parser/runtime/model
+  hashes, request/output/rate/pixel/time limits, no body logs/paid-provider env.
+  Hold capacity until process close after cancellation. Document OS swap limits;
+  no public hosting, unreviewed tunnel or new credential authorized.
+- Test real worker/HTTP and actual Go camera transport independently; synthetic
+  emulator camera unknown is correct recovery, not object-quality evidence.
+  iOS Go/physical Samsung remain separate acceptance work. Commit locally only.
+
+## D-117 — Useful and honest Expo Go mode, not pretend offline AI parity
+
+- Owner asks to fix Go compatibility and then requests speed. Use matched Go58
+  and fix executable startup/navigation/barcode compatibility; do not rewrite a
+  pinned inference engine speculatively or introduce image upload/paid fallback.
+- Stock Expo Go cannot acquire our custom native modules. Use the SDK native
+  ExpoGo-host probe plus storeClient, not mutable app metadata. Unsupported
+  photo routes recover to real barcode/manual/material guidance before camera
+  hooks. Normal native inference/guard behavior remains unchanged.
+- Go public identity lookup should not depend on a sleeping private Mac API.
+  Reuse existing bounded/rate-limited OFF normalization/cache/provenance. Preserve
+  native backend-first semantics and typed offline/pending recovery.
+- Test genuine APK in isolated emulator with loopback-only Metro/ADB reverse,
+  not user GPS/images or an exposed privileged API. SDK checks and tests are not
+  proof of iOS Go, Samsung hardware, camera optics or universal AI support.
+- No new source publication or phone replacement authorized. Keep remaining
+  host/platform limitations explicit instead of calling all Go features fixed.
+
+## D-116 — Install the quiet revision as normal iPhone22
+
+- Owner explicitly requests phone installation, not another repository push or
+  store publication. Bump iOS build22 only; preserve bundle identity, data,
+  previous signed21 and prior development API origin. No backend/LAN start,
+  paid inference, secret read or Android-binary claim.
+- Regenerate ignored iOS build inputs and synchronize Pods so removed JS audio
+  modules are also removed natively. Move the verified old derived app intact
+  into this run before rebuilding, preventing unused sound resources from being
+  inherited. No source/model/installed-user-data cleanup.
+- Extend existing native verifier with binary/Hermes/asset absence and new-UI
+  markers for22+. Keep all existing model/profile/JPEG/privacy/no-QA gates.
+  Generalize frozen-metadata helper paths to the validated current build number;
+  require exactly the same14files/two metadata differences and semantic equality.
+- Installation/inventory is not foreground/UI acceptance. Retain initial locked
+  launch failure, then record actual successful foreground launch/process after
+  owner unlock. Do not infer camera/UI quality from a running process. Existing
+  profile expiry is not a renewal.
+
 ## D-115 — Quiet UI, material-first points and explicit item recording
 
 - Owner requests complete audio removal and explicitly authorizes a reviewed

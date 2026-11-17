@@ -1,5 +1,36 @@
 # Security and privacy
 
+## November17 — browser files/camera, same own-server consent boundary
+
+Browser-only API receives a sanitized bounded JPEG only after the user's separate
+preview/send action; file names/raw originals and metadata are not uploaded.
+Signature/dimension/file limits before decode, bounded canvas, bitmap disposal,
+track shutdown/late-result guard and hidden-page cleanup. Exact loopback CORS,
+no cookies/redirects/secret env in client, no paid or automatic fallback. Loopback
+localhost supports browser camera; insecure LAN HTTP explains file fallback,
+not a security/certificate bypass. Synthetic browser camera used in automated
+tests; private Mac webcam never opened. Server retention/limits remain as below.
+Native offline route unchanged. Reviewed proof branch/standard public Windows
+runner separately owner-authorized; no main update or private history mirror.
+
+## November17 — explicit own-server image transport in stock Go
+
+Configured Go may send one metadata-stripped JPEG to the displayed owner-run
+SigLIP2 origin only after preview and a separate consent button. No automatic
+fallback/paid provider or service-secret use. Native installed app remains local.
+Server keeps no image files/history/cache/body logs, uses a disposable bounded
+worker and excludes service environment secrets. Capture file removed before
+upload beneath the exact OS cache root; encoded Go-root compatibility does not
+allow leaf traversal. Cancel/back/background abort and clear screen state, not a
+forensic OS memory/swap-erasure promise. Existing explicit local recycling record
+does not retain a photo. Both languages disclose recipient/retention/network and
+unencrypted local HTTP. UI/legal copy and resource/contract/cancel/rate tests
+updated. Actual tests used licensed development JPEGs and the emulator's synthetic
+camera, not owner photos/GPS/history. Only loopback listeners/ADB reverse tested;
+they and the emulator are stopped. No new public deployment/phone install/push.
+Public hosting needs separate HTTPS/auth/retention/operations review. Full setup,
+bounds, runtime pins and test limitations: EXPO_GO_NETWORK_RECOGNITION.md.
+
 ## November10 — explicit local records and narrow development service
 
 Teammate Overview stores only explicitly confirmed self-reported material/part

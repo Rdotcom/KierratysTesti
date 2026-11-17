@@ -1,0 +1,51 @@
+name: Windows browser recognition
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [codex/browser-windows-proof]
+
+permissions:
+  contents: read
+
+jobs:
+  actual-windows-model-and-browser:
+    runs-on: windows-latest
+    timeout-minutes: 25
+    env:
+      EXPO_NO_DOTENV: "1"
+      EXPO_NO_TELEMETRY: "1"
+      WEB_AI_EVIDENCE: work/windows-browser-proof
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - uses: pnpm/action-setup@0977fd99725f1db4007ccb2928dbb4e90d06cc86 # v6
+        with:
+          version: 11.16.0
+          run_install: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          node-version: 24.19.0
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.12"
+          architecture: x64
+      - run: pnpm install --frozen-lockfile
+      - run: python -m venv work/siglip-server-venv
+      - run: ./work/siglip-server-venv/Scripts/python.exe -m pip install -r backend/data-providers/python/requirements.txt
+      - run: pnpm vision:prepare work/network-model
+      - name: Actual frozen JPEG model parity on Windows
+        shell: pwsh
+        run: |
+          $env:SIGLIP_PYTHON = (Resolve-Path work/siglip-server-venv/Scripts/python.exe).Path
+          $env:SIGLIP_ASSETS = (Resolve-Path work/network-model).Path
+          node scripts/verify-network-model.mjs
+          if ($LASTEXITCODE -ne 0) { throw "Windows model parity failed" }
+      - name: Actual Chrome file/camera/consent/model/guidance flow on Windows
+        env:
+          WEB_AI_CHANNEL: chrome
+        run: pnpm test:web:recognition
+      - name: Actual Edge file/camera/consent/model/guidance flow on Windows
+        env:
+          WEB_AI_CHANNEL: msedge
+          WEB_AI_EVIDENCE: work/windows-edge-proof
+        run: pnpm test:web:recognition

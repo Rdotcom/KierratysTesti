@@ -6,6 +6,19 @@ Previously named KierrätysAppi. The repository name, `@kierratysappi/*` package
 
 ## Kuvasta tunnistaminen
 
+**Selainversio (Mac/Windows):** valitse kuva tiedostosta tai käytä läppärin
+kameraa. Oma SigLIP2-palvelin käsittelee kuvan vasta erillisellä hyväksynnällä;
+esineen ja materiaalin valinnat avaavat saman lähteellisen lajitteluohjeen.
+Käynnistys: `pnpm dev:web:recognition` valmistelun jälkeen.
+[Windows-/Mac-ohje ja testirajat](docs/final/BROWSER_AI.md).
+
+**Expo Go, 17.11.2026:** valinnainen oma SigLIP2-palvelin tarjoaa samat
+esine-/materiaalivalinnat verkkoyhteydellä. Kuva lähetetään vasta erillisestä
+hyväksyntäpainikkeesta; maksullista tekoälyrajapintaa tai avainta ei käytetä.
+Macin pitää olla käynnissä ja osoite määritetty Expo-istuntoon. Tämä ei tuo
+offline-natiivimoduulia Go:hon eikä tarkkojen tuotteiden tai materiaalien
+yleistunnistusta. [Käynnistys, tietosuoja ja testirajat](docs/final/EXPO_GO_NETWORK_RECOGNITION.md).
+
 17.11.2026: iOS:n lisäksi sovelluksella on oma Android-natiivisovitin:
 SigLIP2-esine-ehdotukset sekä mukana kulkeva ML Kit -teksti-/viivakoodinluku.
 Neljä oikeaa JPEG-kehityskuvaa ja materiaalimerkinnän/viivakoodin luku
@@ -57,6 +70,13 @@ Toteutuksen testievidenssi:
 [`PHOTO_RECOGNITION_EVIDENCE.md`](docs/final/PHOTO_RECOGNITION_EVIDENCE.md).
 
 ## Kolme selkeää osaa
+
+Expo Go (SDK58): `pnpm dev:expo-go`. Oma natiivikehitysversio:
+`pnpm dev:native-client`. Expo Gossa voi käyttää viivakoodi-/käsinhakua ja
+lajitteluohjeita; oma offline-kuvatunnistin tarvitsee erillisen sovelluskoonnin.
+Go-tilan verkkotuotehaku ei tarvitse Macin API-palvelinta eikä kuvaa lähetetä
+korvaavaan tunnistuspalveluun. Expo Go -kierros ei todista kameran laatua kaikilla
+puhelimilla. Katso `docs/research/expo-go-runtime-2026-11-17.md`.
 
 | Kansio | Vastuu | Oma tarkistus |
 | --- | --- | --- |

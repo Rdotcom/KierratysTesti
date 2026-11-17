@@ -20,6 +20,7 @@ import {
   useWindowDimensions,
   View,
 } from "react-native";
+import { ExpoGoRecognition } from "@/components/expo-go-recognition";
 import { RecycleAction } from "@/components/recycle-action";
 import { SortingResultCard } from "@/components/sorting-result";
 import {
@@ -45,6 +46,7 @@ import {
   photoMaterialChoices,
   sortConfirmedPhotoPart,
 } from "@/features/photo/sorting";
+import { isExpoGoHost } from "@/features/runtime/host";
 import { useLanguage } from "@/i18n/language-context";
 import { controls, interaction, radius, spacing, useAppTheme } from "@/theme/tokens";
 
@@ -57,6 +59,10 @@ function removeCapture(uri: string): void {
 }
 
 export default function PhotoScreen() {
+  return isExpoGoHost() ? <ExpoGoRecognition /> : <NativePhotoScreen />;
+}
+
+function NativePhotoScreen() {
   const router = useRouter();
   const { t, language } = useLanguage();
   const [permission, requestPermission] = useCameraPermissions();

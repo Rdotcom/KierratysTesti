@@ -80,6 +80,11 @@ export default function LegalScreen() {
         <AppText>{t("localVisionModelAttribution")}</AppText>
         <AppText>{t("objectDecoderAttribution")}</AppText>
         <AppText variant="heading" accessibilityRole="header">
+          {t("networkLegalTitle")}
+        </AppText>
+        <AppText>{t("networkConsent")}</AppText>
+        <AppText>{t("networkHttpNotice")}</AppText>
+        <AppText variant="heading" accessibilityRole="header">
           {t("localVisionCloud")}
         </AppText>
         <AppText>{t("photoPrivacy")}</AppText>

@@ -25,9 +25,12 @@ test("Home's combined recognition action opens Identify, not a camera or upload 
   assert.match(action, /onPress=\{\(\) => router\.push\("\/identify"\)\}/);
   assert.match(action, /accessibilityRole="button"/);
   assert.match(action, /accessibilityLabel=\{t\("homeIdentifyTitle"\)\}/);
-  assert.match(action, /accessibilityHint=\{t\("homeIdentifyDetail"\)\}/);
+  assert.match(
+    action,
+    /accessibilityHint=\{t\([\s\S]*?"expoGoHomeDetail"[\s\S]*?"homeIdentifyDetail"/,
+  );
   for (const key of ["homeIdentifyTitle", "homeIdentifyDetail"])
-    assert.ok(home.includes(`t("${key}")`));
+    assert.ok(home.includes(`"${key}"`));
   assert.doesNotMatch(home, /home-photo-action|router\.push\("\/photo"\)/);
   assert.doesNotMatch(
     action,
@@ -62,6 +65,15 @@ test("Identify prioritizes barcode, then manual entry, then local AI photo recog
     ["photo", "local-photo"],
   ].entries()) {
     const action = control(identify, index === 0 ? "Pressable" : "ActionRow", ids[index]);
+    if (method === "photo") {
+      assert.match(identify, /const manualOnly = expoGo && !networkRecognitionOrigin/);
+      assert.match(action, /router\.push\(manualOnly \? "\/guide" : "\/local-photo"\)/);
+      assert.match(
+        action,
+        /label=\{t\(manualOnly \? "expoGoManualTitle" : "identifyPhotoAction"\)\}/,
+      );
+      continue;
+    }
     assert.match(action, new RegExp(`onPress=\\{\\(\\) => router\\.push\\("/${path}"\\)\\}`));
     const key = `identify${method[0].toUpperCase()}${method.slice(1)}Action`;
     assert.match(action, new RegExp(`(?:label|accessibilityLabel)=\\{t\\("${key}"\\)\\}`));
@@ -71,7 +83,10 @@ test("Identify prioritizes barcode, then manual entry, then local AI photo recog
   assert.match(primary, /accessibilityHint=\{t\("identifyScanDetail"\)\}/);
   assert.match(primary, /onFocus=/);
   assert.match(primary, /onBlur=/);
-  assert.match(identify, /t\("identifyPhotoDetail"\)/);
+  assert.match(
+    identify,
+    /"expoGoManualDetail"[\s\S]*?expoGo[\s\S]*?"networkDetail"[\s\S]*?"identifyPhotoDetail"/,
+  );
 });
 
 test("the Identify hub is passive, scalable navigation with the current shared tab and back path", () => {

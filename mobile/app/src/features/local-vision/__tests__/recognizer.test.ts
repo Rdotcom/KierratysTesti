@@ -191,6 +191,23 @@ describe("local-only recognizer", () => {
 });
 
 describe("camera cache cleanup boundary", () => {
+  it("accepts Expo Go's exact encoded OS cache root, never an encoded leaf escape", () => {
+    const cache = "file:///app/cache/ExperienceData/%2540anonymous%252Fkeepitgreen/";
+    expect(isLocalCaptureUri(`${cache}Camera/new.jpg`, cache)).toBe(true);
+    for (const leaf of [
+      "Camera/%252e%252e%252foutside.jpg",
+      "../other.jpg",
+      "Camera/../other.jpg",
+      "Camera/%2foutside.jpg",
+    ])
+      expect(isLocalCaptureUri(cache + leaf, cache)).toBe(false);
+    expect(
+      isLocalCaptureUri(
+        "file:///app/cache/ExperienceData/%2540anonymous%252Fother/Camera/new.jpg",
+        cache,
+      ),
+    ).toBe(false);
+  });
   it("permits only canonical JPEG paths beneath this app's cache", () => {
     const cache = "file:///app/cache/";
     expect(isLocalCaptureUri("file:///app/cache/Camera/picture.jpg", cache)).toBe(true);

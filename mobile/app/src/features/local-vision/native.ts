@@ -1,12 +1,13 @@
 import { type NativeModule, requireOptionalNativeModule } from "expo";
 import { Platform } from "react-native";
-import { createAndroidEvidenceRecognizer, type AndroidEvidenceReader } from "./android-evidence";
+import { isExpoGoHost } from "@/features/runtime/host";
+import { type AndroidEvidenceReader, createAndroidEvidenceRecognizer } from "./android-evidence";
 import { offlineCatalogue } from "./catalogue";
 import {
+  type CameraProductResponse,
   createCameraProductRecognizer,
   createObjectRecognizer,
   type ObjectNativeReader,
-  type CameraProductResponse,
 } from "./object-candidates";
 import { createOfflineProductRecognizer, type OfflineProductReader } from "./offline-product";
 import { createLocalReadinessInspector } from "./readiness";
@@ -14,7 +15,7 @@ import { createLocalRecognizer, type LocalVisionNativeReader } from "./recognize
 import { createNativeReferenceRuntimePorts, type ReferenceNativeReader } from "./reference-ports";
 
 function reader(): LocalVisionNativeReader | undefined {
-  if (Platform.OS !== "ios") return undefined;
+  if (Platform.OS !== "ios" || isExpoGoHost()) return undefined;
   try {
     const module = requireOptionalNativeModule<NativeModule & LocalVisionNativeReader>(
       "KierratysLocalVision",
@@ -30,7 +31,7 @@ function androidReader():
       AndroidEvidenceReader &
       ObjectNativeReader & { inspectReadiness(): Promise<unknown> })
   | undefined {
-  if (Platform.OS !== "android") return undefined;
+  if (Platform.OS !== "android" || isExpoGoHost()) return undefined;
   try {
     const module = requireOptionalNativeModule<
       NativeModule &
@@ -59,7 +60,7 @@ export const inspectLocalVisionReadiness = createLocalReadinessInspector(() =>
 export const recognizeAndroidEvidence = createAndroidEvidenceRecognizer(androidReader);
 
 const recognizeCataloguePhoto = createOfflineProductRecognizer(() => {
-  if (Platform.OS !== "ios") return undefined;
+  if (Platform.OS !== "ios" || isExpoGoHost()) return undefined;
   return (
     requireOptionalNativeModule<NativeModule & OfflineProductReader>("KierratysLocalVision") ??
     undefined
@@ -67,7 +68,7 @@ const recognizeCataloguePhoto = createOfflineProductRecognizer(() => {
 }, offlineCatalogue);
 
 const objectRecognizer = createObjectRecognizer(() => {
-  if (Platform.OS !== "ios") return undefined;
+  if (Platform.OS !== "ios" || isExpoGoHost()) return undefined;
   return (
     requireOptionalNativeModule<NativeModule & ObjectNativeReader>("KierratysLocalVision") ??
     undefined
@@ -104,7 +105,7 @@ export const recognizeOfflineProduct = async (
 /** Experimental capability only; the normal photo/UI path does not call it. */
 export const inspectReferenceRuntimePorts = (signal?: AbortSignal) =>
   createNativeReferenceRuntimePorts(() => {
-    if (Platform.OS !== "ios") return undefined;
+    if (Platform.OS !== "ios" || isExpoGoHost()) return undefined;
     return (
       requireOptionalNativeModule<NativeModule & ReferenceNativeReader>("KierratysLocalVision") ??
       undefined

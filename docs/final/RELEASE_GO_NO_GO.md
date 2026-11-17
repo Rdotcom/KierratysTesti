@@ -1,5 +1,45 @@
 # Release decision
 
+## November17 — desktop browser ready for local trial; Windows proof pending
+
+Local actual Chrome/real-model JPEG and PNG/object/material/guidance smoke,
+synthetic camera shutdown, consent/no-upload, EN/dark/narrow/offline and2100tests
+pass. Owner's actual Chrome page is open. Windows-compatible launcher/path/
+runtime fixes and owner-authorized isolated proof workflow are prepared; do not
+claim Windows passed before its job completes. No physical webcam/WindowsARM64
+or public production GO. Main is not authorized to change; only the reviewed
+proof branch may be shared in this step. Setup: BROWSER_AI.md.
+
+## November17 — own-server Go mode; public NO-GO unchanged
+
+Locally implemented opt-in SigLIP2 transport reuses existing uncertain object/
+material/guidance UI, without paid keys or native regression. All2085tests and
+three part validations pass; actual model parity, HTTP spoon, worker cancel/
+recovery and Android Go camera→consent→server→unknown response verified.
+EN/dark/large-text/unreachable-server recovery checked. No universal recognition,
+exact product/material inference, iOS Go, physical Samsung or production hosting
+claim. Public-release/data-quality/operational gates remain. No phone replacement
+or GitHub publication. Exact procedures/limits: EXPO_GO_NETWORK_RECOGNITION.md.
+
+## November17 — Expo Go basic compatibility, not full native AI parity
+
+Actual matched Android Go58startup, capability-aware navigation, bundled manual
+product resolution and camera permission/virtual preview pass, with2060tests.
+No iOS Go/physical Samsung/optical decode claim. Stock Go cannot link the custom
+offline inference module: full recognition remains in the native build. No
+automatic paid/image-upload fallback, production GO, new phone install or push.
+
+## November17 — normal quiet iPhone22 delivered; public NO-GO unchanged
+
+Actual normal22Release build/signature/no-audio/new-UI/model-pin checks and
+in-place installation pass. Filtered inventory confirms22; after owner unlock,
+activated SDK launch succeeds and the same process remains running. Embedded
+Hermes needs no Metro. Initial lock denial and first model-metadata pin failure
+are retained alongside their resolved outcomes in TEST_EVIDENCE.md. No new
+native camera/new-control interaction/recognition-quality or Samsung acceptance
+claim; focused native UI smoke and existing public-release gates remain open.
+Existing signing expires23November12:53:38Helsinki; no renewal or GitHub push.
+
 ## November17 — quiet Location source revision; public NO-GO unchanged
 
 Audio/haptic functionality and modules removed; compact material-first Location,

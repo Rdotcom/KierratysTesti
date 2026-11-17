@@ -1,5 +1,7 @@
 import type { Language, LocalizedText } from "@kierratysappi/domain";
 import { assessmentEn, assessmentFi } from "./assessment";
+import { expoGoEn, expoGoFi } from "./expo-go";
+import { networkRecognitionEn, networkRecognitionFi } from "./network-recognition";
 import { guideSearchEn, guideSearchFi } from "./guide-search";
 import { localVisionEn, localVisionFi } from "./local-vision";
 import { locationPolishEn, locationPolishFi } from "./location-polish";
@@ -11,6 +13,8 @@ import { photoEn, photoFi } from "./photo";
 import { regionEn, regionFi } from "./region";
 
 const fi = {
+  ...networkRecognitionFi,
+  ...expoGoFi,
   ...locationPolishFi,
   ...assessmentFi,
   ...regionFi,
@@ -229,6 +233,8 @@ const fi = {
 } as const;
 
 const en: Record<keyof typeof fi, string> = {
+  ...networkRecognitionEn,
+  ...expoGoEn,
   ...locationPolishEn,
   ...assessmentEn,
   ...regionEn,

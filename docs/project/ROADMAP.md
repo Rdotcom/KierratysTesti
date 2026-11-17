@@ -1,11 +1,42 @@
 # Roadmap
 
+- [x] Browser file/camera→preview→consent→real own-server SigLIP2→shared sorting
+  UI, Mac Chrome smoke and visible owner page.
+- [x] Windows path/venv/OS env/CRLF fixes and portable browser-service launcher;
+  exact CORS/security tests and actual managed Mac smoke.
+- [ ] Owner-authorized fresh proof-branch publication and actual Windows-hosted
+  model parity/Chrome/Edge tests, with main unchanged.
+
+- [x] Independently Apple-decode original/new phone QR; larger standard-HTTP
+  handoff/Expo iOS redirect verified. No malformed QR or server outage proven.
+- [ ] Confirm matched Expo Go58installation on owner's iPhone before camera trial.
+
+- [x] Owner-requested private-LAN SigLIP2/Go session started; actual LAN model
+  smoke, SDK58iOS bundle/configuration and phone QR prepared. No paid fallback.
+- [ ] Owner's physical iOS Go camera/consent/object-material result acceptance;
+  running services and a successful Mac-side request are not device evidence.
+
+- [x] Opt-in own-server SigLIP2 for Go: strict protocol, bounded keyless service,
+  explicit preview/upload consent and shared object/material/guidance UI.
+- [x] Actual model/JPEG parity, HTTP spoon and real subprocess cancel/recovery;
+  Android Go58camera transport, EN/dark/large text and server-down recovery.
+- [ ] Equivalent iOS Go58camera/local-network/consent/material-guidance smoke.
+  Public internet hosting/authentication is not provided by this local service.
+
+- [x] Matched Expo Go58 startup workflow, native host guard, honest photo recovery
+  and direct bounded public identity lookup; Android Go emulator smoke.
+- [ ] Equivalent Go58iOS device/simulator and physical barcode-camera matrix;
+  custom offline inference remains a native-build capability, not stock Go.
+
 - [x] Remove custom audio/haptic feature and dependencies, rename Location,
   compact material-first point cards/filtering with incomplete-point opt-in.
 - [x] Explicit recycling records in all guidance families, unknown material
   choice, shared photo intent, single-check material-code result and FI/EN copy.
-- [ ] Build/install normal iPhone22 from this quiet source revision and verify
-  Location/material filters/records/code flow; prior21 is not this UI revision.
+- [x] Build/sign/install normal iPhone22 from quiet source; actual inventory22,
+  embedded UI/no audio modules/assets, unchanged model/profile/privacy pins.
+- [x] Owner unlocks iPhone; normal22foreground launch and running process verified.
+- [ ] Focused native22UI smoke of new Location/code/recording controls; process
+  launch alone does not verify visual interaction or native camera quality.
 
 - [x] Separate Android Kotlin module, bounded bundled OCR/barcode contracts,
   weight-only INT8 SigLIP2 conversion with unchanged development score gate,

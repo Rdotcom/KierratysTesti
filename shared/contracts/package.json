@@ -12,6 +12,7 @@
     "./barcode-library": "./src/barcode-library.ts",
     "./photo-recognition": "./src/photo-recognition.ts",
     "./photo-image": "./src/photo-image.ts",
+    "./network-recognition": "./src/network-recognition.ts",
     "./local-vision": "./src/local-vision.ts",
     "./android-vision": "./src/android-vision.ts",
     "./packaging-classifier": "./src/packaging-classifier.ts",

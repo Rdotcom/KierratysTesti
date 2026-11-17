@@ -40,6 +40,8 @@
   },
   "scripts": {
     "start": "expo start",
+    "start:go": "expo start --go",
+    "start:dev-client": "expo start --dev-client",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",

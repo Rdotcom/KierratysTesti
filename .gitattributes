@@ -1,3 +1,5 @@
 # Serialized model headers can look like text to Git's initial-byte heuristic.
 # Never normalize, text-diff or line-merge model bytes.
 *.onnx binary
+# A frozen prototype digest must survive Windows core.autocrlf checkouts byte-for-byte.
+mobile/app/modules/local-vision/android/src/main/assets/siglip/prototypes.json -text

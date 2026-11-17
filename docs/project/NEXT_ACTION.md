@@ -1,3 +1,3 @@
 # Next action
 
-Build and install normal iPhone22 from the quiet Location revision, verifying signatures, absence of linked audio/haptic modules and the Location filters, single-check material code and explicit recycling records without Metro; preserve the previous signed21 rollback.
+Publish the reviewed browser AI source to the owner-authorized codex/browser-windows-proof branch without private history or main changes, then resolve the actual Windows model/Chrome/Edge proof result.

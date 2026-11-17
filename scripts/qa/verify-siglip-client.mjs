@@ -61,6 +61,38 @@ assert(
 );
 const js = fs.readFileSync(path.join(app, "main.jsbundle")),
   binary = fs.readFileSync(path.join(app, "KeepItGreen"));
+if (Number(build) >= 22) {
+  for (const marker of [
+    "ExpoAudio",
+    "ExpoHaptics",
+    "useSoundFeedback",
+    "SoundFeedbackProvider",
+    "soundFeedback",
+  ]) {
+    assert(
+      !js.includes(Buffer.from(marker)) && !binary.includes(Buffer.from(marker)),
+      `removed_audio:${marker}`,
+    );
+  }
+  assert(!js.includes(Buffer.from("materialCodeConfirmAction")), "no_redundant_code_confirmation");
+  for (const marker of [
+    "nearby-filter-",
+    "nearby-missing-toggle",
+    "recycle-material-",
+    "material-code-result",
+    "Sijainti",
+  ])
+    assert(js.includes(Buffer.from(marker)), `quiet_ui_embedded:${marker}`);
+  function checkNoAudioAssets(directory) {
+    for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
+      const file = path.join(directory, entry.name);
+      assert(!entry.isSymbolicLink(), "no_bundle_symlink_traversal");
+      if (entry.isDirectory()) checkNoAudioAssets(file);
+      else assert(!/\.(?:wav|mp3|m4a)$/i.test(entry.name), "no_stale_audio_asset");
+    }
+  }
+  checkNoAudioAssets(app);
+}
 assert.equal(js.subarray(0, 8).toString("hex"), "c61fbc03c103191f");
 for (const marker of [
   "object-candidate-result",
@@ -138,6 +170,7 @@ const result = {
   newBridge: true,
   qaHooksAbsent: true,
   pinnedJpegPolicyAndNotices: Number(build) >= 13,
+  quietUiEmbeddedAndAudioAbsent: Number(build) >= 22,
   binarySha256: hash(path.join(app, "KeepItGreen")),
   hermesSha256: hash(path.join(app, "main.jsbundle")),
   cameraCaptureVerified: false,

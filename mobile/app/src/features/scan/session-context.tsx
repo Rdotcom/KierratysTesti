@@ -1,6 +1,8 @@
 import type { ProductLookupResult } from "@kierratysappi/contracts/lookup-schema";
 import { type Gtin, parseGtin } from "@kierratysappi/domain";
 import { fetch as streamingFetch } from "expo/fetch";
+import Constants from "expo-constants";
+import { isExpoGoHost } from "@/features/runtime/host";
 import {
   createContext,
   type PropsWithChildren,
@@ -17,9 +19,9 @@ import { trackTechnicalEvent } from "@/telemetry/technical-events";
 import barcodeData from "../../../assets/data/off-finland-barcodes.json";
 import { LookupNetworkError, requestProductLookup } from "./api";
 import { createBarcodeLibraryLookup } from "./barcode-library";
-import { createLocalFirstLookup } from "./local-first-lookup";
 import { cachedLookup, cacheLookup } from "./lookup-cache";
 import { createPublicIdentityLookup } from "./public-identity-lookup";
+import { createRuntimeBarcodeLookup } from "./runtime-lookup";
 import {
   isDuplicateScan,
   type ScanSource,
@@ -39,7 +41,19 @@ type ScanSessionContextValue = {
 
 const ScanSessionContext = createContext<ScanSessionContextValue | undefined>(undefined);
 const publicLookup = createPublicIdentityLookup((url, init) => streamingFetch(url, init));
-const originalLookup = createLocalFirstLookup(offlineCatalogue, requestProductLookup, publicLookup);
+const publicOnlineLookup = async (gtin: Gtin, language: "fi" | "en") => {
+  try {
+    return await publicLookup(gtin, language);
+  } catch {
+    throw new LookupNetworkError();
+  }
+};
+const originalLookup = createRuntimeBarcodeLookup(
+  offlineCatalogue,
+  isExpoGoHost() ? "storeClient" : Constants.executionEnvironment,
+  requestProductLookup,
+  publicOnlineLookup,
+);
 const bundled = createBarcodeLibraryLookup(barcodeData);
 async function localFirstLookup(gtin: Gtin, language: "fi" | "en") {
   const fixed = bundled.lookup(gtin, language);

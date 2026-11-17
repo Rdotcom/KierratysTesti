@@ -10,6 +10,7 @@ import {
   productLookupPath,
 } from "@kierratysappi/contracts/lookup-schema";
 import type { PhotoRecognizer } from "@kierratysappi/data-providers";
+import type { ObjectImageRecognizer } from "@kierratysappi/data-providers/siglip-recognition";
 import { parseGtin } from "@kierratysappi/domain";
 import Fastify, {
   type FastifyError,
@@ -19,6 +20,7 @@ import Fastify, {
 } from "fastify";
 import { z } from "zod";
 import { registerPhotoRoutes } from "./photo-routes";
+import { registerObjectImageRoutes } from "./object-image-routes";
 
 export interface LookupService {
   lookup(input: ProductLookupInput, signal?: AbortSignal): Promise<ProductLookupResult>;
@@ -36,6 +38,7 @@ export function clientErrorLogFields(statusCode: number): { readonly statusCode:
 }
 
 export type BuildAppOptions = {
+  readonly objectImageRecognizer?: ObjectImageRecognizer;
   readonly photoRecognizer?: PhotoRecognizer;
   readonly lookupService: LookupService;
   readonly logger?: false | FastifyLoggerOptions;
@@ -206,6 +209,7 @@ export async function buildApp(options: BuildAppOptions): Promise<FastifyInstanc
   );
 
   registerPhotoRoutes(app, options.photoRecognizer);
+  registerObjectImageRoutes(app, options.objectImageRecognizer);
 
   app.setNotFoundHandler(async (_request, reply) =>
     reply.code(404).send({

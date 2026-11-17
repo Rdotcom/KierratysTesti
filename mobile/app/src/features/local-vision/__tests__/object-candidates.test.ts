@@ -69,6 +69,7 @@ describe("SigLIP camera candidates are bounded unverified object hints", () => {
       expect(r.candidates).toEqual([]);
     });
   for (const change of [
+    (v: ReturnType<typeof raw>) => ({ ...v, modelId: "siglip2-server-onnx-weight-int8-v1" }),
     (v: ReturnType<typeof raw>) => ({ ...v, verification: "verified" }),
     (v: ReturnType<typeof raw>) => ({ ...v, modelRevision: "new" }),
     (v: ReturnType<typeof raw>) => ({ ...v, scope: "sorting" }),

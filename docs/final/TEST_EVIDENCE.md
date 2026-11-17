@@ -1,5 +1,222 @@
 # Test evidence
 
+## November17 — desktop browser recognition, Windows proof pending
+
+Run work/browser-ai-20261117.JMPqXU. Actual Chrome157on Mac uses real own-server
+SigLIP2, no provider/model response stub. JPEG→preview(no POST)→separate consent→
+spoon→chosen metal→sourced guidance succeeds; PNG exercises real bitmap/canvas
+conversion and also returns spoon. SVG rejected before upload. Isolated browser
+fake camera (not Mac webcam) captures/cancels without POST; English survives
+navigation/reload, dark390px/reduced-motion screenshot and offline capability
+recovery pass. browser-evidence.json/screenshots inspected. Portable managed
+launcher repeats the actual flow on isolated8098/3005and shuts its children down;
+managed-smoke.log. Actual owner Chrome tab visibly opened at localhost8097.
+
+Windows-native separators/drive/case/space paths and Python Scripts defaults
+tested, exact CORS preflight and malformed-origin rejection pass. Frozen
+prototype line endings protected; worker/parity subprocesses whitelist needed
+Windows OS variables rather than service environment. Official pinned Windows
+wheel availability checked. Actual Windows execution is **not yet verified**.
+Owner authorizes separate fresh proof branch/main unchanged; no private history,
+paid runner, caching/artifact storage or public deployment. Native app22unchanged.
+
+Retained repairs: initial mobile unit used Node fs/Buffer ambient types; replaced
+with explicitly synthetic marker fixture, keeping real image tests in E2E.
+Formatting race and stale source-route regex repaired rather than skipped.
+Pillow/model hashes and original JPEG score gate remain unchanged.
+Final local `pnpm validate` exits0with2100tests (936Node+1164workspace;
+mobile363/API30),18web routes and19existing warnings. `pnpm validate:mobile`
+and `pnpm validate:backend` pass after the retained repair. Original four-JPEG
+parity still max0.003862<unchanged0.005. Final real-Chrome rerun additionally
+instruments camera-track state and confirms every synthetic track ended after
+capture (`final-browser-proof`, `final-browser-smoke.log`). Dependency audit
+policy passes with22reviewed low/moderate advisories, not zero vulnerabilities.
+
+## November17 — independent QR diagnosis and standard-link handoff
+
+Owner says Camera does not recognize QR; Go installation uncertain. Current LAN
+address unchanged, actual3004/8096listeners remain, Metro status running. macOS
+Vision VNDetectBarcodesRequest decodes original PNG to exact intended exp URL.
+New912×912PNG uses same installed toQR encoder with high error correction,
+six-module quiet zone and ordinary platform-qualified HTTP Expo link. Apple
+Vision independently decodes its exact target too; actual link returns307to
+the correct exp URL. No malformed QR/server outage or physical scan success
+inferred. Run contains check-qr.swift, original/new PNG and loading-ios HTML;
+only generated/owned QR images decoded, no user photos. Official expo.dev/go
+checked November17reports SDK58latest/iOS Install. Owner must confirm Go install;
+KeepItGreen is a different app. No app/model code, native installation, secret,
+new listener/tunnel, paid call or push. Previous services remain intentionally up.
+Full `pnpm validate` again passes2085tests/all builds; log
+`validate-qr-handoff.log`. No runtime implementation changed in this handoff.
+
+## November17 14:00EET — owner-requested private-LAN Go startup
+
+Source b9c69d0unchanged; no runtime code/model/dependency modification. Owner
+explicitly requests both servers for a phone test. Dedicated service3004and
+Go-mode Metro8096started using current private-LAN address, dotenv/telemetry off.
+Capabilities via actual LAN address: own-server enabled, paid photo disabled.
+Real licensed commons-2JPEG HTTP smoke200/spoon-fork-knife/server
+(`lan-model-smoke.json`). SDK58iOS manifest selects correct host and downloaded
+16,116,791byte actual iOS bundle includes own-server LAN origin
+(`lan-ios-manifest.json`, `lan-ios.bundle`). `/status` reports packager running.
+Generated/visually inspected Expo QR using existing official CLI's toQR encoder
+and existing PNG writer; no external QR service or package install.
+Receipts/QR: work/network-siglip-20261117.Nb3TDy (ignored). No user photo/GPS,
+paid call, private service credential, public tunnel, device replacement or push.
+Servers intentionally remain running; caffeinate idle inhibitor follows Metro's
+PID, no persistent power-setting change. Real iOS Go permissions/camera/result
+still await owner action; Mac-side bundle/API evidence does not close that gate.
+Full `pnpm validate` again exits0:2085tests and all package/web builds; log
+`validate-lan-session.log`. Final LAN capabilities/Metro status remain healthy.
+Do not use the browser loading URL without Expo's platform header as a device
+test: that exploratory request produced a platform-header diagnostic. The actual
+SDK58iOS manifest/bundle request passed; handoff QR uses the direct exp URL.
+
+## November17 — opt-in own-server SigLIP2 for Expo Go
+
+Run `work/network-siglip-20261117.Nb3TDy`, base0e833f4, branch
+codex/illustrated-functional-integration. No native replacement, secret read,
+paid-provider request, LAN/public exposure or source push. Independent runtime
+assets retain original model/prototype hashes/licences; latest Pillow13wheel
+digest verified before isolated installation. See research/setup documents.
+
+`node scripts/verify-network-model.mjs` with documented SIGLIP environment:
+all four original actual JPEGs preserve top1 (multiple-cups/spoon/spoon/
+spoon-and-fork), maximum absolute score errors0.001833/0.001873/0.001924/0.003862
+all below the **unchanged0.005** gate. Worker per-image534–1010ms on this Mac
+(small development sample, not a performance/accuracy benchmark). Invalid and
+oversized stdin exit2with no stdout/stderr. `parity.json` retains exact values.
+No training/new holdout or claim that the first ceramic mug was correctly named.
+
+Real keyless Fastify/Node→Python/ORT HTTP JPEG gives200, candidates
+spoon/fork/knife, strict server/preprocessing/unverified provenance and no-store
+(`http-spoon.json`, repeated after Node-only export repair in `http-final.json`).
+Real adapter concurrent request returns busy; abort at50ms returns cancelled;
+same adapter subsequently returns spoon/fork/knife after subprocess close
+(`adapter-cancel-recovery.json`). API regressions independently verify actual
+socket disconnect cancellation, consent/URL/image/body rejection, rate/concurrent
+limits, strict output and privacy-safe generic errors. No image body persisted.
+
+Genuine official Go58.0.5in the existing isolated API35AVD; localhost8096Metro
+and3004API with ADB reverse only. Home→Identify→AI opens recipient/uncertainty
+disclosure. Camera captures only the emulator's synthetic black/timestamp scene;
+preview and separate consent button observed, then actual own-server inference
+returns unknown with real manual recovery (`go-consent.png`, `go-result.png`).
+No forced object match from an empty synthetic scene. Same existing shared
+object/material component consumes the validated network observation; real
+spoon choice contract tested independently, not photographed in this Go run.
+
+Actual Go EN navigation survives Android activity recreation after appearance/
+font-scale changes. Dark+font1.3network intro visually inspected with no clipped
+copy/action (`go-en-dark-large-network.png`). Stopping real server then pressing
+Open camera displays actionable EN unavailable error, no camera/upload
+(`go-server-unavailable.png`). FI consent/result visually inspected. Restore
+font1.0/light and stop agent/emulator/QA listeners. No iOS Go, physical Samsung,
+real optics, new permission-dialog or screen-reader acceptance inferred.
+
+Retained failures: first capture cleanup rejected the Go OS root's encoded
+experience identifier (safe stage/boolean diagnostics only, no URI/photo log).
+Fixed exact trusted-root handling while rejecting encoded leaf traversal;
+regression and successful capture follow. Temporary diagnostics removed.
+Initial backend validation exposed Node adapter exports leaking Node ambient
+types into provider-agnostic application imports. Moved adapter to declared
+public subpath; targeted consumer typecheck and all validations pass. Initial
+logs retained, not reclassified as success.
+
+Final commands: `pnpm validate:mobile`, `pnpm validate:backend`,
+`pnpm validate:shared`, `pnpm validate`, all exit0. Full2085tests =932Node +
+1153workspace (domain413, localization9, sorting75, contracts215, providers46,
+database5, application8, API28, mobile354). All package builds and18web exports
+pass;19existing warnings remain. Logs `validate-mobile.log`,
+`validate-backend-repaired.log`, `validate-shared.log`, `validate.log`.
+Public release decision remains NO-GO for the separately documented gates.
+
+## November17 — Expo Go compatibility scope
+
+Run `work/expo-go-compat-20261117.VlrKmJ`. `expo install --check` reports SDK
+dependencies current. Official versions endpoint selects Go58.0.5Android APK;
+225,952,197bytes/SHA256d979cf81c56c5432c5aa69adc9497521ee72d1f87e92eee33bc949167a40f1a6
+matches GitHub asset digest and APK signature verifies. Actual install/package
+inventory confirms58.0.5, isolated existing API35AVD, no physical device mutation.
+Loopback8096Metro/ADB reverse; no LAN API, secrets or paid calls.
+
+Actual Go opens this app with artwork/fonts. Home→Identify exposes barcode,
+manual and real item search; Home copy no longer promises unavailable AI. Native
+Go capability notice and functional manual recovery observed. Actual manual
+6408430030309lookup returns Oivariini with missing-packaging/community status,
+not a guessed sorting answer (`expo-go-barcode-result.png`). Camera permission
+explanation→Android grant→real emulated CameraView preview/scanner controls
+pass (`expo-go-camera.png`, visually inspected). This does not test decoding a
+physical barcode or physical optics. No custom image-recognition camera
+hook, photo capture, model inference or image upload used. Source algorithms and
+models unchanged. SDK host probe is authoritative alongside storeClient; no
+claim that an unmeasured constant value was the cause of a stale reload.
+
+New tests cover native-host detection, Go public-only lookup without Mac,
+bundled identity/no network, no repeated public failure, language arguments and
+unchanged native backend/fallback. Photo-route guards and separate CLI modes
+have source-policy regressions. `pnpm validate:mobile` passes; full
+`pnpm validate` passes2060tests(931Node+1129workspace),18web exports, strict
+types/boundaries/format/lint/builds;19existing warnings retained. Logs:
+`validate-mobile-final.log`, `validate-final.log`, `expo-go-policy.log`.
+
+Retained first failures: Java executable path not set for APK verifier (correct
+existing JDK then used); incompatible CLI --offline+--localhost combination
+corrected without widening network; old Home/Identify assertions updated for
+intentional capability-specific navigation. Device selector used actual observed
+AVD name. Reload helper timed out on Expo's /reload fallback; source refresh
+recovered by reopening the known Go project, not by changing app assertions.
+Tool session receipts and PNGs remain in the run directory. No iOS Go/physical
+Samsung or actual barcode optics/accuracy claim. Stock Go cannot host our custom
+offline image engine; do not call this full AI parity. iPhone22installation and
+GitHub main remain unchanged in this work unit.
+
+## November17 — normal quiet iPhone22 installation
+
+Run: `work/ios-location-client22-20261117.SktQOR`.
+
+- Owner-requested in-place update, not a new app identity, uninstall/data reset
+  or source publication. Explicit iOS build22; Android stays7. Prior signed21
+  cloned as `rollback-prior.app`; verified old derived21moved intact to
+  `derived-prior21.app` so a fresh app resource directory cannot retain sounds.
+- `expo prebuild --platform ios --no-install`, dotenv/telemetry disabled, and
+  CocoaPods sync complete. Ignored generated iOS project was regenerated; native
+  module source/model inputs remain.123Podfile dependencies/122pods, with neither
+  ExpoAudio nor ExpoHaptics in lock/generated provider. Prebuild's unrelated npm
+  script rewrites were reverted. No package version upgrade, cleanup of user
+  files, new listener/key or paid model request.
+- Xcode26.6Release/iphoneos build succeeds with existing signing identity;
+  embedded Hermes bundle, no Metro. Current compile retained independently.
+  First native verifier rejects two compiler-serialized MobileCLIP metadata
+  changes (`verification-first.log`); exact same semantic JSON/other12files
+  checked, frozen original metadata restored and existing identity resigns.
+  Strict full verifier then passes (`verification-final.log`), not a weakened
+  byte-pin gate. Helper paths now follow the validated current build number.
+- Final `client22-verification.json`:11embedded signatures, device/app/profile
+  binding, all14legacy resource pins, candidate model/prototypes/licences,
+  pinned JPEG/notices/privacy/no-QA/embedded JavaScript pass. New native check
+  confirms no ExpoAudio/ExpoHaptics/custom sound provider or audio assets in
+  binary/Hermes/app; Location filter/missing-points/manual material/single-check
+  markers present and redundant material-code confirmation absent.
+- Binary SHA256 `8a7a7636c6a7ee5dd23421eab53962a9042725e1c63fcf9300b0dab4cd27162e`;
+  Hermes SHA256 `7b4936ef8fe97a25d23d408725764144fe14d22cf7f20285f9620c45b5f36ba1`.
+  Existing profile expires2026-11-23T10:53:38Z/12:53:38Helsinki; no renewal claim.
+- `devicectl device install app` succeeds (`install.json/log`); filtered device
+  inventory confirms0.1.0(22), not just app.json (`installed-inventory.json/log`).
+  Initial foreground launch fails specifically `Locked` (`launch.json/log`).
+  Owner then confirms unlock; normal activated launch succeeds without Metro
+  (`launch-unlocked.json/log`). Filtered process query confirms the same22
+  executable/PID is still running (`running-process.json/log`). This is actual
+  launch evidence, not camera/new-control interaction/recognition-quality proof.
+- Initial full validation retained as `validate.log`: only pinned expected
+  iOS21number failed after deliberate bump to22; camera/privacy requirements
+  unchanged and exact22expectation updated. Narrow privacy recheck passes.
+  New verifier/metadata-policy regression passes. Final `pnpm validate:mobile`
+  and `pnpm validate` pass:2041tests(929Node+1112workspace),18web exports, strict
+  types/boundaries/format/lint/all builds;19existing warnings. Logs:
+  `validate-mobile-final.log`, `validate-final.log`, `native-policy-final.log`.
+  No repository push in this unit.
+
 ## November17 — quiet Location and explicit recycling records
 
 Work directory: `work/location-polish-20261117.7PJIkk`.

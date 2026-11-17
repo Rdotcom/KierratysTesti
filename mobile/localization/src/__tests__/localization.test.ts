@@ -2,6 +2,23 @@ import { describe, expect, it } from "vitest";
 import { localizedText, messages, translate } from "../index";
 
 describe("localization", () => {
+  it("keeps own-server consent and uncertain suggestions explicit in both languages", () => {
+    for (const language of ["fi", "en"] as const) {
+      for (const key of [
+        "networkTitle",
+        "networkConsent",
+        "networkHttpNotice",
+        "networkSend",
+        "networkUnavailable",
+        "networkCandidateSource",
+      ] as const)
+        expect(translate(language, key)).not.toBe(key);
+      expect(translate(language, "networkIntro")).toContain("SigLIP2");
+    }
+    expect(translate("fi", "networkConsent")).toContain("muistissa");
+    expect(translate("en", "networkConsent")).toContain("memory");
+    expect(translate("en", "networkHttpNotice")).toContain("not encrypted");
+  });
   it("uses the owner-selected Home shortcut heading in Finnish and English", () => {
     expect(translate("fi", "homeMaterials")).toBe("Suositut haut");
     expect(translate("en", "homeMaterials")).toBe("Popular searches");

@@ -1,5 +1,60 @@
 # Owner actions
 
+## November17 — desktop browser trial and approved Windows proof
+
+- Roope: actual Chrome page is open at localhost8097/local-photo. Choose a
+  JPEG/PNG/WebP file or open your camera, review, explicitly approve sending,
+  then confirm object/material. Server3004and web8097remain running; keep Mac
+  awake. Old Expo Go8096was stopped because the requested target is desktop web.
+- Codex: publish only reviewed necessary source as a fresh commit from public
+  main to the explicitly approved codex/browser-windows-proof branch. Run and
+  repair real Windows-hosted model parity/Chrome/Edge checks; no main update,
+  private-history mirror, paid runner or cache/artifact upload.
+- Windows teammate: use the proof branch's BROWSER_AI.md PowerShell steps and
+  local Node/Python services; do not use the Mac's venv/private address. Grant
+  local camera permission yourself when needed. Physical webcam acceptance is
+  separate from synthetic-camera CI. Existing public-release gates remain.
+
+## November17 14:00EET — phone trial session now running
+
+- Codex: owner explicitly requested LAN startup. Dedicated keyless recognizer
+  and Go-mode Metro now remain running on3004/8096; healthy LAN model/SDK58iOS
+  bundle/configuration checked. Idle-sleep prevention is tied to Metro's PID.
+  No phone replacement, paid route/key, public tunnel or GitHub push.
+- Roope: keep Mac awake/lid open and iPhone on the same trusted Wi-Fi; scan the
+  handed-off QR in iPhone Camera to open matched Go58. Allow camera/local network
+  if asked. Identify → AI → camera → review → explicitly approve one item photo.
+  Report result/error text, not the photo/private location. Physical acceptance
+  remains pending until actually observed or confirmed by you.
+- Stop the session after testing with Ctrl-C in both running service sessions,
+  or ask Codex to stop them. Earlier stopped-QA notes below are historical.
+
+## November17 — optional Expo Go recognition server
+
+- Codex/local: implemented and tested; no paid key/account action is needed.
+  QA listeners/emulator stopped, installed native iPhone22 and remote branches
+  unchanged. Do not mistake an unconfigured Go session for an enabled service.
+- Roope (when using Go): follow EXPO_GO_NETWORK_RECOGNITION.md setup; start the
+  dedicated SigLIP2 server and Expo with the explicit Mac address, keep the Mac
+  awake, use trusted private Wi-Fi only and approve each photo after review.
+  Loopback works for the tested emulator/ADB reverse, not a separate phone.
+  Stop terminals with Ctrl-C afterwards; never publish/forward the HTTP port.
+- Codex/local: record equivalent iOS Go58camera/permission/consent/recovery smoke
+  before claiming iOS Go verified. Physical Samsung remains unavailable.
+- Roope: any public host/HTTPS/account/publication choice needs a separate
+  decision. No such purchase/deployment or source-sharing step is authorized.
+
+## November17 — iPhone22 installed and launched
+
+- Roope: version0.1.0(22) is installed; after your unlock, normal foreground
+  launch succeeds and its process remains running. No reinstall/delete/trust
+  reset is needed. Local app startup does not require Metro, Mac or cable.
+- Codex/local: focused native22new-control UI smoke remains separate from the
+  successful launch. Preserve signed21 rollback and installed local data.
+  Renew personal-team signing before23November12:53:38Helsinki if continuing use.
+- No new GitHub publication in this installation unit. Existing production/
+  Samsung/MEM-01/recognition coverage gates below remain unchanged.
+
 ## November17 — quiet Location source handoff
 
 - Codex/local: next build/install is normal iPhone22, preserving signed21 rollback

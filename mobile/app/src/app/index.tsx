@@ -3,6 +3,7 @@ import { useCallback, useState } from "react";
 import {
   Image,
   Keyboard,
+  Platform,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -12,7 +13,6 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { ActionIcon } from "@/components/action-icon";
-import { MotionAccent } from "@/components/motion-accent";
 import {
   HomeText as AppText,
   HomeSectionHeading,
@@ -22,6 +22,7 @@ import {
   IconDisc,
   MaterialChip,
 } from "@/components/home-elements";
+import { MotionAccent } from "@/components/motion-accent";
 import { LeafBrandMark, PhotoCardBackdrop, ScanIllustration } from "@/components/reference-artwork";
 import { ReferenceSymbol } from "@/components/reference-symbol";
 import { Chevron, InlineLink } from "@/components/ui";
@@ -30,6 +31,9 @@ import { homeHistoryPreview } from "@/features/history/home-preview";
 import { historyStatusMessageKey } from "@/features/history/presentation";
 import { type HistoryEntry, isHistoryEnabled, readHistory } from "@/features/history/storage";
 import { useNearbySearch } from "@/features/nearby/search-context";
+import { isExpoGoHost } from "@/features/runtime/host";
+import { usesNetworkRecognition } from "@/features/runtime/network-mode";
+import { networkRecognitionOrigin } from "@/features/network-recognition/config";
 import { useScanSession } from "@/features/scan/session-context";
 import { useLanguage } from "@/i18n/language-context";
 import { homeColors } from "@/theme/home-colors";
@@ -235,7 +239,13 @@ export default function HomeScreen() {
             <Pressable
               accessibilityRole="button"
               accessibilityLabel={t("homeIdentifyTitle")}
-              accessibilityHint={t("homeIdentifyDetail")}
+              accessibilityHint={t(
+                usesNetworkRecognition(Platform.OS, isExpoGoHost())
+                  ? networkRecognitionOrigin
+                    ? "networkHomeDetail"
+                    : "expoGoHomeDetail"
+                  : "homeIdentifyDetail",
+              )}
               testID="home-identify-action"
               onPress={() => router.push("/identify")}
               onFocus={() => setIdentifyFocused(true)}
@@ -266,7 +276,13 @@ export default function HomeScreen() {
                 <View style={styles.grow}>
                   <AppText style={styles.identifyTitle}>{t("homeIdentifyTitle")}</AppText>
                   <AppText style={[styles.identifyBody, { color: home.muted }]}>
-                    {t("homeIdentifyDetail")}
+                    {t(
+                      usesNetworkRecognition(Platform.OS, isExpoGoHost())
+                        ? networkRecognitionOrigin
+                          ? "networkHomeDetail"
+                          : "expoGoHomeDetail"
+                        : "homeIdentifyDetail",
+                    )}
                   </AppText>
                 </View>
               </View>

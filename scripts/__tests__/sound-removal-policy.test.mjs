@@ -41,3 +41,22 @@ test("visual and screen-reader feedback remain after removing sound", () => {
   assert.match(read("mobile/app/src/components/recycle-action.tsx"), /await recordRecycling/);
   assert.match(read("mobile/app/src/app/legal.tsx"), /await clearAllLocalData/);
 });
+test("normal iPhone delivery verifies quiet binary, assets and embedded UI without weakening model pins", () => {
+  const verifier = read("scripts/qa/verify-siglip-client.mjs");
+  for (const marker of [
+    "ExpoAudio",
+    "ExpoHaptics",
+    "SoundFeedbackProvider",
+    "materialCodeConfirmAction",
+    "nearby-filter-",
+    "recycle-material-",
+    "no_stale_audio_asset",
+  ])
+    assert.ok(verifier.includes(marker));
+  assert.match(verifier, /Number\(build\) >= 22/);
+  assert.match(verifier, /legacyResourcePinsPreserved: Object.keys\(pins\).length/);
+  const preservation = read("scripts/qa/preserve-compiled-model-metadata.mjs");
+  assert.match(preservation, /`client\$\{build\}\.app`/);
+  assert.match(preservation, /assert.equal\(rows.length, 14\)/);
+  assert.match(preservation, /assert.deepEqual\(metadata\(app\), metadata\(prior\)\)/);
+});

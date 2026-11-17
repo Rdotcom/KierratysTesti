@@ -1,5 +1,23 @@
 # Acceptance criteria
 
+November17browser addition: real JPEG and PNG must reach the own-server model
+only after preview/consent, yield unverified object choices and preserve explicit
+material/sourced sorting/recycling actions. Reject invalid/oversized/animated
+input locally; bound decode/canvas/JPEG, dispose camera tracks/late requests;
+exact CORS and no paid provider/history/image logs. Test language persistence,
+offline/permission recovery, dark/narrow/reduced motion and native routing.
+Mac smoke is not Windows success: require actual Windows model parity and
+Chrome/Edge flow, separately from physical-webcam acceptance.
+
+November17Go network mode: never auto-upload or silently use a paid provider.
+Require explicit origin, versioned per-photo consent, visible recipient and HTTP
+warning, metadata removal and bounded resources. Native offline routing must be
+unchanged. Return unverified object-only suggestions into the existing explicit
+material/provenance flow; unknown/multiple/timeout/offline/cancel states recover.
+Same frozen JPEG top1/0.005gate and strict API/transport tests required. These
+cases pass locally; actual Android Go58synthetic-camera transport passes, not
+real object/camera quality. iOS Go and physical Samsung are separate checks.
+
 November17Android follow-up: actual native adapter, strict distinct evidence,
 bounded on-device pixels/OCR/GTIN, explicit unverified object/material choices,
 model/licence pins and real native JPEG top1/unchanged0.005score comparisons are

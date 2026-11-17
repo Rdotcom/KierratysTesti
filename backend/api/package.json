@@ -7,6 +7,7 @@
   "scripts": {
     "build": "tsup --config tsup.config.ts",
     "dev": "node --env-file-if-exists=.env.local --import tsx --watch src/server.ts",
+    "dev:siglip": "node --import tsx src/siglip-server.ts",
     "start": "node --env-file-if-exists=.env.local dist/server.js",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",

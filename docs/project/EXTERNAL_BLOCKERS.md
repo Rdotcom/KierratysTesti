@@ -1,5 +1,54 @@
 # External blockers
 
+## November17 — desktop browser replaces Go for teammate testing
+
+Owner clarifies target is Windows Chrome/Edge, not Expo Go. Physical Go
+installation is therefore not a blocker for this browser task. Local browser
+implementation/testing is complete; actual Windows execution is pending, not
+claimed from Mac. Owner authorizes a reviewed proof branch/standard hosted
+Windows runner; public repo/free compute verified, no cache/artifact upload.
+Physical webcam/OS camera permissions and WindowsARM64 remain separate from
+the synthetic-camera x64 proof. No paid service/key/account prerequisite added.
+
+## November17 — physical Expo Go installation unconfirmed
+
+Owner reports Camera does not recognize QR and is unsure Go is installed.
+Original and larger HTTP QR independently decode with Apple Vision, live LAN
+services/redirect healthy; no malformed-code/network cause established. The
+owner must verify/install matched Go58from https://expo.dev/go (iOS Install).
+This requires his physical App Store action; no Apple credential/code is needed
+in the conversation. Existing installed KeepItGreen is not Expo Go. Physical
+camera/permissions/results remain unverified; no account/payment/tunnel added.
+
+## November17 — Go own-server mode added; offline/runtime boundary remains
+
+No new account, secret, payment or external service blocks local network-mode
+implementation. It is implemented/tested with a loopback-only Mac service and
+Android Go58emulator. Using it needs an awake, reachable computer and an explicit
+origin, not API credit. A public internet deployment would require a separately
+authorized host/HTTPS/authentication/privacy/operations review; none was created.
+Stock Go still cannot load our offline native model. iOS Go/local-network and
+physical Samsung acceptance remain unverified; neither is a successful test by
+proxy. Existing public-release/recognition-quality gates are unchanged.
+
+## November17 — stock Expo Go native-module boundary
+
+Expo Go does not include KierratysLocalVision or its native inference runtimes;
+it cannot load them from JavaScript. Full offline image recognition therefore
+requires our own native/development build (already installed iPhone22), not an
+account, extra API balance or a silent paid fallback. Basic Go compatibility
+work is locally executable and implemented; this limit is not an excuse to
+leave startup/barcode/manual routes broken. iOS Go and physical Samsung/optical
+acceptance remain unverified, separately from Android emulator evidence.
+
+## November17 — iPhone22 unlock boundary resolved
+
+Normal22is installed and device inventory confirms22. Initial foreground launch
+is denied with explicit `Locked`; owner then confirms unlock. SDK foreground
+launch succeeds and the same22process remains present. No unresolved install/
+launch credential/manual blocker remains. This does not complete native camera
+or new-control UI acceptance. Profile expires23November12:53:38Helsinki.
+
 ## November17 — quiet UI unit
 
 No new credential, service or owner decision blocks this source change. New

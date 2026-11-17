@@ -1,4 +1,5 @@
 import type { MessageKey } from "@kierratysappi/localization";
+import { networkModelId } from "@kierratysappi/contracts/network-recognition";
 import type { SortableObjectKind } from "@kierratysappi/recycling-engine";
 import { useState } from "react";
 import { View } from "react-native";
@@ -94,7 +95,12 @@ export function ObjectCandidateResultView({
             </>
           )}
           <AppText variant="small" muted>
-            {t("objectCandidateSource")} · {result.observation.source.checkedOn}
+            {t(
+              result.observation.source.modelId === networkModelId
+                ? "networkCandidateSource"
+                : "objectCandidateSource",
+            )}{" "}
+            · {result.observation.source.checkedOn}
           </AppText>
         </>
       ) : (
