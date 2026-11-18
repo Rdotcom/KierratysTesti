@@ -27,10 +27,8 @@ export const HsyPageSchema = z.object({
 });
 export function hsyPlainText(value: string | null | undefined): string {
   if (!value) return "";
-  return value
-    .replace(/<(script|style)\b[^>]*>[\s\S]*?<\/\1\s*>/gi, "")
+  let out = value
     .replace(/<\s*(?:br\s*\/?|\/p|\/li|\/div|\/h[1-6])\s*>/gi, "\n")
-    .replace(/<[^>]{0,2000}>/g, "")
     .replace(
       /&(?:nbsp|amp|quot|apos|lt|gt);/g,
       (v) =>
@@ -43,7 +41,18 @@ export function hsyPlainText(value: string | null | undefined): string {
       return Number.isSafeInteger(point) && point >= 32 && point <= 0x10ffff
         ? String.fromCodePoint(point)
         : " ";
-    })
+    });
+
+  let prev: string;
+  do {
+    prev = out;
+    out = out
+      .replace(/<(script|style)\b[^>]*>[\s\S]*?<\/\1\s*>/gi, "")
+      .replace(/<[^>]{0,2000}>/g, "");
+  } while (out !== prev);
+
+  return out
+    .replace(/[<>]/g, "")
     .replace(/(?![\n\t])[\p{Cc}\p{Cf}]/gu, "")
     .replace(/[ \t]+/g, " ")
     .replace(/ *\n */g, "\n")
