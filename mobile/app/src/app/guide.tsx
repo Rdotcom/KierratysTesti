@@ -2,15 +2,7 @@ import { localizedText } from "@kierratysappi/localization";
 import { searchGuideItems, searchGuideLibrary } from "@kierratysappi/recycling-engine";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { type ComponentRef, useEffect, useRef, useState } from "react";
-import {
-  Keyboard,
-  Linking,
-  Pressable,
-  type ScrollView,
-  StyleSheet,
-  TextInput,
-  View,
-} from "react-native";
+import { Keyboard, Pressable, type ScrollView, StyleSheet, TextInput, View } from "react-native";
 import { ObjectSortingFlowView } from "@/components/object-sorting-flow";
 import { RecyclingRecordAction } from "@/components/recycle-action";
 import { SortingRegionPicker } from "@/components/sorting-region-picker";
@@ -36,6 +28,7 @@ import {
 } from "@/features/guide/search";
 import { recyclingIntent } from "@/features/overview/recording";
 import { useSortingRegion } from "@/features/region/context";
+import { openExternalUrl } from "@/features/security/external-links";
 import { useLanguage } from "@/i18n/language-context";
 import { appFontFamily } from "@/theme/fonts";
 import { controls, interaction, radius, spacing, useAppTheme } from "@/theme/tokens";
@@ -325,7 +318,9 @@ export default function GuideScreen() {
             <InlineLink
               label="Suomen Pakkauskierrätys RINKI Oy"
               onPress={() =>
-                void Linking.openURL("https://rinkiin.fi/lajittelu-kotona/lajitteluohjeet/")
+                void openExternalUrl("https://rinkiin.fi/lajittelu-kotona/lajitteluohjeet/").catch(
+                  () => undefined,
+                )
               }
             />
             <AppText variant="small" muted>

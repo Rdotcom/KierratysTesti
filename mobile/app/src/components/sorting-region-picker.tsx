@@ -1,7 +1,8 @@
 import { searchMunicipalities, sortingRegionSource } from "@kierratysappi/recycling-engine";
 import { useState } from "react";
-import { Linking, TextInput, View } from "react-native";
+import { TextInput, View } from "react-native";
 import { useSortingRegion } from "@/features/region/context";
+import { openExternalUrl } from "@/features/security/external-links";
 import { useLanguage } from "@/i18n/language-context";
 import { controls, spacing, useAppTheme } from "@/theme/tokens";
 import { AppText, Button, InlineLink, sharedStyles } from "./ui";
@@ -89,7 +90,7 @@ export function SortingRegionPicker() {
         <View>
           <InlineLink
             label={`${sortingRegionSource.name} · ${sortingRegionSource.license}`}
-            onPress={() => void Linking.openURL(sortingRegionSource.url).catch(() => undefined)}
+            onPress={() => void openExternalUrl(sortingRegionSource.url).catch(() => undefined)}
           />
           <AppText variant="small" muted>
             {sortingRegionSource.name} · {sortingRegionSource.license} ·{" "}

@@ -8,7 +8,7 @@ import { localizedText } from "@kierratysappi/localization";
 import type { SortingResult } from "@kierratysappi/recycling-engine";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { type ComponentRef, useEffect, useRef, useState } from "react";
-import { Keyboard, Linking, type ScrollView, StyleSheet, TextInput, View } from "react-native";
+import { Keyboard, type ScrollView, StyleSheet, TextInput, View } from "react-native";
 import { RecycleAction } from "@/components/recycle-action";
 import { SortingResultCard } from "@/components/sorting-result";
 import {
@@ -27,6 +27,7 @@ import { announceAccessibility } from "@/features/accessibility/announcements";
 import { materialCodePrefill } from "@/features/material-code/prefill";
 import { sortRecognizedMaterialCode } from "@/features/material-code/sorting";
 import { recyclingIntent } from "@/features/overview/recording";
+import { openExternalUrl } from "@/features/security/external-links";
 import { useLanguage } from "@/i18n/language-context";
 import { codeFontFamily } from "@/theme/fonts";
 import { radius, spacing, useAppTheme } from "@/theme/tokens";
@@ -213,7 +214,7 @@ function RecognizedCode({
         </AppText>
         <InlineLink
           label={recognition.source.sourceName}
-          onPress={() => void Linking.openURL(recognition.source.sourceUrl)}
+          onPress={() => void openExternalUrl(recognition.source.sourceUrl).catch(() => undefined)}
         />
         <AppText variant="small" muted>
           {recognition.source.jurisdiction} · {recognition.source.version} · {t("checkedLabel")}:{" "}

@@ -1,3 +1,4 @@
+import { parseGtin } from "@kierratysappi/domain";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useState } from "react";
 import { Pressable, StyleSheet, TextInput, View } from "react-native";
@@ -34,18 +35,27 @@ export default function FeedbackScreen() {
   const [category, setCategory] = useState<string | undefined>(initialCategory);
   const [note, setNote] = useState("");
   const [saved, setSaved] = useState(false);
+  const [saveError, setSaveError] = useState(false);
   const [focused, setFocused] = useState(false);
 
   const save = async () => {
     if (!category) return;
-    await saveFeedbackDraft({
-      gtin: params.gtin,
-      category,
-      note: note.trim().slice(0, 2_000),
-      createdAt: new Date().toISOString(),
-    });
-    setSaved(true);
-    announceAccessibility(t("draftSaved"));
+    const gtin = parseGtin(typeof params.gtin === "string" ? params.gtin : "");
+    setSaveError(false);
+    try {
+      await saveFeedbackDraft({
+        gtin: gtin.ok ? gtin.value : undefined,
+        category,
+        note: note.trim().slice(0, 2_000),
+        createdAt: new Date().toISOString(),
+      });
+      setSaved(true);
+      announceAccessibility(t("draftSaved"));
+    } catch {
+      setSaved(false);
+      setSaveError(true);
+      announceAccessibility(t("feedbackSaveError"), "high");
+    }
   };
 
   return (
@@ -119,6 +129,7 @@ export default function FeedbackScreen() {
           value={note}
         />
         <Button label={t("saveDraft")} onPress={() => void save()} disabled={!category} />
+        {saveError && <AppText accessibilityRole="alert">{t("feedbackSaveError")}</AppText>}
         {saved && (
           <Paper style={{ backgroundColor: palette.pineSoft }}>
             <AppText variant="heading" style={{ color: palette.pine }} accessibilityRole="alert">

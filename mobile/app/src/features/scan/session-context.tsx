@@ -13,6 +13,7 @@ import {
   useRef,
 } from "react";
 import { addHistoryEntry, queuePendingLookup } from "@/features/history/storage";
+import { localDataGeneration } from "@/features/security/local-data-generation";
 import { offlineCatalogue } from "@/features/local-vision/catalogue";
 import { useLanguage } from "@/i18n/language-context";
 import { trackTechnicalEvent } from "@/telemetry/technical-events";
@@ -41,9 +42,9 @@ type ScanSessionContextValue = {
 
 const ScanSessionContext = createContext<ScanSessionContextValue | undefined>(undefined);
 const publicLookup = createPublicIdentityLookup((url, init) => streamingFetch(url, init));
-const publicOnlineLookup = async (gtin: Gtin, language: "fi" | "en") => {
+const publicOnlineLookup = async (gtin: Gtin, language: "fi" | "en", signal?: AbortSignal) => {
   try {
-    return await publicLookup(gtin, language);
+    return await publicLookup(gtin, language, signal);
   } catch {
     throw new LookupNetworkError();
   }
@@ -55,13 +56,15 @@ const originalLookup = createRuntimeBarcodeLookup(
   publicOnlineLookup,
 );
 const bundled = createBarcodeLibraryLookup(barcodeData);
-async function localFirstLookup(gtin: Gtin, language: "fi" | "en") {
+async function localFirstLookup(gtin: Gtin, language: "fi" | "en", signal: AbortSignal) {
+  const generation = localDataGeneration();
   const fixed = bundled.lookup(gtin, language);
   if (fixed) return fixed;
   const cached = await cachedLookup(gtin, language);
   if (cached) return cached;
-  const result = await originalLookup(gtin, language);
-  await cacheLookup(result, language).catch(() => undefined);
+  const result = await originalLookup(gtin, language, signal);
+  if (!signal.aborted)
+    await cacheLookup(result, language, Date.now(), generation).catch(() => undefined);
   return result;
 }
 
@@ -69,6 +72,7 @@ export function ScanSessionProvider({ children }: PropsWithChildren) {
   const { language } = useLanguage();
   const [state, dispatch] = useReducer(sessionReducer, { status: "idle" });
   const busy = useRef(false);
+  const currentRequest = useRef<AbortController | undefined>(undefined);
   const previousScan = useRef<{ gtin: Gtin; at: number } | undefined>(undefined);
 
   const lookupBarcode = useCallback(
@@ -85,13 +89,17 @@ export function ScanSessionProvider({ children }: PropsWithChildren) {
       }
 
       busy.current = true;
+      const controller = new AbortController();
+      currentRequest.current = controller;
+      const generation = localDataGeneration();
       if (source === "camera") previousScan.current = { gtin: parsed.value, at: now };
       dispatch({ type: "started", gtin: parsed.value, source });
 
       trackTechnicalEvent("scan_decoded", { source });
       void (async () => {
         try {
-          const result = await localFirstLookup(parsed.value, language);
+          const result = await localFirstLookup(parsed.value, language, controller.signal);
+          if (controller.signal.aborted || generation !== localDataGeneration()) return;
           dispatch({ type: "completed", gtin: parsed.value, result });
           trackTechnicalEvent("lookup_completed", {
             status: result.status,
@@ -106,13 +114,17 @@ export function ScanSessionProvider({ children }: PropsWithChildren) {
           });
           void saveHistoryResult(parsed.value, result).catch(() => undefined);
         } catch (error) {
+          if (controller.signal.aborted || generation !== localDataGeneration()) return;
           dispatch({ type: "offline", gtin: parsed.value });
           if (error instanceof LookupNetworkError) {
             trackTechnicalEvent("offline_queued", { source });
             void queuePendingLookup(parsed.value).catch(() => undefined);
           }
         } finally {
-          busy.current = false;
+          if (currentRequest.current === controller) {
+            busy.current = false;
+            currentRequest.current = undefined;
+          }
         }
       })();
       return { accepted: true };
@@ -120,7 +132,13 @@ export function ScanSessionProvider({ children }: PropsWithChildren) {
     [language],
   );
 
-  const reset = useCallback(() => dispatch({ type: "reset" }), []);
+  const reset = useCallback(() => {
+    currentRequest.current?.abort();
+    currentRequest.current = undefined;
+    busy.current = false;
+    previousScan.current = undefined;
+    dispatch({ type: "reset" });
+  }, []);
   const value = useMemo(() => ({ state, lookupBarcode, reset }), [state, lookupBarcode, reset]);
   return <ScanSessionContext.Provider value={value}>{children}</ScanSessionContext.Provider>;
 }

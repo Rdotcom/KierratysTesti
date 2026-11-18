@@ -4,7 +4,11 @@ import type { OfflineCatalogueRuntime } from "@kierratysappi/domain/offline-prod
 import { isExpoGoEnvironment } from "../runtime/environment";
 import { createLocalFirstLookup } from "./local-first-lookup";
 
-type Lookup = (gtin: Gtin, language: Language) => Promise<ProductLookupResult>;
+type Lookup = (
+  gtin: Gtin,
+  language: Language,
+  signal?: AbortSignal,
+) => Promise<ProductLookupResult>;
 /** Expo Go must not depend on a private Mac API. Normal builds retain backend/provider resolution. */
 export function createRuntimeBarcodeLookup(
   catalogue: OfflineCatalogueRuntime | null,

@@ -1,6 +1,7 @@
 import type { OfflineProduct, OfflineProductResult } from "@kierratysappi/domain/offline-product";
-import { Linking, View } from "react-native";
+import { View } from "react-native";
 import { recyclingIntent } from "@/features/overview/recording";
+import { openExternalUrl } from "@/features/security/external-links";
 import { useLanguage } from "@/i18n/language-context";
 import { RecyclingRecordAction } from "./recycle-action";
 import { AppText, InlineLink, Paper, StatusPill, sharedStyles } from "./ui";
@@ -24,7 +25,7 @@ function SourceProduct({ product }: { product: OfflineProduct }) {
       </AppText>
       <InlineLink
         label={t("offlineProductSource")}
-        onPress={() => void Linking.openURL(product.source.url).catch(() => undefined)}
+        onPress={() => void openExternalUrl(product.source.url).catch(() => undefined)}
       />
     </Paper>
   );

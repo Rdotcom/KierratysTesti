@@ -10,7 +10,7 @@ import {
   productLookupPath,
 } from "@kierratysappi/contracts/lookup-schema";
 import type { ObjectImageRecognizer } from "@kierratysappi/data-providers/siglip-recognition";
-import { parseGtin } from "@kierratysappi/domain";
+import { isLocalDevelopmentHost, parseGtin } from "@kierratysappi/domain";
 import Fastify, {
   type FastifyError,
   type FastifyInstance,
@@ -40,6 +40,7 @@ export type BuildAppOptions = {
   readonly lookupService: LookupService;
   readonly logger?: false | FastifyLoggerOptions;
   readonly allowedWebOrigins?: readonly string[];
+  readonly localOnly?: boolean;
   readonly observeLookup?: (observation: LookupObservation) => void;
 };
 
@@ -49,6 +50,12 @@ export async function buildApp(options: BuildAppOptions): Promise<FastifyInstanc
     logController: new LogController({ disableRequestLogging: true }),
     logger: options.logger ?? false,
     trustProxy: false,
+    requestIdHeader: false,
+    connectionTimeout: 20_000,
+    requestTimeout: 20_000,
+    handlerTimeout: 15_000,
+    keepAliveTimeout: 5_000,
+    maxRequestsPerSocket: 100,
     ajv: {
       customOptions: {
         allErrors: false,
@@ -56,9 +63,36 @@ export async function buildApp(options: BuildAppOptions): Promise<FastifyInstanc
       },
     },
   });
+  app.server.maxConnections = 128;
+
+  const allowedOrigins = new Set(options.allowedWebOrigins ?? []);
+  // CORS alone only controls browser access to responses. Reject disallowed
+  // browser origins before body parsing, quotas, providers or image inference.
+  app.addHook("onRequest", async (request, reply) => {
+    if (options.localOnly && !isLocalDevelopmentHost(request.hostname)) {
+      return reply
+        .code(403)
+        .send({ error: { code: "host_not_allowed", message: "Host not allowed." } });
+    }
+    const origin = request.headers.origin;
+    if (origin !== undefined && !allowedOrigins.has(origin)) {
+      return reply
+        .code(403)
+        .send({ error: { code: "origin_not_allowed", message: "Origin not allowed." } });
+    }
+  });
 
   await app.register(helmet, {
-    contentSecurityPolicy: false,
+    contentSecurityPolicy: {
+      useDefaults: false,
+      directives: {
+        defaultSrc: ["'none'"],
+        frameAncestors: ["'none'"],
+        baseUri: ["'none'"],
+        formAction: ["'none'"],
+      },
+    },
+    referrerPolicy: { policy: "no-referrer" },
     crossOriginEmbedderPolicy: false,
   });
   if (options.allowedWebOrigins && options.allowedWebOrigins.length > 0) {
@@ -162,8 +196,11 @@ export async function buildApp(options: BuildAppOptions): Promise<FastifyInstanc
       }
 
       const controller = new AbortController();
-      const abort = () => controller.abort();
+      const abort = () => {
+        if (!reply.raw.writableEnded) controller.abort();
+      };
       request.raw.once("aborted", abort);
+      reply.raw.once("close", abort);
       try {
         const result = ProductLookupResultSchema.parse(
           await options.lookupService.lookup(
@@ -201,6 +238,7 @@ export async function buildApp(options: BuildAppOptions): Promise<FastifyInstanc
         return reply.code(200).send(result);
       } finally {
         request.raw.off("aborted", abort);
+        reply.raw.off("close", abort);
       }
     },
   );
@@ -216,7 +254,7 @@ export async function buildApp(options: BuildAppOptions): Promise<FastifyInstanc
   app.setErrorHandler(async (error: FastifyError, request, reply) => {
     const statusCode = error.statusCode && error.statusCode < 500 ? error.statusCode : 500;
     if (statusCode >= 500) {
-      request.log.error({ err: error }, "Unhandled request error");
+      request.log.error({ statusCode }, "Unhandled request error");
     } else {
       request.log.warn(clientErrorLogFields(statusCode), "Request rejected");
     }

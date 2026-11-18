@@ -5,12 +5,13 @@ import {
 } from "@kierratysappi/contracts/collection-points";
 import * as Location from "expo-location";
 import { useEffect, useRef, useState } from "react";
-import { Linking, Platform, StyleSheet, useWindowDimensions, View } from "react-native";
+import { Platform, StyleSheet, useWindowDimensions, View } from "react-native";
 import { announceAccessibility } from "@/features/accessibility/announcements";
 import { displayDistance } from "@/features/nearby/location-session";
 import { collectionMaterialLabels } from "@/features/nearby/material-label";
 import { resolvePointAddress } from "@/features/nearby/point-address";
 import { recyclingIntent } from "@/features/overview/recording";
+import { openExternalUrl } from "@/features/security/external-links";
 import { useLanguage } from "@/i18n/language-context";
 import { useAppTheme } from "@/theme/tokens";
 import { RecyclingRecordAction } from "./recycle-action";
@@ -46,7 +47,7 @@ export function NearbyPointCard({
   );
   const openUrl = (url: string) => {
     setLinkError(false);
-    void Linking.openURL(url).catch(() => {
+    void openExternalUrl(url).catch(() => {
       setLinkError(true);
       announceAccessibility(t("nearbyLinkError"), "high");
     });

@@ -13,6 +13,27 @@ function jsonResponse(payload: unknown, status = 200, headers?: HeadersInit) {
 }
 
 describe("OpenFoodFactsProvider", () => {
+  it("bounds packaging/brand amplification and omits third-party tracking images", async () => {
+    const provider = new OpenFoodFactsProvider({
+      fetch: async () =>
+        jsonResponse({
+          product: {
+            code: gtin,
+            product_name: "Fixture",
+            packagings: Array.from({ length: 5000 }, () => ({ material: "en:plastic" })),
+            brands: "x,".repeat(999),
+            image_front_url: "https://attacker.example/track.jpg",
+          },
+        }),
+    });
+    const result = await provider.findByGtin(gtin, context);
+    expect(result.status).toBe("found");
+    if (result.status !== "found") return;
+    expect(result.product.packagingComponents).toHaveLength(32);
+    expect(result.product.brands?.value.length).toBeLessThanOrEqual(20);
+    expect(result.product.imageUrl).toBeUndefined();
+    expect(JSON.stringify(result).length).toBeLessThan(100000);
+  });
   it("prefers the requested English identity instead of the Finnish name", async () => {
     const provider = new OpenFoodFactsProvider({
       fetch: async () =>

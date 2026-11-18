@@ -8,6 +8,8 @@ import {
   networkSuggestionMediaType,
 } from "@kierratysappi/contracts/network-recognition";
 import { preparePhotoBase64 } from "@kierratysappi/contracts/photo-image";
+import { isLocalDevelopmentHost } from "@kierratysappi/domain";
+import { readBoundedJson } from "../security/bounded-json";
 
 export function networkOrigin(value: unknown, development: boolean): string | undefined {
   if (typeof value !== "string" || !value.trim()) return undefined;
@@ -16,35 +18,14 @@ export function networkOrigin(value: unknown, development: boolean): string | un
     if (url.username || url.password || url.hash || url.search || url.pathname !== "/")
       return undefined;
     if (url.protocol !== "https:" && !(development && url.protocol === "http:")) return undefined;
+    if (url.protocol === "http:" && !isLocalDevelopmentHost(url.hostname)) return undefined;
     return url.origin;
   } catch {
     return undefined;
   }
 }
 async function boundedJson(response: Response): Promise<unknown> {
-  if (!response.body || Number(response.headers.get("content-length")) > 8192)
-    throw Error("invalid_response");
-  const reader = response.body.getReader(),
-    chunks: Uint8Array[] = [];
-  let size = 0;
-  try {
-    while (true) {
-      const item = await reader.read();
-      if (item.done) break;
-      size += item.value.length;
-      if (size > 8192) throw Error("response_bound");
-      chunks.push(item.value);
-    }
-  } finally {
-    await reader.cancel().catch(() => {});
-  }
-  const all = new Uint8Array(size);
-  let position = 0;
-  for (const chunk of chunks) {
-    all.set(chunk, position);
-    position += chunk.length;
-  }
-  return JSON.parse(new TextDecoder().decode(all));
+  return readBoundedJson(response, 8192);
 }
 export type NetworkFetch = (url: string, options?: RequestInit) => Promise<Response>;
 export function createNetworkRecognitionClient(origin: string | undefined, fetcher: NetworkFetch) {
@@ -84,8 +65,10 @@ export function createNetworkRecognitionClient(origin: string | undefined, fetch
           headers: { Accept: networkSuggestionMediaType, "Content-Type": "application/json" },
           body: JSON.stringify({ jpegBase64: clean, consentVersion: networkConsentVersion }),
         });
-        if (response.status === 429) return fail("rate_limited");
-        if (response.status === 400 || response.status === 413) return fail("invalid_image");
+        if (response.status === 429 || response.status === 400 || response.status === 413) {
+          await response.body?.cancel();
+          return fail(response.status === 429 ? "rate_limited" : "invalid_image");
+        }
         let raw: unknown;
         try {
           raw = await boundedJson(response);

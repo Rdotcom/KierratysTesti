@@ -1,6 +1,7 @@
 import { localizedText } from "@kierratysappi/localization";
 import type { SortingResult, SortingRuleReference } from "@kierratysappi/recycling-engine";
-import { Linking, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
+import { openExternalUrl } from "@/features/security/external-links";
 import { destinationMessageKey, unknownReasonMessageKey } from "@/features/sorting/presentation";
 import { useLanguage } from "@/i18n/language-context";
 import { radius, spacing, useAppTheme } from "@/theme/tokens";
@@ -159,7 +160,7 @@ function RuleReferences({ sources }: { readonly sources: readonly SortingRuleRef
         <View key={source.id} style={sharedStyles.tightStack}>
           <InlineLink
             label={source.sourceName}
-            onPress={() => void Linking.openURL(source.sourceUrl)}
+            onPress={() => void openExternalUrl(source.sourceUrl).catch(() => undefined)}
           />
           <AppText variant="small" muted>
             {t("ruleJurisdictionLabel")}: {source.jurisdiction} · {t("checkedLabel")}:{" "}

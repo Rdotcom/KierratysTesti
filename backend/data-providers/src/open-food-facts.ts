@@ -157,15 +157,19 @@ export class OpenFoodFactsProvider implements ProductDataProvider {
           continue;
         }
         if (response.status === 404) {
+          await response.body?.cancel();
           return { status: "not_found" };
         }
         if (response.status === 429) {
+          await response.body?.cancel();
           return { status: "error", code: "rate_limited", retryable: true };
         }
         if (response.status >= 500) {
+          await response.body?.cancel();
           return { status: "error", code: "unavailable", retryable: true };
         }
         if (response.status >= 300 || !response.ok) {
+          await response.body?.cancel();
           return { status: "error", code: "invalid_response", retryable: false };
         }
 
@@ -249,6 +253,7 @@ function redirectSource(location: string | null, gtin: Gtin): FactsSource | unde
 async function readLimitedJson(response: Response): Promise<unknown> {
   const declaredLength = Number(response.headers.get("content-length"));
   if (Number.isFinite(declaredLength) && declaredLength > MAX_RESPONSE_BYTES) {
+    await response.body?.cancel();
     throw new Error("Provider response is too large");
   }
 
@@ -260,17 +265,22 @@ async function readLimitedJson(response: Response): Promise<unknown> {
   const chunks: Uint8Array[] = [];
   let received = 0;
 
-  while (true) {
-    const { value, done } = await reader.read();
-    if (done) {
-      break;
+  try {
+    while (true) {
+      const { value, done } = await reader.read();
+      if (done) {
+        break;
+      }
+      received += value.byteLength;
+      if (received > MAX_RESPONSE_BYTES) {
+        await reader.cancel("Provider response is too large");
+        throw new Error("Provider response is too large");
+      }
+      chunks.push(value);
     }
-    received += value.byteLength;
-    if (received > MAX_RESPONSE_BYTES) {
-      await reader.cancel("Provider response is too large");
-      throw new Error("Provider response is too large");
-    }
-    chunks.push(value);
+  } finally {
+    await reader.cancel().catch(() => undefined);
+    reader.releaseLock();
   }
 
   const bytes = new Uint8Array(received);
@@ -339,7 +349,9 @@ function normalizePackaging(
     return [];
   }
 
-  return input.flatMap((candidate, index) => {
+  // Bound normalization/output amplification even if a hostile provider fills
+  // its entire 1 MB response with tiny component objects.
+  return input.slice(0, 32).flatMap((candidate, index) => {
     if (!isRecord(candidate)) {
       return [];
     }
@@ -465,11 +477,11 @@ const SHAPE_TAXONOMY = new Map<string, PackagingShape>([
 ]);
 
 function stringList(input: unknown): string[] {
-  if (typeof input !== "string") return [];
+  if (typeof input !== "string" || input.length > 2000) return [];
   return [
     ...new Set(
       input
-        .split(",")
+        .split(",", 20)
         .map(cleanString)
         .filter((value): value is string => Boolean(value)),
     ),
@@ -492,10 +504,18 @@ function cleanString(value: string): string | undefined {
 }
 
 function safeHttpsUrl(input: unknown): string | undefined {
-  if (typeof input !== "string") return undefined;
+  if (typeof input !== "string" || input.length > 2048) return undefined;
   try {
     const parsed = new URL(input);
-    return parsed.protocol === "https:" ? parsed.toString() : undefined;
+    return parsed.protocol === "https:" &&
+      !parsed.username &&
+      !parsed.password &&
+      !parsed.port &&
+      !parsed.search &&
+      !parsed.hash &&
+      ["images.openfoodfacts.org", "static.openfoodfacts.org"].includes(parsed.hostname)
+      ? parsed.toString()
+      : undefined;
   } catch {
     return undefined;
   }

@@ -6,6 +6,23 @@ import { bundledBarcodeLookup, createLocalFirstLookup } from "../local-first-loo
 const gtin = GtinSchema.parse("3017620422003"),
   missing = GtinSchema.parse("6410405196811");
 describe("local-first standalone barcode flow", () => {
+  it("cancellation never dispatches a subsequent public fallback request", async () => {
+    const controller = new AbortController();
+    const online = vi.fn(async () => {
+      controller.abort();
+      throw Error("cancelled");
+    });
+    const fallback = vi.fn(async () => ({ status: "not_found" as const, gtin: missing }));
+    await expect(
+      createLocalFirstLookup(null, online, fallback)(missing, "fi", controller.signal),
+    ).rejects.toThrow();
+    expect(fallback).not.toHaveBeenCalled();
+    online.mockClear();
+    await expect(
+      createLocalFirstLookup(null, online, fallback)(missing, "fi", controller.signal),
+    ).rejects.toThrow();
+    expect(online).not.toHaveBeenCalled();
+  });
   it("uses the existing five-product catalogue without network or image-model work", async () => {
     const online = vi.fn(async () => {
       throw Error("offline");

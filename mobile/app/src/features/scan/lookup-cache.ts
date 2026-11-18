@@ -5,6 +5,7 @@ import {
 } from "@kierratysappi/contracts/lookup-schema";
 import type { Gtin, Language } from "@kierratysappi/domain";
 import { withRecyclingStorageLock } from "../overview/storage";
+import { localDataGeneration } from "../security/local-data-generation";
 const key = "@kierratysappi/offline-lookup-cache/v1",
   ttl = 30 * 86400000,
   limit = 100,
@@ -69,10 +70,12 @@ export async function cacheLookup(
   result: ProductLookupResult,
   language: Language,
   now = Date.now(),
+  generation = localDataGeneration(),
 ): Promise<void> {
   if (result.status !== "resolved" && result.status !== "packaging_missing") return;
   if (JSON.stringify(result).length > 50000) return;
   await withRecyclingStorageLock(async () => {
+    if (generation !== localDataGeneration()) return;
     const gtin = result.gtin.padStart(14, "0"),
       old = await read(now),
       entries = [

@@ -29,6 +29,7 @@ if (!Number.isInteger(port) || port < 1024 || port > 65535) throw Error("invalid
 const host = process.env.HOST ?? "127.0.0.1";
 if (!["127.0.0.1", "0.0.0.0"].includes(host)) throw Error("invalid_local_host");
 const app = await buildApp({
+  localOnly: true,
   objectImageRecognizer: recognizer,
   logger: false,
   allowedWebOrigins: parseSiglipWebOrigins(process.env.SIGLIP_WEB_ORIGINS),

@@ -2,6 +2,7 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 import { GtinSchema } from "@kierratysappi/domain";
 import { normalizePublicIdentity } from "../public-identity-lookup";
 import { cacheLookup, cachedLookup } from "../lookup-cache";
+import { localDataGeneration, invalidateLocalDataWork } from "../../security/local-data-generation";
 const store = vi.hoisted(() => new Map<string, string>());
 vi.mock("@react-native-async-storage/async-storage", () => ({
   default: {
@@ -22,6 +23,14 @@ const gtin = GtinSchema.parse("3017620422003"),
     );
 beforeEach(() => store.clear());
 describe("bounded local product cache", () => {
+  it("does not resurrect cached product data when a pre-deletion request finishes late", async () => {
+    const generation = localDataGeneration();
+    invalidateLocalDataWork();
+    await cacheLookup(make(), "en", now, generation);
+    expect(store.size).toBe(0);
+    await cacheLookup(make(), "en", now, localDataGeneration());
+    expect(await cachedLookup(gtin, "en", now)).not.toBeNull();
+  });
   it("works offline, binds GTIN and language, and does not infer packaging", async () => {
     await cacheLookup(make(), "en", now);
     expect(await cachedLookup(gtin, "en", now + 1)).toMatchObject({

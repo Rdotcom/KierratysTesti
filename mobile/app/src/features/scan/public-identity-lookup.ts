@@ -69,7 +69,12 @@ export function normalizePublicIdentity(
 }
 export function createPublicIdentityLookup(fetcher: FetchPort, now = Date.now) {
   const requests: number[] = [];
-  return async (gtin: Gtin, language: Language): Promise<ProductLookupResult> => {
+  return async (
+    gtin: Gtin,
+    language: Language,
+    signal?: AbortSignal,
+  ): Promise<ProductLookupResult> => {
+    if (signal?.aborted) throw Error("lookup_cancelled");
     if (!GtinSchema.safeParse(gtin).success) throw Error("invalid_gtin");
     const at = now();
     while (requests.length && (requests[0] ?? at) <= at - 60000) requests.shift();
@@ -77,6 +82,8 @@ export function createPublicIdentityLookup(fetcher: FetchPort, now = Date.now) {
     requests.push(at);
     const controller = new AbortController(),
       timer = setTimeout(() => controller.abort(), 6000);
+    const abort = () => controller.abort();
+    signal?.addEventListener("abort", abort, { once: true });
     try {
       const url = new URL(`https://world.openfoodfacts.org/api/v3/product/${gtin}`);
       url.searchParams.set(
@@ -143,6 +150,7 @@ export function createPublicIdentityLookup(fetcher: FetchPort, now = Date.now) {
     } catch {
       throw Error("public_product_transport_unavailable");
     } finally {
+      signal?.removeEventListener("abort", abort);
       clearTimeout(timer);
     }
   };

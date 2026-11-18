@@ -32,6 +32,9 @@ describe("Expo Go explicit own-server transport", () => {
       "https://host#secret",
       "file:///tmp/test",
       "garbage",
+      "http://attacker.example",
+      "http://localhost.attacker.example",
+      "http://169.254.169.254",
     ])
       expect(networkOrigin(value, true)).toBeUndefined();
     expect(networkOrigin("http://localhost:3004", false)).toBeUndefined();

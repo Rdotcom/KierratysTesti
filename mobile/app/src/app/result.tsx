@@ -3,7 +3,7 @@ import type { MaterialFamily, PackagingShape } from "@kierratysappi/domain";
 import type { MessageKey } from "@kierratysappi/localization";
 import { useRouter } from "expo-router";
 import { useEffect } from "react";
-import { ActivityIndicator, Linking, StyleSheet, View } from "react-native";
+import { ActivityIndicator, StyleSheet, View } from "react-native";
 import { PackagingMark } from "@/components/packaging-mark";
 import { RecycleAction, RecyclingRecordAction } from "@/components/recycle-action";
 import { SortingResultCard } from "@/components/sorting-result";
@@ -23,6 +23,7 @@ import { announceAccessibility } from "@/features/accessibility/announcements";
 import { lookupAnnouncement } from "@/features/accessibility/result-announcement";
 import { recyclingIntent } from "@/features/overview/recording";
 import { useScanSession } from "@/features/scan/session-context";
+import { openExternalUrl } from "@/features/security/external-links";
 import { useLanguage } from "@/i18n/language-context";
 import { spacing, useAppTheme } from "@/theme/tokens";
 
@@ -251,7 +252,7 @@ function ProductResult({
             </AppText>
             <InlineLink
               label={provenance.sourceName}
-              onPress={() => void Linking.openURL(provenance.sourceUrl)}
+              onPress={() => void openExternalUrl(provenance.sourceUrl).catch(() => undefined)}
             />
           </View>
           {provenance.license.url && (
@@ -261,7 +262,9 @@ function ProductResult({
               </AppText>
               <InlineLink
                 label={provenance.license.name}
-                onPress={() => void Linking.openURL(provenance.license.url ?? "")}
+                onPress={() =>
+                  void openExternalUrl(provenance.license.url ?? "").catch(() => undefined)
+                }
               />
             </View>
           )}

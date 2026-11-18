@@ -3,6 +3,7 @@ import {
   LanguageSchema,
   LocalizedTextSchema,
   PackagingComponentObservationSchema,
+  WebUrlSchema,
 } from "@kierratysappi/domain";
 import { z } from "zod";
 
@@ -20,7 +21,7 @@ export const SortingRuleReferenceSchema = z.object({
   version: z.string().min(1),
   jurisdiction: z.literal("FI"),
   sourceName: z.string().min(1),
-  sourceUrl: z.url(),
+  sourceUrl: WebUrlSchema,
   checkedAt: z.iso.date(),
   effectiveFrom: z.iso.date(),
   effectiveTo: z.iso.date().optional(),

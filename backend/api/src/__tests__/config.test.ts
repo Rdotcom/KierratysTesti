@@ -60,4 +60,16 @@ describe("API environment", () => {
       }),
     ).toThrow("Invalid web origin");
   });
+  it.each(["http://app.example.test", "https://127.0.0.1", "https://sub.localhost"])(
+    "rejects insecure production origin %s",
+    (origin) => {
+      expect(() =>
+        parseEnvironment({
+          NODE_ENV: "production",
+          OFF_USER_AGENT: "KierratysAppi/1.0 (contact: ops@kierratysappi.fi)",
+          WEB_ALLOWED_ORIGINS: origin,
+        }),
+      ).toThrow("HTTPS public hostnames");
+    },
+  );
 });

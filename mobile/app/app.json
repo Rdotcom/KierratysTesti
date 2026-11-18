@@ -89,13 +89,15 @@
         }
       ],
       "expo-font",
-      "expo-status-bar"
+      "expo-status-bar",
+      "./plugins/with-security-boundaries.cjs"
     ],
     "runtimeVersion": {
       "policy": "appVersion"
     },
     "updates": {
-      "checkAutomatically": "ON_LOAD",
+      "enabled": false,
+      "checkAutomatically": "NEVER",
       "fallbackToCacheTimeout": 0
     },
     "experiments": {

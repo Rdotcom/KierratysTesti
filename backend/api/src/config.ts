@@ -24,7 +24,7 @@ const ApiEnvironmentSchema = z.object({
             throw new Error("Origin must not contain a path");
           }
         } catch {
-          context.addIssue({ code: "custom", message: `Invalid web origin: ${origin}` });
+          context.addIssue({ code: "custom", message: "Invalid web origin" });
           return z.NEVER;
         }
       }
@@ -49,9 +49,17 @@ export function parseEnvironment(environment: NodeJS.ProcessEnv): ApiEnvironment
   }
   if (
     parsed.NODE_ENV === "production" &&
-    parsed.WEB_ALLOWED_ORIGINS.some((origin) => new URL(origin).hostname === "localhost")
+    parsed.WEB_ALLOWED_ORIGINS.some((origin) => {
+      const url = new URL(origin);
+      return (
+        url.protocol !== "https:" ||
+        url.hostname === "localhost" ||
+        url.hostname.endsWith(".localhost") ||
+        /^[\d.:[\]]+$/u.test(url.hostname)
+      );
+    })
   ) {
-    throw new Error("WEB_ALLOWED_ORIGINS must not contain localhost in production");
+    throw new Error("WEB_ALLOWED_ORIGINS must use HTTPS public hostnames in production");
   }
   return parsed;
 }

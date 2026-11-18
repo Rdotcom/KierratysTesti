@@ -39,6 +39,7 @@ import {
 } from "@/features/nearby/results";
 import { useNearbySearch } from "@/features/nearby/search-context";
 import { useSortingRegion } from "@/features/region/context";
+import { openExternalUrl } from "@/features/security/external-links";
 import { useLanguage } from "@/i18n/language-context";
 import { appFontFamily } from "@/theme/fonts";
 import { radius, spacing, useAppTheme } from "@/theme/tokens";
@@ -183,7 +184,7 @@ export default function NearbyScreen() {
   const openSource = () => {
     if (!directory.success) return;
     setLinkError(false);
-    void Linking.openURL(directory.data.attributionUrl).catch(() => {
+    void openExternalUrl(directory.data.attributionUrl).catch(() => {
       setLinkError(true);
       announceAccessibility(t("nearbyLinkError"), "high");
     });

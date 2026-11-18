@@ -9,5 +9,8 @@
 - [x] Owner authorizes and receives the validated migration in KierratysAppi/main.
 - [x] Remove obsolete paid OpenAI recognition end to end; retain free recognition.
 - [x] Single-first object confirmation, ranked correction and immediate unclear choices.
+- [x] Source-backed security threat model, URL/network/storage/API/CSP hardening and regressions.
+- [x] Correct known JavaScript dependency findings without weakening audit policy.
+- [ ] Inspect/test new signed release binaries and actual HTTPS hosting against security gates.
 - [ ] Complete physical Samsung, broader recognition and memory/energy validation.
 - [ ] Complete production hosting, operational/privacy and store-release requirements.

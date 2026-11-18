@@ -49,18 +49,30 @@ export function bundledBarcodeLookup(
 }
 export function createLocalFirstLookup(
   catalogue: OfflineCatalogueRuntime | null,
-  online: (gtin: Gtin, language: Language) => Promise<ProductLookupResult>,
-  publicFallback?: (gtin: Gtin, language: Language) => Promise<ProductLookupResult>,
+  online: (gtin: Gtin, language: Language, signal?: AbortSignal) => Promise<ProductLookupResult>,
+  publicFallback?: (
+    gtin: Gtin,
+    language: Language,
+    signal?: AbortSignal,
+  ) => Promise<ProductLookupResult>,
 ) {
-  return async (gtin: Gtin, language: Language): Promise<ProductLookupResult> => {
+  return async (
+    gtin: Gtin,
+    language: Language,
+    signal?: AbortSignal,
+  ): Promise<ProductLookupResult> => {
+    if (signal?.aborted) throw Error("lookup_cancelled");
     const local = bundledBarcodeLookup(catalogue, gtin);
     if (local) return local;
     try {
-      return await online(gtin, language);
+      return await (signal ? online(gtin, language, signal) : online(gtin, language));
     } catch (error) {
+      if (signal?.aborted) throw error;
       if (publicFallback) {
         try {
-          return await publicFallback(gtin, language);
+          return await (signal
+            ? publicFallback(gtin, language, signal)
+            : publicFallback(gtin, language));
         } catch {
           /* Preserve original typed transport failure and pending recovery. */
         }

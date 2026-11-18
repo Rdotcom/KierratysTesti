@@ -1,5 +1,8 @@
 import { createNetworkRecognitionClient, networkOrigin } from "./api";
-const development = process.env.EXPO_PUBLIC_APP_ENV !== "production";
+
+const development =
+  process.env.EXPO_PUBLIC_APP_ENV === "development" ||
+  (!process.env.EXPO_PUBLIC_APP_ENV && process.env.NODE_ENV === "development");
 const configured = process.env.EXPO_PUBLIC_SIGLIP_BASE_URL;
 const fallback =
   process.env.NODE_ENV !== "production" && development ? "http://127.0.0.1:3004" : undefined;

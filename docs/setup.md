@@ -68,6 +68,10 @@ export SIGLIP_ASSETS="$PWD/work/network-model"
 pnpm dev:siglip
 ```
 
+Salaamaton HTTP edellyttää myös Expon päätteessä nimenomaista
+`EXPO_PUBLIC_APP_ENV=development`-asetusta (PowerShell: `$env:EXPO_PUBLIC_APP_ENV = 'development'`).
+Tuotannossa käytetään HTTPS:ää; natiivin labra-HTTP vaatii erillisen kehityskoonnin.
+
 Android-emulaattorissa aseta Expon käynnistyspäätteeseen
 `EXPO_PUBLIC_SIGLIP_BASE_URL=http://10.0.2.2:3004` ennen `pnpm dev:expo-go`.
 PowerShellin muoto on `$env:EXPO_PUBLIC_SIGLIP_BASE_URL = 'http://10.0.2.2:3004'`.
@@ -93,3 +97,13 @@ Tämä komento voi lukea palvelimen paikallisen `.env.local`-tiedoston; säilyt�
 avaimet vain palvelimella. Älä aseta salaisuuksia `EXPO_PUBLIC_*`-muuttujiin.
 Erillinen OpenAI-tunnistus on poistettu. Oma SigLIP2-palvelin ei käytä avainta tai maksullista
 tunnistuspalvelua. Verkkotuotehaku ja ulkoinen kartta voivat tarvita internetin.
+
+## Selainjulkaisun suojaus
+
+`pnpm build` tuottaa web-exportin ja CSP-/turvaotsakkeet (`mobile/app/dist/_headers`).
+Määritä julkiset API-osoitteet suoraan koontiprosessin ympäristöön; web-koonti ei
+lue `.env`-tiedostoja, jotta JavaScriptin ja otsakkeiden osoitteet eivät eroa.
+Älä lisää CSP:hen `unsafe-eval`- tai skriptien `unsafe-inline`-poikkeuksia.
+`pnpm serve:web:secure` näyttää exportin vain localhost:8099:ssä turvaotsakkein.
+Oikean HTTPS-hostingin on toimitettava samat otsakkeet; tiedoston olemassaolo
+ei yksin riitä. Kehityksen Metro/Expo-palvelinta ei julkaista internetiin.

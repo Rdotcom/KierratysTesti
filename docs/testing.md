@@ -10,15 +10,31 @@ Osakohtaiset tarkistukset: `pnpm validate:mobile`, `pnpm validate:backend` ja
 CI säilyttää testit, tyypityksen, rajat, koonnit, Expo Doctorin, auditoinnin,
 CodeQL:n ja salaisuuksien tarkistuksen.
 
+## Tietoturvakovennus 18.11.2026 — nykyinen paikallinen lähde
+
+- `pnpm validate`: 2 165 testiä (957 Node + 1 208 workspace), tyypit, lint,
+  rajat ja koonnit läpäisty. Mobile/backend/shared-osakohtaiset portit läpäisty.
+- Frozen install, Expo Doctor 20/20 ja iOS/Android/web-JS-export läpäisty.
+  Sama audit-policy: 22 aiempaa low/moderate-löydöstä → 0, ei ohituksia.
+- URL-/alkuperä-/Host-/proto-/IP-väärennökset, datarajat, peruutus, lokien
+  yksityisyys, paikallistiedon validointi ja poiston jälkeinen kirjoitus testattu.
+  HSY:n aidon lähdelinkin regressio korjattu; hyökkääjän samanniminen host estyy.
+- Oikea tuotanto-webexport / Chrome / pakotettu CSP: 4 tapausta läpäisty;
+  sovellus ja lähteistetty haku toimivat, injektoitu skripti/seurantakuva estyvät,
+  piilotiedostot/polkupako estyvät eikä suora reitti avaa kameraa/sijaintia.
+  Ei sivuvirheitä tai tavallisen käytön CSP-rikkomuksia; näyttökuva tarkastettu.
+- Oikea SigLIP2 / Chrome: 8 tapausta läpäisty. Erillinen FI/EN-vahvistuskoe:
+  8 UI-fixturetapausta läpäisty. Overview FI/EN-kirjaukset, korjaukset, poisto,
+  pysyvyys ja virhepalautuminen läpäisty. Rinnakkainen Metro-koonti aiheutti
+  yhden moduulivälimuistivirheen; puhdas palvelimen uusintakäynnistys ja
+  peräkkäinen koe läpäisivät muuttamattomin tarkistuksin.
+- Oikea Expon introspection: tuotannon ATS/cleartext estetty, backup=false ja
+  OTA pois päältä. Tämä ei ole uusi allekirjoitettu IPA/APK tai fyysinen laitekoe.
+- Kolmen ilmoitetun Python-version OSV-kysely: ei osumia; ei koko ketjun auditointi.
+  Uutta Windows/GitHub-ajoa, asennusta tai pushia ei tehty. Uhkamalli: security.md.
+
 ## Olemassa oleva näyttö
 
-- Siivottu lähde `2c63588`: 2 125 testiä ja koonnit läpäisty.
-  [CI 44162245767](https://github.com/roopeaal/KierratysAppi/actions/runs/44162245767)
-  läpäisee parts/full/Expo-tarkistukset ja epäonnistuu vain tunnetussa picomatch-
-  auditoinnissa. [Security 44162245784](https://github.com/roopeaal/KierratysAppi/actions/runs/44162245784)
-  läpäisee CodeQL:n ja salaisuuksien tarkistuksen.
-- Aiemmat picomatch-paikkauskokeet koskevat vanhaa toteutusta, eivät uuden
-  moottorin hyväksyntää. Nykyiset regressiot testaavat oikeaa uutta toteutusta.
 - Macin selainkoe käyttää oikeaa SigLIP2-mallia, JPEG/PNG:tä, erillistä lupaa,
   materiaalivalintaa, lähteistettyä ohjetta, EN-pysyvyyttä ja offline-palautumista.
   Windows x64:n malli/Chrome/Edge on ajettu GitHubin Windows-koneella.

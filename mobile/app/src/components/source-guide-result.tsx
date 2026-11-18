@@ -1,8 +1,9 @@
 import type { GuideLibraryItem } from "@kierratysappi/recycling-engine";
 import { useState } from "react";
-import { Linking, View } from "react-native";
+import { View } from "react-native";
 import { guideLibrary } from "@/features/guide/library";
 import { recyclingIntent } from "@/features/overview/recording";
+import { openExternalUrl } from "@/features/security/external-links";
 import { useLanguage } from "@/i18n/language-context";
 import { RecyclingRecordAction } from "./recycle-action";
 import { AppText, InlineLink, Paper, StatusPill, sharedStyles } from "./ui";
@@ -53,7 +54,7 @@ export function SourceGuideResult({ item }: { item: GuideLibraryItem }) {
             <InlineLink
               label={t("sourceLabel")}
               onPress={() =>
-                void Linking.openURL(r.url ?? library.source.url).catch(() => undefined)
+                void openExternalUrl(r.url ?? library.source.url).catch(() => undefined)
               }
             />
           )}
@@ -64,7 +65,7 @@ export function SourceGuideResult({ item }: { item: GuideLibraryItem }) {
       </AppText>
       <InlineLink
         label={t("guideSourceTitle")}
-        onPress={() => void Linking.openURL(library.source.url).catch(() => undefined)}
+        onPress={() => void openExternalUrl(library.source.url).catch(() => undefined)}
       />
       <AppText variant="small" muted>
         {t("guideSourceAttribution")}

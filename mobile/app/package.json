@@ -1,8 +1,9 @@
 {
   "name": "@kierratysappi/mobile",
-  "main": "expo-router/entry",
+  "main": "index.ts",
   "version": "0.1.0",
   "dependencies": {
+    "zod": "4.6.7",
     "@expo-google-fonts/atkinson-hyperlegible-next": "0.4.1",
     "@expo-google-fonts/ibm-plex-mono": "0.4.1",
     "@kierratysappi/contracts": "workspace:*",
@@ -45,7 +46,7 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "build": "expo export --platform web",
+    "build": "node ../../scripts/build-web-secure.mjs",
     "lint": "expo lint",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",

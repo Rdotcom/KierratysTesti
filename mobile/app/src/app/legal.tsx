@@ -1,6 +1,6 @@
 import { useRouter } from "expo-router";
 import { useRef, useState } from "react";
-import { Linking, Platform } from "react-native";
+import { Platform } from "react-native";
 import {
   AppText,
   Button,
@@ -13,13 +13,16 @@ import {
 } from "@/components/ui";
 import { announceAccessibility } from "@/features/accessibility/announcements";
 import { clearAllLocalData } from "@/features/history/storage";
+import { openExternalUrl } from "@/features/security/external-links";
 import { useLanguage } from "@/i18n/language-context";
+import { useScanSession } from "@/features/scan/session-context";
 import { useAppTheme } from "@/theme/tokens";
 
 export default function LegalScreen() {
   const router = useRouter();
   const { palette } = useAppTheme();
   const { t, language, setLanguage } = useLanguage();
+  const { reset } = useScanSession();
   const [deleted, setDeleted] = useState(false);
   const [confirming, setConfirming] = useState(false);
   const [deleting, setDeleting] = useState(false);
@@ -32,6 +35,7 @@ export default function LegalScreen() {
     setDeleting(true);
     setFailed(false);
     try {
+      reset();
       await clearAllLocalData();
 
       setLanguage(language);
@@ -61,7 +65,7 @@ export default function LegalScreen() {
           <InlineLink
             label={t("androidPrivacyLink")}
             onPress={() =>
-              void Linking.openURL(
+              void openExternalUrl(
                 "https://developers.google.com/ml-kit/android-data-disclosure",
               ).catch(() => undefined)
             }

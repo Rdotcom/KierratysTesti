@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { GtinSchema } from "./gtin";
+import { WebUrlSchema } from "./web-url";
 
 export const LanguageSchema = z.enum(["fi", "en"]);
 export type Language = z.infer<typeof LanguageSchema>;
@@ -24,7 +25,7 @@ export type VerificationStatus = z.infer<typeof VerificationStatusSchema>;
 export const SourceLicenseSchema = z.object({
   id: z.string().min(1),
   name: z.string().min(1),
-  url: z.url().optional(),
+  url: WebUrlSchema.optional(),
   attributionText: z.string().min(1),
   shareAlike: z.boolean(),
 });
@@ -34,7 +35,13 @@ export const FieldProvenanceSchema = z.object({
   sourceId: z.string().min(1),
   sourceName: z.string().min(1),
   sourceRecordId: z.string().min(1),
-  sourceUrl: z.url(),
+  // Internal user-selection evidence is provenance, never an external link.
+  sourceUrl: WebUrlSchema.or(
+    z.enum([
+      "https://kierratysappi.local/object-selection",
+      "https://kierratysappi.local/material-code-observation",
+    ]),
+  ),
   retrievedAt: z.iso.datetime(),
   lastConfirmedAt: z.iso.datetime().optional(),
   confidence: z.number().min(0).max(1),
@@ -130,7 +137,7 @@ export const ProductObservationSchema = z.object({
   gtin: GtinSchema,
   name: ObservedStringSchema.optional(),
   brands: observedFieldSchema(z.array(z.string().min(1))).optional(),
-  imageUrl: observedFieldSchema(z.url()).optional(),
+  imageUrl: observedFieldSchema(WebUrlSchema).optional(),
   packagingCompleteness: observedFieldSchema(PackagingCompletenessSchema),
   packagingComponents: z.array(PackagingComponentObservationSchema),
 });

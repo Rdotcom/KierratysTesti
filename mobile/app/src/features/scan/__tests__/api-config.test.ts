@@ -2,6 +2,25 @@ import { describe, expect, it } from "vitest";
 import { resolveApiBaseUrl } from "../api-config";
 
 describe("mobile API configuration", () => {
+  it("does not default a missing environment to insecure development", () => {
+    expect(() =>
+      resolveApiBaseUrl({ platform: "ios", appEnvironment: undefined, configuredUrl: undefined }),
+    ).toThrow();
+    expect(() =>
+      resolveApiBaseUrl({
+        platform: "ios",
+        appEnvironment: "development",
+        configuredUrl: "http://attacker.example",
+      }),
+    ).toThrow("private IP");
+    expect(
+      resolveApiBaseUrl({
+        platform: "ios",
+        appEnvironment: "development",
+        configuredUrl: "http://192.168.1.2:3000",
+      }),
+    ).toBe("http://192.168.1.2:3000");
+  });
   it("uses emulator loopback only in development", () => {
     expect(
       resolveApiBaseUrl({

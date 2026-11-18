@@ -1,5 +1,16 @@
 # Decisions
 
+- 2026-11-18 security: model phone/app/backend/build trust boundaries against MASVS
+  and primary Apple/Android/Expo guidance; do not promise absolute safety.
+  Require reviewed HTTPS external destinations, bounded runtime-validated data,
+  explicit private-HTTP lab opt-in and production native transport restrictions.
+  Keep CORS/Host defences separate from authentication; public image service stays
+  disabled. Use CSP hashes and Zod jitless, not unsafe-eval. Disable unused OTA.
+  Serialize privacy deletion and invalidate/cancel pre-deletion lookups. Correct
+  actual vulnerable dependencies without audit exceptions; schedule unchanged audit.
+  Export web JS/headers from identical explicit env, without implicit dotenv reads.
+  Native binaries, TLS hosting, Python transitive chain and independent testing
+  remain separate evidence gates. No publication/install authority inferred.
 - 2026-11-18: owner requests one object suggestion, alternatives only after No,
   except unclear inference. Use a versioned UI heuristic (cosine >= 0.12 and
   lead >= 0.04 over every runner-up); this is NOT calibrated accuracy/confidence.

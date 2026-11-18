@@ -24,6 +24,7 @@
     "dev:web": "pnpm --filter @kierratysappi/mobile exec expo start --web --localhost --port 8097",
     "dev:web:recognition": "node scripts/start-browser-recognition.mjs",
     "test:web:recognition": "node scripts/start-browser-recognition.mjs --test",
+    "serve:web:secure": "node scripts/serve-web-secure.mjs",
     "dev:siglip": "pnpm --filter @kierratysappi/api dev:siglip",
     "vision:prepare": "node scripts/prepare-network-model.mjs",
     "dev:native-client": "pnpm --filter @kierratysappi/mobile start:dev-client",

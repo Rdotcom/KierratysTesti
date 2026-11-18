@@ -26,7 +26,7 @@ process.once("SIGTERM", () => void shutdown("SIGTERM"));
 
 try {
   await app.listen({ host: environment.HOST, port: environment.PORT });
-} catch (error) {
-  app.log.error({ err: error }, "API failed to start");
+} catch {
+  app.log.error({ code: "startup_failed" }, "API failed to start");
   process.exitCode = 1;
 }

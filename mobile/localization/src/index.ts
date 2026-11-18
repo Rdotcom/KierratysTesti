@@ -1,12 +1,12 @@
 import type { Language, LocalizedText } from "@kierratysappi/domain";
 import { assessmentEn, assessmentFi } from "./assessment";
 import { expoGoEn, expoGoFi } from "./expo-go";
-import { networkRecognitionEn, networkRecognitionFi } from "./network-recognition";
 import { guideSearchEn, guideSearchFi } from "./guide-search";
 import { localVisionEn, localVisionFi } from "./local-vision";
 import { locationPolishEn, locationPolishFi } from "./location-polish";
 import { navigationEn, navigationFi } from "./navigation";
 import { nearbyEn, nearbyFi } from "./nearby";
+import { networkRecognitionEn, networkRecognitionFi } from "./network-recognition";
 import { objectCandidatesEn, objectCandidatesFi } from "./object-candidates";
 import { overviewEn, overviewFi } from "./overview";
 import { regionEn, regionFi } from "./region";
@@ -208,6 +208,7 @@ const fi = {
   feedbackNote: "Lisätieto (valinnainen)",
   feedbackPrivacyCaution: "Älä kirjoita nimeä, yhteystietoja tai muuta henkilötietoa luonnokseen.",
   saveDraft: "Tallenna luonnos laitteelle",
+  feedbackSaveError: "Luonnosta ei voitu tallentaa. Tarkista teksti ja yritä uudelleen.",
   draftSaved: "Luonnos tallennettu",
   legalAction: "Tietosuoja",
   privacyTitle: "Tietojen käyttö",
@@ -430,6 +431,7 @@ const en: Record<keyof typeof fi, string> = {
   feedbackPrivacyCaution:
     "Do not include your name, contact details, or other personal data in the draft.",
   saveDraft: "Save draft on device",
+  feedbackSaveError: "Could not save the draft. Check the text and try again.",
   draftSaved: "Draft saved",
   legalAction: "Privacy",
   privacyTitle: "Use of information",

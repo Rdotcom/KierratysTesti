@@ -1,10 +1,11 @@
 import { localizedText } from "@kierratysappi/localization";
 import { evaluateObjectSorting, type SortableObjectKind } from "@kierratysappi/recycling-engine";
 import { useState } from "react";
-import { Linking, View } from "react-native";
+import { View } from "react-native";
 import { announceAccessibility } from "@/features/accessibility/announcements";
 import { recordingMaterialFromAnswer, recyclingIntent } from "@/features/overview/recording";
 import { useSortingRegion } from "@/features/region/context";
+import { openExternalUrl } from "@/features/security/external-links";
 import { useLanguage } from "@/i18n/language-context";
 import { RecyclingRecordAction } from "./recycle-action";
 import { SortingRegionPicker } from "./sorting-region-picker";
@@ -136,7 +137,7 @@ export function ObjectSortingFlowView({
             <View key={reference.id} style={sharedStyles.tightStack} testID="object-sorting-source">
               <InlineLink
                 label={reference.sourceName}
-                onPress={() => void Linking.openURL(reference.sourceUrl).catch(() => undefined)}
+                onPress={() => void openExternalUrl(reference.sourceUrl).catch(() => undefined)}
               />
               <AppText variant="small" muted>
                 {t("ruleJurisdictionLabel")}: {reference.jurisdiction} · {t("checkedLabel")}:{" "}
