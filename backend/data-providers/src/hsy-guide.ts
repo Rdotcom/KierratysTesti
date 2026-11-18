@@ -27,10 +27,7 @@ export const HsyPageSchema = z.object({
 });
 export function hsyPlainText(value: string | null | undefined): string {
   if (!value) return "";
-  return value
-    .replace(/<(script|style)\b[^>]*>[\s\S]*?<\/\1\s*>/gi, "")
-    .replace(/<\s*(?:br\s*\/?|\/p|\/li|\/div|\/h[1-6])\s*>/gi, "\n")
-    .replace(/<[^>]{0,2000}>/g, "")
+  let out = value
     .replace(
       /&(?:nbsp|amp|quot|apos|lt|gt);/g,
       (v) =>
@@ -43,7 +40,45 @@ export function hsyPlainText(value: string | null | undefined): string {
       return Number.isSafeInteger(point) && point >= 32 && point <= 0x10ffff
         ? String.fromCodePoint(point)
         : " ";
-    })
+    });
+  let plainText = "";
+  let hiddenElement: "script" | "style" | null = null;
+  for (let index = 0; index < out.length; ) {
+    const tagStart = out.indexOf("<", index);
+    if (tagStart < 0) {
+      if (!hiddenElement) plainText += out.slice(index);
+      break;
+    }
+    if (!hiddenElement) plainText += out.slice(index, tagStart);
+    const tagEnd = out.indexOf(">", tagStart + 1);
+    if (tagEnd < 0) break;
+    const tag = out.slice(tagStart + 1, tagEnd).trim();
+    if (tag.startsWith("!--")) {
+      const commentEnd = out.indexOf("-->", tagStart + 1);
+      index = commentEnd >= 0 ? commentEnd + 3 : out.length;
+      continue;
+    }
+    const closingMatch = /^\/\s*([a-z][\w:-]*)/i.exec(tag);
+    const openingMatch = !closingMatch ? /^([a-z][\w:-]*)/i.exec(tag) : null;
+    const tagName = (closingMatch?.[1] ?? openingMatch?.[1])?.toLowerCase();
+    if (hiddenElement) {
+      if (closingMatch && tagName === hiddenElement) hiddenElement = null;
+    } else if (tagName === "script" || tagName === "style") {
+      if (!closingMatch) hiddenElement = tagName;
+    } else if (
+      tagName === "br" ||
+      (closingMatch &&
+        (tagName === "p" ||
+          tagName === "li" ||
+          tagName === "div" ||
+          (tagName !== undefined && /^h[1-6]$/.test(tagName))))
+    ) {
+      plainText += "\n";
+    }
+    index = tagEnd + 1;
+  }
+  return plainText
+    .replace(/[<>]/g, "")
     .replace(/(?![\n\t])[\p{Cc}\p{Cf}]/gu, "")
     .replace(/[ \t]+/g, " ")
     .replace(/ *\n */g, "\n")
