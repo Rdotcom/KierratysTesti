@@ -1,10 +1,11 @@
 import { describe, expect, it } from "vitest";
-import { selectableObjectCandidates } from "../object-selection";
 import {
   normalizeObjectCandidates,
-  objectKinds,
   type ObjectPhotoResponse,
+  objectKinds,
 } from "../object-candidates";
+import { objectCandidateChoices, selectableObjectCandidates } from "../object-selection";
+
 const result = (): Extract<ObjectPhotoResponse, { status: "observed" }> => ({
   status: "observed",
   observation: normalizeObjectCandidates(
@@ -26,7 +27,7 @@ describe("object candidate actions", () => {
   it("keeps actual normalized rank order without changing inference or confidence", () => {
     const input = result(),
       before = structuredClone(input);
-    expect(selectableObjectCandidates(input)).toEqual(["spoon", "cup", "fork"]);
+    expect(selectableObjectCandidates(input)).toEqual(["spoon", "cup", "fork", "knife"]);
     expect(input).toEqual(before);
   });
   it.each(["multiple", "unknown"] as const)("does not force choices for %s", (focus) => {
@@ -50,6 +51,40 @@ describe("object candidate actions", () => {
       "knife",
       "cup",
     ];
-    expect(selectableObjectCandidates(input)).toEqual(["spoon", "fork", "knife"]);
+    expect(selectableObjectCandidates(input)).toEqual(["spoon", "fork", "knife", "cup"]);
+  });
+  it("presents only the primary until rejected, then the next three without repeating it", () => {
+    const input = result();
+    expect(objectCandidateChoices(input)).toEqual({
+      primary: "spoon",
+      alternatives: ["spoon", "cup", "fork"],
+    });
+    expect(objectCandidateChoices(input, true)).toEqual({
+      primary: undefined,
+      alternatives: ["cup", "fork", "knife"],
+    });
+    expect(objectCandidateChoices(input).primary).toBe("spoon");
+    expect(input.observation.source.verification).toBe("unverified");
+  });
+  it("offers choices immediately for unclear or legacy observations without guessing confidence", () => {
+    const input = result();
+    input.observation.presentation = "alternatives";
+    expect(objectCandidateChoices(input)).toEqual({
+      primary: undefined,
+      alternatives: ["spoon", "cup", "fork"],
+    });
+    delete input.observation.presentation;
+    expect(objectCandidateChoices(input).primary).toBeUndefined();
+  });
+  it("does not create a primary for unknown/multiple/unavailable results", () => {
+    for (const focus of ["multiple", "unknown"] as const) {
+      const input = result();
+      input.observation.focus = focus;
+      expect(objectCandidateChoices(input)).toEqual({ primary: undefined, alternatives: [] });
+    }
+    expect(objectCandidateChoices({ status: "unavailable", reason: "failed" })).toEqual({
+      primary: undefined,
+      alternatives: [],
+    });
   });
 });

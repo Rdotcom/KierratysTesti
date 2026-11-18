@@ -1,15 +1,19 @@
-import { encodePhotoBase64 } from "@kierratysappi/contracts/photo-image";
 import {
+  NetworkResultSchema,
+  networkCapabilitiesPath,
+  networkConsentVersion,
+  networkSuggestionMediaType,
   objectKinds,
   observationFromScores,
-  networkConsentVersion,
+  suggestionObservationFromScores,
   networkRecognitionPath as url,
-  networkCapabilitiesPath,
 } from "@kierratysappi/contracts/network-recognition";
+import { encodePhotoBase64 } from "@kierratysappi/contracts/photo-image";
 import type { ObjectImageRecognizer } from "@kierratysappi/data-providers/siglip-recognition";
 import type { FastifyInstance } from "fastify";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { buildApp } from "../app";
+
 const apps: FastifyInstance[] = [];
 afterEach(async () => {
   await Promise.all(apps.splice(0).map((app) => app.close()));
@@ -37,6 +41,45 @@ async function make(recognizer?: ObjectImageRecognizer) {
   return app;
 }
 describe("self-hosted object image API", () => {
+  it("negotiates the expanded representation without breaking v1 clients or consent", async () => {
+    const expanded = {
+      status: "observed" as const,
+      observation: suggestionObservationFromScores(
+        objectKinds.map((kind) => ({ kind, similarity: kind === "spoon" ? 0.35 : 0.1 })),
+        "2026-11-18T12:00:00.000Z",
+      ),
+    };
+    const recognize = vi.fn<ObjectImageRecognizer["recognize"]>().mockResolvedValue(expanded);
+    const app = await make({ recognize });
+    const legacy = await app.inject({ method: "POST", url, payload });
+    expect(legacy.statusCode).toBe(200);
+    expect(NetworkResultSchema.parse(legacy.json()).status).toBe("observed");
+    expect(legacy.json().observation.candidates).toEqual(["spoon", "cup", "fork"]);
+    expect(legacy.json().observation).not.toHaveProperty("presentation");
+    const response = await app.inject({
+      method: "POST",
+      url,
+      payload,
+      headers: { accept: networkSuggestionMediaType },
+    });
+    expect(response.statusCode).toBe(200);
+    expect(response.json()).toEqual(expanded);
+    expect(response.headers.vary).toContain("Accept");
+    expect(response.headers["content-type"]).toContain(networkSuggestionMediaType);
+    expect(response.headers["cache-control"]).toContain("no-store");
+    expect(response.body).not.toContain(jpeg);
+    expect(
+      (
+        await app.inject({
+          method: "POST",
+          url,
+          payload: { jpegBase64: jpeg },
+          headers: { accept: networkSuggestionMediaType },
+        })
+      ).statusCode,
+    ).toBe(400);
+    expect(recognize).toHaveBeenCalledTimes(2);
+  });
   it("cancels in-flight inference when the client disconnects", async () => {
     let cancelled = false;
     const recognize = vi.fn<ObjectImageRecognizer["recognize"]>(
@@ -141,6 +184,33 @@ describe("self-hosted object image API", () => {
     for (let i = 0; i < 4; i++)
       expect((await app.inject({ method: "POST", url, payload })).statusCode).toBe(200);
     expect((await app.inject({ method: "POST", url, payload })).statusCode).toBe(429);
+    expect(recognize).toHaveBeenCalledTimes(4);
+  });
+  it("shares the rate limit between legacy and expanded responses", async () => {
+    const recognize = vi.fn<ObjectImageRecognizer["recognize"]>().mockResolvedValue({
+      ...observed,
+      observation: { ...observed.observation, presentation: "alternatives" },
+    });
+    const app = await make({ recognize });
+    for (let i = 0; i < 4; i++) {
+      const response = await app.inject({
+        method: "POST",
+        url,
+        payload,
+        headers: { accept: i % 2 ? networkSuggestionMediaType : "application/json" },
+      });
+      expect(response.statusCode).toBe(200);
+    }
+    expect(
+      (
+        await app.inject({
+          method: "POST",
+          url,
+          payload,
+          headers: { accept: networkSuggestionMediaType },
+        })
+      ).statusCode,
+    ).toBe(429);
     expect(recognize).toHaveBeenCalledTimes(4);
   });
   it("never runs a second concurrent model request", async () => {

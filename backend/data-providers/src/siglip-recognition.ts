@@ -2,16 +2,20 @@ import { spawn } from "node:child_process";
 import { createHash } from "node:crypto";
 import { lstatSync, readFileSync, realpathSync } from "node:fs";
 import path from "node:path";
-import { preparePhotoBase64 } from "@kierratysappi/contracts/photo-image";
 import {
   type NetworkResult,
   NetworkScoreSchema,
-  observationFromScores,
+  type NetworkSuggestionResult,
+  suggestionObservationFromScores,
 } from "@kierratysappi/contracts/network-recognition";
+import { preparePhotoBase64 } from "@kierratysappi/contracts/photo-image";
 import { z } from "zod";
 
 export interface ObjectImageRecognizer {
-  recognize(jpegBase64: string, signal?: AbortSignal): Promise<NetworkResult>;
+  recognize(
+    jpegBase64: string,
+    signal?: AbortSignal,
+  ): Promise<NetworkResult | NetworkSuggestionResult>;
 }
 const modelHash = "d90cf29df7a26cd39d5c8d03c0b6c13179f03e8e905659111be3cbf54552984b";
 const prototypeHash = "eea5bfda99ff71d076657b7f81372270eb1f4bea96f2539a697abc0ea441df21";
@@ -56,10 +60,10 @@ export class SiglipObjectRecognizer implements ObjectImageRecognizer {
       }
     this.#pythonPath = options.pythonPath;
   }
-  async recognize(jpegBase64: string, signal?: AbortSignal): Promise<NetworkResult> {
+  async recognize(jpegBase64: string, signal?: AbortSignal): Promise<NetworkSuggestionResult> {
     const fail = (
       reason: Extract<NetworkResult, { status: "unavailable" }>["reason"],
-    ): NetworkResult => ({ status: "unavailable", reason });
+    ): NetworkSuggestionResult => ({ status: "unavailable", reason });
     if (signal?.aborted) return fail("cancelled");
     if (this.#running) return fail("busy");
     let input: Buffer;
@@ -69,7 +73,7 @@ export class SiglipObjectRecognizer implements ObjectImageRecognizer {
       return fail("invalid_image");
     }
     this.#running = true;
-    return new Promise<NetworkResult>((resolve) => {
+    return new Promise<NetworkSuggestionResult>((resolve) => {
       const child = spawn(this.#python, ["-s", this.#worker, this.#assets], {
         shell: false,
         windowsHide: true,
@@ -106,7 +110,7 @@ export class SiglipObjectRecognizer implements ObjectImageRecognizer {
       const abort = () => stop("cancelled");
       const timer = setTimeout(() => stop("timeout"), 12_000);
       timer.unref();
-      const finish = (result: NetworkResult) => {
+      const finish = (result: NetworkSuggestionResult) => {
         if (finished) return;
         finished = true;
         clearTimeout(timer);
@@ -140,7 +144,7 @@ export class SiglipObjectRecognizer implements ObjectImageRecognizer {
           const raw = WorkerOutputSchema.parse(JSON.parse(output));
           finish({
             status: "observed",
-            observation: observationFromScores(raw.scores, new Date().toISOString()),
+            observation: suggestionObservationFromScores(raw.scores, new Date().toISOString()),
           });
         } catch {
           finish(fail("invalid_response"));

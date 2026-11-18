@@ -21,6 +21,9 @@ export const objectKinds = [
 export const networkModelId = "siglip2-server-onnx-weight-int8-v1";
 export const networkConsentVersion = "self-hosted-image-v1";
 export const networkRecognitionPath = "/v1/recycling/object-image";
+// Explicit opt-in representation: existing application/json clients retain v1.
+export const networkSuggestionMediaType =
+  "application/vnd.kierratysappi.object-suggestions.v2+json";
 export const networkCapabilitiesPath = "/v1/recycling/object-image-capabilities";
 export const networkRevision = "75de2d55ec2d0b4efc50b3e9ad70dba96a7b2fa2";
 export const networkPreprocessing = "siglip2-server-pillow13-rgb-bilinear224-v1";
@@ -84,6 +87,63 @@ export const NetworkResultSchema = z.discriminatedUnion("status", [
   NetworkFailureSchema,
 ]);
 export type NetworkResult = z.infer<typeof NetworkResultSchema>;
+export const NetworkSuggestionObservationSchema = NetworkObservationSchema.safeExtend({
+  candidates: z.array(kind).max(4),
+  presentation: z.enum(["confirm", "alternatives"]),
+}).refine((v) => v.presentation !== "confirm" || (v.focus === "single" && v.candidates.length > 0));
+export const NetworkSuggestionResultSchema = z.discriminatedUnion("status", [
+  z
+    .object({ status: z.literal("observed"), observation: NetworkSuggestionObservationSchema })
+    .strict(),
+  NetworkFailureSchema,
+]);
+export type NetworkSuggestionResult = z.infer<typeof NetworkSuggestionResultSchema>;
+export const objectSuggestionDisplayPolicy = {
+  version: "single-first-v1",
+  minimumSimilarity: 0.12,
+  minimumLead: 0.04,
+} as const;
+
+/** Display heuristic only, NOT calibrated confidence or permission to sort.
+ * A weak top score or a close runner-up (including other/multiple) shows choices
+ * immediately. Both modes still require explicit user confirmation. */
+export function objectSuggestionsFromScores(input: unknown) {
+  const scores = NetworkScoreSchema.parse(input)
+    .map((row, index) => ({ ...row, index }))
+    .sort((a, b) => b.similarity - a.similarity || a.index - b.index);
+  const first = scores[0];
+  const focus =
+    first?.kind === "other"
+      ? ("unknown" as const)
+      : first?.kind === "multiple-cups" || first?.kind === "spoon-and-fork"
+        ? ("multiple" as const)
+        : ("single" as const);
+  return {
+    focus,
+    candidates:
+      focus === "single"
+        ? scores
+            .filter((row) => !["other", "multiple-cups", "spoon-and-fork"].includes(row.kind))
+            .slice(0, 4)
+            .map((row) => row.kind)
+        : [],
+    presentation:
+      focus === "single" &&
+      first &&
+      first.similarity >= objectSuggestionDisplayPolicy.minimumSimilarity &&
+      first.similarity - (scores[1]?.similarity ?? first.similarity) + 1e-12 >=
+        objectSuggestionDisplayPolicy.minimumLead
+        ? ("confirm" as const)
+        : ("alternatives" as const),
+  };
+}
+
+export function suggestionObservationFromScores(input: unknown, observedAt: string) {
+  return NetworkSuggestionObservationSchema.parse({
+    ...observationFromScores(input, observedAt),
+    ...objectSuggestionsFromScores(input),
+  });
+}
 export const NetworkCapabilitiesSchema = z
   .object({
     enabled: z.boolean(),

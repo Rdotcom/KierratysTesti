@@ -1,13 +1,15 @@
+import { suggestionObservationFromScores } from "@kierratysappi/contracts/network-recognition";
 import { encodePhotoBase64 } from "@kierratysappi/contracts/photo-image";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import {
   createCameraProductRecognizer,
   createObjectRecognizer,
   normalizeObjectCandidates,
-  objectKinds,
   type ObjectNativeReader,
+  objectKinds,
 } from "../object-candidates";
 import type { OfflinePhotoResponse } from "../offline-product";
+
 const jpeg = encodePhotoBase64(
   new Uint8Array([
     255, 216, 255, 192, 0, 11, 8, 0, 16, 0, 16, 1, 1, 17, 0, 255, 218, 0, 8, 1, 1, 0, 0, 63, 0, 42,
@@ -33,6 +35,35 @@ const reader = (): ObjectNativeReader => ({
 });
 afterEach(() => vi.useRealTimers());
 describe("SigLIP camera candidates are bounded unverified object hints", () => {
+  it.each([
+    [0.16, 0.1, "confirm"],
+    [0.16, 0.14, "alternatives"],
+    [0.08, 0.01, "alternatives"],
+  ])(
+    "iOS, Android and server share presentation for scores %s/%s",
+    (first, second, presentation) => {
+      const payload = raw();
+      payload.scores = payload.scores.map((r) => ({
+        ...r,
+        similarity: r.kind === "spoon" ? first : second,
+      }));
+      const server = suggestionObservationFromScores(payload.scores, payload.observedAt);
+      for (const input of [
+        payload,
+        {
+          ...payload,
+          modelId: "google-siglip2-base224-onnx-weight-int8-v1",
+          preprocessing: "siglip2-android-bitmap-srgb-aa22-224-nchw-v1",
+        },
+      ]) {
+        const native = normalizeObjectCandidates(JSON.stringify(input));
+        expect(native.presentation).toBe(presentation);
+        expect(native.presentation).toBe(server.presentation);
+        expect(native.candidates).toEqual(server.candidates);
+        expect(native.source.confidence).toBe("uncalibrated");
+      }
+    },
+  );
   it("accepts the explicitly paired Android runtime identity, never mixed iOS preprocessing", () => {
     const android = {
       ...raw(),
@@ -40,7 +71,7 @@ describe("SigLIP camera candidates are bounded unverified object hints", () => {
       preprocessing: "siglip2-android-bitmap-srgb-aa22-224-nchw-v1",
     };
     expect(normalizeObjectCandidates(JSON.stringify(android))).toMatchObject({
-      candidates: ["spoon", "cup", "fork"],
+      candidates: ["spoon", "cup", "fork", "knife"],
       source: { modelId: android.modelId, verification: "unverified" },
     });
     expect(() =>
@@ -50,10 +81,11 @@ describe("SigLIP camera candidates are bounded unverified object hints", () => {
       normalizeObjectCandidates(JSON.stringify({ ...raw(), preprocessing: android.preprocessing })),
     ).toThrow();
   });
-  it("normalizes top3 without probability, material, bin or verified product", () => {
+  it("retains four ranked choices without probability, material, bin or verified product", () => {
     const result = normalizeObjectCandidates(JSON.stringify(raw()));
     expect(result.candidates[0]).toBe("spoon");
-    expect(result.candidates).toHaveLength(3);
+    expect(result.candidates).toHaveLength(4);
+    expect(result.presentation).toBe("confirm");
     expect(result.source).toMatchObject({
       verification: "unverified",
       confidence: "uncalibrated",
@@ -97,7 +129,7 @@ describe("SigLIP camera candidates are bounded unverified object hints", () => {
       run = createObjectRecognizer(() => r);
     expect(await run.recognize(jpeg, signal())).toMatchObject({
       status: "observed",
-      observation: { candidates: ["spoon", "cup", "fork"] },
+      observation: { candidates: ["spoon", "cup", "fork", "knife"] },
     });
     expect(await run.recognize("https://example.com/photo", signal())).toMatchObject({
       reason: "failed",

@@ -1,4 +1,4 @@
-import type { NetworkResult } from "@kierratysappi/contracts/network-recognition";
+import type { NetworkSuggestionResult as NetworkResult } from "@kierratysappi/contracts/network-recognition";
 import type { MessageKey } from "@kierratysappi/localization";
 import { useFocusEffect, useRouter } from "expo-router";
 import { useCallback, useRef, useState } from "react";

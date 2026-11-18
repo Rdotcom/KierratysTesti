@@ -8,5 +8,6 @@
 - [x] Verify migration CI, Security and actual Windows Chrome/Edge/model/export flow.
 - [x] Owner authorizes and receives the validated migration in KierratysAppi/main.
 - [x] Remove obsolete paid OpenAI recognition end to end; retain free recognition.
+- [x] Single-first object confirmation, ranked correction and immediate unclear choices.
 - [ ] Complete physical Samsung, broader recognition and memory/energy validation.
 - [ ] Complete production hosting, operational/privacy and store-release requirements.

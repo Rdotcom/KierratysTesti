@@ -89,9 +89,12 @@ try {
   await expect(page.getByTestId("network-photo-send")).toHaveText("Lähetä kuva ja tunnista");
   await page.screenshot({ path: path.join(run, "browser-consent.png"), fullPage: true });
   await page.getByTestId("network-photo-send").click();
-  await expect(page.getByTestId("object-choice-spoon")).toBeVisible();
+  await expect(page.getByTestId("object-confirm-yes")).toBeVisible();
+  await expect(page.getByTestId("object-candidate-title")).toHaveText("Lusikka");
+  await expect(page.getByTestId("object-choice-fork")).toHaveCount(0);
+  await expect(page.getByTestId("object-sorting-flow")).toHaveCount(0);
   assert.equal(posts.length, 1);
-  await page.getByTestId("object-choice-spoon").click();
+  await page.getByTestId("object-confirm-yes").click();
   await page.getByTestId("object-answer-material-metal").click();
   await expect(page.getByTestId("object-sorting-heading")).toContainText("Metallinkeräys");
   await expect(page.getByTestId("object-sorting-source").first()).toBeVisible();
@@ -119,7 +122,7 @@ try {
   assert.equal(posts.length, 1);
   await page.getByTestId("local-photo-recognize").click();
   await page.getByTestId("network-photo-send").click();
-  await expect(page.getByTestId("object-choice-spoon")).toBeVisible();
+  await expect(page.getByTestId("object-confirm-yes")).toBeVisible();
   assert.equal(posts.length, 2);
   evidence.cases.push("Actual PNG → canvas JPEG → consent → real SigLIP spoon");
   await page.getByTestId("network-photo-cancel").click();

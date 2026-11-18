@@ -1,12 +1,14 @@
-import { preparePhotoBase64 } from "@kierratysappi/contracts/photo-image";
 import {
   NetworkImageRequestSchema,
   NetworkResultSchema,
-  networkRecognitionPath,
+  NetworkSuggestionResultSchema,
   networkCapabilitiesPath,
   networkConsentVersion,
   networkModelId,
+  networkRecognitionPath,
+  networkSuggestionMediaType,
 } from "@kierratysappi/contracts/network-recognition";
+import { preparePhotoBase64 } from "@kierratysappi/contracts/photo-image";
 import type { ObjectImageRecognizer } from "@kierratysappi/data-providers/siglip-recognition";
 import type { FastifyInstance } from "fastify";
 import { z } from "zod";
@@ -57,9 +59,27 @@ export function registerObjectImageRoutes(
       request.raw.once("aborted", abort);
       reply.raw.once("close", abort);
       try {
-        const result = NetworkResultSchema.parse(
-          await recognizer.recognize(clean, controller.signal),
-        );
+        const raw = await recognizer.recognize(clean, controller.signal);
+        const expanded = request.headers.accept === networkSuggestionMediaType;
+        // Validate the full provider output before projecting a legacy response.
+        const checked = NetworkSuggestionResultSchema.safeParse(raw);
+        const validated = checked.success ? checked.data : NetworkResultSchema.parse(raw);
+        const result = expanded
+          ? NetworkSuggestionResultSchema.parse(validated)
+          : NetworkResultSchema.parse(
+              validated.status === "observed"
+                ? {
+                    ...validated,
+                    observation: {
+                      focus: validated.observation.focus,
+                      candidates: validated.observation.candidates.slice(0, 3),
+                      source: validated.observation.source,
+                    },
+                  }
+                : validated,
+            );
+        reply.header("Vary", "Accept");
+        if (expanded) reply.type(networkSuggestionMediaType);
         return reply.code(result.status === "observed" ? 200 : 503).send(result);
       } catch {
         return reply.code(503).send({ status: "unavailable", reason: "failed" });

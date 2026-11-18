@@ -1,5 +1,16 @@
 # Current state
 
+- Local branch `codex/confirm-object-suggestion` adds a single-first confirmation:
+  Yes enters material questions; No reveals the next three ranked supported
+  objects plus None. Weak/close ranks show choices immediately; unknown/multiple
+  retain retake/guide recovery. Native and server share the display-only policy.
+  No model weights, accuracy claim, sorting rules, phone install or push changed.
+  Expanded server JSON is opt-in; legacy clients retain their three-item v1 shape.
+  Eight actual-model Chrome cases and eight FI/EN fixture UI scenarios pass;
+  Overview FI/EN recording/correction/privacy regression also passes.
+  Final validate: 2,111 tests, types, lint, boundaries and builds pass; scoped
+  mobile/backend/shared gates and all-platform JS export also pass. Upstream
+  Rdotcom HSY parsing changes (`07fc735`, PR #47) are retained byte-unchanged.
 - The app retains mobile/backend/shared boundaries. Native image inference is
   on-device; Expo Go/browser suggestions use explicit own-computer server consent.
 - Owner-requested OpenAI retirement removes its provider, API routes/configuration,
@@ -17,7 +28,7 @@
 - GitHub CI 44177999529 and Security 44177999523 pass. Windows 44178058438
   passes real glob/tool contracts, frozen model parity, all-platform JS exports
   and actual Chrome/Edge consent/image/guidance/offline flows.
-- Current local validation: 2,093 tests, typechecking/builds, Expo Doctor 20/20,
+- OpenAI-retirement baseline: 2,093 tests, typechecking/builds, Expo Doctor 20/20,
   all-platform JS exports and eight actual-model Chrome cases pass. Models,
   sorting data and persisted recycling records are unchanged by provider removal.
   Independent FI/EN Overview browser checks also pass after migrating photo

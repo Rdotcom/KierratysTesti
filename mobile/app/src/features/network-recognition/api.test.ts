@@ -1,12 +1,14 @@
-import { describe, expect, it, vi } from "vitest";
-import { encodePhotoBase64 } from "@kierratysappi/contracts/photo-image";
 import {
-  objectKinds,
-  observationFromScores,
   networkConsentVersion,
   networkModelId,
+  networkSuggestionMediaType,
+  objectKinds,
+  suggestionObservationFromScores,
 } from "@kierratysappi/contracts/network-recognition";
-import { createNetworkRecognitionClient, networkOrigin, type NetworkFetch } from "./api";
+import { encodePhotoBase64 } from "@kierratysappi/contracts/photo-image";
+import { describe, expect, it, vi } from "vitest";
+import { createNetworkRecognitionClient, type NetworkFetch, networkOrigin } from "./api";
+
 const jpeg = encodePhotoBase64(
   new Uint8Array([
     255, 216, 255, 192, 0, 11, 8, 0, 16, 0, 16, 1, 1, 17, 0, 255, 218, 0, 8, 1, 1, 0, 0, 63, 0, 42,
@@ -15,7 +17,7 @@ const jpeg = encodePhotoBase64(
 );
 const result = {
   status: "observed",
-  observation: observationFromScores(
+  observation: suggestionObservationFromScores(
     objectKinds.map((kind) => ({ kind, similarity: kind === "spoon" ? 0.2 : 0 })),
     "2026-11-17T12:00:00.000Z",
   ),
@@ -59,6 +61,7 @@ describe("Expo Go explicit own-server transport", () => {
     expect(await client.recognize(jpeg, true, signal())).toEqual(result);
     const [url, options] = fetcher.mock.calls[0] ?? [];
     expect(url).toBe("http://localhost:3004/v1/recycling/object-image");
+    expect(options?.headers).toMatchObject({ Accept: networkSuggestionMediaType });
     expect(JSON.parse(String(options?.body))).toEqual({
       jpegBase64: jpeg,
       consentVersion: networkConsentVersion,
@@ -102,6 +105,25 @@ describe("Expo Go explicit own-server transport", () => {
         signal(),
       ),
     ).toMatchObject({ reason: "offline" });
+    expect(fetcher).toHaveBeenCalledOnce();
+  });
+  it("does not invent a confident suggestion from a legacy response without display metadata", async () => {
+    const legacy = {
+      ...result,
+      observation: {
+        focus: result.observation.focus,
+        candidates: result.observation.candidates.slice(0, 3),
+        source: result.observation.source,
+      },
+    };
+    const fetcher = vi.fn<NetworkFetch>().mockResolvedValue(Response.json(legacy));
+    expect(
+      await createNetworkRecognitionClient("http://localhost:3004", fetcher).recognize(
+        jpeg,
+        true,
+        signal(),
+      ),
+    ).toMatchObject({ reason: "invalid_response" });
     expect(fetcher).toHaveBeenCalledOnce();
   });
 });

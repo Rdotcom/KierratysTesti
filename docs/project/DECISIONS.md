@@ -1,5 +1,13 @@
 # Decisions
 
+- 2026-11-18: owner requests one object suggestion, alternatives only after No,
+  except unclear inference. Use a versioned UI heuristic (cosine >= 0.12 and
+  lead >= 0.04 over every runner-up); this is NOT calibrated accuracy/confidence.
+  Keep user confirmation, material questions and all provenance. Retain four
+  supported ranks internally; show at most three alternatives without repeating
+  a rejected primary. Unknown/multiple do not force a sorting choice. Accept-based
+  v2 representation is opt-in; application/json v1 remains unchanged. Rejection
+  is transient UI state, not training/analytics. No push/install authorized here.
 - Maintain three source boundaries: mobile, backend and shared, using public exports.
 - Treat image output as unverified suggestions; the user confirms object/material.
   Native inference is local; Go/browser uses explicit own-server photo consent.

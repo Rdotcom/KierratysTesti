@@ -26,6 +26,32 @@ CodeQL:n ja salaisuuksien tarkistuksen.
   kokeillut Go:n lusikka-/materiaaliohjeen ja kielivalinnan. Android-emulaattorissa
   on tehty natiivi- ja Go-kokeita. Tämä ei ole fyysinen Samsung-hyväksyntä.
 
+## Esine-ehdotuksen vahvistus 18.11.2026
+
+- Yksi ehdotus ja Kyllä/Ei; Ei paljastaa seuraavat kolme ilman hylättyä ehdotusta.
+  Epäselvässä tapauksessa vaihtoehdot heti, aina myös Ei mikään näistä.
+  Tuntematon/usean esineen kuva ei pakota esinettä tai lajitteluohjetta.
+- Sama esityspolitiikka iOS-/Android-havainnoille ja palvelimelle. Vertailupisteet
+  ja 0.12/0.04 näyttökriteerit eivät ole kalibroitu varmuus tai lajittelulupa.
+  Kuvat, mallipainot, lajittelusäännöt ja kierrätyskirjaukset eivät muutu.
+- Rajapinta säilyttää v1:n; laajennettu vastaus vaatii versionoidun Accept-arvon.
+  Suostumus, rajat, peruutus, nopeusraja ja vanhojen asiakkaiden vastaus testataan.
+  Uutta natiivikoontia, fyysistä laitekoetta tai GitHub-julkaisua ei ole tehty.
+- Chrome/oikea SigLIP2: kaikki 8 olemassa olevaa tapausta läpäisevät, nyt myös
+  yksi lusikkaehdotus ennen vahvistusta. JPEG/PNG ja erillinen lähetyslupa säilyvät.
+- Erillinen UI-fixturekoe: 8 FI/EN-skenaariota läpäisevät Kyllä/Ei-, kolme muuta-,
+  Ei mikään-, materiaalivalinta-, takaisin- ja uuden kuvan nollaustapaukset.
+  Näppäimistökohdistus, tumma/320px ja reduced motion tarkistettu; ei sivuvirheitä.
+  Fixturet eivät ole mallin tarkkuusnäyttöä. Näyttökuvat tarkastettu.
+- Overview-koe läpäisee FI/EN-kirjaukset ja korjauksen ilman tuplalaskentaa,
+  pysyvyyden, virheistä palautumisen, tietosuojapoiston ja eri näyttötilat.
+  Paikallinen testipalvelin suljettu; omistajan muita palvelimia ei muutettu.
+- Lopullinen validate läpäisee 2 111 testiä (951 Node + 1 160 workspace), tyypit,
+  lintin, rajat ja koonnit. Mobile/backend/shared-osakohtaiset tarkistukset ja
+  iOS/Android/web-JS-export läpäisty; JS-export ei ole natiivikoonti/laitekoe.
+  Pohjaan on otettu mainin Rdotcom/PR #47:n HSY-parsinta muuttamattomana (`07fc735`);
+  provider-testit ja koko integraatio läpäisevät myös tällä pohjalla.
+
 ## OpenAI-polun poisto 17.11.2026
 
 - Vanha /photo-linkki ohjaa /local-photo-näkymään kaikilla alustoilla.

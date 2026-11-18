@@ -1,4 +1,4 @@
-import type { NetworkResult } from "@kierratysappi/contracts/network-recognition";
+import type { NetworkSuggestionResult as NetworkResult } from "@kierratysappi/contracts/network-recognition";
 import { preparePhotoBase64 } from "@kierratysappi/contracts/photo-image";
 import type { MessageKey } from "@kierratysappi/localization";
 import { CameraView, useCameraPermissions } from "expo-camera";
@@ -7,6 +7,7 @@ import { useFocusEffect, useRouter } from "expo-router";
 import { useCallback, useRef, useState } from "react";
 import { AppState, Linking, Platform, View } from "react-native";
 import { announceAccessibility } from "@/features/accessibility/announcements";
+import { localPhotoInitialSize, resolvePhotoCaptureSize } from "@/features/camera/capture";
 import {
   shouldClearLocalPhotoState,
   waitForCameraPermissionResume,
@@ -16,7 +17,6 @@ import {
   networkRecognitionClient as client,
   networkRecognitionOrigin as origin,
 } from "@/features/network-recognition/config";
-import { localPhotoInitialSize, resolvePhotoCaptureSize } from "@/features/camera/capture";
 import { useLanguage } from "@/i18n/language-context";
 import { ExpoGoRecognition } from "./expo-go-recognition";
 import { ObjectCandidateResultView } from "./object-candidate-result";

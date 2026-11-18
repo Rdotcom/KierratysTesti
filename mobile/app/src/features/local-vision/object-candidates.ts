@@ -1,13 +1,19 @@
-import { preparePhotoBase64 } from "@kierratysappi/contracts/photo-image";
-import { objectKinds, type networkModelId } from "@kierratysappi/contracts/network-recognition";
-import type { OfflinePhotoResponse } from "./offline-product";
 import type { AndroidVisionEvidence } from "@kierratysappi/contracts/android-vision";
+import {
+  type networkModelId,
+  objectKinds,
+  objectSuggestionsFromScores,
+} from "@kierratysappi/contracts/network-recognition";
+import { preparePhotoBase64 } from "@kierratysappi/contracts/photo-image";
+import type { OfflinePhotoResponse } from "./offline-product";
 
 export { objectKinds };
 export type ObjectKind = (typeof objectKinds)[number];
 export interface ObjectCandidates {
   focus: "single" | "multiple" | "unknown";
   candidates: ObjectKind[];
+  /** UI ordering only; neither mode is verified or calibrated confidence. */
+  presentation?: "confirm" | "alternatives";
   source: {
     modelId:
       | "google-siglip2-base224-block32-v1"
@@ -76,37 +82,8 @@ export function normalizeObjectCandidates(raw: unknown): ObjectCandidates {
     v.scores.length !== objectKinds.length
   )
     throw Error("invalid_object");
-  const scores = v.scores
-    .map((item, index) => {
-      const score = record(item);
-      if (
-        !keys(score, ["kind", "similarity"]) ||
-        score.kind !== objectKinds[index] ||
-        typeof score.similarity !== "number" ||
-        !Number.isFinite(score.similarity) ||
-        score.similarity < -1 ||
-        score.similarity > 1
-      )
-        throw Error("invalid_scores");
-      return { kind: objectKinds[index] as ObjectKind, similarity: score.similarity, index };
-    })
-    .sort((a, b) => b.similarity - a.similarity || a.index - b.index);
-  const first = scores[0]?.kind;
-  const focus =
-    first === "other"
-      ? "unknown"
-      : first === "multiple-cups" || first === "spoon-and-fork"
-        ? "multiple"
-        : "single";
   return {
-    focus,
-    candidates:
-      focus === "single"
-        ? scores
-            .filter((s) => !["other", "multiple-cups", "spoon-and-fork"].includes(s.kind))
-            .slice(0, 3)
-            .map((s) => s.kind)
-        : [],
+    ...objectSuggestionsFromScores(v.scores),
     source: {
       modelId: v.modelId as ObjectCandidates["source"]["modelId"],
       revision: v.modelRevision,

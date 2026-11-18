@@ -116,6 +116,7 @@ const estimate = {
   status: "observed",
   observation: {
     focus: "single",
+    presentation: "alternatives",
     candidates: ["jar"],
     source: {
       modelId: "siglip2-server-onnx-weight-int8-v1",

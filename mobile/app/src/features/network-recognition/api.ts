@@ -1,12 +1,13 @@
-import { preparePhotoBase64 } from "@kierratysappi/contracts/photo-image";
 import {
   NetworkCapabilitiesSchema,
-  NetworkResultSchema,
-  type NetworkResult,
+  type NetworkSuggestionResult as NetworkResult,
+  NetworkSuggestionResultSchema,
+  networkCapabilitiesPath,
   networkConsentVersion,
   networkRecognitionPath,
-  networkCapabilitiesPath,
+  networkSuggestionMediaType,
 } from "@kierratysappi/contracts/network-recognition";
+import { preparePhotoBase64 } from "@kierratysappi/contracts/photo-image";
 
 export function networkOrigin(value: unknown, development: boolean): string | undefined {
   if (typeof value !== "string" || !value.trim()) return undefined;
@@ -80,7 +81,7 @@ export function createNetworkRecognitionClient(origin: string | undefined, fetch
           redirect: "error",
           method: "POST",
           signal,
-          headers: { Accept: "application/json", "Content-Type": "application/json" },
+          headers: { Accept: networkSuggestionMediaType, "Content-Type": "application/json" },
           body: JSON.stringify({ jpegBase64: clean, consentVersion: networkConsentVersion }),
         });
         if (response.status === 429) return fail("rate_limited");
@@ -91,7 +92,7 @@ export function createNetworkRecognitionClient(origin: string | undefined, fetch
         } catch {
           return fail(signal.aborted ? "cancelled" : "invalid_response");
         }
-        const parsed = NetworkResultSchema.safeParse(raw);
+        const parsed = NetworkSuggestionResultSchema.safeParse(raw);
         if (!parsed.success || (parsed.data.status === "observed" && response.status !== 200))
           return fail("invalid_response");
         return parsed.data;
