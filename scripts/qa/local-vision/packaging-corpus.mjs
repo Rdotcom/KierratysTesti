@@ -12,6 +12,15 @@ const licences = {
   "CC-BY-3.0": "https://creativecommons.org/licenses/by/3.0/",
   "CC-BY-4.0": "https://creativecommons.org/licenses/by/4.0/",
 };
+function stripHtmlTagsRepeatedly(value) {
+  let current = value;
+  let previous;
+  do {
+    previous = current;
+    current = current.replace(/<[^>]*>/gu, "");
+  } while (current !== previous);
+  return current;
+}
 const kinds = ["bottle", "jar", "box", "bag", "cup"];
 const splits = ["train", "validation", "heldout"];
 const sha = (bytes) => createHash("sha256").update(bytes).digest("hex");
@@ -347,8 +356,7 @@ async function metadata(spec) {
         ...r,
         downloadUrl: checkedImageUrl(image.href).href,
         pageUrl: `https://commons.wikimedia.org/wiki/${encodeURIComponent(r.title.replaceAll(" ", "_")).replace("File%3A", "File:")}`,
-        author: i.extmetadata?.Artist?.value
-          ?.replace(/<[^>]*>/gu, "")
+        author: stripHtmlTagsRepeatedly(i.extmetadata?.Artist?.value ?? "")
           .replaceAll("&amp;", "&")
           .trim(),
         licenseUrl: licences[r.license],
