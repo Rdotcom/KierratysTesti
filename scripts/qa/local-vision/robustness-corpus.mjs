@@ -210,9 +210,9 @@ function newOutput(input, cwd) {
 const clean = (v, max) =>
   String(v ?? "")
     .replace(/<[^>]*>/gu, " ")
-    .replaceAll("&amp;", "&")
     .replaceAll("&quot;", '"')
     .replaceAll("&#39;", "'")
+    .replaceAll("&amp;", "&")
     .replace(/[\p{Cc}\p{Cf}]/gu, " ")
     .replace(/\s+/gu, " ")
     .trim()
