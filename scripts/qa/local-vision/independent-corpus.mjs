@@ -311,8 +311,10 @@ export async function downloadCorpus(outputInput, cwd = process.cwd()) {
     const author =
       record.creditOverride ??
       info.extmetadata?.Artist?.value
-        ?.replace(/<[^>]*>/gu, "")
-        .replace(/&amp;/gu, "&")
+        ?.replace(/&amp;/gu, "&")
+        .replace(/&/gu, "&amp;")
+        .replace(/</gu, "&lt;")
+        .replace(/>/gu, "&gt;")
         .trim();
     const result = {
       ...record,
