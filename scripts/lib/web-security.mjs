@@ -14,7 +14,7 @@ export function webSecurityHeaders(directory, environment = {}) {
       else if (entry.name.endsWith(".html")) {
         if (fs.statSync(file).size > 2_000_000) throw Error("html_bound");
         const html = fs.readFileSync(file, "utf8");
-        for (const match of html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script\s*>/giu)) {
+        for (const match of html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script(?:\s+[^>]*)?>/giu)) {
           if (!/\bsrc\s*=/iu.test(match[1]))
             hashes.add(`'sha256-${createHash("sha256").update(match[2]).digest("base64")}'`);
         }
