@@ -20,9 +20,9 @@ const local = (name) => readCorpusJson(fileURLToPath(new URL(name, import.meta.u
 const clean = (v, n) =>
   String(v ?? "")
     .replace(/<[^>]*>/gu, " ")
-    .replaceAll("&amp;", "&")
     .replaceAll("&quot;", '"')
     .replaceAll("&#39;", "'")
+    .replaceAll("&amp;", "&")
     .replace(/[\p{Cc}\p{Cf}]/gu, " ")
     .replace(/\s+/gu, " ")
     .trim()
